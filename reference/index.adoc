@@ -1,0 +1,34 @@
+= Documentation
+
+Welcome to the MSActivator documentation.
+
+This documentation contains both developer guides, to get you started developing applications for servers, and tutorials on how to build Microservices and Workflows on the MSActivator. These documents will also help address specific features and examples of Microservices and Workflows.
+
+== Getting started with The MSActivator
+The Getting Started with the MSActivator explains the main concept, as well as the first steps in managing services with the MSActivator.
+
+== Developer Guides
+The Getting Started Developing Microservices shows you how to build Microservices and deploy them in the MSActivator. The guide starts by showing you a simple user management use case on a Linux system. You'll also discover how to deploy a Microservice on the MSActivator.
+The Getting Started Developing Workflows shows you how to build Workflows and run them in the MSActivator.
+
+== Use Cases
+The iptables Management with a Microservice is a simple use case that shows how to manage firewalls with a Linux system.
+The guide Automate Policy Configuration on Multiple VNF will walk you through the design and development of a Workflow to automate policy configuration on multiple devices with multiple vendors.
+
+== Tutorials
+These tutorials are made up of a set of short articles that explain the main features of the MSActivator.
+
+- <<getting_started/tenants_and_users.adoc,Tenants and Users>>
+- Microservices
+- Automation
+- Portal Overview
+
+== SLA Management
+- Log Analysis
+- KPI Monitoring
+- Alarm Management
+
+== Administration Guides
+The MSActivator Installation and Configuration Guide will show you how to install, configure and activate the MSActivator.
+
+
