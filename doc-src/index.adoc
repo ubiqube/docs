@@ -18,7 +18,7 @@ The guide Automate Policy Configuration on Multiple VNF will walk you through th
 == Tutorials
 These tutorials are made up of a set of short articles that explain the main features of the MSActivator.
 
-- <<getting_started/tenants_and_users.adoc,Tenants and Users>>
+- link:getting_started/tenants_and_users.adoc[Tenants and Users]
 - Microservices
 - Automation
 - Portal Overview
