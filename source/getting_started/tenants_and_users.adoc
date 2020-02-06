@@ -1,0 +1,108 @@
+Tenants and Users
+=================
+:toc: left
+:toc-title: Content 
+
+
+After installing, configuring and activating the MSActivator, you will start creating tenants and users.
+
+This guide will walk you through the initial process of connecting and creating a tenant.
+
+video::video/msa_tenants_and_users.mp4[width=500]
+
+= Initial Connection
+
+The MSActivator comes with one pre-created super admin user: ncroot (the equivalent of the root user on Linux systems). The default password for this user is "ubiqube".
+
+This default password should be changed, especially if the MSActivator is meant to be used in a production environment.
+
+The default MSActivator portal address is https://<MSA_IP>/UBI/en (replace <MSA_IP> with the actual IP address of your MSActivator installation).
+
+image:images/initial_connection.png[Connection Screen]
+
+= Tenancy Management
+
+The MSActivator is designed to provide multi-tenancy. A tenant is a virtual private space that can be managed as an isolated environment.
+
+There are two levels of tenancy, the Operator Tenant and the Customer Tenant, the latter being nested in the Operator Tenant.
+
+== Operator Tenant
+
+Click on image:images/entity_creation_icon.png[Entity Creation] to open the "Entity Creation" dialogue and select "Operator" as the Entity Type.
+
+The "Prefix" is a three letter unique identifier for the tenant. It will be combined with the customer and device ID to build a short, comprehensive, unique identifier.
+
+image:tenants_and_users/tenant_creation_form.png[Tenant Creation Form]
+
+video::video/msa_tenant_creation.mp4[width=500]
+
+== Customer Tenant
+
+video::video/msa_customers.mp4[width=500]
+
+Click on image:video/entity_creation_icon[Entity Creation] to open the "Entity Creation" dialogue and select "Customer" as the Entity Type.
+
+Carefully select the Operator Tenant where the Customer will be created.
+
+image:images/customer_creation_form.png[Customer Creation Form]
+
+In the "Contacts" form, the email is a mandatory field. This email will be used to send alarms. Alarm management is explained in the Alarm Management guide.
+
+Save the customer form and navigate to the new customer tenant (click on the customer name in the customer list).
+
+video::video/msa_customer_creation.mp4[width=500]
+
+== User Management
+
+Four types of users are available:
+
+    - ncroot, the privileged administrator
+    - the administrator users
+    - the privileged manager users
+    - the manager users
+
+video::tenants_and_users/msa_managers_and_admins.mp4[width=500]
+
+=== Privileged Administrator (ncroot)
+
+ncroot is the only predefined user within the MSActivator. It's the user with the highest level of privilege. In addition to the action available to the other users with fewer privileges, ncroot can create the operator tenants, upload and activate the MSActivator product licenses, create administrator users and manage the alarms.
+
+=== Administrator
+
+Administrator users can only be managed by ncroot.
+
+Administrators are associated with one or more operator tenants and have full access rights over these tenants.
+
+A typical administrator job is to create the users and the customers within its tenants.
+
+video::video/msa_administrator_creation.mp4[width=500]
+
+=== Privileged Manager and Manager
+
+Privileged managers are restricted to a single operator tenant.
+
+Within their tenant, a privileged manager has full access rights and can perform tasks such as customer management, device management, user and right management.
+
+Managers are restricted to a single operator tenant and, within this tenant, to a subset of customers.
+
+Association with a customer can be done either on a per-customer basis in the Domain tab or by checking the option "Manage all customers" to grant tenant-wide visibility.
+
+By default, managers have restricted, read-only access to the tenant and a delegation profile should be used to grant them privileges.
+
+A manager may be used to provide Selfcare access to the MSActivator portal.
+
+video::video/msa_manager_creation.mp4[width=500]
+
+=== Roles and Rights Management
+
+The MSActivator provides a simple authorization mechanism based on 4 user roles, the privileged administrator, the administrator, the privileged manager, and the manager.
+
+By default, a manager has very restricted access to the data. They can only view the information of the customer and devices they are entitled to. In order to grant more rights to a manager, it is possible to use a delegation profile.
+
+A delegation profile is an aggregation of rights such as "create a device", "activate a device", "configure a device",... that are turned on or off depending on your user management policy. This profile is applied to a set of one or more users.
+
+
+NOTE: Delegation profile is a key feature for configuring and providing Selfcare management to an end-user. See Portal Overview for more details.
+
+
+
