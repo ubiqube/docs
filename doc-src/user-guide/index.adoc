@@ -11,12 +11,17 @@ This documentation contains both developer guides, to get you started developing
 = Getting started with The MSActivator
 The link:getting_started.adoc[Getting Started with the MSActivator] guide explains the main concept, as well as the first steps in managing services with the MSActivator.
 
+- link:tenants_and_users.adoc[Tenants and Users]
+
 = Tutorials
 These tutorials are made up of a set of short articles that explain the main features of the MSActivator.
 
-- link:portal_overview.adoc[Portal Overview]
-- Microservices
-- Automation
+* link:portal_overview.adoc[Portal Overview]
+* Configuration
+** link:configuration_microservices.adoc[Microservices]
+** link:getting_started_developing_microservices.adoc[Getting Started Developing Microservices]
+* Automation
+** Workflows
 
 == Administration Guides
 The MSActivator Installation and Configuration Guide will show you how to install, configure and activate the MSActivator.
