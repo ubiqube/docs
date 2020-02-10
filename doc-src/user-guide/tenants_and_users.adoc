@@ -2,6 +2,7 @@ Tenants and Users
 =================
 :toc: left
 :toc-title: Content 
+:imagesdir: ./resources/
 
 
 After installing, configuring and activating the MSActivator, you will start creating tenants and users.
@@ -61,7 +62,7 @@ Four types of users are available:
     - the privileged manager users
     - the manager users
 
-video::tenants_and_users/msa_managers_and_admins.mp4[width=500]
+video::video/msa_managers_and_admins.mp4[width=500]
 
 === Privileged Administrator (ncroot)
 
