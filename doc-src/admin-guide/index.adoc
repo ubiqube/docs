@@ -1,0 +1,8 @@
+Administration Guide
+====================
+:toc: left
+:toc-title: Content 
+:imagesdir: ../resources/images
+
+Welcome to the MSActivator adminitration guide.
+
