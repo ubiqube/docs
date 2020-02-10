@@ -9,7 +9,7 @@ Welcome to the MSActivator documentation.
 This documentation contains both developer guides, to get you started developing applications for servers, and tutorials on how to build Microservices and Workflows on the MSActivator. These documents will also help address specific features and examples of Microservices and Workflows.
 
 = Getting started with The MSActivator
-The Getting Started with the MSActivator explains the main concept, as well as the first steps in managing services with the MSActivator.
+The link:getting_started_with_the_msa.adoc[Getting Started with the MSActivator] guide explains the main concept, as well as the first steps in managing services with the MSActivator.
 
 = Tutorials
 These tutorials are made up of a set of short articles that explain the main features of the MSActivator.
