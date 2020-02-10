@@ -2,7 +2,7 @@ Getting Started with the MSA
 ============================
 :toc: left
 :toc-title: Content 
-:imagesdir: ../resources/images
+:imagesdir: ./resources/
 
 = Why a new UX?
 
@@ -26,15 +26,28 @@ A UX reflecting the above wide variety of technical scenarios and user experienc
 . A UX that becomes an evergreen platform, which we continue to improve over time, making our ‘agility by design’ claim a tangible reality for our customers and partners.
 . A UX that becomes a strategic module of the MSActivator strategy as we head towards 5G, edge computing and IoT. 
 
-= Vocabulary
+= Terminology
 
 The 7 terms that define the tree of the MSA navigation:
 
-. Managed Entities (used to be devices)
-. Configurations (category for config profiles and Microservices)
-. Automation (category for Workflow)
-. Assurance (category for Monitoring, Logs, Alarms)
-. Repository
-. Admin (for users etc.)
-. Settings
+[frame=none]
+|===
+
+|
+ 1. Managed Entities (used to be devices)
+ 
+ 2. Configurations (category for config profiles and Microservices)
+ 
+ 3. Automation (category for Workflow)
+ 
+ 4. Assurance (category for Monitoring, Logs, Alarms)
+ 
+ 5. Repository
+ 
+ 6. Admin (for users etc.)
+ 
+ 7. Settings | image:images/terminology.png[alt=Terminology, width=200]
+|===
+
+
 
