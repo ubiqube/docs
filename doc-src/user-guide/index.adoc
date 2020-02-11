@@ -23,7 +23,5 @@ These tutorials are made up of a set of short articles that explain the main fea
 * Automation
 ** Workflows
 
-== Administration Guides
-The MSActivator Installation and Configuration Guide will show you how to install, configure and activate the MSActivator.
 
 

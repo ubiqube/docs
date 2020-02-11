@@ -1,0 +1,8 @@
+Managed Entities
+================
+
+:toc: left
+:toc-title: Content 
+:imagesdir: ./resources/
+
+IMPORTANT: TODO
