@@ -6,7 +6,7 @@ Administration Guide
 
 The MSA Installation and Configuration Guide will show you how to install, configure and activate the MSActivator.
 
-* [How to install the MSA]
+* link:msa_installation.adoc[How to install the MSA]
 * [How to configure the MSA]
 * link:license_activation.adoc[How to activate the MSA]
 
