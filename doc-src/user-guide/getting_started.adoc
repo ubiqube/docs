@@ -3,6 +3,7 @@
 :toc-title: Content 
 :imagesdir: ./resources/
 :source-highlighter: highlight.js
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == Why a new UX?
 

@@ -3,7 +3,7 @@
 :toc-title: Content 
 :imagesdir: ./resources/
 :source-highlighter: highlight.js
-
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 
 After installing, configuring and activating the MSActivator, you will start creating tenants and users.
