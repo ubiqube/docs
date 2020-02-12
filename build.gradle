@@ -20,14 +20,15 @@ repositories {
 }
 
 asciidoctor {
-  sourceDir  file('doc-src/user-guide')
+  sourceDir  file('doc-src')
+  
   sources {
       include '**/*.adoc'
 	  
   }
   
   resources {
-    from('doc-src/user-guide') {
+    from('doc-src') {
       include '**/*.png'	  
 	  include '**/*.mp4'	  
     }
@@ -35,7 +36,7 @@ asciidoctor {
     into '.'
   }
   
-  outputDir  file('build/html/user-guide')
+  outputDir  file('build/html')
   
 }
 
