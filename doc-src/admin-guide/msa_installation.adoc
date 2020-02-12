@@ -1,0 +1,171 @@
+Installing MSA as a docker application
+======================================
+:toc: left
+:toc-title: Content
+:imagesdir: ./resources/
+
+TIP: this document elaborates on https://github.com/ubiqube/docs/tree/master/docker
+
+
+= Overview
+
+The MSA docker application has the following structure:
+
+link:https://www.draw.io/?lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&title=ddmsa#R3Zrbe6I4FMD%2FGh%2FtBwkgPk7tZfYyX7vrzu70MUJEppGwMVbdv34TCXJJ6mgF0XmSHEIwv3PJySE9OJqvHxlKZ19oiEkPWOG6B%2B96ANjQHYgfKdlkEt9yM0HE4lB1KgTj%2BD%2BshJaSLuMQLyodOaWEx2lVGNAkwQGvyBBjdFXtNqWk%2BtYURVgTjANEdOk%2FcchnahZgUMg%2F4zia5W%2B2vWF2Z47yzmomixkK6aokgvc9OGKU8uxqvh5hIuHlXLLnHt65u%2FtjDCf8kAfgepSQyV%2Brf8eP8ycn%2BXuO2Pe%2Bl43yhshSTbgHPCLGu50wcRXJq0Mkn55%2FUbPkmxwdo8skxPLttuixmsUcj1MUyLsrYSxCNuNzom5PY0JGlFC2fRZOp9gLAiFfcEZfcelOOBhOLGv7J%2BrzV0jeMON4XRIpHo%2BYzjFnG9FF3QUWzB5RxrnT1apQtZ1b4qykZmApIVLmFe3GLjQgLpQSjlCIrSnkgVExwSbhhgj7UyNcL%2FDxZNoMXGhV2A4MaIEBLXTaQgs1tF%2BbNdrzcK0brQmsyWbt1mx2oIG9H5uChiFuvMYTlKArDB3QqWrBdjpXg6%2Bp4e72JyALvM7J2npUHn8Zn8aWUY54TBPRlOAQC1TyI1KLZuKEPaxwhIZAMfANAbgBirffnvyX5z9%2B%2B3M9jdxfH4bkLVn1d4lQQQyHItlSTcr4jEY0QeS%2BkN4WTCWlos%2FvlKaK5HfM%2BUbBQ0tOq5wFQLb5Jp%2B%2FcfPmixpu27hbV1ob1XpXAwu6ZAHeM0%2BV4HLEIsz39FO5l2SwV58ME2Epb9WE1KSd7aOfGEObUoeUxglflEZ%2BloKSmfh1dwNlTR%2FbX1xk%2F6Cwk91UPm46ruZ%2FBEcokPM8dQ1v3w8huHGryKCjeaJn8ETgt%2BSJeWQ4syeuY545oj9UzZfSrcIPZSN3w5L7Do7yXznKM2axIIbZyT7t6T69d6Vo2Kk1L4Sg6oVOPWpn%2F1Q9VZjL0dFhWH0PdGubzHr%2FfEUx928nOuy02NHCUjHLG2cbOPaapmzVbTP3DrvkGrnNv%2Bsd7Ru037Q9n5ZCgEvStHtACNJVCrpW6eAi8g6Y6zJfFH1%2Fb2Sp97eHZ4gsenlsFZNwSjbXl3P4evZvyjlay%2F713SkSfGa4MZL9YTssc0PbkXShTtJYI2wrCOoonXzPXA6MhMTpAv%2BYIVqkWeV8Gq8l92aKVFVmtqsxMxX%2FWmMGu1047OMWjo%2BvAWCoLwJ7jajjVcCr%2B5a7dxGodwduzTLayC6Hmrv5hkrGJXmb07W3ORoyMc7XW32rvpihVF4ywQQlETkA4AQFr9HWNZ%2BWnMQJVvIGODpVjrap8midFaRe%2BJADXhdFGxxG0fbaoqh%2F%2BRHjLCdxH6Vxn%2BGF%2FnntoolC2LVdAq%2FT5bS2Dxt8bCPW1j4sN7fzF4BP06nTrU4%2FUN87o06dA3V6YfUSw7bg2uolranU8J1m37mBC1Gp03EJrPoVzb4slRpKYGaI7ZTpj66u1%2FYzzjmq5VAvasmCkW5VF7SjcQynK866o8kNpgLtwpC5NWZ218z0tBuRVCbGdW6Xf%2BiqfijFyWunPzwpCNqiq%2B%2Bx5wvUB9aNJV9HSD9O8tOEV33%2Bx7UMu52GUPfk6cr8AG4WYItjzPD%2Bfw%3D%3D[overall architecture]
+
+
+
+The application ships as:
+* docker-compose.yml
+* set of images, available from dockerhub:ubiqube/msa2
+
+
+= Installing the application
+
+The following assumes you have a docker engine at hand,
+with access to internet.
+
+
+Browse to https://github.com/ubiqube/docs/tree/master/docker
+and follow the steps.
+
+In a nutshell:
+
+* download https://github.com/ubiqube/docs/tree/master/docker/docker-compose.yml
+* docker-compose up -d
+
+
+Then browse to: https://localhost
+
+
+Below is a trace of an install session
+
+
+= Sample install session
+
+The following makes direct use of a git clone of this repo.
+
+
+.clone this repo
+----
+ofa@lab:~/git/$ git clone git@github.com:ubiqube/docs gh.ubi.docs
+[...]
+
+ofa@lab:~/git/$ cd gh.ubi.docs/docker
+----
+
+.docker-compose up -d
+----
+ofa@lab:~/git/gh.ubi.docs/docker$ docker-compose up -d
+----
+
+.ouptut
+----
+Creating network "docker_default" with the default driver
+Creating volume "docker_monitoring" with default driver
+Creating volume "docker_license" with default driver
+Creating volume "docker_repo.contents" with default driver
+Creating volume "docker_db" with default driver
+Creating volume "docker_kibana" with default driver
+Creating volume "docker_repo.entities" with default driver
+Creating volume "docker_change-mgt" with default driver
+Creating volume "docker_es" with default driver
+Pulling db (ubiqube/msa2:db-20.0)...
+ERROR: pull access denied for ubiqube/msa2, repository does not exist or may require 'docker login'
+----
+
+.docker login
+----
+ofa@lab:~/git/gh.ubi.docs/docker$ docker login
+----
+
+.output
+----
+Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com to create one.
+Username: ofa4ubi
+Password:
+Login Succeeded
+----
+
+
+.docker-compose up -d  (again)
+----
+ofa@lab:~/git/gh.ubi.docs/docker$ docker-compose up -d
+----
+
+.output
+----
+Pulling db (ubiqube/msa2:db-20.0)...
+db-20.0: Pulling from ubiqube/msa2
+923e5b97c6ca: Downloading [===>                                               ]  206.3MB/2.677GB
+88eb9217dbf6: Download complete
+
+[...]
+
+Pulling api (ubiqube/msa2:api-20.0)...
+api-20.0: Pulling from ubiqube/msa2
+923e5b97c6ca: Already exists
+44bd1be23b47: Pull complete
+ee48504090e3: Pull complete
+cb38798a1f36: Pull complete
+d08aab2cd6ed: Pull complete
+4b44f07a2340: Pull complete
+907333b6c030: Pull complete
+d9e192b60932: Pull complete
+8b615636b9ad: Pull complete
+Digest: sha256:111e325a14ac76d24ba1d956c97704e0144ea087c3125eb7b725e031728a3641
+Status: Downloaded newer image for ubiqube/msa2:api-20.0
+
+Creating docker_es_1 ...
+Creating docker_ui_1 ...
+Creating docker_kibana_1 ...
+Creating docker_front_1 ...
+Creating docker_camunda_1 ...
+Creating docker_db_1 ...
+Creating docker_ui_1
+Creating docker_db_1
+Creating docker_camunda_1
+Creating docker_front_1
+Creating docker_kibana_1
+Creating docker_es_1 ... done
+Creating docker_api_1 ...
+Creating docker_api_1 ... done
+
+----
+
+
+.docker-compose ps
+----
+ofa@lab:~/git/gh.ubi.docs/docker$ docker-compose ps
+----
+
+.output
+----
+      Name                  Command            State             Ports
+--------------------------------------------------------------------------------
+docker_api_1       /sbin/init                  Up      0.0.0.0:2223->22/tcp
+docker_camunda_1   /sbin/tini --               Up      8000/tcp, 8080/tcp,
+                   ./camunda.sh                        9404/tcp
+docker_db_1        run ubi-base                Up
+docker_es_1        run elasticsearch           Up
+docker_front_1     nginx -g daemon off;        Up      0.0.0.0:443->443/tcp,
+                                                       0.0.0.0:514->514/udp,
+                                                       0.0.0.0:80->80/tcp
+docker_kibana_1    run kibana                  Up
+docker_ui_1        nginx -g daemon off;        Up      80/tcp
+----
+
+
+.browse to the web-ui
+
+https://localhost
+
+
+.login screen
+
+TODO: add screenshot
+
+
+.dashboard web-ui
+
+TODO: add screenshot
