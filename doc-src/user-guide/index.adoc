@@ -2,7 +2,7 @@ Documentation
 =============
 :toc: left
 :toc-title: Content 
-:imagesdir: ../resources/images
+:imagesdir: ./resources/images
 
 Welcome to the MSActivator documentation.
 
