@@ -24,3 +24,15 @@ The application ships as:
 
 The following assumes you have a docker engine at hand,
 with access to internet.
+
+
+Browse to https://github.com/ubiqube/docs/tree/master/docker
+and follow the steps.
+
+In a nutshell:
+
+* download https://github.com/ubiqube/docs/tree/master/docker/docker-compose.yml
+* docker-compose up -d
+
+
+Then browse to: https://localhost
