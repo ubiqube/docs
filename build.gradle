@@ -23,8 +23,18 @@ asciidoctor {
   sourceDir  file('doc-src/user-guide')
   sources {
       include '**/*.adoc'
+	  
   }
   
-  outputDir  file('build/user-guide')
+  resources {
+    from('doc-src/user-guide') {
+      include '**/*.png'	  
+    }
+
+    into '.'
+  }
+  
+  outputDir  file('build/html/user-guide')
+  
 }
 
