@@ -1,8 +1,9 @@
-Tenants and Users
-=================
+= Tenants and Users
 :toc: left
 :toc-title: Content 
 :imagesdir: ./resources/
+:source-highlighter: highlight.js
+
 
 
 After installing, configuring and activating the MSActivator, you will start creating tenants and users.
@@ -11,7 +12,7 @@ This guide will walk you through the initial process of connecting and creating 
 
 video::video/msa_tenants_and_users.mp4[width=500]
 
-= Initial Connection
+== Initial Connection
 
 The MSActivator comes with one pre-created super admin user: ncroot (the equivalent of the root user on Linux systems). The default password for this user is "ubiqube".
 
@@ -21,13 +22,13 @@ The default MSActivator portal address is https://<MSA_IP>/UBI/en (replace <MSA_
 
 image:images/initial_connection.png[Connection Screen]
 
-= Tenancy Management
+== Tenancy Management
 
 The MSActivator is designed to provide multi-tenancy. A tenant is a virtual private space that can be managed as an isolated environment.
 
 There are two levels of tenancy, the Operator Tenant and the Customer Tenant, the latter being nested in the Operator Tenant.
 
-== Operator Tenant
+=== Operator Tenant
 
 Click on image:images/entity_creation_icon.png[Entity Creation] to open the "Entity Creation" dialogue and select "Operator" as the Entity Type.
 
@@ -37,7 +38,7 @@ image:tenants_and_users/tenant_creation_form.png[Tenant Creation Form]
 
 video::video/msa_tenant_creation.mp4[width=500]
 
-== Customer Tenant
+=== Customer Tenant
 
 video::video/msa_customers.mp4[width=500]
 
@@ -53,7 +54,7 @@ Save the customer form and navigate to the new customer tenant (click on the cus
 
 video::video/msa_customer_creation.mp4[width=500]
 
-== User Management
+=== User Management
 
 Four types of users are available:
 
@@ -64,11 +65,11 @@ Four types of users are available:
 
 video::video/msa_managers_and_admins.mp4[width=500]
 
-=== Privileged Administrator (ncroot)
+==== Privileged Administrator (ncroot)
 
 ncroot is the only predefined user within the MSActivator. It's the user with the highest level of privilege. In addition to the action available to the other users with fewer privileges, ncroot can create the operator tenants, upload and activate the MSActivator product licenses, create administrator users and manage the alarms.
 
-=== Administrator
+==== Administrator
 
 Administrator users can only be managed by ncroot.
 
@@ -78,7 +79,7 @@ A typical administrator job is to create the users and the customers within its 
 
 video::video/msa_administrator_creation.mp4[width=500]
 
-=== Privileged Manager and Manager
+==== Privileged Manager and Manager
 
 Privileged managers are restricted to a single operator tenant.
 
@@ -94,7 +95,7 @@ A manager may be used to provide Selfcare access to the MSActivator portal.
 
 video::video/msa_manager_creation.mp4[width=500]
 
-=== Roles and Rights Management
+==== Roles and Rights Management
 
 The MSActivator provides a simple authorization mechanism based on 4 user roles, the privileged administrator, the administrator, the privileged manager, and the manager.
 

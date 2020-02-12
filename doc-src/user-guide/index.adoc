@@ -1,19 +1,19 @@
-Documentation
-=============
+= Documentation
 :toc: left
 :toc-title: Content 
 :imagesdir: ./resources/images
+:source-highlighter: highlight.js
 
 Welcome to the MSActivator documentation.
 
 This documentation contains both developer guides, to get you started developing applications for servers, and tutorials on how to build Microservices and Workflows on the MSActivator. These documents will also help address specific features and examples of Microservices and Workflows.
 
-= Getting started with The MSActivator
+== Getting started with The MSActivator
 The link:getting_started.adoc[Getting Started with the MSActivator] guide explains the main concept, as well as the first steps in managing services with the MSActivator.
 
 - link:tenants_and_users.adoc[Tenants and Users]
 
-= Tutorials
+== Tutorials
 These tutorials are made up of a set of short articles that explain the main features of the MSActivator.
 
 * link:portal_overview.adoc[Portal Overview]
