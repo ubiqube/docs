@@ -29,6 +29,7 @@ asciidoctor {
   resources {
     from('doc-src/user-guide') {
       include '**/*.png'	  
+	  include '**/*.mp4'	  
     }
 
     into '.'
