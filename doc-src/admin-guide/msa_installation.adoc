@@ -38,7 +38,14 @@ In a nutshell:
 Then browse to: https://localhost
 
 
-Below is a trace of an install session
+= Install steps
+
+.install steps from readme in docker/
+----
+include::{sourcedir}/../docker/README.md[]
+----
+
+Below is a trace of an install session.
 
 
 = Sample install session
