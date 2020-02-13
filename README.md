@@ -1,6 +1,6 @@
 documentation
-=======
-# documentation
+=============
+
 MSA User Manual and Admin Guide
 
 The doc source is written in [asciidoc](http://asciidoc.org/) format
