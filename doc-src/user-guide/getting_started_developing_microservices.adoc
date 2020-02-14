@@ -1,12 +1,11 @@
-Getting Started Developing Microservices
-========================================
+= Getting Started Developing Microservices
 :toc: left
 :toc-title: Content 
 :imagesdir: ./resources/
 
 TIP: The source of this tutorial is available on GitHub at https://github.com/openmsa on Microservices/Tutorials/LINUX/Generic/Tutorial1/
 
-= Overview
+== Overview
 
 This tutorial explores the design and development of a Microservice.
 
@@ -16,7 +15,7 @@ Microservices can be used to manage a wide variety of services on numerous types
 * virtualization infrastructure managers (VMWare, AWS, Openstack, etc.)
 * Linux servers
 
-= Lab Setup
+== Lab Setup
 
 The first step in Microservice design and development is to have a device to manage.
 
@@ -32,7 +31,7 @@ For "Management IP address", enter the IP address of the managed Linux, and make
 
 Once created, activate the device using the "Activate" action, and wait 1-2 minutes until the device is marked as "connected" and the asset values are updated. This means that the MSA monitoring module can ping the Linux and can also connect with SSH. 
 
-= Microservice Design
+== Microservice Design
 
 On Linux Centos 6, the CLI command to list the users is "cat /etc/passwd". To create a new user it's "useradd",  and to delete a user it's "userdel".
 
@@ -47,7 +46,7 @@ tcpdump:x:72:72::/:/sbin/nologin
 
 The list of users in /etc/passwd contains the system users that we want to exclude from the scope of the Microservice. We'll cover this later in this tutorial.
 
-== Import the Users with the IMPORT Function
+=== Import the Users with the IMPORT Function
 
 The result of the CLI command "cat /etc/passwd" is composed of a line with the format:
 
@@ -106,14 +105,14 @@ Note the use of the syntax {$users.$object_id.object_id} in the implementation o
 
 $users is the name of the Microservice definition file as created in the repository: users.xml. This syntax is used to get values from the MSActivator database, where Microservice instances are stored. The syntax has to be used when implementing a DELETE because the DELETE must delete the entry from the database AND remove the configuration from the device (in this case we want to delete a user).
 
-# Going Further
+== Going Further
 With this simple implementation you can manage users on a Linux system, but there are some additional use cases that you may want to address:
 
 * Is it possible to ignore the system users when importing (for example: bin, daemon, adm,...)?
 * What if no comment is provided?
 * What if no home dir is provided?
 
-## How to Ignore the System Users
+=== How to Ignore the System Users
 
 In order to ignore system users during the import, you have to find criteria to help differentiate system users from the users created by the system admin. You can chose to ignore all users that don't have the home dirrectory under /home. The regular expression would then look like:
 
@@ -134,7 +133,7 @@ In this case, the variable shell is no longer needed, so you can remove it from 
 [source,bash]
 useradd -m -d /home/{$params.object_id} -c "{$params.comment}" -p {$params.password} {$params.object_id}
 
-## How to Handle Optional Empty Variables?
+=== How to Handle Optional Empty Variables?
 
 The comment is an optional parameter, so you need to make sure that the execution of the CLI command "useradd" will not fail if no comment is passed as a parameter.
 

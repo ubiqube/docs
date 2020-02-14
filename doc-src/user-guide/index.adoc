@@ -1,25 +1,26 @@
-Documentation
-=============
+= User Guide
 :toc: left
 :toc-title: Content 
-:imagesdir: ./resources/images
+:imagesdir: ./resources/
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
 
 Welcome to the MSActivator documentation.
 
 This documentation contains both developer guides, to get you started developing applications for servers, and tutorials on how to build Microservices and Workflows on the MSActivator. These documents will also help address specific features and examples of Microservices and Workflows.
 
-= Getting started with The MSActivator
-The <<getting_started.adoc,Getting Started with the MSActivator>> guide explains the main concept, as well as the first steps in managing services with the MSActivator.
+== Getting started with The MSActivator
+The link:getting_started{outfilesuffix}[Getting Started with the MSActivator] guide explains the main concept, as well as the first steps in managing services with the MSActivator.
 
-- <<tenants_and_users.adoc,Tenants and Users>>
+- link:tenants_and_users{outfilesuffix}[Tenants and Users]
 
-= Tutorials
+== Tutorials
 These tutorials are made up of a set of short articles that explain the main features of the MSActivator.
 
-* <<portal_overview.adoc,Portal Overview>>
+* link:portal_overview{outfilesuffix}[Portal Overview]
 * Configuration
-** <<configuration_microservices.adoc,Microservices>>
-** <<getting_started_developing_microservices.adoc,Getting Started Developing Microservices>>
+** link:configuration_microservices{outfilesuffix}[Microservices]
+** link:getting_started_developing_microservices{outfilesuffix}[Getting Started Developing Microservices]
 * Automation
 ** Workflows
 
