@@ -3,8 +3,6 @@
 :toc-title: Content 
 :imagesdir: ./resources/
 
-TIP: The source of this tutorial is available on GitHub at https://github.com/openmsa on Microservices/Tutorials/LINUX/Generic/Tutorial1/
-
 == Overview
 
 This tutorial explores the design and development of a Microservice.
@@ -145,3 +143,9 @@ useradd -m -d /home/{$params.object_id} -p {$params.password} {$params.object_id
 {else}
 useradd -m -d /home/{$params.object_id} -c "{$params.comment}" -p {$params.password} {$params.object_id}
 {/if}
+
+.Getting the Sources
+****
+The source of this tutorial is available on GitHub at https://github.com/openmsa on Microservices/Tutorials/LINUX/Generic/Tutorial1/
+****
+
