@@ -1,7 +1,5 @@
 Administration Guide
 ====================
-:toc: left
-:toc-title: Content 
 :imagesdir: ../resources/images
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 

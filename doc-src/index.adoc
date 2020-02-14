@@ -1,0 +1,11 @@
+MSActivator Documentation
+=========================
+:imagesdir: ./resources/
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+|===
+
+| link:user-guide/index{outfilesuffix}[User Guide] | link:developer-guide/index{outfilesuffix}[Developer Guide]
+| link:admin-guide/index{outfilesuffix}[Admin Guide] | link:release_notes{outfilesuffix}[Release Notes]
+
+|===
