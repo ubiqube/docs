@@ -10,4 +10,5 @@ This documentation contains a set of tutorials and exmaple to help you getting f
 
 == API
 
-- link:api_microservice_order_command{outfilesuffix}[Microservice Order Command REST APIn]
+- link:api_microservice_order_command{outfilesuffix}[Microservice Order Command REST API]
+- link:api_microservice_stack_management{outfilesuffix}[Microservice Order Stack Management API]
