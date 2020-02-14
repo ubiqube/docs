@@ -1,5 +1,4 @@
-Installing MSA as a docker application
-======================================
+= Installing MSA as a docker application
 :toc: left
 :toc-title: Content
 :imagesdir: ./resources/
@@ -7,7 +6,7 @@ Installing MSA as a docker application
 TIP: this document elaborates on https://github.com/ubiqube/docs/tree/master/docker
 
 
-= Overview
+== Overview
 
 The MSA docker application has the following structure:
 
@@ -20,7 +19,7 @@ The application ships as:
 * set of images, available from dockerhub:ubiqube/msa2
 
 
-= Installing the application
+== Installing the application
 
 The following assumes you have a docker engine at hand,
 with access to internet.
@@ -38,7 +37,7 @@ In a nutshell:
 Then browse to: https://localhost
 
 
-= Install steps
+== Install steps
 
 .install steps from readme in docker/
 ----
@@ -48,7 +47,7 @@ include::{sourcedir}/../docker/README.md[]
 Below is a trace of an install session.
 
 
-= Sample install session
+== Sample install session
 
 The following makes direct use of a git clone of this repo.
 
@@ -166,13 +165,3 @@ docker_ui_1        nginx -g daemon off;        Up      80/tcp
 .browse to the web-ui
 
 https://localhost
-
-
-.login screen
-
-TODO: add screenshot
-
-
-.dashboard web-ui
-
-TODO: add screenshot

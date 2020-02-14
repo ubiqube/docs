@@ -1,5 +1,4 @@
-Microservices
-=============
+= Microservices
 
 :toc: left
 :toc-title: Content 
@@ -19,11 +18,11 @@ Any feature of any device may be managed with Microservices. The Microservice de
 
 Microservices can be designed graphically in the MSA developer portal. Scripting is not mandatory but simple programming functions, such as conditional statements, loops, and variable assignments, are available to incorporate advanced function behaviors.
 
-= Microservice Design
+== Microservice Design
 
 IMPORTANT: TODO
 
-= Microservice Use
+== Microservice Use
 
 IMPORTANT: TODO
 

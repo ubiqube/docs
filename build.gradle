@@ -16,7 +16,7 @@ asciidoctor {
         include '**/*.mp4'
     }
 
-    into './images'
+    into '.'
   }
 
 }
