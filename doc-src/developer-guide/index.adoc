@@ -1,12 +1,16 @@
-= Developer Guide
+= MSA Developer Guide
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-This documentation contains a set of tutorials and exmaple to help you getting familiar with the MSA.
+This documentation contains a set of doc, tutorials and examples to help you getting familiar with the MSA.
 
 == Microservices
 
-- link:getting_started_developing_microservices{outfilesuffix}[Getting Started with Microservice Design]
+=== Examples 
+- link:microservices_getting_started_developing{outfilesuffix}[Getting Started with Microservice Design]
+
+=== Reference
+- link:microservice_smarty_templating{outfilesuffix}[Microservice Templating with PHP Smarty]
 
 == API
 
