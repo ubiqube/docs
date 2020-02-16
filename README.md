@@ -1,6 +1,12 @@
 documentation
 =============
 
+[![build][build-icon]][build-page]
+
+[build-icon]: ../../workflows/CI/badge.svg
+[build-page]: ../../actions
+
+
 MSA User Manual and Admin Guide
 
 The doc source is written in [asciidoc](http://asciidoc.org/) format
