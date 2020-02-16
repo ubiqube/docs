@@ -1,0 +1,15 @@
+= GUI Overview
+:toc: left
+:toc-title: Content 
+:imagesdir: ./resources/
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+IMPORTANT: TODO
+
+port doc from 
+- http://confluence.ubiqube.com/display/MSAC/The+administrator+dashboard
+- http://confluence.ubiqube.com/display/MSAC/The+developer+dashboard
+- http://confluence.ubiqube.com/display/MSAC/Navigating+via+tenant+and+customer+filters
+- http://confluence.ubiqube.com/display/MSAC/Understanding+the+different+personas
+
+NOTE: https://docs.fortinet.com/document/fortimanager/6.2.3/administration-guide/537284/gui-overview can be used as an example for GUI doc

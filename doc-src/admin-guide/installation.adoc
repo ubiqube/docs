@@ -1,0 +1,167 @@
+= Installing MSA as a docker application
+:toc: left
+:toc-title: Content
+:imagesdir: ./resources/
+
+TIP: this document elaborates on https://github.com/ubiqube/docs/tree/master/docker
+
+
+== Overview
+
+The MSA docker application has the following structure:
+
+link:https://www.draw.io/?lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&title=ddmsa#R7Vtdd6M2EP01eXQOiO%2FHjROn3XabbN3dTZ56ZCNjEhlRIcd2f30hCPMhmeAEDN7TJ8MgQLoz92o0whfaeLW9pTBcfiEuwhdAcbcX2vUFAKpmWPFPYtmlFlsxUoNHfZc3yg1T%2F1%2FEjQq3rn0XRaWGjBDM%2FLBsnJMgQHNWskFKyabcbEFw%2Ba0h9JBgmM4hFq0%2FfJct%2BSiAldt%2FQb63zN6smk56ZQWzxnwk0RK6ZFMwaTcX2pgSwtKj1XaMcAJehkt63%2BTA1X3HKApYkxu07TjAs782%2F0xvV3d68H0F6dPITJ%2FyAvGaD%2FgCmDh%2B3tWMxkdectTE8un%2BVz5Ktsugo2QduCh5uxq32Cx9hqYhnCdXN3GwxLYlW2F%2BeeFjPCaY0Nd7tcUCmfN5bI8YJc%2BocMW1nJmivHaiOn4OyQuiDG0LJo7HLSIrxOgubsKvAkVLb%2BHBuffVJne1mkXisuBmoHAj5OHl7Z%2BdeyA%2B4E44wiGq4JAJJfEA2wTXhcheSME15zaaLdoBV1NK2FoSaIEEWl3tClpNgPZbu0F7GlyrQSsDVhazamcxawnA3kzPUA00vaIGZkNkra6AtQVgr69%2BAmA1o29gVVFmp18%2BGLOUMMh8EsSnCW6Qznk2E%2BcK7RBfdcowSphv2SKKWgsoXj3c2Y%2F3X3%2F7c7vwjM8TB78Em9E%2Bs8kRQ26cPfFTQtmSeCSA%2BCa3XuWYJijlbX4nJORIPiHGdhw8uGakjHMMIN09JPdfGtnpI3%2Fc68n1tnS242cHPRCRNZ2jmnHyjJVB6iFW044nUwkGtf6kCMeR8lLOMGXeeb31E6VwV2gQEj9gUeHJ94mhECZ2VcZA0dPHto8P0h7kcbIfyvtDxxD4h5EH58k4Pzopd89DDVwaZcg0XWCiKWEisDtiYqYMJ2bi1mcpEW2Hnz4WLuU8TE4yGhboax3F3%2BQp94j6MWKIfpjTpsjp2pmiZVILLNRAmYV6VbXTnvK78nA5Wh0c%2BVx8UB2yGUXevht12Huxp4mlFJb5LFMTmA%2BFuH8sBPdBGnQfuXbbgdtUob4aT3ejm2gahe4D%2FP7kzVz1WbL4On8Xd%2BVhSb4hxRScSJpspTrfOUYjcXqHHkgHKmYLfQRP95S1%2BqJsXa8LqG987C7w7vzyM1tcKcnys85WSuJCHsb4LFFrSI6cbrBUnXIVDxiaiKS0QNoRkkCEUs%2FKC0U5wNgPI%2FQ2hjAK022Dhb9NcG%2BnQlfBTIw%2BWeWzDczC8We6uH4cPfxYmn9o7DP4m95Jasq9zr3qcXOvVBPfp8PAEYW4Jspan0nVamQ43ST5pvw1h3L8anPzFCm%2BIwSlLSknDYnGkkmkKxpLIcuKDCUeT75difWSaAnD5JDGmMDAww0AnMH5s%2FfK8bs1w36A3kp6muOol3FUZWV15ZR6OLS1yCV4RyHzWEGUIgEa6mE3cigwTGm2rDhWDlVL%2Fp5Deii05zWQtgSxzhVlclMUxpEVH8Aw7J7lAqUlQdWY5dkS8RQsl8ulbNU4OTOtVEEzFFWzKxRlYjlZz%2FwRDP0RRZH4acKgEdW0E84%2B8szH7He2KWff1rBKX1m4nX6v7WM%2B1XvOII7fSjmhT%2FVjsow2ffq%2BbMGuaLBVv3qqtgd6u9mCPOAkJY%2F%2Fy%2Bflif%2FNcqs2KA3R%2B16FlCREHZZLJRV0OYjdbNce%2Fw1GWRMMvo3cqSZoYsE%2BKYaLUTWgooqhqEI61lVRRbq1JJaT%2B2BhI2ZI%2By8hhrRdb1tLdb0uoG6okhRqQIGq66er%2FtU5cNCQCRtv%2B4%2B5%2B6qZZvNBSRMHhlql2tQ%2FZuKSH%2BIwWZRXcRv%2Bx%2FLVT4%2F1bNv3zX94gK7QFav4qwiOgHKpJK%2FDeOQH2Y7dWX%2FlbSiSSktXUEslU7Zfck5zOxDn9mF9NlLX6wLqz%2F4MBvAnCGlVsgUoDWnjeG1Oqv37%2FwKmS4L8H5XazX8%3D[overall architecture]
+
+
+
+The application ships as:
+* docker-compose.yml
+* set of images, available from dockerhub:ubiqube/msa2
+
+
+== Installing the application
+
+The following assumes you have a docker engine at hand,
+with access to internet.
+
+
+Browse to https://github.com/ubiqube/docs/tree/master/docker
+and follow the steps.
+
+In a nutshell:
+
+* download https://github.com/ubiqube/docs/tree/master/docker/docker-compose.yml
+* docker-compose up -d
+
+
+Then browse to: https://localhost
+
+
+== Install steps
+
+.install steps from readme in docker/
+----
+include::{sourcedir}/../docker/README.md[]
+----
+
+Below is a trace of an install session.
+
+
+== Sample install session
+
+The following makes direct use of a git clone of this repo.
+
+
+.clone this repo
+----
+ofa@lab:~/git/$ git clone git@github.com:ubiqube/docs gh.ubi.docs
+[...]
+
+ofa@lab:~/git/$ cd gh.ubi.docs/docker
+----
+
+.docker-compose up -d
+----
+ofa@lab:~/git/gh.ubi.docs/docker$ docker-compose up -d
+----
+
+.ouptut
+----
+Creating network "docker_default" with the default driver
+Creating volume "docker_monitoring" with default driver
+Creating volume "docker_license" with default driver
+Creating volume "docker_repo.contents" with default driver
+Creating volume "docker_db" with default driver
+Creating volume "docker_kibana" with default driver
+Creating volume "docker_repo.entities" with default driver
+Creating volume "docker_change-mgt" with default driver
+Creating volume "docker_es" with default driver
+Pulling db (ubiqube/msa2:db-20.0)...
+ERROR: pull access denied for ubiqube/msa2, repository does not exist or may require 'docker login'
+----
+
+.docker login
+----
+ofa@lab:~/git/gh.ubi.docs/docker$ docker login
+----
+
+.output
+----
+Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com to create one.
+Username: ofa4ubi
+Password:
+Login Succeeded
+----
+
+
+.docker-compose up -d  (again)
+----
+ofa@lab:~/git/gh.ubi.docs/docker$ docker-compose up -d
+----
+
+.output
+----
+Pulling db (ubiqube/msa2:db-20.0)...
+db-20.0: Pulling from ubiqube/msa2
+923e5b97c6ca: Downloading [===>                                               ]  206.3MB/2.677GB
+88eb9217dbf6: Download complete
+
+[...]
+
+Pulling api (ubiqube/msa2:api-20.0)...
+api-20.0: Pulling from ubiqube/msa2
+923e5b97c6ca: Already exists
+44bd1be23b47: Pull complete
+ee48504090e3: Pull complete
+cb38798a1f36: Pull complete
+d08aab2cd6ed: Pull complete
+4b44f07a2340: Pull complete
+907333b6c030: Pull complete
+d9e192b60932: Pull complete
+8b615636b9ad: Pull complete
+Digest: sha256:111e325a14ac76d24ba1d956c97704e0144ea087c3125eb7b725e031728a3641
+Status: Downloaded newer image for ubiqube/msa2:api-20.0
+
+Creating docker_es_1 ...
+Creating docker_ui_1 ...
+Creating docker_kibana_1 ...
+Creating docker_front_1 ...
+Creating docker_camunda_1 ...
+Creating docker_db_1 ...
+Creating docker_ui_1
+Creating docker_db_1
+Creating docker_camunda_1
+Creating docker_front_1
+Creating docker_kibana_1
+Creating docker_es_1 ... done
+Creating docker_api_1 ...
+Creating docker_api_1 ... done
+
+----
+
+
+.docker-compose ps
+----
+ofa@lab:~/git/gh.ubi.docs/docker$ docker-compose ps
+----
+
+.output
+----
+      Name                  Command            State             Ports
+--------------------------------------------------------------------------------
+docker_api_1       /sbin/init                  Up      0.0.0.0:2223->22/tcp
+docker_camunda_1   /sbin/tini --               Up      8000/tcp, 8080/tcp,
+                   ./camunda.sh                        9404/tcp
+docker_db_1        run ubi-base                Up
+docker_es_1        run elasticsearch           Up
+docker_front_1     nginx -g daemon off;        Up      0.0.0.0:443->443/tcp,
+                                                       0.0.0.0:514->514/udp,
+                                                       0.0.0.0:80->80/tcp
+docker_kibana_1    run kibana                  Up
+docker_ui_1        nginx -g daemon off;        Up      80/tcp
+----
+
+
+.browse to the web-ui
+
+https://localhost
