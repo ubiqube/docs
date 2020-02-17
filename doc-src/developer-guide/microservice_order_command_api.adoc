@@ -3,6 +3,7 @@
 :toc-title: Content 
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:source-highlighter: pygments
 
 
 == Type of Execution
@@ -38,8 +39,12 @@ curl -u ncroot:NCROOT_PWD  -XPOST http://MSA_IP/ubi-api-rest/ordercommand/get/co
 	}
 }'
 ----
-will return
-[source]
+Where:
+
+MSA_IP is the IP address of MSActivator.
+
+This will return:
+[source,json]
 ----
 {
 	"commandId": 0,
@@ -80,7 +85,12 @@ curl -u ncroot:NCROOT_PWD  -XPUT http://MSA_IP/ubi-api-rest/ordercommand/store/c
 	}
 }'
 ----
-will return
+Where:
+
+NCROOT_PWD is the password to the MSActivator.
+
+It will return:
+[source,json]
 ----
 {
 	"commandId": 0,
@@ -151,33 +161,31 @@ MSASyslogConf
 NMSSyslogconf
 The response of the import will be the following JSON object, that will be part of http response:
 
-[source]
+[source,json]
 ----
 {
-  "syslogd": {
-    "SyslogConf": {
-      "object_id": "SyslogConf",
-      "syslogd3_status": "enable",
-      "syslogd3_port": "514",
-      "syslogd3_server_ip": "1.2.2.3"
-    }
-    "MSASyslogConf": {
-      "object_id": "MSASyslogConf",
-      "syslogd3_status": "enable",
-      "syslogd3_port": "514",
-      "syslogd3_server_ip": "2.3.4.5"
-    }
-    "NMSSyslogconf": {
-      "object_id": "NMSSyslogconf",
-      "syslogd3_status": "disable",
-      "syslogd3_port": "514",
-      "syslogd3_server_ip": "7.6.5.4"
-    }
-  }
+	"syslogd": {
+		"SyslogConf": {
+			"object_id": "SyslogConf",
+			"syslogd3_status": "enable",
+			"syslogd3_port": "514",
+			"syslogd3_server_ip": "1.2.2.3"
+		},
+		"MSASyslogConf": {
+			"object_id": "MSASyslogConf",
+			"syslogd3_status": "enable",
+			"syslogd3_port": "514",
+			"syslogd3_server_ip": "2.3.4.5"
+		},
+		"NMSSyslogconf": {
+			"object_id": "NMSSyslogconf",
+			"syslogd3_status": "disable",
+			"syslogd3_port": "514",
+			"syslogd3_server_ip": "7.6.5.4"
+		}
+	}
 }
 ----
-
-
 
 .Getting the Sources
 ****

@@ -4,9 +4,18 @@
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
+== GUI Overview
+
+When you login as an administrator or a manager, the following dashboard is displayed
+
+image:images/gui_admin_dashboard.png[Admin Dashboard]
+
+
+
 IMPORTANT: TODO
 
 port doc from 
+
 - http://confluence.ubiqube.com/display/MSAC/The+administrator+dashboard
 - http://confluence.ubiqube.com/display/MSAC/The+developer+dashboard
 - http://confluence.ubiqube.com/display/MSAC/Navigating+via+tenant+and+customer+filters
