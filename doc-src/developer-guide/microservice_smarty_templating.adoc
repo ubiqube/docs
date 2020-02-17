@@ -2,6 +2,7 @@
 :toc: left
 :toc-title: Content 
 :imagesdir: ./resources/
+:source-highlighter: pygments
 
 == Smarty Templates
 The Smarty templates are used to generate output using variables and control structures like if/then/else conditional branches or foreach loops.
@@ -98,12 +99,18 @@ telephony-service
 ----
 
 ==== Loops
+----
 {foreach},{foreachelse}
-{foreach} is used to loop over an associative array as well a numerically-indexed array, unlike {section} which is for looping over numerically-indexed arrays only. The syntax for {foreach} is much easier than {section}, but as a tradeoff it can only be used for a single array. Every {foreach} tag must be paired with a closing {/foreach} tag.
+----
+{foreach} is used to loop over an associative array as well a numerically-indexed array, unlike {section} which is for looping over numerically-indexed arrays only. 
 
-from	array	Yes	n/a	The array you are looping through
-item	string	Yes	n/a	The name of the variable that is the current element
-key	string	No	n/a	The name of the variable that is the current key
+The syntax for {foreach} is much easier than {section}, but as a tradeoff it can only be used for a single array. Every {foreach} tag must be paired with a closing {/foreach} tag.
+|===
+|Attribute Name	|Type		|Required	|Default	|Description
+|from			|array		|Yes		|n/a		|The array you are looping through
+|item			|string		|Yes		|n/a		|The name of the variable that is the current element
+|key			|string		|No			|n/a		|The name of the variable that is the current key
+|===
 
 - Required attributes are from and item.
 - {foreach} loops can be nested.
@@ -120,14 +127,18 @@ telephony-service
 
 ==== Variable Assignment
 Under certain circumstances it is necessary to use a local temporary variable to generate the output.
-
+----
 {assign}
+----
 {assign} is used for assigning template variables during the execution of a template.
 
-var	string	Yes	n/a	The name of the variable being assigned
-value	string	Yes	n/a	The value being assigned
-Example:
-
+|===
+|Attribute Name	|Type		|Required	|Default	|Description
+|var			|string		|Yes		|n/a		|The name of the variable being assigned
+|value			|string		|Yes		|n/a		|The value being assigned
+|===
+.Example
+----
 !
 {assign var='sdid' value=$SD->SDID}
 {foreach from=$VOIP_PROFILE->SD_list.$sdid->MAIL_BOX_list item=mbox}
@@ -137,7 +148,7 @@ login pinless any-phone-number
 end mailbox
 {/foreach}
 !
-
+----
 === Common Problems
 The templates are extracted from the XML definition files, and evaluated with Smarty. Some behavior must be known prior to developing templates.
 
@@ -164,15 +175,14 @@ Templates must be embedded into a <[CDATA[ ]]> tag to avoid most of the problems
 ]]></operation>
 </command>
 ----
-Extra Line Break and Space Characters
+==== Extra Line Break and Space Characters
 The templates reflects what is written within the <operation> and </operation> tags, that's why it is recommended to write
-
-
-
-When a Smarty command like {if} {foreach}, or also an ending tag like {/if} {/foreach}, is immediately followed by a line break, then this line break is REMOVED by Smarty. This does NOT apply to variables.
+image:images/smarty_recommended_line_break.png[]
+When a Smarty command like {if} {foreach}, or also an ending tag like {/if} {/foreach}, is immediately followed by a line break, then this line break is REMOVED by Smarty. 
+This does NOT apply to variables.
 
 .Example
-image:images/extra_line_break_space_characters.png[]
+image:images/smarty_line_break_special_case.png[]
 
 In this case the
 ----
@@ -196,35 +206,23 @@ end mailbox
 ----
 Sometimes the line cannot be split, the solution is to either add a space character at the end of the line, if it remains correct for the configuration, or add an extra new line (one line left blank).
 
+image:images/smarty_extra_line_break.png[]
 
-
-Syntax Errors
+==== Syntax Errors
 The Smarty syntax is very strict, for example an error in the template
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+image:images/smarty_syntax_error.png[]
 
 will return
-
+----
 Operation Failed
+----
 Currently, the only way to find the root cause is to check the file
-
+----
 /opt/sms/logs/smsd.log
+----
 An example of an error found in the log
-[source,xml]
+[source]
 ----
 2011/08/12:12:28:42:(D):smsd:ZTD66206:JSCALLCOMMAND:: Managing object test
 2011/08/12:12:28:42:(D):smsd:ZTD66206:JSCALLCOMMAND:: compute file /opt/fmc_repository/CommandDefinition/CISCO/MyTemplates/test.xml for key test
@@ -232,27 +230,34 @@ An example of an error found in the log
 2011/08/12:12:28:42:(E):smsd:ZTD66206:JSCALLCOMMAND:: PHPERROR: [256] Smarty error: [in var:2313098ec4aae945b1a201eb153cf778 line 3]: syntax error: 'if' statement requires arguments (Smarty_Compiler.class.php, line 1270) error on line 1093 in file /opt/sms/bin/php/smarty/Smarty.class.php
 ----
 This indicates that in the file
-
+----
 CommandDefinition/CISCO/MyTemplates/test.xml
+----
 for the command
-
+----
 CREATE
+----
 an error occured in the 3rd line of the template
-
+----
 syntax error: 'if' statement requires arguments
-Usage of the {$object_id} variable
+----
+
+==== Usage of the {$object_id} variable
 The {$object_id} variable is used to reference objects into the database and is used as a variable name in Smarty in the template resolution.
 
-When the parameters are passed to the engine you give:
-
+When the parameters are passed to the engine the JSON payload is:
+----
 {"interface":{"Interface-Service-engine0/0":{"ip_address":"1.2.3.4"}}}
+----
 The variables values are:
 
-{$object_id} => "Interface-Service-engine0/0"
-{$params.ip_address} => "1.2.3.4"
+- `+{$object_id}+` => "Interface-Service-engine0/0"
+- `+{$params.ip_address}+` => "1.2.3.4"
+
 When writing a template {$object_id} can be used in expressions like {$interface.$object_id.ip_address} to retrieve database values.
 
 The CREATE template looks like:
+
 [source,xml]
 ----
 <command name="CREATE">
