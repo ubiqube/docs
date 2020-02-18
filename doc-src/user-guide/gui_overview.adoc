@@ -4,7 +4,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == GUI Overview
 
-==== Administrator and Manager Dashboard
+=== Administrator and Manager Dashboard
 
 When you login as an administrator or a manager, the following dashboard is displayed
 
@@ -49,7 +49,9 @@ If you click on any of those status graphs, you then see a pop-up table containi
 image:images/status_graph_details.png[alt=Status Graph Details, width=400px]
 
 
-= TODO
+
+
+== TODO
 
 IMPORTANT: TODO
 
