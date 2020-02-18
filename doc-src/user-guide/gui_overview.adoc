@@ -1,10 +1,12 @@
 = GUI Overview
-:toc: left
-:toc-title: Content 
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
+IMPORTANT: TODO
+
 == GUI Overview
+
+=== Administrator and Manager Dashboard
 
 When you login as an administrator or a manager, the following dashboard is displayed
 
@@ -12,8 +14,9 @@ image:images/gui_admin_dashboard.png[Admin Dashboard]
 
 [stripes=even]
 |===
+| Dashboard 		| Display graphs to show the overall status of customer Managed Entities and Workflow Instance.
+					  Each of the graphs represents the status of the managed entities for the named customer.
 | Alarms 			| Shows the alarms raised by the Assurance system (coming soon)
-| Dashboard 		| Show the overall status of customer Managed Entities and Workflow Instance 
 | Managed Entities	| Shows the entities managed by this MSA. Entities can be network element such as routers or firewalls, cloud or uCPE management system,...
 | Configurations	| Shows the Microservices and the Templates available in the MSA Repository. 
 						
@@ -26,10 +29,43 @@ image:images/gui_admin_dashboard.png[Admin Dashboard]
 | Auto-refresh 		| Set an overall refresh period in seconds.
 |===
 
+==== Status Graphes
+
+image:images/dashboard_status_graph_overview.png[alt=Status Graph, width=200px]
+
+This graph is very convenient, as it represents a lot of data in a small area.
+Firstly, it is made up of three concentric circles:
+- The outer circle represents physical entities.
+- The middle circle represents public entities.
+- The inner circle represents private entities.
+
+To further illustrate this, a legend is provided on the dashboard to explain each circle purpose:
+
+image:images/dashboard_status_graph_nature.png[alt=Status Graph Nature, width=350px]
+
+NOTE: It is up to the MSActivator to decide the type of each entity when they are configuring that entity entry.
+
+Finally, the number in the center of the circles is the total number of managed entities associated with that customer.
+If you click on any of those status graphs, you then see a pop-up table containing the same details but in a matrix like so:
+
+image:images/dashboard_status_graph_details.png[alt=Status Graph Details, width=400px]
+
+==== Filters, Sorts and Search
+
+On the administrator dashboard, there are a number of filter, sort, and search options available to help you organise and view your data.
+
+image:images/dashboard_filter_sort_search.png[alt=Filters Sorts Search]
+
+- The first icon allows you to switch between the status graphs and the compact list view of the customer entity status.
+- The second icon enables you to switch between a tenant view and a customer view.  When clicked, the status graphs will display the tenant-level status data, which aggregates all of the customers in each tenancy into a single graph per tenancy.  We will discuss customer and tenancy navigation further in the Navigating via tenant and customer filters section.
+- The third icon enables you to sort the status graph lists using the following options.
+- Finally, the last icon is a magnifying glass that can be used to search for a specific tenant or customer within the list being displayed.
 
 
 
-IMPORTANT: TODO
+=== Developer Dashboard
+NOTE: this feature is not available yet
+
 
 port doc from 
 

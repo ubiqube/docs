@@ -1,8 +1,21 @@
 = Key Concepts
-
-:toc: left
-:toc-title: Content 
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 IMPORTANT: TODO
+
+== Understanding the Different Personas
+
+On the MSActivator 2.0 login screen, there are two different types of logins selectable via this toggle switch Administrator/Developer
+
+We call these personas, and this is the purpose of each one:
+
+.Administrator
+This will give you access to the administrator dashboard, that allows you to monitor and manage the entities configured in your MSA installation.  
+This dashboard represents the "Ops" half of the "DevOps" approach, see here for more details: link:gui_overview{outfilesuffix}[GUI Overview#Administrator and Manager Dashboard]
+
+.Developer
+This will give you access to the developer dashboard, that allows you to design business processes, write workflows and develop microservices in your MSA.  
+This dashboard represents the "Dev" half of the "DevOps" approach, see here for more details: The developer dashboard
+
+NOTE: The username and password you use to access either dashboard is the same, the selection on the login screen simply determines which dashboard you can see after logging in.
