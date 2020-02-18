@@ -1,12 +1,21 @@
 plugins {
     id 'org.asciidoctor.jvm.convert' version '3.1.0'
+    id 'org.asciidoctor.jvm.gems' version '2.0.0'
+	
 }
 
 repositories {
     jcenter()
 }
 
+
+
+
 asciidoctor {
+
+    attributes 'source-highlighter' : 'rouge'
+ 
+
   sourceDir  file('doc-src')
   outputDir  file('build/docs')
 
