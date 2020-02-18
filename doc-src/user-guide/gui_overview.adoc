@@ -1,10 +1,10 @@
 = GUI Overview
-:toc: left
-:toc-title: Content 
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == GUI Overview
+
+==== Administrator and Manager Dashboard
 
 When you login as an administrator or a manager, the following dashboard is displayed
 
@@ -12,8 +12,9 @@ image:images/gui_admin_dashboard.png[Admin Dashboard]
 
 [stripes=even]
 |===
+| Dashboard 		| Display graphs to show the overall status of customer Managed Entities and Workflow Instance.
+					  Each of the graphs represents the status of the managed entities for the named customer.
 | Alarms 			| Shows the alarms raised by the Assurance system (coming soon)
-| Dashboard 		| Show the overall status of customer Managed Entities and Workflow Instance 
 | Managed Entities	| Shows the entities managed by this MSA. Entities can be network element such as routers or firewalls, cloud or uCPE management system,...
 | Configurations	| Shows the Microservices and the Templates available in the MSA Repository. 
 						
@@ -26,10 +27,33 @@ image:images/gui_admin_dashboard.png[Admin Dashboard]
 | Auto-refresh 		| Set an overall refresh period in seconds.
 |===
 
+==== Status Graphes
+
+image:images/status_graph_overview.png[alt=Status Graph, width=200px]
+
+This graph is very convenient, as it represents a lot of data in a small area.
+Firstly, it is made up of three concentric circles:
+- The outer circle represents physical entities.
+- The middle circle represents public entities.
+- The inner circle represents private entities.
+
+To further illustrate this, a legend is provided on the dashboard to explain each circle purpose:
+
+image:images/status_graph_nature.png[alt=Status Graph Nature, width=400px]
+
+NOTE: It is up to the MSActivator to decide the type of each entity when they are configuring that entity entry.
+
+Finally, the number in the center of the circles is the total number of managed entities associated with that customer.
+If you click on any of those status graphs, you then see a pop-up table containing the same details but in a matrix like so:
+
+image:images/status_graph_details.png[alt=Status Graph Details, width=400px]
 
 
+= TODO
 
 IMPORTANT: TODO
+
+
 
 port doc from 
 
