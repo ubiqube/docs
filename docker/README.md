@@ -8,8 +8,11 @@ How to install MSA-v2 on your docker engine
 ----
 4. create a new directory: `ddmsa/`
 5. cd `ddmsa/`
-6. download file: `docker-compose.yml`
+6. download: [docker-compose.yml][docker-compose]
 ----
 7. run: `docker login`
 8. run: `docker-compose up -d`
 9. browse: https://localhost/
+
+
+[docker-compose]: ./docker-compose.yml
