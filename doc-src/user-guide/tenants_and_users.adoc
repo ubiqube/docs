@@ -1,4 +1,4 @@
-=Tenants and Users
+= Tenants and Users
 :toc: left
 :toc-title: Content 
 :imagesdir: ./resources/
@@ -8,8 +8,6 @@ After installing, configuring and activating the MSActivator, you will start cre
 
 This guide will walk you through the initial process of connecting and creating a tenant.
 
-video::./resources/video/msa_tenants_and_users.mp4[width=500]
-
 == Initial Connection
 
 The MSActivator comes with one pre-created super admin user: ncroot (the equivalent of the root user on Linux systems). The default password for this user is "ubiqube".
@@ -18,7 +16,7 @@ This default password should be changed, especially if the MSActivator is meant 
 
 The default MSActivator portal address is https://<MSA_IP>/UBI/en (replace <MSA_IP> with the actual IP address of your MSActivator installation).
 
-image::./resources/images/initial_connection.png[Connection Screen]
+image::./images/initial_connection.png[Connection Screen]
 
 == Tenancy Management
 
@@ -32,25 +30,19 @@ Click on image:images/entity_creation_icon.png[Entity Creation] to open the "Ent
 
 The "Prefix" is a three letter unique identifier for the tenant. It will be combined with the customer and device ID to build a short, comprehensive, unique identifier.
 
-image:./resources/tenants_and_users/tenant_creation_form.png[Tenant Creation Form]
-
-video::./resources/video/msa_tenant_creation.mp4[width=500]
+image:./images/tenant_creation_form.png[Tenant Creation Form]
 
 === Customer Tenant
 
-video::video/msa_customers.mp4[width=500]
-
-Click on image:video/entity_creation_icon[Entity Creation] to open the "Entity Creation" dialogue and select "Customer" as the Entity Type.
+Click on image:images/entity_creation_icon.png[Entity Creation] to open the "Entity Creation" dialogue and select "Customer" as the Entity Type.
 
 Carefully select the Operator Tenant where the Customer will be created.
 
-image:./resources/images/customer_creation_form.png[Customer Creation Form]
+image:./images/customer_creation_form.png[Customer Creation Form]
 
 In the "Contacts" form, the email is a mandatory field. This email will be used to send alarms. Alarm management is explained in the Alarm Management guide.
 
 Save the customer form and navigate to the new customer tenant (click on the customer name in the customer list).
-
-video::./resources/video/msa_customer_creation.mp4[width=500]
 
 === User Management
 
@@ -60,8 +52,6 @@ Four types of users are available:
     - the administrator users
     - the privileged manager users
     - the manager users
-
-video::./resources/video/msa_managers_and_admins.mp4[width=500]
 
 ==== Privileged Administrator (ncroot)
 
@@ -74,8 +64,6 @@ Administrator users can only be managed by ncroot.
 Administrators are associated with one or more operator tenants and have full access rights over these tenants.
 
 A typical administrator job is to create the users and the customers within its tenants.
-
-video::./resources/video/msa_administrator_creation.mp4[width=500]
 
 ==== Privileged Manager and Manager
 
@@ -91,8 +79,6 @@ By default, managers have restricted, read-only access to the tenant and a deleg
 
 A manager may be used to provide Selfcare access to the MSActivator portal.
 
-video::./resources/video/msa_manager_creation.mp4[width=500]
-
 ==== Roles and Rights Management
 
 The MSActivator provides a simple authorization mechanism based on 4 user roles, the privileged administrator, the administrator, the privileged manager, and the manager.
@@ -100,7 +86,6 @@ The MSActivator provides a simple authorization mechanism based on 4 user roles,
 By default, a manager has very restricted access to the data. They can only view the information of the customer and devices they are entitled to. In order to grant more rights to a manager, it is possible to use a delegation profile.
 
 A delegation profile is an aggregation of rights such as "create a device", "activate a device", "configure a device",... that are turned on or off depending on your user management policy. This profile is applied to a set of one or more users.
-
 
 NOTE: Delegation profile is a key feature for configuring and providing Selfcare management to an end-user. See Portal Overview for more details.
 
