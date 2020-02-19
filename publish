@@ -1,0 +1,9 @@
+#!/bin/bash
+
+PUBLISH_DIR=publish.dir
+
+[ -L $PUBLISH_DIR ] || \
+	ln -s /opt/ses/share/htdocs/ $PUBLISH_DIR
+
+docker build -t ubi.docs .
+docker run --rm ubi.docs tar c build | tar x -C $PUBLISH_DIR
