@@ -1,15 +1,10 @@
 = Managed Entities
-:toc: left
-:toc-title: Content 
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-IMPORTANT: TODO: IN PROGRESS
-
 The term "Managed Entity" encompasses manageable entities such network elements (routers, switches, load balancer,etc.), security elements such as firewalls, UTM, etc. but also virtual infrastructure and cloud management layers such as Openstack, AWS, VMWare or even container management platforms such as Rancher.
 
-In order to become a managed entity in the MSActivator, a managed device has to be created and activated in the MSActivator.
-
+In order to become a manageable entity in the MSActivator, an entity has to be created and activated in the MSA.
 
 == Create, Update and Activate a Managed Entity
 To create a Managed Entity, click the "Create" button on the Managed Entity Listing page.
@@ -48,7 +43,10 @@ The managed entity details screen is used to display the details of the selected
 You can reach this screen via searching for a managed entity via the global search feature in the top navigation, or by selected an entity in the managed entities list:
 The information such as the serial number, firmware, memory... are retreived dynamically by the entity adapter once the entity is activated.
 
-
+//// 
+TODO
 include::./managed_entity_lifecycle{outfilesuffix}[]
 
 include::./managed_entity_history{outfilesuffix}[]
+
+////
