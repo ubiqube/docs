@@ -1,4 +1,6 @@
 = GUI Overview
+:toc: left
+:toc-title: Content 
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
