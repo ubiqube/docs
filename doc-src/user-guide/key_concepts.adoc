@@ -1,8 +1,13 @@
 = Key Concepts
+:doctype: book
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
+////
+
 IMPORTANT: TODO
+
+////
 
 == Understanding the Different Personas
 

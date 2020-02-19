@@ -1,6 +1,7 @@
 = Tenants and Users
 :toc: left
 :toc-title: Content 
+:doctype: book
 :imagesdir: ./resources/
 
 

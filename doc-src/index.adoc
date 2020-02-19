@@ -1,5 +1,5 @@
-MSActivator Documentation
-=========================
+= MSActivator Documentation
+:doctype: book
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
