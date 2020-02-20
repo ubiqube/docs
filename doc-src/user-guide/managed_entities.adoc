@@ -3,8 +3,6 @@
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-The term "Managed Entity" encompasses manageable entities such network elements (routers, switches, load balancer,etc.), security elements such as firewalls, UTM, etc. but also virtual infrastructure and cloud management layers such as Openstack, AWS, VMWare or even container management platforms such as Rancher.
-
 In order to become a manageable entity in the MSActivator, an entity has to be created and activated in the MSA.
 
 == Create, Update and Activate a Managed Entity
