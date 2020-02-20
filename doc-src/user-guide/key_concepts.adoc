@@ -3,11 +3,15 @@
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-////
+== What is the MSA ?
 
-IMPORTANT: TODO
+MSA™ is the leading Integrated Automation Platform (IAP) engineered by UBiqube for the continuous design of any IT infrastructure automation process. 
+It is composed of Integration and Automation Modules. 
 
-////
+The Integration Module is used by infrastructure engineers to onboard / integrate the wide spectrum of related vendors and systems involved in any given IT solution, i.e. cloud
+technologies (public/private, containers, etc.), networks systems (virtual and physical, optical, 5G, etc.), security systems, IoT systems and devices, etc.. 
+
+The Automation Module provides the IT automation developer with a unified development environment for process design without concern for the underlying infrastructure technologies / vendors used, enabling an evergreen design.
 
 == Understanding the Different Personas
 
@@ -17,10 +21,38 @@ We call these personas, and this is the purpose of each one:
 
 .Administrator
 This will give you access to the administrator dashboard, that allows you to monitor and manage the entities configured in your MSA installation.  
-This dashboard represents the "Ops" half of the "DevOps" approach, see here for more details: link:gui_overview{outfilesuffix}[GUI Overview#Administrator and Manager Dashboard]
+This dashboard represents the "Ops" half of the "DevOps" approach, see here for more details: link:gui_overview{outfilesuffix}#_administrator_and_manager_dashboard[GUI Overview]
 
 .Developer
 This will give you access to the developer dashboard, that allows you to design business processes, write workflows and develop microservices in your MSA.  
 This dashboard represents the "Dev" half of the "DevOps" approach, see here for more details: The developer dashboard
 
 NOTE: The username and password you use to access either dashboard is the same, the selection on the login screen simply determines which dashboard you can see after logging in.
+
+== The Managed Entities
+The term "Managed Entity" encompasses manageable entities such as network elements (routers, switches, load balancer,etc.), security elements such as firewalls, UTM, etc. but also virtual infrastructure and cloud management layers such as Openstack, AWS, VMWare or even container management platforms such as Rancher, K8,...
+
+== Configurations
+
+The term "Configurations" relates to Microservices, Templates and Deployment Settings.
+
+.Templates
+Configuration Templates provide a simple way to provide day 0 configuration during the activation managed entity.
+
+MSA configuration engine runs on PHP Smarty and allow some scripting to add logic to the generation of the configuration
+
+.Microservices
+Microservices can be used to manage a wide variety of services on numerous types of devices, such as network equipment, virtualization infrastructure managers, or even Linux servers.
+
+Microservices is the abstration layer between the specificities of the Managed Entities and the genericity required for a true multi-vendor management system.
+
+Microservice will let you define your managed services in a fine grained and modular manner and provide all the required function to create, update, delete, import these services in a production environement.
+
+.Deployment Settings
+Deployment Settings are the logical entities that will bind together the Configurations and the Managed Entities.
+
+== Automation
+The workflow layer addresses domain-specific scenarios which can be highly technically scripted, appealing to DevOps and SecOps engineers. 
+
+== BPM
+The BPM layer offers a visual workflow editor to make MSA a strong SOAR contender for business process design which appeals to realities and are not enshrined in vendor-specific boundaries. Maximum security remediation policies can be applied as engineers creatively imagine a process applied to all domains involved (security, routing, switching, cloud hosting, etc.).
