@@ -11,9 +11,7 @@ IMPORTANT: TODO
 
 ////
 
-== GUI Overview
-
-=== Administrator and Manager Dashboard
+== Administrator and Manager Dashboard
 
 When you login as an administrator or a manager, the following dashboard is displayed
 
@@ -36,7 +34,7 @@ image:images/gui_admin_dashboard.png[Admin Dashboard]
 | Auto-refresh 		| Set an overall refresh period in seconds.
 |===
 
-==== Status Graphes
+=== Status Graphes
 
 image:images/dashboard_status_graph_overview.png[alt=Status Graph, width=200px]
 
@@ -57,7 +55,7 @@ If you click on any of those status graphs, you then see a pop-up table containi
 
 image:images/dashboard_status_graph_details.png[alt=Status Graph Details, width=400px]
 
-==== Filters, Sorts and Search
+=== Filters, Sorts and Search
 
 On the administrator dashboard, there are a number of filter, sort, and search options available to help you organise and view your data.
 
@@ -68,9 +66,9 @@ image:images/dashboard_filter_sort_search.png[alt=Filters Sorts Search]
 - The third icon enables you to sort the status graph lists using the following options.
 - Finally, the last icon is a magnifying glass that can be used to search for a specific tenant or customer within the list being displayed.
 
-==== Navigation
+=== Navigation
 
-===== Selecting Tenants and Customers
+==== Selecting Tenants and Customers
 A central part of the navigation in MSA is understanding the tenant and customer that are selected.  
 You can use the drop-downs on the top of the navigation to choose which tenant and customer you want to filter the lists of managed entities, microservices, and workflows by.
 
@@ -94,7 +92,7 @@ Auto-completion type ahead is also supported.
 
 NOTE: One important point to remember about performing a managed entity search is that when you search for an entity, you are implicitly selecting the tenant that entity belongs to in the main filter drop-downs. 
 
-=== Managed Entities
+== Managed Entities
 To see the list of managed entities, click on the "Managed Entities" link in the left menu
 
 image:images/me_detailed_list.png[alt=Managed Entities Detailed List]
@@ -106,6 +104,50 @@ Finally, on this screen you can also perform a simple search of the managed enti
 
 TIP: See also - link:managed_entities{outfilesuffix}[Managed Entities] for a detailed documentation on managed entities
 
+== Configuration
+To see the list of Microservices], templates and deployment settings, click on the "Configurations" link in the left menu.
+
+//// 
+TODO: update screenshot
+////
+image:images/configurations_me_list.png[alt=Configurations Microservice List, width=800px]
+
+You can view the list of templates and deployment settings by clicking on the tabs "Templates" "and Deployment Settings".
+
+This screen will let you build you Deployment Settings by selecting Microservice and Configuration Template.
+
+You will also be able to select the Managed Entities you wish to apply you configuration service on.
+
+TIP: See also - link:configuration_microservices{outfilesuffix}[Microservices] for a detailed documentation on managed entities
+
+
+== Automation
+To see the list of Workflows select the "Automation" link in the left menu.
+
+By default, if you are connected as a Manager or an Administrator you will see the list of Workflows that are associated to the Customers you are managing 
+
+image:images/automation_wf_list.png[alt=Workflow List by Customer] 
+
+If you select a Customer, the list will be filtered by the selected Customer's Workflows and you will see the process execution status of the Workflow instances.
+
+image:images/automation_wf_list_by_customer.png[alt=Workflow List by Customer] 
+
+To see the Workflow instance for a Customer, you can click on the Workflow name
+
+image:images/automation_wf_instance_list_by_customer.png[alt=Workflow Instance List] 
+
+From this screen you can start using the existing instances or create a new instance for the current Workflow.
+
+== BPM
+
+To see the list of Business Processes select the "BPM" link in the left menu
+
+image:images/automation_bpm_list.png[alt=BPM List] 
+
+You can select a BPM by clicking on a name in the list and start working on your BPM.
+
+image:images/automation_bpm_edit.png[alt=BPM Edition] 
+
 
 
 ////
@@ -115,7 +157,7 @@ TODO: update for next release
 
 ////
 
-=== Developer Dashboard
+== Developer Dashboard
 NOTE: This feature is not available yet. 
 The documentaion below aims at providing a early preview. 
 
@@ -139,13 +181,3 @@ The adaptors are used to connect to managed entities from MSActivator, regardles
 If an adaptor is not already available for your entity vendor in the library, a new one can be developed.
 
 
-
-
-port doc from 
-
-- http://confluence.ubiqube.com/display/MSAC/The+administrator+dashboard
-- http://confluence.ubiqube.com/display/MSAC/The+developer+dashboard
-- http://confluence.ubiqube.com/display/MSAC/Navigating+via+tenant+and+customer+filters
-- http://confluence.ubiqube.com/display/MSAC/Understanding+the+different+personas
-
-NOTE: https://docs.fortinet.com/document/fortimanager/6.2.3/administration-guide/537284/gui-overview can be used as an example for GUI doc
