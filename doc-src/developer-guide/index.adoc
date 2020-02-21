@@ -4,6 +4,10 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 This documentation contains a set of doc, tutorials and examples to help you getting familiar with the MSA.
 
+== API & SDK
+- link:rest_api_{outfilesuffix}[REST API]
+- link:workflow_python_sdk_{outfilesuffix}[Python SDK for Workflow Developement]
+
 == Microservices
 
 === Examples 
@@ -12,7 +16,9 @@ This documentation contains a set of doc, tutorials and examples to help you get
 === Reference
 - link:microservice_smarty_templating{outfilesuffix}[Microservice Templating with PHP Smarty]
 
-== API
+=== API
 
 - link:microservice_order_command_api{outfilesuffix}[Microservice Order Command REST API]
 - link:microservice_stack_management_api{outfilesuffix}[Microservice Order Stack Management API]
+
+
