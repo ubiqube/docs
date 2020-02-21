@@ -1,0 +1,33 @@
+.h1, .h2, .h3, h1, h2, h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    }
+    
+    
+h1 {
+    font-family: Montserrat;
+    font-weight: 600;
+	font-size: 28px;
+    color: #4397D6;
+    }
+
+    
+h2 {
+    font-family: Montserrat;
+    font-weight: 400;
+	font-size: 26px;
+    color: #4397D6;
+    }
+
+p {
+    font-family: Roboto;
+    font-weight: 300;
+    color: #929292;
+    font-size: 16px;
+}
+
+a {
+    font-family: Montserrat;
+    font-weight: 300;
+    color: #747474;
+}

@@ -1,6 +1,7 @@
 = Release Notes
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:doctype: book
 
 
 IMPORTANT: TODO

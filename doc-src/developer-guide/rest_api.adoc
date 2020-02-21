@@ -1,0 +1,4 @@
+= REST API
+:imagesdir: ./resources/
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:doctype: book
