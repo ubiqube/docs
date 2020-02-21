@@ -56,3 +56,7 @@ The workflow layer addresses domain-specific scenarios which can be highly techn
 
 == BPM
 The BPM layer offers a visual workflow editor to make MSA a strong SOAR contender for business process design which appeals to realities and are not enshrined in vendor-specific boundaries. Maximum security remediation policies can be applied as engineers creatively imagine a process applied to all domains involved (security, routing, switching, cloud hosting, etc.).
+
+
+
+

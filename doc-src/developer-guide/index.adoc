@@ -1,11 +1,11 @@
-= MSA Developer Guide
+= MSA(TM) Developer Guide
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-This documentation contains a set of doc, tutorials and examples to help you getting familiar with the MSA.
+This documentation contains a set of doc, tutorials and examples to help you getting familiar with the MSA(TM).
 
 == API & SDK
-- link:rest_api_{outfilesuffix}[REST API]
+- link:rest_api{outfilesuffix}[REST API]
 - link:workflow_python_sdk_{outfilesuffix}[Python SDK for Workflow Developement]
 
 == Microservices

@@ -3,6 +3,8 @@
 :toc-title: Content 
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:doctype: book
+
 
 == Overview
 This documentation describes the order stack management API.
