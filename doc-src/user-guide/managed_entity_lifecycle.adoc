@@ -1,8 +1,12 @@
 = Managed Entities Lifecycle
+:doctype: book
 :toc: left
 :toc-title: Content 
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
+////
+
 IMPORTANT: TODO
 
+////

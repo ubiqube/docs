@@ -1,30 +1,31 @@
 = User Guide
+:doctype: book
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-This documentation contains both developer guides, to get you started developing applications for servers, and tutorials on how to build Microservices and Workflows on the MSActivator. These documents will also help address specific features and examples of Microservices and Workflows.
+The user guide provides provides the documentation to help you understand the key concepts of the MSA and help you understand how to use the MSA in an operationl environement. 
 
-
-== MSActivator Overview
 The link:getting_started{outfilesuffix}[Getting Started with the MSActivator] guide explains the main concept, as well as the first steps in managing services with the MSActivator.
 
-- link:gui_overview{outfilesuffix}[GUI Overview]
 - link:key_concepts{outfilesuffix}[MSA Key Concepts]
+- link:gui_overview{outfilesuffix}[GUI Overview]
 
-=== Managed Entities
+== Managed Entities
 - link:managed_entity{outfilesuffix}[Managed Entities]
 
-=== Configuration
+== Configuration
 - link:configuration_microservices{outfilesuffix}[Microservices]
 - link:deployment_settings{outfilesuffix}[Deployment Settings]
 
-=== Automation
+== Automation
 - link:automation_workflows{outfilesuffix}[Workflows]
 - link:bpm{outfilesuffix}[BPM]
 
-=== Role Based Access Control
+== Role Based Access Control
 - link:portal_overview{outfilesuffix}[Portal Overview]
 - link:tenants_and_users{outfilesuffix}[Tenants and Users]
+
+
 
 
 

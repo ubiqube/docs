@@ -1,8 +1,10 @@
 = Managed Entities History
+:doctype: book
 :toc: left
 :toc-title: Content 
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
+//// 
 IMPORTANT: TODO
-
+////

@@ -1,12 +1,17 @@
 = GUI Overview
+:doctype: book
+:toc: left
+:toc-title: Content 
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
+////
+
 IMPORTANT: TODO
 
-== GUI Overview
+////
 
-=== Administrator and Manager Dashboard
+== Administrator and Manager Dashboard
 
 When you login as an administrator or a manager, the following dashboard is displayed
 
@@ -29,7 +34,7 @@ image:images/gui_admin_dashboard.png[Admin Dashboard]
 | Auto-refresh 		| Set an overall refresh period in seconds.
 |===
 
-==== Status Graphes
+=== Status Graphes
 
 image:images/dashboard_status_graph_overview.png[alt=Status Graph, width=200px]
 
@@ -50,7 +55,7 @@ If you click on any of those status graphs, you then see a pop-up table containi
 
 image:images/dashboard_status_graph_details.png[alt=Status Graph Details, width=400px]
 
-==== Filters, Sorts and Search
+=== Filters, Sorts and Search
 
 On the administrator dashboard, there are a number of filter, sort, and search options available to help you organise and view your data.
 
@@ -61,9 +66,9 @@ image:images/dashboard_filter_sort_search.png[alt=Filters Sorts Search]
 - The third icon enables you to sort the status graph lists using the following options.
 - Finally, the last icon is a magnifying glass that can be used to search for a specific tenant or customer within the list being displayed.
 
-==== Navigation
+=== Navigation
 
-===== Selecting Tenants and Customers
+==== Selecting Tenants and Customers
 A central part of the navigation in MSA is understanding the tenant and customer that are selected.  
 You can use the drop-downs on the top of the navigation to choose which tenant and customer you want to filter the lists of managed entities, microservices, and workflows by.
 
@@ -87,7 +92,7 @@ Auto-completion type ahead is also supported.
 
 NOTE: One important point to remember about performing a managed entity search is that when you search for an entity, you are implicitly selecting the tenant that entity belongs to in the main filter drop-downs. 
 
-=== Managed Entities
+== Managed Entities
 To see the list of managed entities, click on the "Managed Entities" link in the left menu
 
 image:images/me_detailed_list.png[alt=Managed Entities Detailed List]
@@ -97,45 +102,64 @@ You can also adjust the amount of entities displayed on each page
 
 Finally, on this screen you can also perform a simple search of the managed entity you are looking for by its name.
 
-==== Create, Update and Activate a Managed Entity
-To create a Managed Entity, click the "Create" button on the Managed Entity Listing page.
- 
-This will bring you to the Create Managed Entity form.
+TIP: See also - link:managed_entities{outfilesuffix}[Managed Entities] for a detailed documentation on managed entities
 
-The fields marked with a "*" are required to create a Managed Entity. 
-If a tenant or customer is selected on the global filter, then they will be pre-populated in the form. Otherwise a tenant and customer must be selected.
+== Configuration
+To see the list of Microservices], templates and deployment settings, click on the "Configurations" link in the left menu.
 
-The selections in the "Vendor" and "Model" fields will determine the fields displayed in the "Management Information" and "Advanced Information" sections. 
-Different Managed Entity types have different associated variables that are used in their provisioning and operation.
+//// 
+TODO: update screenshot
+////
+image:images/configurations_me_list.png[alt=Configurations Microservice List, width=800px]
 
-NOTE: the selection of  the vendor and model will determine the Adapter that will be used by the CoreEngine for configuration and assurance. 
-It's important to select an adapter that is compatible with the managed entity model.
-Once a managed entity is created, it is not possible to change the model, the managed entity will have to be recreated.
+You can view the list of templates and deployment settings by clicking on the tabs "Templates" "and Deployment Settings".
 
-The Create Managed Entity form can be closed by pressing the "X" button in the top bar. Any data entered into the fields will be preserved for when the user returns to the form. Clicking the "Discard Changes" button will display a prompt confirming that all changes will be lost. 
-If the user accepts the form state will be reset.
+This screen will let you build you Deployment Settings by selecting Microservice and Configuration Template.
 
-The update form can be accessed by clicking pencil icon on the Managed Entity Listing page or on the Managed Entity Detail page.
+You will also be able to select the Managed Entities you wish to apply you configuration service on.
 
-===== Managed Entity Activation
-A Managed Entity can be activated by pressing the "Activate" button the Managed Entity Detail screen.
+TIP: See also - link:configuration_microservices{outfilesuffix}[Microservices] for a detailed documentation on managed entities
 
-This will show a form that takes the variables such as management IP, username, password that will be used in the activation. 
-These fields may be pre-populated by the values given in the create form. 
-If the variables are updated they will be used for that particular activation but will not be persisted.
 
-When the activation is started the dialog shows the progress of the Managed Entity activation. 
-This will update as the activation progresses and will show whether the activation succeeds or fails.
+== Automation
+To see the list of Workflows select the "Automation" link in the left menu.
 
-NOTE: the activation of the managed entity is excuted by the Adapter specific to the Managed Entity model.
+By default, if you are connected as a Manager or an Administrator you will see the list of Workflows that are associated to the Customers you are managing 
 
-===== Managed Entity Detais Screen
-The managed entity details screen is used to display the details of the selected entity.  
-You can reach this screen via searching for a managed entity via the global search feature in the top navigation, or by selected an entity in the managed entities list:
-The information such as the serial number, firmware, memory... are retreived dynamically by the entity adapter once the entity is activated.
+image:images/automation_wf_list.png[alt=Workflow List by Customer] 
 
-=== Developer Dashboard
-NOTE: This feature is not available yet.
+If you select a Customer, the list will be filtered by the selected Customer's Workflows and you will see the process execution status of the Workflow instances.
+
+image:images/automation_wf_list_by_customer.png[alt=Workflow List by Customer] 
+
+To see the Workflow instance for a Customer, you can click on the Workflow name
+
+image:images/automation_wf_instance_list_by_customer.png[alt=Workflow Instance List] 
+
+From this screen you can start using the existing instances or create a new instance for the current Workflow.
+
+== BPM
+
+To see the list of Business Processes select the "BPM" link in the left menu
+
+image:images/automation_bpm_list.png[alt=BPM List] 
+
+You can select a BPM by clicking on a name in the list and start working on your BPM.
+
+image:images/automation_bpm_edit.png[alt=BPM Edition] 
+
+
+
+////
+
+Developer Dashboard doc
+TODO: update for next release
+
+////
+
+== Developer Dashboard
+NOTE: This feature is not available yet. 
+The documentaion below aims at providing a early preview. 
 
 The developer dashboard in MSActivator 2.0 is available when you chose to login as a developer.  On this dashboard, one of the first things you will notice is the three vertical swimlanes:
 
@@ -157,13 +181,3 @@ The adaptors are used to connect to managed entities from MSActivator, regardles
 If an adaptor is not already available for your entity vendor in the library, a new one can be developed.
 
 
-
-
-port doc from 
-
-- http://confluence.ubiqube.com/display/MSAC/The+administrator+dashboard
-- http://confluence.ubiqube.com/display/MSAC/The+developer+dashboard
-- http://confluence.ubiqube.com/display/MSAC/Navigating+via+tenant+and+customer+filters
-- http://confluence.ubiqube.com/display/MSAC/Understanding+the+different+personas
-
-NOTE: https://docs.fortinet.com/document/fortimanager/6.2.3/administration-guide/537284/gui-overview can be used as an example for GUI doc
