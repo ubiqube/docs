@@ -1,0 +1,7 @@
+= PHP SDK
+:imagesdir: ./resources/
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:source-highlighter: pygments
+
+
+IMPORTANT: TODO
