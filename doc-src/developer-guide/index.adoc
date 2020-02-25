@@ -6,7 +6,8 @@ This documentation contains a set of doc, tutorials and examples to help you get
 
 == API & SDK
 - link:rest_api{outfilesuffix}[REST API]
-- link:workflow_python_sdk_{outfilesuffix}[Python SDK for Workflow Developement]
+- link:workflow_python_sdk{outfilesuffix}[Python SDK for Workflow Developement]
+- link:workflow_php_sdk{outfilesuffix}[PHP SDK for Workflow Developement]
 
 == Microservices
 
