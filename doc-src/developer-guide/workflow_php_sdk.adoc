@@ -3,5 +3,100 @@
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :source-highlighter: pygments
 
+The MSA(TM) provides a support for PHP SDK dedicated to developping automation workflows. 
+This SDK provides a set of functions that can be used to call the link:rest_api{outfilesuffix}[MSA REST API] and automate action on the MSA such as create and activate managed entities, call microservice function, call processes from other workflows,...
 
-IMPORTANT: TODO
+== Where to Find the Source Code of the SDK?
+The SDK functions are implemented in a set of PHP files stored in the MSA repository under `+/opt/fmc_repository/Process/Reference/Common/Library+`
+
+The PHP file are organised by API topic and contains the functions that are calling the REST API.
+
+These functions can be called directly when implementing the tasks of the workflow processes.
+
+== Code Samples
+
+=== Sample Implementation of a SDK PHP function
+
+The source code below shows the implementation of one of the function provided by the SKD
+
+[source,php]
+----
+/**
+ * Create Customer <1>
+ * 
+ * curl -u ncroot:ubiqube  -H "Content-Type: application/json" -XPOST 'http://localhost:10080/ubi-api-rest/customer/{prefix}?name={name}&reference={reference}' -d '
+    {
+        "name": "contactName",
+        "firstName": "contactFirstName",
+        "address": {
+            "streetName1": "sn1",
+            "streetName2": "sn2",
+            "streetName3": "sn3",
+            "city": "city123",
+            "zipCode": "zip123",
+            "country": "Country098",
+            "fax": "1233",
+            "email": "contact @ company.com",
+            "phone": "123"
+        }
+
+    }
+ *
+ */
+function _customer_create ($operator_prefix, $customer_name, $external_reference = "", $contact_details = "{}") { <2>
+
+	$msa_rest_api = "customer/{$operator_prefix}?name={$customer_name}&reference={$external_reference}";
+	$curl_cmd = create_msa_operation_request(OP_POST, $msa_rest_api, $contact_details); <3>
+	$response = perform_curl_operation($curl_cmd, "CREATE CUSTOMER"); <4>
+	$response = json_decode($response, true);
+	if ($response['wo_status'] !== ENDED) { <5>
+		$response = json_encode($response);
+		return $response;
+	}
+	$response = prepare_json_response(ENDED, ENDED_SUCCESSFULLY, $response['wo_newparams']['response_body']);
+	return $response;
+}
+----
+<1> A description of the function and an sample call of the matching REST API
+<2> The function of the SDK always start with "_"
+<3> Call a SDK helper function to build the curl request
+<4> Call a SDK helper function to execute the curl request
+<5> Call a SDK helper function (defined in utility.php) to format a response with proper status, comment and response payload
+
+=== Sample call of a function in a workflow task.
+
+[source,php]
+----
+
+// Create customer
+logToFile("Creating customer:: Creating customer\n");
+
+$customer_contact_details_array = array();  	<1>
+$customer_contact_details_array['firstName'] = $customer_contact_first_name;
+$customer_contact_details_array['name'] = $customer_contact_name;
+if (isset($context['email_recipient']) && $context['email_recipient']){
+  $address = array('email' => $context['email_recipient']);
+  $customer_contact_details_array['address'] = $address;
+}
+
+$customer_contact_details_json = json_encode($customer_contact_details_array);  	<2>
+
+// Call function to create customer
+$response = _customer_create ($operator_prefix, $customer_name, $customer_ext_reference, $customer_contact_details_json);  	<3>
+
+$response = json_decode($response, true); 	<4>
+if ($response['wo_status'] !== ENDED) {		<5>
+    $response = json_encode($response);
+    echo $response;
+    exit;
+}
+logToFile(debug_dump($response['wo_newparams'], "RESPONSE\n"));
+----
+<1> Build the array with the customer contact details. This parameter is defaulted by an empty array
+<2> Encode the array into it's json representation
+<3> Call the SDK function
+<4> Get the JSON response as an array
+<5> If the call to the function failed, echo the response and exit the task
+<6> If the call was succesful continue the task execution
+
+
