@@ -90,7 +90,7 @@ if ($response['wo_status'] !== ENDED) {		<5>
     echo $response;
     exit;
 }
-logToFile(debug_dump($response['wo_newparams'], "RESPONSE\n"));
+logToFile(debug_dump($response['wo_newparams'], "RESPONSE\n")); <6>
 ----
 <1> Build the array with the customer contact details. This parameter is defaulted by an empty array
 <2> Encode the array into it's json representation
