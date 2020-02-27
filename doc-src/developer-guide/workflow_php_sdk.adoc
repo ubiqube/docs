@@ -3,11 +3,11 @@
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :source-highlighter: pygments
 
-The MSA(TM) provides a support for PHP SDK dedicated to developping automation workflows. 
-This SDK provides a set of functions that can be used to call the link:rest_api{outfilesuffix}[MSA REST API] and automate action on the MSA such as create and activate managed entities, call microservice function, call processes from other workflows,...
+The {product_name} provides a support for PHP SDK dedicated to developping automation workflows. 
+This SDK provides a set of functions that can be used to call the link:rest_api{outfilesuffix}[{product_name} REST API] and automate action on the {product_name} such as create and activate managed entities, call microservice function, call processes from other workflows,...
 
 == Where to Find the Source Code of the SDK?
-The SDK functions are implemented in a set of PHP files stored in the MSA repository under `+/opt/fmc_repository/Process/Reference/Common/Library+`
+The SDK functions are implemented in a set of PHP files stored in the {product_name} repository under `+/opt/fmc_repository/Process/Reference/Common/Library+`
 
 The PHP file are organised by API topic and contains the functions that are calling the REST API.
 
@@ -24,7 +24,7 @@ The source code below shows the implementation of one of the function provided b
 /**
  * Create Customer <1>
  * 
- * curl -u ncroot:ubiqube  -H "Content-Type: application/json" -XPOST 'http://localhost:10080/ubi-api-rest/customer/{prefix}?name={name}&reference={reference}' -d '
+ * curl -u ncroot:ubiqube  -H "Content-Type: application/json" -XPOST 'http://ip_address/ubi-api-rest/customer/{prefix}?name={name}&reference={reference}' -d '
     {
         "name": "contactName",
         "firstName": "contactFirstName",
@@ -136,7 +136,7 @@ The funtion `+execute_command_and_verify_response+` is defined in `+/opt/fmc_rep
 
 === Synchonize the Managed Entity Configuration
 
-The Microservice may define an IMPORT operation that will be used to read the configuration items from the Managed Entities and import them into the MSA(TM) configuration database.
+The Microservice may define an IMPORT operation that will be used to read the configuration items from the Managed Entities and import them into the {product_name} configuration database.
 
 The Code sample below uses a PHP function from the SDK to trigger this operation
 

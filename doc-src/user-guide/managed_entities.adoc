@@ -3,7 +3,7 @@
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-In order to become a manageable entity in the MSActivator, an entity has to be created and activated in the MSA.
+In order to become a manageable entity in the {product_name}, an entity has to be created and activated in the {product_name}.
 
 == Create, Update and Activate a Managed Entity
 To create a Managed Entity, click the "Create" button on the Managed Entity Listing page.

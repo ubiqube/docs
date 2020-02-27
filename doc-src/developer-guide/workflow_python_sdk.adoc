@@ -6,7 +6,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 IMPORTANT: TODO
 
-The MSA(TM) provides a support for Python SDK dedicated to developping automation workflows. 
-This SDK provides a set of functions that can be used to call the link:rest_api{outfilesuffix}[MSA REST API] and automate action on the MSA such as create and activate managed entities, call microservice function, call processes from other workflows,...
+The {product_name} provides a support for Python SDK dedicated to developping automation workflows. 
+This SDK provides a set of functions that can be used to call the link:rest_api{outfilesuffix}[{product_name} REST API] and automate action on the {product_name} such as create and activate managed entities, call microservice function, call processes from other workflows,...
 
-The SDK API documentation is available online on your MSA(TM) instance at: https://<MSA IP address>/msa_sdk/
+The SDK API documentation is available online on your {product_name} instance at: https://<MSA IP address>/msa_sdk/

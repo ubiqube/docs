@@ -22,10 +22,10 @@ image:images/gui_admin_dashboard.png[Admin Dashboard]
 | Dashboard 		| Display graphs to show the overall status of customer Managed Entities and Workflow Instance.
 					  Each of the graphs represents the status of the managed entities for the named customer.
 | Alarms 			| Shows the alarms raised by the Assurance system (coming soon)
-| Managed Entities	| Shows the entities managed by this MSA. Entities can be network element such as routers or firewalls, cloud or uCPE management system,...
-| Configurations	| Shows the Microservices and the Templates available in the MSA Repository. 
+| Managed Entities	| Shows the entities managed by this {product_name}. Entities can be network element such as routers or firewalls, cloud or uCPE management system,...
+| Configurations	| Shows the Microservices and the Templates available in the {product_name} Repository. 
 						
-					  Configuration will also show the Deployement Settings created in this MSA
+					  Configuration will also show the Deployement Settings created in this {product_name}
 | Automation		| Shows the Workflows that are in use and available for use in the system. You can add a Workflow to a Customer from there.
 | BPM				| Create or Load you business process modelings, integrate them with Workflows and Microservices.
 | Assurance			| View the Monitoring configuration. You can edit Monitoring configuration and configure your own SNMP based KPI to monitor your Managed Entities. (coming soon)
@@ -48,7 +48,7 @@ To further illustrate this, a legend is provided on the dashboard to explain eac
 
 image:images/dashboard_status_graph_nature.png[alt=Status Graph Nature, width=350px]
 
-NOTE: It is up to the MSActivator to decide the type of each entity when they are configuring that entity entry.
+NOTE: It is up to the {product_name} to decide the type of each entity when they are configuring that entity entry.
 
 Finally, the number in the center of the circles is the total number of managed entities associated with that customer.
 If you click on any of those status graphs, you then see a pop-up table containing the same details but in a matrix like so:
@@ -69,7 +69,7 @@ image:images/dashboard_filter_sort_search.png[alt=Filters Sorts Search]
 === Navigation
 
 ==== Selecting Tenants and Customers
-A central part of the navigation in MSA is understanding the tenant and customer that are selected.  
+A central part of the navigation in {product_name} is understanding the tenant and customer that are selected.  
 You can use the drop-downs on the top of the navigation to choose which tenant and customer you want to filter the lists of managed entities, microservices, and workflows by.
 
 image:images/admin_dashboard_tenant-customer_selection.png[alt=Tenant and Customer Selection, width=500px]
@@ -161,23 +161,23 @@ TODO: update for next release
 NOTE: This feature is not available yet. 
 The documentaion below aims at providing a early preview. 
 
-The developer dashboard in MSActivator 2.0 is available when you chose to login as a developer.  On this dashboard, one of the first things you will notice is the three vertical swimlanes:
+The developer dashboard in {product_name} 2.0 is available when you chose to login as a developer.  On this dashboard, one of the first things you will notice is the three vertical swimlanes:
 
 image:images/gui_dev_dashboard.png[alt=Developer Dashboard]
 
-The three swimlanes match the three main layers of the MSActivator framework, namely:
+The three swimlanes match the three main layers of the {product_name} framework, namely:
 
 .Workflow Library
-This is where you can develop new workflows for your application.  In MSActivator, workflows can be written in either PHP or Python.  A workflow is a series of tasks that you can develop to carry out any set of complex tasks that you wish to automate via our orchestration engine.
+This is where you can develop new workflows for your application.  In {product_name}, workflows can be written in either PHP or Python.  A workflow is a series of tasks that you can develop to carry out any set of complex tasks that you wish to automate via our orchestration engine.
 
 .Microservices Library
 This is where you can develop new microservices for you application.  
-In MSActivator, a microservice is a way to wrap commands (Create/Read/Update/Delete/Import) into a service, that can be invoked with a workflow or even from outside MSActivator via our REST API.  
+In {product_name}, a microservice is a way to wrap commands (Create/Read/Update/Delete/Import) into a service, that can be invoked with a workflow or even from outside {product_name} via our REST API.  
 The microservices are typically used for managing the configuration of managed entities in an abstracted, vendor-neutral way.
 
 .Adaptor Library
 This is where you can develop new adaptors for your application, or import existing ones.  
-The adaptors are used to connect to managed entities from MSActivator, regardless of the network protocols supported by the entity in question.  
+The adaptors are used to connect to managed entities from {product_name}, regardless of the network protocols supported by the entity in question.  
 If an adaptor is not already available for your entity vendor in the library, a new one can be developed.
 
 

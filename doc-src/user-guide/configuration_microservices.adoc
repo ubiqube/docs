@@ -4,28 +4,25 @@
 :toc-title: Content 
 :imagesdir: ./resources/
 
-The MSA Microservices engine is designed as a networking object-based programming language.
+The {product_name} Microservices engine is designed as a networking object-based programming language.
 
 Any feature of any device can be managed with one or more Microservices. Microservice designers define the variables and implement the Create | Read | Update | Delete method.
 
 This open and agile approach is required to provide an abstraction layer on top of any device from core to the edge.
 
-The implementation of the functions allows us to create, update, or delete sub-parts of the configuration on our managed devices. A function can also be implemented to import the device configuration into the MSA configuration database.
+The implementation of the functions allows us to create, update, or delete sub-parts of the configuration on our managed devices. A function can also be implemented to import the device configuration into the {product_name} configuration database.
 
 Microservices can be used to manage a wide variety of services on numerous types of devices, such as network equipment, virtualization infrastructure managers, or even Linux servers.
 
 Any feature of any device may be managed with Microservices. The Microservice developer defines the variables and the Create | Read | Update | Delete methods. 
 
-Microservices can be designed graphically in the MSA developer portal. Scripting is not mandatory but simple programming functions, such as conditional statements, loops, and variable assignments, are available to incorporate advanced function behaviors.
-
-////
-
-== Microservice Design
-
-IMPORTANT: TODO
+Microservices can be designed graphically in the {product_name} developer portal. Scripting is not mandatory but simple programming functions, such as conditional statements, loops, and variable assignments, are available to incorporate advanced function behaviors.
 
 == Microservice Use
 
 IMPORTANT: TODO
 
-////
+== Microservice Design
+
+Microservice design is documented in the link:../developer-guide/index{outfilesuffix}[Developer Guide]
+

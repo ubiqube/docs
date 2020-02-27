@@ -3,15 +3,16 @@
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-The user guide provides provides the documentation to help you understand the key concepts of the MSA and help you understand how to use the MSA in an operationl environement. 
+The user guide provides provides the documentation to help you understand the key concepts of the {product_name} and help you understand how to use the {product_name} in an operational environement. 
 
-The link:getting_started{outfilesuffix}[Getting Started with the MSActivator] guide explains the main concept, as well as the first steps in managing services with the MSActivator.
+== Getting Started
+The guide link:getting_started{outfilesuffix}[Getting Started with the {product_name}]  explains the main concept, as well as the first steps in managing services with the {product_name}.
 
-- link:key_concepts{outfilesuffix}[MSA Key Concepts]
+- link:key_concepts{outfilesuffix}[{product_name} Key Concepts]
 - link:gui_overview{outfilesuffix}[GUI Overview]
 
 == Managed Entities
-- link:managed_entity{outfilesuffix}[Managed Entities]
+- link:managed_entities{outfilesuffix}[Managed Entities]
 
 == Configuration
 - link:configuration_microservices{outfilesuffix}[Microservices]

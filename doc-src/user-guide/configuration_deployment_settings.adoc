@@ -1,1 +1,16 @@
 = Deployment Settings
+:doctype: book
+:imagesdir: ./resources/
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Deployment Settings will allow you to build your managed services and apply them to you Managed Entities. 
+Deployment Settings will also ease any change to your managed service definition: you can add/remove a template or a microservice and be assured that the change will be applied to every existing managed entities.
+
+You can view the Deployment Settings by clicking the "Automation" link on the left menu and select the tab "Deployment Settings"
+
+== Access Control
+
+As Deployment Settings are customer specific, in order to view the existing Deployment Settings you need first to select a customer. 
+
+image:images/deployment_settings.png[Deployment Settings]
+
