@@ -15,7 +15,7 @@ The link:getting_started{outfilesuffix}[Getting Started with the MSActivator] gu
 
 == Configuration
 - link:configuration_microservices{outfilesuffix}[Microservices]
-- link:deployment_settings{outfilesuffix}[Deployment Settings]
+- link:configuration_deployment_settings{outfilesuffix}[Deployment Settings]
 
 == Automation
 - link:automation_workflows{outfilesuffix}[Workflows]
