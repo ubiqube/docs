@@ -3,13 +3,13 @@
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :doctype: book
 
-The MSA(TM) provides a support for REST API. These API can be used by third-party service, application or script to manage your MSA(TM) instance.
+The {product_name} provides a support for REST API. These API can be used by third-party service, application or script to manage your {product_name} instance.
 
 .Enabling REST API Support
 The API is enabled by default. No additional configuration is required.
 
 .Authentication
-When making requests to MSA(TM) using the REST API, you will need:
+When making requests to {product_name} using the REST API, you will need:
 
 * A valid admin username and password (so that an authenticated session can be established).
 * Appropriate access permissions for the requested resource (controlled by admin profile)
@@ -25,11 +25,11 @@ curl -H 'Accept: application/json' -H "Authorization: Bearer eyJhbGciOiJIUzUxMiJ
 ----
 
 .Format
-MSA(TM) API uses the JSON format.
+{product_name} API uses the JSON format.
 
 
 == Example API commands
-For the full list of available commands, see the MSA(TM) API guide on your MSA(TM) instance: http://<MSA IP or FQDN>/swagger
+For the full list of available commands, see the {product_name} API guide on your {product_name} instance: http://<MSA IP or FQDN>/swagger
 
 === User Login
 *HTTP Request:* `+/ubi-api-rest/auth/token+`

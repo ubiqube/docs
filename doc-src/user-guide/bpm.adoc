@@ -5,8 +5,19 @@
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-////
-
-IMPORTANT: TODO
+The integrated BPM engine can be accessed by clicking the "BPM" link in the left menu. 
 
 ////
+TODO
+////
+
+
+== REST API
+
+You can access the BPM engine via its REST API in order to start process instances, complete tasks and much more. 
+
+Check out the link:https://docs.camunda.org/manual/7.12/reference/rest/?__hstc=252030934.61b0d006ec2a4dde6243c8bc708902e7.1582894819763.1582894819763.1582894819763.1&__hssc=252030934.6.1582894819763&__hsfp=3656928582[REST API Reference] for a complete overview.
+
+== BPMN Standard Coverage
+
+The BPMN engine supports most of the symbols defined in the BPMN 2.0 standard.View the Docs: link:https://docs.camunda.org/manual/7.12/reference/bpmn20/?__hstc=252030934.61b0d006ec2a4dde6243c8bc708902e7.1582894819763.1582894819763.1582894819763.1&__hssc=252030934.6.1582894819763&__hsfp=3656928582[BPMN 2.0 Coverage] for more details

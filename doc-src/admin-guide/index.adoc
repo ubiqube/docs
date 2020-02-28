@@ -3,9 +3,9 @@ Administration Guide
 :imagesdir: ../resources/images
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-The MSA Installation and Configuration Guide will show you how to install, configure and activate the MSActivator.
+The {product_name} Installation and Configuration Guide will show you how to install, configure and activate the {product_name}ctivator.
 
-* link:installation{outfilesuffix}[How to install the MSA]
-* link:license_activation{outfilesuffix}[How to activate the MSA]
+* link:installation{outfilesuffix}[How to install the {product_name}]
+* link:license_activation{outfilesuffix}[How to activate the {product_name}]
 
 

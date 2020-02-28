@@ -12,8 +12,8 @@ asciidoctor {
 
    attributes \
   	'source-highlighter' : 'rouge',
-	'sectnums': true,
-    'linkcss': true
+    'linkcss': true,
+    'product_name': 'MSA(TM)'
  
   sourceDir  file('doc-src')
   outputDir  file('build/docs')

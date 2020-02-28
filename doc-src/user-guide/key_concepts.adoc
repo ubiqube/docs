@@ -3,9 +3,9 @@
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-== What is the MSA ?
+== What is the {product_name} ?
 
-MSA™ is the leading Integrated Automation Platform (IAP) engineered by UBiqube for the continuous design of any IT infrastructure automation process. 
+{product_name} is the leading Integrated Automation Platform (IAP) engineered by UBiqube for the continuous design of any IT infrastructure automation process. 
 It is composed of Integration and Automation Modules. 
 
 The Integration Module is used by infrastructure engineers to onboard / integrate the wide spectrum of related vendors and systems involved in any given IT solution, i.e. cloud
@@ -15,16 +15,16 @@ The Automation Module provides the IT automation developer with a unified develo
 
 == Understanding the Different Personas
 
-On the MSActivator 2.0 login screen, there are two different types of logins selectable via this toggle switch Administrator/Developer
+On the {product_name} login screen, there are two different types of logins selectable via this toggle switch Administrator/Developer
 
 We call these personas, and this is the purpose of each one:
 
 .Administrator
-This will give you access to the administrator dashboard, that allows you to monitor and manage the entities configured in your MSA installation.  
+This will give you access to the administrator dashboard, that allows you to monitor and manage the entities configured in your {product_name} installation.  
 This dashboard represents the "Ops" half of the "DevOps" approach, see here for more details: link:gui_overview{outfilesuffix}#_administrator_and_manager_dashboard[GUI Overview]
 
 .Developer
-This will give you access to the developer dashboard, that allows you to design business processes, write workflows and develop microservices in your MSA.  
+This will give you access to the developer dashboard, that allows you to design business processes, write workflows and develop microservices in your {product_name}.  
 This dashboard represents the "Dev" half of the "DevOps" approach, see here for more details: The developer dashboard
 
 NOTE: The username and password you use to access either dashboard is the same, the selection on the login screen simply determines which dashboard you can see after logging in.
@@ -39,7 +39,7 @@ The term "Configurations" relates to Microservices, Templates and Deployment Set
 .Templates
 Configuration Templates provide a simple way to provide day 0 configuration during the activation managed entity.
 
-MSA configuration engine runs on PHP Smarty and allow some scripting to add logic to the generation of the configuration
+{product_name} configuration engine runs on PHP Smarty and allow some scripting to add logic to the generation of the configuration
 
 .Microservices
 Microservices can be used to manage a wide variety of services on numerous types of devices, such as network equipment, virtualization infrastructure managers, or even Linux servers.
@@ -52,10 +52,13 @@ Microservice will let you define your managed services in a fine grained and mod
 Deployment Settings are the logical entities that will bind together the Configurations and the Managed Entities.
 
 == Automation
-The workflow layer addresses domain-specific scenarios which can be highly technically scripted, appealing to DevOps and SecOps engineers. 
+{product_name} features two automation layers designed for different degrees of abstraction that ensure maximum flexibility.
 
-== BPM
-The BPM layer offers a visual workflow editor to make MSA a strong SOAR contender for business process design which appeals to realities and are not enshrined in vendor-specific boundaries. Maximum security remediation policies can be applied as engineers creatively imagine a process applied to all domains involved (security, routing, switching, cloud hosting, etc.).
+.Workflow
+The link:automation_workflows{outfilesuffix}[Workflow] layer addresses domain-specific scenarios which can be highly technically scripted, appealing to DevOps and SecOps engineers. 
+
+.BPM
+The link:bpm{outfilesuffix}[BPM] layer offers a visual workflow editor to make {product_name} a strong SOAR contender for business process design which appeals to realities and are not enshrined in vendor-specific boundaries. Maximum security remediation policies can be applied as engineers creatively imagine a process applied to all domains involved (security, routing, switching, cloud hosting, etc.).
 
 
 
