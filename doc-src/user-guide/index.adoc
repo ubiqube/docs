@@ -8,7 +8,7 @@ The user guide provides provides the documentation to help you understand the ke
 == Getting Started
 The guide link:getting_started{outfilesuffix}[Getting Started with the {product_name}]  explains the main concept, as well as the first steps in managing services with the {product_name}.
 
-- link:key_concepts{outfilesuffix}[{product_name} Key Concepts]
+- link:key_concepts{outfilesuffix}[Key Concepts]
 - link:gui_overview{outfilesuffix}[GUI Overview]
 
 == Managed Entities
