@@ -28,5 +28,6 @@ IMPORTANT: TODO
 
 == Vendor Use Cases
 - Cisco IOS: link:vendor_cisco_ios_itf_mngt{outfilesuffix}[Interfaces Management]
+- Fortinet Fortigate: link:vendor_fortigate_security_mngt{outfilesuffix}[Managed Security]
 
 
