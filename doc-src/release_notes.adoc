@@ -21,9 +21,10 @@ TIP: Go to link:user-guide/gui_overview{outfilesuffix}[GUI overview] to get a de
 
 The {product_name} Automation stack has been enriched with a BPMN workflow engine. 
 With BPMN, you can express reliable service orchestration, human task flows, event handling and much more in diagrams that are technically executable yet easy to understand for everyone.
+The BPMN engine is tighly integrated with the MSA
 
 You can access the Workflow Engine via REST in order to start process instances, complete tasks and much more. 
-Check out the link:https://docs.camunda.org/manual/7.12/reference/rest/?__hstc=252030934.61b0d006ec2a4dde6243c8bc708902e7.1582894819763.1582894819763.1582894819763.1&__hssc=252030934.6.1582894819763&__hsfp=3656928582[REST API Reference] for a complete overview.
+
 
 TIP: Go to link:user-guide/bpm{outfilesuffix}[GUI overview] to get a detailed description of this new user interface.
 

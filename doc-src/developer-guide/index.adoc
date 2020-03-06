@@ -22,4 +22,11 @@ This documentation contains a set of doc, tutorials and examples to help you get
 - link:microservice_order_command_api{outfilesuffix}[Microservice Order Command REST API]
 - link:microservice_stack_management_api{outfilesuffix}[Microservice Order Stack Management API]
 
+== Workflows 
+
+IMPORTANT: TODO
+
+== Vendor Use Cases
+- Cisco IOS: link:vendor_cisco_ios_itf_mngt{outfilesuffix}[Interfaces Management]
+
 
