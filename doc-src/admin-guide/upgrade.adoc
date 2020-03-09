@@ -1,0 +1,7 @@
+= How to Upgrade the {product_name}
+:imagesdir: ./resources/
+
+== Overview
+
+== Upgrading the Application
+

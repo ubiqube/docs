@@ -7,5 +7,7 @@ The {product_name} Installation and Configuration Guide will show you how to ins
 
 * link:installation{outfilesuffix}[How to install the {product_name}]
 * link:license_activation{outfilesuffix}[How to activate the {product_name}]
+* link:upgrade{outfilesuffix}[How to upgrade the {product_name}]
+
 
 
