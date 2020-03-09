@@ -1,9 +1,4 @@
-MSA-v2 docker application
-=========================
-
-
 [overall architecture][arch.diagram]
-
 
 
 Install MSA-v2 on your docker engine
