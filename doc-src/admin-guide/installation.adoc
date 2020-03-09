@@ -1,6 +1,4 @@
 = Installing {product_name} as a docker application
-:toc: left
-:toc-title: Content
 :imagesdir: ./resources/
 
 TIP: this document elaborates on https://github.com/ubiqube/docs/tree/master/docker
