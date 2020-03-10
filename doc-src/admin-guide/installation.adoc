@@ -1,4 +1,5 @@
 = Installing {product_name} as a docker application
+:doctype: book 
 :imagesdir: ./resources/
 
 TIP: this document elaborates on https://github.com/ubiqube/docs/tree/master/docker
@@ -38,9 +39,7 @@ Then browse to: https://localhost
 == Install steps
 
 .install steps from readme in docker/
-----
-include::{sourcedir}/../docker/README.md[]
-----
+include::../../docker/README.md[]
 
 Below is a trace of an install session.
 

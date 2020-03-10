@@ -1,5 +1,5 @@
-Administration Guide
-====================
+= Administration Guide
+:doctype: book 
 :imagesdir: ../resources/images
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
