@@ -27,7 +27,8 @@ This documentation contains a set of doc, tutorials and examples to help you get
 IMPORTANT: TODO
 
 == Vendor Use Cases
-- Cisco IOS: link:vendor_cisco_ios_itf_mngt{outfilesuffix}[Interfaces Management]
-- Fortinet Fortigate: link:vendor_fortigate_security_mngt{outfilesuffix}[Managed Security]
+- link:vendor_cisco_ios_itf_mngt{outfilesuffix}[Cisco IOS: Interfaces Management]
+- link:vendor_fortigate_security_mngt{outfilesuffix}[Fortinet Fortigate: Managed Security]
+- link:vendor_multivendor_firewall_policy_mngt{outfilesuffix}[Multi-vendor Firewall Policy Update]
 
 
