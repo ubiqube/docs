@@ -21,6 +21,7 @@ services:
     - "repo.contents:/opt/fmc_repository"
     - "monitoring:/opt/rrd"
     - "change-mgt:/opt/svnroot"
+    - "settings:/opt/settings"
     - "license:/opt/ubiqube/lic"
     networks:
       default:
@@ -62,6 +63,7 @@ volumes:
   change-mgt:
   repo.entities:
   repo.contents:
+  settings:
   license:
 
 
