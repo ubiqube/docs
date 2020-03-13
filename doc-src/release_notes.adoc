@@ -7,9 +7,9 @@ IMPORTANT: TODO
 
 == UI / UX
 
-{product_name} introduces a completely new UX bring to the user a holostic aproach to managing a wide range of entities such as firewall, UTM, switches,... but also managing cloud infrastructure or physical data center assets.
+{product_name} introduces a completely new UX empowering the user with a holostic aproach to managing a wide range of entities such as firewall, UTM, switches,... but also managing cloud infrastructure or physical data center assets.
 
-The functional duality of the {product_name} being a operation platform as well as a developement framwework provides two navigation environments to address both types of user:
+The functional duality of the {product_name} being an operation platform as well as a developement framwework provides two navigation environments to address both types of user:
 - A developer-centric environment.
 - An end-user-centric environment.
 
@@ -20,8 +20,9 @@ TIP: Go to link:user-guide/gui_overview{outfilesuffix}[GUI overview] to get a de
 == Automation: Business Process Modeling
 
 The {product_name} Automation stack has been enriched with a BPMN workflow engine. 
-With BPMN, you can express reliable service orchestration, human task flows, event handling and much more in diagrams that are technically executable yet easy to understand for everyone.
-The BPMN engine is tighly integrated with the MSA
+With BPM, you can express reliable service orchestration, human task flows, event handling and much more in diagrams that are technically executable, yet easy to understand for everyone.
+
+The BPM engine is tighly integrated with the MSA
 
 You can access the Workflow Engine via REST in order to start process instances, complete tasks and much more. 
 
