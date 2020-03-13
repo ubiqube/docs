@@ -9,13 +9,13 @@ You must be connected as a privileged administrator (ncroot) on the classic port
 
 As a privileged administrator, click on the {product_name} setting gear icon at the top right of the screen. 
 
-This will open the system management page where the license management is
+This will open the system management page where the license management is located.
 
 image::images/classic_msa_admin_page.png[alt={product_name} admin page]
 
 Click on "Upload" and select your license file (.lic).
 
-Once uploaded, and before proceeding, the {product_name} will show you the license certificate information (the number of manageable devices and the end of support time). Verify that this information is correct before clicking apply. If this information is not correct, or you wish to change it, contact UBiqube support.
+Once uploaded and before proceeding, the {product_name} will show you the license certificate information (the number of manageable devices and the end of support time). Verify that this information is correct before clicking apply. If this information is not correct, or you wish to change it, contact UBiqube support.
 
 This is an example of the "apply" dialog box:
 
