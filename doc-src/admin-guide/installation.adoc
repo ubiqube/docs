@@ -164,5 +164,9 @@ docker_ui_1        nginx -g daemon off;        Up      80/tcp
 
 https://localhost
 
-* NOTE: There might be a pop-up warning of a self-signed cert that need to be accepted to proceed.
-* NOTE: Users might need to wait a few minutes after they access the localhost as it takes a few minutes for the {product_name} to start in the background before they logon
+[NOTE]
+====
+There might be a pop-up warning of a self-signed cert that need to be accepted to proceed.
+
+Users might need to wait a few minutes after they access the localhost as it takes a few minutes for the {product_name} to start in the background before they logon
+====
