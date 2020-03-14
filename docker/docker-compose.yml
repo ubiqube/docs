@@ -4,6 +4,8 @@ services:
 
   front:
     image: ubiqube/msa2:front-20.0
+    volumes:
+    - "front.certs:/etc/nginx/ssl/"
     ports:
       - "80:80"
       - "443:443"
@@ -63,6 +65,7 @@ volumes:
   change-mgt:
   repo.entities:
   repo.contents:
+  front.certs:
   settings:
   license:
 
