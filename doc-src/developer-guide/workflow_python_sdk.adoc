@@ -10,3 +10,43 @@ The {product_name} provides a support for Python SDK dedicated to developping au
 This SDK provides a set of functions that can be used to call the link:rest_api{outfilesuffix}[{product_name} REST API] and automate action on the {product_name} such as create and activate managed entities, call microservice function, call processes from other workflows,...
 
 The SDK API documentation is available online on your {product_name} instance at: https://<MSA IP address>/msa_sdk/
+
+=== Sample call of a function in a workflow task.
+[source,python]
+----
+from msa_sdk.device import Device
+from msa_sdk.variables import Variables
+import json
+
+"""
+The Variables library controls how variables are passed between the tasks and the orchestration engine. While the Device library is used to perform any MSA function to manage a device.
+
+In the first task, a device will be created. This is done by creating a Device object and calling its create() method. In order to create a new device object, a number of variables must be declared initially.
+
+This is done by creating a new Variables object and then using its add() method to create the new variables from the input parameters. Once all the variables are created, they are submitted to the orchestration engine using the task_call() method.
+"""
+
+dev_var = Variables()
+
+dev_var.add('customer_id', var_type='Integer')
+dev_var.add('managed_device_name')
+dev_var.add('manufacturer_id', var_type='Integer')
+dev_var.add('model_id', var_type='Integer')
+dev_var.add('device_ip_address', var_type='IP Address')
+dev_var.add('login')
+dev_var.add('password', var_type='Password')
+dev_var.add('password_admin', var_type='Password')
+
+context = Variables.task_call(dev_var)
+
+"""
+Next, the new device object will be created by calling the Device constructor. The device can then be created in the MSA by calling its create() method.
+
+For future tasks, the device_id will be stored in context and the task will end with a 'Task OK' message. All the variables created in this task will be made available to the next task.
+"""
+new_device = Device(context['customer_id'], context['managed_device_name'], context['manufacturer_id'],context['model_id'], context['login'], context['password'], context['password_admin'],context['device_ip_address'])
+new_device.create()
+context['device_id'] = new_device.device_id
+
+print(new_device.process_content('ENDED', 'Task OK', context, False))
+----
