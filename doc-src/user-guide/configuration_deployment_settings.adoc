@@ -6,7 +6,30 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 Deployment Settings will allow you to build your managed services and apply them to you Managed Entities. 
 Deployment Settings will also ease any change to your managed service definition: you can add/remove a template or a microservice and be assured that the change will be applied to every existing managed entities.
 
-You can view the Deployment Settings by clicking the "Automation" link on the left menu and select the tab "Deployment Settings"
+== Deployment Settings Use
+
+You can view the Deployment Settings by clicking the "Configuration" link on the left menu and select the tab "Deployment Settings"
+
+This page shows the list of deployment settings, sortable and searchable by name.
+
+image:images/deployment_settings_search.png[Deployment Settings Search]
+
+A Deployment Setting acts as the intermediate entity between a set of Managed Entity and a set of Microservices.
+
+[ditaa]
+....
++------------------+                                                                        
+|                  |n                                                                       
+|  Microservices   |--\                                                                     
+|                  |   -----\  1 +------------------------+          +---------------------+
++------------------+         --- |                        |1        n|                     |
+                                 |   Deployment Settings  | -------- |   Managed Entities  |
++------------------+         --- |                        |          |                     |
+|                  |   -----/  1 +------------------------+          +---------------------+
+|    Templates     |--/                                                                     
+|                  |n                                                                       
++------------------+                                   
+.... 
 
 == Access Control
 

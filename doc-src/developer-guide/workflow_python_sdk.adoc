@@ -11,7 +11,7 @@ This SDK provides a set of functions that can be used to call the link:rest_api{
 
 The SDK API documentation is available online on your {product_name} instance at: https://<MSA IP address>/msa_sdk/
 
-=== Sample call of a function in a workflow task.
+== Sample call of a function in a workflow task.
 [source,python]
 ----
 from msa_sdk.device import Device
