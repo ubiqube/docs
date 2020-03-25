@@ -33,7 +33,11 @@ From this page you can create a new Microservice or edit an existing one wich is
 
 The list of Microservice can be sorted by name, vendor/model, modification date and number of deployment settings.
 
-In order to use a Microservice, it has to be associated to a link:managed_entities{outfilesuffix}[link:Managed Entity] with a link:configuration_deployment_settings{outfilesuffix}[Deployment Setting].
+In order to use a Microservice, it has to be associated to a link:managed_entities{outfilesuffix}[Managed Entity] via a link:configuration_deployment_settings{outfilesuffix}[Deployment Setting].
+
+
+IMPORTANT: TODO add remaining doc when UI is stable
+
 
 == Microservice Design
 

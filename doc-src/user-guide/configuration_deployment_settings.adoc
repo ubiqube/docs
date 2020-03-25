@@ -3,8 +3,8 @@
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-Deployment Settings will allow you to build your managed services and apply them to you Managed Entities. 
-Deployment Settings will also ease any change to your managed service definition: you can add/remove a template or a microservice and be assured that the change will be applied to every existing managed entities.
+Deployment Settings will allow you to build your configurations and apply them to you Managed Entities. 
+Deployment Settings will also ease any change to your configurations: you can add/remove a template or a link:configuration_microservices{outfilesuffix}[microservice] and be assured that the change will be applied to every existing managed entities.
 
 == Deployment Settings Use
 
