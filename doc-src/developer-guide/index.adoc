@@ -24,7 +24,7 @@ This documentation contains a set of doc, tutorials and examples to help you get
 
 == Workflows 
 
-IMPORTANT: TODO
+- link:workflow_getting_started_developing{outfilesuffix}[Getting Started with Workflow Design]
 
 == Vendor Use Cases
 - link:vendor_cisco_ios_itf_mngt{outfilesuffix}[Cisco IOS: Interfaces Management]
