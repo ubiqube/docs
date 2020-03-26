@@ -6,7 +6,7 @@
 
 [[main-content]]
 NOTE: The source code for this tutorial is available on GitHub
-at: link:[https://github.com/openmsa/Workflows/tree/master/Tutorials/Dyn_List_Workflow_Data_Provider]
+at:link:[https://github.com/openmsa/Workflows/tree/master/Tutorials/Dyn_List_Workflow_Data_Provider]
 
 This tutorial explains how to use the variable type "Workflow Reference"
 to act as a dynamic data provider with a list of referenced workflow

@@ -6,6 +6,9 @@
 
 [[main-content]]
 NOTE: The sources of this tutorial are available on GitHub at:
+Microservice: https://github.com/openmsa/Microservices/tree/master/Tutorials/LINUX/Generic/Tutorial1
+Workflow: https://github.com/openmsa/Workflows/tree/master/Tutorials/Microservice_reference
+
 In this tutorial you will learn how to use a Microservice to act as a
 data provider for a Workflow variable.
 
