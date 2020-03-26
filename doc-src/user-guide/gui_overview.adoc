@@ -1,7 +1,5 @@
 = GUI Overview
 :doctype: book
-:toc: left
-:toc-title: Content 
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 

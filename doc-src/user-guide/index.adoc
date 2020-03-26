@@ -7,7 +7,7 @@ The manager guide provides the documentation to help you understand the key conc
 
 == Getting Started
 
-- link:quickstart{outfilesuffix}[Quick Start Guide]
+- link:https://github.com/ubiqube/quickstart[Quickstart Guide]
 - link:key_concepts{outfilesuffix}[Key Concepts]
 - link:gui_overview{outfilesuffix}[GUI Overview]
 

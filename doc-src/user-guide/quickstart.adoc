@@ -1,20 +1,6 @@
-= {product_name} Quickstart 
+= Quickstart 
 :doctype: book
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-This tutorial gets you started with the {product_name} orchestration tool.
-
-== install the {product_name} on your docker engine
-. check your dockerhub account password - or create a new account
-. ask for access to private repo: ubiqube/msa2
-. check your docker engine has access to dockerhub
-. create a new directory: ddmsa/
-. cd ddmsa/
-. download: docker-compose.yml
-. run: docker login
-. run: docker-compose up -d
-. browse: https://<docker engine IP>/
-
-== install a linux docker image 
-. docker pull centos
+This link:https://github.com/ubiqube/quickstart/README.adoc[quickstart guide] will gets you started with the {product_name} orchestration tool.

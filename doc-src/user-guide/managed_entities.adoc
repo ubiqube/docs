@@ -36,14 +36,16 @@ When the activation is started the dialog shows the progress of the Managed Enti
 This will update as the activation progresses and will show whether the activation succeeds or fails.
 
 NOTE: the activation of the managed entity is excuted by the Adapter specific to the Managed Entity model.
+//// 
+TODO : add deail screen info when sceen is not static anymore
+
+
 
 == Managed Entity Detail Screen
 The managed entity details screen is used to display the details of the selected entity.  
 You can reach this screen via searching for a managed entity via the global search feature in the top navigation, or by selected an entity in the managed entities list:
 The information such as the serial number, firmware, memory... are retreived dynamically by the entity adapter once the entity is activated.
 
-//// 
-TODO
 include::./managed_entity_lifecycle{outfilesuffix}[]
 
 include::./managed_entity_history{outfilesuffix}[]
