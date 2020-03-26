@@ -11,10 +11,10 @@ The user guide provides provides the documentation to help you understand the ke
 - link:key_concepts{outfilesuffix}[Key Concepts]
 - link:gui_overview{outfilesuffix}[GUI Overview]
 
-== Managed Entities
+== Integration - Managed Entities
 - link:managed_entities{outfilesuffix}[Managed Entities]
 
-== Configuration
+== Integration - Configuration
 - link:configuration_microservices{outfilesuffix}[Microservices]
 - link:configuration_deployment_settings{outfilesuffix}[Deployment Settings]
 
