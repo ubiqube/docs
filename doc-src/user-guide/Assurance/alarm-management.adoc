@@ -348,137 +348,78 @@ There are many MSA components involved in the devices states acquisition
 that lead to potential alarms.For syslogs the following process shows
 configuration values for fast alarms detection :
 
-Execution periodicity
+[width="100%",cols="25%,25%,25%,25%",]
+|=======================================================================
+| | |Execution periodicity |Configuration Variable
 
-Configuration variable
+|Port 514 |  |  | 
 
-Execution periodicity
+a|
 
-Configuration variable
+↓
 
-[source,Raw]
-----
-Port 514
-----
 
-[[AlarmManagement-↓]]
-== ↓
+ |  |  | 
 
-[source,Raw]
-----
-syslogd daemon
-----
+|syslogd daemon |buffering |1 second (default = 60)
+|UBI_SMS_SYSLOG_AGREG_TIME
 
-[source,Raw]
-----
-buffering
-----
+a|
+↓
 
-[source,Raw]
-----
-1 second (default = 60)
-----
 
-[source,Raw]
-----
-UBI_SMS_SYSLOG_AGREG_TIME
-----
+ |  |  | 
 
-[[AlarmManagement-↓.1]]
-== ↓
+|parserd |polling 
+buffering |1 second 
+1 second (default = 10) |sms_parserd.conf : parse-files-lookup-period 
+UBI_ES_BULK_FILE_AGREGATION_TIME
 
-[source,Raw]
-----
-parserd
-----
+a|
+↓
 
-....
-pollingbuffering
-....
 
-[source,Raw]
-----
-1 second1 second (default = 10)
-----
+ |  |  | 
 
-[source,Raw]
-----
-sms_parserd.conf : parse-files-lookup-periodUBI_ES_BULK_FILE_AGREGATION_TIME
-----
+|load_logs.php |polling *.esdata files |1 second |called by parserd,
+periodicity hard-coded
 
-[[AlarmManagement-↓.2]]
-== ↓
+a|
+↓
 
-[source,Raw]
-----
-load_logs.php
-----
 
-[source,Raw]
-----
-polling *.esdata files
-----
+ |  |  | 
 
-[source,Raw]
-----
-1 second
-----
+|ElasticSearch |  |  | 
 
-[source,Raw]
-----
-called by parserd, periodicity hard-coded
-----
+a|
+↓
 
-[[AlarmManagement-↓.3]]
-== ↓
 
-[source,Raw]
-----
-ElasticSearch
-----
+ |  |  | 
 
-[[AlarmManagement-↓.4]]
-== ↓
+|check_alert.php |polling |10 seconds (default = 60)
+|UBI_SMS_CHECK_ALERT_PERIOD
+|=======================================================================
 
-[source,Raw]
-----
-check_alert.php
-----
 
-[source,Raw]
-----
-polling
-----
-
-[source,Raw]
-----
-10 seconds (default = 60)
-----
-
-[source,Raw]
-----
-UBI_SMS_CHECK_ALERT_PERIOD
-----
 
 In command-line on sec node, the */opt/configurator/configure --expert*
 command allows the configuration variables modifications.
 
 The menu options for the following variables:
 
-* {blank}
-+
+
 [source,Raw]
 ----
 UBI_SMS_SYSLOG_AGREG_TIME => 4: SEC Engine configuration => 3: SEC Engine syslog configuration => 2: File aggregation time for syslogs (in sec)
 ----
-* {blank}
-+
+
 [source,Raw]
 ----
 UBI_ES_BULK_FILE_AGREGATION_TIME => 11: ElasticSearch configuration => 3: SEC Engine => 6: Time to wait before closing the ElasticSearch bulk log files
 ----
-* {blank}
-+
+
 [source,Raw]
 ----
 UBI_SMS_CHECK_ALERT_PERIOD => 4: SEC Engine configuration => 1: Initial Configuration => 31: check_alert period

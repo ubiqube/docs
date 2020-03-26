@@ -116,167 +116,166 @@ configuration based on your network.
 
 *servers.conf*
 
-[[highlighter_282961]]
-link:#[?]
+....
+                                                     
 
-`                                                     `
+[Servers]
 
-`[Servers]`
+#The field Root Password will be automatically removed when applied as
+password to the node.
 
-`#The field Root Password will be automatically removed when applied ``as`
-`password to the node.`
+#hostname; Node Type; PUBIP; PRIVIP; Root Password; Backup-Of; Backup-Sync-Time; Backup-Activation-Time; Svc Ip's; Svc to start; Vars to adapt
 
-`#hostname; Node Type; PUBIP; PRIVIP; Root Password; Backup-Of; Backup-Sync-Time; Backup-Activation-Time; Svc Ip's; Svc to start; Vars to adapt`
+Web-1;GUI;10.30.18.1/255.255.255.0;192.168.10.1/255.255.255.0;;;;;svcip_gui;pack_gui;var_gui
 
-`Web-``1``;GUI;``10.30``.``18.1``/``255.255``.``255.0``;``192.168``.``10.1``/``255.255``.``255.0``;;;;;svcip_gui;pack_gui;``var``_gui`
+Web-Rep-1;GUI;10.30.18.2/255.255.255.0;192.168.10.2/255.255.255.0;;Web-1;5;5;svcip_gui;pack_repgui;var_gui
 
-`Web-Rep-``1``;GUI;``10.30``.``18.2``/``255.255``.``255.0``;``192.168``.``10.2``/``255.255``.``255.0``;;Web-``1``;``5``;``5``;svcip_gui;pack_repgui;``var``_gui`
+Sec-1;SECENGINE;10.30.18.4/255.255.255.0;192.168.10.4/255.255.255.0;;;;;svcip_sec1;pack_sec;var_rep
 
-`Sec-``1``;SECENGINE;``10.30``.``18.4``/``255.255``.``255.0``;``192.168``.``10.4``/``255.255``.``255.0``;;;;;svcip_sec1;pack_sec;``var``_rep`
+Sec-Rep-1;REPORTING;10.30.18.5/255.255.255.0;192.168.10.5/255.255.255.0;;Sec-1;5;5;svcip_sec1;pack_rep;var_sec
 
-`Sec-Rep-``1``;REPORTING;``10.30``.``18.5``/``255.255``.``255.0``;``192.168``.``10.5``/``255.255``.``255.0``;;Sec-``1``;``5``;``5``;svcip_sec1;pack_rep;``var``_sec`
+Sec-2;SECENGINE;10.30.18.7/255.255.255.0;192.168.10.7/255.255.255.0;;;;;svcip_sec2;pack_sec;var_rep
 
-`Sec-``2``;SECENGINE;``10.30``.``18.7``/``255.255``.``255.0``;``192.168``.``10.7``/``255.255``.``255.0``;;;;;svcip_sec2;pack_sec;``var``_rep`
-
-`Sec-Rep-``2``;REPORTING;``10.30``.``18.8``/``255.255``.``255.0``;``192.168``.``10.8``/``255.255``.``255.0``;;Sec-``2``;``5``;``5``;svcip_sec2;pack_rep;``var``_sec`
+Sec-Rep-2;REPORTING;10.30.18.8/255.255.255.0;192.168.10.8/255.255.255.0;;Sec-2;5;5;svcip_sec2;pack_rep;var_sec
 
  
 
-`[svcip_gui]`
+[svcip_gui]
 
-`svcip=``10.30``.``18.3``/``255.255``.``255.0`
+svcip=10.30.18.3/255.255.255.0
 
-`eth0:``1``=``192.168``.``10.3``/``255.255``.``255.0`
-
- 
-
-`[svcip_sec1]`
-
-`svcip=``10.30``.``18.6``/``255.255``.``255.0`
-
-`eth0:``1``=``192.168``.``10.6``/``255.255``.``255.0`
+eth0:1=192.168.10.3/255.255.255.0
 
  
 
-`[svcip_sec2]`
+[svcip_sec1]
 
-`svcip=``10.30``.``18.9``/``255.255``.``255.0`
+svcip=10.30.18.6/255.255.255.0
 
-`eth0:``1``=``192.168``.``10.9``/``255.255``.``255.0`
-
- 
-
-`[``var``_gui]`
-
-`UBI_VSOC_SUPPORT_SCAN=``0`
-
-`UBI_VSOC_SYSLOG_NODE=``0`
+eth0:1=192.168.10.6/255.255.255.0
 
  
 
-`[``var``_rep]`
+[svcip_sec2]
 
-`UBI_VSOC_SYSLOG_NODE=``0`
+svcip=10.30.18.9/255.255.255.0
 
- 
-
-`[``var``_sec]`
-
-`UBI_VSOC_SYSLOG_NODE=``1`
-
-`UBI_SYS_DEFAULT_GW=``10.30``.``18.254`
+eth0:1=192.168.10.9/255.255.255.0
 
  
 
-`[pack_gui]`
+[var_gui]
 
-`start=tomcat`
+UBI_VSOC_SUPPORT_SCAN=0
 
-`start=jboss`
-
-`start=ubi-webconf`
-
-`start=ubi-sms:smsbud`
-
-`start=ubi-sms:named`
-
-`start=ubi-sms:sms_sysstatd`
-
-`start=ubi-dms`
-
-`start=nfs`
-
-`start=rpcbind`
-
-`start=autofs`
+UBI_VSOC_SYSLOG_NODE=0
 
  
 
-`[pack_repgui]`
+[var_rep]
 
-`start=tomcat`
-
-`start=jboss`
-
-`start=ubi-webconf`
-
-`start=ubi-sms:named`
-
-`start=ubi-sms:sms_sysstatd`
-
-`start=ubi-dms`
-
-`start=nfs`
-
-`start=rpcbind`
-
-`start=autofs`
+UBI_VSOC_SYSLOG_NODE=0
 
  
 
-`[pack_sec]`
+[var_sec]
 
-`start=ubi-sms:sms_polld`
+UBI_VSOC_SYSLOG_NODE=1
 
-`start=ubi-sms:smsd`
-
-`start=ubi-sms:sms_syslogd`
-
-`start=ubi-sms:sms_parserd`
-
-`start=ubi-sms:sms_agregatord`
-
-`start=ubi-sms:sms_sysstatd`
-
-`start=ubi-sms:``in``.tftpd`
-
-`start=ubi-sms:named`
-
-`start=ubi-dms`
-
-`start=nfs`
-
-`start=rpcbind`
-
-`start=autofs`
+UBI_SYS_DEFAULT_GW=10.30.18.254
 
  
 
-`[pack_rep]`
+[pack_gui]
 
-`start=ubi-sms:named`
+start=tomcat
 
-`start=nfs`
+start=jboss
 
-`start=rpcbind`
+start=ubi-webconf
 
-`start=autofs`
+start=ubi-sms:smsbud
+
+start=ubi-sms:named
+
+start=ubi-sms:sms_sysstatd
+
+start=ubi-dms
+
+start=nfs
+
+start=rpcbind
+
+start=autofs
 
  
 
-`[pack_neverstart]`
+[pack_repgui]
 
-`start=ubi-filter`
+start=tomcat
+
+start=jboss
+
+start=ubi-webconf
+
+start=ubi-sms:named
+
+start=ubi-sms:sms_sysstatd
+
+start=ubi-dms
+
+start=nfs
+
+start=rpcbind
+
+start=autofs
+
+ 
+
+[pack_sec]
+
+start=ubi-sms:sms_polld
+
+start=ubi-sms:smsd
+
+start=ubi-sms:sms_syslogd
+
+start=ubi-sms:sms_parserd
+
+start=ubi-sms:sms_agregatord
+
+start=ubi-sms:sms_sysstatd
+
+start=ubi-sms:in.tftpd
+
+start=ubi-sms:named
+
+start=ubi-dms
+
+start=nfs
+
+start=rpcbind
+
+start=autofs
+
+ 
+
+[pack_rep]
+
+start=ubi-sms:named
+
+start=nfs
+
+start=rpcbind
+
+start=autofs
+
+ 
+
+[pack_neverstart]
+
+start=ubi-filter
+....
 
 servers.conf starting with ";" as delimiter of each configuration item,
 with ordered manner.  
@@ -290,11 +289,10 @@ Configuration on is defined in order below:**
 Backup-Sync-Time;  Backup-Activation-Time;  Svc Ip's;  Svc to start;
 Vars to adapt**
 
-**
 
-Here are the roles of each field in each line:**
+Here are the roles of each field in each line:
 
-*hostname - * hostname of the node. It can be Web-1, Sec-1,Sec-2, ... it
+*hostname* - hostname of the node. It can be Web-1, Sec-1,Sec-2, ... it
 can also be any name you want. Avoid using special characters at start
 of the hostname.
 
@@ -308,7 +306,7 @@ and "REPORTING" for passive type nodes for HA.
 *Root Password -* if you want to change the root password of the node,
 enter a root password here, otherwise leave it blank.
 
-*Backup-Of - * node name of which this node acts as a backup of. Leave
+*Backup-Of* - node name of which this node acts as a backup of. Leave
 it empty for active nodes.
 
 *Backup-Sync-Time - * the** **time mentioned here is the time frequency
@@ -359,7 +357,6 @@ customer access to the webportal.
 D-MSA config script - config_networks.sh which does the network
 configuration of DMSA based on the servers.conf file.
 
-[[D-MSActivatorAdministrationGuide-Share.conf]]
 ==== *Share.conf*
 
 In D-MSA, as each module is installed in a separate node, the files
@@ -373,7 +370,6 @@ functionality for which the directories are mounted.
 
 link:[image:images/Share_conf.png[Image,height=400]]
 
-[[D-MSActivatorAdministrationGuide-/opt/fmc_repository]]
 ===== */opt/fmc_repository*
 
 This is the directory where all the MSA repository files (objects,
@@ -382,9 +378,8 @@ locally on the MSA webnode and it allows the secnode to mount it on the
 directory.  The SecEngine needs access to this folder for backend
 operations, for example to generate configuration from the object and
 update devices. The webnode needs this directory to enable the user to
-create files under the MSA GUI repository. **
+create files under the MSA GUI repository. 
 
-[[D-MSActivatorAdministrationGuide-/opt/fmc_entities]]
 ===== */opt/fmc_entities*
 
 This is the directory where information regarding which repository files
@@ -392,9 +387,8 @@ are attached to which entity in MSA is stored. This directory is present
 locally on the MSA webnode and it allows the secnode to mount it on that
 directory. The SecEngine needs access to this directory for backend
 operations. The webnode needs this directory to show the link between
-different MSA entities and repository files in the MSA GUI. **
+different MSA entities and repository files in the MSA GUI. 
 
-[[D-MSActivatorAdministrationGuide-/opt/svnroot]]
 ===== */opt/svnroot*
 
 MSA has a change management module, which takes backups of device
@@ -405,9 +399,8 @@ directory in which all the SVN revisions are stored. This directory is
 originally present in webnode, and secnode is allowed to mount this
 direrctory. The SecEngine stores all the device backup revision here.
 The webnode needs this directory to show all backup revisions to the
-user in the MSA GUI.**
+user in the MSA GUI.
 
-[[D-MSActivatorAdministrationGuide-/opt/rrd]]
 ===== */opt/rrd*
 
 In the MSA GUI device homepage, there is a list of graphs to show device
@@ -415,64 +408,64 @@ uptime, CPU, traffic, etc. These graphs are based on RRD files that the
 SecEngine generates and are updated every minute based on device
 response. It also stores the graphs generated from the MSA monitoring
 profile. This directory is originally present in secnode and is allowed
-to mount from webnode. **
+to mount from webnode. 
 
 [[D-MSActivatorAdministrationGuide-Sampleshare.conf.]]
 ===== Sample share.conf.  
 
-It is not recommended to edit this configuration file.  **
+It is not recommended to edit this configuration file.  
 
 *Share.conf*
 
-[[highlighter_127670]]
-link:#[?]
+....
 
-`                                                     `
+                                                     
 
-`[GUI]`
+[GUI]
 
-`export(``700``:``751``)=/opt/fmc_repository`
+export(700:751)=/opt/fmc_repository
 
-`export(``700``:``751``)=/opt/fmc_entities`
+export(700:751)=/opt/fmc_entities
 
-`export(``700``:``751``)=/opt/svnroot`
+export(700:751)=/opt/svnroot
 
-`mount=SECENGINE(eth0:``1``):/opt/rrd;/opt/rrd/SECENGINE`
-
- 
-
-`[SECENGINE]`
-
-`export(``700``:``751``)=/opt/rrd`
+mount=SECENGINE(eth0:1):/opt/rrd;/opt/rrd/SECENGINE
 
  
 
-`mount=GUI(eth0:``1``):/opt/fmc_repository;/opt/fmc_repository`
+[SECENGINE]
 
-`mount=GUI(eth0:``1``):/opt/fmc_entities;/opt/fmc_entities`
+export(700:751)=/opt/rrd
 
-`mount=GUI(eth0:``1``):/opt/svnroot;/opt/svnroot`
+ 
+
+mount=GUI(eth0:1):/opt/fmc_repository;/opt/fmc_repository
+
+mount=GUI(eth0:1):/opt/fmc_entities;/opt/fmc_entities
+
+mount=GUI(eth0:1):/opt/svnroot;/opt/svnroot
 
  
 
  
 
-`[REPORTING]`
+[REPORTING]
 
  
 
-`# export and mount also path on which I assume backup (``in` `this`
-`case` `the sec-engine part)`
+# export and mount also path on which I assume backup (in this
+case the sec-engine part)
 
-`export(``700``:``751``)=/opt/rrd`
+export(700:751)=/opt/rrd
 
  
 
-`mount=GUI(eth0:``1``):/opt/fmc_repository;/opt/fmc_repository`
+mount=GUI(eth0:1):/opt/fmc_repository;/opt/fmc_repository
 
-`mount=GUI(eth0:``1``):/opt/fmc_entities;/opt/fmc_entities`
+mount=GUI(eth0:1):/opt/fmc_entities;/opt/fmc_entities
 
-`mount=GUI(eth0:``1``):/opt/svnroot;/opt/svnroot`
+mount=GUI(eth0:1):/opt/svnroot;/opt/svnroot
+....
 
 * *export* is what is exported from all nodes' corresponding on node
 type.
@@ -534,34 +527,33 @@ used when D-MSA HA is enabled.
 
 *sync.conf*
 
-[[highlighter_715123]]
-link:#[?]
+....
+                                                     
 
-`                                                     `
+[REPORTING]
 
-`[REPORTING]`
+rsync=SECENGINE:/opt/sms/routerlogs/
 
-`rsync=SECENGINE:/opt/sms/routerlogs/`
+rsync=SECENGINE:/opt/sms/spool/parser/
 
-`rsync=SECENGINE:/opt/sms/spool/parser/`
+rsync=SECENGINE:/opt/rrd/
 
-`rsync=SECENGINE:/opt/rrd/`
+rsync=SECENGINE:/opt/sms/bin/php/
 
-`rsync=SECENGINE:/opt/sms/bin/php/`
+rsync=SECENGINE:/opt/sms/share/configuration-pattern/
 
-`rsync=SECENGINE:/opt/sms/share/configuration-pattern/`
-
-`rsync=SECENGINE:/opt/sms/templates/conf/custom/`
+rsync=SECENGINE:/opt/sms/templates/conf/custom/
 
  
 
-`[GUI]`
+[GUI]
 
-`rsync=GUI:/opt/fmc_repository/`
+rsync=GUI:/opt/fmc_repository/
 
-`rsync=GUI:/opt/fmc_entities/`
+rsync=GUI:/opt/fmc_entities/
 
-`rsync=GUI:/opt/svnroot/`
+rsync=GUI:/opt/svnroot/
+....
 
 Log for the file synchronization:
 
@@ -591,100 +583,98 @@ Theses variables were those defined on each line of *servers.conf*
 
 *variables2adapt.conf*
 
-[[highlighter_739169]]
-link:#[?]
+....
+                                                     
 
-`                                                     `
+# VARIABLE=x.y.z
 
-`# VARIABLE=x.y.z`
+# EXPOSED VARIABLES:
 
-`# EXPOSED VARIABLES:`
+#
 
-`#`
+# ${NAMESERVER}
 
-`# ${NAMESERVER}`
+# ${PUBIP}
 
-`# ${PUBIP}`
+# ${SVCIP}
 
-`# ${SVCIP}`
+# ${PRIVIP}
 
-`# ${PRIVIP}`
+# ${PUBIPV6}
 
-`# ${PUBIPV6}`
+# ${MASKV6}
 
-`# ${MASKV6}`
-
-`# ${GWV6}`
+# ${GWV6}
 
  
 
-`UBI_SMS_DISASTER_SVCIP=${SVCIP}`
+UBI_SMS_DISASTER_SVCIP=${SVCIP}
 
-`UBI_SMS_FTPSERVER_SVCIP=${SVCIP}`
+UBI_SMS_FTPSERVER_SVCIP=${SVCIP}
 
-`UBI_SMS_IPSECGW_SVCIP=${SVCIP}`
+UBI_SMS_IPSECGW_SVCIP=${SVCIP}
 
-`UBI_SMS_SVCIP=${SVCIP}`
+UBI_SMS_SVCIP=${SVCIP}
 
-`UBI_SMS_SYSLOG_DISASTER_SVCIP=${SVCIP}`
+UBI_SMS_SYSLOG_DISASTER_SVCIP=${SVCIP}
 
-`UBI_SMS_SYSLOG_SVCIP=${SVCIP}`
+UBI_SMS_SYSLOG_SVCIP=${SVCIP}
 
-`UBI_SMS_SYSLOG_PUBIP=${SVCIP}`
+UBI_SMS_SYSLOG_PUBIP=${SVCIP}
 
-`UBI_SMS_PRIVIP=${SVCIP}`
+UBI_SMS_PRIVIP=${SVCIP}
 
-`UBI_SMS_PUBIP=${SVCIP}`
+UBI_SMS_PUBIP=${SVCIP}
 
-`UBI_VSOC_SES_SVCIP=${SVCIP}`
+UBI_VSOC_SES_SVCIP=${SVCIP}
 
-`UBI_SYS_EQUIPMENTS_NAT_IP=${SVCIP}`
-
- 
-
-`UBI_VSOC_MAINTENANCEIP=${PRIVIP}`
-
-`UBI_SYS_MAINTENANCE_IP=${PRIVIP}`
-
-`UBI_SYS_MAINTENANCE_MASK=${PRIVMASK}`
+UBI_SYS_EQUIPMENTS_NAT_IP=${SVCIP}
 
  
 
-`UBI_SYS_EQUIPMENTS_IP=${PUBIP}`
+UBI_VSOC_MAINTENANCEIP=${PRIVIP}
 
-`UBI_SYS_EQUIPMENTS_MASK=${PUBMASK}`
+UBI_SYS_MAINTENANCE_IP=${PRIVIP}
 
- 
-
-`UBI_SYS_EQUIPMENTS_IPV6=${PUBIPV6}`
-
-`UBI_SYS_EQUIPMENTS_MASKV6=${MASKV6}`
-
-`UBI_SYS_DEFAULT_GWV6=${GWV6}`
+UBI_SYS_MAINTENANCE_MASK=${PRIVMASK}
 
  
 
-`UBI_CENTRALIZED_NODE_NAME=web-``1`
+UBI_SYS_EQUIPMENTS_IP=${PUBIP}
 
-`UBI_DISTRIBUTED_SMSD=``1`
-
-`UBI_VSOC_IS_DMSA_NODE=``1`
+UBI_SYS_EQUIPMENTS_MASK=${PUBMASK}
 
  
 
-`UBI_VSOC_NAME=${NAMESERVER}`
+UBI_SYS_EQUIPMENTS_IPV6=${PUBIPV6}
 
-`SMARTSOC_TLA=${NAMESERVER}`
+UBI_SYS_EQUIPMENTS_MASKV6=${MASKV6}
+
+UBI_SYS_DEFAULT_GWV6=${GWV6}
 
  
 
-`UBI_SVN_PRIVIP=``192.169``.``10.3`
+UBI_CENTRALIZED_NODE_NAME=web-1
 
+UBI_DISTRIBUTED_SMSD=1
+
+UBI_VSOC_IS_DMSA_NODE=1
+
+ 
+
+UBI_VSOC_NAME=${NAMESERVER}
+
+SMARTSOC_TLA=${NAMESERVER}
+
+ 
+
+UBI_SVN_PRIVIP=192.169.10.3
+....
 [[D-MSActivatorAdministrationGuide-Configuration.1]]
 === Configuration
 
 [[D-MSActivatorAdministrationGuide-ConfigFiles]]
-==== Config Files****
+==== Config Files
 
 . Copy servers.conf.sample to servers.conf and adapt the configuration
 according to your network.
@@ -693,7 +683,7 @@ according to your network.
 . Copy variables2adapt.conf.sample to variables2adapt.conf.
 
 [[D-MSActivatorAdministrationGuide-ConfigScripts]]
-==== Config Scripts****
+==== Config Scripts
 
 The configuration can be done by launching a set of scripts from the
 webnode, which is the centralized node.    
@@ -731,22 +721,22 @@ D-MSA configurations (servers.conf, sync.conf, share.conf,
 variable2adapt.conf) to all the nodes in D-MSA.
 
 |*config_network.sh* |Will set up networks files on all nodes (interface
-files, /etc/hosts).****Avoid launching this script on a deployed D-MSA
-since it will launch ubisysconf, configure, and restart the network. **
+files, /etc/hosts).Avoid launching this script on a deployed D-MSA
+since it will launch ubisysconf, configure, and restart the network. 
 This script uses servers.conf file to configure the D-MSA network.
 
 |*config_checkconfig.sh* a|
 Will setup the chkconfig system to start automatically needed services
-on all nodes. ** *                                                *
+on all nodes.
 
 It is responsible for the activation and the deactivation service based
 on the node type.
 
-|*config_shares.sh* |Will setup export/fstab files on all nodes.****Will
+|*config_shares.sh* |Will setup export/fstab files on all nodes.Will
 setup autofs config files.
 
 |*config_restart_all.sh* |Will re-activate cron job for NFS mount
-checking and remount everything.****You may use --reboot.  In this case,
+checking and remount everything.You may use --reboot.  In this case,
 the cron job of the NFS sharing checker will be set and reboot-only will
 occur.
 |===
@@ -1197,8 +1187,7 @@ command in the passive node
 
 The following describes how each status is set in DB.
 
-[[D-MSActivatorAdministrationGuide-SecEngineStatus]]
-======= *Sec Engine Status*
+====== *Sec Engine Status*
 
 The centralized node, which is a webnode, will monitor the active
 SecEngine status using the following script:
@@ -1217,8 +1206,7 @@ The log file is available here:
 Node Sec (172.10.15.190) isalive 1
 ----
 
-[[D-MSActivatorAdministrationGuide-HAFailoverStatus&NodeName&NodeIP]]
-======= *HA Failover Status & Node Name & Node IP*
+====== *HA Failover Status & Node Name & Node IP*
 
 All three statuses are set by the script which is run manually during
 the initial D-MSA setup.

@@ -17,6 +17,7 @@ Distributed MSActivator setup.
 
 NOTE: The feature is partially available in MSA-17.1.1-1 and requires
 some manual steps to be activated.
+Starting from MSA-17.1.1-2, the feature can be fully activated with the MSActivator configuration tool.
 
 == How to Activate the Encryption (v17.1.1P02+)
 

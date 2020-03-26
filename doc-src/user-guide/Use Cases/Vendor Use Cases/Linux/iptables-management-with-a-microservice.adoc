@@ -21,6 +21,8 @@ guide 
 http://confluence.ubiqube.com/display/MSA171/Simple+Managed+Security+Service+with+a+Linux+Firewall[Simple Managed Security Service with a Linux Firewall] to learn how to activate
 a Linux device on the MSActivator.
 
+NOTE: Make sure that your Linux instance allows SSH connection as root and that the iptables service is started.
+
 [[iptablesManagementwithaMicroservice-BuildtheMicroservice]]
 == Build the Microservice
 

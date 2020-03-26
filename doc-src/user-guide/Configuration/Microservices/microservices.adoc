@@ -1,0 +1,45 @@
+= Microservices
+:toc: left
+:toc-title: Content
+:imagesdir: ../../resources/
+:ext-relative: adoc
+
+[[overview]]
+Overview
+--------
+
+The MSActivator Microservices engine is designed as a
+networking object-based programming language.
+
+Any feature of any device can be managed with one or more Microservices.
+Microservice designers define the variables and implement the Create |
+Read | Update | Delete method.
+
+This open and agile approach is required to provide an abstraction layer
+on top of any device from core to the edge.
+
+The implementation of the functions allows us to create, update, or
+delete sub-parts of the configuration on our managed devices. A function
+can also be implemented to import the device configuration into the
+MSActivator configuration database.
+
+Microservices can be used to manage a wide variety of services on
+numerous types of devices, such as network equipment, virtualization
+infrastructure managers, or even Linux servers.
+
+Any feature of any device may be managed with Microservices. The
+Microservice developer defines the variables and the Create | Read |
+Update | Delete methods. 
+
+Microservices can be designed graphically in the MSActivator developer
+portal. Scripting is not mandatory but simple programming functions,
+such as conditional statements, loops, and variable assignments, are
+available to incorporate advanced function behaviors.
+
+== Video Tutorial
+=== Using Microservices
+
+video::videos/MSActivator-16.2-Using-Microservices.mp4[video,width=500,height=380]
+
+=== Microservice Design
+video::videos/MSActivator-16.2-Designing-a-Microservice.mp4[video,width=500,height=380]

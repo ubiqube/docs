@@ -403,8 +403,7 @@ Currently, the only way to find the root cause is to check the file
 
 An example of an error found in the log
 
-[[highlighter_487039]]
-link:#[?]
+....
 
 
 
@@ -418,7 +417,7 @@ key test
 2011/08/12:12:28:42:(E):smsd:ZTD66206:JSCALLCOMMAND:: PHPERROR: [256] Smarty error: [in var:2313098ec4aae945b1a201eb153cf778 line 3]: syntax error: 'if'
 statement requires arguments (Smarty_Compiler.class.php, line 1270) error on line 1093
 in file /opt/sms/bin/php/smarty/Smarty.class.php
-
+....
 This indicates that in the file
 
 ....
@@ -437,7 +436,6 @@ an error occured in the 3rd line of the template
 syntax error: 'if' statement requires arguments
 ....
 
-[[MicroserviceTemplatingwithPHPSmarty-Usageofthe{$object_id}variable]]
 === Usage of the \{$object_id} variable 
 
 The \{$object_id} variable is used to reference objects into the
@@ -462,8 +460,7 @@ When writing a template *\{$object_id}* can be used in expressions like
 
 The CREATE template looks like:
 
-[[highlighter_287413]]
-link:#[?]
+....
 
 
 
@@ -526,3 +523,4 @@ no shutdown
     </operation>
 
 </command>
+....

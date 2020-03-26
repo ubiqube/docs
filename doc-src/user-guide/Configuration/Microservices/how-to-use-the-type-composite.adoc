@@ -6,9 +6,8 @@
 
 [[main-content]]
 NOTE: Source Code
-
 The source code for this tutorial is available on GitHub
-at: https://github.com/openmsa/Microservices/tree/master/Tutorials/LINUX/Generic/Tutorial3
+at: link:[https://github.com/openmsa/Microservices/tree/master/Tutorials/LINUX/Generic/Tutorial3]
 
 The variable type composite provide the means to add control over the
 behaviour of the Microservice user form.

@@ -29,25 +29,22 @@ evaluation to the object definition.
 
 The custom constraint is implemented as a smarty template:
 
-[[highlighter_721612]]
-link:#[?]
 
-``
+....
+{if !empty($params.av) 
 
-`{``if` `!empty($params.av) `
+    OR !empty($params.webfilter) 
 
-`    ``OR !empty($params.webfilter) `
+    OR !empty($params.spamfilter)}
 
-`    ``OR !empty($params.spamfilter)}`
+    {if empty($params.scanport)}
 
-`    ``{``if` `empty($params.scanport)}`
+    Scan Port must be set
 
-`    ``Scan Port must be set`
+    {/if}
 
-`    ``{/``if``}`
-
-`{/``if``}`
-
+{/if}
+....
 The evaluation of the constraint will be done when the user clicks on
 the "form save" button.
 

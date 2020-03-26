@@ -6,7 +6,6 @@
 
 [[main-content]]
 NOTE: The sources of this tutorial are available on GitHub at:
-
 In this tutorial you will learn how to use a Microservice to act as a
 data provider for a Workflow variable.
 
@@ -48,61 +47,39 @@ link:[image:images/image2019-5-9_16-12-57.png[Image,width=800]]
 
 We can do a simple test by adding a user directly on the Linux device
 
-[[highlighter_383594]]
-link:#[?]
+....                            
 
-`                                     `
-
-`[root@Demo17-1 ~]``# useradd aaa_test123`
-
-`[root@Demo17-1 ~]``#`
+[root@Demo17-1 ~]# useradd aaa_test123
+[root@Demo17-1 ~]#
+....
 
 Then execute the Workflow process "refresh user", the code is available
 on github but below is the PHP code of the task. This task is calling a
 PHP function synchronize_objects_and_verify_response to call the IMPORT
 functions of the Microservices attached to the managed device
 
-[[highlighter_640564]]
-link:#[?]
+....
 
-`                                     `
+                                     
+<?php
+function list_args()
+{
 
-`<?php`
+}
 
+$id = substr($context['device'], 3);
+$response = synchronize_objects_and_verify_response($id);
+$response = json_decode($response, true);
+if ($response['wo_status'] !== ENDED) {
+    $response = prepare_json_response(FAILED, $response['wo_comment'], $context, true);
+    echo $response;
+    exit;
+}
  
-
-`function` `list_args()`
-
-`{`
-
-`}`
-
- 
-
-`$id` `= ``substr``(``$context``[``'device'``], 3);`
-
-`$response` `= synchronize_objects_and_verify_response(``$id``);`
-
-`$response` `= json_decode(``$response``, true);`
-
-`if` `(``$response``[``'wo_status'``] !== ENDED) {`
-
-`    ``$response`
-`= prepare_json_response(FAILED, ``$response``[``'wo_comment'``], ``$context``, true);`
-
-`    ``echo` `$response``;`
-
-`    ``exit``;`
-
-`}`
-
- 
-
-`task_success(``'Task OK'``);`
-
-`task_error(``'Task FAILED'``);`
-
-`?>`
+task_success('Task OK');
+task_error('Task FAILED');
+?>
+....
 
 Calling this function is equivalent to click on "Synchronize with
 device" on the Microservice management console.

@@ -34,14 +34,12 @@ VM instances on an OpenStack cloud with "servers.xml" as its name. To
 import all the instances of servers' Microservice definitions, do the
 following in the PHP implementation of the task:
 
-[[highlighter_104896]]
-link:#[?]
+....
 
-``
+$arr= array("servers");
 
-`$arr``= ``array``(``"servers"``);`
-
-`$response` `= import_objects(``$openstack_device_id``, ``$array``);`
+$response = import_objects($openstack_device_id, $array);
+....
 
 _$openstack_device_id_ is the numeric part of the MSActivator device ID,
 representing the OpenStack device in the MSActivator.
@@ -52,44 +50,38 @@ link:../Configuration/Microservices/microservices-order-command-rest-api.adoc[Mi
 Order Command REST API]. For a more simplified usage of that encoded
 JSON, it can be decoded into an array variable in PHP, as shown below:
 
-[[highlighter_612484]]
-link:#[?]
+....
+$response = json_decode($response, true);
 
-``
+    if ($response['wo_status'] !== ENDED) {
 
-`$response` `= json_decode(``$response``, true);`
+        //There is some error while executing import_objects() library method, hence the 'wo_status' value is not "ENDED"
 
-`    ``if` `(``$response``[``'wo_status'``] !== ENDED) {`
+        $response = json_encode($response);
 
-`        ``//There is some error while executing import_objects() library method, hence the 'wo_status' value is not "ENDED"`
+        return $response;
 
-`        ``$response` `= json_encode(``$response``);`
+    }
 
-`        ``return` `$response``;`
+//The response in now decoded into array variable, now extract the interested section of the array
 
-`    ``}`
-
-`//The response in now decoded into array variable, now extract the interested section of the array`
-
-`$servers` `= ``$response``[``'wo_newparams'``][``"servers"``];`
+$servers = $response['wo_newparams']["servers"];
+....
 
 The _$servers_ array can now be accessed/iterated as shown below:
 
-[[highlighter_106795]]
-link:#[?]
+....
 
-``
+foreach ($servers as $server_object_id
+=> $server_params) {
 
-`foreach` `(``$servers` `as` `$server_object_id`
-`=> ``$server_params``) {`
+//for each servers instance extract instance variables, for example is name is an instance variable in servers microservice
 
-`//for each servers instance extract instance variables, for example is name is an instance variable in servers microservice`
+        $name = $server_params['name'];
 
-`        ``$name` `= ``$server_params``[``'name'``];`
+}
+....
 
-`}`
-
-[[HowtoConsumeMicroserviceMethodsfromWorkflow-ConsumeUPDATE/CREATE/DELETEMethodsofMicroservicesfromWorkflow]]
 == Consume UPDATE/CREATE/DELETE Methods of Microservices from Workflow
 
 Under *Reference -> Common -> Library* in the MSActivator repository,
@@ -109,55 +101,53 @@ decoded JSON object in PHP array variable.
 
 For example, if the http body has to have the following JSON data:
 
-[[highlighter_224553]]
-link:#[?]
+....
 
-``
 
-`{``'address_ip_netmask'``:{`
 
-`    ``first_address":{`
+{'address_ip_netmask':{
 
-`        ``"address"``:``"10.20.30.40"``,`
+    first_address":{
 
-`        ``"masklen"``:``"2"`
+        "address":"10.20.30.40",
 
-`        ``}`
+        "masklen":"2"
 
-`    ``}`
+        }
 
-`}`
+    }
 
+}
+....
 The equivalent $object_parameters will have to be defined such as in the
 following in PHP:
+....
 
-[[highlighter_399679]]
-link:#[?]
 
-``
 
-`$object_parameters` `= ``array``(``'address_ip_netmask'`
-`=>                `
+$object_parameters = array('address_ip_netmask'
+=>                
 
-`    ``array``(``"first_address"` `=>`
+    array("first_address" =>
 
-`        ``array``(``'address'` `=> ``"10.20.30.40"``,`
+        array('address' => "10.20.30.40",
 
-`              ``'masklen'` `=> ``"24"`
+              'masklen' => "24"
 
-`             ``)`
+             )
 
-`         ``)`
+         )
 
-`     ``);`
+     );
+....
 
 Then, invoke the method in the PHP implementation of the task as shown
 below:
 
-[[highlighter_575525]]
-link:#[?]
+....
 
-``
 
-`$response`
-`= execute_command_and_verify_response(``$device_id``, ``'CREATE'``, ``$object_parameters``, ``"CREATE IP NETMASK"``, 180, 180);`
+
+
+$response = execute_command_and_verify_response($device_id, 'CREATE', $object_parameters, "CREATE IP NETMASK", 180, 180);
+....

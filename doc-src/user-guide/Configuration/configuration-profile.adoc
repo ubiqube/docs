@@ -6,14 +6,14 @@
 
 [[main-content]]
 Configuration profiles are a collection
-of link:/documentation/microservices/[Microservices] and configuration
+of link:../Configuration/Microservices/microservices.adoc[Microservices] and configuration
 templates that can be grouped and associated with devices to build a
 consistent configuration.
 
 A managed device can only be associated with one configuration profile.
 
-A link:/documentation/configuration-template/[configuration
-template] and/or a link:/documentation/microservices[Microservice] can
+A link:++./Configuration Template/configuration-template.adoc++[configuration
+template] and/or a link:../Configuration/Microservices/microservices.adoc[Microservices] can
 be associated with multiple configuration profiles.
 
 [[ConfigurationProfile-VideoTutorial]]

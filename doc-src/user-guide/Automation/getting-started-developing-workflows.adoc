@@ -66,69 +66,24 @@ and add one task to this process. This task will simply display a
 message to the process execution console.
 
 link:[image:images/howto_workflow_4.png[Image,width=800]]
+....
 
-[[highlighter_916878]]
-link:#[?]
-
-1
-
-2
-
-3
-
-4
-
-5
-
-6
-
-7
-
-8
-
-9
-
-10
-
-11
-
-12
-
-13
-
-14
-
-``
-
-`<?php`
-
-`/**`
-
-` ``* This file is necessary to include to use all the in-built libraries of /opt/fmc_repository/Reference/Common`
-
-` ``*/`
-
-`require_once`
-`'/opt/fmc_repository/Process/Reference/Common/common.php'``;`
-
-`/**`
-
-` ``* List all the parameters required by the task`
-
-` ``*/`
-
-`function` `list_args() { }`
-
-`/**`
-
-` ``* End of the task do not modify after this point`
-
-` ``*/`
-
-`task_exit(ENDED, ``"workflow initialised"``);`
-
-`?>`
-
+<?php
+/**
+ * This file is necessary to include to use all the in-built libraries of /opt/fmc_repository/Reference/Common
+ */
+require_once
+'/opt/fmc_repository/Process/Reference/Common/common.php';
+/**
+ * List all the parameters required by the task
+ */
+function list_args() { }
+/**
+ * End of the task do not modify after this point
+ */
+task_exit(ENDED, "workflow initialised");
+?>
+....
 Once done, save the workflow.
 
 Find a green "+" icon with the label "create instance" beside it. Click
@@ -150,128 +105,39 @@ For the print process, use the process type "Update". It will take one
 parameter that will be used to print your message. Use the code below to
 create a task that will read the name from the user form and print it in
 the live console.
+....
+<?php
+/**
+ * This file is necessary to include to use all the in-built libraries of /opt/fmc_repository/Reference/Common
+ */
+require_once
+'/opt/fmc_repository/Process/Reference/Common/common.php';
+/**
+ * List all the parameters required by the task
+ */
+function list_args()
+{
+  create_var_def('name', 'String');
+}
+check_mandatory_param('name');
 
-[[highlighter_999503]]
-link:#[?]
+/**
+ * get the value of name from the context and create a variable out of it
+ */
+$name=$context['name'];
+/**
+ * print the value in the log file /opt/jboss/latest/log/process.log 
+ */
+logToFile($name);
 
-1
 
-2
+/**
+ * End of the task do not modify after this point
+ */
+task_exit(ENDED, "Hello " . $name);
 
-3
-
-4
-
-5
-
-6
-
-7
-
-8
-
-9
-
-10
-
-11
-
-12
-
-13
-
-14
-
-15
-
-16
-
-17
-
-18
-
-19
-
-20
-
-21
-
-22
-
-23
-
-24
-
-25
-
-26
-
-27
-
-28
-
-29
-
-``
-
-`<?php`
-
-`/**`
-
-` ``* This file is necessary to include to use all the in-built libraries of /opt/fmc_repository/Reference/Common`
-
-` ``*/`
-
-`require_once`
-`'/opt/fmc_repository/Process/Reference/Common/common.php'``;`
-
-`/**`
-
-` ``* List all the parameters required by the task`
-
-` ``*/`
-
-`function` `list_args()`
-
-`{`
-
-`  ``create_var_def(``'name'``, ``'String'``);`
-
-`}`
-
-`check_mandatory_param(``'name'``);`
-
- 
-
-`/**`
-
-` ``* get the value of name from the context and create a variable out of it`
-
-` ``*/`
-
-`$name``=``$context``[``'name'``];`
-
-`/**`
-
-` ``* print the value in the log file /opt/jboss/latest/log/process.log `
-
-` ``*/`
-
-`logToFile(``$name``);`
-
- 
-
-`/**`
-
-` ``* End of the task do not modify after this point`
-
-` ``*/`
-
-`task_exit(ENDED, ``"Hello "` `. ``$name``);`
-
- 
-
-`?>`
+?>
+....
 
 Execute this process and watch the result on the console. It should look
 similar to what's shown below (except with your name).

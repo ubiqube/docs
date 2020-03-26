@@ -1,0 +1,56 @@
+<div class="documentation-content">
+
+    <div id="main-content" class="wiki-content">
+      <h2 id="ConfigurationTemplate-ConfigurationTemplateattheProfileLevel"><span class="mw-headline">Configuration Template at the Profile Level </span></h2>
+      <p>Configuration templates can be grouped together using a <a href="/documentation/configuration-profile/">Configuration Profile</a>.</p>
+      <p><a href="/documentation/managed-devices/">Managed devices</a> can be attached to a <a href="/documentation/configuration-profile/">Configuration Profile</a>.</p>
+      <p>This is useful when a managed service is defined as a group of configuration templates and/or Microservices, and has to be applied consistently to multiple <a href="/documentation/managed-devices/">Managed Devices</a>.</p>
+      <p>The SecEngine module will resolve the template for each device's configuration variables and update the device's configuration, one by one, with the created configuration.</p>
+      <div class="confluence-information-macro confluence-information-macro-information conf-macro output-block" data-hasbody="true" data-macro-name="info"><span class="aui-icon aui-icon-small aui-iconfont-info confluence-information-macro-icon"> <i class="fa fa-info" aria-hidden="true"></i></span>
+          <div class="confluence-information-macro-body">
+              <p>It is possible to add a specific template per device (see section below).</p>
+          </div>
+      </div>
+      <h2 id="ConfigurationTemplate-ConfigurationTemplateattheDeviceLevel"><span class="mw-headline">Configuration Template at the Device Level </span></h2>
+      <p>In addition to the configuration profile, it is possible to associate a template directly to a device.</p>
+      <h3 id="ConfigurationTemplate-Howtoaddconfigurationtemplatestoadevice"><span class="mw-headline">How to add configuration templates to a device </span></h3>
+      <p>From the device home page menu, select <strong>General -&gt; Edit Configuration Files</strong></p>
+      <p>Adding configuration templates to a device is similar to adding a template to a configuration profile:</p>
+      <ol>
+          <li>Select a template from the <a href="/documentation/configuration-repository/">Configuration Repository</a>.</li>
+          <li>Configure the variables attached to the template on the bottom panel.</li>
+          <li>Save.</li>
+      </ol>
+      <p>
+        <a class="image-popup-fit-width" href="https://d20ftpvh66dtxq.cloudfront.net/EditConfigurationFilesDevice.png">
+              <img src="https://d20ftpvh66dtxq.cloudfront.net/EditConfigurationFilesDevice.png" width="800" alt="Image"></a>
+      </p>
+      <h3 id="ConfigurationTemplate-Viewingattachedfiles"><span class="mw-headline">Viewing attached files </span></h3>
+      <p>From the device home page, select the <strong>Configuration files</strong> tab:</p>
+      <p>
+        <a class="image-popup-fit-width" href="https://d20ftpvh66dtxq.cloudfront.net/Device_config_files.png">
+              <img src="https://d20ftpvh66dtxq.cloudfront.net/Device_config_files.png" width="800" alt="Image"></a>
+      </p>
+      <p>This tab shows all the templates attached to the device.</p>
+      <ul>
+          <li>In black: the template that are directly attached to the device</li>
+          <li>In gray: the templates that are attached to a profile (if the device is attached to a configuration profile)</li>
+      </ul>
+      <p><img src="https://d20ftpvh66dtxq.cloudfront.net/Script_post.gif' %}" height="16">&nbsp;and&nbsp;<img  height="16" src="https://d20ftpvh66dtxq.cloudfront.net/Script_pre.gif"> indicate if the template was attached as a pre-configuration or a post-configuration template.</p>
+      <h3 id="ConfigurationTemplate-Viewingtheresolvedtemplates"><span class="mw-headline">Viewing the resolved templates </span></h3>
+      <p>As explained in the <a href="/documentation/configuration-repository/">Configuration Repository</a> page, configuration files that can be uploaded in the repository are templates.<br> Therefore, they contain variables that have to be declared.</p>
+      <p>Templates can also contain variables coming from the database. The variables are available through the entry point <strong>{$SD}</strong> see: <a href="/documentation/database-template-variables/">Database template variables</a></p>
+      <p>Once templates are associated to a device (directly or through a profile), it is possible to view the resulting configuration file:</p>
+      <ul>
+          <li>Right click on the attached file and choose <strong>View generated file</strong>:</li>
+      </ul>
+      <p>
+        <a class="image-popup-fit-width" href="https://d20ftpvh66dtxq.cloudfront.net/Device_config_files_resolved_template.png">
+              <img src="https://d20ftpvh66dtxq.cloudfront.net/Device_config_files_resolved_template.png" width="800" alt="Image"></a>
+      </p>
+      <p><a class="external-link" title="https://training.ubiqube.com/17.1/wikiTraining/index.php/Image:Device_config_files_resolved_template.png" rel="nofollow" href="https://training.ubiqube.com/17.1/wikiTraining/index.php/Image:Device_config_files_resolved_template.png"><br> </a></p>
+  </div>
+  
+  
+          </div>
+        </div>

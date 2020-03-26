@@ -22,21 +22,13 @@ In order to ensure that a Workflow can be executed from both the UI and
 the command line, it should have some code which will copy the
 parameters from $patameters to $context. The code is as follows:
 
-[[highlighter_942678]]
-link:#[?]
+....
 
-`                                     `
-
-`if``(isset(``$parameters``) ){`
-
-`    ``$context``[``'<param_name_1>'``] = ``$parameters``[``'<param_name_1>'``];`
-
-`    ``$context``[``'<param_name_2>'``] = ``$parameters``[``'<param_name_2>'``];`
-
-`   ``......`
-
-`   ``....`
-
-` ``}`
-
+if(isset($parameters) ){
+    $context['<param_name_1>'] = $parameters['<param_name_1>'];
+    $context['<param_name_2>'] = $parameters['<param_name_2>'];
+   ......
+   ....
+ }
+....
 link:[image:images/MSA-2878.gif[Image,height=250]]

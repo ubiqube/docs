@@ -51,26 +51,18 @@ necessary) a customer.
 Click on your customer name to go into the customer tenant space.
 
 Click the “Create device” button (top right)
-[.confluence-embedded-file-wrapper .confluence-embedded-manual-size]#
 image:images/aF81duY0dpdArEXbaFI0TKM6l4hC2U5VAEIDkTh-fFTXr0ZPGQBmWkf4SGzczjrhXW_dew_zXW_YGI-RIHOypgLSz-tdbgB0fuuxQ-ZAT4jB-uiuD6WauPz1oSgV5vpdDQnT6vyp[image,width=22,height=22]
-#
 
 Select the "Expert" view (top right button):
-[.confluence-embedded-file-wrapper .confluence-embedded-manual-size]#
 image:images/CiTzBw0WVBxLQgU7HwpOApmQebmS3Tqq2bTbkzbrUyO_mPCg86k8Q987GsoaFRXqcjnj3WJdYi2393Bu61fp5PHEkZzzLqcQPFsIi5zZ3TPUn6rYEK0E-A_ORU4BSjHdMZ4eeQLF[image,width=150,height=30]
-#
 
-[.confluence-embedded-file-wrapper .confluence-embedded-manual-size]#
 image:images/3-l2pnPJ2-CWyVkllFpfoIRusl5F48-oVxdp-dn6aAttbYmNvvWJR2Wqpky3USyOcC3K8c9wE95__bb6K94DY6HpkGA7YT36kkZMxtJVCZWtH2cguG09zCHpT1Dqb7e50e0naFkK[image,width=800]
-#
 
 It’s important to set the correct manufacturer and model because this is
 how the Device Adaptor is selected. This cannot be changed once the
 device is created.
 
-[.confluence-embedded-file-wrapper .image-left-wrapper .confluence-embedded-manual-size]#
 image:images/-FAOuCwqlxkFJHsvXvXrMRPRIMJnBzWu2wkvK720BXNxoPkvaOg-9CbZw0KCJXF9Tk2RVH02qZwvy-DxNq7eTvZN9K52L07pHESiffzp3e6HNpvqn1NNiTRoLa1zNdhzlbG80mSP[image,width=800]
-#
 
  
 
@@ -97,21 +89,16 @@ Click the “Details” tab.
 Select “Actions” (dropdown on right), then select “Initial
 provisioning”.
 
-[.confluence-embedded-file-wrapper .confluence-embedded-manual-size]#
-image:images/ERMgKdKAtgaY8sKbXQ3YtopsG3c-00lXB7cDBePtNHeGiuqob7cOXfA5JR6igOIXs-_p7oE_zck_bBI86aNfrKPw0ocNvBJ7R-omYtAvCOU4Yj0b1Mgqw7prpu3v-u57_2tutrS_[image,width=800]
-#
+image::https://lh3.googleusercontent.com/ERMgKdKAtgaY8sKbXQ3YtopsG3c-00lXB7cDBePtNHeGiuqob7cOXfA5JR6igOIXs-_p7oE_zck_bBI86aNfrKPw0ocNvBJ7R-omYtAvCOU4Yj0b1Mgqw7prpu3v-u57_2tutrS_[image,width=800]
 
 Click on
-[.confluence-embedded-file-wrapper .confluence-embedded-manual-size]#
 image:images/Yisi46fUXd2cNR8CwoOj_utgIXVd66mREBNTI05VwfBw8SlIQHRmTySY8P-5lTtg3Ns9okCZSWmZ6uFY_sPL_9aoLr15aIUytX2WMw1XEOtL-10Q-8W20zcLJr_gTa1CJzRDb-5l[image,width=16,height=16]
 # to update the status of the provisioning.
 
 The provisioning only takes a few seconds and the status should turn
 green.
 
-[.confluence-embedded-file-wrapper .image-left-wrapper .confluence-embedded-manual-size]#
 image:images/KVhqQQw7hp_7ByQn6cVGY8-hdGCJImIrx7pF0aQLiJxPP-F86pUXNZvyWbxTyQ-EL6qY0VBLh_QmYh_UGKdsaLzAYp03ZRSwPPv1W9dFpYn7itVy1SBJVRww9rPv0qJCDj93hp1V[image,width=800]
-#
 
  
 
@@ -130,9 +117,7 @@ one minute).
 The page does not refresh automatically, you need to reload the browser
 page manually.
 
-[.confluence-embedded-file-wrapper .confluence-embedded-manual-size]#
 image:images/cyV0H7c2M4pMvENzRSqz1dPk_1TO9j_7dTfartLBF9IZ9E6NNvskcNWf3lJN1vKIFuVfZgzWiF_WRoV8A2kJ_x4pglUD2ErTNRoXbeKc7unrgckcLkAKbgHo2oRvnHNGl8mq-l2X[image,width=800]
-#
 
 Once the device is activated and it’s status is green, we can verify
 that its running configuration was properly archived in the
@@ -147,15 +132,13 @@ the configuration change management view.
 Click on the tab “History” then click the “Change Mgt” button (top
 right).
 
-[.confluence-embedded-file-wrapper .confluence-embedded-manual-size]#
+
 image:images/09t2Xsmi98t9wWwLj9DFKg6NZdIbO4gTr5ozyEaxyrBEbFoDKCWNkAH6QYL8H3T9oNXOUina1spj5Mig4JzVsulYojE-GL7ha_lGlll4_kJk_LRPYwm2K8o2LPQdzXV1RWnUPjho[image,width=800]
-#
 
 The change management GUI pops-up.
 
-[.confluence-embedded-file-wrapper .confluence-embedded-manual-size]#
+
 image:images/EWzUJP5JKTFVXQQkV16hiCARpGP7ejJQc7VL0_1yCrdSF4oeqLOssElnEJtYkAk1vPHlTHRuqYoUk2RxEmuTNed9C_-MCquP7gzsqx64zHnT7uTJG9r_Bb5df7R-3uxUWvjhc_2z[image,width=800]
-#
 
 [[ManagedSecurityonFortiGateFirewall-Configurationbackup]]
 ====  Configuration backup 
@@ -164,9 +147,8 @@ Trigger a backup (does a backup of the device configuration).
 
 Click the “Backup” button (button inside the change management window).
 
-[.confluence-embedded-file-wrapper .image-left-wrapper .confluence-embedded-manual-size]#
+
 image:images/VmidhRJAjo8jHZHhE3_6j_9_KeYCmD1UDwAQy77Eu_2Bd3X0l86XmNghkqmauVbzTlPxz-YtWJNNDVpyHBiFLClu9nhr-3n4ca2zu4BYvOfUsqZDiDSZ1EYn5ZwbKPHvDlqWoS0J[image,width=300]
-#
 
  
 
@@ -180,9 +162,8 @@ image:images/VmidhRJAjo8jHZHhE3_6j_9_KeYCmD1UDwAQy77Eu_2Bd3X0l86XmNghkqmauVbzTlP
 
  
 
-[.confluence-embedded-file-wrapper .image-left-wrapper .confluence-embedded-manual-size]#
+
 image:images/17GCnNlJftHKOR_SskXjNzKWQ4GrNZxw7uiQdIyE5xB67BFE1XniDMS3Rsb8lS6AB489DBraV4zkok19UKjPJH_KUKp2gHhYjF4rYTAEd9ncU40E9WXEUID8o1nmOOrKSPQPuw0Q[image,width=300]
-#
 
  
 
@@ -200,9 +181,8 @@ image:images/17GCnNlJftHKOR_SskXjNzKWQ4GrNZxw7uiQdIyE5xB67BFE1XniDMS3Rsb8lS6AB48
 
 Then verify that a new configuration revision entry is listed.
 
-[.confluence-embedded-file-wrapper .confluence-embedded-manual-size]#
+
 image:images/sY1yMevGQ5S3YFKlYnZiZ2sMiVCbLZJjru5YSinEWzRrT53rTbJBbjGvUz2s3URrye8gph5ByFFpy7-Qc1p_c0dhMh7Ai0cA69zM2cegHIA-WUdDkR5uK64j8T91B4VDnKS1T3yI[image,width=800]
-#
 
 [[ManagedSecurityonFortiGateFirewall-ConfigureSNMPandSyslog]]
 ==  Configure SNMP and Syslog 
@@ -234,9 +214,8 @@ configuration.
 Go back to the main device overview page and click on “Attach files” on
 the “Overview” tab
 
-[.confluence-embedded-file-wrapper .image-left-wrapper .confluence-embedded-manual-size]#
+
 image:images/1opj94G-xicsKyezOHt6k1yAWOjTJCZzW4RkKr1_mU0qs2oD3Jl8e1MttWqU4yvearX7EDYnJIZN1j9-54EezGs13mw-g6WlU_Od-TzHhK2XTUx0OP2toKaqa58nY9C3KaKsIpiH[image,width=356,height=123]
-#
 
  
 
@@ -250,16 +229,13 @@ image:images/1opj94G-xicsKyezOHt6k1yAWOjTJCZzW4RkKr1_mU0qs2oD3Jl8e1MttWqU4yvearX
 
 Make sure to click on the green plus sign to open the folder tree.
 
-[.confluence-embedded-file-wrapper .image-left-wrapper .confluence-embedded-manual-size]#
+
 image:images/ou5HzJI2UQoE5BkK7wRsk7fTYwCHjp2DcI7mrBfV18EllOlUAx0bD8SAh9MBaWcsHoEZF4TzDzhenFcUD4rY67_h3bIoO7EehGt4jMTdZJ9FvEyjF6eghBbxxRQMBnnhUAoh-hqP[image,width=800]
-#
 
 ** **
 
-[.confluence-embedded-file-wrapper .image-left-wrapper .confluence-embedded-manual-size]#
+
 image:images/dvcpEySZpiV21qA-1zqcwjtPl2raSAqYeQKvF8x43gHnEthId99-crBdRp3FInbtoWa57NSMHqfeONIxf7-0vNA3ndStxPwMa2vylvTWtlxXwr4_3DzROBddsVaj5Xpd8ElRZb8k[image,width=800]
-#
-
  
 
  
@@ -276,17 +252,15 @@ image:images/dvcpEySZpiV21qA-1zqcwjtPl2raSAqYeQKvF8x43gHnEthId99-crBdRp3FInbtoWa
 
  
 
-[.confluence-embedded-file-wrapper .confluence-embedded-manual-size]#
+
 image:images/IIRXdePkX3Ogd9nLN5XGyKRP9B4EZGGdRFD3cbq1XePjykezc3_uDiuRwYpDBenxjJWm5a7jduEKxQ3Tv3bdFfMSn3N0axRq2KuselQOvaSmC5dqds1gicUyrCkSq9SQl4uVhMow[image,width=800]
-#
 
 Choose "Post-configuration template” and save.
 
 Trigger a configuration update.
 
-[.confluence-embedded-file-wrapper .confluence-embedded-manual-size]#
+
 image:images/Sa621EmMzdCegkbVnIGv1dYi6z2qFCA8QmBTmis-S5F-Wu8ZEyYP1edXIfLUYTFip3HXgksFAaBDraZHGmM7suo2BPdFkKuOeZM5alCbX-WI64T3rLdEOBG4ydZ1PEc7g3eyk_Op[image,width=800]
-#
 
 Once the configuration update is done, verify that the configuration was
 applied by going back to the “Change management” in the “History” tab.
@@ -296,9 +270,9 @@ applied by going back to the “Change management” in the “History” tab.
 
 Use a Microservice to configure a syslog server on the FortiGate device.
 
-[.confluence-embedded-file-wrapper .image-left-wrapper .confluence-embedded-manual-size]#
+
 image:images/OnFs1tm_aiOfA64qTWl8JhJa-keXqaVAUD5WYQBabwEtpaJR8IAb3PhbJAyh6jAeh1GGIxx3EZCe6bNb65Ec6p2Wiq7oWqs9c2-gwS-nMlvW-X6mEiOuZhQ0BvPlat5hF6Vr0XcW[image,width=300]
-#
+
 
  
 
@@ -310,28 +284,22 @@ image:images/OnFs1tm_aiOfA64qTWl8JhJa-keXqaVAUD5WYQBabwEtpaJR8IAb3PhbJAyh6jAeh1G
 
  
 
- 
 
-[.confluence-embedded-file-wrapper .confluence-embedded-manual-size]#
 image:images/XmYeeuWogf9uawqzQgSXTkcQHh9hVovmmL43-2ByYORI4BNZnIPmTZti6I80dedoYG3LG7ddGsvJJjCITA-Vz0-VytyAlni81zg2kN2coa5AA1zLSVrzZpkhLxdJUD4nlJNft4sd[image,width=800]
-#
 
- 
 
-[.confluence-embedded-file-wrapper .confluence-embedded-manual-size]#
+
 image:images/tOpRSczH5ZHLoxBzrmGjx_5bDY7g4pDtGEZ33jAq7q6D5W1jI94lIUcz7zK66U_SrGjMIYpAuise8EQUxHmgLD7zn7WMp95N6-59iFfM4DTfHF5_o_K1E9o4ofoYqQI-ke-crDlc[image,width=800]
-#
 
 Attach it to the device by opening the Microservice management console
 (via the green plus sign at the far right).
 
-[.confluence-embedded-file-wrapper .confluence-embedded-manual-size]#
+
 image:images/axicA_10tZ8cufAjEBydfTs13vGrWGcZ1EpQGQc0FfACEUeniRcXPTukh_WCnz8trlTkoySy239fhsvqdF04K3Oa5N39rs01Tm0xmbQbeliDvpzVPfdKULhrLKuchaHjZdzrCWGS[image,width=800]
-#
 
-[.confluence-embedded-file-wrapper .image-left-wrapper .confluence-embedded-manual-size]#
+
 image:images/sTQhiOM1H_KPwjOkKtNrbXGNmRUqdB2wuKoValbgZbcPRv0uWusPcOnOvykh4QkAPrdYdioOXZUuNpwmEd_zszQbdmJQCBoG692xzI6f885qQ8RAAcX9wSnUG726Ffjv0hKD-2gp[image,width=300]
-#
+
 
  
 
@@ -343,11 +311,9 @@ image:images/sTQhiOM1H_KPwjOkKtNrbXGNmRUqdB2wuKoValbgZbcPRv0uWusPcOnOvykh4QkAPrd
 
  
 
- 
 
-[.confluence-embedded-file-wrapper .image-left-wrapper .confluence-embedded-manual-size]#
 image:images/fOLd3o2sz1s0nzMqYZQ8WeeGBJIopzGOrWsNF2eGA7cRvBfGpY_jdo5Hzm86SLa6z1te8pRXvHFoU0EFIAHbYb1O1YVJRxECYgrIi_HEriTsCU0rVzYosFNdo7jb0TeTMAwM3E4f[image,width=300]
-#
+
 
  
 
@@ -359,11 +325,8 @@ image:images/fOLd3o2sz1s0nzMqYZQ8WeeGBJIopzGOrWsNF2eGA7cRvBfGpY_jdo5Hzm86SLa6z1t
 
  
 
- 
 
-[.confluence-embedded-file-wrapper .confluence-embedded-manual-size]#
 image:images/yTD8QRL2sKjXlCj6Xnq4TXYCQgJOAVs8B-9TSaBbQWGBEaaulHdvEnhpWXqrpakAOp5BU_s_Eirw79MKRjnISSnGk0tQQVDWrQKh1YVLD-3eThtd1f54ibE657iTjcnfwnqi3BXf[image,width=800]
-#
 
 Server IP = 213.30.172.50
 
@@ -374,9 +337,8 @@ Apply the configuration and then check the change management view
 (“History” tab > “Change Management” button) that the new configuration
 was applied.
 
-[.confluence-embedded-file-wrapper .image-left-wrapper .confluence-embedded-manual-size]#
-image:images/feD67bIUtxobWJ8js6T1wBcfXi_cwE-FMnv5tdaCnYdB-4cwGFIrvLnb8tnE4U5c--RIQZ0S3q3_FpWqBI4T6E0-khGjQRQsqbcH0uKhVxxKOAQDCCruBRdkvYGHDVRSV_oLqMl5[image,width=300]
-#
+
+image::https://lh6.googleusercontent.com/feD67bIUtxobWJ8js6T1wBcfXi_cwE-FMnv5tdaCnYdB-4cwGFIrvLnb8tnE4U5c--RIQZ0S3q3_FpWqBI4T6E0-khGjQRQsqbcH0uKhVxxKOAQDCCruBRdkvYGHDVRSV_oLqMl5[image,width=300]
 
 ** **
 
@@ -388,9 +350,8 @@ image:images/feD67bIUtxobWJ8js6T1wBcfXi_cwE-FMnv5tdaCnYdB-4cwGFIrvLnb8tnE4U5c--R
 
  
 
-[.confluence-embedded-file-wrapper .confluence-embedded-manual-size]#
+
 image:images/bAcIQYs3W38SkyBFCbY-2OYU0npNsrfLUIt2BEGkL85U_xulqgYFNP7oEMkD3aNdcTLa17lUW5eZuAy2FAPO4ReOQ47dMybLwNO9S5_bcXVaBxgmaQCR3cWdxrUoEQOL2joAEErA[image,width=800]
-#
 
 The FortiGate is now sending syslogs to the MSActivator. You can check
 this in the device log search GUI.
@@ -398,9 +359,8 @@ this in the device log search GUI.
 Go to the “Logs” tab and input a “*” into the search bar to execute a
 search for these syslogs.
 
-[.confluence-embedded-file-wrapper .confluence-embedded-manual-size]#
+
 image:images/W5A0_beWi5bdpPheUBbUE3m53mGhALFvedxF2HgoaiSJ2SPKjmmdciMkwbDEtxXclRRfS8WijeOA24VgAVRG0VLHKHv8R8lYp-daT5Zvky63jwY2M2V-6Pe-j80w84wTGRjQDIgS[image,width=800]
-#
 
 [[ManagedSecurityonFortiGateFirewall-Configureanddisplayadashboard]]
 ===  Configure and display a dashboard 
@@ -412,9 +372,8 @@ The steps below will show you how to do this.
 
 *1. Attach the Workflow “kibana_dashboard” to your customer*
 
-[.confluence-embedded-file-wrapper .confluence-embedded-manual-size]#
+
 image:images/oETuc69fR1p_2yk5TqwE7j1zxGLjOy2sB2xvVqPjYrxjzmSWi47RftmQ6oIx1hqeM8BfLwAciD-Q8eJ1XEEAgLey5w6r9iOny4qYVnagufISnW4swm6DkrSmlrutF8DZRJ8v8ddu[image,width=800]
-#
 
 Click tab “Services”
 
@@ -424,27 +383,22 @@ Click the little green “+” button top right
 
 Select Workflow > Reference > Customer > Kibana > kibana_dashboard.xml
 
-[.confluence-embedded-file-wrapper .confluence-embedded-manual-size]#
+
 image:images/lCMGbWAp-wHvB_CRfOhCa3BenAYUiOhQDoC4j46r3Z4ObzE2gbbP4VY7QET3UK-_o38LlGkRgiz_GnVwQxS0N6Svcq6CNUGRk6Q3YFihEthkxZVYQqThp8c2Yhf5BUiKccqBfVk2[image,width=800]
-#
 
 *2. Create the dashboard*
 
-[.confluence-embedded-file-wrapper .confluence-embedded-manual-size]#
+
 image:images/wCz50M7S9BFyow4WRi8g-u9IoM3fSR6iJXHeYVCr07es_72OKEV8a_DiFTopGWgpx1yxcIWIYrCUu-KUH1dDwQBcXorHfPHP91-KwuNMOUXVf0jtIem7BCoUiz26i1XLyOliIpVZ[image,width=800]
-#
 
- 
 
-[.confluence-embedded-file-wrapper .confluence-embedded-manual-size]#
+
 image:images/KB92o4WgQ0czd_KLWPZnmwpYIh73N1rTtUbPhdIfgvg8duYubGUubpEWDyQtC1g-AJFWcXtJrxnhERKN0szPF_2YvzNbAIBQwWcr3cCbwBPSmiGkUhHHnYtryP5HSEsa2fndC2ut[image,width=800]
-#
 
 *3. Refresh the customer page and check the dashboard*
 
-[.confluence-embedded-file-wrapper .confluence-embedded-manual-size]#
+
 image:images/57LFLpGe5n9cGJT3m_4bqWzQBxmfbTLIBmKcu-ppHFBBcdfvqUI30EIOAcEOr7dQh0FXGSUjl7BUJHGl8vjUhZcNA7pLrFKV5eP8PGd6ikM9VzWNur23zVIVFSsnExd5XEHxD4gE[image,width=800]
-#
 
 [[ManagedSecurityonFortiGateFirewall-SecuritymanagementwithMicroservice]]
 ==  Security management with Microservice 
@@ -452,9 +406,8 @@ image:images/57LFLpGe5n9cGJT3m_4bqWzQBxmfbTLIBmKcu-ppHFBBcdfvqUI30EIOAcEOr7dQh0F
 Attach the folder “ ManagedSecurity ” in the Microservice repository to
 the device.
 
-[.confluence-embedded-file-wrapper .confluence-embedded-manual-size]#
+
 image:images/2ZiK-FXvRi1FceEs4kmDkZphw7H8ZuFbleMDgxW6_OY1mIA14nIZVLvtFIz0flLfiyhYr7T40jHQLG2Iip2EbwNGOvjRWx2nhuOftr1hRUrm-LchHufAaeh7dxtwrEuHWKJPl2vO[image,width=800]
-#
 
 Then go the the device config tab and see if you can configure a route
 on the FortiGate (or an address).
@@ -466,10 +419,8 @@ At the end of the session, make sure that you rollback the device config
 to its initial configuration (use the Change Management GUI) and delete
 the customer.
 
-[.confluence-embedded-file-wrapper .confluence-embedded-manual-size]#
-image:images/0Qq_yBBYqkB5KGgVicDtkQhr2-Hio_cGsVRrAEUAKjOERFG0XBLKMKm99YQ_uY36PPwnxfeGUA6iMQ12_f110Ij6B53F6mzXUlYOb1-IClIXZZ_L6ixlY10eC9HKX22vTllFuiEA[image,width=800]
-#
 
- 
+image:images/0Qq_yBBYqkB5KGgVicDtkQhr2-Hio_cGsVRrAEUAKjOERFG0XBLKMKm99YQ_uY36PPwnxfeGUA6iMQ12_f110Ij6B53F6mzXUlYOb1-IClIXZZ_L6ixlY10eC9HKX22vTllFuiEA[image,width=800]
+
 
  

@@ -18,21 +18,17 @@ how Task 2 would use it.
 
 Task 1
 
-[[highlighter_901329]]
-link:#[?]
 
-``
 
-`$context``[``'int1'``] = 123;`
+
+`$context['int1'] = 123;`
 
 Task 2
 
-[[highlighter_851116]]
-link:#[?]
 
-``
 
-`$my_int` `= ``$context``[``'int1'``];`
+
+`$my_int` `= $context['int1'];`
 
 [[HowtoPassValuesBetweenTasks-Example2]]
 == Example 2
@@ -42,26 +38,23 @@ how Task 2 would use it.
 
 Task
 
-[[highlighter_36220]]
-link:#[?]
 
-``
 
-`$context``[``'array1'``][0]= ``array``(``'name'``, ``'value'``);`
+....
 
-`$context``[``'array2'``][0]= ``array``(``"string"`
-`=> ``"string value"``, ``"integer"` `=> 123);`
+$context['array1'][0]= array('name', 'value');
+
+$context['array2'][0]= array("string" => "string value", "integer" => 123);
+....
 
 Task 2
 
-[[highlighter_595737]]
-link:#[?]
 
-``
-
-`$array1` `= ``$context``[``'array1'``][0];`
-
-`$my_int` `= ``$context``[``'array2'``][0][``"integer"``];`
 
 ....
+
+$array1 = $context['array1'][0];
+
+$my_int = $context['array2'][0]["integer"];
+
 ....

@@ -61,10 +61,8 @@ sub-folder of this selected manufacturer will only be available for the
 devices of the selected manufacturer that are attached to the selected
 customer.
 
-[[ConfigurationRepository-Adding/RemovingFoldersandFilesandAddingFiles]]
 === Adding/Removing Folders and Files and Adding Files 
 
-[[ConfigurationRepository-Adding/Removingfoldersandfiles]]
 ==== Adding/Removing folders and files 
 
 image:images/Add_directory.gif[image,width=16,height=16] : the user can
@@ -155,40 +153,24 @@ syntax to reference the configuration templates.
 
 Below is an example of IP SLA configuration for Cisco routers:
 
-[[highlighter_172077]]
-link:#[?]
-
-`                                     `
-
-`! begin ipsla conf`
-
-`ip sla {$operation_number}`
-
-` ``icmp-echo {$destination_ip_address} `
-
-` ``frequency {$seconds}`
-
-` ``exit`
+....
+                                    
+! begin ipsla con
+ip sla {$operation_number
+icmp-echo {$destination_ip_address}
+frequency {$seconds
+exi
 
  
-
-`ip sla schedule {$operation_number} life {$life} start-time {$start_time}`
-
-`! end ipsla conf`
+ip sla schedule {$operation_number} life {$life} start-time {$start_time
+! end ipsla con
 
  
-
-`in order ``for`
-`the configuration to be correctly pushed to a device, the device must have the following variables declared and valued:`
-
-` ``operation_number`
-
-` ``destination_ip_address`
-
-` ``seconds`
-
-` ``operation_number`
-
-` ``life`
-
-` ``start_time`
+in orderfothe configuration to be correctly pushed to a device, the device must have the following variables declared and valued
+operation_numbe
+destination_ip_addres
+second
+operation_numbe
+lif
+start_tim
+....

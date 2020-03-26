@@ -141,56 +141,27 @@ Build the microservice JSON params for the *CREATE* operation.
 
 ....
  $micro_service_vars_array = array ();
-....
 
-....
  $micro_service_vars_array ['object_id'] = $context ['id'];
-....
 
-....
  $micro_service_vars_array ['src_ip'] = $context ['src_ip'];
-....
 
-....
  $micro_service_vars_array ['dst_port'] = $context ['dst_port'];
-....
 
-[source,p3]
-----
-----
 
-....
  $object_id = $context ['id'];
-....
 
-[source,p3]
-----
-----
 
-[source,p2]
-----
  $simple_firewall = array (
-----
 
-[source,p4]
-----
    'simple_firewall' => array (
-----
 
-[source,p2]
-----
      $object_id => $micro_service_vars_array 
-----
 
-[source,p2]
-----
    ) 
-----
 
-[source,p2]
-----
  );
-----
+....
 
 Call the *CREATE* function of the Microservice.
 
@@ -212,20 +183,11 @@ For each rule and device, create the JSON parameters to pass to the
 [source,p1]
 ----
    $object_id = $rule_id;
-----
 
-[source,p1]
-----
    $simple_firewall = array (
-----
 
-[source,p1]
-----
      'simple_firewall' => $object_id 
-----
 
-[source,p1]
-----
    );
 ----
 

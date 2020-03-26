@@ -68,9 +68,7 @@ The same configuration is available for a customized portal.
 Users who have forgotten their password can request a new one and get
 access to their account.
 
-[.confluence-information-macro-icon]#__#
-
-The password recovery can only work if the user has provided a valid
+NOTE: The password recovery can only work if the user has provided a valid
 email in his profile and if the MSActivator has been properly configured
 to send email (see
 link:../Administration/Installation%20and%20Configuration/msactivator-installation-and-configuration-guide.adoc[MSActivator
