@@ -3,8 +3,6 @@
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :doctype: book
 
-IMPORTANT: TODO
-
 == UI / UX
 
 {product_name} introduces a completely new UX empowering the user with a holostic aproach to managing a wide range of entities such as firewall, UTM, switches,... but also managing cloud infrastructure or physical data center assets.
@@ -32,10 +30,6 @@ TIP: Go to link:user-guide/bpm{outfilesuffix}[GUI overview] to get a detailed de
 
 == Container Based Architecture
 
-
-
-== OS Upgrade to Centos 7.5
-
-The {product_name} now runs on Centos 7.5 making it more secure and protected again vulnerabilities.
+The {product_name} runs on a set of Docker Containers.
 
 
