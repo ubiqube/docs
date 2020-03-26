@@ -107,193 +107,81 @@ The following is a list of recognized qualifiers, which must be
 separated from surrounding elements by spaces. Note that items listed in
 [brackets] are optional. PHP equivalents are shown where applicable.
 
-Qualifier
+[cols=",,,,",]
+|=======================================================================
+|*Qualifier* |*Alternates* |*Syntax Example* |*Meaning* |*PHP
+Equivalent*
 
-Alternates
+|== |eq |$a eq $b |equals |==
 
-Syntax Example
+| != |ne, neq |$a neq $b |not equals | !=
 
-Meaning
+|> |gt |$a gt $b |greater than |>
 
-PHP Equivalent
+|< |lt |$a lt $b |less than |<
 
-Qualifier
+|>= |gte, ge |$a ge $b |greater than or equal |>=
 
-Alternates
+|<= |lte, le |$a le $b |less than or equal |<=
 
-Syntax Example
+|=== | + |$a === 0 |check for identity |===
 
-Meaning
+| ! |not |not $a |negation (unary) | !
 
-PHP Equivalent
+| % |mod |$a mod $b |modulous | %
 
-==
+|is [not] div by | + |$a is not div by 4 |divisible by |$a % $b == 0
 
-eq
+|is [not] even | + |$a is not even |[not] an even number (unary) |$a % 2
+== 0
 
-$a eq $b
+|is [not] even by | + |$a is not even by $b |grouping level [not] even
+|($a / $b) % 2 == 0
 
-equals
+|is [not] odd | + |$a is not odd |[not] an odd number (unary) |$a % 2 !=
+0
 
-==
+|is [not] odd by | + |$a is not odd by $b |[not] an odd grouping |($a /
+$b) % 2 != 0
+|=======================================================================
 
- !=
-
-ne, neq
-
-$a neq $b
-
-not equals
-
- !=
-
->
-
-gt
-
-$a gt $b
-
-greater than
-
->
-
-<
-
-lt
-
-$a lt $b
-
-less than
-
-<
-
->=
-
-gte, ge
-
-$a ge $b
-
-greater than or equal
-
->=
-
-<=
-
-lte, le
-
-$a le $b
-
-less than or equal
-
-<=
-
-===
-
-$a === 0
-
-check for identity
-
-===
-
- !
-
-not
-
-not $a
-
-negation (unary)
-
- !
-
- %
-
-mod
-
-$a mod $b
-
-modulous
-
- %
-
-is [not] div by
-
-$a is not div by 4
-
-divisible by
-
-$a % $b == 0
-
-is [not] even
-
-$a is not even
-
-[not] an even number (unary)
-
-$a % 2 == 0
-
-is [not] even by
-
-$a is not even by $b
-
-grouping level [not] even
-
-($a / $b) % 2 == 0
-
-is [not] odd
-
-$a is not odd
-
-[not] an odd number (unary)
-
-$a % 2 != 0
-
-is [not] odd by
-
-$a is not odd by $b
-
-[not] an odd grouping
-
-($a / $b) % 2 != 0
 
 Example:
 
-[[highlighter_620226]]
-link:#[?]
+....
 
-``
+telephony-service
 
-`telephony-service`
+{if
+isset($params.ntp_server_ip_address) && $params.ntp_server_ip_address != ''}
 
-`{``if`
-`isset($params.ntp_server_ip_address) && $params.ntp_server_ip_address != ``''``}`
+ ntp-server {$params.ntp_server_ip_address}
 
-` ``ntp-server {$params.ntp_server_ip_address}`
+{/if}
 
-`{/``if``}`
+{if
+isset($params.maximum_ephones) && $params.maximum_ephones != ''}
 
-`{``if`
-`isset($params.maximum_ephones) && $params.maximum_ephones != ``''``}`
+ max-ephones {$params.maximum_ephones} 
 
-` ``max-ephones {$params.maximum_ephones} `
+{/if}
 
-`{/``if``}`
+{if
+isset($params.maximum_dial_numbers) && $params.maximum_dial_numbers != ''}
 
-`{``if`
-`isset($params.maximum_dial_numbers) && $params.maximum_dial_numbers != ``''``}`
+ max-dn {$params.maximum_dial_numbers} 
 
-` ``max-dn {$params.maximum_dial_numbers} `
+{/if}
 
-`{/``if``}`
+{if
+isset($params.source_ip_address) && $params.source_ip_address != ''}
 
-`{``if`
-`isset($params.source_ip_address) && $params.source_ip_address != ``''``}`
+ ip source-address {$params.source_ip_address} port {$params.source_port} {if
+isset($params.secondary_ip_address) && $params.secondary_ip_address != ''} secondary {$params.secondary_ip_address} {/if} 
 
-` ``ip source-address {$params.source_ip_address} port {$params.source_port} {``if`
-`isset($params.secondary_ip_address) && $params.secondary_ip_address != ``''``} secondary {$params.secondary_ip_address} {/``if``} `
+{/if}
 
-`{/``if``}`
-
-`...`
+....
 
 [[MicroserviceTemplatingwithPHPSmarty-Loops]]
 == Loops 
@@ -309,55 +197,17 @@ easier than \{section}, but as a tradeoff it can only be used for a
 single array. Every \{foreach} tag must be paired with a closing
 \{/foreach} tag.
 
-Attribute Name
+[cols=",,,,",]
+|=======================================================================
+|*Attribute Name* |*Type* |*Required* |*Default* |*Description*
 
-Type
+|from |array |Yes |n/a |The array you are looping through
 
-Required
+|item |string |Yes |n/a |The name of the variable that is the current
+element
 
-Default
-
-Description
-
-Attribute Name
-
-Type
-
-Required
-
-Default
-
-Description
-
-from
-
-array
-
-Yes
-
-n/a
-
-The array you are looping through
-
-item
-
-string
-
-Yes
-
-n/a
-
-The name of the variable that is the current element
-
-key
-
-string
-
-No
-
-n/a
-
-The name of the variable that is the current key
+|key |string |No |n/a |The name of the variable that is the current key
+|=======================================================================
 
 * Required attributes are from and item.
 * \{foreach} loops can be nested.
@@ -367,19 +217,15 @@ of times \{foreach} will loop.
 variable.
 
 Example:
+....
+telephony-service
 
-[[highlighter_113898]]
-link:#[?]
+{foreach from=$params.tftp_load item=tftp}
 
-``
+ load {$tftp.phone_type} {$tftp.firmware_file_name}
 
-`telephony-service`
-
-`{foreach from=$params.tftp_load item=tftp}`
-
-` ``load {$tftp.phone_type} {$tftp.firmware_file_name}`
-
-`{/foreach}`
+{/foreach}
+....
 
 [[MicroserviceTemplatingwithPHPSmarty-VariableAssignment]]
 == Variable Assignment 
@@ -394,70 +240,38 @@ variable to generate the output.
 \{assign} is used for assigning template variables during the execution
 of a template.
 
-Attribute Name
+[cols=",,,,",]
+|==============================================================
+|*Attribute Name* |*Type* |*Required* |*Default* |*Description*
+|var |string |Yes |n/a |The name of the variable being assigned
+|value |string |Yes |n/a |The value being assigned
+|==============================================================
 
-Type
-
-Required
-
-Default
-
-Description
-
-Attribute Name
-
-Type
-
-Required
-
-Default
-
-Description
-
-var
-
-string
-
-Yes
-
-n/a
-
-The name of the variable being assigned
-
-value
-
-string
-
-Yes
-
-n/a
-
-The value being assigned
 
 Example:
 
-[[highlighter_683691]]
-link:#[?]
+....
 
-``
 
-`!`
 
-`{assign var=``'sdid'` `value=$SD->SDID}`
+!
 
-`{foreach from=$VOIP_PROFILE->SD_list.$sdid->MAIL_BOX_list item=mbox}`
+{assign var='sdid' value=$SD->SDID}
 
-`!`
+{foreach from=$VOIP_PROFILE->SD_list.$sdid->MAIL_BOX_list item=mbox}
 
-`voicemail mailbox owner {$mbox->MBOX_USERNAME}`
+!
 
-`login pinless any-phone-number`
+voicemail mailbox owner {$mbox->MBOX_USERNAME}
 
-`end mailbox`
+login pinless any-phone-number
 
-`{/foreach}`
+end mailbox
 
-`!`
+{/foreach}
+
+!
+....
 
 [[MicroserviceTemplatingwithPHPSmarty-CommonProblems]]
 == Common Problems 
@@ -479,38 +293,35 @@ due to XML parsing error.
 
 For example:
 
-[[highlighter_77166]]
-link:#[?]
+....
 
-``
+<command name="CREATE">
 
-`<``command` `name``=``"CREATE"``>`
+    <operation>
 
-`    ``<``operation``>`
+you can't "write" if ({$foo} < 1) in your templates
 
-`you can't "write" if ({$foo} < ``1``) in your templates`
+    </operation>
 
-`    ``</operation>`
-
-`</``command``>`
-
+</command>
+....
 Templates must be embedded into a *<[CDATA[* *]]>* tag to avoid most of
 the problems of non-supported characters.
 
-[[highlighter_626732]]
-link:#[?]
+....
 
-``
 
-`    ``<command name=``"CREATE"``>`
 
-`        ``<operation><[CDATA[`
+    <command name="CREATE">
 
-`    ``you can ``"write"` `if` `({$foo} < ``1``) in your templates`
+        <operation><[CDATA[
 
-`]]></operation>`
+    you can "write" if ({$foo} < 1) in your templates
 
-`    ``</command>`
+]]></operation>
+
+    </command>
+....
 
 [[MicroserviceTemplatingwithPHPSmarty-ExtraLineBreakandSpaceCharacters]]
 === Extra Line Break and Space Characters 
@@ -536,34 +347,34 @@ In this case the
 
 The line should have been split.
 
-[[highlighter_134806]]
-link:#[?]
+....
 
-``
 
-`!`
 
-`{assign var=``'sdid'` `value=$SD->SDID}`
+!
 
-`{foreach from=$VOIP_PROFILE->SD_list.$sdid->MAIL_BOX_list item=mbox}`
+{assign var='sdid' value=$SD->SDID}
 
-`!`
+{foreach from=$VOIP_PROFILE->SD_list.$sdid->MAIL_BOX_list item=mbox}
 
-`{``if` `isset($mbox->description)}`
+!
 
-` ``description {$mbox->description}`
+{if isset($mbox->description)}
 
-`{/``if``}`
+ description {$mbox->description}
 
-`voicemail mailbox owner {$mbox->MBOX_USERNAME}`
+{/if}
 
-`login pinless any-phone-number`
+voicemail mailbox owner {$mbox->MBOX_USERNAME}
 
-`end mailbox`
+login pinless any-phone-number
 
-`{/foreach}`
+end mailbox
 
-`!`
+{/foreach}
+
+!
+....
 
 Sometimes the line cannot be split, the solution is to either add a
 space character at the end of the line, if it remains correct for the
@@ -595,18 +406,18 @@ An example of an error found in the log
 [[highlighter_487039]]
 link:#[?]
 
-``
 
-`2011``/``08``/``12``:``12``:``28``:``42``:(D):smsd:ZTD66206:JSCALLCOMMAND:: Managing object test`
 
-`2011``/``08``/``12``:``12``:``28``:``42``:(D):smsd:ZTD66206:JSCALLCOMMAND:: compute file /opt/fmc_repository/CommandDefinition/CISCO/MyTemplates/test.xml ``for`
-`key test`
+2011/08/12:12:28:42:(D):smsd:ZTD66206:JSCALLCOMMAND:: Managing object test
 
-`2011``/``08``/``12``:``12``:``28``:``42``:(D):smsd:ZTD66206:JSCALLCOMMAND:: ELEMENT CREATE found`
+2011/08/12:12:28:42:(D):smsd:ZTD66206:JSCALLCOMMAND:: compute file /opt/fmc_repository/CommandDefinition/CISCO/MyTemplates/test.xml for
+key test
 
-`2011``/``08``/``12``:``12``:``28``:``42``:(E):smsd:ZTD66206:JSCALLCOMMAND:: PHPERROR: [``256``] Smarty error: [in var:2313098ec4aae945b1a201eb153cf778 line ``3``]: syntax error: ``'if'`
-`statement requires arguments (Smarty_Compiler.``class``.php, line ``1270``) error on line ``1093`
-`in file /opt/sms/bin/php/smarty/Smarty.``class``.php`
+2011/08/12:12:28:42:(D):smsd:ZTD66206:JSCALLCOMMAND:: ELEMENT CREATE found
+
+2011/08/12:12:28:42:(E):smsd:ZTD66206:JSCALLCOMMAND:: PHPERROR: [256] Smarty error: [in var:2313098ec4aae945b1a201eb153cf778 line 3]: syntax error: 'if'
+statement requires arguments (Smarty_Compiler.class.php, line 1270) error on line 1093
+in file /opt/sms/bin/php/smarty/Smarty.class.php
 
 This indicates that in the file
 
@@ -654,64 +465,64 @@ The CREATE template looks like:
 [[highlighter_287413]]
 link:#[?]
 
-``
 
-`<``command` `name``=``"CREATE"``>`
 
-`    ``<``operation``>`
+<command name="CREATE">
 
-`    ``<![CDATA[`
+    <operation>
 
-`interface {$object_id}`
+    <![CDATA[
 
-`{if isset($params.dot1qtrunk) && $params.dot1qtrunk == 'Yes'}`
+interface {$object_id}
 
-` ``switchport trunk encapsulation dot1q`
+{if isset($params.dot1qtrunk) && $params.dot1qtrunk == 'Yes'}
 
-` ``switchport mode trunk`
+ switchport trunk encapsulation dot1q
 
-`{/if}`
+ switchport mode trunk
 
-`{if isset($params.vlan_id) && $params.vlan_id != ''}`
+{/if}
 
-` ``encapsulation dot1Q {$params.vlan_id} `
+{if isset($params.vlan_id) && $params.vlan_id != ''}
 
-`{/if}`
+ encapsulation dot1Q {$params.vlan_id} 
 
-`{if isset($params.ip_address) && $params.ip_address != ''}`
+{/if}
 
-` ``ip address {$params.ip_address} {$params.subnet_mask}  `
+{if isset($params.ip_address) && $params.ip_address != ''}
 
-`{/if}`
+ ip address {$params.ip_address} {$params.subnet_mask}  
 
-`{if $object_id|stristr:"Ethernet" && !$object_id|stristr:"."}`
+{/if}
 
-`{if isset($params.enable_nbar) && $params.enable_nbar != '' && $params.enable_nbar == 'Yes'}`
+{if $object_id|stristr:"Ethernet" && !$object_id|stristr:"."}
 
-` ``ip nbar protocol-discovery `
+{if isset($params.enable_nbar) && $params.enable_nbar != '' && $params.enable_nbar == 'Yes'}
 
-`{/if}`
+ ip nbar protocol-discovery 
 
-`{if isset($params.enable_media_type) && $params.enable_media_type != '' && $params.enable_media_type == 'Yes'}`
+{/if}
 
-` ``max-reserved-bandwidth 100`
+{if isset($params.enable_media_type) && $params.enable_media_type != '' && $params.enable_media_type == 'Yes'}
 
-` ``media-type sfp `
+ max-reserved-bandwidth 100
 
-`{/if}`
+ media-type sfp 
 
-`{if isset($params.description) && $params.description != ''}`
+{/if}
 
-` ``description {$params.description} `
+{if isset($params.description) && $params.description != ''}
 
-`{/if}`
+ description {$params.description} 
 
-`...`
+{/if}
 
-`no shutdown`
+...
 
-`!]]>`
+no shutdown
 
-`    ``</``operation``>`
+!]]>
 
-`</``command``>`
+    </operation>
+
+</command>

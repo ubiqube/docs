@@ -11,68 +11,22 @@ asset management or configuration management ?
 [[DeviceLifecycle-AccessOverview]]
 == [.inline-comment-marker]#Access Overview#
 
-Protocol
+[width="99%",cols="20%,16%,16%,16%,16%,16%",]
+|=======================================================================
+| |Protocol |Read/Write/Listen |Period |Trigger* |Comment
 
-Read/Write/Listen
+|Monitoring | | | | |
 
-Period
+|Device status |ICMP |R |1 min. |auto |
 
-Trigger*
+|Monitoring Profile |UDP/161 |R |1 min. |auto |Port and frequency can be
+customised.
 
-Comment
+|SNMP Trap |UDP/162 |L | |auto |
 
-Protocol
+|Log Analytic |UDP/514 |L | |auto |
 
-Read/Write/Listen
-
-Period
-
-Trigger*
-
-Comment
-
-Monitoring
-
-Device status
-
-ICMP
-
-R
-
-1 min.
-
-auto
-
-Monitoring Profile
-
-UDP/161
-
-R
-
-1 min.
-
-auto
-
-Port and frequency can be customised.
-
-SNMP Trap
-
-UDP/162
-
-L
-
-auto
-
-Log Analytic
-
-UDP/514
-
-L
-
-auto
-
-Asset
-
+|Asset a|
 TCP/22
 
 TCP/80
@@ -81,21 +35,15 @@ TCP/443
 
 any other protocol to access the managed devices
 
-R
-
-24 hour
-
-auto/manual
-
+ |R |24 hour |auto/manual a|
 This depends on the managed devices and its adapter, usual cases are
 either remote CLI command call with SSH or REST API.
 
 Can be triggered manually with the SecEngine command FORCEASSET
 
-Configuration
+|Configuration | | | | |
 
-Initial provisioning
-
+|Initial provisioning a|
 TCP/22
 
 TCP/80
@@ -104,8 +52,7 @@ TCP/443
 
 other protocol to access the managed devices
 
-W/R
-
+ |W/R | | a|
 This depends on the managed devices and its adapter, usual case are
 either remote CLI command call with SSH or REST API.
 
@@ -116,8 +63,7 @@ It is possible to support a fall-back mechanism based on TFTP and Telnet
 when secure connection fails or is not supported by the device (see
 below for details).
 
-Microservice
-
+|Microservice a|
 TCP/22
 
 TCP/80
@@ -126,14 +72,9 @@ TCP/443
 
 other protocol to access the managed devices
 
-W/R
+ |W/R | |manual |(same as above)
 
-manual
-
-(same as above)
-
-Template
-
+|Template a|
 TCP/22
 
 TCP/80
@@ -142,17 +83,13 @@ TCP/443
 
 other protocol to access the managed devices
 
-W/R
-
-manual/auto
-
+ |W/R | |manual/auto a|
 (same as above)
 
 The configuration update can be configured to be triggered automatically
 upon configuration change in MSActivator database.
 
-Change Management
-
+|Change Management a|
 TCP/22
 
 TCP/80
@@ -161,21 +98,20 @@ TCP/443
 
 other protocol to access the managed devices
 
+ a|
 W (for configuration rollback)
 
 R (for configuration backup)
 
-24 hour
-
-auto/manual
-
+ |24 hour |auto/manual a|
 Global backup of all managed devices is executed every 24h.
 
 Rollback action can only be triggered manual from UI or with API.
 
-[.aui-icon .aui-icon-small .aui-iconfont-info .confluence-information-macro-icon]#__#
+|=======================================================================
 
- * info on what triggers an action: automated/scheduled and/or manual
+
+NOTE: * info on what triggers an action: automated/scheduled and/or manual
 
 [[DeviceLifecycle-Monitoring]]
 == Monitoring
@@ -204,7 +140,6 @@ request failed but at most 5 ICMP requests failed
 
 DOWN : There was 5 ICMP request failures in a row and the 6th one failed
 
-[[DeviceLifecycle-IPUP/IPDOWNevents]]
 ==== IPUP/IPDOWN events
 
 When a device status changes, the MSActivator will generate some
@@ -267,49 +202,36 @@ managed device.
 It is possible to force the refresh of the asset with the SecEngine
 command FORCEASSET.
 
-[[highlighter_973896]]
-link:#[?]
+    POST /sms/verb/FORCEASSET/{deviceId}
 
-`                                     `
+example:
 
-`POST /sms/verb/FORCEASSET/{deviceId}`
-
-[[highlighter_285275]]
-link:#[?]
-
-`                                     `
-
-`example: `
-
-`curl -u ncroot:PASSWORD  -XPOST http:``//127.0.0.1/ubi-api-rest/sms/verb/FORCEASSET/2127`
+    curl -u ncroot:PASSWORD  -XPOST http://127.0.0.1/ubi-api-rest/sms/verb/FORCEASSET/2127
 
 on a Fortigate firewall, the asset management daemon (polld) will
 connect on the device with SSH, use some CLI command to get the required
 info and store the information in the database
 
-[[highlighter_100349]]
-link:#[?]
+....
+2019/11/14:10:22:06:(D):sms_polld:MSA2127:sd_poll_task:: RECEIVED: 
 
-`                                     `
+2019/11/14:10:22:06:(I):sms_polld:MSA2127:sd_poll_task::  firmware       [FortiGate-VM64-AWSONDEMAND v6.0.6,build0272,190716
+(GA)]
 
-`2019``/``11``/``14``:``10``:``22``:``06``:(D):sms_polld:MSA2127:sd_poll_task:: RECEIVED: `
+2019/11/14:10:22:06:(I):sms_polld:MSA2127:sd_poll_task::  model          [FortiGate-VM64-AWSONDEMAND]
 
-`2019``/``11``/``14``:``10``:``22``:``06``:(I):sms_polld:MSA2127:sd_poll_task::  firmware       [FortiGate-VM64-AWSONDEMAND v6.``0.6``,build0272,``190716`
-`(GA)]`
+2019/11/14:10:22:06:(I):sms_polld:MSA2127:sd_poll_task::  serial         [FGTAWS00088ED20A]
 
-`2019``/``11``/``14``:``10``:``22``:``06``:(I):sms_polld:MSA2127:sd_poll_task::  model          [FortiGate-VM64-AWSONDEMAND]`
+2019/11/14:10:22:06:(I):sms_polld:MSA2127:sd_poll_task::  cpu            [Intel(R) Xeon(R) Platinum 8124M CPU @ 3.00GHz]
 
-`2019``/``11``/``14``:``10``:``22``:``06``:(I):sms_polld:MSA2127:sd_poll_task::  serial         [FGTAWS00088ED20A]`
+2019/11/14:10:22:06:(I):sms_polld:MSA2127:sd_poll_task::  ips_version    [6.00741(2015-12-01
+02:30)]
 
-`2019``/``11``/``14``:``10``:``22``:``06``:(I):sms_polld:MSA2127:sd_poll_task::  cpu            [Intel(R) Xeon(R) Platinum 8124M CPU @ ``3``.00GHz]`
+2019/11/14:10:22:06:(I):sms_polld:MSA2127:sd_poll_task::  av_version     [1.00000(2018-04-09
+18:07)]
 
-`2019``/``11``/``14``:``10``:``22``:``06``:(I):sms_polld:MSA2127:sd_poll_task::  ips_version    [``6.00741``(``2015``-``12``-``01`
-`02``:``30``)]`
-
-`2019``/``11``/``14``:``10``:``22``:``06``:(I):sms_polld:MSA2127:sd_poll_task::  av_version     [``1.00000``(``2018``-``04``-``09`
-`18``:``07``)]`
-
-`2019``/``11``/``14``:``10``:``22``:``06``:(D):sms_polld:MSA2127:sd_poll_task:: SENDCMD: [exit]`
+2019/11/14:10:22:06:(D):sms_polld:MSA2127:sd_poll_task:: SENDCMD: [exit]
+....
 
 This information is shown on the MSActivator UI
 

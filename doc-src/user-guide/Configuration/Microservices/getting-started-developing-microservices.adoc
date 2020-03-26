@@ -5,7 +5,6 @@
 :ext-relative: adoc
 
 NOTE: getting the sources
-
 The source of this tutorial is available on GitHub at
 https://github.com/openmsa on
 https://github.com/openmsa/Microservices/tree/master/Tutorials/LINUX/Generic/Tutorial1[Microservices/Tutorials/LINUX/Generic/Tutorial1].
@@ -75,24 +74,21 @@ On Linux Centos 6, the CLI command to list the users is "cat
 /etc/passwd". To create a new user it's "useradd", and to delete a user
 it's "userdel".
 
-[[highlighter_579453]]
-link:#[?]
+....
+[root@managed-linux ~]# cat /etc/passwd
 
-``
+root:x:0:0:root:/root:/bin/bash
 
-`[root``@managed``-linux ~]# cat /etc/passwd`
+bin:x:1:1:bin:/bin:/sbin/nologin
 
-`root:x:``0``:``0``:root:/root:/bin/bash`
+...
 
-`bin:x:``1``:``1``:bin:/bin:/sbin/nologin`
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin
 
-`...`
+oprofile:x:16:16:Special user account to be used by OProfile:/home/oprofile:/sbin/nologin
 
-`sshd:x:``74``:``74``:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin`
-
-`oprofile:x:``16``:``16``:Special user account to be used by OProfile:/home/oprofile:/sbin/nologin`
-
-`tcpdump:x:``72``:``72``::/:/sbin/nologin`
+tcpdump:x:72:72::/:/sbin/nologin
+....
 
 The list of users in /etc/passwd contains the system users that we want
 to exclude from the scope of the Microservice. We'll cover this later in
@@ -137,12 +133,7 @@ object_id.
 The regular expression to extract the fields from the result of "cat
 /etc/passwd" is
 
-[[highlighter_125703]]
-link:#[?]
-
-``
-
-`@(?[^:]+):(?[^:]+):(?[^:]+):(?[^:]+):(?[^:]*):(?[^:]+):(?[^:]+)@`
+    @(?[^:]+):(?[^:]+):(?[^:]+):(?[^:]+):(?[^:]*):(?[^:]+):(?[^:]+)@
 
 Note: it may be useful to use an online regular expression tester when
 developing and testing regular expressions. One online tester can be

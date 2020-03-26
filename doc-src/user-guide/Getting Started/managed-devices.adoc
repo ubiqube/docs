@@ -25,101 +25,53 @@ the Device Adaptor for managing the device.
 
 Fill out the form according to the following spreadsheet:
 
-Field Name
+[width="100%",cols="34%,33%,33%",options="header",]
+|=======================================================================
+|Field Name |Description |Mandatory
+|Name |A free text field to specify a name for the device. |Yes
 
-Description
-
-Mandatory
-
-Administrative Information
-
-Name
-
-A free text field to specify a name for the device.
-
-Yes
-
-External reference
-
+|External reference a|
 A unique value that can be used to identify the device.
 
 Usually used for integration with third party tools.
 
-No
+ |No
 
-Management Information
+|Management IP address |The IP address used by the MSActivator to manage
+and monitor the device. |Yes
 
-Management IP address
+|Management interface name |The MSActivator polling engine will use this
+information to look into the MIB for the OID of traffic monitoring
+information. |No
 
-The IP address used by the MSActivator to manage and monitor the device.
+|Hostname |The hostname of the device that will be used by the syslog
+collector to match the syslog to a device in the MSActivator database.
+|No
 
-Yes
+|User name |The login used by the MSActivator configuration module to
+execute configuration actions on the device. |Yes
 
-Management interface name
+|User Password |The password for the login. |Yes
 
-The MSActivator polling engine will use this information to look into
-the MIB for the OID of traffic monitoring information.
+|Silver Monitoring |Activate SNMP based monitoring. |No
 
-No
-
-Hostname
-
-The hostname of the device that will be used by the syslog collector to
-match the syslog to a device in the MSActivator database.
-
-No
-
-Authentication
-
-User name
-
-The login used by the MSActivator configuration module to execute
-configuration actions on the device.
-
-Yes
-
-User Password
-
-The password for the login.
-
-Yes
-
-Service Assurance
-
-Silver Monitoring
-
-Activate SNMP based monitoring.
-
-No
-
-SNMP community
-
-The community to use by the MSActivator to execute SNMP requests on the
-device.
-
+|SNMP community |The community to use by the MSActivator to execute SNMP
+requests on the device. a|
 Yes
 
 (if Silver monitoring is enabled)
 
-Monitoring port
-
-Default is SNMP port 161, but it can be customized if required.
-
+|Monitoring port |Default is SNMP port 161, but it can be customized if
+required. a|
 Yes
 
 (if Silver monitoring is enabled)
 
-Gold Monitoring
+|Gold Monitoring |Activate to enable syslog collecting without parsing
+the syslogs. |No
 
-Activate to enable syslog collecting without parsing the syslogs.
-
-No
-
-Security Reports
-
-Activate syslog collecting and parsing.
-
-No
+|Security Reports |Activate syslog collecting and parsing. |No
+|=======================================================================
 
 Click save to create the device.
 

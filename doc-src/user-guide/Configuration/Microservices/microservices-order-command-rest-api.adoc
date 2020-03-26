@@ -6,10 +6,8 @@
 
 [[main-content]]
 NOTE: Getting the sources
-
 The sources of this tutorial are available on GitHub at
 https://github.com/openmsa/Workflows-Microservices/tree/master/MICROSERVICES/CISCO/CATALYST_IOS/VLAN
-
 to use the Microservice for VLAN management, you need to use
 https://github.com/openmsa/Workflows-Microservices/blob/master/MICROSERVICES/CISCO/CATALYST_IOS/VLAN/vlan.xml[vlan.xml]
 and
@@ -33,14 +31,11 @@ link:[image:images/BFD-Conf-3.png[Image,width=600]]
 
 REST API syntax
 
-[[highlighter_270548]]
-link:#[?]
+....
+POST /ordercommand/get/configuration/{deviceId}/{commandName}
 
-`                                     `
-
-`POST /ordercommand/get/configuration/{deviceId}/{commandName} `
-
-`body : microservice parameters formatted as JSON`
+body : microservice parameters formatted as JSON
+....
 
 * *deviceId* is the ID (long) of the device to manage.
 * *commandName* is the command to apply to the device.
@@ -56,44 +51,42 @@ management on a Cisco Catalyst IOS
 [[highlighter_366114]]
 link:#[?]
 
-`                                     `
+                                     
+....
+curl -u ncroot:NCROOT_PWD  -XPOST http://MSA_IP/ubi-api-rest/ordercommand/get/configuration/311/UPDATE -d '{
 
-`curl -u ncroot:NCROOT_PWD  -XPOST http:``//MSA_IP/ubi-api-rest/ordercommand/get/configuration/311/UPDATE -d '{`
+    "vlan": {
 
-`    ``"vlan"``: {`
+        "4001": {
 
-`        ``"4001"``: {`
+            "name": "MyVlan4001",
 
-`            ``"name"``: ``"MyVlan4001"``,`
+            "ports": "Fa0\/11",
 
-`            ``"ports"``: ``"Fa0\/11"``,`
+            "object_id": "4001",
 
-`            ``"object_id"``: ``"4001"``,`
+            "status": "active"
 
-`            ``"status"``: ``"active"`
+        }
 
-`        ``}`
+    }
 
-`    ``}`
-
-`}'`
-
+}'
+....
 will return
 
-[[highlighter_507435]]
-link:#[?]
+                                     
+....
+{
 
-`                                     `
+    "commandId": 0,
 
-`{`
+    "message": "vlan 4002\nname MyVlan4002\n",
 
-`    ``"commandId"``: ``0``,`
+    "status": "OK"
 
-`    ``"message"``: ``"vlan 4002\nname MyVlan4002\n"``,`
-
-`    ``"status"``: ``"OK"`
-
-`}`
+}
+....
 
 [[MicroservicesOrderCommandRESTAPI-StoreConfiguration]]
 ==== Store Configuration 
@@ -108,15 +101,13 @@ link:[image:images/BFD-Conf-4.png[Image,width=600]]
 
 Web service syntax:
 
-[[highlighter_615084]]
-link:#[?]
+....
+                                 
 
-`                                     `
+PUT /ordercommand/store/configuration/{deviceId}/{commandName} 
 
-`PUT /ordercommand/store/configuration/{deviceId}/{commandName} `
-
-`body : microservice parameters formatted as JSON`
-
+body : microservice parameters formatted as JSON
+....
 * *DeviceId* is the ID (long) of the device to manage
 * *commandName* is the command to apply to the device
 * *objectParameters* are the JSON formatted list of objects and
@@ -128,48 +119,41 @@ attributes.
 The call below is using the Microservice vlan.xml to do simple VLAN
 management on a Cisco Catalyst IOS
 
-[[highlighter_526363]]
-link:#[?]
+....                     
 
-`                                     `
+curl -u ncroot:NCROOT_PWD  -XPUT http://MSA_IP/ubi-api-rest/ordercommand/store/configuration/311/CREATE -d '{
 
-`curl -u ncroot:NCROOT_PWD  -XPUT http:``//MSA_IP/ubi-api-rest/ordercommand/store/configuration/311/CREATE -d '{`
+    "vlan": {
 
-`    ``"vlan"``: {`
+        "4020": {
 
-`        ``"4020"``: {`
+            "name": "MyVlan4020",
 
-`            ``"name"``: ``"MyVlan4020"``,`
+            "ports": "Fa0\/11",
 
-`            ``"ports"``: ``"Fa0\/11"``,`
+            "object_id": "4020",
 
-`            ``"object_id"``: ``"4020"``,`
+            "status": "active"
 
-`            ``"status"``: ``"active"`
+        }
 
-`        ``}`
+    }
 
-`    ``}`
-
-`}'`
-
+}'
+....
 will return
+....                        
 
-[[highlighter_690594]]
-link:#[?]
+{
 
-`                                     `
+    "commandId": 0,
 
-`{`
+    "message": "vlan 4020\nname MyVlan4020\n",
 
-`    ``"commandId"``: ``0``,`
+    "status": "OK"
 
-`    ``"message"``: ``"vlan 4020\nname MyVlan4020\n"``,`
-
-`    ``"status"``: ``"OK"`
-
-`}`
-
+}
+....
 [[MicroservicesOrderCommandRESTAPI-ExecuteCommand]]
 ==== Execute Command 
 
@@ -189,12 +173,10 @@ link:[image:images/BFD-Conf-5.png[Image,width=600]]
 Use the following method to trigger OrderCommand (Microservices) methods
 present at the following URL:
 
-[[highlighter_646001]]
-link:#[?]
 
-`                                     `
+                                     
 
-`http:``//MSA_IP/ubi-api-rest/ordercommand/execute/{deviceId}/{commandName}`
+    http://MSA_IP/ubi-api-rest/ordercommand/execute/{deviceId}/{commandName}
 
 Where:\{deviceId}: is the device sequence number or the numeric part of
 the MSActivator Device ID\{commandName}: can take one of the following
@@ -206,32 +188,28 @@ values:
 * DELETE
 
 See the following CURL example:
+....                          
 
-[[highlighter_991845]]
-link:#[?]
+curl -u ncroot:NCROOT_PWD  -XPUT http://MSA_IP/ubi-api-rest/ordercommand/execute/311/CREATE -d '{
 
-`                                     `
+    "vlan": {
 
-`curl -u ncroot:NCROOT_PWD  -XPUT http:``//MSA_IP/ubi-api-rest/ordercommand/execute/311/CREATE -d '{`
+        "4020": {
 
-`    ``"vlan"``: {`
+            "name": "MyVlan4020",
 
-`        ``"4020"``: {`
+            "ports": "Fa0\/11",
 
-`            ``"name"``: ``"MyVlan4020"``,`
+            "object_id": "4020",
 
-`            ``"ports"``: ``"Fa0\/11"``,`
+            "status": "active"
 
-`            ``"object_id"``: ``"4020"``,`
+        }
 
-`            ``"status"``: ``"active"`
+    }
 
-`        ``}`
-
-`    ``}`
-
-`}'`
-
+}'
+....
 As shown above, the http body contains what's called "object parameters"
 in general.
 
@@ -253,6 +231,8 @@ builder. Hence, in the above case the Microservice was named:
 The JSON element at the next level is the object_id of the Microservice
 instance, in the above case it is: "SyslogConf".
 
+NOTE: the object_id is also passed as an instance variable.
+
 [[MicroservicesOrderCommandRESTAPI-MicroserviceInstanceVariables]]
 === Microservice Instance Variables
 
@@ -273,51 +253,48 @@ Microservices on the device, with instance names:
 The response of the import will be the following JSON object, that will
 be part of http response:
 
-[[highlighter_127885]]
-link:#[?]
+----                  
+{
 
-`                                     `
+  "syslogd": {
 
-`{`
+    "SyslogConf": {
 
-`  ``"syslogd"``: {`
+      "object_id": "SyslogConf",
 
-`    ``"SyslogConf"``: {`
+      "syslogd3_status": "enable",
 
-`      ``"object_id"``: ``"SyslogConf"``,`
+      "syslogd3_port": "514",
 
-`      ``"syslogd3_status"``: ``"enable"``,`
+      "syslogd3_server_ip": "1.2.2.3"
 
-`      ``"syslogd3_port"``: ``"514"``,`
+    }
 
-`      ``"syslogd3_server_ip"``: ``"1.2.2.3"`
+    "MSASyslogConf": {
 
-`    ``}`
+      "object_id": "MSASyslogConf",
 
-`    ``"MSASyslogConf"``: {`
+      "syslogd3_status": "enable",
 
-`      ``"object_id"``: ``"MSASyslogConf"``,`
+      "syslogd3_port": "514",
 
-`      ``"syslogd3_status"``: ``"enable"``,`
+      "syslogd3_server_ip": "2.3.4.5"
 
-`      ``"syslogd3_port"``: ``"514"``,`
+    }
 
-`      ``"syslogd3_server_ip"``: ``"2.3.4.5"`
+    "NMSSyslogconf": {
 
-`    ``}`
+      "object_id": "NMSSyslogconf",
 
-`    ``"NMSSyslogconf"``: {`
+      "syslogd3_status": "disable",
 
-`      ``"object_id"``: ``"NMSSyslogconf"``,`
+      "syslogd3_port": "514",
 
-`      ``"syslogd3_status"``: ``"disable"``,`
+      "syslogd3_server_ip": "7.6.5.4"
 
-`      ``"syslogd3_port"``: ``"514"``,`
+    }
 
-`      ``"syslogd3_server_ip"``: ``"7.6.5.4"`
+  }
 
-`    ``}`
-
-`  ``}`
-
-`}`
+}
+----

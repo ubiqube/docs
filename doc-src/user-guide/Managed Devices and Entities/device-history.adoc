@@ -50,9 +50,7 @@ it and store it in its configuration database.
 This configuration will be available later to manage configuration
 changes.
 
-Note
-
-Every night the MSActivator analyses the configuration of all its
+NOTE: Every night the MSActivator analyses the configuration of all its
 managed devices and tracks modifications that may have been done
 manually on the device.
 
@@ -84,6 +82,7 @@ configuration versions
 NOTE: Calling the configuration rollback should be done carefully
 because it will completely replace the current running configuration of
 the device with the rollback version.
+In most cases, it also reboots the device.
 
 ==== Video Tutorial
 

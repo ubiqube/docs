@@ -29,9 +29,7 @@ directly related to the *adaptor implementation* for a specific vendor.
 [[MicroserviceOrderStackManagementAPI-AddanOrdertotheStack]]
 === Add an Order to the Stack
 
-curl -u ncroot:ncroot_pwd -XPUT
-[.nolink]#[.nolink]#http://MSA_IP/ubi-api-rest/orderstack/command/\{deviceId}/\{commandName##}
--d \{objectParameters}
+    curl -u ncroot:ncroot_pwd -XPUT http://MSA_IP/ubi-api-rest/orderstack/command/{deviceId}/{commandName} -d {objectParameters}
 
 [[MicroserviceOrderStackManagementAPI-Description]]
 ==== Description
@@ -43,11 +41,19 @@ stack.
 ==== Parameters
 
 *deviceId*: the database identifier of the managed device, for example:
-123.*commandName*: possible values are CREATE UPDATE IMPORT
-DELETE**objectParameters**: in JSON format, for example:
+123. *commandName*: possible values are CREATE UPDATE IMPORT
+DELETE **objectParameters**: in JSON format, for example:
 
 ....
-'{"interface" : {   "port2" : {       "ip" : "1.2.4.5",       "object_id" : "port2",       "mask" : "255.255.255.0"         }     }}'
+'{
+"interface" : {
+   "port2" : {
+       "ip" : "1.2.4.5",
+       "object_id" : "port2",
+       "mask" : "255.255.255.0"
+         }
+     }
+}'
 ....
 
 [[MicroserviceOrderStackManagementAPI-Detail]]
@@ -58,8 +64,7 @@ Write into database (redsms.sd_crud_object).
 [[MicroserviceOrderStackManagementAPI-GeneratetheConfigurationfromtheStack]]
 === Generate the Configuration from the Stack
 
-curl -u ncroot:ncroot_pwd -XGET
-[.nolink]#[.nolink]#http://MSA_IP/ubi-api-rest/orderstack/configuration/\{deviceId##}
+    curl -u ncroot:ncroot_pwd -XGET http://MSA_IP/ubi-api-rest/orderstack/configuration/{deviceId}
 
 [[MicroserviceOrderStackManagementAPI-Description.1]]
 ==== Description
@@ -83,17 +88,14 @@ The SMS verb is equivalent to the following CLI command command:
 sms -e JSCALLCOMMAND -i 'deviceId commandName 0' -c 'objectParameters'
 ....
 
-NOTE: Note
-
-In the CLI command above the parameter 0 is used along with commands
+NOTE: In the CLI command above the parameter 0 is used along with commands
 such as CREATE, UPDATE or DELETE and *generate configuration without
 access to the database or the device*
 
 [[MicroserviceOrderStackManagementAPI-GeneratstheConfigurationandStoretheConfigurationfromtheStack]]
 === Generats the Configuration and Store the Configuration from the Stack
 
-curl -u ncroot:ncroot_pwd -XPUT
-[.nolink]#[.nolink]#http://MSA_IP/ubi-api-rest/orderstack/configuration/\{deviceId##}
+    curl -u ncroot:ncroot_pwd -XPUT http://MSA_IP/ubi-api-rest/orderstack/configuration/{deviceId}
 
 [[MicroserviceOrderStackManagementAPI-Description.2]]
 ==== Description
@@ -110,25 +112,23 @@ stores the configuration items in the database.
 [[MicroserviceOrderStackManagementAPI-Detail.2]]
 ==== Detail
 
-loop on commands in the stack  call SMS verb  write in database
-(redsms.sd_crud_object)end loop
+    loop on commands in the stack
+        call SMS verb
+        write in database (redsms.sd_crud_object)
+    end loop
 
 The SMS verb is equivalent to the following command:
 `sms -e JSCALLCOMMAND -i 'deviceId commandName 1' -c 'objectParameters'`
 
-NOTE: Note
-
-In the CLI command above the parameter 1 is used along with commands
+NOTE: In the CLI command above the parameter 1 is used along with commands
 such as CREATE, UPDATE or DELETE and generate the configuration and
 *stores the configuration items in the database.*
-
-The device configuration is not impacted.**
+The device configuration is not impacted.
 
 [[MicroserviceOrderStackManagementAPI-GeneratetheConfigurationfromtheStackandApplytotheDevice]]
 === Generate the Configuration from the Stack and Apply to the Device
 
-curl -u ncroot:ncroot_pwd -XPOST
-[.nolink]#[.nolink]#http://MSA_IP/ubi-api-rest/orderstack/execute/\{deviceId##}
+    curl -u ncroot:ncroot_pwd -XPOST http://MSA_IP/ubi-api-rest/orderstack/execute/{deviceId}
 
 [[MicroserviceOrderStackManagementAPI-Description.3]]
 ==== Description
@@ -146,24 +146,25 @@ commands on the device.
 [[MicroserviceOrderStackManagementAPI-Detail.3]]
 ==== Detail
 
-loop on commands in the stack  call SMS verb  write in database (table
-redsms.sd_crud_object)  execute command on the deviceend loop
+....
+loop on commands in the stack
+  call SMS verb
+  write in database (table redsms.sd_crud_object)
+  execute command on the device
+end loop
+....
 
 The SMS verb is equivalent to the following command:
 `sms -e JSCALLCOMMAND -i 'deviceId commandName 2' -c 'objectParameters'`
 
-NOTE: Note
-
-In the CLI command above the parameter 2 is used along with commands
+NOTE: In the CLI command above the parameter 2 is used along with commands
 such as CREATE, UPDATE or DELETE and generate the configuration, stores
 the configuration items in the database and *applies the configuration*
 to the device.
 
 [[MicroserviceOrderStackManagementAPI-ListtheOrdersintheStack]]
 === List the Orders in the Stack
-
-curl -u ncroot:ncroot_pwd -XGET
-[.nolink]#[.nolink]#http://MSA_IP/ubi-api-rest/orderstack/\{deviceId##}
+    curl -u ncroot:ncroot_pwd -XGET http://MSA_IP/ubi-api-rest/orderstack/{deviceId}
 
 [[MicroserviceOrderStackManagementAPI-Description.4]]
 ==== Description
@@ -183,9 +184,7 @@ Read from the database (table redsms.sd_crud_object).
 
 [[MicroserviceOrderStackManagementAPI-GettheDetailofaStackCommand]]
 === Get the Detail of a Stack Command
-
-curl -u  ncroot:ncroot_pwd -XGET
-[.nolink]#[.nolink]#http://MSA_IP/ubi-api-rest/orderstack/command/\{deviceId}/\{commandId##}
+    curl -u  ncroot:ncroot_pwd -XGET http://MSA_IP/ubi-api-rest/orderstack/command/{deviceId}/{commandId}
 
 [[MicroserviceOrderStackManagementAPI-Description.5]]
 ==== Description
@@ -206,8 +205,7 @@ Read in database (redsms.sd_crud_object).
 [[MicroserviceOrderStackManagementAPI-CleartheStack]]
 === Clear the Stack
 
-curl -u ncroot:ncroot_pwd -XDELETE
-[.nolink]#[.nolink]#http://MSA_IP/ubi-api-rest/orderstack/\{deviceId##}
+    curl -u ncroot:ncroot_pwd -XDELETE http://MSA_IP/ubi-api-rest/orderstack/{deviceId}
 
 [[MicroserviceOrderStackManagementAPI-Description.6]]
 ==== Description
@@ -228,8 +226,7 @@ Remove in database (redsms.sd_crud_object)
 [[MicroserviceOrderStackManagementAPI-DeleteaCommandfromtheStack]]
 === Delete a Command from the Stack
 
-curl -u  ncroot:ncroot_pwd -XDELETE
-[.nolink]#[.nolink]#http://MSA_IP/ubi-api-rest/orderstack/command/\{deviceId}/\{commandId##}
+    curl -u  ncroot:ncroot_pwd -XDELETE http://MSA_IP/ubi-api-rest/orderstack/command/{deviceId}/{commandId}
 
 [[MicroserviceOrderStackManagementAPI-Description.7]]
 ==== Description
@@ -250,9 +247,7 @@ Remove in database (redsms.sd_crud_object).
 [[MicroserviceOrderStackManagementAPI-ApplytheConfigurationforaDevice]]
 === Apply the Configuration for a Device
 
-curl -u ncroot:ncroot_pwd -XPUT
-[.nolink]#[.nolink]#http://MSA_IP/ubi-api-rest/device/push_configuration/\{deviceId##}
--d \{configuration}
+    curl -u ncroot:ncroot_pwd -XPUT http://MSA_IP/ubi-api-rest/device/push_configuration/{deviceId} -d {configuration}
 
 [[MicroserviceOrderStackManagementAPI-Description.8]]
 ==== Description
@@ -269,13 +264,7 @@ Example:
 
 ....
 {
-....
-
-....
     "configuration": "config system interface\nedit port1\nset ip 192.168.1.10 255.255.255.0\nend"
-....
-
-....
 }
 ....
 
@@ -287,8 +276,7 @@ Applies the configuration to the device.
 [[MicroserviceOrderStackManagementAPI-GettheStatusofthepush_configurationAPI]]
 === Get the Status of the push_configuration API
 
-curl -u ncroot:ncroot_pwd  -X GET
-[.nolink]#[.nolink]#http://MSA_IP/ubi-api-rest/device/push_configuration/status/\{deviceId##}
+    curl -u ncroot:ncroot_pwd  -X GET http://MSA_IP/ubi-api-rest/device/push_configuration/status/{deviceId}
 
 [[MicroserviceOrderStackManagementAPI-Description.9]]
 ==== Description

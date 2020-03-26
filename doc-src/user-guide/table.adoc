@@ -1,0 +1,6 @@
+[cols=",,,,",]
+|==============================================================
+|*Attribute Name* |*Type* |*Required* |*Default* |*Description*
+|var |string |Yes |n/a |The name of the variable being assigned
+|value |string |Yes |n/a |The value being assigned
+|==============================================================
