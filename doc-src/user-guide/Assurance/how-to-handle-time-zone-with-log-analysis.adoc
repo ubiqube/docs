@@ -1,0 +1,76 @@
+= How To Handle Time Zone With Log Analysis
+:toc: left
+:toc-title: Content
+:imagesdir: ../resources/
+:ext-relative: adoc
+
+== Overview
+
+The MSActivator provides syslog collection, analysis and indexing with
+its link:../Assurance/log-analysis.adoc[Log Analysis] module. The
+syslogs collecting and analysing module of the MSActivator parses the
+syslogs to extract the fields that will be stored and indexed in
+Elasticsearch. Because not every device sends its time zone
+configuration in their syslogs, the MSA doesn't extract time zone
+information, and therefore the extracts the syslog date without any time
+zone related information. By default, the MSActivator assigns the GMT
+time zone to the syslogs. A potential issue is that if the sending
+device is not in GMT, its syslogs will be incorrectly indexed and the
+link:../Assurance/log-analysis.adoc[Log Analysis] module will show
+inaccurate results.
+
+The picture below illustrates this case with a Cisco ASA security syslog
+(field "rawlog") without any time zone information. Note the field
+"date" shows "+0000" as the default time zone.
+
+link:[image:images/image2018-4-11_11-38-55.png[Image,width=800]]
+
+== Configure a Global Default time zone
+
+When all devices managed by the MSActivator are in the same time zone,
+it is possible to set a global default time zone for the syslogs. This
+configuration is done using the MSActivator CLI base Configuration Tool:
+
+....
+UBIqube SOC Configuration Menu → SEC Engine configuration → SEC Engine syslog configuration → Default time zone offset for received syslogs
+....
+
+Change the default value +0000 to another value (user selected), i.e.
++0900, and reconfigure the SecEgine
+
+Once configured with the new default time zone, the syslogs will be
+indexed with +0900 (or other user selected time). This change can be
+seen in the field "date" below:
+
+link:[image:images/image2018-4-11_17-31-6.png[Image,width=800]]
+
+== Configure a time zone for a Specific Device
+
+If your managed devices are configured with various time zones, then you
+need to configure the time zone specifically for each devices.
+
+This can be done by implementing a
+link:../Configuration/Microservices/getting-started-developing-microservices.adoc[Microservice]
+with a parameter *$param.timezone* that will take the value of the time
+zone needed to add to the syslogs.
+
+With the configuration below:
+
+link:[image:images/image2018-4-24_18-3-44.png[Image,width=800]]
+
+The syslogs get localized to the time zone GMT-0020.
+
+link:[image:images/image2018-4-24_18-4-57.png[Image,width=800]]
+
+NOTE: Important
+
+The Microservice must be defined in a file *system.xml*
+
+You can find a simple example on Github at
+https://github.com/openmsa/Workflows-Microservices/tree/master/MICROSERVICES/CISCO
+.
+
+This example allows you to configure the time zone to set on the
+syslogs. It can be extended with a full implementation of
+IMPORT/CREATE/... to synchronize the time zone between the MSActivator
+and the device.

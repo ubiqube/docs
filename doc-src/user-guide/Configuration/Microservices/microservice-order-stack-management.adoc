@@ -1,0 +1,103 @@
+= Microservice Order Stack Management
+:toc: left
+:toc-title: Content
+:imagesdir: ../../resources/
+:ext-relative: adoc
+
+[[main-content]]
+[[MicroserviceOrderStackManagement-Overview]]
+== Overview
+
+When using the link:/documentation/microservices/[Microservice] console
+to configure a device, the user is actually stacking order, and the
+actual configuration is built and pushed once they click on the button
+"Apply configuration".
+
+This allows the user to build a complete set of configurations before
+triggering the actual configuration on the managed device.
+
+The stack management used by the Microservice GUI is also available via
+the REST API.
+
+This document illustrates how to use the API to manage the Microservice
+stack.
+
+[[MicroserviceOrderStackManagement-HowtoUsetheAPI]]
+== How to Use the API
+
+Use case: route management on a firewall. 
+
+Initial state: no route defined on the firewall.
+
+link:[image:images/Objects_Stack_Management_route_1.png[Image,width=800]]
+
+Use the WS (web server) to add a route: SOAP request.
+
+[source,highlight]
+----
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.ubiqube.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:pushOrderCommand>
+         <deviceId>338</deviceId>
+         <commandName>CREATE</commandName>
+         <objectParameters>{"routing":{"1":{"subnet":"10.20.50.0","comment":"","interface":"port1","object_id":"1","gateway":"10.20.50.254","mask":"255.255.255.0"}}}</objectParameters>
+      </ws:pushOrderCommand>
+   </soapenv:Body>
+</soapenv:Envelope>
+ 
+----
+
+Returns the stack position ID for this order.
+
+[source,highlight]
+----
+<env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/">
+   <env:Header/>
+   <env:Body>
+      <ns2:pushOrderCommandResponse xmlns:ns2="http://ws.ubiqube.com">
+         <return>1</return>
+      </ns2:pushOrderCommandResponse>
+   </env:Body>
+</env:Envelope>
+----
+
+Other orders can be pushed and once all order are pushed, it is possible
+for the GUI to trigger the configuration by clicking the button "Apply
+configuration":
+
+link:[image:images/Objects_Stack_Management_route_2.png[Image,width=800]]
+
+Or with a SOAP call:
+
+[source,highlight]
+----
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.ubiqube.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:executeStack>
+         <deviceId>338</deviceId>
+      </ws:executeStack>
+   </soapenv:Body>
+</soapenv:Envelope>
+----
+
+And clean the stack.
+
+[source,highlight]
+----
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.ubiqube.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:clearStack>
+         <deviceId>338</deviceId>
+      </ws:clearStack>
+   </soapenv:Body>
+</soapenv:Envelope>
+----
+
+The GUI (after a browser refresh) should look like this:
+
+Objects_Stack_Management_route_3
+
+link:[image:images/Objects_Stack_Management_route_3.png[Image,width=800]]

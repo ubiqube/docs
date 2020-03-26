@@ -1,0 +1,26 @@
+<div class="documentation-content">
+<div class="wiki-content" id="main-content">
+    <div class="confluence-information-macro confluence-information-macro-information conf-macro output-block" data-hasbody="true" data-macro-name="info">
+        <p class="title">NOTE: Source Code</p>
+        <div class="confluence-information-macro-body">
+            <p>The source code for this tutorial is available on GitHub at: <a class="external-link" href="https://github.com/openmsa/Workflows/tree/master/Tutorials/Dyn_List_Workflow_Data_Provider" rel="nofollow" target="_blank">https://github.com/openmsa/Workflows/tree/master/Tutorials/Dyn_List_Workflow_Data_Provider</a></p>
+        </div>
+    </div>
+    <p>This tutorial explains how to use the variable type "Workflow Reference" to act as a dynamic data provider with a list of referenced workflow instances.</p>
+    <p>This is useful for calling a process from another process of the same workflow or another workflow as explained in <a href="../Automation/workflow-rest-api-and-function-library.adoc">Workflow REST API and Function Library</a>.</p>
+    <p></p>
+    <p>The "data provider" workflow below has 3 instances</p>
+    <p><a class="image-popup-fit-width" href="">
+    <img alt="Image" src="images/image2019-4-23_17-15-41.png" width="800"/></a></p>
+    <p>These instances can be listed with a variable "workflow reference" to allow another workflow to use these references and call a process from a selected instance</p>
+    <p><a class="image-popup-fit-width" href="">
+    <img alt="Image" src="images/image2019-4-23_17-15-5.png" width="800"/></a></p>
+    <h1 id="HowtoUseaWorkflowasaDynamicDataProviderforList-VariableConfiguration">Variable Configuration</h1>
+    <p>Edit the workflow variables and set the type to "workflow reference"</p>
+    <p><a class="image-popup-fit-width" href="">
+    <img alt="Image" src="images/image2019-4-23_17-30-32.png" width="800"/></a></p>
+    <p>In the  advanced parameters screen, select the workflow to refer to</p>
+    <p><a class="image-popup-fit-width" href="">
+    <img alt="Image" src="images/image2019-4-23_17-32-53.png" width="800"/></a></p>
+</div>
+        </div>

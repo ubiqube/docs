@@ -1,0 +1,187 @@
+<div class="documentation-content">
+
+
+<div class="wiki-content" id="main-content">
+  <p>This tutorial explains how to design a new Microservice that provides simple firewall functionalities such as IP and port-based network filtering.</p>
+  <div class="confluence-information-macro confluence-information-macro-information conf-macro output-block" data-hasbody="true" data-macro-name="info">
+    <p class="title">NOTE: Getting the sources</p>
+    <div class="confluence-information-macro-body">
+      <p>The source of this tutorial are available on GitHub at <a class="external-link" href="https://github.com/openmsa/Microservices/tree/master/Tutorials/LINUX/Generic/Tutorial2" rel="nofollow" target="_blank">https://github.com/openmsa/Microservices/tree/master/Tutorials/LINUX/Generic/Tutorial2</a></p>
+    </div>
+  </div>
+  <h1 id="iptablesManagementwithaMicroservice-Prerequisite">Prerequisite</h1>
+  <p>You need a managed Linux device on your MSActivator. Check the guide <a href="http://confluence.ubiqube.com/display/MSA171/Simple+Managed+Security+Service+with+a+Linux+Firewall" rel="nofollow">Simple Managed Security Service with a Linux Firewall</a> to learn how to activate a Linux device on the MSActivator.</p>
+  <div class="confluence-information-macro confluence-information-macro-information conf-macro output-block" data-hasbody="true" data-macro-name="info">
+    
+  </div>
+  <h1 id="iptablesManagementwithaMicroservice-BuildtheMicroservice">Build the Microservice</h1>
+  <p>To perform firewall management on Linux we are going to use <a class="external-link" href="https://wiki.archlinux.org/index.php/iptables" rel="nofollow">iptables</a>.</p>
+  <h2 id="iptablesManagementwithaMicroservice-UseCaseOverview"><span style="color: #000000;">Use Case Overview</span></h2>
+  <p>The end customer or MSSP (Managed Security Service Provider) needs to be able to:</p>
+  <ul>
+    <li>Use a simple, multi-vendor, automated tool.</li>
+    <li>Implement basic network security policies.<span style="color: #000000;"></span></li>
+  </ul>
+  <h2 id="iptablesManagementwithaMicroservice-High-LevelRequirements"><span style="color: #000000;">High-Level Requirements</span></h2>
+  <ul>
+    <li>The operator should have the option to protect IT resources (e.g. public or corporate servers, like ticketing systems, web servers, etc.) with a firewall.</li>
+    <li>The firewalls should not be limited to a single vendor.</li>
+    <li>The operator should benefit from a single management panel for all operations, from policy provisioning, to monitoring and reporting.</li>
+    <li>Configuring the firewall should be as simple as possible.</li>
+  </ul>
+  <h2 id="iptablesManagementwithaMicroservice-SpecificationsforaSimpleFirewall"><span style="color: #000000;">Specifications for a Simple Firewall</span></h2>
+  <ul>
+    <li>The user (operator or end customer) must be able to specify an IP address and a service (network port number) on the OpenMSA console.</li>
+    <li>The user must be able to select a group of firewalls to configure.</li>
+    <li>The MSActivator will use the two parameters: IP and port, to automatically configure the firewalls selected by the user.</li>
+  </ul>
+  <h2 id="iptablesManagementwithaMicroservice-FirewallImplementationonLinux"><span style="color: #000000;">Firewall Implementation on Linux</span></h2>
+  <ul>
+    <li>Based on Linux iptables</li>
+    <li>Takes an IP and a port as parameters</li>
+  </ul>
+  <p>Below are some example of iptable used to perform IP/port based filtering</p>
+  <h4 id="iptablesManagementwithaMicroservice-Createarule">Create a rule</h4>
+  <pre>sudo iptables -A INPUT -p tcp --dport &lt;PORT TO BLOCK&gt; -s &lt;IP TO BLOCK&gt; -j DROP</pre>
+  <pre>sudo iptables -A FORWARD -p tcp --dport &lt;PORT TO BLOCK&gt; -s &lt;IP TO BLOCK&gt; -j DROP</pre>
+  <h4 id="iptablesManagementwithaMicroservice-Getthelistofrules">Get the list of rules</h4>
+  <pre>iptables -L INPUT -n | grep -v Chain | grep -v target</pre>
+  <p>Returns</p>
+  <pre>DROP       tcp  --  92.103.182.20        0.0.0.0/0           tcp dpt:</pre>
+  <pre>DROP       tcp  --  92.103.182.20        0.0.0.0/0           tcp dpt:80</pre>
+  <h3 id="iptablesManagementwithaMicroservice-Implementationsteps">Implementation steps</h3>
+  <p>These are the steps to follow to build the Microservice. These steps are usually the generic steps to design and develop Microservices with other vendors and services.</p>
+  <p>Step 1: Create a new Microservice in the repository.</p>
+  <p>Step 2: Implement the CREATE command.</p>
+  <p>Step 3: Implement the DELETE command.</p>
+  <p>Step 4: Implement the IMPORT command.</p>
+  <p>Step 5: Test and check the Linux vFW via the command line interface.</p>
+  <h3 id="iptablesManagementwithaMicroservice-Step1:Createanewmicroserviceintherepository">Step 1: Create a new microservice in the repository</h3>
+  <p>You can learn how to use the repository with this guide: <a href="http://confluence.ubiqube.com/display/MSA171/Repository+Management" rel="nofollow">Repository Management</a>.</p>
+  <p>Create a new Microservice simple_firewall.xml for the device type Linux/Generic</p>
+
+  <p><a class="image-popup-fit-width" href="">
+    <img alt="Image" src="images/image2018-6-26_12-43-32.png" width="800"/></a></p>
+
+  <p>Provide some information related to this new Microservice such as a display name, a category, etc. These can be modified at any later time during the design phase.</p>
+  <p><a class="image-popup-fit-width" href="">
+    <img alt="Image" src="images/image2018-6-26_16-48-59.png" width="800"/></a></p>
+
+  <p>Save and close the Microservice editor and attach the Microservice to the device that will be used for the design and test work.</p>
+  <p>To edit the Microservice you can use the Microservice console on the device "config" tab, right click on the Microservice from the list on the left and choose "Edit definition"</p>
+  <p><a class="image-popup-fit-width" href="">
+    <img alt="Image" src="images/image2018-6-26_17-11-26.png" width="800"/></a></p>
+
+  <h3 id="iptablesManagementwithaMicroservice-Step2:ImplementtheCREATEcommand">Step 2: Implement the CREATE command</h3>
+  <p>The creation of a filtering rule using iptable can be implemented with the CLI command below:</p>
+  <pre>sudo iptables -A INPUT -p tcp --dport &lt;PORT TO BLOCK&gt; -s &lt;IP TO BLOCK&gt; -j DROP</pre>
+  <pre>sudo iptables -A FORWARD -p tcp --dport &lt;PORT TO BLOCK&gt; -s &lt;IP TO BLOCK&gt; -j DROP</pre>
+  <p>These commands take 2 parameters, a port and an IP address.</p>
+  <p>Add a CREATE function to your microservice and copy the implementation below:</p>
+  <pre>sudo iptables -A INPUT -p tcp --dport {$params.dst_port} -s {$params.src_ip} -j DROP</pre>
+  <pre>sudo iptables -A FORWARD -p tcp --dport {$params.dst_port} -s {$params.src_ip} -j DROP</pre>
+  <p><a class="image-popup-fit-width" href="">
+    <img alt="Image" src="images/image2018-6-26_17-16-13.png" width="800"/></a></p>
+
+  <p>On the vertical tabs, select "VARIABLES" and check that 2 new variables were created. The Microservice engine detects the pattern {$params.XXX} and automatically creates the variable XXX.</p>
+  <p>You can adjust the display name of the variable as well as the type:</p>
+  <p><a class="image-popup-fit-width" href="">
+    <img alt="Image" src="images/image2018-6-26_17-19-38.png" width="800"/></a></p>
+
+  <p>Selecting a type will enforce some UI control over the value entered by the end user.</p>
+  <p>For the last step, add the mandatory variable object_id and set its type to "Auto Increment"</p>
+  <p><a class="image-popup-fit-width" href="">
+    <img alt="Image" src="images/image2018-6-26_17-22-17.png" width="800"/></a></p>
+
+  <p>You can reorder the variable by using the up/down arrows or by dragging them up or down.</p>
+  <p>Since the type of the object_id is auto increment, we can set it to be a mandatory, read-only variable:</p>
+  <p><a class="image-popup-fit-width" href="">
+    <img alt="Image" src="images/image2018-6-26_18-0-7.png" width="800"/></a></p>
+
+  <p>At this point the Microservice is ready for a first test. Make sure that you have an SSH access to you device to test. </p>
+  <p>Save and close, select the Microservice on the device "config" tab, and click on the <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" data-base-url="http://confluence.ubiqube.com" data-image-src="/download/attachments/11272469/image2018-6-26_17-25-27.png?version=1&amp;modificationDate=1546524347642&amp;api=v2" data-linked-resource-container-id="11272469" data-linked-resource-container-version="10" data-linked-resource-content-type="image/png" data-linked-resource-default-alias="image2018-6-26_17-25-27.png" data-linked-resource-id="15008987" data-linked-resource-type="attachment" data-linked-resource-version="1" data-unresolved-comment-count="0" height="16" src="images/image2018-6-26_17-25-27.png"/></span> to open the Microservice creation dialog.</p>
+  <p><a class="image-popup-fit-width" href="">
+    <img alt="Image" src="images/image2018-6-26_17-59-18.png" width="800"/></a></p>
+
+  <p>Enter an IP and a port number, save it and click on "Apply configuration".</p>
+  <p>During the design and test phase, it's recommended to:</p>
+  <ul>
+    <li>have access to the MSActivator Linux console</li>
+    <li>enable the debug mode on the configuration engine (CLI command: tstsms SETLOGLEVEL 255 255) </li>
+    <li>have a tail on the configuration engine logs: tail -F /opt/sms/logs/smsd.log</li>
+  </ul>
+  <p>Check that the iptable rule has been configured by entering the CLI command. </p>
+  <pre>iptables -L INPUT -n</pre>
+  <p>on the SSH terminal of the Linux firewall.</p>
+  <pre class="p1">[root@LINUX-FW ~]# iptables -L INPUT -n</pre>
+  <pre class="p1">Chain INPUT (policy ACCEPT)</pre>
+  <pre class="p1">target     prot opt source               destination         </pre>
+  <pre class="p1">DROP       tcp  --  192.168.1.2          0.0.0.0/0           tcp dpt:80 </pre>
+  <pre class="p1">[root@LINUX-FW ~]# </pre>
+  <h3 id="iptablesManagementwithaMicroservice-Step3:ImplementtheDELETEcommand">Step 3: Implement the DELETE command</h3>
+  <p>The deletion of the iptables INPUT and FORWARD rules is executed with the CLI command below:</p>
+  <pre>sudo iptables -D INPUT -p tcp --dport &lt;PORT TO BLOCK&gt;  -s &lt;IP TO BLOCK&gt;  -j DROP </pre>
+  <pre>sudo iptables -D FORWARD -p tcp --dport &lt;PORT TO BLOCK&gt;  -s &lt;IP TO BLOCK&gt;  -j DROP </pre>
+  <p>This will be written as: </p>
+  <pre>sudo iptables -D INPUT -p tcp --dport {$simple_firewall.$object_id.dst_port} -s {$simple_firewall.$object_id.src_ip} -j DROPsudo iptables -D FORWARD -p tcp --dport {$simple_firewall.$object_id.dst_port} -s {$simple_firewall.$object_id.src_ip} -j DROP</pre>
+  <p><a class="image-popup-fit-width" href="">
+    <img alt="Image" src="images/image2018-6-27_10-30-45.png" width="800"/></a></p>
+
+  <p> </p>
+  <div class="confluence-information-macro confluence-information-macro-information conf-macro output-block" data-hasbody="true" data-macro-name="info">
+    <p class="title">NOTE: The syntax {$simple_firewall.$object_id.dst_port} provides a way to access the Microservice variable values in the MSActivator configuration database. </p>
+    
+  </div>
+  <h3 id="iptablesManagementwithaMicroservice-Step4:ImplementtheIMPORTcommand">Step 4: Implement the IMPORT command</h3>
+  <p>The role of the IMPORT command is to import the current device configuration into the MSActivator database.</p>
+  <p>The implementation of the IMPORT is based on a set of regular expressions that build a parser that will extract the values of the Microservice variables.</p>
+  <p>The IMPORT is made of 3 parts:</p>
+  <ol>
+    <li>The command to run on the device (for CLI command based device).</li>
+    <li>The configuration parser, implemented with a set of regular expressions. Only the Microservice identifier extractor is mandatory.</li>
+    <li>A set of port import operations implemented in Smarty language (<a class="external-link" href="https://www.smarty.net/" rel="nofollow">https://www.smarty.net/</a>).</li>
+  </ol>
+  <p><a class="image-popup-fit-width" href="">
+    <img alt="Image" src="images/image2018-6-27_10-53-58.png" width="800"/></a></p>
+
+  <h4 id="iptablesManagementwithaMicroservice-Commandtorunonthedevice">Command to run on the device</h4>
+  <p>To list the iptables rules the CLI command to use is: </p>
+  <pre class="p1">[root@LINUX-FW ~]# iptables -L INPUT -n</pre>
+  <pre class="p1">Chain INPUT (policy ACCEPT)</pre>
+  <pre class="p1">target     prot opt source               destination         </pre>
+  <pre class="p1">DROP       tcp  --  192.168.1.2          0.0.0.0/0           tcp dpt:80 </pre>
+  <pre class="p1">DROP       tcp  --  192.168.1.4          0.0.0.0/0           tcp dpt:443  </pre>
+  <pre class="p1"> </pre>
+  <p>We can add some "grep" commands to remove the lines that starts with "Chain" and "target".</p>
+  <div class="confluence-information-macro confluence-information-macro-information conf-macro output-block" data-hasbody="true" data-macro-name="info">
+    <p class="title">NOTE: The use of grep here is a straightforward way, specific to this use case, to have a simple and easy to parse output. The same result could also be achieved by adding a parser instruction to ignore the first 2 lines starting with "Chain" and "target".</p>
+    
+  </div>
+  <pre class="p1">[root@LINUX-FW ~]# iptables --line-numbers -L INPUT -n | grep -v Chain | grep -v num</pre>
+  <pre class="p1">1    DROP       tcp  --  192.168.1.2          0.0.0.0/0           tcp dpt:80 </pre>
+  <pre class="p1">2    DROP       tcp  --  192.168.1.4          0.0.0.0/0           tcp dpt:443 </pre>
+  <pre class="p1"> </pre>
+  <p><strong>Identifier extractor</strong></p>
+  <p>The identifier extractor will parse each line and assign the rule ID to the Microservice variable object_id.</p>
+  <p>Since the rule contains the other variables on the same line, the identifier extractor will also extract the source IP and the destination port.</p>
+  <p>The regular expression below will extract the object_id, the src_ip and the dst_port.</p>
+  <pre>@(?&lt;object_id&gt;\d+)    DROP       tcp  --  (?&lt;src_ip&gt;([0-9]{1,3}\.){3}[0-9]{1,3})[^:]+:(?&lt;dst_port&gt;\d+)@</pre>
+  <p>To test it you can copy the rules to parse in the section <strong>EXAMPLE</strong>.</p>
+  <p><a class="image-popup-fit-width" href="">
+    <img alt="Image" src="images/image2018-6-27_11-19-51.png" width="800"/></a></p>
+
+  <p>Then use the button "Test Parser" in the section <strong>IMPORT</strong>.</p>
+  <p><a class="image-popup-fit-width" href="">
+    <img alt="Image" src="images/image2018-6-27_11-21-56.png" width="800"/></a></p>
+
+  <h3 id="iptablesManagementwithaMicroservice-Step5:TestandchecktheLinuxvFWviathecommandlineinterface">Step 5: Test and check the Linux vFW via the command line interface</h3>
+  <p>The Microservice is ready to be tested. </p>
+  <p>Make sure that you can add and delete a policy rule, that it's reflected on the Linux firewall, and that the parameters are also properly synchronised after a call to CREATE or DELETE.</p>
+  <p>You can also add some iptables rules manually on the Linux CLI and run a configuration synchronisation to make sure that your manual changes are properly imported.</p>
+  <p> </p>
+  <p> </p>
+</div>
+
+
+
+        </div>

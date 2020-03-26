@@ -1,0 +1,28 @@
+= Cli Configuration Tool
+:toc: left
+:toc-title: Content
+:imagesdir: ../resources/
+:ext-relative: adoc
+
+== Overview
+
+=== *The MSActivator has 2 configuration interfaces:*:
+
+* a web-based interface, used only for the initial configuration as
+explained in
+http://confluence.ubiqube.com:14523/display/MSA1711/MSActivator+Installation+and+Configuration+Guide[MSActivator
+Installation and Configuration Guide].
+* a CLI-based configuration tool, the configurator.
+
+The configurator is available from the MSActivator Linux CLI by
+executing the command: /opt/configurator/configure.
+
+=== *Several options are available, here are the most common ones:*:
+
+* --expert: will show all the configuration options available.
+* --no-reconf: will not execute the automated configuration of all the
+modules of the MSActivator (Web Portal, SecEngine,...).
+
+NOTE: If executed with no option, the user will be prompted to provide
+input on 2 options. Entering "n" for both input has the same effect as
+--expert and --no-reconf.

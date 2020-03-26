@@ -1,0 +1,1164 @@
+<div class="documentation-content">
+          <p>This article will explain to you all about logs for each of the MSA modules. It also provides the log rotation configuration for that particular log. </p>
+          <p>These logs will help troubleshoot any problems in MSA. </p>
+          <h1 id="MSALogs-Database">Database</h1>
+          <div class="table-responsive">
+              <table class="table table-bordered">
+                  <colgroup>
+                      <col/>
+                      <col/>
+                      <col/>
+                      <col/>
+                  </colgroup>
+                  <tbody>
+                      <tr>
+                          <th class="confluenceTh">Log File and Path</th>
+                          <th class="confluenceTh">Information</th>
+                          <th class="confluenceTh">Log Rotation</th>
+                          <th class="confluenceTh" colspan="1">Rotation-Configuration</th>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">
+                              <p>/opt/base/velocity.log/opt/base/velocity.log.1</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1">
+                              <p>velocity.log is created when a configuration of a module (/opt/base/configure) is launched. Velocity is the tool for resolving templates, i.e. to replace variables according to vars.ctx and generating config files.</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1">Not rotated.</td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd">/opt/base/logs/ubi-base.log</td>
+                          <td class="confluenceTd">This log is for DB schema upgrade.</td>
+                          <td class="confluenceTd">Not rotated.</td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd">/opt/database/9.3/pgstartup.log</td>
+                          <td class="confluenceTd">Logs for PostgreSQL startup.</td>
+                          <td class="confluenceTd">Not rotated.</td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd">/opt/database/9.3/data/pg_log/postgresql-Fri.log</td>
+                          <td class="confluenceTd">Logs for PostgreSQL server.</td>
+                          <td class="confluenceTd">Rotates every day. Maximum one week of logs kept on the disk</td>
+                          <td class="confluenceTd" colspan="1">Managed by PostgreSQL</td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+          <h1 id="MSALogs-Configurator-MSAConfigurationModule">Configurator - MSA Configuration Module</h1>
+          <div class="table-responsive">
+              <table class="table table-bordered">
+                  <colgroup>
+                      <col/>
+                      <col/>
+                      <col/>
+                      <col/>
+                  </colgroup>
+                  <tbody>
+                      <tr>
+                          <th class="confluenceTh">Log File and Path</th>
+                          <th class="confluenceTh">Information</th>
+                          <th class="confluenceTh">Log Rotation</th>
+                          <th class="confluenceTh" colspan="1">Rotation-Configuration</th>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd">/opt/configurator/configure-output.2018-09-24T13:53:44.log</td>
+                          <td class="confluenceTd">
+                              <p>Output log when configurator is launched.</p>
+                              <p>A new file is created with time on each launch.</p>
+                          </td>
+                          <td class="confluenceTd">Not rotated.</td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd">/opt/configurator/velocity.log/opt/configurator/velocity.log.1</td>
+                          <td class="confluenceTd">velocity.log is created when a configuration of a module (/opt/configurator/configure) is launched. Velocity is the tool for resolving templates, i.e. to replace variables according to vars.ctx and generate config files.</td>
+                          <td class="confluenceTd">Not rotated.</td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd">/opt/configurator/script/velocity.log</td>
+                          <td class="confluenceTd">velocity.log is created when a configuration of a module (/opt/configurator/script) is launched.</td>
+                          <td class="confluenceTd">Not rotated.</td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">
+                              <p>/opt/ubi-webconf/logs/ubi-smartconfd-daemon.log</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1">Logs for webconf queues.</td>
+                          <td class="confluenceTd" colspan="1">Rotated yearly.</td>
+                          <td class="confluenceTd" colspan="1">/etc/logrotate.d/ubi-webconf</td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/ubi-webconf/logs/ubi-webconfd-daemon.log</td>
+                          <td class="confluenceTd" colspan="1">Logs for web-based configuration created for the first time after MSA installation.</td>
+                          <td class="confluenceTd" colspan="1">Rotated yearly.</td>
+                          <td class="confluenceTd" colspan="1">/etc/logrotate.d/ubi-webconf</td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/var/log/webconfd.log</td>
+                          <td class="confluenceTd" colspan="1">Logs for webconf daemon.</td>
+                          <td class="confluenceTd" colspan="1">Not rotated.</td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+          <h1 id="MSALogs-DMS-ModuleforDNSUpdateandOtherUtility">DMS - Module for DNS Update and Other Utility</h1>
+          <div class="table-responsive">
+              <table class="table table-bordered">
+                  <colgroup>
+                      <col/>
+                      <col/>
+                      <col/>
+                      <col/>
+                  </colgroup>
+                  <tbody>
+                      <tr>
+                          <th class="confluenceTh">Log file and Path</th>
+                          <th class="confluenceTh">Information</th>
+                          <th class="confluenceTh">Log Rotation</th>
+                          <th class="confluenceTh" colspan="1">Rotation-Configuration</th>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd">/opt/dms/velocity.log/opt/dms/velocity.log.1</td>
+                          <td class="confluenceTd">velocity.log is created when a configuration of a module (/opt/dms/configure) is launched.</td>
+                          <td class="confluenceTd">Not rotated.</td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd">/opt/dms/logs/checkEOS.log</td>
+                          <td class="confluenceTd">Logs related to Cisco EOL/EOS feature.</td>
+                          <td class="confluenceTd">
+                              <p>Rotated daily.</p>
+                              <p>Files are kept for 30 days max.</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1">/etc/logrotate.d/dms</td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd">/opt/dms/logs/diskcleaner.log</td>
+                          <td class="confluenceTd">
+                              <p>Logs for diskcleaner, which cleans disk space on certain directories based on the size configured in the configurator.</p>
+                          </td>
+                          <td class="confluenceTd">
+                              <p>Rotated daily.</p>
+                              <p>Files are kept for 30 days max.</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1">/etc/logrotate.d/dms</td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/dms/logs/generate_cert.log</td>
+                          <td class="confluenceTd" colspan="1">Log for generating self-sign certificate.</td>
+                          <td class="confluenceTd" colspan="1">
+                              <p>Rotated daily.</p>Files are kept for 30 days max.
+                          </td>
+                          <td class="confluenceTd" colspan="1">/etc/logrotate.d/dms</td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/dms/logs/ubi-dms.log</td>
+                          <td class="confluenceTd" colspan="1"><span class="inline-comment-marker" data-ref="33a3a958-01de-4c41-a406-2eaf626a5d8e">Logs for dms cron.</span></td>
+                          <td class="confluenceTd" colspan="1">Not rotated.</td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/dms/logs/dsmsIsAlive.log</td>
+                          <td class="confluenceTd" colspan="1">Logs for checking the smsd is alive status.</td>
+                          <td class="confluenceTd" colspan="1">
+                              <p>Rotated daily.</p>Files are kept for 30 days max.
+                          </td>
+                          <td class="confluenceTd" colspan="1">/etc/logrotate.d/dms</td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1"><span class="inline-comment-marker" data-ref="6207b217-ae54-4bd3-9e25-b38221d806d3">/opt/dms/logs/facturation.log</span></td>
+                          <td class="confluenceTd" colspan="1">
+                              <div class="content-wrapper">
+                                  <p><span class="deprecated" data-hasbody="false" data-macro-name="status">DEPRECATED</span></p>
+                              </div>
+                          </td>
+                          <td class="confluenceTd" colspan="1"></td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+          <h1 id="MSALogs-API-ModuleforMSAAPIs">API - Module for MSA APIs</h1>
+          <div class="table-responsive">
+              <table class="table table-bordered">
+                  <colgroup>
+                      <col/>
+                      <col/>
+                      <col/>
+                      <col/>
+                  </colgroup>
+                  <tbody>
+                      <tr>
+                          <th class="confluenceTh">Log File and Path</th>
+                          <th class="confluenceTh">Information</th>
+                          <th class="confluenceTh">Log Rotation</th>
+                          <th class="confluenceTh" colspan="1">Rotation-Configuration</th>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd">/var/log/ubi-jentreprise.log</td>
+                          <td class="confluenceTd">API deploy logs.</td>
+                          <td class="confluenceTd">Not rotated.</td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd">/opt/ubi-jentreprise/ant/generate-classpath.log</td>
+                          <td class="confluenceTd">Ant build logs.</td>
+                          <td class="confluenceTd">Not rotated.</td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd">/opt/ubi-jentreprise/modules/tester/api-tester/curl-xml/bin/answers.log</td>
+                          <td class="confluenceTd">API tester logs.</td>
+                          <td class="confluenceTd">Not rotated.</td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/var/log/jboss-service.log</td>
+                          <td class="confluenceTd" colspan="1">
+                              <div class="content-wrapper">
+                                  <p><span class="deprecated" data-hasbody="false" data-macro-name="status">DEPRECATED</span></p>
+
+                              </div>
+                          </td>
+                          <td class="confluenceTd" colspan="1"></td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/jboss/velocity.log/opt/jboss/velocity.log.1</td>
+                          <td class="confluenceTd" colspan="1">Velocity log for JBoss.</td>
+                          <td class="confluenceTd" colspan="1">Not rotated.</td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">
+                              <p>/opt/jboss/jboss-5.1.0.GA/logs/jboss.log</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1">JBoss server log - shows errors related to SOAP or REST API</td>
+                          <td class="confluenceTd" colspan="1">
+                              <p>Rotated if file size exceeds 10000KB.</p>
+                              <p>Maximum 100 files kept.</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1">/opt/jboss/jboss-5.1.0.GA/server/ubiqube/conf/jboss-log4j.xml</td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/jboss/jboss-5.1.0.GA/logs/jboss_console.log</td>
+                          <td class="confluenceTd" colspan="1">
+                              <div class="content-wrapper">
+
+                                  <p><span class="deprecated" data-hasbody="false" data-macro-name="status">DEPRECATED</span></p>
+                              </div>
+                          </td>
+                          <td class="confluenceTd" colspan="1"></td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/jboss/jboss-5.1.0.GA/logs/twiddle.log</td>
+                          <td class="confluenceTd" colspan="1">
+                              <div class="content-wrapper">
+                                  <p><span class="deprecated" data-hasbody="false" data-macro-name="status">DEPRECATED</span></p>
+                              </div>
+                          </td>
+                          <td class="confluenceTd" colspan="1"></td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/jboss/jboss-5.1.0.GA/logs/ubi-oneapm.log</td>
+                          <td class="confluenceTd" colspan="1">
+                              <div class="content-wrapper">
+                                  <p><span class="deprecated" data-hasbody="false" data-macro-name="status">DEPRECATED</span></p>
+                              </div>
+                          </td>
+                          <td class="confluenceTd" colspan="1"></td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/jboss/jboss-5.1.0.GA/logs/ubi-report-mail.log</td>
+                          <td class="confluenceTd" colspan="1">
+                              <div class="content-wrapper">
+                                  <p><span class="deprecated" data-hasbody="false" data-macro-name="status">DEPRECATED</span></p>
+                              </div>
+                          </td>
+                          <td class="confluenceTd" colspan="1"></td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/jboss/jboss-5.1.0.GA/logs/ubi-report-statistics.log</td>
+                          <td class="confluenceTd" colspan="1">
+                              <div class="content-wrapper">
+                                  <p><span class="deprecated" data-hasbody="false" data-macro-name="status">DEPRECATED</span></p>
+                              </div>
+                          </td>
+                          <td class="confluenceTd" colspan="1"></td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/jboss/jboss-5.1.0.GA/logs/ubi-report.log</td>
+                          <td class="confluenceTd" colspan="1">
+                              <div class="content-wrapper">
+                                  <p><span class="deprecated" data-hasbody="false" data-macro-name="status">DEPRECATED</span></p>
+                              </div>
+                          </td>
+                          <td class="confluenceTd" colspan="1"></td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/jboss/jboss-5.1.0.GA/logs/ubi-rest.log</td>
+                          <td class="confluenceTd" colspan="1">Logs for REST API request.</td>
+                          <td class="confluenceTd" colspan="1">
+                              <p>Rotated if file size exceeds 1000KB.</p>Maximum 50 files kept.
+                          </td>
+                          <td class="confluenceTd" colspan="1">/opt/jboss/jboss-5.1.0.GA/server/ubiqube/conf/jboss-log4j.xml</td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/jboss/jboss-5.1.0.GA/logs/ubi-scanEngine.log</td>
+                          <td class="confluenceTd" colspan="1">
+                              <div class="content-wrapper">
+                                  <p><span class="deprecated" data-hasbody="false" data-macro-name="status">DEPRECATED</span></p>
+                              </div>
+                          </td>
+                          <td class="confluenceTd" colspan="1"></td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/jboss/jboss-5.1.0.GA/logs/ubi-scheduler.log</td>
+                          <td class="confluenceTd" colspan="1">
+                              <div class="content-wrapper">
+                                  <p><span class="deprecated" data-hasbody="false" data-macro-name="status">DEPRECATED</span></p>
+                              </div>
+                          </td>
+                          <td class="confluenceTd" colspan="1"></td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/jboss/jboss-5.1.0.GA/logs/ubi-stagingConsole.log</td>
+                          <td class="confluenceTd" colspan="1">
+                              <div class="content-wrapper">
+                                  <p><span class="deprecated" data-hasbody="false" data-macro-name="status">DEPRECATED</span></p>
+                              </div>
+                          </td>
+                          <td class="confluenceTd" colspan="1"></td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/jboss/jboss-5.1.0.GA/logs/ubi-ws.log</td>
+                          <td class="confluenceTd" colspan="1">Logs for SOAP API request.</td>
+                          <td class="confluenceTd" colspan="1">
+                              <p>Rotated if file size exceeds 1000KB.</p>
+                              <p>Maximum 50 files kept.</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1">/opt/jboss/jboss-5.1.0.GA/server/ubiqube/conf/jboss-log4j.xml</td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/jboss/jboss-5.1.0.GA/logs/velocity.log</td>
+                          <td class="confluenceTd" colspan="1">Velocity log for JBoss</td>
+                          <td class="confluenceTd" colspan="1">Not rotated.</td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/jboss/jboss-5.1.0.GA/logs/processLog/process_SERVICEID.log</td>
+                          <td class="confluenceTd" colspan="1">Logs for each service on Workflow engine.</td>
+                          <td class="confluenceTd" colspan="1">
+                              <p>Rotated if file size exceeds 10MB.</p>
+                              <p>Maximum 5 files kept.</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1">/etc/logrotate.d/ubi-jentreprise</td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/jboss/jboss-5.1.0.GA/server/ubiqube/data/hypersonic/localDB.log</td>
+                          <td class="confluenceTd" colspan="1">JBoss hypersonic DB logs for managing users.</td>
+                          <td class="confluenceTd" colspan="1">Not rotated but old logs will be flushed on every JBoss boot.</td>
+                          <td class="confluenceTd" colspan="1">Taken care of by JBoss.</td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/jboss/jboss-5.1.0.GA/server/ubiqube/log/boot.log</td>
+                          <td class="confluenceTd" colspan="1">JBoss boot log.</td>
+                          <td class="confluenceTd" colspan="1">Not rotated but old logs will be flushed on every JBoss start.</td>
+                          <td class="confluenceTd" colspan="1">Taken care of by JBoss.</td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/jboss/latest/logs/ubi_synchronize_file_servers.log</td>
+                          <td class="confluenceTd" colspan="1">Log for synchronizing file server for firmware update.</td>
+                          <td class="confluenceTd" colspan="1">Not rotated.</td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+          <h1 id="MSALogs-GUI-WebPortal">GUI - Web Portal</h1>
+          <p>In addition to log rotation of this module, the MSA disk cleaner will clean old files on the logs directory (/opt/ses/logs, /opt/tomcat/latest/logs), if the size of the directory is exceeded (which is 4GB by default) UBI_DISK_USAGE_INTERNAL_LOGS </p>
+          <div class="table-responsive">
+              <table class="table table-bordered">
+                  <colgroup>
+                      <col/>
+                      <col/>
+                      <col/>
+                      <col/>
+                  </colgroup>
+                  <tbody>
+                      <tr>
+                          <th class="confluenceTh">Log File and Path</th>
+                          <th class="confluenceTh">Information</th>
+                          <th class="confluenceTh">Log Rotation</th>
+                          <th class="confluenceTh">Rotation-Configuration</th>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd">/var/log/ubi-ses-service.log</td>
+                          <td class="confluenceTd">GUI app deploy logs.</td>
+                          <td class="confluenceTd">Not rotated.</td>
+                          <td class="confluenceTd"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd"><span class="inline-comment-marker" data-ref="886afe9e-313c-4b8d-bb96-69c0561062c9">/opt/ses/velocity.log</span><span class="inline-comment-marker" data-ref="886afe9e-313c-4b8d-bb96-69c0561062c9">/opt/ses/velocity.log.1</span></td>
+                          <td class="confluenceTd">Velocity logs for ubi-SES.</td>
+                          <td class="confluenceTd">Not rotated.</td>
+                          <td class="confluenceTd"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/ses/ant/velocity.log</td>
+                          <td class="confluenceTd" colspan="1">Velocity logs for SES ANT.</td>
+                          <td class="confluenceTd" colspan="1">Not rotated.</td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/ses/generated/server_ALL/velocity.log</td>
+                          <td class="confluenceTd" colspan="1">
+                              <div class="content-wrapper">
+                                  <p><span class="deprecated" data-hasbody="false" data-macro-name="status">DEPRECATED</span></p>
+                              </div>
+                          </td>
+                          <td class="confluenceTd" colspan="1"></td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/ses/logs/mod_jk.log</td>
+                          <td class="confluenceTd" colspan="1">Logs for Apache AJP requests.</td>
+                          <td class="confluenceTd" colspan="1"><span class="inline-comment-marker" data-ref="a5bdf62f-5923-41b7-af2f-95b12ad07857">Not rotated but old logs are flushed out on every httpd server start.</span></td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/ses/logs/ses_watch.log</td>
+                          <td class="confluenceTd" colspan="1">
+                              <div class="content-wrapper">
+                                  <p><span class="deprecated" data-hasbody="false" data-macro-name="status">DEPRECATED</span></p>
+                              </div>
+                          </td>
+                          <td class="confluenceTd" colspan="1"></td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/ses/logs/ubi-ses.configure-output.log</td>
+                          <td class="confluenceTd" colspan="1">SES configure logs.</td>
+                          <td class="confluenceTd" colspan="1">
+                              <p>Rotated daily.</p>
+                              <p>Log kept for 30 days max.</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1">/etc/logrotate.d/ubi-ses</td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/ses/logs/wget_ses.log</td>
+                          <td class="confluenceTd" colspan="1">Logs for SES KPI results.</td>
+                          <td class="confluenceTd" colspan="1"><span class="inline-comment-marker" data-ref="0b0ab8c9-f7d5-4615-8526-49ad52246616">Not rotated.</span></td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/ses/templates/server_ALL/velocity.log</td>
+                          <td class="confluenceTd" colspan="1">
+                              <div class="content-wrapper">
+                                  <p><span class="deprecated" data-hasbody="false" data-macro-name="status">DEPRECATED</span></p>
+                              </div>
+                          </td>
+                          <td class="confluenceTd" colspan="1"></td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/ses/logs/mapview.logs</td>
+                          <td class="confluenceTd" colspan="1">Google MapView logs.</td>
+                          <td class="confluenceTd" colspan="1">
+                              <p>Rotated if file size exceeds 2500KB.</p>
+                              <p>Maximum 5 files kept.</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1">/opt/ses/templates/server_N/log4j.xml</td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/ses/logs/ses.logs</td>
+                          <td class="confluenceTd" colspan="1">Main logs for GUI module.</td>
+                          <td class="confluenceTd" colspan="1">
+                              <p>Rotated if file size exceeds 2500KB.</p>Maximum 14 files kept.
+                          </td>
+                          <td class="confluenceTd" colspan="1">/opt/ses/templates/server_N/log4j.xml</td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/ses/logs/ses_activityReport.logs</td>
+                          <td class="confluenceTd" colspan="1">GUI user activity logs.</td>
+                          <td class="confluenceTd" colspan="1">
+                              <p>Rotated if file size exceeds 2500KB.</p>Maximum 30 files kept.
+                          </td>
+                          <td class="confluenceTd" colspan="1">/opt/ses/templates/server_N/log4j.xml</td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/ses/logs/ses_database.logs</td>
+                          <td class="confluenceTd" colspan="1">
+                              <div class="content-wrapper">
+                                  <p><span class="deprecated" data-hasbody="false" data-macro-name="status">DEPRECATED</span></p>
+                              </div>
+                          </td>
+                          <td class="confluenceTd" colspan="1"></td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/ses/logs/ses_remote_service_helper.logs</td>
+                          <td class="confluenceTd" colspan="1">
+                              <div class="content-wrapper">
+                                  <p><span class="deprecated" data-hasbody="false" data-macro-name="status">DEPRECATED</span></p>
+                              </div>
+                          </td>
+                          <td class="confluenceTd" colspan="1"></td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/ses/logs/ses_sms.logs</td>
+                          <td class="confluenceTd" colspan="1">Logs for GUI and SecEngine communication.</td>
+                          <td class="confluenceTd" colspan="1">
+                              <p>Rotated if file size exceeds 2500KB.</p>Maximum 10 files kept.
+                          </td>
+                          <td class="confluenceTd" colspan="1">/opt/ses/templates/server_N/log4j.xml</td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/ses/logs/ses_stringManager.logs</td>
+                          <td class="confluenceTd" colspan="1">Logs for GUI locale.</td>
+                          <td class="confluenceTd" colspan="1">
+                              <p>Rotated if file size exceeds 2500KB.</p>Maximum 2 files kept.
+                          </td>
+                          <td class="confluenceTd" colspan="1">/opt/ses/templates/server_N/log4j.xml</td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/ses/logs/ses_voip.logs</td>
+                          <td class="confluenceTd" colspan="1">
+                              <div class="content-wrapper">
+                                  <p><span class="deprecated" data-hasbody="false" data-macro-name="status">DEPRECATED</span></p>
+                              </div>
+                          </td>
+                          <td class="confluenceTd" colspan="1"></td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/ses/logs/ses_vulnerability_scanner.logs</td>
+                          <td class="confluenceTd" colspan="1">
+                              <div class="content-wrapper">
+                                  <p><span class="deprecated" data-hasbody="false" data-macro-name="status">DEPRECATED</span></p>
+                              </div>
+                          </td>
+                          <td class="confluenceTd" colspan="1"></td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/ses/logs/access_log</td>
+                          <td class="confluenceTd" colspan="1"><span class="inline-comment-marker" data-ref="e0251cc4-3a39-45c8-99be-edaa973dbee0">HTTPd</span> access logs.</td>
+                          <td class="confluenceTd" colspan="1">Not rotated but old logs are flushed on HTTPd restart.</td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">
+                              <p>/opt/ses/logs/error_log</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1">HTTPd error logs.</td>
+                          <td class="confluenceTd" colspan="1">Not rotated, but old logs are flushed on HTTPd restart.</td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">
+                              <p>/opt/ses/logs/rewrite_log</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1">HTTPd rewrite logs</td>
+                          <td class="confluenceTd" colspan="1">Not rotated but old logs are flushed on HTTPd restart.</td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">
+                              <p>/opt/ses/logs/ssl_engine_log</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1">HTTPd SSL logs.</td>
+                          <td class="confluenceTd" colspan="1">Not rotated.</td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">
+                              <p>/opt/ses/logs/ssl_request_log</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1">HTTPd SSL request logs.</td>
+                          <td class="confluenceTd" colspan="1">Not rotated.</td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">
+                              <p><span class="inline-comment-marker" data-ref="d913c6c7-f878-4af8-bbb9-719f68030a43">/opt/ses/logs/tomcat_access_log</span></p>
+                          </td>
+                          <td class="confluenceTd" colspan="1">
+                              <div class="content-wrapper">
+                                  <p><span class="deprecated" data-hasbody="false" data-macro-name="status">DEPRECATED</span></p>
+                              </div>
+                          </td>
+                          <td class="confluenceTd" colspan="1"></td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/var/log/tomcat-service.log</td>
+                          <td class="confluenceTd" colspan="1">Service logs for Tomcat.</td>
+                          <td class="confluenceTd" colspan="1">Not rotated.</td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/tomcat/velocity.log</td>
+                          <td class="confluenceTd" colspan="1">Velocity logs for Tomcat.</td>
+                          <td class="confluenceTd" colspan="1">Not rotated.</td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1"><span class="inline-comment-marker" data-ref="3e7c5735-1971-49e4-9afd-1a07a741329d">/opt/tomcat/apache-tomcat-8.5.33/logs/catalina.out</span></td>
+                          <td class="confluenceTd" colspan="1">Tomcat</td>
+                          <td class="confluenceTd" colspan="1">
+                              <p>Rotated on the first write past midnight and the filename will be {prefix}{date}{suffix}, where the date is yyyy-MM-dd.</p>
+                              <p>No limit for the days kept.</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1">Taken care of by Tomcat.</td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/tomcat/apache-tomcat-8.5.33/logs/host-manager.2018-11-28.log</td>
+                          <td class="confluenceTd" colspan="1">Logs of the related web applications.</td>
+                          <td class="confluenceTd" colspan="1">
+                              <p>Rotated on the first write past midnight and the filename will be {prefix}{date}{suffix}, where the date is yyyy-MM-dd.</p>
+                              <p>No limit for the days kept.</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1"><span>Taken care of by Tomcat.</span></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/tomcat/apache-tomcat-8.5.33/logs/localhost.2018-11-28.log</td>
+                          <td class="confluenceTd" colspan="1">Local host context initialization logging.</td>
+                          <td class="confluenceTd" colspan="1">
+                              <p>Rotated on the first write past midnight and the filename will be {prefix}{date}{suffix}, where the date is yyyy-MM-dd.</p>
+                              <p>No Limit for the days kept.</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1"><span>Taken care of by Tomcat.</span></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/tomcat/apache-tomcat-8.5.33/logs/manager.2018-11-28.log</td>
+                          <td class="confluenceTd" colspan="1">Logs of the related web applications.</td>
+                          <td class="confluenceTd" colspan="1">
+                              <p>Rotated on the first write past midnight and the filename will be {prefix}{date}{suffix}, where the date is yyyy-MM-dd.</p>
+                              <p>No limit for the days kept.</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1"><span>Taken care of by Tomcat.</span></td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+          <h1 id="MSALogs-SecEngine">SecEngine</h1>
+          <p>In addition to the log rotation of this module, the MSA disk cleaner will clean old files on the logs directory (/opt/sms/logs, /opt/dump_core_file), if the size of the directory is exceeded (which is 4GB by default) UBI_DISK_USAGE_INTERNAL_LOGS </p>
+          <div class="table-responsive">
+              <table class="table table-bordered">
+                  <colgroup>
+                      <col/>
+                      <col/>
+                      <col/>
+                      <col/>
+                  </colgroup>
+                  <tbody>
+                      <tr>
+                          <th class="confluenceTh">Log File and Path</th>
+                          <th class="confluenceTh">Information</th>
+                          <th class="confluenceTh">Log Rotation</th>
+                          <th class="confluenceTh">Rotation-Configuration</th>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd">
+                              <p>/opt/sms/velocity.log</p>
+                              <p>/opt/sms/velocity.log.1</p>
+                          </td>
+                          <td class="confluenceTd">Velocity log for SMS module.</td>
+                          <td class="confluenceTd">Not rotated.</td>
+                          <td class="confluenceTd"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd">/opt/sms/logs/ElasticSearchBulk.log</td>
+                          <td class="confluenceTd">Bulk upload logs from SecEngine to Elasticsearch.</td>
+                          <td class="confluenceTd">
+                              <p>Rotated daily.</p>
+                              <p>Maximum file Kept based on UBI_SMS_INTERNAL_LOG_KEEP.</p>
+                          </td>
+                          <td class="confluenceTd">/opt/sms/templates/etc/logrotate-sms</td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd">/opt/sms/logs/batchupdated.log</td>
+                          <td class="confluenceTd">Logs for syncing two database schemas.</td>
+                          <td class="confluenceTd">
+                              <p>Rotated daily.</p>
+                              <p>Maximum file Kept based on UBI_SMS_INTERNAL_LOG_KEEP.</p>
+                          </td>
+                          <td class="confluenceTd">/opt/sms/templates/etc/logrotate-sms</td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/sms/logs/clean_spool_log.log</td>
+                          <td class="confluenceTd" colspan="1">Logs for clean files in UBI_EXPORTED_LOGS_PATH.</td>
+                          <td class="confluenceTd" colspan="1">
+                              <p>Rotated daily.</p>
+                              <p>Maximum file Kept based on UBI_SMS_INTERNAL_LOG_KEEP.</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1">/opt/sms/templates/etc/logrotate-sms</td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">
+                              <p>/opt/sms/logs/configure.log</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1">Logs for /opt/sms/configure.</td>
+                          <td class="confluenceTd" colspan="1">Not rotated.</td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">
+                              <p>/opt/sms/logs/diskcleaner.log</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1">Disk cleaner logs.</td>
+                          <td class="confluenceTd" colspan="1">Not rotated.</td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">
+                              <p>/opt/sms/logs/install.log</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1">SecEngine RPM install log.</td>
+                          <td class="confluenceTd" colspan="1">Not rotated.</td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">
+                              <p>/opt/sms/logs/rrd_cmd.log</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1">RRD file write log.</td>
+                          <td class="confluenceTd" colspan="1">
+                              <p>Rotated daily.</p>
+                              <p>Maximum file Kept based on UBI_SMS_INTERNAL_LOG_KEEP</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1">/opt/sms/templates/etc/logrotate-sms</td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">
+                              <p>/opt/sms/logs/sms_agregatord.log</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1">SecEngine alert module log.</td>
+                          <td class="confluenceTd" colspan="1">
+                              <p>Rotated daily.</p>
+                              <p>Maximum file Kept based on UBI_SMS_INTERNAL_LOG_KEEP.</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1">/opt/sms/templates/etc/logrotate-sms</td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">
+                              <p>/opt/sms/logs/sms_mail_php.log</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1">Alert mail logs.</td>
+                          <td class="confluenceTd" colspan="1"><span class="inline-comment-marker" data-ref="08c3a181-05ac-4474-9871-07c57cdad626">Not rotated.</span></td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">
+                              <p>/opt/sms/logs/sms_parserd.log</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1">SecEngine syslog parsing logs.</td>
+                          <td class="confluenceTd" colspan="1">
+                              <p>Rotated daily.</p>
+                              <p>Maximum file Kept based on UBI_SMS_INTERNAL_LOG_KEEP.</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1">/opt/sms/templates/etc/logrotate-sms</td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">
+                              <p>/opt/sms/logs/sms_reportlogd.log</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1">
+                              <div class="content-wrapper">
+                                  <p><span class="deprecated" data-hasbody="false" data-macro-name="status">DEPRECATED</span></p>
+                              </div>
+                          </td>
+                          <td class="confluenceTd" colspan="1">
+                              <p>Rotated daily.</p>
+                              <p>Maximum file Kept based on UBI_SMS_INTERNAL_LOG_KEEP.</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1">/opt/sms/templates/etc/logrotate-sms</td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">
+                              <p>/opt/sms/logs/sms_syslogd.log</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1">Syslog processing log.</td>
+                          <td class="confluenceTd" colspan="1">
+                              <p>Rotated daily.</p>
+                              <p>Maximum file Kept based on UBI_SMS_INTERNAL_LOG_KEEP.</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1">/opt/sms/templates/etc/logrotate-sms</td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">
+                              <p>/opt/sms/logs/sms_sysstatd.log</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1">SecEngine monitoring profile statistics log.</td>
+                          <td class="confluenceTd" colspan="1">
+                              <p>Rotated daily.</p>
+                              <p>Maximum file Kept based on UBI_SMS_INTERNAL_LOG_KEEP.</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1">/opt/sms/templates/etc/logrotate-sms</td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">
+                              <p>/opt/sms/logs/sms_watch.log</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1">Log for SecEngine watchdog.</td>
+                          <td class="confluenceTd" colspan="1">
+                              <p>Rotated daily.</p>
+                              <p>Maximum file Kept based on UBI_SMS_INTERNAL_LOG_KEEP.</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1">/opt/sms/templates/etc/logrotate-sms</td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">
+                              <p>/opt/sms/logs/smsd.log</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1">Logs for SecEngine communication with device and operations.</td>
+                          <td class="confluenceTd" colspan="1">
+                              <p>Rotated daily.</p>
+                              <p>Maximum file Kept based on UBI_SMS_INTERNAL_LOG_KEEP.</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1">/opt/sms/templates/etc/logrotate-sms</td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/sms/logs/ubi-sms.log</td>
+                          <td class="confluenceTd" colspan="1">Logs for SecEngine stop and start.</td>
+                          <td class="confluenceTd" colspan="1">
+                              <p>Rotated daily.</p>
+                              <p>Maximum file Kept based on UBI_SMS_INTERNAL_LOG_KEEP.</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1">/opt/sms/templates/etc/logrotate-sms</td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/sms/logs/sms_php.errors.log</td>
+                          <td class="confluenceTd" colspan="1">
+                              <div class="content-wrapper">
+                                  <p><span class="deprecated" data-hasbody="false" data-macro-name="status">DEPRECATED</span></p>
+                              </div>
+                          </td>
+                          <td class="confluenceTd" colspan="1"></td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/sms/logs/check_rrd_files.log</td>
+                          <td class="confluenceTd" colspan="1">
+                              <div class="content-wrapper">
+                                  <p><span class="deprecated" data-hasbody="false" data-macro-name="status">DEPRECATED</span></p>
+                              </div>
+                          </td>
+                          <td class="confluenceTd" colspan="1"></td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/sms/logs/sms_change_mgmt.log</td>
+                          <td class="confluenceTd" colspan="1">
+                              <div class="content-wrapper">
+                                  <p><span class="deprecated" data-hasbody="false" data-macro-name="status">DEPRECATED</span></p>
+                              </div>
+                          </td>
+                          <td class="confluenceTd" colspan="1"></td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/dump_core_file/*.core</td>
+                          <td class="confluenceTd" colspan="1">Core dump files for SecEngine daemons</td>
+                          <td class="confluenceTd" colspan="1">
+                              <p>Rotated daily.</p>
+                              <p>Maximum 30 files kept.</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1">/opt/sms/templates/etc/logrotate-sms</td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+          <h1 id="MSALogs-D-MSA">D-MSA</h1>
+          <p>In addition to the log rotation of this module, the MSA disk cleaner will clean old files on the logs directory (/opt/ubisysconf/ha/logs), if the size of the directory is exceeded (which is 4GB by default) UBI_DISK_USAGE_INTERNAL_LOGS. </p>
+          <div class="table-responsive">
+              <table class="table table-bordered">
+                  <colgroup>
+                      <col/>
+                      <col/>
+                      <col/>
+                      <col/>
+                  </colgroup>
+                  <tbody>
+                      <tr>
+                          <th class="confluenceTh">Log File and Path</th>
+                          <th class="confluenceTh">Information</th>
+                          <th class="confluenceTh">Log Rotation</th>
+                          <th class="confluenceTh">Rotation-Configuration</th>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd">
+                              <p>/opt/ubisysconf/velocity.log</p>
+                          </td>
+                          <td class="confluenceTd">Velocity logs for D-MSA module.</td>
+                          <td class="confluenceTd">Not rotated.</td>
+                          <td class="confluenceTd"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd">
+                              <p>/opt/ubisysconf/ha/logs/ha_back.log</p>
+                          </td>
+                          <td class="confluenceTd">D-MSA HA failover logs.</td>
+                          <td class="confluenceTd">
+                              <p>Rotated if sized exceeds 50 MB.</p>
+                              <p>Maximum 30 file kept.</p>
+                          </td>
+                          <td class="confluenceTd">/etc/logrotate.d/dmsa_logrotate</td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd">
+                              <p>/opt/ubisysconf/ha/logs/ha_sync.log</p>
+                          </td>
+                          <td class="confluenceTd">D-MSA HA replication logs.</td>
+                          <td class="confluenceTd">
+                              <p>Rotated if sized exceeds 50 MB.</p>Maximum 30 file kept.
+                          </td>
+                          <td class="confluenceTd">/etc/logrotate.d/dmsa_logrotate</td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+          <h1 id="MSALogs-MSA-Backup">MSA - Backup</h1>
+          <div class="table-responsive">
+              <table class="table table-bordered">
+                  <colgroup>
+                      <col/>
+                      <col/>
+                      <col/>
+                      <col/>
+                  </colgroup>
+                  <tbody>
+                      <tr>
+                          <th class="confluenceTh">Log File and Path</th>
+                          <th class="confluenceTh">Information</th>
+                          <th class="confluenceTh">Log Rotation</th>
+                          <th class="confluenceTh">Rotation-Configuration</th>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd">/var/log/ubi-backup.log</td>
+                          <td class="confluenceTd">MSA backup restore logs.</td>
+                          <td class="confluenceTd">Not Rotated.</td>
+                          <td class="confluenceTd"></td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+          <h1 id="MSALogs-ElasticSearch">ElasticSearch</h1>
+          <div class="table-responsive">
+              <table class="table table-bordered">
+                  <colgroup>
+                      <col/>
+                      <col/>
+                      <col/>
+                      <col/>
+                  </colgroup>
+                  <tbody>
+                      <tr>
+                          <th class="confluenceTh"><span>Log File and Path</span></th>
+                          <th class="confluenceTh">Information</th>
+                          <th class="confluenceTh"><span>Log Rotation</span></th>
+                          <th class="confluenceTh"><span>Rotation-Configuration</span></th>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd">/var/log/elasticsearch/index_management.log</td>
+                          <td class="confluenceTd">Log for the ES indexes optimization process (ES OPTIMIZE API).</td>
+                          <td class="confluenceTd">
+                              <p>Rotated daily.</p>
+                              <p><span><span>Previous log day file is </span><span>compressed.</span></span></p>
+                              <p>Compressed log file kept for 30 days max.</p>
+                          </td>
+                          <td class="confluenceTd">/etc/logrotate.d/elasticsearch</td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/var/log/elasticsearch/log_retention.log</td>
+                          <td class="confluenceTd" colspan="1">Log for ES data logs/indexes deletion older than N days/weeks/months/years.</td>
+                          <td class="confluenceTd" colspan="1">
+                              <p>Rotated daily.</p>
+                              <p><span>Previous log day file is </span>compressed.</p>
+                              <p>Compressed log file kept for 30 days max.</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1"><span>/etc/logrotate.d/elasticsearch</span></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/var/log/elasticsearch/ubiqube.log</td>
+                          <td class="confluenceTd" colspan="1">Log for cluster global status/action.</td>
+                          <td class="confluenceTd" colspan="1">
+                              <p>Rotated daily.</p>
+                              <p><span>Previous log day file is </span><span>compressed.</span></p>
+                              <p>Compressed log file kept for 30 days max.</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1"><span>/etc/logrotate.d/elasticsearch</span></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/var/log/elasticsearch/ubiqube_deprecation.log</td>
+                          <td class="confluenceTd" colspan="1">Warn HTTP headers when a deprecated API feature is used and will be removed or rewritten in a future release.</td>
+                          <td class="confluenceTd" colspan="1">Not rotated.</td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/var/log/elasticsearch/ubiqube_index_indexing_slowlog.log</td>
+                          <td class="confluenceTd" colspan="1">Log slow indexing process (query and fetch phases), display the sent request <span>clearly. </span></td>
+                          <td class="confluenceTd" colspan="1">
+                              <p>Rotated daily.</p>
+                              <p><span>Previous log day file is </span><span>compressed.</span></p>
+                              <p>Compressed log file kept for 30 days max.</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1"><span>/etc/logrotate.d/elasticsearch</span></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/var/log/elasticsearch/ubiqube_index_search_slowlog.log</td>
+                          <td class="confluenceTd" colspan="1">Log slow search (query and fetch phases),<span> display the sent request <span>clearly. </span></span></td>
+                          <td class="confluenceTd" colspan="1">
+                              <p>Rotated daily.</p>
+                              <p><span>Previous log day file is </span><span>compressed.</span></p>
+                              <p>Compressed log file kept for 30 days max.</p>
+                          </td>
+                          <td class="confluenceTd" colspan="1"><span>/etc/logrotate.d/elasticsearch</span></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/ubi-elasticsearch/velocity.log/opt/ubi-elasticsearch/velocity.log.1</td>
+                          <td class="confluenceTd" colspan="1">Velocity logs for Elasticsearch module.</td>
+                          <td class="confluenceTd" colspan="1">Not rotated.</td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/opt/ubi-elasticsearch/logs/application.log</td>
+                          <td class="confluenceTd" colspan="1">
+                              <div class="content-wrapper">
+                                  <p><span class="deprecated" data-hasbody="false" data-macro-name="status">DEPRECATED</span></p>
+                              </div>
+                          </td>
+                          <td class="confluenceTd" colspan="1"></td>
+                          <td class="confluenceTd" colspan="1"></td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+          <h1 id="MSALogs-LogStash">LogStash</h1>
+          <div class="table-responsive">
+              <table class="table table-bordered">
+                  <colgroup>
+                      <col/>
+                      <col/>
+                      <col/>
+                      <col/>
+                  </colgroup>
+                  <tbody>
+                      <tr>
+                          <th class="confluenceTh"><span>Log File and Path</span></th>
+                          <th class="confluenceTh">Information</th>
+                          <th class="confluenceTh"><span>Log Rotation</span></th>
+                          <th class="confluenceTh"><span>Rotation-Configuration</span></th>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd">/var/log/logstash-stderr.log</td>
+                          <td class="confluenceTd">Log for logstash error messages.</td>
+                          <td class="confluenceTd"><span>Not rotated.</span></td>
+                          <td class="confluenceTd"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd">/var/log/logstash-stdout.log</td>
+                          <td class="confluenceTd">Log to follow the results of events' pipeline for quick iteration (by adding<span> <strong>"output { stdout {}}</strong>" to logstash conf file</span>).</td>
+                          <td class="confluenceTd">Not rotated.</td>
+                          <td class="confluenceTd"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd" colspan="1">/var/log/logstash/logstash-plain.log</td>
+                          <td class="confluenceTd" colspan="1">Log for logstash global status/action, file config check.</td>
+                          <td class="confluenceTd" colspan="1">
+                              <p>Rotated daily/<span>rotated if file size exceeds 5MB.</span></p>Files kept for 2 days max.
+                          </td>
+                          <td class="confluenceTd" colspan="1">/etc/logstash/log4j2.properties</td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+          <h1 id="MSALogs-ZTD-ZeroTouchDeployment">ZTD - Zero Touch Deployment</h1>
+          <div class="table-responsive">
+              <table class="table table-bordered">
+                  <colgroup>
+                      <col/>
+                      <col/>
+                      <col/>
+                      <col/>
+                  </colgroup>
+                  <tbody>
+                      <tr>
+                          <th class="confluenceTh">Log File and Path</th>
+                          <th class="confluenceTh">Information</th>
+                          <th class="confluenceTh">Log Rotation</th>
+                          <th class="confluenceTh">Rotation-Configuration</th>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd">/opt/ubi-ztd/logs/ztd-http-server.log</td>
+                          <td class="confluenceTd">Logs for ZTD HTTP server.</td>
+                          <td class="confluenceTd">
+                              <p>Rotated if size exceeds 2MB.</p>
+                              <p>Maximum 30 logs kept.</p>
+                          </td>
+                          <td class="confluenceTd">/opt/ubisysconf/ha/logs</td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd">/opt/ubi-ztd/logs/ztd.log</td>
+                          <td class="confluenceTd">Log for ZTD module.</td>
+                          <td class="confluenceTd">
+                              <p>Rotated if size exceeds 2MB.</p>Maximum 30 logs kept.
+                          </td>
+                          <td class="confluenceTd">/opt/ubisysconf/ha/logs</td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+          <h1 id="MSALogs-OtherLogs">Other Logs</h1>
+          <div class="table-responsive">
+              <table class="table table-bordered">
+                  <colgroup>
+                      <col/>
+                      <col/>
+                      <col/>
+                      <col/>
+                  </colgroup>
+                  <tbody>
+                      <tr>
+                          <th class="confluenceTh">Log File and Path</th>
+                          <th class="confluenceTh">Information</th>
+                          <th class="confluenceTh">Log Rotation</th>
+                          <th class="confluenceTh">Rotation-Configuration</th>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd">
+                              <p>/opt/install/msa_install.log</p>
+                          </td>
+                          <td class="confluenceTd">MSA install log, this file is updated only once, which takes place at the first MSA installation.</td>
+                          <td class="confluenceTd">Not rotated.</td>
+                          <td class="confluenceTd"></td>
+                      </tr>
+                      <tr>
+                          <td class="confluenceTd">
+                              <p>/opt/ubi-filter/velocity.log</p>
+                          </td>
+                          <td class="confluenceTd">Velocity log for MSA iptables modules.</td>
+                          <td class="confluenceTd">Not rotated.</td>
+                          <td class="confluenceTd"></td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+        </div>

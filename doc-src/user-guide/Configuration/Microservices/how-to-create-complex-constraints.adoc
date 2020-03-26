@@ -1,0 +1,62 @@
+= How To Create Complex Constraints
+:toc: left
+:toc-title: Content
+:imagesdir: ../../resources/
+:ext-relative: adoc
+
+== Overview
+
+In most cases, the constraint definition is straight forward when
+defining a object variable. For example, if the destination IP field is
+empty, the GUI rendering engine will pop up an error message.
+
+link:[image:images/Empty_field_simple_constraint_error.png[Image,width=800]]
+
+In some cases, though, the constraint is more complex and may depend on
+a combination of several conditions that can involve multiple variables.
+
+For example, the 5 variables params.av, params.webfilter,
+params.spamfilter, params.ips, and params.scanport have the following
+dependencies:
+
+* If params.av is set then params.scanport must be set 
+* If params.webfilter is set then params.scanport must be set 
+* If params.spamfilter is set then params.scanport must be set 
+* If params.ips is set then params.scanport is not mandatory
+
+To make things simpler, it is possible to add a custom constraint
+evaluation to the object definition.
+
+The custom constraint is implemented as a smarty template:
+
+[[highlighter_721612]]
+link:#[?]
+
+``
+
+`{``if` `!empty($params.av) `
+
+`    ``OR !empty($params.webfilter) `
+
+`    ``OR !empty($params.spamfilter)}`
+
+`    ``{``if` `empty($params.scanport)}`
+
+`    ``Scan Port must be set`
+
+`    ``{/``if``}`
+
+`{/``if``}`
+
+The evaluation of the constraint will be done when the user clicks on
+the "form save" button.
+
+link:[image:images/Empty_field_complex_constraint_implementation.png[Image,width=466]]
+
+Once implemented, if the user sets the params.av variable but doesn't
+set the ScanPort, the GUI engine pops up the error:
+
+link:[image:images/Empty_field_complex_constraint_error.png[Image,width=767]]
+
+This is one example of how complex constraints can be managed and
+simplified for the user.

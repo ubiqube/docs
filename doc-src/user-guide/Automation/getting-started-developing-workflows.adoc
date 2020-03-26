@@ -1,0 +1,279 @@
+= Getting Started Developing Workflows
+:toc: left
+:toc-title: Content
+:imagesdir: ../resources/
+:ext-relative: adoc
+
+== Overview
+
+This tutorial walks you through the design and development of your first
+workflow.
+
+Workflows can be used to automate a wide variety of task and processes,
+such as:
+
+* Service configuration chaining
+* VNF lifecycle management
+* Configuration audit and verification
+* Automated Customer on-boarding
+
+== The "Helloworld" Workflow
+
+As an example, we'll use the "Helloworld" workflow. The "Helloworld"
+workflow will print a name as IN parameter and will display a message to
+the user ("Hello NAME").
+
+This workflow is composed of 3 processes: one to create the new instance
+of the workflow, one to enter the name and print it, and on to delete
+the instance.
+
+=== Create a New Workflow
+
+From the workflow repository, select the folder "Helloworld" and create
+a new workflow:
+
+Note: If there is no "Helloworld" folder, you will need to create one.
+See link:../Repository%20Management/repository-management.adoc[Repository
+Management] for instruction on how to create a folder.
+
+link:[image:images/howto_workflow_1.png[Image,width=800]]
+
+In the "INFORMATION" tab, leave all settings as default:
+
+link:[image:images/howto_workflow_2.png[Image,width=800]]
+
+Create a "Variable Name" in the "VARIABLES" tab:
+
+link:[image:images/howto_workflow_3.png[Image,width=800]]
+
+Save your workflow and attach it to your customer (customer page, tab
+"SERVICE", sub-tab "Workflows", click on the green "+" icon on the left
+and select "Helloworld" workflow from the repository).
+
+=== Create the Processes
+
+==== "create instance" Process
+
+In order to be used, every workflow should be instantiated first. This
+is the role of the process with the type "Create".
+
+Note: even though for most use cases, one "Create" process is
+sufficient, it is possible to have several "Create" processes to handle
+one or more ways of creating the workflow instance.
+
+For this tutorial you will create one process named "create instance"
+and add one task to this process. This task will simply display a
+message to the process execution console.
+
+link:[image:images/howto_workflow_4.png[Image,width=800]]
+
+[[highlighter_916878]]
+link:#[?]
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+10
+
+11
+
+12
+
+13
+
+14
+
+``
+
+`<?php`
+
+`/**`
+
+` ``* This file is necessary to include to use all the in-built libraries of /opt/fmc_repository/Reference/Common`
+
+` ``*/`
+
+`require_once`
+`'/opt/fmc_repository/Process/Reference/Common/common.php'``;`
+
+`/**`
+
+` ``* List all the parameters required by the task`
+
+` ``*/`
+
+`function` `list_args() { }`
+
+`/**`
+
+` ``* End of the task do not modify after this point`
+
+` ``*/`
+
+`task_exit(ENDED, ``"workflow initialised"``);`
+
+`?>`
+
+Once done, save the workflow.
+
+Find a green "+" icon with the label "create instance" beside it. Click
+on the icon and then "Run now", the process will execute and a new
+workflow instance is created.
+
+== The "delete instance" Process
+
+Follow the same steps as in the "create instance" process, but make sure
+that the type of the process is set to "Delete", instead of "Create".
+
+When complete, your workflow console should look like this:
+
+link:[image:images/howto_workflow_5.png[Image,width=800]]
+
+== The "print message" Process
+
+For the print process, use the process type "Update". It will take one
+parameter that will be used to print your message. Use the code below to
+create a task that will read the name from the user form and print it in
+the live console.
+
+[[highlighter_999503]]
+link:#[?]
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+10
+
+11
+
+12
+
+13
+
+14
+
+15
+
+16
+
+17
+
+18
+
+19
+
+20
+
+21
+
+22
+
+23
+
+24
+
+25
+
+26
+
+27
+
+28
+
+29
+
+``
+
+`<?php`
+
+`/**`
+
+` ``* This file is necessary to include to use all the in-built libraries of /opt/fmc_repository/Reference/Common`
+
+` ``*/`
+
+`require_once`
+`'/opt/fmc_repository/Process/Reference/Common/common.php'``;`
+
+`/**`
+
+` ``* List all the parameters required by the task`
+
+` ``*/`
+
+`function` `list_args()`
+
+`{`
+
+`  ``create_var_def(``'name'``, ``'String'``);`
+
+`}`
+
+`check_mandatory_param(``'name'``);`
+
+ 
+
+`/**`
+
+` ``* get the value of name from the context and create a variable out of it`
+
+` ``*/`
+
+`$name``=``$context``[``'name'``];`
+
+`/**`
+
+` ``* print the value in the log file /opt/jboss/latest/log/process.log `
+
+` ``*/`
+
+`logToFile(``$name``);`
+
+ 
+
+`/**`
+
+` ``* End of the task do not modify after this point`
+
+` ``*/`
+
+`task_exit(ENDED, ``"Hello "` `. ``$name``);`
+
+ 
+
+`?>`
+
+Execute this process and watch the result on the console. It should look
+similar to what's shown below (except with your name).
+
+link:[image:images/howto_workflow_6.png[Image,width=800]]

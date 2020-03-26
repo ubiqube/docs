@@ -1,0 +1,28 @@
+<div class="documentation-content">
+          <h1>Overview</h1>
+          <p>After installing, configuring and activating the MSActivator, you will start creating tenants and users. This guide will walk you through the initial process of connecting and creating a tenant.</p>
+          <h1>Initial Connection</h1>
+          <p>The MSActivator comes with one pre-created super admin user: ncroot (the equivalent of the root user on Linux systems). The default password for this user is "ubiqube".</p>
+          <p>This default password should be changed, especially if the MSActivator is meant to be used in a production environment.</p>
+          <p>The default MSActivator portal address is <u>https://&lt;MSA_IP&gt;/UBI/en</u> (replace &lt;MSA_IP&gt; with the actual IP address of your MSActivator installation.</p>
+          <p><a class="image-popup-fit-width" href="">
+            <img alt="Image" src="images/image2018-4-5_10-47-49.png" width="800"/>
+          </a></p>
+          <h1>Tenancy Management</h1>
+          <p>The MSActivator is design to provide multi-tenancy where a tenant is a virtual private space that can be managed as an isolated environment.</p>
+          <p>There are 2 levels of tenancy, the Operator Tenant and the Customer Tenant, the latest being nested in the Operator tenant.</p>
+          <h2>Operator Tenant</h2>
+          <p>Click on <img alt="Icon" src="images/image2018-6-22_17-58-19.png" width="24"/> to open the "Entity Creation" dialogue and select "Operator" as the Entity Type.</p>
+          <p>The "Prefix" is a 3 letter unique identifier for the tenant. It will be combined with the Customer and Device ID to build a short, comprehensive, unique identifier.</p>
+          <p><a class="image-popup-fit-width" href="">
+            <img alt="Image" src="images/image2018-4-1_11-23-16.png" width="800"/>
+          </a></p>
+          <h2>Customer Tenant</h2>
+          <p>Click on <img alt="Icon" src="images/image2018-6-22_17-58-29.png" width="24"/> to open the "Entity Creation" dialogue and select "Customer" as the Entity Type.</p>
+          <p>Carefully select the Operator tenant where the Customer will be created.</p>
+          <p><a class="image-popup-fit-width" href="">
+            <img alt="Image" src="images/image2018-4-1_11-30-13.png" width="800"/>
+          </a></p>
+          <p>In the "Contacts" form, the email is a mandatory field. This email will be used to send Alarms. Alarm management is explained in the <a href="../Assurance/alarm-management.adoc">Alarm Management</a> guide.</p>
+          <p>Save the Customer form and navigate to the new Customer Tenant (click on the Customer name in the customer list).</p>
+        </div>

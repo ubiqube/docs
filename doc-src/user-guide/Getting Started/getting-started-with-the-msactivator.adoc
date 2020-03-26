@@ -1,0 +1,109 @@
+= Getting Started With The Msactivator
+:toc: left
+:toc-title: Content
+:imagesdir: ../resources/
+:ext-relative: adoc
+
+== Overview of the MSActivator^TM^
+
+The MSActivator is a vendor-agnostic, multi-tenant service orchestration
+software designed for agile service orchestration fulfillment and
+assurance of physical and virtual networking services.
+
+The MSActivator spans across multiple domains (legacy hardware, SDN,
+NFV, etc.) and manages network devices as well as SDN controllers, VIM,
+VNFM, or any other system.
+
+Within the MSActivator framework, every entity that needs to be managed
+across the value chain is called a "device". Device configuration
+updates are pushed by "adaptors", which handle the communication with
+individual devices.
+
+Configuration updates are built by stacking Create | Read | Update |
+Delete and Import orders in "microservices". Microservices provide the
+needed abstraction layer for multi-vendor, multi-tenant and multi-domain
+support.
+
+Service orchestration is done by designing microservices via the
+Workflow Builder module. "Workflows" are composed of a set of processes.
+A process is a suite of tasks designed to accomplish a specific goal.
+Tasks include microservices, scripts, and other methods of
+single-outcome programming.
+
+Microservice and process definitions can be designed graphically on the
+fly (i.e. scripting not required) and are stored in central libraries.
+Workflows and microservices can be instantiated at will.
+
+In addition to fulfillment capabilities, the MSActivator features
+service assurance, analytics and customer self-care. These modules,
+along with the orchestration capabilities, are highly customizable and
+designed to provide intent-based automation.
+
+== Main Concepts
+
+=== Data Model and Management
+
+The web portal is structured around the following entities:
+
+==== *Data model*:
+
+* *Device*: Any managed component in the user's network (i.e. routers,
+switches, firewalls, UTM, IPPBX, VIM, etc.)
+* *Customer*: A tenancy level where devices can be grouped. (i.e. an
+Enterprise)
+* *Operator*: A tenancy level where customer can be grouped (i.e. a
+Service Provider)
+
+==== *Management*:
+
+* *Repository*: A central location where configuration templates,
+microservices, firmware, licences, reports, etc. are stored and
+organized
+* *Profile:* A set of configuration or monitoring policies applicable to
+specific devices
+* *Microservice*: A configuration object for managing services
+* *Operator Console*: The web console and user interface for
+administrators, operators and managers
+* *Customer Portal*: A customizable portal for customer self-care access
+
+The first thing the manager has to do is create a device within the
+customer environment. Regardless of the deployed vendor, the next steps
+apply:
+
+* *Staging:* Configure the device with a minimum set of commands to
+provide network connectivity.
+* **Initial Provisioning:**When the staged device is connected, the
+initial provisioning will remotely connect to the device and
+automatically configure the device with the initial configuration
+pre-determined by the chosen template.
+
+Once the device is activated it can be managed using templates and
+microservices, which are stored in the central repository.
+
+=== Users and Role Based Access Model
+
+Configurations are applied to devices.
+
+Devices are managed by the services providers, called managers. The
+reporter to a manager is called an operator. The operator is a tenant.
+The MSActivator allows multiple tenants to co-exist on the same platform
+(a multitenant platform).
+
+This model leads to classical rule mapping or **R**ole **B**ased
+**A**ccess **M**odel as illustrated below:
+
+link:[image:images/privileged-administrator-v3.jpg[Image,width=800]]
+
+The guide to link:../Getting%20Started/tenants-and-users.adoc[Tenants
+and Users] will help you create your first tenants and users after the
+initial installation of the MSActivator. The guide to
+link:../Getting%20Started/managed-devices.adoc[Managed Devices] will
+help you get started with device creation and activation.
+
+=== Simple Security Management with the MSActivator
+
+See
+link:/documentation/simple-managed-security-service-with-a-linux-firewall/[Simple
+Managed Security Service with a Linux Firewall] for a step by step
+explaination on how to activate a device and do some basic service
+management.

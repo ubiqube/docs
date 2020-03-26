@@ -1,0 +1,29 @@
+<div class="documentation-content">
+          <h1>Overview</h1>
+          <p>In most cases, the constraint definition is straight forward when defining a object variable. For example, if the destination IP field is empty, the GUI rendering engine will pop up an error message.</p>
+          <p><a class="image-popup-fit-width" href="">
+              <img alt="Image" src="images/Empty_field_simple_constraint_error.png" width="800"/>
+          </a></p>
+          <p>In some cases, though, the constraint is more complex and may depend on a combination of several conditions that can involve multiple variables.</p>
+          <p>For example, the 5 variables params.av, params.webfilter, params.spamfilter, params.ips, and params.scanport have the following dependencies:</p>
+          <ul>
+          <li>If params.av is set then params.scanport must be set </li>
+          <li>If params.webfilter is set then params.scanport must be set </li>
+          <li>If params.spamfilter is set then params.scanport must be set </li>
+          <li>If params.ips is set then params.scanport is not mandatory</li>
+          </ul>
+          <p>To make things simpler, it is possible to add a custom constraint evaluation to the object definition.</p>
+          <p>The custom constraint is implemented as a smarty template:</p>
+<div class="code panel pdl conf-macro output-block" data-hasbody="true" data-macro-name="code" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<div><div class="syntaxhighlighter sh-confluence nogutter java" id="highlighter_721612"><div class="toolbar"><span><a class="toolbar_item command_help help" href="#">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><code class="code"><div class="container" title="Hint: double-click to select code"><div class="line number1 index0 alt2"><code class="java plain">{</code><code class="java keyword">if</code> <code class="java plain">!empty($params.av) </code></div><div class="line number2 index1 alt1"><code class="java spaces">    </code><code class="java plain">OR !empty($params.webfilter) </code></div><div class="line number3 index2 alt2"><code class="java spaces">    </code><code class="java plain">OR !empty($params.spamfilter)}</code></div><div class="line number4 index3 alt1"><code class="java spaces">    </code><code class="java plain">{</code><code class="java keyword">if</code> <code class="java plain">empty($params.scanport)}</code></div><div class="line number5 index4 alt2"><code class="java spaces">    </code><code class="java plain">Scan Port must be set</code></div><div class="line number6 index5 alt1"><code class="java spaces">    </code><code class="java plain">{/</code><code class="java keyword">if</code><code class="java plain">}</code></div><div class="line number7 index6 alt2"><code class="java plain">{/</code><code class="java keyword">if</code><code class="java plain">}</code></div></div></code></tr></tbody></table></div></div>
+</div></div>
+          <p>The evaluation of the constraint will be done when the user clicks on the "form save" button.</p>
+          <p><a class="image-popup-fit-width" href="">
+              <img alt="Image" src="images/Empty_field_complex_constraint_implementation.png" width="466"/>
+          </a></p>
+          <p>Once implemented, if the user sets the params.av variable but doesn't set the ScanPort, the GUI engine pops up the error:</p>
+          <p><a class="image-popup-fit-width" href="">
+              <img alt="Image" src="images/Empty_field_complex_constraint_error.png" width="767"/>
+          </a></p>
+          <p>This is one example of how complex constraints can be managed and simplified for the user.</p>
+        </div>

@@ -1,0 +1,524 @@
+= Workflow Rest Api And Function Library
+:toc: left
+:toc-title: Content
+:imagesdir: ../resources/
+:ext-relative: adoc
+
+[[main-content]]
+Before we deal with how to invoke the processes of Workflows, we need to
+attach a Workflow definition to a customer in MSActivator.
+
+First, we will look into how to attach a Workflow definition to a
+customer.
+
+[[WorkflowRESTAPIandFunctionLibrary-PrerequisitesforWorkflowProcess]]
+== *Prerequisites for Workflow Process*
+
+If a Workflow needs to be invoked from a portal and REST API in the
+command line, the Workflow needs to include some extra code.
+
+Basically, when you invoke the Workflow from the UI Portal, all the
+parameters go into the $context. But, when you invoke the Workflow from
+the command line using REST APIs, all the input parameters go into the
+$parameters. 
+
+Orchestration only considers the parameters set in $context. So, all the
+parameters provided through the command line will go into $parameters
+and will not be considered for the execution. Rather, previously saved
+parameters will be used. 
+
+If someone intends a Workflow to be invoked from both the UI and command
+line, the Workflow should have some code which will copy the parameters
+from $parameters to $context. Following is the code that has to be in
+the first task of the process that will be invoked from an API call:
+
+[[highlighter_631152]]
+link:#[?]
+
+``
+
+`if``(isset(``$parameters``) ){`
+
+`    ``$context``[``'<param_name_1>'``] = ``$parameters``[``'<param_name_1>'``];`
+
+`    ``$context``[``'<param_name_2>'``] = ``$parameters``[``'<param_name_2>'``];`
+
+`   ``......`
+
+`   ``....`
+
+` ``}`
+
+[[WorkflowRESTAPIandFunctionLibrary-AttachaWorkflowDefinitiontoaCustomer:]]
+== *Attach a Workflow Definition to a Customer:*
+
+[[WorkflowRESTAPIandFunctionLibrary-NorthboundAPI]]
+=== Northbound API
+
+MSActivator has a northbound API to attach a Workflow definition to a
+customer:
+
+[[highlighter_853804]]
+link:#[?]
+
+``
+
+`http:``//{$MSA_IP}/orchestration/{$ubiqube_id}/service/attach?uri={$service_uri}`
+
+`HTTP method: POST`
+
+Where:
+
+\{$MSA_IP} corresponds to the IP address of the MSActivator. 
+
+\{$ubiqube_id} corresponds to the customer id of the
+MSActivator including the prefix, for example UBIA234.
+
+\{$service_uri} corresponds to the relative path of the XML file of the
+Workflow definition in MSActivator repository. The relative path starts
+from "Process/......" and includes the .xml at the end.
+
+[[WorkflowRESTAPIandFunctionLibrary-PHPLibraryFunctionforTasks]]
+=== PHP Library Function for Tasks
+
+The PHP function is available in the MSActivator library of the PHP
+methods to consume this API in the file
+"Process/Reference/Common/Library/orchestration_rest.php". The method to
+use in this file is:
+
+[[highlighter_67895]]
+link:#[?]
+
+``
+
+`_orchestration_service_attach ($ubiqube_id, $service_uri);`
+
+The $ubiqube_id and $service_uri correspond to the same as explained in
+the API.
+
+[[WorkflowRESTAPIandFunctionLibrary-InvokeaCreateProcessofaWorkflow]]
+== Invoke a Create Process of a Workflow
+
+[[WorkflowRESTAPIandFunctionLibrary-NorthboundAPI.1]]
+=== Northbound API
+
+To call the create process of a Workflow under a customer with the goal
+of creating a new instance of the Workflow, the following API is
+available:
+
+[[highlighter_361854]]
+link:#[?]
+
+``
+
+`URL: `
+
+`http:``//{$MSA_IP}/ubi-api-rest/orchestration/service/execute/{$external_ref}/{$service_external_ref}?serviceName={$service_name}&processName={$process_name}`
+
+`HTTP method: POST`
+
+Where:\{$external_ref} corresponds to the MSActivator customer external
+reference.
+
+\{$service_external_ref} corresponds to the MSActivator Workflow
+instance external reference to the newly created instance. Note that it
+has to be unique (duplicates are not allowed).\{$service_name}
+corresponds to the service name/URI which is the relative path of the
+Workflow definition, excluding the .xml starting from the "Process/..."
+in the fmc_repository.\{$process_name} is the process name defined in
+the XML definition of the Workflow. FYI the XML definition can be
+downloaded from the MSActivator repository web GUI.For input parameters
+that are required for the Workflow, the HTTP body has to be a JSON
+format string containing a variable: value pairs, for example. If
+triggering the create process of a Workflow, it requires following two
+variable-value pairs to be instantiated:
+
+* management_ip : 10.30.18.40
+* management_interface: Loopback0
+
+The HTTP body to the above API should be as follows:
+
+[[highlighter_414845]]
+link:#[?]
+
+``
+
+`{ ``"management_ip"` `: ``"10.30.18.40"``, ``"management_interface"`
+`: ``"Loopback0"``}`
+
+This API, if successful, returns a JSON object containing the triggered
+process details (like processId and so on), Workflow instance details
+(line serviceId, serviceExternalreference etc.), and the status details
+of the triggered process. The actual JSON structure can be found in the
+example below:
+
+[[WorkflowRESTAPIandFunctionLibrary-Examplewithcurl]]
+=== Example with curl
+
+Consider we want to trigger a create process:
+"*Process/MSA/FortiHypervisor/Fortinet_Selfcare/Process_Create*"
+(process name) of the Workflow:
+"*Process/MSA/FortiHypervisor/Fortinet_Selfcare/Fortinet_Selfcare*"
+(service name) under a customer with customer external reference:
+*MSSA34*. The Worklfow/service instance external reference
+string "*My_New_Instance*" provided, will be unique, as long as the
+create process needs the following variable-value inputs: 
+"admin_customer_ref": "MSAA12" and "device": "test_device".
+
+[[highlighter_395293]]
+link:#[?]
+
+``
+
+`/usr/bin/curl -isw ``'HTTP_CODE=%{http_code}'` `-u `
+
+`<USERNAME>:<PASSWORD> --connect-timeout ``60` `--max-time ``60` `-H `
+
+`"Content-Type: application/json"`
+`-X POST ``'http://127.0.0.1:80/ubi-api-rest/orchestration/service/execute/MSSA34/My_New_Instance?serviceName=Process/MSS/Selfcare&processName=Process/MSS/Process_Create'`
+`-d '{`
+
+`        ``"admin_customer_ref"``: ``"MSSA12"``,`
+
+`        ``"device"``: ``"test_device"`
+
+`}'`
+
+<USERNAME> and <PASSWORD> to be replaced with MSActivator user
+credentials.
+
+serviceName and processName are in URL encoded form.
+
+*Note*: In this example, "service external reference" (optional) is not
+provided, hence it is auto-generated in the format
+*<Operator_prefix>SID<Service_Instance_id>* for ex. MSASID6608.
+
+The API response would be:
+
+[[highlighter_131037]]
+link:#[?]
+
+``
+
+`Curl Response :`
+
+`HTTP/``1.1` `200` `OK`
+
+`Date: Thu, ``06` `Sep ``2018` `10``:``39``:``40` `GMT`
+
+`Server: Apache`
+
+`Content-Length: ``628`
+
+`Content-Type: application/json`
+
+ 
+
+`{`
+
+`        ``"processId"``: {`
+
+`                ``"id"``: ``12918``,`
+
+`                ``"lastExecNumber"``: ``1``,`
+
+`                ``"name"``: ``"Process/MSActivator/FortiHypervisor/Fortinet_Selfcare/Process_Create"``,`
+
+`                ``"submissionType"``: ``"RUN"`
+
+`        ``},`
+
+`        ``"serviceId"``: {`
+
+`                ``"id"``: ``6608``,`
+
+`                ``"name"``: ``"Process/MSA/FortiHypervisor/Fortinet_Selfcare/Fortinet_Selfcare"``,`
+
+`                ``"serviceExternalReference"``: ``"My_New_Instance"``,`
+
+`                ``"state"``: ``null`
+
+`        ``},`
+
+`        ``"status"``: {`
+
+`                ``"details"``: ``""``,`
+
+`                ``"endingDate"``: ``null``,`
+
+`                ``"execNumber"``: ``1``,`
+
+`                ``"processTaskStatus"``: [`
+
+`                        ``{`
+
+`                                ``"details"``: ``""``,`
+
+`                                ``"endingDate"``: ``""``,`
+
+`                                ``"newParameter"``: [`
+
+`                                ``],`
+
+`                                ``"order"``: ``1``,`
+
+`                                ``"processInstanceId"``: ``12918``,`
+
+`                                ``"scriptName"``: ``"Enable Selfcare for FortiHypervisor"``,`
+
+`                                ``"startingDate"``: ``"2018-09-06 10:39:41.06031"``,`
+
+`                                ``"status"``: ``"RUNNING"`
+
+`                        ``}`
+
+`                ``],`
+
+`                ``"startingDate"``: ``"2018-09-06 10:39:41.006798"``,`
+
+`                ``"status"``: ``"RUNNING"`
+
+`        ``}`
+
+`}`
+
+[[WorkflowRESTAPIandFunctionLibrary-PHPlibraryfunctionforTasks]]
+=== PHP library function for Tasks
+
+In the MSA, to invoke an API, a library PHP function is available. This
+API is defined in this type of file:
+"Process/Reference/Common/Library/orchestration_rest.php":
+
+[[highlighter_912437]]
+link:#[?]
+
+``
+
+`_orchestration_execute_service_by_reference ($external_ref, $service_ref, $service_name, $process_name, $json_body = ``"{}"``);`
+
+The parameters are the same as explained in the API above. The
+*$json_body* corresponds to the string that is mentioned in the HTTP
+body section of the API.
+
+The returned response of the API needs to be assigned to a PHP variable
+and then accessed.
+
+[[WorkflowRESTAPIandFunctionLibrary-ExampleofthePHPfunctionusage:]]
+==== Example of the PHP function usage:
+
+If the above API example was done using this PHP method, the following
+would be the PHP code snippet of the PHP task implementation to trigger
+and access the response:
+
+[[highlighter_897567]]
+link:#[?]
+
+``
+
+`$process_name``=``"Process/MSA/Helloworld/Process_create_instance"``;`
+
+`$service_name``=``"Process/MSA/Helloworld"``;`
+
+`$json_body``=``"{}"``;`
+
+`$external_ref``=``"MSSA34"``;`
+
+`$response`
+`= _orchestration_execute_service_by_reference (``$external_ref``, ``"My_New_Instance"``, ``$service_name``, ``$process_name``, ``$json_body``);`
+
+ 
+
+`//Now the returned info is accessed using the $response variable as shown below:`
+
+`//Decode the json string into objects`
+
+`$response` `= json_decode(``$response``, true);`
+
+`if` `(``$response``[``'wo_status'``] !== ENDED) {`
+
+`    ``task_exit(FAILED, ``"Service $service_name execution failed.\n"`
+`. ``$response``[``'wo_comment'``]);`
+
+`}`
+
+`$selfcare_instance_id``=``$response``[``'wo_newparams'``][``'serviceId'``][``'id'``];`
+
+`//As per the above response, the $selfcare_instance_id would now have the value 6608`
+
+`$selfcare_instance_ref``=``$response``[``'wo_newparams'``][``'serviceId'``][``'serviceExternalReference'``];`
+
+`//As per the above response, the $selfcare_instance_ref would now have the value "My_New_Instance"`
+
+[[WorkflowRESTAPIandFunctionLibrary-TriggeranUPDATEorDELETEprocessofaWorkflow]]
+== Trigger an UPDATE or DELETE process of a Workflow
+
+[[WorkflowRESTAPIandFunctionLibrary-NorthboundAPI.2]]
+=== Northbound API
+
+When invoking the UPDATE or DELETE process of a Workflow instance, the
+API is the same as for the CREATE.
+
+Curl example:
+
+We wish to trigger an update process
+"Process/MSA/FortiHypervisor/Fortinet_Selfcare/Process_Update" (process
+name) of the Workflow
+"Process/MSA/FortiHypervisor/Fortinet_Selfcare/Fortinet_Selfcare"
+(service name). This is for the Workflow instance identified by the
+service external reference with the value MSASID6608, which is under a
+customer with customer external reference: MSSA34. This is provided that
+the create process needs the following variable-value inputs: 
+
+* "name": "John"
+* "device": "test_device".
+
+[[highlighter_517506]]
+link:#[?]
+
+``
+
+`/usr/bin/curl -isw ``'HTTP_CODE=%{http_code}'` `-u `
+
+`<USERNAME>:<PASSWORD> --connect-timeout ``60` `--max-time ``60` `-H `
+
+`"Content-Type: application/json"`
+`-X POST ``'http://127.0.0.1:80/ubi-api-rest/orchestration/service/execute/MSSA34/MSASID6608?serviceName=Process%2FMSA%2FHelloworld&processName=Process%2FMSA%2FHelloworld%2FProcess_print_message'`
+`-d '{`
+
+`        ``"name"``: ``"John"`
+
+`}'`
+
+The API response would be:
+
+[[highlighter_847683]]
+link:#[?]
+
+``
+
+`Curl Response :`
+
+`HTTP/``1.1` `200` `OK`
+
+`Date: Thu, ``06` `Sep ``2018` `10``:``39``:``40` `GMT`
+
+`Server: Apache`
+
+`Content-Length: ``628`
+
+`Content-Type: application/json`
+
+ 
+
+ 
+
+`{`
+
+`        ``"processId"``: {`
+
+`                ``"id"``: ``12919``,`
+
+`                ``"lastExecNumber"``: ``1``,`
+
+`                ``"name"``: ``"Process/MSA/Helloworld/Process_print_message"``,`
+
+`                ``"submissionType"``: ``"RUN"`
+
+`        ``},`
+
+`        ``"serviceId"``: {`
+
+`                ``"id"``: ``6608``,`
+
+`                ``"name"``: ``"Process/MSA/Helloworld"``,`
+
+`                ``"serviceExternalReference"``: ``"MSASID6608"``,`
+
+`                ``"state"``: ``null`
+
+`        ``},`
+
+`        ``"status"``: {`
+
+`                ``"details"``: ``""``,`
+
+`                ``"endingDate"``: ``null``,`
+
+`                ``"execNumber"``: ``1``,`
+
+`                ``"processTaskStatus"``: [`
+
+`                        ``{`
+
+`                                ``"details"``: ``""``,`
+
+`                                ``"endingDate"``: ``""``,`
+
+`                                ``"newParameter"``: [`
+
+`                                ``],`
+
+`                                ``"order"``: ``1``,`
+
+`                                ``"processInstanceId"``: ``12919``,`
+
+`                                ``"scriptName"``: ``"Task print"``,`
+
+`                                ``"startingDate"``: ``"2018-09-06 10:39:41.06031"``,`
+
+`                                ``"status"``: ``"RUNNING"`
+
+`                        ``}`
+
+`                ``],`
+
+`                ``"startingDate"``: ``"2018-09-06 10:39:41.006798"``,`
+
+`                ``"status"``: ``"RUNNING"`
+
+`        ``}`
+
+`}`
+
+[[WorkflowRESTAPIandFunctionLibrary-PHPlibraryfunctionforTasks.1]]
+=== PHP library function for Tasks
+
+In the MSA, to invoke an API, a library PHP function is available. This
+API is defined in this type of file:
+"Process/Reference/Common/Library/orchestration_rest.php":
+
+Where parameters are the same as explained in the API above. The
+*$json_body* corresponds to the string that is mentioned in the HTTP
+body section of the API.
+
+[[highlighter_863616]]
+link:#[?]
+
+``
+
+`_orchestration_execute_service_by_reference ($external_ref, $service_ref, $service_name, $process_name, $json_body = ``"{}"``);`
+
+[[WorkflowRESTAPIandFunctionLibrary-ExampleofthePHPfunctionusage:.1]]
+==== Example of the PHP function usage:
+
+If the above API example was done using this PHP method, the PHP code
+snippet of the PHP implementation of the task to trigger and access the
+response would be as follows:
+
+[[highlighter_737232]]
+link:#[?]
+
+``
+
+`$process_name``=``"Process/MSA/FortiHypervisor/Fortinet_Selfcare/Process_Update"``;`
+
+`$service_name``=``"Process/MSA/FortiHypervisor/Fortinet_Selfcare/Fortinet_Selfcare"``;`
+
+`$json_body``=``"{'admin_customer_ref': 'MSAA12','device': 'test_device'}"``;`
+
+`$external_ref``=``"MSSA34"``;`
+
+`$service_ref``=``"MSASID6608"``;`
+
+`$response`
+`= _orchestration_execute_service_by_reference (``$external_ref``, ``$service_ref``, ``$service_name``, ``$process_name``, ``$json_body``);`

@@ -1,0 +1,83 @@
+<div class="documentation-content">
+
+  <div class="wiki-content" id="main-content">
+    <h1 id="ConfigurationRepository-RepositoryIconsandBehaviours"><span class="">Repository Icons and Behaviours </span></h1>
+    <p>The configuration repository is used to store configuration files which can later be used in file-based configuration profiles or directly attached to devices.</p>
+    <h2 id="ConfigurationRepository-ActionsontheRepositoryRootNode"><span class="">Actions on the Repository Root Node </span></h2>
+    <h4 id="ConfigurationRepository-AddinganOperator">A<span class="">dding an Operator </span></h4>
+    <p><img class="confluence-embedded-image confluence-external-resource" height="16" src="images/Add_operator.gif" width="16"/> : adds an operator to this repository. This action is only relevant for users that have an administrator role.</p>
+    <h3 id="ConfigurationRepository-GettingInformationAbouttheRepository"><span class="">G</span><span class="">etting Information About the Repository </span></h3>
+    <p><img class="confluence-embedded-image confluence-external-resource" height="16" src="images/Help.gif" width="16"/> : displays the list of profiles that use files from this repository or the devices that use files from this repository</p>
+    <h2 id="ConfigurationRepository-ActionsontheOperatorNodes"><span class="">Actions on the Operator Nodes </span></h2>
+    <p>As one or more operator(s) can be associated with a configuration repository, an operator can be associated with a customer or a manufacturer.</p>
+    <h3 id="ConfigurationRepository-AddingaCustomer"><span class="">A</span><span class="">dding a Customer </span></h3>
+    <p><img class="confluence-embedded-image confluence-external-resource" height="16" src="images/Add_customer.gif" width="16"/> : the user can select and add one or several customers from its managed customer. Adding a customer acts as a filter: any file uploaded to a customer sub-folder will only be available to the selected customer.</p>
+    <h3 id="ConfigurationRepository-AddingaManufacturer"><span class="">A</span><span class="">dding a Manufacturer </span></h3>
+    <p><img class="confluence-embedded-image confluence-external-resource" height="16" src="images/Add_manufacturer.gif" width="16"/> : the user can select and add the managed device manufacturers. Adding a manufacturer acts as a filter and any file uploaded to a manufacturer sub-folder will only be available to the selected manufacturer.</p>
+    <h2 id="ConfigurationRepository-ActionsontheCustomerNode"><span class="">Actions on the Customer Node </span></h2>
+    <p><img class="confluence-embedded-image confluence-external-resource" height="16" src="images/Add_manufacturer.gif" width="16"/> : the user can select and add the managed device manufacturers. Files uploaded to a sub-folder of this selected manufacturer will only be available for the devices of the selected manufacturer that are attached to the selected customer.</p>
+    <h2 id="ConfigurationRepository-Adding/RemovingFoldersandFilesandAddingFiles"><span class="">Adding/Removing Folders and Files and Adding Files </span></h2>
+    <h3 id="ConfigurationRepository-Adding/Removingfoldersandfiles"><span class="">Adding/Removing folders and files </span></h3>
+    <p><img class="confluence-embedded-image confluence-external-resource" height="16" src="images/Add_directory.gif" width="16"/> : the user can add a sub-folder to any of the following: customer, manufacturer or folder. <img class="confluence-embedded-image confluence-external-resource" height="16" src="images/Action_delete.gif" width="14"/> : the user can delete any of the following: customer, manufacturer, folder or file. The delete action is not available if the object is attached to a configuration profile or a device, or if the object is a folder and contains a file attached to a configuration profile or a device. Hovering over the <img class="confluence-embedded-image confluence-external-resource" height="16" src="images/Help.gif" width="16"/> icon displays the list of the profiles and devices that have a reference to any of the files in the corresponding sub-tree.</p>
+    <h3 id="ConfigurationRepository-Addingfiles"><span class="">Adding files </span></h3>
+    <p><img class="confluence-embedded-image confluence-external-resource" height="16" src="images/Add_upload_Configuration.gif" width="16"/> : the user can add a file to the selected folder. Via the dialog window, the user can either upload a file (<img class="confluence-embedded-image confluence-external-resource" height="16" src="images/Action_upload.gif" width="16"/> Import from disk) from their file system or directly create a file (<img class="confluence-embedded-image confluence-external-resource" height="16" src="images/Modify.gif" width="16"/> Create new file).</p>
+    <p>Only text files can be uploaded in the configuration repository. Binary file upload is not supported.</p>
+    <p>If the user chooses to create a new file (<img class="confluence-embedded-image confluence-external-resource" height="16" src="images/Modify.gif" width="16"/>), they will be able to create it via the edition window:</p>
+    <p><a class="image-popup-fit-width" href=""> <img alt="Image" src="images/CreateNewFile_win.png" width="682"/></a></p>
+    <p>A name, a tag, and a free text comment can be given to the new file.</p>
+    <h3 id="ConfigurationRepository-Addingzippedfilesforbulkupload"><span class="">Adding zipped files for bulk upload </span></h3>
+    <p><img class="confluence-embedded-image confluence-external-resource" height="16" src="images/Add_upload_Configuration.gif" width="16"/> : The user can add a set of files and/or a full directory structure to the selected folder by uploading a .zip file.</p>
+    <p>Note: the unzipping process will preserve the directory structure of the zipped directory and files.</p>
+    <p>Via the dialog window, the user can upload a zip file (<img class="confluence-embedded-image confluence-external-resource" height="16" src="images/Action_upload.gif" width="16"/> Import from disk) from his file system.</p>
+    <p>Only zip-compressed archives are supported at this time. Only text files or folders inside the zip are supported.</p>
+    <p>A name, a tag and a free text comment can be given to the new zip file.</p>
+    <h3 id="ConfigurationRepository-AddingfilesinfolderAutoAttached"><span class="">Adding files in folder AutoAttached </span></h3>
+    <p>It is possible to automatically attach files to a device when the device is created.</p>
+    <p>This is useful when services are to be automatically associated with devices.</p>
+    <p>In order to define the set of files (templates or objects) that should be associated with a device, the files should be uploaded under a folder that goes by the name "AutoAttached". There is no dedicated action button to create this folder, therefore it is up to the MSA admin to make sure that the folder name and location are correct.</p>
+    <p>The folder AutoAttached must be created under a model folder, otherwise, the files it contains will not be taken into account.</p>
+    <p>In the screenshot below, each file found below AutoAttached will be automatically attached to newly created Fortinet/Generic.</p>
+    <p><a class="image-popup-fit-width" href="">
+    <img alt="Image" src="images/Configure_the_repository_files_autoattached_1.png"/></a></p>
+    <p> </p>
+    <h3 id="ConfigurationRepository-Usingconfigurationvariablesintherepositoryfiles"><span class="">Using c<span class="mw-redirect">onfiguration variables</span> in the repository files </span></h3>
+    <p>The file can contain any text and reference to c<span class="mw-redirect">onfiguration variables</span> and can be used with the following syntax:</p>
+    <p>The variable MY_VAR can be defined for a device. Use the {$MY_VAR} syntax to reference the configuration templates.</p>
+    <p>Below is an example of IP SLA configuration for Cisco routers:</p>
+    <div class="code panel pdl conf-macro output-block" data-hasbody="true" data-macro-name="code" style="border-width: 1px;">
+        <div class="codeContent panelContent pdl">
+            <div>
+                <div class="syntaxhighlighter sh-confluence nogutter java" id="highlighter_172077">
+                    <div class="toolbar"><a class="toolbar_item command_help help" href="#">?</a></div>
+                    <table border="0" cellpadding="0" cellspacing="0">
+                        <tbody>
+                            <tr>
+                                <code class="code">
+                                    <div class="container" title="Hint: double-click to select code">
+                                        <div class="line number1 index0 alt2"><code class="java plain">! begin ipsla conf</code></div>
+                                        <div class="line number2 index1 alt1"><code class="java plain">ip sla {$operation_number}</code></div>
+                                        <div class="line number3 index2 alt2"><code class="java spaces"> </code><code class="java plain">icmp-echo {$destination_ip_address} </code></div>
+                                        <div class="line number4 index3 alt1"><code class="java spaces"> </code><code class="java plain">frequency {$seconds}</code></div>
+                                        <div class="line number5 index4 alt2"><code class="java spaces"> </code><code class="java plain">exit</code></div>
+                                        <div class="line number6 index5 alt1"> </div>
+                                        <div class="line number7 index6 alt2"><code class="java plain">ip sla schedule {$operation_number} life {$life} start-time {$start_time}</code></div>
+                                        <div class="line number8 index7 alt1"><code class="java plain">! end ipsla conf</code></div>
+                                        <div class="line number9 index8 alt2"> </div>
+                                        <div class="line number10 index9 alt1"><code class="java plain">in order </code><code class="java keyword">for</code> <code class="java plain">the configuration to be correctly pushed to a device, the device must have the following variables declared and valued:</code></div>
+                                        <div class="line number11 index10 alt2"><code class="java spaces"> </code><code class="java plain">operation_number</code></div>
+                                        <div class="line number12 index11 alt1"><code class="java spaces"> </code><code class="java plain">destination_ip_address</code></div>
+                                        <div class="line number13 index12 alt2"><code class="java spaces"> </code><code class="java plain">seconds</code></div>
+                                        <div class="line number14 index13 alt1"><code class="java spaces"> </code><code class="java plain">operation_number</code></div>
+                                        <div class="line number15 index14 alt2"><code class="java spaces"> </code><code class="java plain">life</code></div>
+                                        <div class="line number16 index15 alt1"><code class="java spaces"> </code><code class="java plain">start_time</code></div>
+                                    </div>
+                                </code>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>

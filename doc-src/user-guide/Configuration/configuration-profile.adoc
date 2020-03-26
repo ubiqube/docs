@@ -1,0 +1,22 @@
+= Configuration Profile
+:toc: left
+:toc-title: Content
+:imagesdir: ../resources/
+:ext-relative: adoc
+
+[[main-content]]
+Configuration profiles are a collection
+of link:/documentation/microservices/[Microservices] and configuration
+templates that can be grouped and associated with devices to build a
+consistent configuration.
+
+A managed device can only be associated with one configuration profile.
+
+A link:/documentation/configuration-template/[configuration
+template] and/or a link:/documentation/microservices[Microservice] can
+be associated with multiple configuration profiles.
+
+[[ConfigurationProfile-VideoTutorial]]
+== Video Tutorial
+
+video::videos/MSActivator-16.2-Creating-a-Monitoring-Profile.mp4[image,width=500,height=380]

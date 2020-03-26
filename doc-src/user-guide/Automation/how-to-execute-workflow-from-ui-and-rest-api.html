@@ -1,0 +1,41 @@
+<div class="documentation-content">
+
+<div class="wiki-content" id="main-content">
+    <p>If a Workflow needs to be invoked from a portal and REST API in the command line, the Workflow needs to include extra code.</p>
+    <p>The reason for this is because when you invoke the Workflow from UI Portal, all the parameters go into the $context, but when you invoke the Workflow from the command line using REST APIs, all the input parameters go into the $parameters. </p>
+    <p>The Workflow engine only considers the parameters set in $context. Therefore, all the parameters provided on the command line will go into $parameters and will not be considered for the execution. Instead, previously saved parameters will be used. </p>
+    <p></p>
+    <p>In order to ensure that a Workflow can be executed from both the UI and the command line, it should have some code which will copy the parameters from $patameters to $context. The code is as follows:</p>
+    <div class="code panel pdl conf-macro output-block" data-hasbody="true" data-macro-name="code" style="border-width: 1px;">
+        <div class="codeContent panelContent pdl">
+            <div>
+                <div class="syntaxhighlighter sh-confluence nogutter php" id="highlighter_942678">
+                    <div class="toolbar"><span><a class="toolbar_item command_help help" href="#">?</a></span></div>
+                    <table border="0" cellpadding="0" cellspacing="0">
+                        <tbody>
+                            <tr>
+                                <code class="code">
+                                    <div class="container" title="Hint: double-click to select code">
+                                        <div class="line number1 index0 alt2"><code class="php keyword">if</code><code class="php plain">(isset(</code><code class="php variable">$parameters</code><code class="php plain">) ){</code></div>
+                                        <div class="line number2 index1 alt1"><code class="php spaces">    </code><code class="php variable">$context</code><code class="php plain">[</code><code class="php string">'&lt;param_name_1&gt;'</code><code class="php plain">] = </code><code class="php variable">$parameters</code><code class="php plain">[</code><code class="php string">'&lt;param_name_1&gt;'</code><code class="php plain">];</code></div>
+                                        <div class="line number3 index2 alt2"><code class="php spaces">    </code><code class="php variable">$context</code><code class="php plain">[</code><code class="php string">'&lt;param_name_2&gt;'</code><code class="php plain">] = </code><code class="php variable">$parameters</code><code class="php plain">[</code><code class="php string">'&lt;param_name_2&gt;'</code><code class="php plain">];</code></div>
+                                        <div class="line number4 index3 alt1"><code class="php spaces">   </code><code class="php plain">......</code></div>
+                                        <div class="line number5 index4 alt2"><code class="php spaces">   </code><code class="php plain">....</code></div>
+                                        <div class="line number6 index5 alt1"><code class="php spaces"> </code><code class="php plain">}</code></div>
+                                    </div>
+                                </code>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p></p>
+    <p><a class="image-popup-fit-width" href="">
+    <img alt="Image" height="250" src="images/MSA-2878.gif"/></a></p>
+    <p></p>
+    <p></p>
+</div>
+
+        </div>

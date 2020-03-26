@@ -1,0 +1,194 @@
+= Configuration Repository
+:toc: left
+:toc-title: Content
+:imagesdir: ../resources/
+:ext-relative: adoc
+
+[[main-content]]
+[[ConfigurationRepository-RepositoryIconsandBehaviours]]
+== Repository Icons and Behaviours 
+
+The configuration repository is used to store configuration files which
+can later be used in file-based configuration profiles or directly
+attached to devices.
+
+[[ConfigurationRepository-ActionsontheRepositoryRootNode]]
+=== Actions on the Repository Root Node 
+
+[[ConfigurationRepository-AddinganOperator]]
+==== Adding an Operator 
+
+image:images/Add_operator.gif[image,width=16,height=16] : adds an
+operator to this repository. This action is only relevant for users that
+have an administrator role.
+
+[[ConfigurationRepository-GettingInformationAbouttheRepository]]
+==== Getting Information About the Repository 
+
+image:images/Help.gif[image,width=16,height=16] : displays the list of
+profiles that use files from this repository or the devices that use
+files from this repository
+
+[[ConfigurationRepository-ActionsontheOperatorNodes]]
+=== Actions on the Operator Nodes 
+
+As one or more operator(s) can be associated with a configuration
+repository, an operator can be associated with a customer or a
+manufacturer.
+
+[[ConfigurationRepository-AddingaCustomer]]
+==== Adding a Customer 
+
+image:images/Add_customer.gif[image,width=16,height=16] : the user can
+select and add one or several customers from its managed customer.
+Adding a customer acts as a filter: any file uploaded to a customer
+sub-folder will only be available to the selected customer.
+
+[[ConfigurationRepository-AddingaManufacturer]]
+==== Adding a Manufacturer 
+
+image:images/Add_manufacturer.gif[image,width=16,height=16] : the user
+can select and add the managed device manufacturers. Adding a
+manufacturer acts as a filter and any file uploaded to a manufacturer
+sub-folder will only be available to the selected manufacturer.
+
+[[ConfigurationRepository-ActionsontheCustomerNode]]
+=== Actions on the Customer Node 
+
+image:images/Add_manufacturer.gif[image,width=16,height=16] : the user
+can select and add the managed device manufacturers. Files uploaded to a
+sub-folder of this selected manufacturer will only be available for the
+devices of the selected manufacturer that are attached to the selected
+customer.
+
+[[ConfigurationRepository-Adding/RemovingFoldersandFilesandAddingFiles]]
+=== Adding/Removing Folders and Files and Adding Files 
+
+[[ConfigurationRepository-Adding/Removingfoldersandfiles]]
+==== Adding/Removing folders and files 
+
+image:images/Add_directory.gif[image,width=16,height=16] : the user can
+add a sub-folder to any of the following: customer, manufacturer or
+folder. image:images/Action_delete.gif[image,width=14,height=16] : the
+user can delete any of the following: customer, manufacturer, folder or
+file. The delete action is not available if the object is attached to a
+configuration profile or a device, or if the object is a folder and
+contains a file attached to a configuration profile or a device.
+Hovering over the image:images/Help.gif[image,width=16,height=16] icon
+displays the list of the profiles and devices that have a reference to
+any of the files in the corresponding sub-tree.
+
+[[ConfigurationRepository-Addingfiles]]
+==== Adding files 
+
+image:images/Add_upload_Configuration.gif[image,width=16,height=16] :
+the user can add a file to the selected folder. Via the dialog window,
+the user can either upload a file
+(image:images/Action_upload.gif[image,width=16,height=16] Import from
+disk) from their file system or directly create a file
+(image:images/Modify.gif[image,width=16,height=16] Create new file).
+
+Only text files can be uploaded in the configuration repository. Binary
+file upload is not supported.
+
+If the user chooses to create a new file
+(image:images/Modify.gif[image,width=16,height=16]), they will be able
+to create it via the edition window:
+
+link:[image:images/CreateNewFile_win.png[Image,width=682]]
+
+A name, a tag, and a free text comment can be given to the new file.
+
+[[ConfigurationRepository-Addingzippedfilesforbulkupload]]
+==== Adding zipped files for bulk upload 
+
+image:images/Add_upload_Configuration.gif[image,width=16,height=16] :
+The user can add a set of files and/or a full directory structure to the
+selected folder by uploading a .zip file.
+
+Note: the unzipping process will preserve the directory structure of the
+zipped directory and files.
+
+Via the dialog window, the user can upload a zip file
+(image:images/Action_upload.gif[image,width=16,height=16] Import from
+disk) from his file system.
+
+Only zip-compressed archives are supported at this time. Only text files
+or folders inside the zip are supported.
+
+A name, a tag and a free text comment can be given to the new zip file.
+
+[[ConfigurationRepository-AddingfilesinfolderAutoAttached]]
+==== Adding files in folder AutoAttached 
+
+It is possible to automatically attach files to a device when the device
+is created.
+
+This is useful when services are to be automatically associated with
+devices.
+
+In order to define the set of files (templates or objects) that should
+be associated with a device, the files should be uploaded under a folder
+that goes by the name "AutoAttached". There is no dedicated action
+button to create this folder, therefore it is up to the MSA admin to
+make sure that the folder name and location are correct.
+
+The folder AutoAttached must be created under a model folder, otherwise,
+the files it contains will not be taken into account.
+
+In the screenshot below, each file found below AutoAttached will be
+automatically attached to newly created Fortinet/Generic.
+
+link:[image:images/Configure_the_repository_files_autoattached_1.png[Image]]
+
+ 
+
+[[ConfigurationRepository-Usingconfigurationvariablesintherepositoryfiles]]
+==== Using c[.mw-redirect]##onfiguration variables## in the repository files 
+
+The file can contain any text and reference to
+c[.mw-redirect]##onfiguration variables## and can be used with the
+following syntax:
+
+The variable MY_VAR can be defined for a device. Use the \{$MY_VAR}
+syntax to reference the configuration templates.
+
+Below is an example of IP SLA configuration for Cisco routers:
+
+[[highlighter_172077]]
+link:#[?]
+
+`                                     `
+
+`! begin ipsla conf`
+
+`ip sla {$operation_number}`
+
+` ``icmp-echo {$destination_ip_address} `
+
+` ``frequency {$seconds}`
+
+` ``exit`
+
+ 
+
+`ip sla schedule {$operation_number} life {$life} start-time {$start_time}`
+
+`! end ipsla conf`
+
+ 
+
+`in order ``for`
+`the configuration to be correctly pushed to a device, the device must have the following variables declared and valued:`
+
+` ``operation_number`
+
+` ``destination_ip_address`
+
+` ``seconds`
+
+` ``operation_number`
+
+` ``life`
+
+` ``start_time`

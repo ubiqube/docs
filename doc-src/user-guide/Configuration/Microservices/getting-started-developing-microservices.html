@@ -1,0 +1,116 @@
+<div class="documentation-content">
+          <div class="confluence-information-macro confluence-information-macro-information" data-hasbody="true" data-macro-name="info">
+            <p class="title">NOTE: getting the sources</p>
+            
+            <div class="confluence-information-macro-body">
+              <p>The source of this tutorial is available on GitHub at <a class="external-link" href="https://github.com/openmsa" rel="nofollow" target="_blank">https://github.com/openmsa</a> on <a class="external-link" href="https://github.com/openmsa/Microservices/tree/master/Tutorials/LINUX/Generic/Tutorial1" rel="nofollow" target="_blank">Microservices/Tutorials/LINUX/Generic/Tutorial1</a>. Microservices can be used to manage a wide variety of services on numerous types of devices, such as:</p>
+            </div>
+          </div>
+          <h1>Overview</h1>
+          <p>This tutorial explores the design and development of a Microservice. Microservices can be used to manage a wide variety of services on numerous types of devices, such as:</p>
+          <ul>
+          <li>network equipment (routers, switches, UTM, etc.)</li>
+          <li>virtualization infrastructure managers (VMWare, AWS, Openstack, etc.)</li>
+          <li>Linux servers</li>
+          </ul>
+          <h1>Lab Setup</h1>
+          <p>The first step in Microservice design and development is to have a device to manage.</p>
+          <p>This tutorial assumes you have a properly configured, running MSActivator.</p>
+          <p>As a first example of Microservices, we will start with managing a Linux server. There are plenty of Linux distribution options, and this tutorial will use a Linux Centos 6.</p>
+          <p>Use the device creation wizard to create a device and ensure that it's a Linux/generic.</p>
+          <p><a class="image-popup-fit-width" href="">
+              <img alt="Image" src="images/ManagedLinuxDevice.png" width="800"/>
+          </a></p>
+          <p>For "Management IP address", enter the IP address of the managed Linux, and make sure it's accessible from the MSActivator.</p>
+          <p>"Authentication" uses the root account, which is suitable for a lab but in a production environment you should use a more restricted user account (i.e. a manager account).</p>
+          <p>Once created, activate the device using the "Initial provisioning" option in the "Actions" drop down list, and wait 1-2 minutes until the device is marked as "UP" and the asset values are filled. This means that the MSActivator monitoring module can ping the Linux and can also connect with SSH.</p>
+          <h1>Microservice Design</h1>
+          <p>Now that there is a device available (Linux Centros 6), we can create our first Microservice.</p>
+          <p>The first step is to create a new Microservice and associate it to the managed Linux device.</p>
+          <p>If you don't know how to create a new Microservice and associate it to a device, refer to <a href="https://training.ubiqube.com/16.2/wikiTraining/index.php/OBMF_Objects_Definition" rel="nofollow" target="_blank">OBMF Objects Definition</a>.</p>
+          <p>Once you have created a new Microservice (named "user") in the repository and attached it to your device, you can begin the design and implementation.</p>
+          <h2>Design and Implementation</h2>
+          <p>On Linux Centos 6, the CLI command to list the users is "cat /etc/passwd". To create a new user it's "useradd",  and to delete a user it's "userdel".</p>
+<div class="code panel pdl conf-macro output-block" data-hasbody="true" data-macro-name="code" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<div><div class="syntaxhighlighter sh-confluence nogutter java" id="highlighter_579453"><div class="toolbar"><span><a class="toolbar_item command_help help" href="#">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><code class="code"><div class="container" title="Hint: double-click to select code"><div class="line number1 index0 alt2"><code class="java plain">[root</code><code class="java color1">@managed</code><code class="java plain">-linux ~]# cat /etc/passwd</code></div><div class="line number2 index1 alt1"><code class="java plain">root:x:</code><code class="java value">0</code><code class="java plain">:</code><code class="java value">0</code><code class="java plain">:root:/root:/bin/bash</code></div><div class="line number3 index2 alt2"><code class="java plain">bin:x:</code><code class="java value">1</code><code class="java plain">:</code><code class="java value">1</code><code class="java plain">:bin:/bin:/sbin/nologin</code></div><div class="line number4 index3 alt1"><code class="java plain">...</code></div><div class="line number5 index4 alt2"><code class="java plain">sshd:x:</code><code class="java value">74</code><code class="java plain">:</code><code class="java value">74</code><code class="java plain">:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin</code></div><div class="line number6 index5 alt1"><code class="java plain">oprofile:x:</code><code class="java value">16</code><code class="java plain">:</code><code class="java value">16</code><code class="java plain">:Special user account to be used by OProfile:/home/oprofile:/sbin/nologin</code></div><div class="line number7 index6 alt2"><code class="java plain">tcpdump:x:</code><code class="java value">72</code><code class="java plain">:</code><code class="java value">72</code><code class="java plain">::/:/sbin/nologin</code></div></div></code></tr></tbody></table></div></div>
+</div></div>
+          <p>The list of users in /etc/passwd contains the system users that we want to exclude from the scope of the Microservice. We'll cover this later in this tutorial.</p>
+          <h3>Import the Users with the IMPORT Function</h3>
+          <p>The result of the CLI command "cat /etc/passwd" is composed of a line with the format:</p>
+          <p><a class="image-popup-fit-width" href="">
+              <img alt="Image" src="images/passwd-file.png" width="478"/>
+          </a></p>
+          <ol>
+          <li>Username: Used when user logs in. It should be between 1 and 32 characters in length.</li>
+          <li>Password: An "x" character indicates that an encrypted password is stored in /etc/shadow file. Please note that you need to use the passwd command to compute the hash of a password typed at the CLI, or to store/update the hash of the password in /etc/shadow file.</li>
+          <li>User ID (UID): Each user must be assigned a user ID (UID). UID 0 (zero) is reserved for root. UIDs 1-99 are reserved for other predefined accounts. UIDs 100-999 are reserved by the system for administrative and system accounts/groups.</li>
+          <li>Group ID (GID): The primary group ID (stored in /etc/group file)</li>
+          <li>User ID Info: The comment field. Allows you to add extra information about the users, such as user’s full name, phone number etc. This field used by finger command.</li>
+          <li>Home Directory: The absolute path to the directory the user will be in when they log in. If this directory does not exists then users directory becomes /.</li>
+          <li>Command/Shell: The absolute path of a command or shell (/bin/bash). Typically, this is a shell. Please note that it does not have to be a shell.</li>
+          </ol>
+          <p>Now let's build the IMPORT function with the parsers to extract the information listed above.</p>
+          <p>First we have to decide how the Microservice ID (the mandatory variable name "object_id") will be extracted. In this case, since the username is unique on Linux, the obvious choice is to use the username field as the object_id.</p>
+          <p>The regular expression to extract the fields from the result of "cat /etc/passwd" is</p>
+<div class="code panel pdl conf-macro output-block" data-hasbody="true" data-macro-name="code" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<div><div class="syntaxhighlighter sh-confluence nogutter java" id="highlighter_125703"><div class="toolbar"><span><a class="toolbar_item command_help help" href="#">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><code class="code"><div class="container" title="Hint: double-click to select code"><div class="line number1 index0 alt2"><code class="java plain">@(?[^:]+):(?[^:]+):(?[^:]+):(?[^:]+):(?[^:]*):(?[^:]+):(?[^:]+)@</code></div></div></code></tr></tbody></table></div></div>
+</div></div>
+          <p>Note: it may be useful to use an online regular expression tester when developing and testing regular expressions. One online tester can be found here: <a href="http://lumadis.be/regex/test_regex.php" rel="nofollow" target="_blank">http://lumadis.be/regex/test_regex.php (see reference below)</a></p>
+          <p><a class="image-popup-fit-width" href="">
+              <img alt="Image" src="images/regexp_tester.png" width="674"/>
+          </a></p>
+          <p>Once validated, this regular expression can be used in the field "Micro service identifier extractor" of the IMPORT function builder:</p>
+          <p><a class="image-popup-fit-width" href="">
+              <img alt="Image" src="images/import_users_1.png" width="800"/>
+          </a></p>
+          <p>Note that the variables such as object_id, password, etc. were automatically created by the Microservice designer. You can change the display name of the variables, reorder them, and eventually make some of them read only (for instance, you can leave the user_id, group_id and shell as read only and simply display the one generated by the Linux CLI). The password can be set as not visible to simplify the display.</p>
+          <p>Save your work, run the synchronization, and view at the result.</p>
+          <p><a class="image-popup-fit-width" href="">
+              <img alt="Image" src="images/import_users_1_result.png" width="800"/>
+          </a></p>
+          <h3>Add and Remove Users with the CREATE and DELETE Functions</h3>
+          <p>On linux, the CLI command to add a user is:</p>
+          <pre>useradd -m -d HOME_DIR -c COMMENT -p PASSWORD LOGIN</pre>
+          <p>and to delete a user is:</p>
+          <pre>userdel -f -r  LOGIN
+          </pre>
+          <p>Since it's possible to set the password as a parameter of the user creation, you need to modify the definition of the variable "password" and make it visible and mandatory (but only in the edit view).</p>
+          <p><a class="image-popup-fit-width" href="">
+              <img alt="Image" src="images/user_microservice_definition.png" width="527"/>
+          </a></p>
+          <p>You are now ready to implement the CREATE:</p>
+          <pre>useradd -m -d {$params.home_dir} -c "{$params.comment}" -p {$params.password} {$params.object_id}</pre>
+          <p>and the DELETE:</p>
+          <pre>userdel -f -r {$users.$object_id.object_id}
+          </pre>
+          <p>Note the use of the syntax {$users.$object_id.object_id} in the implementation of the DELETE.</p>
+          <p>$users is the name of the Microservice definition file as created in the repository: users.xml. This syntax is used to get values from the MSActivator database, where Microservice instances are stored. The syntax has to be used when implementing a DELETE because the DELETE must delete the entry from the database AND remove the configuration from the device (in this case we want to delete a user).</p>
+          <p>This syntax is also widely used when implementing the READ and LIST (See <a href="../Configuration/Microservices/getting-started-developing-microservices.adoc">How to Use List &amp; Read</a>)</p>
+          <h2>Going Further</h2>
+          <p>With this simple implementation you can manage users on a Linux system, but there are some additional use cases that you may want to address:</p>
+          <ul>
+            <li>Is it possible to ignore the system users when importing (ex: bin, daemon, adm,...)?</li>
+            <li>What if no comment is provided?</li>
+            <li>What if no home dir is provided?</li>
+          </ul>
+          <h3>How to Ignore the System Users</h3>
+          <p>In order to ignore system users during the import, you have to find criteria to help differenciate system users from the users created by the system admin. You can chose to ignore all users that don't have the home dir under /home. The regular expression would then look like:</p>
+          <pre>@(?[^:]+):(?[^:]+):(?[^:]+):(?[^:]+):(?[^:]*):(?/home/.+):(?[^:]+)@
+          </pre>
+          <p>This regular expression will exclude all user that don't have a home dir under /home, but the system users below will still be imported:</p>
+          <pre>oprofile:x:16:16:Special user account used by OProfile: /home/oprofile:/sbin/nologin
+          </pre>
+          <p>Since the shell isn't part of the parameters that we have exposed in the creation form, you can decide to import the user that have /bin/bash as shell:</p>
+          <pre>@(?[^:]+):(?[^:]+):(?[^:]+):(?[^:]+):(?[^:]*):(?/home/.+):/bin/bash@
+          </pre>
+          <p>In this case, the variable shell is no longer needed, so you can remove it from the list of the variables. You also have to update the CREATE function to make sure that the home dir will always be under /home, and you have to make sure that the variable home_dir is read only.</p>
+          <pre>useradd -m -d /home/{$params.object_id} -c "{$params.comment}" -p {$params.password} {$params.object_id}</pre>
+          <h3>How to Handle Optional Empty Variables?</h3>
+          <p>The comment is an optional parameter, so you need to make sure that the execution of the CLI command "useradd" will not fail if no comment is passed as a parameter.</p>
+          <p>This can be acheived with a bit of scripting in the CREATE function:</p>
+<pre>{if empty($params.comment)}
+useradd -m -d /home/{$params.object_id} -p {$params.password} {$params.object_id}
+{else}
+useradd -m -d /home/{$params.object_id} -c "{$params.comment}" -p {$params.password} {$params.object_id}
+{/if}</pre>
+        </div>

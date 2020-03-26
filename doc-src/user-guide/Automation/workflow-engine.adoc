@@ -1,0 +1,10 @@
+= Workflow Engine
+:toc: left
+:toc-title: Content
+:imagesdir: ../resources/
+:ext-relative: adoc
+
+[[main-content]]
+Below is a diagram of the Workflow engine:
+
+link:[image:images/Workflow-Engine-HL-Archi.png[Image,width=800]]

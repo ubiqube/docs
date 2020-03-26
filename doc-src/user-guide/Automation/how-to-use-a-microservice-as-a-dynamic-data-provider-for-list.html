@@ -1,0 +1,94 @@
+<div class="documentation-content">
+
+<div class="wiki-content" id="main-content">
+    <div class="confluence-information-macro confluence-information-macro-information conf-macro output-block" data-hasbody="true" data-macro-name="info">
+        <p class="title">NOTE: The sources of this tutorial are available on GitHub at:</p>
+        
+    </div>
+    <p>In this tutorial you will learn how to use a Microservice to act as a data provider for a Workflow variable.</p>
+    <p>The Microservice will be used to import the data with its IMPORT function and the Workflow will use these values to build a dropdown list.</p>
+    <p>This tutorial uses the Microservice <strong>user.xml</strong> that was built in this <a href="../Configuration/Microservices/getting-started-developing-microservices.adoc">other tutorial</a>.</p>
+    <p>When using the Microservice on a Linux device, you can see the list of users configured on the device.</p>
+    <p><a class="image-popup-fit-width" href="">
+    <img alt="Image" src="images/image2019-5-7_17-52-24.png" width="800"/></a></p>
+    <p>On the workflow side, you need to declare 2 variables:</p>
+    <p><a class="image-popup-fit-width" href="">
+    <img alt="Image" src="images/image2019-5-7_17-55-51.png" width="800"/></a></p>
+    <ul>
+        <li>a first variable with the type device. This variable will let you select the device you want to use to run the IMPORT.</li>
+        <li>another variable with the type "Microservice reference". In the advanced parameter, Type, section of this variable you'll have to select the microservice the device variable to use</li>
+    </ul>
+    <p><a class="image-popup-fit-width" href="">
+    <img alt="Image" src="images/image2019-5-7_17-56-26.png" width="800"/></a></p>
+    <h1 id="HowtoUseaMicroserviceasaDynamicDataProviderforList-MicroserviceandWorkflowInteraction">Microservice and Workflow Interaction</h1>
+    <p>On the Microservice console, the users are listed, the column object_id contains the user-names.</p>
+    <p>With the Workflow variable definition above, the variable will be rendered as a list that contains the usernames from the Microservice.</p>
+    <p><a class="image-popup-fit-width" href="">
+    <img alt="Image" src="images/image2019-5-9_16-12-57.png" width="800"/></a></p>
+    <p>We can do a simple test by adding a user directly on the Linux device</p>
+    <div class="code panel pdl conf-macro output-block" data-hasbody="true" data-macro-name="code" style="border-width: 1px;">
+        <div class="codeContent panelContent pdl">
+            <div>
+                <div class="syntaxhighlighter sh-confluence nogutter bash" id="highlighter_383594">
+                    <div class="toolbar"><span><a class="toolbar_item command_help help" href="#">?</a></span></div>
+                    <table border="0" cellpadding="0" cellspacing="0">
+                        <tbody>
+                            <tr>
+                                <code class="code">
+                                    <div class="container" title="Hint: double-click to select code">
+                                        <div class="line number1 index0 alt2"><code class="bash plain">[root@Demo17-1 ~]</code><code class="bash comments"># useradd aaa_test123</code></div>
+                                        <div class="line number2 index1 alt1"><code class="bash plain">[root@Demo17-1 ~]</code><code class="bash comments">#</code></div>
+                                    </div>
+                                </code>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p>Then execute the Workflow process "refresh user", the code is available on github but below is the PHP code of the task. This task is calling a PHP function synchronize_objects_and_verify_response to call the IMPORT functions of the Microservices attached to the managed device</p>
+    <div class="code panel pdl conf-macro output-block" data-hasbody="true" data-macro-name="code" style="border-width: 1px;">
+        <div class="codeContent panelContent pdl">
+            <div>
+                <div class="syntaxhighlighter sh-confluence nogutter php" id="highlighter_640564">
+                    <div class="toolbar"><span><a class="toolbar_item command_help help" href="#">?</a></span></div>
+                    <table border="0" cellpadding="0" cellspacing="0">
+                        <tbody>
+                            <tr>
+                                <code class="code">
+                                    <div class="container" title="Hint: double-click to select code">
+                                        <div class="line number1 index0 alt2"><code class="php plain">&lt;?php</code></div>
+                                        <div class="line number2 index1 alt1"> </div>
+                                        <div class="line number3 index2 alt2"><code class="php keyword">function</code> <code class="php plain">list_args()</code></div>
+                                        <div class="line number4 index3 alt1"><code class="php plain">{</code></div>
+                                        <div class="line number5 index4 alt2"><code class="php plain">}</code></div>
+                                        <div class="line number6 index5 alt1"> </div>
+                                        <div class="line number7 index6 alt2"><code class="php variable">$id</code> <code class="php plain">= </code><code class="php functions">substr</code><code class="php plain">(</code><code class="php variable">$context</code><code class="php plain">[</code><code class="php string">'device'</code><code class="php plain">], 3);</code></div>
+                                        <div class="line number8 index7 alt1"><code class="php variable">$response</code> <code class="php plain">= synchronize_objects_and_verify_response(</code><code class="php variable">$id</code><code class="php plain">);</code></div>
+                                        <div class="line number9 index8 alt2"><code class="php variable">$response</code> <code class="php plain">= json_decode(</code><code class="php variable">$response</code><code class="php plain">, true);</code></div>
+                                        <div class="line number10 index9 alt1"><code class="php keyword">if</code> <code class="php plain">(</code><code class="php variable">$response</code><code class="php plain">[</code><code class="php string">'wo_status'</code><code class="php plain">] !== ENDED) {</code></div>
+                                        <div class="line number11 index10 alt2"><code class="php spaces">    </code><code class="php variable">$response</code> <code class="php plain">= prepare_json_response(FAILED, </code><code class="php variable">$response</code><code class="php plain">[</code><code class="php string">'wo_comment'</code><code class="php plain">], </code><code class="php variable">$context</code><code class="php plain">, true);</code></div>
+                                        <div class="line number12 index11 alt1"><code class="php spaces">    </code><code class="php functions">echo</code> <code class="php variable">$response</code><code class="php plain">;</code></div>
+                                        <div class="line number13 index12 alt2"><code class="php spaces">    </code><code class="php functions">exit</code><code class="php plain">;</code></div>
+                                        <div class="line number14 index13 alt1"><code class="php plain">}</code></div>
+                                        <div class="line number15 index14 alt2"> </div>
+                                        <div class="line number16 index15 alt1"><code class="php plain">task_success(</code><code class="php string">'Task OK'</code><code class="php plain">);</code></div>
+                                        <div class="line number17 index16 alt2"><code class="php plain">task_error(</code><code class="php string">'Task FAILED'</code><code class="php plain">);</code></div>
+                                        <div class="line number18 index17 alt1"><code class="php plain">?&gt;</code></div>
+                                    </div>
+                                </code>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p>Calling this function is equivalent to click on "Synchronize with device" on the Microservice management console.</p>
+    <p>The workflow instance variable list is then updated with the new user</p>
+    <p><a class="image-popup-fit-width" href="">
+    <img alt="Image" src="images/image2019-5-9_16-31-28.png" width="800"/></a></p>
+</div>
+
+        </div>

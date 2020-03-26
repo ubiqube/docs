@@ -1,0 +1,355 @@
+= Workflow Design And Use
+:toc: left
+:toc-title: Content
+:imagesdir: ../resources/
+:ext-relative: adoc
+
+[[main-content]]
+[[WorkflowDesignandUse-Workflow,WorkflowInstance,ProcessandTask]]
+== Workflow, Workflow Instance, Process and Task 
+
+To be able to execute a process, simple or complex, some entities need
+to be created under the repository:
+
+* *Workflow*: a Workflow or a Workflow definition file contains the
+administrative information, processes and variables used. It is an XML
+file stored in the repository.
+* *Workflow Instance*: to actually use a Workflow, a process with the
+type "create" has to be executed. Doing so will create a new instance
+for the Workflow. Processes with type "update" or "delete" are available
+to call on a Workflow instance.
+* *Process*: a process is a series of tasks to execute. This is a simple
+text files containing all ordering tasks.
+* *Task*: a task is one action or step of a process. It is a PHP file.
+
+ 
+
+link:[image:images/Workflow-Overview.png[Image,width=800]]
+
+NOTE: To help understand the concept, here is how Workflow could compare
+to C++:
+
+[[WorkflowDesignandUse-Repositorystructure]]
+== Repository structure 
+
+[[WorkflowDesignandUse-Servicefolder]]
+=== Service folder 
+
+All Workflows are listed under the Workflow folder in the repository. As
+long as an entity (customer or operator) is able to view a Workflow
+(based on its role) it can use a Workflow.
+
+A user can define the visibility of a Workflow by putting it in specific
+sub-tree.
+
+If the Workflow is created in a folder at the root of the Workflow
+repository, the Workflow will be visible by all. In the same way, the
+Workflows' visibility can be restricted to customers or customers under
+operator using repository icons.
+
+Furthermore, the Workflows have to be attached to the customers in order
+to be used.
+
+link:[image:images/ServiceRepository.png[Image,width=800]]
+
+[[WorkflowDesignandUse-Workflowconsole]]
+== Workflow console 
+
+* The service console allows management of all the services from one
+screen.
+* The service console is available for the manager and customer. On the
+legacy portal, the item "Manage Services" is under the General menu. On
+the customer portal, this is a dedicated widget.
+
+[[WorkflowDesignandUse-Accesstotheconsole]]
+=== Access to the console 
+
+[[WorkflowDesignandUse-Customerportal]]
+==== Customer portal
+
+On the customer portal, use the "SERVICES" tab to access to the
+services.
+
+link:[image:images/Servicesfromcustomer.png[Image,width=800]]
+
+link:[image:images/Servicespage.png[Image,width=800]]
+
+link:[image:images/Servicespage2.png[Image,width=800]]
+
+link:[image:images/Servicespage3.png[Image,width=800]]
+
+[[WorkflowDesignandUse-Execution]]
+=== Execution 
+
+To execute a process, first select a Workflow or an instance of this
+Workflow. If you select the service itself, only the create processes
+will be available to use.
+
+. Select the service of one instance of the service.
+. Click on the process button.
+. Fill variables for each tasks.
+. Click "Run Now" to trigger new process execution.
+
+link:[image:images/ServiceExecution.png[Image,width=800]]
+
+link:[image:images/ServiceExecution1.png[Image,width=800]]
+
+link:[image:images/ServiceExecution2.png[Image,width=800]]
+
+The process is running now.
+
+link:[image:images/ServiceTaskExecution.png[Image,width=800]]
+
+Using the *Process Activity* tab, it is possible to monitor the
+execution of the process and the current task. The execution starting
+date and the elapsed time are also displayed. Note that the current
+running task is displayed just below the corresponding process. The
+*Service* and *Name* columns are left empty for tasks.
+
+link:[image:images/ServiceTaskExecution1.png[Image,width=800]]
+
+Once done, the status of the process executed become green.
+
+link:[image:images/ServiceTaskExecuted.png[Image,width=800]]
+
+[[WorkflowDesignandUse-SchedulingaProcess]]
+=== Scheduling a Process 
+
+Each process can be configured to allow scheduling independently.
+
+link:[image:images/OrchestrationScheduling01.png[Image,width=800]]
+
+When a process can be scheduled a new button ("Schedule") appears when a
+process is launched.
+
+link:[image:images/OrchestrationScheduling02.png[Image,width=800]]
+
+link:[image:images/OrchestrationScheduling03.png[Image,width=800]]
+
+When the process is scheduled, it is displayed in the *Process Activity*
+tab.
+
+link:[image:images/Servicespage3.png[Image,width=800]]
+
+Note that if a *CREATE* process is scheduled later, the corresponding
+service instance will only be created at the first execution of the
+process, so the scheduling will only be visible in the *Process
+Activity* tab, not in the *Services* tab before the first execution of
+the process. Note also that only one service instance is created even if
+the *CREATE* process is recurrent.
+
+[[WorkflowDesignandUse-ProcessExecutionStatus]]
+=== Process Execution Status 
+
+To have the history of process execution, click the "Status" button when
+a service is selected, or select one instance of the service. Each line
+of the status window gives the user the status of the process (ended,
+fail, warning or running), the start date, the end date and details. The
+list of tasks execution can be accessed by clicking on the details icon
+on the right.
+
+link:[image:images/ServiceInstanceStatus.png[Image,width=800]]
+
+link:[image:images/ServiceInstanceStatus2.png[Image,width=800]]
+
+[[WorkflowDesignandUse-Archiving]]
+=== Archiving 
+
+Each execution of a delete process moves the service instance to an
+archived list. Then, the service instance is not longer visible from the
+service tree instance. To list all services instances for a specific
+service, first select a service and then click on the trash icon on the
+right. A window appears and shows the last 20 service instances marked
+as archived. For each instance, the last process executed is listed with
+the status. Then, the user can:
+
+* *Delete* a specific service instance by clicking on the trash icon.
+* *Restore* a specific service instance. The instance will be displayed
+on the initial service tree of the console.
+* *Delete all* service instances for this service. All instances stored
+into the database will be removed.
+
+link:[image:images/ServiceInstanceArchived.png[Image,width=800]]
+
+[[WorkflowDesignandUse-Dashboard]]
+=== Dashboard 
+
+When you logged into the service management console, the first view is
+the dashboard. The dashboard shows you 2 levels of information:
+
+* *Service status*: This chart represents the repartition of processes
+for each service. Each line represents a service and each color the
+number of processes in the same states. Pass your mouse over the status
+to have the exact number of processes in the same states. Click on the
+status to open the status window filtered by the status clicked.
+
+* *Last 10 processes*: This chart lists the last 10 processes executed
+or in execution for all of the customer's services. The color of each
+process points to the status of the process (running, ended, fail or
+warning). A tool tip shows process information and displays the
+associated service name, the start and end dates, the duration, and the
+process ID. By clicking on the status, the users can have the detail of
+execution of the process.
+
+link:[image:images/ServiceDashboard.png[Image,width=800]]
+
+[[WorkflowDesignandUse-Editors(CreateorUpdateaWorkflow)]]
+=== Editors (Create or Update a Workflow) 
+
+A Workflow can be edited by going to the service management page (first,
+customer page, then tab "Workflow").
+
+The creation of a Workflow has to be done directly in the Workflow
+section of the repository: create a new file directly under Workflow or
+in a sub-folder, and set its extension to XML (instead of the default
+PHP).
+
+The service editor provides a web-based graphical tool to create or
+modify a service.
+
+link:[image:images/Service_configuration.png[Image,width=800]]
+
+ 
+
+[[WorkflowDesignandUse-Serviceeditor]]
+==== Service editor 
+
+To open a service file, right click on it and click "Edit definition".
+
+The following sections are available:
+
+* *The PLUS Tab*: Create a new process.
+
+* *INFORMATION* : Display administrative information for the service.
+The user can:
+** Select an *icon* from the library. This icon will be displayed in the
+tree in the service console.
+** Set a *display name*. This display name will be used in the service
+console in the tree, in the dashboard, and as title for status windows.
+** Set a *description* as a tooltip in the services tree in the console.
+** Set a *category*. The category is a folder to sort services in the
+console tree on the left. A hierarchy can be created by using "|"
+between each folder name.
+** Set a *service name variable*. The service name variable matches
+"service_id" by default, otherwise one of the defined variables is used
+as a name for each service instance created on the tree, to the right of
+the status icon.
+** Define the *rank in category*. Sorts local and global services on the
+console tree.
+** Select the *visibility of the service*. Depending to the user role, a
+service can be displayed or not.
+
+* *VARIABLES* : Shows variables or parameters used during process
+execution. All variables are sent to a process during the execution.
+** image:images/ServiceAddIcon.png[ServiceAddIcon.png,height=16] : Add a
+new variable.
+** image:images/ServiceDeleteIcon.png[ServiceDeleteIcon.png,height=16] :
+Delete a variable after selection.
+** image:images/ServiceVarUpIcon.png[ServiceVarUpIcon.png,height=16] :
+Move up a variable. Drag and drop can be used to sort variable.
+** image:images/ServiceVarDownIcon.png[ServiceVarDownIcon.png,height=16] :
+Move down a variable. Drag and drop can be used to sort variable.
+** image:images/ServiceVarPlayIcon.png[ServiceVarPlayIcon.png,height=16] :
+Preview variable header displayed on the center of the console.
+** image:images/ServiceVarExtractIcon.png[ServiceVarExtractIcon.png,height=16] :
+Extract variable from process definition files.
+
+* 'Variable customization':
+
+link:[image:images/Variablecustomization.png[Image,width=800]]
+
+Similarly to the OBMF/Microservice framework you can also configure
+variable parameters:
+
+* their visibility
+* their type
+* their order
+* their display name
+* their default value
+* their access right (read only/read-write)
+* their delegation level (administrator/customer)
+
+* *PROCESS*: All tabs after the information and variable tabs are
+processes. For each process, a user can define the type of the process
+(CRUD), the display name and the level of visibility. A diagram shows
+the order of task executions. You can change the order of the tasks by
+using the drag and drop feature.
+** Select the *type of the process* (CREATE, CREATE (if required), READ,
+UPDATE, DELETE). Depending on the actions defined in your process, the
+type permits you to manage the instance in the console. For example, if
+you select the service ni the tree, only processes typed as CREATE will
+be available. If you select an existing instance, you will have 
+processes available to update or delete this specific instance. *Note*:
+The *CREATE (if required) or update* is only useful for scheduling.
+Thanks to this, you can create a service instance and update it using
+only one process instead of using two different ones. In short, *the
+create will become an update after being executed*.
+** Set a *display name*.
+** Set the *visibility*. Depending to the role of the user, this process
+will be available or not. Associated status of for each instances of
+this process will be filtered also.
+** image:images/ServiceAddIcon.png[ServiceAddIcon.png,height=16] : Add a
+new task as a step of the current process. A name should be provided
+inside the blue box.
+** image:images/ServiceBrowseIcon.png[ServiceBrowseIcon.png,height=16] :
+Select a task from the repository.
+** image:images/ServiceCreateIcon.png[ServiceCreateIcon.png,height=16] :
+Create a new task file. The new task will be created under
+Process/<Service_Name>/Tasks in the repository.
+** image:images/ServiceEditIcon.png[ServiceEditIcon.png,height=16] :
+Edit the task.
+** image:images/ServiceDeleteIcon.png[ServiceDeleteIcon.png,height=16] :
+Delete the task.
+
+link:[image:images/ServiceEditor.png[Image,width=800]]
+
+ 
+
+_On the screenshot below, there are 3 processes in "my VNF service":
+Create VNF, Delete VNF and Update VNF_. My delete process is marked as
+delete process. The display name is Delete VNF and the minimum role to
+see the process is Administrator__.__
+
+* *PROCESS popup design*: when a process is started MSA executes a set
+of different PHP tasks. When designing the process you want to expose a
+set of variables. For that purpose you must:
+** declare and customize them in the variables tab (see below section)
+** declare them in each PHP task they are requiredin.
+
+A service can include further different processes and contain lot of
+variables. For ergonomic reasons, a process popup will expose only
+variables that will be declared in both the service variables list and
+PHP tasks.
+
+link:[image:images/Variabletaskdeclaration.png[Image,width=800]]
+
+ 
+
+*Example*: Here is a service that includes about 10 variables
+(username/device/password/role/...). All of them will be exposed when
+triggering the creation process.
+
+link:[image:images/Createpopup.png[Image,width=800]]
+
+Only the username will be displayed when executing the retry process.
+See popup in screenshot:
+
+link:[image:images/Retrypopup.png[Image,width=800]]
+
+[[WorkflowDesignandUse-Authorization]]
+==== Authorization 
+
+The service orchestration provides a simple service authorization
+mechanism applicable independently to each service’s process, based on
+the connected user role.
+
+It is therefore possible, for a given service to give an execution
+authorization to a simple manager (or above), and for another process of
+the same service to give the execution authorization to a privileged
+manager (or above).
+
+link:[image:images/Process_auth_level.png[Image,width=455]]
+
+ 
+
+ 

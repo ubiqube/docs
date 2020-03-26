@@ -1,0 +1,53 @@
+= How To Use The Type Composite
+:toc: left
+:toc-title: Content
+:imagesdir: ../../resources/
+:ext-relative: adoc
+
+[[main-content]]
+NOTE: Source Code
+
+The source code for this tutorial is available on GitHub
+at: https://github.com/openmsa/Microservices/tree/master/Tutorials/LINUX/Generic/Tutorial3
+
+The variable type composite provide the means to add control over the
+behaviour of the Microservice user form.
+
+It can be used for instance to show/hide part of the form based on the
+value of another component of the form.
+
+As in the example below: if 'show A' is checked to true, the field 'A'
+is displayed
+
+link:[image:images/image2019-3-26_18-1-18.png[Image,width=500]]
+
+otherwise it's hidden.
+
+link:[image:images/image2019-3-26_18-2-55.png[Image,width=500]]
+
+In order to implement this behaviour with the Microservice designer the
+variables should be defined as below
+
+link:[image:images/image2019-3-27_9-47-57.png[Image,width=500]]
+
+The state of $param.a depends on the value of $param.show therefore the
+type of $param.a should be set to 'Composite' and the 'advanced
+parameters of $param.a have to be edited to configure its behaviour.
+
+In the section 'Type', when type is set to Composite the fields
+'Selector variable' and 'Selector values' are displayed.
+
+The field 'Selector variable' will list all other variables that could
+be used to control the behaviour of the current variable.
+
+The values for the selector will depend on the type of the selector.
+
+For example true/false will be available for boolean variable but for
+other types  such as String, it's possible to use predefined values or
+set some specific value.
+
+link:[image:images/image2019-3-27_9-52-12.png[Image,width=800]]
+
+NOTE: Regarding the variable type Composite, the section "Name",
+"Values", "Other parameter" should not be used. Instead, configuration
+has to be done with the advanced parameter of each selector value.

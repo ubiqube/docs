@@ -1,0 +1,723 @@
+<div class="documentation-content">
+
+<div class="wiki-content" id="main-content">
+    <div class="contentLayout2">
+        <div class="columnLayout single" data-layout="single">
+            <div class="cell normal" data-type="normal">
+                <div class="innerCell">
+                    <h1 id="D-MSActivatorAdministrationGuide-Overview">Overview</h1>
+                    <p>The MSActivator is a modular software solution. Each module can work independently. Its main modules shown <a href="/documentation/d-msactivator-standard-architecture/">here</a> are:</p>
+                    <ul>
+                        <li>database</li>
+                        <li>web front-end modules (web portal, web services API, and workflow automation engine)</li>
+                        <li>fulfillment and monitoring engine (network configuration, monitoring, log collection, log parsing, and alerting)</li>
+                        <li>big data engine (log storage, log analysis and reporting)</li>
+                    </ul>
+                    <p class="western">The D-MSA (Distributed MSA) is the scalable version of MSActivator with support for high availability. </p>
+                    <p class="western">With the need to support more managed devices and their associated services, load balancing of MSActivator is done by distributing each of the above mentioned modules to separate nodes.  </p>
+                    <p class="western">With the MSActivator MIB, one can get the load on a particular node, then the scaling is done by adding a new node of that type to the D-MSActivator cluster. The procedure of adding new nodes to the cluster may vary for each different node type.  This is explained below in the <u>Scalability and Load Balancin</u>g section.</p>
+                </div>
+            </div>
+        </div>
+        <div class="columnLayout single" data-layout="single">
+            <div class="cell normal" data-type="normal">
+                <div class="innerCell">
+                    <h1 id="D-MSActivatorAdministrationGuide-Installation">Installation</h1>
+                    <p>The installation of D-MSA involves getting the image (OVA, qCow2, etc.) of the particular MSA version from the UBiqube repository, and installing several servers of it (depending on how many webnodes, secnodes and ES nodes you need for the D-MSA setup). The number of nodes usually depends on how many devices you need to support.  </p>
+                    <h2 id="D-MSActivatorAdministrationGuide-PrerequisiteforInstallation">Prerequisite for Installation</h2>
+                    <p>The MSA should be installed on VM with the recommended resources. Please find the recommended minimum resources below:</p>
+                    <div class="table-wrap">
+                        <table class="relative-table wrapped confluenceTable tablesorter tablesorter-default" role="grid" style="width: 100%">
+                            <colgroup>
+                                <col style="width: 35.0544%;"/>
+                                <col style="width: 17.2562%;"/>
+                                <col style="width: 28.7937%;"/>
+                                <col style="width: 18.8957%;"/>
+                            </colgroup>
+                            <thead>
+                                <tr class="tablesorter-headerRow" role="row">
+                                    <th aria-disabled="false" aria-label=": No sort applied, activate to apply an ascending sort" aria-sort="none" class="confluenceTh tablesorter-header sortableHeader tablesorter-headerUnSorted" data-column="0" role="columnheader" scope="col" style="user-select: none;" tabindex="0" unselectable="on">
+                                        <div class="tablesorter-header-inner"></div>
+                                    </th>
+                                    <th aria-disabled="false" aria-label="RAM: No sort applied, activate to apply an ascending sort" aria-sort="none" class="confluenceTh tablesorter-header sortableHeader tablesorter-headerUnSorted" data-column="1" role="columnheader" scope="col" style="user-select: none;" tabindex="0" unselectable="on">
+                                        <div class="tablesorter-header-inner">RAM</div>
+                                    </th>
+                                    <th aria-disabled="false" aria-label="CPU: No sort applied, activate to apply an ascending sort" aria-sort="none" class="confluenceTh tablesorter-header sortableHeader tablesorter-headerUnSorted" data-column="2" role="columnheader" scope="col" style="user-select: none;" tabindex="0" unselectable="on">
+                                        <div class="tablesorter-header-inner">CPU</div>
+                                    </th>
+                                    <th aria-disabled="false" aria-label="STORAGE: No sort applied, activate to apply an ascending sort" aria-sort="none" class="confluenceTh tablesorter-header sortableHeader tablesorter-headerUnSorted" data-column="3" role="columnheader" scope="col" style="user-select: none;" tabindex="0" unselectable="on">
+                                        <div class="tablesorter-header-inner">STORAGE</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody aria-live="polite" aria-relevant="all">
+                                <tr role="row">
+                                    <td class="confluenceTd">Web active/passive nodes</td>
+                                    <td class="confluenceTd">16GB</td>
+                                    <td class="confluenceTd">8 CPU, 2 core per CPU</td>
+                                    <td class="confluenceTd">500 GB</td>
+                                </tr>
+                                <tr role="row">
+                                    <td class="confluenceTd">Sec active/passive nodes</td>
+                                    <td class="confluenceTd">16GB</td>
+                                    <td class="confluenceTd">8 CPU, 2 core per CPU</td>
+                                    <td class="confluenceTd">
+                                        <p>500 GB</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p><strong>NIC:</strong> You need two network interface connections:</p>
+                    <ul>
+                        <li>eth0: maintenance interface</li>
+                        <li>eth1: equipment interface</li>
+                    </ul>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+        <div class="columnLayout single" data-layout="single">
+            <div class="cell normal" data-type="normal">
+                <div class="innerCell">
+                    <h1 id="D-MSActivatorAdministrationGuide-Configuration">Configuration</h1>
+                    <p>The configuration is done by preparing a set of configuration files based on the template file, and launching a set of scripts in a particular order from the webnode.</p>
+                    <h2 id="D-MSActivatorAdministrationGuide-PrerequisiteforConfiguration">Prerequisite for Configuration</h2>
+                    <p class="western">Before running the centralized configuration tool, each of the D-MSA nodes must be accessible from the webnode.</p>
+                    <p class="western">Connect to each node and run the commands below:</p>
+                    <pre class="western">ifconfig eth0 &lt;IP ADDRESS&gt;/&lt;MASK&gt; up</pre>
+                    <p class="western">This IP address will be used in the configuration file servers.conf.</p>
+                    <h2 class="western" id="D-MSActivatorAdministrationGuide-SampleD-MSANetworkDiagram">Sample D-MSA Network Diagram</h2>
+                    <p class="western">Here in the sample D-MSA network, we have used one webnode and two secnodes set up with passive nodes.</p>
+                    <p><a class="image-popup-fit-width" href=""><img alt="Image" src="images/DMSA-Network.png" width="800"/></a></p>
+                    <h2 id="D-MSActivatorAdministrationGuide-PreparingtheConfigurationFiles"><span class="inline-comment-marker" data-ref="180ddbaf-38ab-41b8-8540-c7dc6c415486">Preparing the Configuration Files</span></h2>
+                    <p class="western">The D-MSA configuration templates are located in /opt/ubisysconf/ha/ of MSA.</p>
+                    <h3 class="western" id="D-MSActivatorAdministrationGuide-Servers.conf">Servers.conf<strong> </strong></h3>
+                    <h4 id="D-MSActivatorAdministrationGuide-Aprerequisiteforbuildingtheserver.conffileistohaveidentifiedallIPaddressesthataregoingtobeusedwithintheDMSAsetup.">A prerequisite for building the server.conf file is to have identified all IP addresses that are going to be used within the DMSA setup.</h4>
+                    <p class="western">Below is a sample of servers.conf, based on the network diagram above.</p>
+                    <p class="western">Copy the template file to a new configuration file and adapt the configuration based on your network.</p>
+                    <div class="code panel pdl conf-macro output-block" data-hasbody="true" data-macro-name="code" style="border-width: 1px;">
+                        <div class="codeHeader panelHeader pdl" style="border-bottom-width: 1px;"><b>servers.conf</b></div>
+                        <div class="codeContent panelContent pdl">
+                            <div>
+                                <div class="syntaxhighlighter sh-confluence nogutter actionscript3" id="highlighter_282961">
+                                    <div class="toolbar"><span><a class="toolbar_item command_help help" href="#">?</a></span></div>
+                                    <table border="0" cellpadding="0" cellspacing="0">
+                                        <tbody>
+                                            <tr>
+                                                <code class="code">
+                                                    <div class="container" title="Hint: double-click to select code">
+                                                        <div class="line number1 index0 alt2"><code class="actionscript3 plain">[Servers]</code></div>
+                                                        <div class="line number2 index1 alt1"><code class="actionscript3 plain">#The field Root Password will be automatically removed when applied </code><code class="actionscript3 keyword">as</code> <code class="actionscript3 plain">password to the node.</code></div>
+                                                        <div class="line number3 index2 alt2"><code class="actionscript3 plain">#hostname; Node Type; PUBIP; PRIVIP; Root Password; Backup-Of; Backup-Sync-Time; Backup-Activation-Time; Svc Ip's; Svc to start; Vars to adapt</code></div>
+                                                        <div class="line number4 index3 alt1"><code class="actionscript3 plain">Web-</code><code class="actionscript3 value">1</code><code class="actionscript3 plain">;GUI;</code><code class="actionscript3 value">10.30</code><code class="actionscript3 plain">.</code><code class="actionscript3 value">18.1</code><code class="actionscript3 plain">/</code><code class="actionscript3 value">255.255</code><code class="actionscript3 plain">.</code><code class="actionscript3 value">255.0</code><code class="actionscript3 plain">;</code><code class="actionscript3 value">192.168</code><code class="actionscript3 plain">.</code><code class="actionscript3 value">10.1</code><code class="actionscript3 plain">/</code><code class="actionscript3 value">255.255</code><code class="actionscript3 plain">.</code><code class="actionscript3 value">255.0</code><code class="actionscript3 plain">;;;;;svcip_gui;pack_gui;</code><code class="actionscript3 variable">var</code><code class="actionscript3 plain">_gui</code></div>
+                                                        <div class="line number5 index4 alt2"><code class="actionscript3 plain">Web-Rep-</code><code class="actionscript3 value">1</code><code class="actionscript3 plain">;GUI;</code><code class="actionscript3 value">10.30</code><code class="actionscript3 plain">.</code><code class="actionscript3 value">18.2</code><code class="actionscript3 plain">/</code><code class="actionscript3 value">255.255</code><code class="actionscript3 plain">.</code><code class="actionscript3 value">255.0</code><code class="actionscript3 plain">;</code><code class="actionscript3 value">192.168</code><code class="actionscript3 plain">.</code><code class="actionscript3 value">10.2</code><code class="actionscript3 plain">/</code><code class="actionscript3 value">255.255</code><code class="actionscript3 plain">.</code><code class="actionscript3 value">255.0</code><code class="actionscript3 plain">;;Web-</code><code class="actionscript3 value">1</code><code class="actionscript3 plain">;</code><code class="actionscript3 value">5</code><code class="actionscript3 plain">;</code><code class="actionscript3 value">5</code><code class="actionscript3 plain">;svcip_gui;pack_repgui;</code><code class="actionscript3 variable">var</code><code class="actionscript3 plain">_gui</code></div>
+                                                        <div class="line number6 index5 alt1"><code class="actionscript3 plain">Sec-</code><code class="actionscript3 value">1</code><code class="actionscript3 plain">;SECENGINE;</code><code class="actionscript3 value">10.30</code><code class="actionscript3 plain">.</code><code class="actionscript3 value">18.4</code><code class="actionscript3 plain">/</code><code class="actionscript3 value">255.255</code><code class="actionscript3 plain">.</code><code class="actionscript3 value">255.0</code><code class="actionscript3 plain">;</code><code class="actionscript3 value">192.168</code><code class="actionscript3 plain">.</code><code class="actionscript3 value">10.4</code><code class="actionscript3 plain">/</code><code class="actionscript3 value">255.255</code><code class="actionscript3 plain">.</code><code class="actionscript3 value">255.0</code><code class="actionscript3 plain">;;;;;svcip_sec1;pack_sec;</code><code class="actionscript3 variable">var</code><code class="actionscript3 plain">_rep</code></div>
+                                                        <div class="line number7 index6 alt2"><code class="actionscript3 plain">Sec-Rep-</code><code class="actionscript3 value">1</code><code class="actionscript3 plain">;REPORTING;</code><code class="actionscript3 value">10.30</code><code class="actionscript3 plain">.</code><code class="actionscript3 value">18.5</code><code class="actionscript3 plain">/</code><code class="actionscript3 value">255.255</code><code class="actionscript3 plain">.</code><code class="actionscript3 value">255.0</code><code class="actionscript3 plain">;</code><code class="actionscript3 value">192.168</code><code class="actionscript3 plain">.</code><code class="actionscript3 value">10.5</code><code class="actionscript3 plain">/</code><code class="actionscript3 value">255.255</code><code class="actionscript3 plain">.</code><code class="actionscript3 value">255.0</code><code class="actionscript3 plain">;;Sec-</code><code class="actionscript3 value">1</code><code class="actionscript3 plain">;</code><code class="actionscript3 value">5</code><code class="actionscript3 plain">;</code><code class="actionscript3 value">5</code><code class="actionscript3 plain">;svcip_sec1;pack_rep;</code><code class="actionscript3 variable">var</code><code class="actionscript3 plain">_sec</code></div>
+                                                        <div class="line number8 index7 alt1"><code class="actionscript3 plain">Sec-</code><code class="actionscript3 value">2</code><code class="actionscript3 plain">;SECENGINE;</code><code class="actionscript3 value">10.30</code><code class="actionscript3 plain">.</code><code class="actionscript3 value">18.7</code><code class="actionscript3 plain">/</code><code class="actionscript3 value">255.255</code><code class="actionscript3 plain">.</code><code class="actionscript3 value">255.0</code><code class="actionscript3 plain">;</code><code class="actionscript3 value">192.168</code><code class="actionscript3 plain">.</code><code class="actionscript3 value">10.7</code><code class="actionscript3 plain">/</code><code class="actionscript3 value">255.255</code><code class="actionscript3 plain">.</code><code class="actionscript3 value">255.0</code><code class="actionscript3 plain">;;;;;svcip_sec2;pack_sec;</code><code class="actionscript3 variable">var</code><code class="actionscript3 plain">_rep</code></div>
+                                                        <div class="line number9 index8 alt2"><code class="actionscript3 plain">Sec-Rep-</code><code class="actionscript3 value">2</code><code class="actionscript3 plain">;REPORTING;</code><code class="actionscript3 value">10.30</code><code class="actionscript3 plain">.</code><code class="actionscript3 value">18.8</code><code class="actionscript3 plain">/</code><code class="actionscript3 value">255.255</code><code class="actionscript3 plain">.</code><code class="actionscript3 value">255.0</code><code class="actionscript3 plain">;</code><code class="actionscript3 value">192.168</code><code class="actionscript3 plain">.</code><code class="actionscript3 value">10.8</code><code class="actionscript3 plain">/</code><code class="actionscript3 value">255.255</code><code class="actionscript3 plain">.</code><code class="actionscript3 value">255.0</code><code class="actionscript3 plain">;;Sec-</code><code class="actionscript3 value">2</code><code class="actionscript3 plain">;</code><code class="actionscript3 value">5</code><code class="actionscript3 plain">;</code><code class="actionscript3 value">5</code><code class="actionscript3 plain">;svcip_sec2;pack_rep;</code><code class="actionscript3 variable">var</code><code class="actionscript3 plain">_sec</code></div>
+                                                        <div class="line number10 index9 alt1"> </div>
+                                                        <div class="line number11 index10 alt2"><code class="actionscript3 plain">[svcip_gui]</code></div>
+                                                        <div class="line number12 index11 alt1"><code class="actionscript3 plain">svcip=</code><code class="actionscript3 value">10.30</code><code class="actionscript3 plain">.</code><code class="actionscript3 value">18.3</code><code class="actionscript3 plain">/</code><code class="actionscript3 value">255.255</code><code class="actionscript3 plain">.</code><code class="actionscript3 value">255.0</code></div>
+                                                        <div class="line number13 index12 alt2"><code class="actionscript3 plain">eth0:</code><code class="actionscript3 value">1</code><code class="actionscript3 plain">=</code><code class="actionscript3 value">192.168</code><code class="actionscript3 plain">.</code><code class="actionscript3 value">10.3</code><code class="actionscript3 plain">/</code><code class="actionscript3 value">255.255</code><code class="actionscript3 plain">.</code><code class="actionscript3 value">255.0</code></div>
+                                                        <div class="line number14 index13 alt1"> </div>
+                                                        <div class="line number15 index14 alt2"><code class="actionscript3 plain">[svcip_sec1]</code></div>
+                                                        <div class="line number16 index15 alt1"><code class="actionscript3 plain">svcip=</code><code class="actionscript3 value">10.30</code><code class="actionscript3 plain">.</code><code class="actionscript3 value">18.6</code><code class="actionscript3 plain">/</code><code class="actionscript3 value">255.255</code><code class="actionscript3 plain">.</code><code class="actionscript3 value">255.0</code></div>
+                                                        <div class="line number17 index16 alt2"><code class="actionscript3 plain">eth0:</code><code class="actionscript3 value">1</code><code class="actionscript3 plain">=</code><code class="actionscript3 value">192.168</code><code class="actionscript3 plain">.</code><code class="actionscript3 value">10.6</code><code class="actionscript3 plain">/</code><code class="actionscript3 value">255.255</code><code class="actionscript3 plain">.</code><code class="actionscript3 value">255.0</code></div>
+                                                        <div class="line number18 index17 alt1"> </div>
+                                                        <div class="line number19 index18 alt2"><code class="actionscript3 plain">[svcip_sec2]</code></div>
+                                                        <div class="line number20 index19 alt1"><code class="actionscript3 plain">svcip=</code><code class="actionscript3 value">10.30</code><code class="actionscript3 plain">.</code><code class="actionscript3 value">18.9</code><code class="actionscript3 plain">/</code><code class="actionscript3 value">255.255</code><code class="actionscript3 plain">.</code><code class="actionscript3 value">255.0</code></div>
+                                                        <div class="line number21 index20 alt2"><code class="actionscript3 plain">eth0:</code><code class="actionscript3 value">1</code><code class="actionscript3 plain">=</code><code class="actionscript3 value">192.168</code><code class="actionscript3 plain">.</code><code class="actionscript3 value">10.9</code><code class="actionscript3 plain">/</code><code class="actionscript3 value">255.255</code><code class="actionscript3 plain">.</code><code class="actionscript3 value">255.0</code></div>
+                                                        <div class="line number22 index21 alt1"> </div>
+                                                        <div class="line number23 index22 alt2"><code class="actionscript3 plain">[</code><code class="actionscript3 variable">var</code><code class="actionscript3 plain">_gui]</code></div>
+                                                        <div class="line number24 index23 alt1"><code class="actionscript3 plain">UBI_VSOC_SUPPORT_SCAN=</code><code class="actionscript3 value">0</code></div>
+                                                        <div class="line number25 index24 alt2"><code class="actionscript3 plain">UBI_VSOC_SYSLOG_NODE=</code><code class="actionscript3 value">0</code></div>
+                                                        <div class="line number26 index25 alt1"> </div>
+                                                        <div class="line number27 index26 alt2"><code class="actionscript3 plain">[</code><code class="actionscript3 variable">var</code><code class="actionscript3 plain">_rep]</code></div>
+                                                        <div class="line number28 index27 alt1"><code class="actionscript3 plain">UBI_VSOC_SYSLOG_NODE=</code><code class="actionscript3 value">0</code></div>
+                                                        <div class="line number29 index28 alt2"> </div>
+                                                        <div class="line number30 index29 alt1"><code class="actionscript3 plain">[</code><code class="actionscript3 variable">var</code><code class="actionscript3 plain">_sec]</code></div>
+                                                        <div class="line number31 index30 alt2"><code class="actionscript3 plain">UBI_VSOC_SYSLOG_NODE=</code><code class="actionscript3 value">1</code></div>
+                                                        <div class="line number32 index31 alt1"><code class="actionscript3 plain">UBI_SYS_DEFAULT_GW=</code><code class="actionscript3 value">10.30</code><code class="actionscript3 plain">.</code><code class="actionscript3 value">18.254</code></div>
+                                                        <div class="line number33 index32 alt2"> </div>
+                                                        <div class="line number34 index33 alt1"><code class="actionscript3 plain">[pack_gui]</code></div>
+                                                        <div class="line number35 index34 alt2"><code class="actionscript3 plain">start=tomcat</code></div>
+                                                        <div class="line number36 index35 alt1"><code class="actionscript3 plain">start=jboss</code></div>
+                                                        <div class="line number37 index36 alt2"><code class="actionscript3 plain">start=ubi-webconf</code></div>
+                                                        <div class="line number38 index37 alt1"><code class="actionscript3 plain">start=ubi-sms:smsbud</code></div>
+                                                        <div class="line number39 index38 alt2"><code class="actionscript3 plain">start=ubi-sms:named</code></div>
+                                                        <div class="line number40 index39 alt1"><code class="actionscript3 plain">start=ubi-sms:sms_sysstatd</code></div>
+                                                        <div class="line number41 index40 alt2"><code class="actionscript3 plain">start=ubi-dms</code></div>
+                                                        <div class="line number42 index41 alt1"><code class="actionscript3 plain">start=nfs</code></div>
+                                                        <div class="line number43 index42 alt2"><code class="actionscript3 plain">start=rpcbind</code></div>
+                                                        <div class="line number44 index43 alt1"><code class="actionscript3 plain">start=autofs</code></div>
+                                                        <div class="line number45 index44 alt2"> </div>
+                                                        <div class="line number46 index45 alt1"><code class="actionscript3 plain">[pack_repgui]</code></div>
+                                                        <div class="line number47 index46 alt2"><code class="actionscript3 plain">start=tomcat</code></div>
+                                                        <div class="line number48 index47 alt1"><code class="actionscript3 plain">start=jboss</code></div>
+                                                        <div class="line number49 index48 alt2"><code class="actionscript3 plain">start=ubi-webconf</code></div>
+                                                        <div class="line number50 index49 alt1"><code class="actionscript3 plain">start=ubi-sms:named</code></div>
+                                                        <div class="line number51 index50 alt2"><code class="actionscript3 plain">start=ubi-sms:sms_sysstatd</code></div>
+                                                        <div class="line number52 index51 alt1"><code class="actionscript3 plain">start=ubi-dms</code></div>
+                                                        <div class="line number53 index52 alt2"><code class="actionscript3 plain">start=nfs</code></div>
+                                                        <div class="line number54 index53 alt1"><code class="actionscript3 plain">start=rpcbind</code></div>
+                                                        <div class="line number55 index54 alt2"><code class="actionscript3 plain">start=autofs</code></div>
+                                                        <div class="line number56 index55 alt1"> </div>
+                                                        <div class="line number57 index56 alt2"><code class="actionscript3 plain">[pack_sec]</code></div>
+                                                        <div class="line number58 index57 alt1"><code class="actionscript3 plain">start=ubi-sms:sms_polld</code></div>
+                                                        <div class="line number59 index58 alt2"><code class="actionscript3 plain">start=ubi-sms:smsd</code></div>
+                                                        <div class="line number60 index59 alt1"><code class="actionscript3 plain">start=ubi-sms:sms_syslogd</code></div>
+                                                        <div class="line number61 index60 alt2"><code class="actionscript3 plain">start=ubi-sms:sms_parserd</code></div>
+                                                        <div class="line number62 index61 alt1"><code class="actionscript3 plain">start=ubi-sms:sms_agregatord</code></div>
+                                                        <div class="line number63 index62 alt2"><code class="actionscript3 plain">start=ubi-sms:sms_sysstatd</code></div>
+                                                        <div class="line number64 index63 alt1"><code class="actionscript3 plain">start=ubi-sms:</code><code class="actionscript3 keyword">in</code><code class="actionscript3 plain">.tftpd</code></div>
+                                                        <div class="line number65 index64 alt2"><code class="actionscript3 plain">start=ubi-sms:named</code></div>
+                                                        <div class="line number66 index65 alt1"><code class="actionscript3 plain">start=ubi-dms</code></div>
+                                                        <div class="line number67 index66 alt2"><code class="actionscript3 plain">start=nfs</code></div>
+                                                        <div class="line number68 index67 alt1"><code class="actionscript3 plain">start=rpcbind</code></div>
+                                                        <div class="line number69 index68 alt2"><code class="actionscript3 plain">start=autofs</code></div>
+                                                        <div class="line number70 index69 alt1"> </div>
+                                                        <div class="line number71 index70 alt2"><code class="actionscript3 plain">[pack_rep]</code></div>
+                                                        <div class="line number72 index71 alt1"><code class="actionscript3 plain">start=ubi-sms:named</code></div>
+                                                        <div class="line number73 index72 alt2"><code class="actionscript3 plain">start=nfs</code></div>
+                                                        <div class="line number74 index73 alt1"><code class="actionscript3 plain">start=rpcbind</code></div>
+                                                        <div class="line number75 index74 alt2"><code class="actionscript3 plain">start=autofs</code></div>
+                                                        <div class="line number76 index75 alt1"> </div>
+                                                        <div class="line number77 index76 alt2"><code class="actionscript3 plain">[pack_neverstart]</code></div>
+                                                        <div class="line number78 index77 alt1"><code class="actionscript3 plain">start=ubi-filter</code></div>
+                                                    </div>
+                                                </code>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="western"></p>
+                    <p>servers.conf starting with ";" as delimiter of each configuration item, with ordered manner.  </p>
+                    <p class="western">The below line represents all the configuration items.<strong> </strong>Each line represents each node<strong>.</strong></p>
+                    <p class="western">Configuration on is defined in order below:<strong></strong></p>
+                    <p class="western"><strong><strong># hostname;  Node Type; PUBIP;  PRIVIP;  Root Password;  Backup-Of;  Backup-Sync-Time;  Backup-Activation-Time;  Svc Ip's;  Svc to start; Vars to adapt</strong></strong></p>
+                    <p class="western"><strong></strong></p>
+                    <p class="western">Here are the roles of each field in each line:<strong></strong></p>
+                    <p class="western"><strong>hostname -  </strong>hostname of the node. It can be Web-1, Sec-1,Sec-2, ... it can also be any name you want. Avoid using special characters at start of the hostname.</p>
+                    <p class="western"><strong>Node Type</strong> - "GUI" for webnode types, "SECENGINE" for secnode types, and "REPORTING" for passive type nodes for HA.</p>
+                    <p class="western"><strong>PUBIP - </strong>eth1 ip address/netmask of the node.<strong></strong></p>
+                    <p class="western"><strong>PRIVIP - </strong>eth0 ip address/netmask of the node.</p>
+                    <p class="western"><strong>Root Password - </strong>if you want to change the root password of the node, enter a root password here, otherwise leave it blank.</p>
+                    <p class="western"><strong>Backup-Of -  </strong>node name of which this node acts as a backup of. Leave it empty for active nodes.</p>
+                    <p class="western"><strong>Backup-Sync-Time -  </strong>the<strong> </strong>time mentioned here is the time frequency for replicating the files from active node to passive node. It has no effect if the Backup-of item is empty.</p>
+                    <p class="western"><strong>Backup-Activation-Time - </strong>the time mentioned here is the time to wait for the failover to occur when the active node has failed. This is used by a passive node to make the decision.</p>
+                    <p class="western"><strong><span class="inline-comment-marker" data-ref="43696c5c-9cd5-4e05-98ef-69b84d016719">SvcIp - </span></strong><span class="inline-comment-marker" data-ref="43696c5c-9cd5-4e05-98ef-69b84d016719">it is usually the presentation of eth0:1 and eth1:1 ip of the node with netmask, normally defined as svcip_guiX for Webnodes and svcip_secX for secnodes.</span></p>
+                    <p class="western"><strong>Svc to start - </strong>it provides what services to start, normally defined in pack_gui for webnodes and pack_sec for secnodes.</p>
+                    <p class="western"><strong>Vars to adapt - </strong>variables that are specific to particular types of nodes, normally defined in var_gui for webnodes and var_sec for secnodes.</p>
+                    <p class="western"></p>
+                    <p class="western">Below is the description for the use of each interface type in each of the nodes:</p>
+                    <p class="western"><strong>eth1</strong> IP is defined in the <strong>PUBIP</strong> section of the server.conf file. This interface is used as a backup for eth0. Communication will still be available between the nodes through eth1, if eth0 is down. This interface is also required to get connected to a failed node in case of failover when eth0 down. This connection is to shutdown the interface eth0:1 and eth1:1 on a failed node,  which will then be made up in standby node.</p>
+                    <ol>
+                        <li>
+                            <p class="western"><strong>eth0</strong> IP is defined in the <strong>PRIVIP</strong> section of the server.conf file. This interface is used to communicate between nodes securely. This should not exposed to the outside.</p>
+                        </li>
+                        <li>
+                            <p class="western"><strong>eth0:1</strong> is defined in [svcip_node] section of the server.conf file. This interface is used for NFS mounting between the nodes. This IP will be moved to the SecEngine passive node in failover in order to have a mount point on the correct server.</p>
+                        </li>
+                        <li>
+                            <p class="western"><strong>eth1:1</strong> is defined as svc_ip secion in the server.conf file. This interface is for managing the device, and for the device to send syslogs. This IP will also be moved to SecEngine passive node in failover to have the device communication, and have the device send syslog to the right node. In webnode, this interface is used to give the customer access to the webportal.</p>
+                        </li>
+                    </ol>
+                    <p>D-MSA config script - config_networks.sh which does the network configuration of DMSA based on the servers.conf file.</p>
+                    <h3 id="D-MSActivatorAdministrationGuide-Share.conf"><strong>Share.conf</strong></h3>
+                    <p>In D-MSA, as each module is installed in a separate node, the files created in one node are shared between the nodes for different functionalities.</p>
+                    <p>The file share is done by mounting the remote directory based on NFS.</p>
+                    <p>The below diagram shows the mounting between different nodes and the functionality for which the directories are mounted.</p>
+                    <p></p>
+                    <p><a class="image-popup-fit-width" href=""><img alt="Image" height="400" src="images/Share_conf.png"/></a></p>
+                    <p></p>
+                    <h4 class="western" id="D-MSActivatorAdministrationGuide-/opt/fmc_repository"><strong>/opt/fmc_repository</strong></h4>
+                    <p class="western">This is the directory where all the MSA repository files (objects, templated, firmware, doc, etc.) are stored. This directory presents locally on the MSA webnode and it allows the secnode to mount it on the directory.  The SecEngine needs access to this folder for backend operations, for example to generate configuration from the object and update devices. The webnode needs this directory to enable the user to create files under the MSA GUI repository.<strong> </strong></p>
+                    <h4 class="western" id="D-MSActivatorAdministrationGuide-/opt/fmc_entities"><strong>/opt/fmc_entities</strong></h4>
+                    <p class="western">This is the directory where information regarding which repository files are attached to which entity in MSA is stored. This directory is present locally on the MSA webnode and it allows the secnode to mount it on that directory. The SecEngine needs access to this directory for backend operations. The webnode needs this directory to show the link between different MSA entities and repository files in the MSA GUI.<strong> </strong></p>
+                    <h4 class="western" id="D-MSActivatorAdministrationGuide-/opt/svnroot"><strong>/opt/svnroot</strong></h4>
+                    <p class="western">MSA has a change management module, which takes backups of device configurations every day. It also takes every update from MSA, and also updates outside of MSA. For this, MSA has its own SVN repository to store the revisions of the device configuration backup. This is the directory in which all the SVN revisions are stored. This directory is originally present in webnode, and secnode is allowed to mount this direrctory. The SecEngine stores all the device backup revision here. The webnode needs this directory to show all backup revisions to the user in the MSA GUI.<strong></strong></p>
+                    <h4 class="western" id="D-MSActivatorAdministrationGuide-/opt/rrd"><strong>/opt/rrd</strong></h4>
+                    <p class="western">In the MSA GUI device homepage, there is a list of graphs to show device uptime, CPU, traffic, etc. These graphs are based on RRD files that the SecEngine generates and are updated every minute based on device response. It also stores the graphs generated from the MSA monitoring profile. This directory is originally present in secnode and is allowed to mount from webnode.<strong> </strong></p>
+                    <h4 id="D-MSActivatorAdministrationGuide-Sampleshare.conf.">Sample share.conf.  </h4>
+                    <p class="western">It is not recommended to edit this configuration file.  <strong></strong></p>
+                    <div class="code panel pdl conf-macro output-block" data-hasbody="true" data-macro-name="code" style="border-width: 1px;">
+                        <div class="codeHeader panelHeader pdl" style="border-bottom-width: 1px;"><b>Share.conf</b></div>
+                        <div class="codeContent panelContent pdl">
+                            <div>
+                                <div class="syntaxhighlighter sh-confluence nogutter actionscript3" id="highlighter_127670">
+                                    <div class="toolbar"><span><a class="toolbar_item command_help help" href="#">?</a></span></div>
+                                    <table border="0" cellpadding="0" cellspacing="0">
+                                        <tbody>
+                                            <tr>
+                                                <code class="code">
+                                                    <div class="container" title="Hint: double-click to select code">
+                                                        <div class="line number1 index0 alt2"><code class="actionscript3 plain">[GUI]</code></div>
+                                                        <div class="line number2 index1 alt1"><code class="actionscript3 plain">export(</code><code class="actionscript3 value">700</code><code class="actionscript3 plain">:</code><code class="actionscript3 value">751</code><code class="actionscript3 plain">)=/opt/fmc_repository</code></div>
+                                                        <div class="line number3 index2 alt2"><code class="actionscript3 plain">export(</code><code class="actionscript3 value">700</code><code class="actionscript3 plain">:</code><code class="actionscript3 value">751</code><code class="actionscript3 plain">)=/opt/fmc_entities</code></div>
+                                                        <div class="line number4 index3 alt1"><code class="actionscript3 plain">export(</code><code class="actionscript3 value">700</code><code class="actionscript3 plain">:</code><code class="actionscript3 value">751</code><code class="actionscript3 plain">)=/opt/svnroot</code></div>
+                                                        <div class="line number5 index4 alt2"><code class="actionscript3 plain">mount=SECENGINE(eth0:</code><code class="actionscript3 value">1</code><code class="actionscript3 plain">):/opt/rrd;/opt/rrd/SECENGINE</code></div>
+                                                        <div class="line number6 index5 alt1"> </div>
+                                                        <div class="line number7 index6 alt2"><code class="actionscript3 plain">[SECENGINE]</code></div>
+                                                        <div class="line number8 index7 alt1"><code class="actionscript3 plain">export(</code><code class="actionscript3 value">700</code><code class="actionscript3 plain">:</code><code class="actionscript3 value">751</code><code class="actionscript3 plain">)=/opt/rrd</code></div>
+                                                        <div class="line number9 index8 alt2"> </div>
+                                                        <div class="line number10 index9 alt1"><code class="actionscript3 plain">mount=GUI(eth0:</code><code class="actionscript3 value">1</code><code class="actionscript3 plain">):/opt/fmc_repository;/opt/fmc_repository</code></div>
+                                                        <div class="line number11 index10 alt2"><code class="actionscript3 plain">mount=GUI(eth0:</code><code class="actionscript3 value">1</code><code class="actionscript3 plain">):/opt/fmc_entities;/opt/fmc_entities</code></div>
+                                                        <div class="line number12 index11 alt1"><code class="actionscript3 plain">mount=GUI(eth0:</code><code class="actionscript3 value">1</code><code class="actionscript3 plain">):/opt/svnroot;/opt/svnroot</code></div>
+                                                        <div class="line number13 index12 alt2"> </div>
+                                                        <div class="line number14 index13 alt1"> </div>
+                                                        <div class="line number15 index14 alt2"><code class="actionscript3 plain">[REPORTING]</code></div>
+                                                        <div class="line number16 index15 alt1"> </div>
+                                                        <div class="line number17 index16 alt2"><code class="actionscript3 plain"># export and mount also path on which I assume backup (</code><code class="actionscript3 keyword">in</code> <code class="actionscript3 keyword">this</code> <code class="actionscript3 keyword">case</code> <code class="actionscript3 plain">the sec-engine part)</code></div>
+                                                        <div class="line number18 index17 alt1"><code class="actionscript3 plain">export(</code><code class="actionscript3 value">700</code><code class="actionscript3 plain">:</code><code class="actionscript3 value">751</code><code class="actionscript3 plain">)=/opt/rrd</code></div>
+                                                        <div class="line number19 index18 alt2"> </div>
+                                                        <div class="line number20 index19 alt1"><code class="actionscript3 plain">mount=GUI(eth0:</code><code class="actionscript3 value">1</code><code class="actionscript3 plain">):/opt/fmc_repository;/opt/fmc_repository</code></div>
+                                                        <div class="line number21 index20 alt2"><code class="actionscript3 plain">mount=GUI(eth0:</code><code class="actionscript3 value">1</code><code class="actionscript3 plain">):/opt/fmc_entities;/opt/fmc_entities</code></div>
+                                                        <div class="line number22 index21 alt1"><code class="actionscript3 plain">mount=GUI(eth0:</code><code class="actionscript3 value">1</code><code class="actionscript3 plain">):/opt/svnroot;/opt/svnroot</code></div>
+                                                    </div>
+                                                </code>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>
+                            <p class="western"><strong>export</strong> is what is exported from all nodes' corresponding on node type.</p>
+                        </li>
+                        <li>
+                            <p class="western"><strong>mount</strong> is what is mounted by all nodes' corresponding on node type.</p>
+                        </li>
+                    </ul>
+                    <p>Based on the above config file, export config (permission for mount) of the NFS mount is defined in /etc/fstab in each node.</p>
+                    <h4 id="D-MSActivatorAdministrationGuide-Autofs"><strong>Autofs</strong></h4>
+                    <p>The mount between nodes is done both automatically and on demand. That is, the directory is automatically mounted when the user or application accesses this folder. For example, /opt/rrd/Sec-x is mounted when the MSA GUI user is in the device home page, where RRD graphs are displayed. For this, MSA uses Linux Autofs. The configuration of Autofs is defined in each node. It is done by D-MSA config script: config_share.sh. The config files for different nodes are below:</p>
+                    <h4 id="D-MSActivatorAdministrationGuide-Configfileforwebnodes"><strong>Config file for webnodes</strong></h4>
+                    <pre>/etc/auto.master</pre>
+                    <pre>/etc/auto.GUI</pre>
+                    <h4 id="D-MSActivatorAdministrationGuide-Configfileforsecnodes"><strong>Config file for secnodes</strong></h4>
+                    <pre>/etc/auto.master</pre>
+                    <pre>/etc/auto.SECENGINE</pre>
+                    <h3 id="D-MSActivatorAdministrationGuide-Sync.conf"><strong>Sync.conf</strong></h3>
+                    <p>This file defines what are the list of directories to sync from the active to the passive nodes. This is to make sure, that in the case of failover, the passive (standby) node has the same update file as the active node. Normally the directory to sync is the directory which has dynamic data, meaning not delivered from the UBiqube package, but is created as part of the application.</p>
+                    <p>This configuration file is used by a script ha-sync.sh. This script usually runs in passive node by a cron every minute. This script does the sync of files between active and passive nodes.  This conf is only used when D-MSA HA is enabled.</p>
+                    <h4 id="D-MSActivatorAdministrationGuide-Samplesync.conf">Sample sync.conf</h4>
+                    <div class="code panel pdl conf-macro output-block" data-hasbody="true" data-macro-name="code" style="border-width: 1px;">
+                        <div class="codeHeader panelHeader pdl" style="border-bottom-width: 1px;"><b>sync.conf</b></div>
+                        <div class="codeContent panelContent pdl">
+                            <div>
+                                <div class="syntaxhighlighter sh-confluence nogutter java" id="highlighter_715123">
+                                    <div class="toolbar"><span><a class="toolbar_item command_help help" href="#">?</a></span></div>
+                                    <table border="0" cellpadding="0" cellspacing="0">
+                                        <tbody>
+                                            <tr>
+                                                <code class="code">
+                                                    <div class="container" title="Hint: double-click to select code">
+                                                        <div class="line number1 index0 alt2"><code class="java plain">[REPORTING]</code></div>
+                                                        <div class="line number2 index1 alt1"><code class="java plain">rsync=SECENGINE:/opt/sms/routerlogs/</code></div>
+                                                        <div class="line number3 index2 alt2"><code class="java plain">rsync=SECENGINE:/opt/sms/spool/parser/</code></div>
+                                                        <div class="line number4 index3 alt1"><code class="java plain">rsync=SECENGINE:/opt/rrd/</code></div>
+                                                        <div class="line number5 index4 alt2"><code class="java plain">rsync=SECENGINE:/opt/sms/bin/php/</code></div>
+                                                        <div class="line number6 index5 alt1"><code class="java plain">rsync=SECENGINE:/opt/sms/share/configuration-pattern/</code></div>
+                                                        <div class="line number7 index6 alt2"><code class="java plain">rsync=SECENGINE:/opt/sms/templates/conf/custom/</code></div>
+                                                        <div class="line number8 index7 alt1"> </div>
+                                                        <div class="line number9 index8 alt2"><code class="java plain">[GUI]</code></div>
+                                                        <div class="line number10 index9 alt1"><code class="java plain">rsync=GUI:/opt/fmc_repository/</code></div>
+                                                        <div class="line number11 index10 alt2"><code class="java plain">rsync=GUI:/opt/fmc_entities/</code></div>
+                                                        <div class="line number12 index11 alt1"><code class="java plain">rsync=GUI:/opt/svnroot/</code></div>
+                                                    </div>
+                                                </code>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Log for the file synchronization:</p>
+                    <pre>/opt/ubisysconf/ha/logs/ha_sync.log</pre>
+                    <h3 id="D-MSActivatorAdministrationGuide-Variables2adapt.conf">Variables2adapt.conf</h3>
+                    <p class="western">This file is used to adapt the main configuration file <strong>/opt/configurator/vars.ctx</strong> before copying the node specific ones to their destination nodes.</p>
+                    <p class="western">Some variables are exported and can be re-used dynamically:</p>
+                    <ul>
+                        <li>
+                            <p class="western">NAMESERVER</p>
+                        </li>
+                        <li>
+                            <p class="western">PUBIP</p>
+                        </li>
+                        <li>
+                            <p class="western">SVCIP</p>
+                        </li>
+                        <li>
+                            <p class="western">PRIVIP</p>
+                        </li>
+                        <li>
+                            <p class="western">ROOTPSWD</p>
+                        </li>
+                    </ul>
+                    <p class="western">Theses variables were those defined on each line of <strong>servers.conf</strong></p>
+                    <h4 class="western" id="D-MSActivatorAdministrationGuide-Samplevariables2adapt.conf">Sample variables2adapt.conf</h4>
+                    <div class="code panel pdl conf-macro output-block" data-hasbody="true" data-macro-name="code" style="border-width: 1px;">
+                        <div class="codeHeader panelHeader pdl" style="border-bottom-width: 1px;"><b>variables2adapt.conf</b></div>
+                        <div class="codeContent panelContent pdl">
+                            <div>
+                                <div class="syntaxhighlighter sh-confluence nogutter java" id="highlighter_739169">
+                                    <div class="toolbar"><span><a class="toolbar_item command_help help" href="#">?</a></span></div>
+                                    <table border="0" cellpadding="0" cellspacing="0">
+                                        <tbody>
+                                            <tr>
+                                                <code class="code">
+                                                    <div class="container" title="Hint: double-click to select code">
+                                                        <div class="line number1 index0 alt2"><code class="java plain"># VARIABLE=x.y.z</code></div>
+                                                        <div class="line number2 index1 alt1"><code class="java plain"># EXPOSED VARIABLES:</code></div>
+                                                        <div class="line number3 index2 alt2"><code class="java plain">#</code></div>
+                                                        <div class="line number4 index3 alt1"><code class="java plain"># ${NAMESERVER}</code></div>
+                                                        <div class="line number5 index4 alt2"><code class="java plain"># ${PUBIP}</code></div>
+                                                        <div class="line number6 index5 alt1"><code class="java plain"># ${SVCIP}</code></div>
+                                                        <div class="line number7 index6 alt2"><code class="java plain"># ${PRIVIP}</code></div>
+                                                        <div class="line number8 index7 alt1"><code class="java plain"># ${PUBIPV6}</code></div>
+                                                        <div class="line number9 index8 alt2"><code class="java plain"># ${MASKV6}</code></div>
+                                                        <div class="line number10 index9 alt1"><code class="java plain"># ${GWV6}</code></div>
+                                                        <div class="line number11 index10 alt2"> </div>
+                                                        <div class="line number12 index11 alt1"><code class="java plain">UBI_SMS_DISASTER_SVCIP=${SVCIP}</code></div>
+                                                        <div class="line number13 index12 alt2"><code class="java plain">UBI_SMS_FTPSERVER_SVCIP=${SVCIP}</code></div>
+                                                        <div class="line number14 index13 alt1"><code class="java plain">UBI_SMS_IPSECGW_SVCIP=${SVCIP}</code></div>
+                                                        <div class="line number15 index14 alt2"><code class="java plain">UBI_SMS_SVCIP=${SVCIP}</code></div>
+                                                        <div class="line number16 index15 alt1"><code class="java plain">UBI_SMS_SYSLOG_DISASTER_SVCIP=${SVCIP}</code></div>
+                                                        <div class="line number17 index16 alt2"><code class="java plain">UBI_SMS_SYSLOG_SVCIP=${SVCIP}</code></div>
+                                                        <div class="line number18 index17 alt1"><code class="java plain">UBI_SMS_SYSLOG_PUBIP=${SVCIP}</code></div>
+                                                        <div class="line number19 index18 alt2"><code class="java plain">UBI_SMS_PRIVIP=${SVCIP}</code></div>
+                                                        <div class="line number20 index19 alt1"><code class="java plain">UBI_SMS_PUBIP=${SVCIP}</code></div>
+                                                        <div class="line number21 index20 alt2"><code class="java plain">UBI_VSOC_SES_SVCIP=${SVCIP}</code></div>
+                                                        <div class="line number22 index21 alt1"><code class="java plain">UBI_SYS_EQUIPMENTS_NAT_IP=${SVCIP}</code></div>
+                                                        <div class="line number23 index22 alt2"> </div>
+                                                        <div class="line number24 index23 alt1"><code class="java plain">UBI_VSOC_MAINTENANCEIP=${PRIVIP}</code></div>
+                                                        <div class="line number25 index24 alt2"><code class="java plain">UBI_SYS_MAINTENANCE_IP=${PRIVIP}</code></div>
+                                                        <div class="line number26 index25 alt1"><code class="java plain">UBI_SYS_MAINTENANCE_MASK=${PRIVMASK}</code></div>
+                                                        <div class="line number27 index26 alt2"> </div>
+                                                        <div class="line number28 index27 alt1"><code class="java plain">UBI_SYS_EQUIPMENTS_IP=${PUBIP}</code></div>
+                                                        <div class="line number29 index28 alt2"><code class="java plain">UBI_SYS_EQUIPMENTS_MASK=${PUBMASK}</code></div>
+                                                        <div class="line number30 index29 alt1"> </div>
+                                                        <div class="line number31 index30 alt2"><code class="java plain">UBI_SYS_EQUIPMENTS_IPV6=${PUBIPV6}</code></div>
+                                                        <div class="line number32 index31 alt1"><code class="java plain">UBI_SYS_EQUIPMENTS_MASKV6=${MASKV6}</code></div>
+                                                        <div class="line number33 index32 alt2"><code class="java plain">UBI_SYS_DEFAULT_GWV6=${GWV6}</code></div>
+                                                        <div class="line number34 index33 alt1"> </div>
+                                                        <div class="line number35 index34 alt2"><code class="java plain">UBI_CENTRALIZED_NODE_NAME=web-</code><code class="java value">1</code></div>
+                                                        <div class="line number36 index35 alt1"><code class="java plain">UBI_DISTRIBUTED_SMSD=</code><code class="java value">1</code></div>
+                                                        <div class="line number37 index36 alt2"><code class="java plain">UBI_VSOC_IS_DMSA_NODE=</code><code class="java value">1</code></div>
+                                                        <div class="line number38 index37 alt1"> </div>
+                                                        <div class="line number39 index38 alt2"><code class="java plain">UBI_VSOC_NAME=${NAMESERVER}</code></div>
+                                                        <div class="line number40 index39 alt1"><code class="java plain">SMARTSOC_TLA=${NAMESERVER}</code></div>
+                                                        <div class="line number41 index40 alt2"> </div>
+                                                        <div class="line number42 index41 alt1"><code class="java plain">UBI_SVN_PRIVIP=</code><code class="java value">192.169</code><code class="java plain">.</code><code class="java value">10.3</code></div>
+                                                    </div>
+                                                </code>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h2 id="D-MSActivatorAdministrationGuide-Configuration.1">Configuration</h2>
+                    <h3 id="D-MSActivatorAdministrationGuide-ConfigFiles">Config Files<strong></strong></h3>
+                    <ol>
+                        <li>Copy servers.conf.sample to servers.conf and adapt the configuration according to your network.</li>
+                        <li>Copy share.conf.sample to share.conf.</li>
+                        <li>Copy sync.conf.sample to sync.conf.</li>
+                        <li>Copy variables2adapt.conf.sample to variables2adapt.conf.</li>
+                    </ol>
+                    <h3 id="D-MSActivatorAdministrationGuide-ConfigScripts">Config Scripts<strong></strong></h3>
+                    <p>The configuration can be done by launching a set of scripts from the webnode, which is the centralized node.    </p>
+                    <p>The scripts should be launched in the specific order below. All scripts are stored in /opt/ubisysconf/ha/ directory of the webnode.     </p>
+                    <p>This information is also stored in the README file in that directory.</p>
+                    <div class="table-wrap">
+                        <table class="wrapped relative-table confluenceTable tablesorter tablesorter-default" role="grid" style="width: 100%;">
+                            <colgroup>
+                                <col style="width: 18.6114%;"/>
+                                <col style="width: 81.3886%;"/>
+                            </colgroup>
+                            <thead>
+                                <tr class="tablesorter-headerRow" role="row">
+                                    <th aria-disabled="false" aria-label="script: No sort applied, activate to apply an ascending sort" aria-sort="none" class="confluenceTh tablesorter-header sortableHeader tablesorter-headerUnSorted" data-column="0" role="columnheader" scope="col" style="user-select: none;" tabindex="0" unselectable="on">
+                                        <div class="tablesorter-header-inner">script</div>
+                                    </th>
+                                    <th aria-disabled="false" aria-label="description: No sort applied, activate to apply an ascending sort" aria-sort="none" class="confluenceTh tablesorter-header sortableHeader tablesorter-headerUnSorted" data-column="1" role="columnheader" scope="col" style="user-select: none;" tabindex="0" unselectable="on">
+                                        <div class="tablesorter-header-inner">description</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody aria-live="polite" aria-relevant="all">
+                                <tr role="row">
+                                    <td class="confluenceTd" colspan="1"><strong>sanity_tests.sh</strong></td>
+                                    <td class="confluenceTd" colspan="1">Will check the connectivity between nodes and will create and exchange ssh keys between all the nodes. Also will check the rpm are at the same level on each node. For this script works well the following command is needed : <em>touch /opt/ubiqube/license</em></td>
+                                </tr>
+                                <tr role="row">
+                                    <td class="confluenceTd"><strong>config_stop_all.sh</strong></td>
+                                    <td class="confluenceTd">Will stop all UBiqube services on selected nodes (all by default), will stop cron job of 'NFS mount checking' and unmount everything.This script must be launched if you want to change the network configuration or change NFS sharing.Deactivate all chkconfig to be sure that no services will restart.</td>
+                                </tr>
+                                <tr role="row">
+                                    <td class="confluenceTd"><strong>config_vctx.sh</strong></td>
+                                    <td class="confluenceTd">Will create and deploy the file /opt/configurator/vars.UBIqube.net.ctx on all nodes.<p>Will transfer the UBiqube license file to all the nodes, will copy all D-MSA configurations (servers.conf, sync.conf, share.conf, variable2adapt.conf) to all the nodes in D-MSA.</p>
+                                    </td>
+                                </tr>
+                                <tr role="row">
+                                    <td class="confluenceTd"><strong>config_network.sh</strong></td>
+                                    <td class="confluenceTd">Will set up networks files on all nodes (interface files, /etc/hosts).<strong></strong>Avoid launching this script on a deployed D-MSA since it will launch ubisysconf, configure, and restart the network.<strong> </strong>This script uses servers.conf file to configure the D-MSA network.</td>
+                                </tr>
+                                <tr role="row">
+                                    <td class="confluenceTd"><strong> config_checkconfig.sh</strong></td>
+                                    <td class="confluenceTd">
+                                        <p>Will setup the chkconfig system to start automatically needed services on all nodes.<strong> </strong><strong>                                                </strong></p>
+                                        <p>It is responsible for the activation and the deactivation service based on the node type.</p>
+                                    </td>
+                                </tr>
+                                <tr role="row">
+                                    <td class="confluenceTd"><strong>config_shares.sh</strong></td>
+                                    <td class="confluenceTd">Will setup export/fstab files on all nodes.<strong></strong>Will setup autofs config files.</td>
+                                </tr>
+                                <tr role="row">
+                                    <td class="confluenceTd" colspan="1"><strong>config_restart_all.sh</strong></td>
+                                    <td class="confluenceTd" colspan="1">Will re-activate cron job for NFS mount checking and remount everything.<strong></strong>You may use --reboot.  In this case, the cron job of the NFS sharing checker will be set and reboot-only will occur.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>Once all the configuration steps are done, you can verify the D-MSA setup status by the command <strong>check_dmsa_status.</strong></p>
+                </div>
+            </div>
+        </div>
+        <div class="columnLayout single" data-layout="single">
+            <div class="cell normal" data-type="normal">
+                <div class="innerCell">
+                    <h1 id="D-MSActivatorAdministrationGuide-ScalabilityandLoadBalancing">Scalability and Load Balancing</h1>
+                    <h2 id="D-MSActivatorAdministrationGuide-GettingtheLoadonaParticularSecnode">Getting the Load on a Particular Secnode</h2>
+                    <p>When a customer is created in MSA, the customer is assigned to a particular secnode and all customer devices will be managed by this secnode. This assignment is done on a less-loaded-node basis: the selected secnode is the one with the smallest number of devices assigned.</p>
+                    <p>The number of customers assigned to a particular node:</p>
+                    <p><strong># /opt/base/tools/dmsaNodes.sh -L</strong></p>
+                    <p>The number of devices assigned to particular node:</p>
+                    <p><strong># sdlist</strong></p>
+                    <p>The load on a secnode depends on the number of managed devices, but also on the number of services associated with the devices.</p>
+                    <h2 id="D-MSActivatorAdministrationGuide-AddingaNewSecnode">Adding a New Secnode</h2>
+                    <p class="western">A new node will allow you to scale up along with the number of managed devices. The steps for adding a new node to D-MSA are:</p>
+                    <ol>
+                        <li class="western">Having the new MSA node installed from OVA or any other type of image.</li>
+                        <li class="western">If the above install doesn't create a node with same version as other nodes in D-MSA, install the upgrade version as in the other node of D-MSA, by upgrading with bin.</li>
+                        <li class="western">Configure the eth0 interface manually for the webnode to connect to it for configuration.</li>
+                        <li class="western">Adapt servers.conf in the Webnode to add this new node in D-MSA.</li>
+                        <li class="western">Launch D-MSA config scripts as explained in the section #6.4.2 . with node name defined in the servers.conf as a parameter to the script.</li>
+                    </ol>
+                    <p class="western"></p>
+                    <div class="confluence-information-macro confluence-information-macro-information conf-macro output-block" data-hasbody="true" data-macro-name="info">
+                        
+                    </div>
+                    <pre>sh /opt/ubisysconf/ha/script_name.sh  –n Sec-3</pre>
+                    <p>The script above only configures Sec-3 and Sec-Rep-3 nodes, as part of adding the new node.</p>
+                    <p class="western">If you add a new SecEngine node, launch the below script from the Sec-3 active node to register the node in the database:</p>
+                    <pre class="western">Sec-3# /opt/base/tools/SetMsaNodeInDb.sh</pre>
+                    <h2 id="D-MSActivatorAdministrationGuide-RemovinganActiveSecEngineNodeandAssociatedPassiveNode">Removing an Active SecEngine Node and Associated Passive Node</h2>
+                    <p class="western">Before removing a SecEngine node, you have to either delete the customer assigned to it or move the customers to another SecEngine node. We can find the customer associated with that Secnode by the script:</p>
+                    <pre class="western">/opt/base/tools/dmsaNode.sh –L from Webnode. </pre>
+                    <p></p>
+                    <p class="western"><strong>How to move a customer from one SecEngine node to another node</strong></p>
+                    <p>Below is the procedure to remove Sec-2:</p>
+                    <h4 class="western" id="D-MSActivatorAdministrationGuide-Migrate1customertoSec-1">Migrate 1 customer to Sec-1</h4>
+                    <pre class="western">[root@Web-1 ~]# /opt/ubi-jentreprise/bin/api/customer/attachCustomerIdToSecNode.sh 42 Sec-1</pre>
+                    <p class="western">Where 42 is the customer ID.</p>
+                    <p class="western">Sec-1 is the node name for which the customer has to be moved.</p>
+                    <h4 class="western" id="D-MSActivatorAdministrationGuide-DetachoperatorfromSec-2">Detach operator from Sec-2</h4>
+                    <p class="western">[root@Web-1 ~]# /opt/ubi-jentreprise/bin/api/operator/detachOperatorPrefixFromSecNode.sh OPT Sec-2</p>
+                    <p class="western">OPT is operator prefix</p>
+                    <p class="western">Sec-2 is the node name, from which the operator should be detached.</p>
+                    <h4 class="western" id="D-MSActivatorAdministrationGuide-AttachoperatortoSec-1"><strong>Attach operator to Sec-1</strong></h4>
+                    <p class="western">[root@Web-1 ~]# /opt/ubi-jentreprise/bin/api/operator/attachOperatorPrefixFromSecNode.sh PRN Sec-1</p>
+                    <p class="western">OPT is the operator prefix, which needs to be attached to another secnode.</p>
+                    <p class="western">Sec-1 is the node name to which an OPT operator is to be attached.</p>
+                    <h4 class="western" id="D-MSActivatorAdministrationGuide-Manuallyremovesec-2"><strong>Manually remove sec-2</strong></h4>
+                    <h5 class="western" id="D-MSActivatorAdministrationGuide-RemovefromDB"><strong>Remove from DB</strong></h5>
+                    <pre class="western">[root@postgre-ha-peer1 ~]# su - postgres</pre>
+                    <pre class="western">-bash-4.2$ psql -d POSTGRESQL -U postgres</pre>
+                    <pre class="western">POSTGRESQL=# delete from redone.dmsa_node where node_id=2;</pre>
+                    <pre class="western">POSTGRESQL=#</pre>
+                    <p class="western">The node ID can be gotten from dmsaNodes.sh script</p>
+                    <p class="western"></p>
+                    <h4 class="western" id="D-MSActivatorAdministrationGuide-RemoveAssociatedPassivenode(ifany)"><strong>Remove Associated Passive node (if any)</strong></h4>
+                    <pre class="western">POSTGRESQL=# select repnode_id from redone.dmsa_node where node_id=2 ;</pre>
+                    <pre class="western">repnode_id</pre>
+                    <pre class="western">2</pre>
+                    <pre class="western">POSTGRESQL=# delete from redone.dmsa_rep_node where repnode_id=2;</pre>
+                    <p></p>
+                    <h4 class="western" id="D-MSActivatorAdministrationGuide-Removetheentryinserver.conf">R<strong>emove the entry in server.conf</strong></h4>
+                    <pre class="western">#Sec-2;SECENGINE;10.30.18.4/255.255.255.0;192.168.10.4/255.255.255.0;;;;;svcip_sec2;pack_sec;var_sec</pre>
+                    <pre class="western">#Sec-Rep-2;REPORTING;10.30.18.5/255.255.255.255.0;192.168.10.4/255.255.255.0;;Sec-2;5;5;svcip_sec2;pack_sec;var-rep</pre>
+                </div>
+            </div>
+        </div>
+        <div class="columnLayout single" data-layout="single">
+            <div class="cell normal" data-type="normal">
+                <div class="innerCell">
+                    <h1 id="D-MSActivatorAdministrationGuide-HighAvailability">High Availability</h1>
+                    <p class="western">The Distributed MSActivator is designed to support high availability with automatic failover.</p>
+                    <p class="western">The HA implementation is based on redundancy, failover, spanning from the network to the software, including the hardware.</p>
+                    <h2 class="western" id="D-MSActivatorAdministrationGuide-Hardware-basedHA" style="margin-left: 0.0px;">Hardware-based HA</h2>
+                    <p class="western">All servers have a redundant power supply and RAID storage disks.</p>
+                    <h2 class="western" id="D-MSActivatorAdministrationGuide-Software-basedHA" style="margin-left: 0.0px;">Software-based HA</h2>
+                    <p class="western">MSActivator modules run as Linux services. All MSActivator software modules have watchdogs that monitor the services and restart them in case of software failure.</p>
+                    <p class="western">Note that software failure is most of the time due to bugs in the code. The UBiqube Quality and Assurance team tracks identified bugs and provides patches to fix these issues.</p>
+                    <p class="western">MSActivator modules are distributed across servers. Each server can have one of the following roles:</p>
+                    <ul>
+                        <li>
+                            <p>SecEngine active node</p>
+                        </li>
+                        <li>
+                            <p>SecEngine passive node</p>
+                        </li>
+                        <li>
+                            <p>Web portal active node</p>
+                        </li>
+                        <li>
+                            <p>Web portal passive node</p>
+                        </li>
+                    </ul>
+                    <p class="western">As described in the architecture diagrams, the SecEngine active node and the SecEngine passive node always work in pairs.</p>
+                    <p class="western">In case of failure of the active node, the passive node takes over by starting the SecEngine services and getting the IP connectivity.</p>
+                    <h3 class="western" id="D-MSActivatorAdministrationGuide-SecEngineActive/SecEnginePassiveHAusecasesbelow:" style="margin-left: 0.0px;">SecEngine Active/SecEngine Passive HA use cases below:</h3>
+                    <h5 class="western" id="D-MSActivatorAdministrationGuide-Case1:StandardOperation" style="margin-left: 0.0px;"><span class="inline-comment-marker" data-ref="25f8f6c0-7ad7-435e-83f8-e4f26fc82f68">Case 1: Standard Operation</span></h5>
+                    <p class="western">The SecEngine active and passive node are both connected to the interconnection network and the management network.</p>
+                    <p class="western">The SecEngine active node runs its application services that are bound to the Service IP#1, i.e. on <strong>eth1:1</strong> interface.</p>
+                    <p><a class="image-popup-fit-width" href=""><img alt="Image" src="images/image2018-10-22_19-56-5.png" width="800"/></a></p>
+                    <p class="western"></p>
+                    <h5 class="western" id="D-MSActivatorAdministrationGuide-Case2:ManagementNetworkFailure">Case 2: Management Network Failure</h5>
+                    <p class="western">In case of management network failure detected by the <strong>HA monitoring tools</strong> that run on the SecEngine passive node, the SecEngine passive node server takes over the SecEngine active node service and activates the Service IP#1 on its network interface.</p>
+                    <p class="western">The SecEngine passive node now runs the services of the SecEngine active node.</p>
+                    <p class="western">CPE management and monitoring is available.</p>
+                    <p class="western">The SecEngine passive node server sends an email to notify the MSA administrator about the failover.</p>
+                    <p><a class="image-popup-fit-width" href=""><img alt="Image" src="images/image2018-10-22_19-59-55.png" width="800"/></a></p>
+                    <p class="western"></p>
+                    <h5 class="western" id="D-MSActivatorAdministrationGuide-Case3:InterconnectionNetworkFailure">Case 3: Interconnection Network Failure</h5>
+                    <p class="western">Similar to case #2</p>
+                    <p><a class="image-popup-fit-width" href=""><img alt="Image" src="images/image2018-10-22_20-2-36.png" width="800"/></a></p>    
+                    <p class="western"></p>
+                    <h5 class="western" id="D-MSActivatorAdministrationGuide-Case4:ServerFailure" style="margin-left: 0.0px;">Case 4: Server Failure</h5>
+                    <p class="western">The SecEngine active node goes down (e.g. an OS failure or the motherboard failure).</p>
+                    <p class="western">The SecEngine passive node detects this and the actions are similar to Case 2 and Case 3.</p>
+                    <p><a class="image-popup-fit-width" href=""><img alt="Image" src="images/image2018-10-22_20-5-19.png" width="800"/></a></p>
+                    <p class="western"></p>
+                    <h5 class="western" id="D-MSActivatorAdministrationGuide-Case5:MSASoftwareServiceFailure">Case 5: MSA Software Service Failure</h5>
+                    <p class="western">The service watchdog detects the failure, restarts the service and sends an email to notify the MSA administrator.</p>
+                    &lt;
+                    <p><a class="image-popup-fit-width" href=""><img alt="Image" src="images/image2018-10-22_20-8-55.png" width="800"/></a></p>
+                    <p class="western"></p>
+                    <h5 class="western" id="D-MSActivatorAdministrationGuide-Case6:MSAUnrecoverableSoftwareServiceFailure">Case 6: MSA Unrecoverable Software Service Failure</h5>
+                    <p>In some cases, if the MSA service couldn't be restarted by the watchdog, and it will remain down, and HA failover occurs as in Case 2 and Case 3.</p>
+                    <p style="text-align: center;"></p>
+                    <p><a class="image-popup-fit-width" href=""><img alt="Image" src="images/Service_failure.png" width="800"/></a></p>
+                    <p></p>
+                    <h2 class="western" id="D-MSActivatorAdministrationGuide-HAScriptsandProcesses">HA Scripts and Processes</h2>
+                    <p class="western">The HA is divided in two process:</p>
+                    <ol>
+                        <li class="western">Synchronization process</li>
+                        <li class="western">Failover process</li>
+                    </ol>
+                    <h3 class="western" id="D-MSActivatorAdministrationGuide-SynchronizationProcess">Synchronization Process</h3>
+                    <p class="western">Every minute, a synchronization script is launched. It checks the need for synchronization and starts the synchronization only if the time defined in <strong>server.conf</strong> is reached. The folder and hosts impacted by the synchronization are defined in the file <strong>sync.conf, </strong>please see the section<strong> <a href="../Administration/Installation and Configuration/d-msactivator-administration-guide.adoc" rel="nofollow">6.3.3</a>  </strong>for more detail on sync.conf.</p>
+                    <p class="western"><strong>/opt/ubisysconf/ha/ha-sync.sh</strong></p>
+                    <p class="western">This script is called by cron.d every minute by the SecEngine passive node. It increments a counter, and once the synchronization time is reached, the synchronization occurs.</p>
+                    <p class="western">The period (in minutes) between each synchronization is defined in the file <strong>server.conf</strong>. In the example below files get synchronized from Sec-1 to Sec-Rep-1 every 5 minutes.</p>
+                    <p><a class="image-popup-fit-width" href=""><img alt="Image" src="images/sync_time.png" width="800"/></a></p>
+                    <p class="western">The synchronization logs can be seen in the file <strong>/opt/ubisysconf/ha/logs/ha_sync.log</strong> on the passive node. Once the passive becomes active due to failover, the synchronization process stops.</p>
+                    <p class="western">Backup sync time can be modified by editing the servers.conf file and launch the below script from the webnode.</p>
+                    <p><strong>sh /opt/ubisysconf/ha/config_vctx.sh</strong></p>
+                    <h4 id="D-MSActivatorAdministrationGuide-FailoverProcess">Failover Process </h4>
+                    <p class="western">Every minute, on theSecEngine passive node, a script (/opt/ubisysconf/ha/ha-backup.sh) is launched by cron.d to check the interface status and service status on its active node.</p>
+                    <p class="western"><strong>/opt/ubisysconf/ha/ha-backup.sh</strong></p>
+                    <p class="western">Counter: /opt/ubisysconf/ha/counter.num</p>
+                    <p class="western">If their counterpart is down (service xxx status returns anything but 0), a counter is incremented.</p>
+                    <p class="western">Once the counter is greater than the value defined in the configuration file <strong>server.conf</strong>, the SecEngine passive node takes over the services.</p>
+                    <p class="western"></p>
+                    <p>Here is the flow for D-MSA HA failover:</p>
+                    <p><a class="image-popup-fit-width" href=""><img alt="Image" src="images/DMSA_HA-FLOW.png" width="800"/></a></p>
+                    <p></p>
+                    <p></p>
+                    <p class="western">In the configuration below, Sec-Rep-1 is the backup of Sec-1 and backup activation time is five minutes, therefore the failover process will happen after a five minute wait and will test the active SecEngine node status.</p>
+                    <p><a class="image-popup-fit-width" href=""><img alt="Image" height="130" src="images/backup_time.png"/></a></p>
+                    <p class="western"></p>
+                    <p>The HA monitoring logs are available in this file /opt/ubi-sysconf/ha/logs/ha_backup.log.</p>
+                    <p></p>
+                    <h5 id="D-MSActivatorAdministrationGuide-FailoverProcessSteps">Failover Process Steps</h5>
+                    <p>As part of the failover process, the actions below are carried out by a monitoring standby node.</p>
+                    <ol>
+                        <li>Connect to the active node through one of the reachable interfaces.</li>
+                        <li>If step 1 is successful, the below steps are carried out. If not, do nothing (if neither of the interfaces are reachable).</li>
+                        <li>Shut down all the services on the active node.</li>
+                        <li>Make serviceIP down on the active node and make it up on the local node.</li>
+                        <li>Create a file ha.backupmode in directory /opt/ubisysconf/ha/ to confirm that this local node is in backup mode.</li>
+                        <li>Adapt vars.ctx file</li>
+                        <li>Stop syncing the files from the active node</li>
+                        <li>Set local node status as "active failover"  in DB by launching the script ("/opt/base/tools/SetRepNodeInDb.sh Sec-1 Sec-Rep-1 1")</li>
+                        <li>Send HA failover log to Elasticsearch</li>
+                        <li>Send mail about HA failover to D-MSA adminstrator mail ID- defined in configurator on UBI_MAIL_SERVERADMIN</li>
+                    </ol>
+                    <h5 id="D-MSActivatorAdministrationGuide-RevertingFailover">Reverting Failover</h5>
+                    <p>Reverting failover is to make the failed node active again and backup node (standby) as passive again. Assuming Sec-1 node failed and Sec-Rep-1 took over its IP and service on HA failover, once the issue is fixed on Sec-1, to make Sec-1 active and Sec-Rep-1 passive, we need to launch the below script from Sec-Rep-1.</p>
+                    <pre>/opt/ubisysconf/ha/revert_failover.sh</pre>
+                    <p class="western">Prerequisites for this script, if the failover happens in the case of network interface failure, we have to make the failed interface up on the failed node before running the script. If the failover happened because of unrecoverable service down, a manual check needs to done to fix it.</p>
+                    <p>This script does the following steps from Sec-Rep-1</p>
+                    <ol>
+                        <li>Shutdown the service IP locally and make it up on the original active Sec-1.</li>
+                        <li>Sync the files that are updated in Sec-Rep-1 during the time it was active to the original active node Sec-1.</li>
+                        <li>Shutdown the services locally and activate the service on the original active node Sec-1.</li>
+                        <li>Remove the file ha.backup mode created during the failover process so that the local node will start monitoring the node Sec-1 which is going to be active.</li>
+                        <li>Reactivate the cron to start syncing the files from the node Sec-1 which is going to be active.</li>
+                        <li>Adapt vars.ctx file</li>
+                        <li>Set this local node status to "passive" in DB, by running the script "<strong>/opt/base/tools/SetRepNodeInDb.sh Sec-1 Rep-1 2</strong>" from Sec-Rep-1.</li>
+                        <li>Set the original node status to "active" in DB, by running the script "<strong>/opt/base/tools/SetMsaNodeInDb.sh</strong>" from Sec-1.</li>
+                    </ol>
+                    <h5 id="D-MSActivatorAdministrationGuide-DeactivatingtheHAFailover">Deactivating the HA Failover</h5>
+                    <p>This is done by simply removing the backup section in servers.conf in the webnode and launching the below script from the webnode.</p>
+                    <p>sh /opt/ubisysconf/ha/config_vctx.sh</p>
+                    <p></p>
+                    <h5 class="western" id="D-MSActivatorAdministrationGuide-DeactivatingtheHAFailoverTemporarilyforUpgradeProcessandActivatingBack"><strong>Deactivating the HA Failover Temporarily for Upgrade Process and Activating Back</strong></h5>
+                    <p class="western">While upgrading the D-MSA nodes the service will restart. Just to make sure HA failover does not happen that time, deactivate HA failover temporarily by creating a file with the below command in the passive node</p>
+                    <pre class="western">#touch /opt/ubisysconf/ha/ha.backupmode</pre>
+                    <p class="western">After the upgrade process is complete, all the services are up, in order to activate the HA failover again remove the file using the below command in the passive node</p>
+                    <pre class="western">#rm –f /opt/ubisysconf/ha/ha.backupmode</pre>
+                    <p></p>
+                    <h5 class="western" id="D-MSActivatorAdministrationGuide-HAstatusinGUI-ncroot-&gt;Maintenance-&gt;Systemadministration-&gt;DMSAstatus">HA status in GUI - ncroot-&gt;Maintenance-&gt;System administration -&gt;DMSA status</h5>
+                    <p class="western">The following describes how each status is set in DB.</p>
+                    <h6 class="western" id="D-MSActivatorAdministrationGuide-SecEngineStatus"><strong>Sec Engine Status</strong></h6>
+                    <p class="western">The centralized node, which is a webnode, will monitor the active SecEngine status using the following script:</p>
+                    <p class="western">/opt/dms/bin/dsmsIsAlive.sh run every minutes</p>
+                    <p class="western">The log file is available here:</p>
+                    <pre class="western">[root@Web bin]# tail -F /opt/dms/logs/dsmsIsAlive.log</pre>
+                    <pre class="western">Node Sec (172.10.15.190) isalive 1</pre>
+                    <h6 class="western" id="D-MSActivatorAdministrationGuide-HAFailoverStatus&amp;NodeName&amp;NodeIP"><strong>HA Failover Status &amp; Node Name &amp; Node IP</strong></h6>
+                    <p class="western">All three statuses are set by the script which is run manually during the initial D-MSA setup.</p>
+                    <p class="western">For Active Node</p>
+                    <pre class="western">[root@Sec-1]# /opt/base/tools/SetMsaNodeInDb.sh</pre>
+                    <p class="western">The above script should be the only one from the active node.</p>
+                    <p class="western"></p>
+                    <p class="western">For Passive Node</p>
+                    <pre class="western">[root@Sec-Rep-1]# /opt/base/tools/SetRepNodeInDb.sh Sec-1 Sec-Rep-1 2</pre>
+                    <p class="western">Sec-Rep-1 is the passive node name.</p>
+                    <p class="western">Sec-1 is the active node for this passive node.</p>
+                    <p class="western">2 - to set passive status.</p>
+                    <p class="western">The above script should be the only one from the passive node.</p>
+                    <p class="western"></p>
+                </div>
+</div>
+</div>
+</div>
+
+                
+        
+    
+        </div>
+
+        </div>

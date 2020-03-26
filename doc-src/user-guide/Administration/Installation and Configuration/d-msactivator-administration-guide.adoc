@@ -1,0 +1,1248 @@
+= D Msactivator Administration Guide
+:toc: left
+:toc-title: Content
+:imagesdir: ../../resources/
+:ext-relative: adoc
+
+[[main-content]]
+[[D-MSActivatorAdministrationGuide-Overview]]
+== Overview
+
+The MSActivator is a modular software solution. Each module can work
+independently. Its main modules shown
+link:/documentation/d-msactivator-standard-architecture/[here] are:
+
+* database
+* web front-end modules (web portal, web services API, and workflow
+automation engine)
+* fulfillment and monitoring engine (network configuration, monitoring,
+log collection, log parsing, and alerting)
+* big data engine (log storage, log analysis and reporting)
+
+The D-MSA (Distributed MSA) is the scalable version of MSActivator with
+support for high availability. 
+
+With the need to support more managed devices and their associated
+services, load balancing of MSActivator is done by distributing each of
+the above mentioned modules to separate nodes.  
+
+With the MSActivator MIB, one can get the load on a particular node,
+then the scaling is done by adding a new node of that type to the
+D-MSActivator cluster. The procedure of adding new nodes to the cluster
+may vary for each different node type.  This is explained below in the
+[.underline]##Scalability and Load Balancin##g section.
+
+[[D-MSActivatorAdministrationGuide-Installation]]
+== Installation
+
+The installation of D-MSA involves getting the image (OVA, qCow2, etc.)
+of the particular MSA version from the UBiqube repository, and
+installing several servers of it (depending on how many webnodes,
+secnodes and ES nodes you need for the D-MSA setup). The number of nodes
+usually depends on how many devices you need to support.  
+
+[[D-MSActivatorAdministrationGuide-PrerequisiteforInstallation]]
+=== Prerequisite for Installation
+
+The MSA should be installed on VM with the recommended resources. Please
+find the recommended minimum resources below:
+
+[width="100%",cols="37%,17%,28%,18%",options="header",]
+|===
+a| a|
+RAM
+
+a|
+CPU
+
+a|
+STORAGE
+
+|Web active/passive nodes |16GB |8 CPU, 2 core per CPU |500 GB
+|Sec active/passive nodes |16GB |8 CPU, 2 core per CPU |500 GB
+|===
+
+*NIC:* You need two network interface connections:
+
+* eth0: maintenance interface
+* eth1: equipment interface
+
+[[D-MSActivatorAdministrationGuide-Configuration]]
+== Configuration
+
+The configuration is done by preparing a set of configuration files
+based on the template file, and launching a set of scripts in a
+particular order from the webnode.
+
+[[D-MSActivatorAdministrationGuide-PrerequisiteforConfiguration]]
+=== Prerequisite for Configuration
+
+Before running the centralized configuration tool, each of the D-MSA
+nodes must be accessible from the webnode.
+
+Connect to each node and run the commands below:
+
+[source,western]
+----
+ifconfig eth0 <IP ADDRESS>/<MASK> up
+----
+
+This IP address will be used in the configuration file servers.conf.
+
+[[D-MSActivatorAdministrationGuide-SampleD-MSANetworkDiagram]]
+=== Sample D-MSA Network Diagram
+
+Here in the sample D-MSA network, we have used one webnode and two
+secnodes set up with passive nodes.
+
+link:[image:images/DMSA-Network.png[Image,width=800]]
+
+[[D-MSActivatorAdministrationGuide-PreparingtheConfigurationFiles]]
+=== [.inline-comment-marker]#Preparing the Configuration Files#
+
+The D-MSA configuration templates are located in /opt/ubisysconf/ha/ of
+MSA.
+
+[[D-MSActivatorAdministrationGuide-Servers.conf]]
+==== Servers.conf **
+
+[[D-MSActivatorAdministrationGuide-Aprerequisiteforbuildingtheserver.conffileistohaveidentifiedallIPaddressesthataregoingtobeusedwithintheDMSAsetup.]]
+===== A prerequisite for building the server.conf file is to have identified all IP addresses that are going to be used within the DMSA setup.
+
+Below is a sample of servers.conf, based on the network diagram above.
+
+Copy the template file to a new configuration file and adapt the
+configuration based on your network.
+
+*servers.conf*
+
+[[highlighter_282961]]
+link:#[?]
+
+`                                                     `
+
+`[Servers]`
+
+`#The field Root Password will be automatically removed when applied ``as`
+`password to the node.`
+
+`#hostname; Node Type; PUBIP; PRIVIP; Root Password; Backup-Of; Backup-Sync-Time; Backup-Activation-Time; Svc Ip's; Svc to start; Vars to adapt`
+
+`Web-``1``;GUI;``10.30``.``18.1``/``255.255``.``255.0``;``192.168``.``10.1``/``255.255``.``255.0``;;;;;svcip_gui;pack_gui;``var``_gui`
+
+`Web-Rep-``1``;GUI;``10.30``.``18.2``/``255.255``.``255.0``;``192.168``.``10.2``/``255.255``.``255.0``;;Web-``1``;``5``;``5``;svcip_gui;pack_repgui;``var``_gui`
+
+`Sec-``1``;SECENGINE;``10.30``.``18.4``/``255.255``.``255.0``;``192.168``.``10.4``/``255.255``.``255.0``;;;;;svcip_sec1;pack_sec;``var``_rep`
+
+`Sec-Rep-``1``;REPORTING;``10.30``.``18.5``/``255.255``.``255.0``;``192.168``.``10.5``/``255.255``.``255.0``;;Sec-``1``;``5``;``5``;svcip_sec1;pack_rep;``var``_sec`
+
+`Sec-``2``;SECENGINE;``10.30``.``18.7``/``255.255``.``255.0``;``192.168``.``10.7``/``255.255``.``255.0``;;;;;svcip_sec2;pack_sec;``var``_rep`
+
+`Sec-Rep-``2``;REPORTING;``10.30``.``18.8``/``255.255``.``255.0``;``192.168``.``10.8``/``255.255``.``255.0``;;Sec-``2``;``5``;``5``;svcip_sec2;pack_rep;``var``_sec`
+
+ 
+
+`[svcip_gui]`
+
+`svcip=``10.30``.``18.3``/``255.255``.``255.0`
+
+`eth0:``1``=``192.168``.``10.3``/``255.255``.``255.0`
+
+ 
+
+`[svcip_sec1]`
+
+`svcip=``10.30``.``18.6``/``255.255``.``255.0`
+
+`eth0:``1``=``192.168``.``10.6``/``255.255``.``255.0`
+
+ 
+
+`[svcip_sec2]`
+
+`svcip=``10.30``.``18.9``/``255.255``.``255.0`
+
+`eth0:``1``=``192.168``.``10.9``/``255.255``.``255.0`
+
+ 
+
+`[``var``_gui]`
+
+`UBI_VSOC_SUPPORT_SCAN=``0`
+
+`UBI_VSOC_SYSLOG_NODE=``0`
+
+ 
+
+`[``var``_rep]`
+
+`UBI_VSOC_SYSLOG_NODE=``0`
+
+ 
+
+`[``var``_sec]`
+
+`UBI_VSOC_SYSLOG_NODE=``1`
+
+`UBI_SYS_DEFAULT_GW=``10.30``.``18.254`
+
+ 
+
+`[pack_gui]`
+
+`start=tomcat`
+
+`start=jboss`
+
+`start=ubi-webconf`
+
+`start=ubi-sms:smsbud`
+
+`start=ubi-sms:named`
+
+`start=ubi-sms:sms_sysstatd`
+
+`start=ubi-dms`
+
+`start=nfs`
+
+`start=rpcbind`
+
+`start=autofs`
+
+ 
+
+`[pack_repgui]`
+
+`start=tomcat`
+
+`start=jboss`
+
+`start=ubi-webconf`
+
+`start=ubi-sms:named`
+
+`start=ubi-sms:sms_sysstatd`
+
+`start=ubi-dms`
+
+`start=nfs`
+
+`start=rpcbind`
+
+`start=autofs`
+
+ 
+
+`[pack_sec]`
+
+`start=ubi-sms:sms_polld`
+
+`start=ubi-sms:smsd`
+
+`start=ubi-sms:sms_syslogd`
+
+`start=ubi-sms:sms_parserd`
+
+`start=ubi-sms:sms_agregatord`
+
+`start=ubi-sms:sms_sysstatd`
+
+`start=ubi-sms:``in``.tftpd`
+
+`start=ubi-sms:named`
+
+`start=ubi-dms`
+
+`start=nfs`
+
+`start=rpcbind`
+
+`start=autofs`
+
+ 
+
+`[pack_rep]`
+
+`start=ubi-sms:named`
+
+`start=nfs`
+
+`start=rpcbind`
+
+`start=autofs`
+
+ 
+
+`[pack_neverstart]`
+
+`start=ubi-filter`
+
+servers.conf starting with ";" as delimiter of each configuration item,
+with ordered manner.  
+
+The below line represents all the configuration items. ** Each line
+represents each node**.**
+
+Configuration on is defined in order below:**
+
+**# hostname;  Node Type; PUBIP;  PRIVIP;  Root Password;  Backup-Of; 
+Backup-Sync-Time;  Backup-Activation-Time;  Svc Ip's;  Svc to start;
+Vars to adapt**
+
+**
+
+Here are the roles of each field in each line:**
+
+*hostname - * hostname of the node. It can be Web-1, Sec-1,Sec-2, ... it
+can also be any name you want. Avoid using special characters at start
+of the hostname.
+
+*Node Type* - "GUI" for webnode types, "SECENGINE" for secnode types,
+and "REPORTING" for passive type nodes for HA.
+
+*PUBIP -* eth1 ip address/netmask of the node.**
+
+*PRIVIP -* eth0 ip address/netmask of the node.
+
+*Root Password -* if you want to change the root password of the node,
+enter a root password here, otherwise leave it blank.
+
+*Backup-Of - * node name of which this node acts as a backup of. Leave
+it empty for active nodes.
+
+*Backup-Sync-Time - * the** **time mentioned here is the time frequency
+for replicating the files from active node to passive node. It has no
+effect if the Backup-of item is empty.
+
+*Backup-Activation-Time -* the time mentioned here is the time to wait
+for the failover to occur when the active node has failed. This is used
+by a passive node to make the decision.
+
+**[.inline-comment-marker]#SvcIp - #**[.inline-comment-marker]##it is
+usually the presentation of eth0:1 and eth1:1 ip of the node with
+netmask, normally defined as svcip_guiX for Webnodes and svcip_secX for
+secnodes.##
+
+*Svc to start -* it provides what services to start, normally defined in
+pack_gui for webnodes and pack_sec for secnodes.
+
+*Vars to adapt -* variables that are specific to particular types of
+nodes, normally defined in var_gui for webnodes and var_sec for
+secnodes.
+
+Below is the description for the use of each interface type in each of
+the nodes:
+
+*eth1* IP is defined in the *PUBIP* section of the server.conf file.
+This interface is used as a backup for eth0. Communication will still be
+available between the nodes through eth1, if eth0 is down. This
+interface is also required to get connected to a failed node in case of
+failover when eth0 down. This connection is to shutdown the interface
+eth0:1 and eth1:1 on a failed node,  which will then be made up in
+standby node.
+
+. *eth0* IP is defined in the *PRIVIP* section of the server.conf file.
+This interface is used to communicate between nodes securely. This
+should not exposed to the outside.
+. *eth0:1* is defined in [svcip_node] section of the server.conf file.
+This interface is used for NFS mounting between the nodes. This IP will
+be moved to the SecEngine passive node in failover in order to have a
+mount point on the correct server.
+. *eth1:1* is defined as svc_ip secion in the server.conf file. This
+interface is for managing the device, and for the device to send
+syslogs. This IP will also be moved to SecEngine passive node in
+failover to have the device communication, and have the device send
+syslog to the right node. In webnode, this interface is used to give the
+customer access to the webportal.
+
+D-MSA config script - config_networks.sh which does the network
+configuration of DMSA based on the servers.conf file.
+
+[[D-MSActivatorAdministrationGuide-Share.conf]]
+==== *Share.conf*
+
+In D-MSA, as each module is installed in a separate node, the files
+created in one node are shared between the nodes for different
+functionalities.
+
+The file share is done by mounting the remote directory based on NFS.
+
+The below diagram shows the mounting between different nodes and the
+functionality for which the directories are mounted.
+
+link:[image:images/Share_conf.png[Image,height=400]]
+
+[[D-MSActivatorAdministrationGuide-/opt/fmc_repository]]
+===== */opt/fmc_repository*
+
+This is the directory where all the MSA repository files (objects,
+templated, firmware, doc, etc.) are stored. This directory presents
+locally on the MSA webnode and it allows the secnode to mount it on the
+directory.  The SecEngine needs access to this folder for backend
+operations, for example to generate configuration from the object and
+update devices. The webnode needs this directory to enable the user to
+create files under the MSA GUI repository. **
+
+[[D-MSActivatorAdministrationGuide-/opt/fmc_entities]]
+===== */opt/fmc_entities*
+
+This is the directory where information regarding which repository files
+are attached to which entity in MSA is stored. This directory is present
+locally on the MSA webnode and it allows the secnode to mount it on that
+directory. The SecEngine needs access to this directory for backend
+operations. The webnode needs this directory to show the link between
+different MSA entities and repository files in the MSA GUI. **
+
+[[D-MSActivatorAdministrationGuide-/opt/svnroot]]
+===== */opt/svnroot*
+
+MSA has a change management module, which takes backups of device
+configurations every day. It also takes every update from MSA, and also
+updates outside of MSA. For this, MSA has its own SVN repository to
+store the revisions of the device configuration backup. This is the
+directory in which all the SVN revisions are stored. This directory is
+originally present in webnode, and secnode is allowed to mount this
+direrctory. The SecEngine stores all the device backup revision here.
+The webnode needs this directory to show all backup revisions to the
+user in the MSA GUI.**
+
+[[D-MSActivatorAdministrationGuide-/opt/rrd]]
+===== */opt/rrd*
+
+In the MSA GUI device homepage, there is a list of graphs to show device
+uptime, CPU, traffic, etc. These graphs are based on RRD files that the
+SecEngine generates and are updated every minute based on device
+response. It also stores the graphs generated from the MSA monitoring
+profile. This directory is originally present in secnode and is allowed
+to mount from webnode. **
+
+[[D-MSActivatorAdministrationGuide-Sampleshare.conf.]]
+===== Sample share.conf.  
+
+It is not recommended to edit this configuration file.  **
+
+*Share.conf*
+
+[[highlighter_127670]]
+link:#[?]
+
+`                                                     `
+
+`[GUI]`
+
+`export(``700``:``751``)=/opt/fmc_repository`
+
+`export(``700``:``751``)=/opt/fmc_entities`
+
+`export(``700``:``751``)=/opt/svnroot`
+
+`mount=SECENGINE(eth0:``1``):/opt/rrd;/opt/rrd/SECENGINE`
+
+ 
+
+`[SECENGINE]`
+
+`export(``700``:``751``)=/opt/rrd`
+
+ 
+
+`mount=GUI(eth0:``1``):/opt/fmc_repository;/opt/fmc_repository`
+
+`mount=GUI(eth0:``1``):/opt/fmc_entities;/opt/fmc_entities`
+
+`mount=GUI(eth0:``1``):/opt/svnroot;/opt/svnroot`
+
+ 
+
+ 
+
+`[REPORTING]`
+
+ 
+
+`# export and mount also path on which I assume backup (``in` `this`
+`case` `the sec-engine part)`
+
+`export(``700``:``751``)=/opt/rrd`
+
+ 
+
+`mount=GUI(eth0:``1``):/opt/fmc_repository;/opt/fmc_repository`
+
+`mount=GUI(eth0:``1``):/opt/fmc_entities;/opt/fmc_entities`
+
+`mount=GUI(eth0:``1``):/opt/svnroot;/opt/svnroot`
+
+* *export* is what is exported from all nodes' corresponding on node
+type.
+* *mount* is what is mounted by all nodes' corresponding on node type.
+
+Based on the above config file, export config (permission for mount) of
+the NFS mount is defined in /etc/fstab in each node.
+
+[[D-MSActivatorAdministrationGuide-Autofs]]
+===== *Autofs*
+
+The mount between nodes is done both automatically and on demand. That
+is, the directory is automatically mounted when the user or application
+accesses this folder. For example, /opt/rrd/Sec-x is mounted when the
+MSA GUI user is in the device home page, where RRD graphs are displayed.
+For this, MSA uses Linux Autofs. The configuration of Autofs is defined
+in each node. It is done by D-MSA config script: config_share.sh. The
+config files for different nodes are below:
+
+[[D-MSActivatorAdministrationGuide-Configfileforwebnodes]]
+===== *Config file for webnodes*
+
+....
+/etc/auto.master
+....
+
+....
+/etc/auto.GUI
+....
+
+[[D-MSActivatorAdministrationGuide-Configfileforsecnodes]]
+===== *Config file for secnodes*
+
+....
+/etc/auto.master
+....
+
+....
+/etc/auto.SECENGINE
+....
+
+[[D-MSActivatorAdministrationGuide-Sync.conf]]
+==== *Sync.conf*
+
+This file defines what are the list of directories to sync from the
+active to the passive nodes. This is to make sure, that in the case of
+failover, the passive (standby) node has the same update file as the
+active node. Normally the directory to sync is the directory which has
+dynamic data, meaning not delivered from the UBiqube package, but is
+created as part of the application.
+
+This configuration file is used by a script ha-sync.sh. This script
+usually runs in passive node by a cron every minute. This script does
+the sync of files between active and passive nodes.  This conf is only
+used when D-MSA HA is enabled.
+
+[[D-MSActivatorAdministrationGuide-Samplesync.conf]]
+===== Sample sync.conf
+
+*sync.conf*
+
+[[highlighter_715123]]
+link:#[?]
+
+`                                                     `
+
+`[REPORTING]`
+
+`rsync=SECENGINE:/opt/sms/routerlogs/`
+
+`rsync=SECENGINE:/opt/sms/spool/parser/`
+
+`rsync=SECENGINE:/opt/rrd/`
+
+`rsync=SECENGINE:/opt/sms/bin/php/`
+
+`rsync=SECENGINE:/opt/sms/share/configuration-pattern/`
+
+`rsync=SECENGINE:/opt/sms/templates/conf/custom/`
+
+ 
+
+`[GUI]`
+
+`rsync=GUI:/opt/fmc_repository/`
+
+`rsync=GUI:/opt/fmc_entities/`
+
+`rsync=GUI:/opt/svnroot/`
+
+Log for the file synchronization:
+
+....
+/opt/ubisysconf/ha/logs/ha_sync.log
+....
+
+[[D-MSActivatorAdministrationGuide-Variables2adapt.conf]]
+==== Variables2adapt.conf
+
+This file is used to adapt the main configuration file
+*/opt/configurator/vars.ctx* before copying the node specific ones to
+their destination nodes.
+
+Some variables are exported and can be re-used dynamically:
+
+* NAMESERVER
+* PUBIP
+* SVCIP
+* PRIVIP
+* ROOTPSWD
+
+Theses variables were those defined on each line of *servers.conf*
+
+[[D-MSActivatorAdministrationGuide-Samplevariables2adapt.conf]]
+===== Sample variables2adapt.conf
+
+*variables2adapt.conf*
+
+[[highlighter_739169]]
+link:#[?]
+
+`                                                     `
+
+`# VARIABLE=x.y.z`
+
+`# EXPOSED VARIABLES:`
+
+`#`
+
+`# ${NAMESERVER}`
+
+`# ${PUBIP}`
+
+`# ${SVCIP}`
+
+`# ${PRIVIP}`
+
+`# ${PUBIPV6}`
+
+`# ${MASKV6}`
+
+`# ${GWV6}`
+
+ 
+
+`UBI_SMS_DISASTER_SVCIP=${SVCIP}`
+
+`UBI_SMS_FTPSERVER_SVCIP=${SVCIP}`
+
+`UBI_SMS_IPSECGW_SVCIP=${SVCIP}`
+
+`UBI_SMS_SVCIP=${SVCIP}`
+
+`UBI_SMS_SYSLOG_DISASTER_SVCIP=${SVCIP}`
+
+`UBI_SMS_SYSLOG_SVCIP=${SVCIP}`
+
+`UBI_SMS_SYSLOG_PUBIP=${SVCIP}`
+
+`UBI_SMS_PRIVIP=${SVCIP}`
+
+`UBI_SMS_PUBIP=${SVCIP}`
+
+`UBI_VSOC_SES_SVCIP=${SVCIP}`
+
+`UBI_SYS_EQUIPMENTS_NAT_IP=${SVCIP}`
+
+ 
+
+`UBI_VSOC_MAINTENANCEIP=${PRIVIP}`
+
+`UBI_SYS_MAINTENANCE_IP=${PRIVIP}`
+
+`UBI_SYS_MAINTENANCE_MASK=${PRIVMASK}`
+
+ 
+
+`UBI_SYS_EQUIPMENTS_IP=${PUBIP}`
+
+`UBI_SYS_EQUIPMENTS_MASK=${PUBMASK}`
+
+ 
+
+`UBI_SYS_EQUIPMENTS_IPV6=${PUBIPV6}`
+
+`UBI_SYS_EQUIPMENTS_MASKV6=${MASKV6}`
+
+`UBI_SYS_DEFAULT_GWV6=${GWV6}`
+
+ 
+
+`UBI_CENTRALIZED_NODE_NAME=web-``1`
+
+`UBI_DISTRIBUTED_SMSD=``1`
+
+`UBI_VSOC_IS_DMSA_NODE=``1`
+
+ 
+
+`UBI_VSOC_NAME=${NAMESERVER}`
+
+`SMARTSOC_TLA=${NAMESERVER}`
+
+ 
+
+`UBI_SVN_PRIVIP=``192.169``.``10.3`
+
+[[D-MSActivatorAdministrationGuide-Configuration.1]]
+=== Configuration
+
+[[D-MSActivatorAdministrationGuide-ConfigFiles]]
+==== Config Files****
+
+. Copy servers.conf.sample to servers.conf and adapt the configuration
+according to your network.
+. Copy share.conf.sample to share.conf.
+. Copy sync.conf.sample to sync.conf.
+. Copy variables2adapt.conf.sample to variables2adapt.conf.
+
+[[D-MSActivatorAdministrationGuide-ConfigScripts]]
+==== Config Scripts****
+
+The configuration can be done by launching a set of scripts from the
+webnode, which is the centralized node.    
+
+The scripts should be launched in the specific order below. All scripts
+are stored in /opt/ubisysconf/ha/ directory of the webnode.     
+
+This information is also stored in the README file in that directory.
+
+[width="100%",cols="19%,81%",options="header",]
+|===
+a|
+script
+
+a|
+description
+
+|*sanity_tests.sh* |Will check the connectivity between nodes and will
+create and exchange ssh keys between all the nodes. Also will check the
+rpm are at the same level on each node. For this script works well the
+following command is needed : _touch /opt/ubiqube/license_
+
+|*config_stop_all.sh* |Will stop all UBiqube services on selected nodes
+(all by default), will stop cron job of 'NFS mount checking' and unmount
+everything.This script must be launched if you want to change the
+network configuration or change NFS sharing.Deactivate all chkconfig to
+be sure that no services will restart.
+
+|*config_vctx.sh* a|
+Will create and deploy the file /opt/configurator/vars.UBIqube.net.ctx
+on all nodes.
+
+Will transfer the UBiqube license file to all the nodes, will copy all
+D-MSA configurations (servers.conf, sync.conf, share.conf,
+variable2adapt.conf) to all the nodes in D-MSA.
+
+|*config_network.sh* |Will set up networks files on all nodes (interface
+files, /etc/hosts).****Avoid launching this script on a deployed D-MSA
+since it will launch ubisysconf, configure, and restart the network. **
+This script uses servers.conf file to configure the D-MSA network.
+
+|*config_checkconfig.sh* a|
+Will setup the chkconfig system to start automatically needed services
+on all nodes. ** *                                                *
+
+It is responsible for the activation and the deactivation service based
+on the node type.
+
+|*config_shares.sh* |Will setup export/fstab files on all nodes.****Will
+setup autofs config files.
+
+|*config_restart_all.sh* |Will re-activate cron job for NFS mount
+checking and remount everything.****You may use --reboot.  In this case,
+the cron job of the NFS sharing checker will be set and reboot-only will
+occur.
+|===
+
+Once all the configuration steps are done, you can verify the D-MSA
+setup status by the command *check_dmsa_status.*
+
+[[D-MSActivatorAdministrationGuide-ScalabilityandLoadBalancing]]
+== Scalability and Load Balancing
+
+[[D-MSActivatorAdministrationGuide-GettingtheLoadonaParticularSecnode]]
+=== Getting the Load on a Particular Secnode
+
+When a customer is created in MSA, the customer is assigned to a
+particular secnode and all customer devices will be managed by this
+secnode. This assignment is done on a less-loaded-node basis: the
+selected secnode is the one with the smallest number of devices
+assigned.
+
+The number of customers assigned to a particular node:
+
+*# /opt/base/tools/dmsaNodes.sh -L*
+
+The number of devices assigned to particular node:
+
+*# sdlist*
+
+The load on a secnode depends on the number of managed devices, but also
+on the number of services associated with the devices.
+
+[[D-MSActivatorAdministrationGuide-AddingaNewSecnode]]
+=== Adding a New Secnode
+
+A new node will allow you to scale up along with the number of managed
+devices. The steps for adding a new node to D-MSA are:
+
+. Having the new MSA node installed from OVA or any other type of image.
+. If the above install doesn't create a node with same version as other
+nodes in D-MSA, install the upgrade version as in the other node of
+D-MSA, by upgrading with bin.
+. Configure the eth0 interface manually for the webnode to connect to it
+for configuration.
+. Adapt servers.conf in the Webnode to add this new node in D-MSA.
+. Launch D-MSA config scripts as explained in the section #6.4.2 . with
+node name defined in the servers.conf as a parameter to the script.
+
+....
+sh /opt/ubisysconf/ha/script_name.sh  –n Sec-3
+....
+
+The script above only configures Sec-3 and Sec-Rep-3 nodes, as part of
+adding the new node.
+
+If you add a new SecEngine node, launch the below script from the Sec-3
+active node to register the node in the database:
+
+[source,western]
+----
+Sec-3# /opt/base/tools/SetMsaNodeInDb.sh
+----
+
+[[D-MSActivatorAdministrationGuide-RemovinganActiveSecEngineNodeandAssociatedPassiveNode]]
+=== Removing an Active SecEngine Node and Associated Passive Node
+
+Before removing a SecEngine node, you have to either delete the customer
+assigned to it or move the customers to another SecEngine node. We can
+find the customer associated with that Secnode by the script:
+
+[source,western]
+----
+/opt/base/tools/dmsaNode.sh –L from Webnode. 
+----
+
+*How to move a customer from one SecEngine node to another node*
+
+Below is the procedure to remove Sec-2:
+
+[[D-MSActivatorAdministrationGuide-Migrate1customertoSec-1]]
+==== Migrate 1 customer to Sec-1
+
+[source,western]
+----
+[root@Web-1 ~]# /opt/ubi-jentreprise/bin/api/customer/attachCustomerIdToSecNode.sh 42 Sec-1
+----
+
+Where 42 is the customer ID.
+
+Sec-1 is the node name for which the customer has to be moved.
+
+[[D-MSActivatorAdministrationGuide-DetachoperatorfromSec-2]]
+==== Detach operator from Sec-2
+
+[root@Web-1 ~]#
+/opt/ubi-jentreprise/bin/api/operator/detachOperatorPrefixFromSecNode.sh
+OPT Sec-2
+
+OPT is operator prefix
+
+Sec-2 is the node name, from which the operator should be detached.
+
+[[D-MSActivatorAdministrationGuide-AttachoperatortoSec-1]]
+==== *Attach operator to Sec-1*
+
+[root@Web-1 ~]#
+/opt/ubi-jentreprise/bin/api/operator/attachOperatorPrefixFromSecNode.sh
+PRN Sec-1
+
+OPT is the operator prefix, which needs to be attached to another
+secnode.
+
+Sec-1 is the node name to which an OPT operator is to be attached.
+
+[[D-MSActivatorAdministrationGuide-Manuallyremovesec-2]]
+==== *Manually remove sec-2*
+
+[[D-MSActivatorAdministrationGuide-RemovefromDB]]
+===== *Remove from DB*
+
+[source,western]
+----
+[root@postgre-ha-peer1 ~]# su - postgres
+----
+
+[source,western]
+----
+-bash-4.2$ psql -d POSTGRESQL -U postgres
+----
+
+[source,western]
+----
+POSTGRESQL=# delete from redone.dmsa_node where node_id=2;
+----
+
+[source,western]
+----
+POSTGRESQL=#
+----
+
+The node ID can be gotten from dmsaNodes.sh script
+
+[[D-MSActivatorAdministrationGuide-RemoveAssociatedPassivenode(ifany)]]
+==== *Remove Associated Passive node (if any)*
+
+[source,western]
+----
+POSTGRESQL=# select repnode_id from redone.dmsa_node where node_id=2 ;
+----
+
+[source,western]
+----
+repnode_id
+----
+
+[source,western]
+----
+2
+----
+
+[source,western]
+----
+POSTGRESQL=# delete from redone.dmsa_rep_node where repnode_id=2;
+----
+
+[[D-MSActivatorAdministrationGuide-Removetheentryinserver.conf]]
+==== R**emove the entry in server.conf**
+
+[source,western]
+----
+#Sec-2;SECENGINE;10.30.18.4/255.255.255.0;192.168.10.4/255.255.255.0;;;;;svcip_sec2;pack_sec;var_sec
+----
+
+[source,western]
+----
+#Sec-Rep-2;REPORTING;10.30.18.5/255.255.255.255.0;192.168.10.4/255.255.255.0;;Sec-2;5;5;svcip_sec2;pack_sec;var-rep
+----
+
+[[D-MSActivatorAdministrationGuide-HighAvailability]]
+== High Availability
+
+The Distributed MSActivator is designed to support high availability
+with automatic failover.
+
+The HA implementation is based on redundancy, failover, spanning from
+the network to the software, including the hardware.
+
+[[D-MSActivatorAdministrationGuide-Hardware-basedHA]]
+=== Hardware-based HA
+
+All servers have a redundant power supply and RAID storage disks.
+
+[[D-MSActivatorAdministrationGuide-Software-basedHA]]
+=== Software-based HA
+
+MSActivator modules run as Linux services. All MSActivator software
+modules have watchdogs that monitor the services and restart them in
+case of software failure.
+
+Note that software failure is most of the time due to bugs in the code.
+The UBiqube Quality and Assurance team tracks identified bugs and
+provides patches to fix these issues.
+
+MSActivator modules are distributed across servers. Each server can have
+one of the following roles:
+
+* SecEngine active node
+* SecEngine passive node
+* Web portal active node
+* Web portal passive node
+
+As described in the architecture diagrams, the SecEngine active node and
+the SecEngine passive node always work in pairs.
+
+In case of failure of the active node, the passive node takes over by
+starting the SecEngine services and getting the IP connectivity.
+
+[[D-MSActivatorAdministrationGuide-SecEngineActive/SecEnginePassiveHAusecasesbelow:]]
+==== SecEngine Active/SecEngine Passive HA use cases below:
+
+[[D-MSActivatorAdministrationGuide-Case1:StandardOperation]]
+===== [.inline-comment-marker]#Case 1: Standard Operation#
+
+The SecEngine active and passive node are both connected to the
+interconnection network and the management network.
+
+The SecEngine active node runs its application services that are bound
+to the Service IP#1, i.e. on *eth1:1* interface.
+
+link:[image:images/image2018-10-22_19-56-5.png[Image,width=800]]
+
+[[D-MSActivatorAdministrationGuide-Case2:ManagementNetworkFailure]]
+===== Case 2: Management Network Failure
+
+In case of management network failure detected by the *HA monitoring
+tools* that run on the SecEngine passive node, the SecEngine passive
+node server takes over the SecEngine active node service and activates
+the Service IP#1 on its network interface.
+
+The SecEngine passive node now runs the services of the SecEngine active
+node.
+
+CPE management and monitoring is available.
+
+The SecEngine passive node server sends an email to notify the MSA
+administrator about the failover.
+
+link:[image:images/image2018-10-22_19-59-55.png[Image,width=800]]
+
+[[D-MSActivatorAdministrationGuide-Case3:InterconnectionNetworkFailure]]
+===== Case 3: Interconnection Network Failure
+
+Similar to case #2
+
+link:[image:images/image2018-10-22_20-2-36.png[Image,width=800]]
+
+[[D-MSActivatorAdministrationGuide-Case4:ServerFailure]]
+===== Case 4: Server Failure
+
+The SecEngine active node goes down (e.g. an OS failure or the
+motherboard failure).
+
+The SecEngine passive node detects this and the actions are similar to
+Case 2 and Case 3.
+
+link:[image:images/image2018-10-22_20-5-19.png[Image,width=800]]
+
+[[D-MSActivatorAdministrationGuide-Case5:MSASoftwareServiceFailure]]
+===== Case 5: MSA Software Service Failure
+
+The service watchdog detects the failure, restarts the service and sends
+an email to notify the MSA administrator.
+
+<
+
+link:[image:images/image2018-10-22_20-8-55.png[Image,width=800]]
+
+[[D-MSActivatorAdministrationGuide-Case6:MSAUnrecoverableSoftwareServiceFailure]]
+===== Case 6: MSA Unrecoverable Software Service Failure
+
+In some cases, if the MSA service couldn't be restarted by the watchdog,
+and it will remain down, and HA failover occurs as in Case 2 and Case 3.
+
+link:[image:images/Service_failure.png[Image,width=800]]
+
+[[D-MSActivatorAdministrationGuide-HAScriptsandProcesses]]
+=== HA Scripts and Processes
+
+The HA is divided in two process:
+
+. Synchronization process
+. Failover process
+
+[[D-MSActivatorAdministrationGuide-SynchronizationProcess]]
+==== Synchronization Process
+
+Every minute, a synchronization script is launched. It checks the need
+for synchronization and starts the synchronization only if the time
+defined in *server.conf* is reached. The folder and hosts impacted by
+the synchronization are defined in the file *sync.conf,* please see the
+section
+*link:../Administration/Installation%20and%20Configuration/d-msactivator-administration-guide.adoc[6.3.3] *
+for more detail on sync.conf.
+
+*/opt/ubisysconf/ha/ha-sync.sh*
+
+This script is called by cron.d every minute by the SecEngine passive
+node. It increments a counter, and once the synchronization time is
+reached, the synchronization occurs.
+
+The period (in minutes) between each synchronization is defined in the
+file *server.conf*. In the example below files get synchronized from
+Sec-1 to Sec-Rep-1 every 5 minutes.
+
+link:[image:images/sync_time.png[Image,width=800]]
+
+The synchronization logs can be seen in the file
+*/opt/ubisysconf/ha/logs/ha_sync.log* on the passive node. Once the
+passive becomes active due to failover, the synchronization process
+stops.
+
+Backup sync time can be modified by editing the servers.conf file and
+launch the below script from the webnode.
+
+*sh /opt/ubisysconf/ha/config_vctx.sh*
+
+[[D-MSActivatorAdministrationGuide-FailoverProcess]]
+===== Failover Process 
+
+Every minute, on theSecEngine passive node, a script
+(/opt/ubisysconf/ha/ha-backup.sh) is launched by cron.d to check the
+interface status and service status on its active node.
+
+*/opt/ubisysconf/ha/ha-backup.sh*
+
+Counter: /opt/ubisysconf/ha/counter.num
+
+If their counterpart is down (service xxx status returns anything but
+0), a counter is incremented.
+
+Once the counter is greater than the value defined in the configuration
+file *server.conf*, the SecEngine passive node takes over the services.
+
+Here is the flow for D-MSA HA failover:
+
+link:[image:images/DMSA_HA-FLOW.png[Image,width=800]]
+
+In the configuration below, Sec-Rep-1 is the backup of Sec-1 and backup
+activation time is five minutes, therefore the failover process will
+happen after a five minute wait and will test the active SecEngine node
+status.
+
+link:[image:images/backup_time.png[Image,height=130]]
+
+The HA monitoring logs are available in this file
+/opt/ubi-sysconf/ha/logs/ha_backup.log.
+
+[[D-MSActivatorAdministrationGuide-FailoverProcessSteps]]
+====== Failover Process Steps
+
+As part of the failover process, the actions below are carried out by a
+monitoring standby node.
+
+. Connect to the active node through one of the reachable interfaces.
+. If step 1 is successful, the below steps are carried out. If not, do
+nothing (if neither of the interfaces are reachable).
+. Shut down all the services on the active node.
+. Make serviceIP down on the active node and make it up on the local
+node.
+. Create a file ha.backupmode in directory /opt/ubisysconf/ha/ to
+confirm that this local node is in backup mode.
+. Adapt vars.ctx file
+. Stop syncing the files from the active node
+. Set local node status as "active failover"  in DB by launching the
+script ("/opt/base/tools/SetRepNodeInDb.sh Sec-1 Sec-Rep-1 1")
+. Send HA failover log to Elasticsearch
+. Send mail about HA failover to D-MSA adminstrator mail ID- defined in
+configurator on UBI_MAIL_SERVERADMIN
+
+[[D-MSActivatorAdministrationGuide-RevertingFailover]]
+====== Reverting Failover
+
+Reverting failover is to make the failed node active again and backup
+node (standby) as passive again. Assuming Sec-1 node failed and
+Sec-Rep-1 took over its IP and service on HA failover, once the issue is
+fixed on Sec-1, to make Sec-1 active and Sec-Rep-1 passive, we need to
+launch the below script from Sec-Rep-1.
+
+....
+/opt/ubisysconf/ha/revert_failover.sh
+....
+
+Prerequisites for this script, if the failover happens in the case of
+network interface failure, we have to make the failed interface up on
+the failed node before running the script. If the failover happened
+because of unrecoverable service down, a manual check needs to done to
+fix it.
+
+This script does the following steps from Sec-Rep-1
+
+. Shutdown the service IP locally and make it up on the original active
+Sec-1.
+. Sync the files that are updated in Sec-Rep-1 during the time it was
+active to the original active node Sec-1.
+. Shutdown the services locally and activate the service on the original
+active node Sec-1.
+. Remove the file ha.backup mode created during the failover process so
+that the local node will start monitoring the node Sec-1 which is going
+to be active.
+. Reactivate the cron to start syncing the files from the node Sec-1
+which is going to be active.
+. Adapt vars.ctx file
+. Set this local node status to "passive" in DB, by running the script
+"*/opt/base/tools/SetRepNodeInDb.sh Sec-1 Rep-1 2*" from Sec-Rep-1.
+. Set the original node status to "active" in DB, by running the script
+"*/opt/base/tools/SetMsaNodeInDb.sh*" from Sec-1.
+
+[[D-MSActivatorAdministrationGuide-DeactivatingtheHAFailover]]
+====== Deactivating the HA Failover
+
+This is done by simply removing the backup section in servers.conf in
+the webnode and launching the below script from the webnode.
+
+sh /opt/ubisysconf/ha/config_vctx.sh
+
+[[D-MSActivatorAdministrationGuide-DeactivatingtheHAFailoverTemporarilyforUpgradeProcessandActivatingBack]]
+====== *Deactivating the HA Failover Temporarily for Upgrade Process and Activating Back*
+
+While upgrading the D-MSA nodes the service will restart. Just to make
+sure HA failover does not happen that time, deactivate HA failover
+temporarily by creating a file with the below command in the passive
+node
+
+[source,western]
+----
+#touch /opt/ubisysconf/ha/ha.backupmode
+----
+
+After the upgrade process is complete, all the services are up, in order
+to activate the HA failover again remove the file using the below
+command in the passive node
+
+[source,western]
+----
+#rm –f /opt/ubisysconf/ha/ha.backupmode
+----
+
+[[D-MSActivatorAdministrationGuide-HAstatusinGUI-ncroot->Maintenance->Systemadministration->DMSAstatus]]
+====== HA status in GUI - ncroot->Maintenance->System administration ->DMSA status
+
+The following describes how each status is set in DB.
+
+[[D-MSActivatorAdministrationGuide-SecEngineStatus]]
+======= *Sec Engine Status*
+
+The centralized node, which is a webnode, will monitor the active
+SecEngine status using the following script:
+
+/opt/dms/bin/dsmsIsAlive.sh run every minutes
+
+The log file is available here:
+
+[source,western]
+----
+[root@Web bin]# tail -F /opt/dms/logs/dsmsIsAlive.log
+----
+
+[source,western]
+----
+Node Sec (172.10.15.190) isalive 1
+----
+
+[[D-MSActivatorAdministrationGuide-HAFailoverStatus&NodeName&NodeIP]]
+======= *HA Failover Status & Node Name & Node IP*
+
+All three statuses are set by the script which is run manually during
+the initial D-MSA setup.
+
+For Active Node
+
+[source,western]
+----
+[root@Sec-1]# /opt/base/tools/SetMsaNodeInDb.sh
+----
+
+The above script should be the only one from the active node.
+
+For Passive Node
+
+[source,western]
+----
+[root@Sec-Rep-1]# /opt/base/tools/SetRepNodeInDb.sh Sec-1 Sec-Rep-1 2
+----
+
+Sec-Rep-1 is the passive node name.
+
+Sec-1 is the active node for this passive node.
+
+2 - to set passive status.
+
+The above script should be the only one from the passive node.

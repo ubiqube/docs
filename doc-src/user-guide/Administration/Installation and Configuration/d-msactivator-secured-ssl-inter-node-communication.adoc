@@ -1,0 +1,60 @@
+= D Msactivator Secured Ssl Inter Node Communication
+:toc: left
+:toc-title: Content
+:imagesdir: ../../resources/
+:ext-relative: adoc
+
+== Overview
+
+This page explains the set-up to configure SSL for internal
+communication between
+
+* SecEngine and the database
+* JBoss application server and the database
+
+This will ensure that inter-node communication is secured in a
+Distributed MSActivator setup.
+
+NOTE: The feature is partially available in MSA-17.1.1-1 and requires
+some manual steps to be activated.
+
+== How to Activate the Encryption (v17.1.1P02+)
+
+For MSActivator or D-MSActivator running version 17.1.1P02+, the feature
+can be activated simply with the CLI-based configuration tool:
+
+....
+/opt/configurator/configure --expert
+....
+
+Select database configuration and update the configuration below:
+
+....
+Database secured communication (SSL) (true)
+....
+
+== How to Activate the Encryption (v17.1.1P01)
+
+For MSActivator or D-MSActivator running version 17.1.1P01, the feature
+must first be activated with the CLI-based configuration tool:
+
+....
+/opt/configurator/configure --expert
+....
+
+Select database configuration and update the configuration below:
+
+....
+Database secured communication (SSL) (true)
+....
+
+For MSActivator or D-MSActivator where the PostgreSql DB nodes are
+separated, the configuration of the remote DB nodes must be finalized as
+follows.
+
+We assume that the /etc/hosts file allows SSH remote execution on the DB
+nodes. For example, if DB nodes are *db-1* and *db-2*:
+
+....
+/opt/base/tools/Psql/activatePgsqlSSL.sh  db-1  db-2
+....

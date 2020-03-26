@@ -1,0 +1,61 @@
+= Tenants And Users
+:toc: left
+:toc-title: Content
+:imagesdir: ../resources/
+:ext-relative: adoc
+
+== Overview
+
+After installing, configuring and activating the MSActivator, you will
+start creating tenants and users. This guide will walk you through the
+initial process of connecting and creating a tenant.
+
+== Initial Connection
+
+The MSActivator comes with one pre-created super admin user: ncroot (the
+equivalent of the root user on Linux systems). The default password for
+this user is "ubiqube".
+
+This default password should be changed, especially if the MSActivator
+is meant to be used in a production environment.
+
+The default MSActivator portal address is
+[.underline]#https://<MSA_IP>/UBI/en# (replace <MSA_IP> with the actual
+IP address of your MSActivator installation.
+
+link:[image:images/image2018-4-5_10-47-49.png[Image,width=800]]
+
+== Tenancy Management
+
+The MSActivator is design to provide multi-tenancy where a tenant is a
+virtual private space that can be managed as an isolated environment.
+
+There are 2 levels of tenancy, the Operator Tenant and the Customer
+Tenant, the latest being nested in the Operator tenant.
+
+=== Operator Tenant
+
+Click on image:images/image2018-6-22_17-58-19.png[Icon,width=24] to open
+the "Entity Creation" dialogue and select "Operator" as the Entity Type.
+
+The "Prefix" is a 3 letter unique identifier for the tenant. It will be
+combined with the Customer and Device ID to build a short,
+comprehensive, unique identifier.
+
+link:[image:images/image2018-4-1_11-23-16.png[Image,width=800]]
+
+=== Customer Tenant
+
+Click on image:images/image2018-6-22_17-58-29.png[Icon,width=24] to open
+the "Entity Creation" dialogue and select "Customer" as the Entity Type.
+
+Carefully select the Operator tenant where the Customer will be created.
+
+link:[image:images/image2018-4-1_11-30-13.png[Image,width=800]]
+
+In the "Contacts" form, the email is a mandatory field. This email will
+be used to send Alarms. Alarm management is explained in the
+link:../Assurance/alarm-management.adoc[Alarm Management] guide.
+
+Save the Customer form and navigate to the new Customer Tenant (click on
+the Customer name in the customer list).

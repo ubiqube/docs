@@ -1,0 +1,122 @@
+<div class="documentation-content">
+
+
+      <div class="wiki-content" id="main-content">
+        <h1 id="LogAnalysis-Overview"><span class="">Overview</span></h1>
+        <p>The MSActivator can collect, index and store events received from devices. Once indexed, the logs are fully searchable from the user interface.</p>
+        <p>The diagram below shows the syslog processing steps from the device to Elasticsearch. </p>
+
+        <p><a class="image-popup-fit-width" href="">
+          <img alt="Image" src="images/Log_Analysis_event_flow.png" width="800"/></a></p>
+        <h2 id="LogAnalysis-LogAnalysisPortal"><span class="">Log Analysis Portal</span></h2>
+        <h3 id="LogAnalysis-Access"><span class="">Access</span></h3>
+        <p><span style="color: rgb(51,51,51);text-decoration: none;">Log analysis over multiple devices is available by accessing the analytics </span>from the customer tenant page, 'LOGS &amp; REPORTS' tab.</p>
+
+        <p><a class="image-popup-fit-width" href="">
+            <img alt="Image" src="images/image2018-4-10_15-47-45.png" width="800"/></a></p>
+        <p></p>
+        <p>Or for a single device, from the devices page, in the 'Logs' sub-task.</p>
+
+<p><a class="image-popup-fit-width" href="">
+    <img alt="Image" src="images/image2018-4-10_15-49-21.png" width="800"/></a></p>
+        <p></p>
+        <p>The main diffrences between these 2 levels of access is the ability, on the customer tenant, to perform a log analysis over multiple devices and/or multiple vendors.</p>
+
+<p><a class="image-popup-fit-width" href="">
+    <img alt="Image" src="images/image2018-4-10_17-18-24.png" width="800"/></a></p>
+        <p></p>
+        <p>The page is divided into 3 sections:</p>
+        <ul style="margin-left: 1.5em;">
+            <li>on the top, the default text search form </li>
+            <li>on the left, the search options</li>
+            <li>on the main part, the search results</li>
+        </ul>
+        <h3 id="LogAnalysis-SearchOptions"><span class="">Search Options</span></h3>
+        <h4 id="LogAnalysis-DeviceSelection"><span class="">Device Selection</span></h4>
+        <p><a class="image-popup-fit-width" href="">
+    <img alt="Image" height="121" src="images/Loganal_device_sel.png" width="359"/></a></p>
+        <p>This is the list of devices with log collection enabled. Select the devices you want to include.</p>
+        <h4 id="LogAnalysis-TimeRangeSelection"><span class="">Time Range Selection</span></h4>
+        <p><a class="image-popup-fit-width" href="">
+    <img alt="Image" height="184" src="images/Loganal_time_sel.png" width="300"/></a></p>
+        <p>When device logs are collected and parsed, the log timestamp is extracted and indexed in the field fw_time. The timestamp is typed as a date by the Elasticsearch engine, which will allow to search by time range. By default, the search on logs is done on all logs that have a timestamp between the current time minus 24 hours and the current time plus 24 hours.</p>
+        <p>You can search within (default) or outside the specified time range by using the “time range inclusion” radio buttons.</p>
+        <p>By default, the time range calendar is set to the UTC time zone. It is possible to change it to another time zone. If you need assistance changing default timezones, please contact UBIqube support.</p>
+        <div class="confluence-information-macro confluence-information-macro-information conf-macro output-block" data-hasbody="true" data-macro-name="info">
+            
+        </div>
+        <h4 id="LogAnalysis-ResultsViewingOptions"><span class="">Results Viewing Options</span><span class=""></span></h4>
+        <p><span style="color: rgb(51,51,51);text-decoration: none;">You can adjust the grouping, list size, and sort method using the radio button selections below.</span></p>
+        <p><a class="image-popup-fit-width" href="">
+    <img alt="Image" height="138" src="images/Loganal_resultPage_sel.png" width="321"/></a></p>
+        <h5 id="LogAnalysis-ResultsperPage">Results per Page</h5>
+        <p>By default, the search results are limited to 10 results per page. You may select to display up to 1,000 results per page. The number of results is limited to 1000 in order to avoid displaying performance issues (web browsers may experience poor performance when trying to display thousands of results per page).</p>
+        <h5 id="LogAnalysis-PagingThroughtheResults"><span class="">Paging Through the Results</span></h5>
+        <p>You can navigate through the results pages using the “previous” and “next” buttons.</p>
+        <p><a class="image-popup-fit-width" href="">
+    <img alt="Image" height="248" src="images/Loganal_resultPage_paging.png" width="765"/></a></p>
+        <h5 id="LogAnalysis-ResultAgregation"><span class="">Result Agregation</span></h5>
+        <p>Result can be grouped (aggregated) by fields based on the field value.</p>
+        <p>For example, results can be grouped by date, source IP, destination IP, etc. This is useful to get information on how many source IP/destination IPs occur per day.</p>
+        <p><a class="image-popup-fit-width" href="">
+    <img alt="Image" src="images/Loganal_resultPage_groupedSearch_folded.png" width="800"/></a></p>
+        <p>Once grouping is selected, the result details can be viewed by expanding the line item:</p>
+        <p><a class="image-popup-fit-width" href="">
+    <img alt="Image" src="images/Loganal_resultPage_groupedSearch_unfolded.png" width="800"/></a></p>
+
+        <h4 id="LogAnalysis-QueryLanguage">Query Language</h4>
+        <p>The filter applies on the source IP, the destination IP, and the destination port of the logs.</p>
+        <h5 id="LogAnalysis-ConditionalOperators"><span class="">Conditional Operators</span></h5>
+        <p>Each search field is associated with a list of operators to apply on the search. The three possible operators are MUST, MUST_NOT and SHOULD.</p>
+        <ul>
+            <li>If MUST is selected, the search result will only contain results that match the associated condition.</li>
+            <li>If MUST NOT is selected, the search result will not contain any result that matches the associated search terms. </li>
+            <li>If SHOULD is selected, the search result will contain results matching the search terms, but can also contain results matching other terms.</li>
+        </ul>
+        <p>By default, the operator is MUST.</p>
+        <h5 id="LogAnalysis-FilteronSourceandDestinationIP"><span class="">Filter on Source and Destination IP</span></h5>
+        <p>The source IP and destination IP accepts single IPs, IP ranges, or subnets. The following queries are valid examples:</p>
+        <p>Search all logs with 10.1.111.252 as the source IP:</p>
+        <p><a class="image-popup-fit-width" href="">
+    <img alt="Image" src="images/Loganal_filter_sel_srcIPMust.png" width="800"/></a></p>
+
+        <p>Search all logs with the source IP within the range 10.1.111.1-10.1.112.1:</p>
+        <p><a class="image-popup-fit-width" href="">
+    <img alt="Image" src="images/Loganal_filter_sel_srcIPRangeMust.png" width="800"/></a></p>
+        <p>Search all logs with the source IP out of the the subnet 10.1.11.1/24:</p>
+        <p><a class="image-popup-fit-width" href="">
+    <img alt="Image" src="images/Loganal_filter_sel_srcIPSubnetMustNot.png" width="800"/></a></p>
+        <h5 id="LogAnalysis-FilteronDestinationPort"><span class="">Filter on Destination Port</span></h5>
+        <p>Search on destination port will accept arguments such as single port (ex: 22), port list (ex: 22,161,514) or port range (ex: 20-25).</p>
+        <p>The following query examples are valid:</p>
+        <p>Search all logs with destination port 22:</p>
+        <p><a class="image-popup-fit-width" href="">
+    <img alt="Image" src="images/Loganal_filter_sel_dstPort.png" width="800"/></a></p>
+        <p>Search all logs with source port in the range 6000-7000:</p>
+        <p><a class="image-popup-fit-width" href="">
+    <img alt="Image" src="images/Loganal_filter_sel_dstPortRange.png" width="800"/></a></p>
+        <p>Search all log with destination port not in the list 22,443,161:</p>
+        <p><a class="image-popup-fit-width" href="">
+    <img alt="Image" src="images/Loganal_filter_sel_dstPortList.png" width="800"/></a></p>
+        <h5 id="LogAnalysis-FullTextSearch"><span class="">Full Text Search</span></h5>
+        <p><a class="image-popup-fit-width" href="">
+    <img alt="Image" src="images/Full_text_search_field.png" width="800"/></a></p>
+        <p>Text search allows searching directly in the raw log. This search field supports the search engine query syntax.</p>
+        <p>When the results per page size is set to 10 or 50, the results page will dynamically be refreshed based on the terms in the text search input field. For larger results per page size, you will need to click search before the results refresh.</p>
+        <h3 id="LogAnalysis-ResultManagement"><span class="">Result Management</span></h3>
+        <p>Once a search returns any hits, several option are available to the user for the employment of the results.</p>
+        <h4 id="LogAnalysis-ResultDetails"><span class="">Result Details</span></h4>
+        <p>For each result, the user can view the details of the result by expanding the result row (click the green "+"):</p>
+        <p><a class="image-popup-fit-width" href="">
+    <img alt="Image" src="images/Loganal_resultPage_searchdetail_unfolded.png" width="800"/></a></p>
+        <h3 id="LogAnalysis-VideoTutorial">Video Tutorial</h3>
+        <div class="embeddedObject conf-macro output-block" data-hasbody="false" data-macro-name="multimedia">
+            <img controls="" height="380" src="videos/MSActivator-16.2-Device-Logs.mp4" width="500">
+                
+            </img>
+        </div>
+        <p></p>
+        <p></p>
+    </div>
+
+        </div>

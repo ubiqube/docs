@@ -1,0 +1,81 @@
+= Configure Behavior For User Inputs In A Workflow Form
+:toc: left
+:toc-title: Content
+:imagesdir: ../resources/
+:ext-relative: adoc
+
+[[main-content]]
+The main purpose for adding behaviour to a Workflow web form is to
+address the use case in which the user form changes based on the value
+of one (or more) variables called the selector.
+
+link:[image:images/Diapositive1.jpg[Image,width=800]]
+
+In this case, the variable "Type" has 3 possible values, "subnet",
+"FQDN" and "ip range". For each type, the web form show specific form
+fields.
+
+Where the type is "subnet":
+
+link:[image:images/image2019-3-22_15-39-26.png[Image,width=800]]
+
+Where the type is "FQDN":
+
+link:[image:images/image2019-3-22_15-40-11.png[Image,width=800]]
+
+Where the type is "ip range":
+
+link:[image:images/image2019-3-22_15-40-50.png[Image,width=800]]
+
+In order to implement this behaviour, we have to use the variable type
+"Composite". This allows us to link the value of a variable to the
+behaviour (visible or not, mandatory or not,...) of another variable.
+
+The *first step* in creating this form is to produce a Workflow with all
+the variables.
+
+link:[image:images/image2019-3-22_15-50-40.png[Image,width=800]]
+
+The variable $params.type must be a string with a default value and a
+list of predefined values. It should be set as mandatory and adding free
+values should not be allowed.
+
+link:[image:images/image2019-3-22_15-53-7.png[Image,width=800]]
+
+The *next step* is to configure each composite variable to define their
+behaviour based on a selector variable.
+
+For example, the variable $params.FQDN should be visible and mandatory
+only if the value of $params.type is "FQDN".
+
+In the section "Type" below, when the type is set to Composite, a
+Selector variable field is available to choose which variable is going
+to be used as the driver for selecting the behaviour of the other
+variables.
+
+link:[image:images/image2019-3-22_16-7-33.png[Image,width=800]]
+
+The selector values will also have to be listed and for each value. The
+advanced parameters (image:images/servers_view.gif[image,height=16])
+should be edited to set the display name, the visibility, whether the
+variable is mandatory or not, etc.
+
+link:[image:images/image2019-3-22_16-17-27.png[Image,width=800]]
+
+Once each of the composite variables are configured, the user web form
+will behave as described.
+
+It is also possible to link the behaviour of a variable to a selector
+with a boolean type, as in the example below, where the variable
+$params.abc (which is a composite) is hidden when the value of
+$params.show_var_ABC is set to false, and shown when
+$params.show_var_ABC is set to true.
+
+link:[image:images/image2019-3-22_16-26-52.png[Image,width=800]]
+
+link:[image:images/image2019-3-22_16-27-57.png[Image,width=800]]
+
+The user form will look like this:
+
+link:[image:images/image2019-3-22_16-34-6.png[Image,width=400]] or
+link:[image:images/image2019-3-22_16-34-44.png[Image,width=800]]

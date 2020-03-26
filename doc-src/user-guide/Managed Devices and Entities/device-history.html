@@ -1,0 +1,62 @@
+<div class="documentation-content">
+          <h1>Configuration Change Management</h1>
+          <p>The last tab on the device page is called “History”.</p>
+          <p>It provides information about your hardware, the different versions of firmware and licences, as well as information on the device configuration.</p>
+          <h2>Asset History Management</h2>
+          <p>The system keeps the history of the assets that were installed on the device and creates an internal event (prefixed by "<span class="confluence-link">VNOC</span>") event that can be used to trigger <a href="../Assurance/alarm-management.adoc">alarms</a>.</p>
+          <p>The managed assets are defined and discovered by the device adaptor and can be customized to adapt to the device model or by adding additional properties.</p>
+          <h5>Illustration with a Firewall</h5>
+          <p>The firmware version is v6.0.0.</p>
+          <p><a class="image-popup-fit-width" href="">
+              <img alt="Image" src="images/image2018-9-28_18-10-34.png" width="800"/>
+          </a></p>
+          <p>After the image upgrade to v6.0.1, the firmware inventory shows the history of the images that were applied.</p>
+          <p><a class="image-popup-fit-width" href="">
+              <img alt="Image" src="images/image2018-9-28_18-23-33.png" width="800"/>
+          </a></p>
+          <p>The alarm management shows the VNOC event raised by the upgrade.</p>
+          <p><a class="image-popup-fit-width" href="">
+              <img alt="Image" src="images/image2018-9-28_18-29-57.png" width="800"/>
+          </a></p>
+          <h2>Configuration Change Management</h2>
+          <p>The MSActivator maintains all the versions of the running configurations of the managed devices in its configuration database.</p>
+          <p>Every time the MSActivator configures a device or detects a configuration change, it will fetch the current configuration, version it and store it in its configuration database.</p>
+          <p>This configuration will be available later to manage configuration changes.</p>
+          <div data-hasbody="true" data-macro-name="info">
+            <p>Note</p>
+            <div>
+              <p>Every night the MSActivator analyses the configuration of all its managed devices and tracks modifications that may have been done manually on the device.</p>
+            </div>
+          </div>
+          <p>The configuration history is available on the Devices page, then going to the "History" tab and selecting "Change Mgt".</p>
+          <p><a class="image-popup-fit-width" href="">
+              <img alt="Image" src="images/image2019-1-30_11-3-8.png" width="800"/>
+          </a></p>
+          <p>The change management shows the list of all configuration versions that were archived since the device's <a href="../Getting Started/getting-started-with-the-msactivator.adoc">initial provisioning:</a></p>
+          <p><a class="image-popup-fit-width" href="">
+              <img alt="Image" src="images/image2019-1-30_11-6-16.png" width="800"/>
+          </a></p>
+          <p>The user has access to functions such as:</p>
+          <ul>
+            <li>comparing two versions of the configuration</li>
+            <li>downloading a selected configuration version</li>
+            <li>showing the details of the configuration, which are:
+              <ul>
+                <li>the running configuration</li>
+                <li>the configuration that was actually applied</li>
+                <li>the errors that may have been raised during the configuration</li>
+              </ul>
+            </li>
+            <li>creating a tag to identify a specific version</li>
+            <li>backing up the current running configuration</li>
+            <li>rolling back the current configuration to one of the previous configuration versions</li>
+          </ul>
+          <div class="confluence-information-macro confluence-information-macro-information conf-macro output-block" data-hasbody="true" data-macro-name="info">
+            <p class="title">NOTE: Calling the configuration rollback should be done carefully because it will completely replace the current running configuration of the device with the rollback version.</p>
+            
+            
+          </div>
+          <h3>Video Tutorial</h3>
+          <div data-hasbody="false" data-macro-name="multimedia"><img controls="controls" height="380" src="videos/MSActivator-16.2-Device-History.mp4" width="500">
+               </img></div>
+        </div>

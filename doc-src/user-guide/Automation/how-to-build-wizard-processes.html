@@ -1,0 +1,82 @@
+<div class="documentation-content">
+
+<div class="wiki-content" id="main-content">
+    <div class="confluence-information-macro confluence-information-macro-information conf-macro output-block" data-hasbody="true" data-macro-name="info">
+        <p class="title">NOTE: Source Code</p>
+        <div class="confluence-information-macro-body">
+            <p>The source code for this tutorial is available on GitHub at: <a class="external-link" href="https://github.com/openmsa/Workflows-Microservices/tree/master/WORKFLOWS/Tutorials/Process_Wizard" rel="nofollow">https://github.com/openmsa/Workflows-Microservices/tree/master/WORKFLOWS/Tutorials/Process_Wizard</a></p>
+        </div>
+    </div>
+    <p>It is possible to design processes with multiple tasks and configure the process to execute in a wizard-like way, with execution pause to allow the user to input parameters during the process execution.</p>
+    <p>The sample Workflow "Process_Wizard" has 2 processes, the main process "compute" will ask for the user to provide 2 integer values and calculate the sum of the 2 integers.</p>
+    <p>In order to configure the task to put the process execution on hold, the keyword PAUSE should be used as a parameter of prepare_json_response:</p>
+    <div class="code panel pdl conf-macro output-block" data-hasbody="true" data-macro-name="code" style="border-width: 1px;">
+        <div class="codeContent panelContent pdl">
+            <div>
+                <div class="syntaxhighlighter sh-confluence php" id="highlighter_593156">
+                    <div class="toolbar"><span><a class="toolbar_item command_help help" href="#">?</a></span></div>
+                    <table border="0" cellpadding="0" cellspacing="0">
+                        <tbody>
+                            <tr>
+                                <td class="gutter">
+                                    <div class="line number1 index0 alt2">1</div>
+                                    <div class="line number2 index1 alt1">2</div>
+                                    <div class="line number3 index2 alt2">3</div>
+                                    <div class="line number4 index3 alt1">4</div>
+                                    <div class="line number5 index4 alt2">5</div>
+                                    <div class="line number6 index5 alt1">6</div>
+                                    <div class="line number7 index6 alt2">7</div>
+                                    <div class="line number8 index7 alt1">8</div>
+                                    <div class="line number9 index8 alt2">9</div>
+                                    <div class="line number10 index9 alt1">10</div>
+                                    <div class="line number11 index10 alt2">11</div>
+                                    <div class="line number12 index11 alt1">12</div>
+                                    <div class="line number13 index12 alt2">13</div>
+                                    <div class="line number14 index13 alt1">14</div>
+                                    <div class="line number15 index14 alt2">15</div>
+                                    <div class="line number16 index15 alt1">16</div>
+                                    <div class="line number17 index16 alt2">17</div>
+                                    <div class="line number18 index17 alt1">18</div>
+                                    <div class="line number19 index18 alt2">19</div>
+                                </td>
+                                <code class="code">
+                                    <div class="container" title="Hint: double-click to select code">
+                                        <div class="line number1 index0 alt2"><code class="php plain">&lt;?php</code></div>
+                                        <div class="line number2 index1 alt1"><code class="php comments">/**</code></div>
+                                        <div class="line number3 index2 alt2"><code class="php spaces"> </code><code class="php comments">* This file is necessary to include to use all the in-built libraries of /opt/fmc_repository/Reference/Common</code></div>
+                                        <div class="line number4 index3 alt1"><code class="php spaces"> </code><code class="php comments">*/</code></div>
+                                        <div class="line number5 index4 alt2"><code class="php keyword">require_once</code> <code class="php string">'/opt/fmc_repository/Process/Reference/Common/common.php'</code><code class="php plain">;</code></div>
+                                        <div class="line number6 index5 alt1"><code class="php comments">/**</code></div>
+                                        <div class="line number7 index6 alt2"><code class="php spaces"> </code><code class="php comments">* List all the parameters required by the task</code></div>
+                                        <div class="line number8 index7 alt1"><code class="php spaces"> </code><code class="php comments">*/</code></div>
+                                        <div class="line number9 index8 alt2"><code class="php keyword">function</code> <code class="php plain">list_args() {</code></div>
+                                        <div class="line number10 index9 alt1"><code class="php spaces">  </code><code class="php plain">create_var_def(</code><code class="php string">'a'</code><code class="php plain">, </code><code class="php string">'Integer'</code><code class="php plain">);</code></div>
+                                        <div class="line number11 index10 alt2"><code class="php plain">}</code></div>
+                                        <div class="line number12 index11 alt1"> </div>
+                                        <div class="line number13 index12 alt2"><code class="php comments">/**</code></div>
+                                        <div class="line number14 index13 alt1"><code class="php spaces"> </code><code class="php comments">* Use the keyword PAUSE to put the task in a PAUSE state, waiting for the user to click on the</code></div>
+                                        <div class="line number15 index14 alt2"><code class="php spaces"> </code><code class="php comments">* continue icon and optionnaly input some parameters</code></div>
+                                        <div class="line number16 index15 alt1"><code class="php spaces"> </code><code class="php comments">*/</code></div>
+                                        <div class="line number17 index16 alt2"><code class="php variable">$ret</code> <code class="php plain">= prepare_json_response(PAUSED, </code><code class="php string">'Task pause'</code><code class="php plain">, </code><code class="php variable">$context</code><code class="php plain">, true);</code></div>
+                                        <div class="line number18 index17 alt1"><code class="php functions">echo</code> <code class="php string">"$ret\n"</code><code class="php plain">;</code></div>
+                                        <div class="line number19 index18 alt2"><code class="php plain">?&gt;</code></div>
+                                    </div>
+                                </code>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p>When a task is paused, it will appear colored in orange in the instance list screen.</p>
+    <p><a class="image-popup-fit-width" href="">
+    <img alt="Image" src="images/image2019-2-12_16-33-41.png" width="800"/></a></p>
+    <p>The user must click on continue (the arrow pointing downward) in the "live console" to open a new dialogue to enter the parameters.</p>
+    <p><a class="image-popup-fit-width" href="">
+    <img alt="Image" src="images/image2019-2-12_16-35-27.png" width="800"/></a></p>
+  </div>
+
+
+
+        </div>

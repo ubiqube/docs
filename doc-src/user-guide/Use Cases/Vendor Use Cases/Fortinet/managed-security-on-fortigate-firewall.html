@@ -1,0 +1,1072 @@
+<div class="documentation-content">
+
+<div class="wiki-content" id="main-content">
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      In this document, we will look at the use case of managed security on Fortigate firewall.
+    </span>
+  </p>
+  <h1 id="ManagedSecurityonFortiGateFirewall-Goal">
+    <span style="color: #000000; text-decoration: none;">
+      Goal
+    </span>
+  </h1>
+  <ul>
+    <li>
+      <p>
+        <span style="color: #000000; text-decoration: none;">
+          Create a customer.
+        </span>
+      </p>
+    </li>
+    <li>
+      <p>
+        <span style="color: #000000; text-decoration: none;">
+          Create and activate a device.
+        </span>
+      </p>
+    </li>
+    <li>
+      <p>
+        <span style="color: #000000; text-decoration: none;">
+          Build a security configuration profile and associate it with the device.
+        </span>
+      </p>
+    </li>
+    <li>
+      <p>
+        <span style="color: #000000; text-decoration: none;">
+          Configure syslog on the firewall, collect the logs and build a dashboard.
+          
+        </span>
+      </p>
+    </li>
+    <li>
+      <p>
+        <span style="color: #000000; text-decoration: none;">
+          Do some simple policy management.
+        </span>
+      </p>
+    </li>
+    <li>
+      <p>
+        <span style="color: #000000; text-decoration: none;">
+          Remove the service.
+        </span>
+      </p>
+    </li>
+  </ul>
+  <h1 id="ManagedSecurityonFortiGateFirewall-Prerequisites">
+    <span style="color: #000000; text-decoration: none;">
+      Prerequisites
+    </span>
+  </h1>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      Knowledge of MSActivator concepts, such as:
+    </span>
+  </p>
+  <ul>
+    <li>
+      <p>
+        <span style="color: #000000; text-decoration: none;">
+          What a tenant is.
+        </span>
+      </p>
+    </li>
+    <li>
+      <p>
+        <span style="color: #000000; text-decoration: none;">
+          What a customer is.
+        </span>
+      </p>
+    </li>
+    <li>
+      <p>
+        <span style="color: #000000; text-decoration: none;">
+          What a device is.
+        </span>
+      </p>
+    </li>
+    <li>
+      <p>
+        <span style="color: #000000; text-decoration: none;">
+          …
+        </span>
+      </p>
+    </li>
+  </ul>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      Some network and security knowledge
+    </span>
+  </p>
+  <ul>
+    <li>
+      <p>
+        <span style="color: #000000; text-decoration: none;">
+          What is an SNMP and an SNMP community?
+        </span>
+      </p>
+    </li>
+    <li>
+      <p>
+        <span style="color: #000000; text-decoration: none;">
+          What is a syslog?
+        </span>
+      </p>
+    </li>
+    <li>
+      <p>
+        <span style="color: #000000; text-decoration: none;">
+          What is a router, a firewall policy,...?
+        </span>
+      </p>
+    </li>
+  </ul>
+  <h1 id="ManagedSecurityonFortiGateFirewall-Createacustomer">
+    <span style="color: #000000; text-decoration: none;">
+      Create a customer
+    </span>
+  </h1>
+  <p>
+    <span style="color: #000000;">
+      <span style="text-decoration: none;">
+        Login as a manager on your MSActivator and select (or create if necessary) a customer.
+      </span>
+    </span>
+  </p>
+  <h1 id="ManagedSecurityonFortiGateFirewall-Devicecreationandactivation">
+    <span style="color: #000000; text-decoration: none;">
+      Device creation and activation
+    </span>
+  </h1>
+  <h3 id="ManagedSecurityonFortiGateFirewall-Creation">
+    <span style="color: #000000; text-decoration: none;">
+      Creation
+    </span>
+  </h3>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      Click on your customer name to go into the customer tenant space.
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000;">
+      <span style="text-decoration: none;">
+        Click the “Create device” button (top right)
+      </span>
+      <span style="text-decoration: none;">
+        <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size">
+          <img class="confluence-embedded-image confluence-external-resource" data-image-src="https://lh6.googleusercontent.com/aF81duY0dpdArEXbaFI0TKM6l4hC2U5VAEIDkTh-fFTXr0ZPGQBmWkf4SGzczjrhXW_dew_zXW_YGI-RIHOypgLSz-tdbgB0fuuxQ-ZAT4jB-uiuD6WauPz1oSgV5vpdDQnT6vyp" height="22" src="images/aF81duY0dpdArEXbaFI0TKM6l4hC2U5VAEIDkTh-fFTXr0ZPGQBmWkf4SGzczjrhXW_dew_zXW_YGI-RIHOypgLSz-tdbgB0fuuxQ-ZAT4jB-uiuD6WauPz1oSgV5vpdDQnT6vyp" width="22"/>
+        </span>
+      </span>
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000;">
+      <span style="text-decoration: none;">
+        Select the "Expert" view (top right button):
+      </span>
+      <span style="text-decoration: none;">
+        <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size">
+          <img class="confluence-embedded-image confluence-external-resource" data-image-src="https://lh4.googleusercontent.com/CiTzBw0WVBxLQgU7HwpOApmQebmS3Tqq2bTbkzbrUyO_mPCg86k8Q987GsoaFRXqcjnj3WJdYi2393Bu61fp5PHEkZzzLqcQPFsIi5zZ3TPUn6rYEK0E-A_ORU4BSjHdMZ4eeQLF" height="30" src="images/CiTzBw0WVBxLQgU7HwpOApmQebmS3Tqq2bTbkzbrUyO_mPCg86k8Q987GsoaFRXqcjnj3WJdYi2393Bu61fp5PHEkZzzLqcQPFsIi5zZ3TPUn6rYEK0E-A_ORU4BSjHdMZ4eeQLF" width="150"/>
+        </span>
+      </span>
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size">
+        <img class="confluence-embedded-image confluence-external-resource" data-image-src="https://lh3.googleusercontent.com/3-l2pnPJ2-CWyVkllFpfoIRusl5F48-oVxdp-dn6aAttbYmNvvWJR2Wqpky3USyOcC3K8c9wE95__bb6K94DY6HpkGA7YT36kkZMxtJVCZWtH2cguG09zCHpT1Dqb7e50e0naFkK" src="images/3-l2pnPJ2-CWyVkllFpfoIRusl5F48-oVxdp-dn6aAttbYmNvvWJR2Wqpky3USyOcC3K8c9wE95__bb6K94DY6HpkGA7YT36kkZMxtJVCZWtH2cguG09zCHpT1Dqb7e50e0naFkK" width="800"/>
+      </span>
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      It’s important to set the correct manufacturer and model because this is how the Device Adaptor is selected. This cannot be changed once the device is created.
+    </span>
+  </p>
+  <p style="text-align: center;">
+    <span style="color: #000000; text-decoration: none;">
+      <span class="confluence-embedded-file-wrapper image-left-wrapper confluence-embedded-manual-size">
+        <img class="confluence-embedded-image confluence-external-resource confluence-content-image-border image-left" data-image-src="https://lh4.googleusercontent.com/-FAOuCwqlxkFJHsvXvXrMRPRIMJnBzWu2wkvK720BXNxoPkvaOg-9CbZw0KCJXF9Tk2RVH02qZwvy-DxNq7eTvZN9K52L07pHESiffzp3e6HNpvqn1NNiTRoLa1zNdhzlbG80mSP" src="images/-FAOuCwqlxkFJHsvXvXrMRPRIMJnBzWu2wkvK720BXNxoPkvaOg-9CbZw0KCJXF9Tk2RVH02qZwvy-DxNq7eTvZN9K52L07pHESiffzp3e6HNpvqn1NNiTRoLa1zNdhzlbG80mSP" width="800"/>
+      </span>
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      Add all other values such as Name, Management IP and Credentials, as found in the above section FGT_TRAINING_&lt;number&gt; or as provided by your lab manager.
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      Check the option in the service assurance component to activate monitoring and syslog collecting.
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      Then save and activate the device.
+    </span>
+  </p>
+  <h3 id="ManagedSecurityonFortiGateFirewall-Activation">
+    <span style="color: #000000; text-decoration: none;">
+      Activation
+    </span>
+  </h3>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      Click the “Device” you just created (click on underlined device name).
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      Click the “Details” tab.
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      Select “Actions” (dropdown on right), then select “Initial provisioning”.
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size">
+        <img class="confluence-embedded-image confluence-external-resource" data-image-src="https://lh3.googleusercontent.com/ERMgKdKAtgaY8sKbXQ3YtopsG3c-00lXB7cDBePtNHeGiuqob7cOXfA5JR6igOIXs-_p7oE_zck_bBI86aNfrKPw0ocNvBJ7R-omYtAvCOU4Yj0b1Mgqw7prpu3v-u57_2tutrS_" src="images/ERMgKdKAtgaY8sKbXQ3YtopsG3c-00lXB7cDBePtNHeGiuqob7cOXfA5JR6igOIXs-_p7oE_zck_bBI86aNfrKPw0ocNvBJ7R-omYtAvCOU4Yj0b1Mgqw7prpu3v-u57_2tutrS_" width="800"/>
+      </span>
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000;">
+      <span style="text-decoration: none;">
+        Click on
+      </span>
+      <span style="text-decoration: none;">
+        <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size">
+          <img class="confluence-embedded-image confluence-external-resource" data-image-src="https://lh5.googleusercontent.com/Yisi46fUXd2cNR8CwoOj_utgIXVd66mREBNTI05VwfBw8SlIQHRmTySY8P-5lTtg3Ns9okCZSWmZ6uFY_sPL_9aoLr15aIUytX2WMw1XEOtL-10Q-8W20zcLJr_gTa1CJzRDb-5l" height="16" src="images/Yisi46fUXd2cNR8CwoOj_utgIXVd66mREBNTI05VwfBw8SlIQHRmTySY8P-5lTtg3Ns9okCZSWmZ6uFY_sPL_9aoLr15aIUytX2WMw1XEOtL-10Q-8W20zcLJr_gTa1CJzRDb-5l" width="16"/>
+        </span>
+      </span>
+      <span style="text-decoration: none;">
+         to update the status of the provisioning.
+      </span>
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      The provisioning only takes a few seconds and the status should turn green.
+    </span>
+  </p>
+  <p style="text-align: center;">
+    <span style="color: #000000; text-decoration: none;">
+      <span class="confluence-embedded-file-wrapper image-left-wrapper confluence-embedded-manual-size">
+        <img class="confluence-embedded-image confluence-external-resource image-left" data-image-src="https://lh5.googleusercontent.com/KVhqQQw7hp_7ByQn6cVGY8-hdGCJImIrx7pF0aQLiJxPP-F86pUXNZvyWbxTyQ-EL6qY0VBLh_QmYh_UGKdsaLzAYp03ZRSwPPv1W9dFpYn7itVy1SBJVRww9rPv0qJCDj93hp1V" src="images/KVhqQQw7hp_7ByQn6cVGY8-hdGCJImIrx7pF0aQLiJxPP-F86pUXNZvyWbxTyQ-EL6qY0VBLh_QmYh_UGKdsaLzAYp03ZRSwPPv1W9dFpYn7itVy1SBJVRww9rPv0qJCDj93hp1V" width="800"/>
+      </span>
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      Once the provisioning is executed, you may have to wait up to one minute for the device monitoring status to turn green (it should take less than one minute).
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      The page does not refresh automatically, you need to reload the browser page manually.
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size">
+        <img class="confluence-embedded-image confluence-external-resource" data-image-src="https://lh4.googleusercontent.com/cyV0H7c2M4pMvENzRSqz1dPk_1TO9j_7dTfartLBF9IZ9E6NNvskcNWf3lJN1vKIFuVfZgzWiF_WRoV8A2kJ_x4pglUD2ErTNRoXbeKc7unrgckcLkAKbgHo2oRvnHNGl8mq-l2X" src="images/cyV0H7c2M4pMvENzRSqz1dPk_1TO9j_7dTfartLBF9IZ9E6NNvskcNWf3lJN1vKIFuVfZgzWiF_WRoV8A2kJ_x4pglUD2ErTNRoXbeKc7unrgckcLkAKbgHo2oRvnHNGl8mq-l2X" width="800"/>
+      </span>
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      Once the device is activated and it’s status is green, we can verify that its running configuration was properly archived in the configuration change management module.
+    </span>
+  </p>
+  <h3 id="ManagedSecurityonFortiGateFirewall-ChangeManagement">
+    <span style="color: #000000; text-decoration: none;">
+      Change Management
+    </span>
+  </h3>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      Go to tab “History” and check that the running config was archived in the configuration change management view.
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      Click on the tab “History” then click the “Change Mgt” button (top right).
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size">
+        <img class="confluence-embedded-image confluence-external-resource" data-image-src="https://lh6.googleusercontent.com/09t2Xsmi98t9wWwLj9DFKg6NZdIbO4gTr5ozyEaxyrBEbFoDKCWNkAH6QYL8H3T9oNXOUina1spj5Mig4JzVsulYojE-GL7ha_lGlll4_kJk_LRPYwm2K8o2LPQdzXV1RWnUPjho" src="images/09t2Xsmi98t9wWwLj9DFKg6NZdIbO4gTr5ozyEaxyrBEbFoDKCWNkAH6QYL8H3T9oNXOUina1spj5Mig4JzVsulYojE-GL7ha_lGlll4_kJk_LRPYwm2K8o2LPQdzXV1RWnUPjho" width="800"/>
+      </span>
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      The change management GUI pops-up.
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size">
+        <img class="confluence-embedded-image confluence-external-resource" data-image-src="https://lh3.googleusercontent.com/EWzUJP5JKTFVXQQkV16hiCARpGP7ejJQc7VL0_1yCrdSF4oeqLOssElnEJtYkAk1vPHlTHRuqYoUk2RxEmuTNed9C_-MCquP7gzsqx64zHnT7uTJG9r_Bb5df7R-3uxUWvjhc_2z" src="images/EWzUJP5JKTFVXQQkV16hiCARpGP7ejJQc7VL0_1yCrdSF4oeqLOssElnEJtYkAk1vPHlTHRuqYoUk2RxEmuTNed9C_-MCquP7gzsqx64zHnT7uTJG9r_Bb5df7R-3uxUWvjhc_2z" width="800"/>
+      </span>
+    </span>
+  </p>
+  <h4 id="ManagedSecurityonFortiGateFirewall-Configurationbackup">
+    <span style="color: #000000; text-decoration: none;">
+      Configuration backup
+    </span>
+  </h4>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      Trigger a backup (does a backup of the device configuration).
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      Click the “Backup” button (button inside the change management window).
+    </span>
+  </p>
+  <p style="text-align: center;">
+    <span style="color: #000000; text-decoration: none;">
+      <span class="confluence-embedded-file-wrapper image-left-wrapper confluence-embedded-manual-size">
+        <img class="confluence-embedded-image confluence-external-resource image-left" data-image-src="https://lh4.googleusercontent.com/VmidhRJAjo8jHZHhE3_6j_9_KeYCmD1UDwAQy77Eu_2Bd3X0l86XmNghkqmauVbzTlPxz-YtWJNNDVpyHBiFLClu9nhr-3n4ca2zu4BYvOfUsqZDiDSZ1EYn5ZwbKPHvDlqWoS0J" src="images/VmidhRJAjo8jHZHhE3_6j_9_KeYCmD1UDwAQy77Eu_2Bd3X0l86XmNghkqmauVbzTlPxz-YtWJNNDVpyHBiFLClu9nhr-3n4ca2zu4BYvOfUsqZDiDSZ1EYn5ZwbKPHvDlqWoS0J" width="300"/>
+      </span>
+    </span>
+  </p>
+  <p style="text-align: center;">
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p style="text-align: center;">
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p style="text-align: center;">
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p style="text-align: center;">
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p style="text-align: center;">
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p style="text-align: center;">
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p style="text-align: center;">
+    <span style="color: #000000; text-decoration: none;">
+      <span class="confluence-embedded-file-wrapper image-left-wrapper confluence-embedded-manual-size">
+        <img class="confluence-embedded-image confluence-external-resource image-left" data-image-src="https://lh4.googleusercontent.com/17GCnNlJftHKOR_SskXjNzKWQ4GrNZxw7uiQdIyE5xB67BFE1XniDMS3Rsb8lS6AB489DBraV4zkok19UKjPJH_KUKp2gHhYjF4rYTAEd9ncU40E9WXEUID8o1nmOOrKSPQPuw0Q" src="images/17GCnNlJftHKOR_SskXjNzKWQ4GrNZxw7uiQdIyE5xB67BFE1XniDMS3Rsb8lS6AB489DBraV4zkok19UKjPJH_KUKp2gHhYjF4rYTAEd9ncU40E9WXEUID8o1nmOOrKSPQPuw0Q" width="300"/>
+      </span>
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      Then verify that a new configuration revision entry is listed.
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size">
+        <img class="confluence-embedded-image confluence-external-resource" data-image-src="https://lh4.googleusercontent.com/sY1yMevGQ5S3YFKlYnZiZ2sMiVCbLZJjru5YSinEWzRrT53rTbJBbjGvUz2s3URrye8gph5ByFFpy7-Qc1p_c0dhMh7Ai0cA69zM2cegHIA-WUdDkR5uK64j8T91B4VDnKS1T3yI" src="images/sY1yMevGQ5S3YFKlYnZiZ2sMiVCbLZJjru5YSinEWzRrT53rTbJBbjGvUz2s3URrye8gph5ByFFpy7-Qc1p_c0dhMh7Ai0cA69zM2cegHIA-WUdDkR5uK64j8T91B4VDnKS1T3yI" width="800"/>
+      </span>
+    </span>
+  </p>
+  <h1 id="ManagedSecurityonFortiGateFirewall-ConfigureSNMPandSyslog">
+    <span style="color: #000000; text-decoration: none;">
+      Configure SNMP and Syslog
+    </span>
+  </h1>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      You will be configuring:
+    </span>
+  </p>
+  <ul>
+    <li>
+      <p>
+        <span style="color: #000000; text-decoration: none;">
+          SNMP management ("Silver Monitoring” in MSActivator dialect) to enable SLA management and KPI monitoring.
+        </span>
+      </p>
+    </li>
+    <li>
+      <p>
+        <span style="color: #000000; text-decoration: none;">
+          Syslogs management ("Gold Monitoring”) to enable log analytics.
+        </span>
+      </p>
+    </li>
+  </ul>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      The configuration will have the following impact on the Fortigate device configuration:
+    </span>
+  </p>
+  <ol>
+    <li style="list-style-type: decimal;">
+      <p>
+        <span style="color: #000000; text-decoration: none;">
+          The management interface of the Fortigate device will be configured to accept SNMP requests.
+        </span>
+      </p>
+    </li>
+    <li style="list-style-type: decimal;">
+      <p>
+        <span style="color: #000000; text-decoration: none;">
+          A new SNMP community will be configured (Silver Monitoring).
+        </span>
+      </p>
+    </li>
+    <li style="list-style-type: decimal;">
+      <p>
+        <span style="color: #000000; text-decoration: none;">
+          A syslog host has to be configured on the Fortigate device to send the syslogs to the MSActivator (Gold Monitoring).
+        </span>
+      </p>
+    </li>
+  </ol>
+  <h3 id="ManagedSecurityonFortiGateFirewall-ConfigureSNMPonthedevice">
+    <span style="color: #000000; text-decoration: none;">
+      Configure SNMP on the device
+    </span>
+  </h3>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      By default, the Fortigate device configuration doesn’t allow SNMP request on its management interface.
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      We can use a template from the repository to add this SNMP configuration.
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      Go back to the main device overview page and click on “Attach files” on the “Overview” tab
+    </span>
+  </p>
+  <p style="text-align: center;">
+    <span style="color: #000000; text-decoration: none;">
+      <span class="confluence-embedded-file-wrapper image-left-wrapper confluence-embedded-manual-size">
+        <img class="confluence-embedded-image confluence-external-resource image-left" data-image-src="https://lh6.googleusercontent.com/1opj94G-xicsKyezOHt6k1yAWOjTJCZzW4RkKr1_mU0qs2oD3Jl8e1MttWqU4yvearX7EDYnJIZN1j9-54EezGs13mw-g6WlU_Od-TzHhK2XTUx0OP2toKaqa58nY9C3KaKsIpiH" height="123" src="images/1opj94G-xicsKyezOHt6k1yAWOjTJCZzW4RkKr1_mU0qs2oD3Jl8e1MttWqU4yvearX7EDYnJIZN1j9-54EezGs13mw-g6WlU_Od-TzHhK2XTUx0OP2toKaqa58nY9C3KaKsIpiH" width="356"/>
+      </span>
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      Make sure to click on the green plus sign to open the folder tree.
+    </span>
+  </p>
+  <p style="text-align: center;">
+    <span style="color: #000000; text-decoration: none;">
+      <span class="confluence-embedded-file-wrapper image-left-wrapper confluence-embedded-manual-size">
+        <img class="confluence-embedded-image confluence-external-resource image-left" data-image-src="https://lh6.googleusercontent.com/ou5HzJI2UQoE5BkK7wRsk7fTYwCHjp2DcI7mrBfV18EllOlUAx0bD8SAh9MBaWcsHoEZF4TzDzhenFcUD4rY67_h3bIoO7EehGt4jMTdZJ9FvEyjF6eghBbxxRQMBnnhUAoh-hqP" src="images/ou5HzJI2UQoE5BkK7wRsk7fTYwCHjp2DcI7mrBfV18EllOlUAx0bD8SAh9MBaWcsHoEZF4TzDzhenFcUD4rY67_h3bIoO7EehGt4jMTdZJ9FvEyjF6eghBbxxRQMBnnhUAoh-hqP" width="800"/>
+      </span>
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000;">
+      <strong>
+        <strong>
+           
+        </strong>
+      </strong>
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      <span class="confluence-embedded-file-wrapper image-left-wrapper confluence-embedded-manual-size">
+        <img class="confluence-embedded-image confluence-external-resource image-left" data-image-src="https://lh3.googleusercontent.com/dvcpEySZpiV21qA-1zqcwjtPl2raSAqYeQKvF8x43gHnEthId99-crBdRp3FInbtoWa57NSMHqfeONIxf7-0vNA3ndStxPwMa2vylvTWtlxXwr4_3DzROBddsVaj5Xpd8ElRZb8k" src="images/dvcpEySZpiV21qA-1zqcwjtPl2raSAqYeQKvF8x43gHnEthId99-crBdRp3FInbtoWa57NSMHqfeONIxf7-0vNA3ndStxPwMa2vylvTWtlxXwr4_3DzROBddsVaj5Xpd8ElRZb8k" width="800"/>
+      </span>
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p>
+     
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size">
+        <img class="confluence-embedded-image confluence-external-resource" data-image-src="https://lh3.googleusercontent.com/IIRXdePkX3Ogd9nLN5XGyKRP9B4EZGGdRFD3cbq1XePjykezc3_uDiuRwYpDBenxjJWm5a7jduEKxQ3Tv3bdFfMSn3N0axRq2KuselQOvaSmC5dqds1gicUyrCkSq9SQl4uVhMow" src="images/IIRXdePkX3Ogd9nLN5XGyKRP9B4EZGGdRFD3cbq1XePjykezc3_uDiuRwYpDBenxjJWm5a7jduEKxQ3Tv3bdFfMSn3N0axRq2KuselQOvaSmC5dqds1gicUyrCkSq9SQl4uVhMow" width="800"/>
+      </span>
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      Choose "Post-configuration template” and save.
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      Trigger a configuration update.
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size">
+        <img class="confluence-embedded-image confluence-external-resource" data-image-src="https://lh4.googleusercontent.com/Sa621EmMzdCegkbVnIGv1dYi6z2qFCA8QmBTmis-S5F-Wu8ZEyYP1edXIfLUYTFip3HXgksFAaBDraZHGmM7suo2BPdFkKuOeZM5alCbX-WI64T3rLdEOBG4ydZ1PEc7g3eyk_Op" src="images/Sa621EmMzdCegkbVnIGv1dYi6z2qFCA8QmBTmis-S5F-Wu8ZEyYP1edXIfLUYTFip3HXgksFAaBDraZHGmM7suo2BPdFkKuOeZM5alCbX-WI64T3rLdEOBG4ydZ1PEc7g3eyk_Op" width="800"/>
+      </span>
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      Once the configuration update is done, verify that the configuration was applied by going back to the “Change management” in the “History” tab.
+    </span>
+  </p>
+  <h3 id="ManagedSecurityonFortiGateFirewall-Configuresyslogcollecting">
+    <span style="color: #000000; text-decoration: none;">
+      Configure syslog collecting
+    </span>
+  </h3>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      Use a Microservice to configure a syslog server on the FortiGate device.
+    </span>
+  </p>
+  <p style="text-align: center;">
+    <span style="color: #000000; text-decoration: none;">
+      <span class="confluence-embedded-file-wrapper image-left-wrapper confluence-embedded-manual-size">
+        <img class="confluence-embedded-image confluence-external-resource image-left" data-image-src="https://lh6.googleusercontent.com/OnFs1tm_aiOfA64qTWl8JhJa-keXqaVAUD5WYQBabwEtpaJR8IAb3PhbJAyh6jAeh1GGIxx3EZCe6bNb65Ec6p2Wiq7oWqs9c2-gwS-nMlvW-X6mEiOuZhQ0BvPlat5hF6Vr0XcW" src="images/OnFs1tm_aiOfA64qTWl8JhJa-keXqaVAUD5WYQBabwEtpaJR8IAb3PhbJAyh6jAeh1GGIxx3EZCe6bNb65Ec6p2Wiq7oWqs9c2-gwS-nMlvW-X6mEiOuZhQ0BvPlat5hF6Vr0XcW" width="300"/>
+      </span>
+    </span>
+  </p>
+  <p style="text-align: center;">
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p style="text-align: center;">
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p style="text-align: center;">
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p style="text-align: center;">
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p style="text-align: center;">
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p style="text-align: center;">
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size">
+        <img class="confluence-embedded-image confluence-external-resource" data-image-src="https://lh6.googleusercontent.com/XmYeeuWogf9uawqzQgSXTkcQHh9hVovmmL43-2ByYORI4BNZnIPmTZti6I80dedoYG3LG7ddGsvJJjCITA-Vz0-VytyAlni81zg2kN2coa5AA1zLSVrzZpkhLxdJUD4nlJNft4sd" src="images/XmYeeuWogf9uawqzQgSXTkcQHh9hVovmmL43-2ByYORI4BNZnIPmTZti6I80dedoYG3LG7ddGsvJJjCITA-Vz0-VytyAlni81zg2kN2coa5AA1zLSVrzZpkhLxdJUD4nlJNft4sd" width="800"/>
+      </span>
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size">
+        <img class="confluence-embedded-image confluence-external-resource" data-image-src="https://lh4.googleusercontent.com/tOpRSczH5ZHLoxBzrmGjx_5bDY7g4pDtGEZ33jAq7q6D5W1jI94lIUcz7zK66U_SrGjMIYpAuise8EQUxHmgLD7zn7WMp95N6-59iFfM4DTfHF5_o_K1E9o4ofoYqQI-ke-crDlc" src="images/tOpRSczH5ZHLoxBzrmGjx_5bDY7g4pDtGEZ33jAq7q6D5W1jI94lIUcz7zK66U_SrGjMIYpAuise8EQUxHmgLD7zn7WMp95N6-59iFfM4DTfHF5_o_K1E9o4ofoYqQI-ke-crDlc" width="800"/>
+      </span>
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      Attach it to the device by opening the Microservice management console (via the green plus sign at the far right).
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size">
+        <img class="confluence-embedded-image confluence-external-resource" data-image-src="https://lh4.googleusercontent.com/axicA_10tZ8cufAjEBydfTs13vGrWGcZ1EpQGQc0FfACEUeniRcXPTukh_WCnz8trlTkoySy239fhsvqdF04K3Oa5N39rs01Tm0xmbQbeliDvpzVPfdKULhrLKuchaHjZdzrCWGS" src="images/axicA_10tZ8cufAjEBydfTs13vGrWGcZ1EpQGQc0FfACEUeniRcXPTukh_WCnz8trlTkoySy239fhsvqdF04K3Oa5N39rs01Tm0xmbQbeliDvpzVPfdKULhrLKuchaHjZdzrCWGS" width="800"/>
+      </span>
+    </span>
+  </p>
+  <p style="text-align: center;">
+    <span style="color: #000000; text-decoration: none;">
+      <span class="confluence-embedded-file-wrapper image-left-wrapper confluence-embedded-manual-size">
+        <img class="confluence-embedded-image confluence-external-resource image-left" data-image-src="https://lh3.googleusercontent.com/sTQhiOM1H_KPwjOkKtNrbXGNmRUqdB2wuKoValbgZbcPRv0uWusPcOnOvykh4QkAPrdYdioOXZUuNpwmEd_zszQbdmJQCBoG692xzI6f885qQ8RAAcX9wSnUG726Ffjv0hKD-2gp" src="images/sTQhiOM1H_KPwjOkKtNrbXGNmRUqdB2wuKoValbgZbcPRv0uWusPcOnOvykh4QkAPrdYdioOXZUuNpwmEd_zszQbdmJQCBoG692xzI6f885qQ8RAAcX9wSnUG726Ffjv0hKD-2gp" width="300"/>
+      </span>
+    </span>
+  </p>
+  <p style="text-align: center;">
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p style="text-align: left;">
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p style="text-align: left;">
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p style="text-align: left;">
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p style="text-align: left;">
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p style="text-align: left;">
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p style="text-align: left;">
+    <span style="color: #000000; text-decoration: none;">
+      <span class="confluence-embedded-file-wrapper image-left-wrapper confluence-embedded-manual-size">
+        <img class="confluence-embedded-image confluence-external-resource image-left" data-image-src="https://lh4.googleusercontent.com/fOLd3o2sz1s0nzMqYZQ8WeeGBJIopzGOrWsNF2eGA7cRvBfGpY_jdo5Hzm86SLa6z1te8pRXvHFoU0EFIAHbYb1O1YVJRxECYgrIi_HEriTsCU0rVzYosFNdo7jb0TeTMAwM3E4f" src="images/fOLd3o2sz1s0nzMqYZQ8WeeGBJIopzGOrWsNF2eGA7cRvBfGpY_jdo5Hzm86SLa6z1te8pRXvHFoU0EFIAHbYb1O1YVJRxECYgrIi_HEriTsCU0rVzYosFNdo7jb0TeTMAwM3E4f" width="300"/>
+      </span>
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p style="text-align: left;">
+    <span style="color: #000000; text-decoration: none;">
+      <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size">
+        <img class="confluence-embedded-image confluence-external-resource" data-image-src="https://lh5.googleusercontent.com/yTD8QRL2sKjXlCj6Xnq4TXYCQgJOAVs8B-9TSaBbQWGBEaaulHdvEnhpWXqrpakAOp5BU_s_Eirw79MKRjnISSnGk0tQQVDWrQKh1YVLD-3eThtd1f54ibE657iTjcnfwnqi3BXf" src="images/yTD8QRL2sKjXlCj6Xnq4TXYCQgJOAVs8B-9TSaBbQWGBEaaulHdvEnhpWXqrpakAOp5BU_s_Eirw79MKRjnISSnGk0tQQVDWrQKh1YVLD-3eThtd1f54ibE657iTjcnfwnqi3BXf" width="800"/>
+      </span>
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      Server IP = 213.30.172.50
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      This is the public IP of the MSActivator, to which the device will send its syslogs.
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      Apply the configuration and then check the change management view (“History” tab &gt; “Change Management” button) that the new configuration was applied.
+    </span>
+  </p>
+  <p style="text-align: center;">
+    <span style="color: #000000; text-decoration: none;">
+      <span class="confluence-embedded-file-wrapper image-left-wrapper confluence-embedded-manual-size">
+        <img class="confluence-embedded-image confluence-external-resource image-left" data-image-src="https://lh6.googleusercontent.com/feD67bIUtxobWJ8js6T1wBcfXi_cwE-FMnv5tdaCnYdB-4cwGFIrvLnb8tnE4U5c--RIQZ0S3q3_FpWqBI4T6E0-khGjQRQsqbcH0uKhVxxKOAQDCCruBRdkvYGHDVRSV_oLqMl5" src="images/feD67bIUtxobWJ8js6T1wBcfXi_cwE-FMnv5tdaCnYdB-4cwGFIrvLnb8tnE4U5c--RIQZ0S3q3_FpWqBI4T6E0-khGjQRQsqbcH0uKhVxxKOAQDCCruBRdkvYGHDVRSV_oLqMl5" width="300"/>
+      </span>
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000;">
+      <strong>
+        <strong>
+           
+        </strong>
+      </strong>
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000;">
+      <strong>
+        <strong>
+           
+        </strong>
+      </strong>
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000;">
+      <strong>
+        <strong>
+           
+        </strong>
+      </strong>
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000;">
+      <strong>
+        <strong>
+           
+        </strong>
+      </strong>
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size">
+        <img class="confluence-embedded-image confluence-external-resource confluence-content-image-border" data-image-src="https://lh3.googleusercontent.com/bAcIQYs3W38SkyBFCbY-2OYU0npNsrfLUIt2BEGkL85U_xulqgYFNP7oEMkD3aNdcTLa17lUW5eZuAy2FAPO4ReOQ47dMybLwNO9S5_bcXVaBxgmaQCR3cWdxrUoEQOL2joAEErA" src="images/bAcIQYs3W38SkyBFCbY-2OYU0npNsrfLUIt2BEGkL85U_xulqgYFNP7oEMkD3aNdcTLa17lUW5eZuAy2FAPO4ReOQ47dMybLwNO9S5_bcXVaBxgmaQCR3cWdxrUoEQOL2joAEErA" width="800"/>
+      </span>
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      The FortiGate is now sending syslogs to the MSActivator. You can check this in the device log search GUI.
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      Go to the “Logs” tab and input a “*” into the search bar to execute a search for these syslogs.
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size">
+        <img class="confluence-embedded-image confluence-external-resource" data-image-src="https://lh3.googleusercontent.com/W5A0_beWi5bdpPheUBbUE3m53mGhALFvedxF2HgoaiSJ2SPKjmmdciMkwbDEtxXclRRfS8WijeOA24VgAVRG0VLHKHv8R8lYp-daT5Zvky63jwY2M2V-6Pe-j80w84wTGRjQDIgS" src="images/W5A0_beWi5bdpPheUBbUE3m53mGhALFvedxF2HgoaiSJ2SPKjmmdciMkwbDEtxXclRRfS8WijeOA24VgAVRG0VLHKHv8R8lYp-daT5Zvky63jwY2M2V-6Pe-j80w84wTGRjQDIgS" width="800"/>
+      </span>
+    </span>
+  </p>
+  <h3 id="ManagedSecurityonFortiGateFirewall-Configureanddisplayadashboard">
+    <span style="color: #000000; text-decoration: none;">
+      Configure and display a dashboard
+    </span>
+  </h3>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      The MSActivator uses a pre-packaged Workflow to deploy the dashboard for a customer.
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      The steps below will show you how to do this.
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000;">
+      <strong>
+        1. Attach the Workflow “kibana_dashboard” to your customer
+      </strong>
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size">
+        <img class="confluence-embedded-image confluence-external-resource" data-image-src="https://lh3.googleusercontent.com/oETuc69fR1p_2yk5TqwE7j1zxGLjOy2sB2xvVqPjYrxjzmSWi47RftmQ6oIx1hqeM8BfLwAciD-Q8eJ1XEEAgLey5w6r9iOny4qYVnagufISnW4swm6DkrSmlrutF8DZRJ8v8ddu" src="images/oETuc69fR1p_2yk5TqwE7j1zxGLjOy2sB2xvVqPjYrxjzmSWi47RftmQ6oIx1hqeM8BfLwAciD-Q8eJ1XEEAgLey5w6r9iOny4qYVnagufISnW4swm6DkrSmlrutF8DZRJ8v8ddu" width="800"/>
+      </span>
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      Click tab “Services”
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      Click tab “Workflows”
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      Click the little green “+” button top right
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      Select Workflow &gt; Reference &gt; Customer &gt; Kibana &gt; kibana_dashboard.xml
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size">
+        <img class="confluence-embedded-image confluence-external-resource" data-image-src="https://lh5.googleusercontent.com/lCMGbWAp-wHvB_CRfOhCa3BenAYUiOhQDoC4j46r3Z4ObzE2gbbP4VY7QET3UK-_o38LlGkRgiz_GnVwQxS0N6Svcq6CNUGRk6Q3YFihEthkxZVYQqThp8c2Yhf5BUiKccqBfVk2" src="images/lCMGbWAp-wHvB_CRfOhCa3BenAYUiOhQDoC4j46r3Z4ObzE2gbbP4VY7QET3UK-_o38LlGkRgiz_GnVwQxS0N6Svcq6CNUGRk6Q3YFihEthkxZVYQqThp8c2Yhf5BUiKccqBfVk2" width="800"/>
+      </span>
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000;">
+      <strong>
+         2. Create the dashboard
+      </strong>
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size">
+        <img class="confluence-embedded-image confluence-external-resource" data-image-src="https://lh3.googleusercontent.com/wCz50M7S9BFyow4WRi8g-u9IoM3fSR6iJXHeYVCr07es_72OKEV8a_DiFTopGWgpx1yxcIWIYrCUu-KUH1dDwQBcXorHfPHP91-KwuNMOUXVf0jtIem7BCoUiz26i1XLyOliIpVZ" src="images/wCz50M7S9BFyow4WRi8g-u9IoM3fSR6iJXHeYVCr07es_72OKEV8a_DiFTopGWgpx1yxcIWIYrCUu-KUH1dDwQBcXorHfPHP91-KwuNMOUXVf0jtIem7BCoUiz26i1XLyOliIpVZ" width="800"/>
+      </span>
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size">
+        <img class="confluence-embedded-image confluence-external-resource" data-image-src="https://lh6.googleusercontent.com/KB92o4WgQ0czd_KLWPZnmwpYIh73N1rTtUbPhdIfgvg8duYubGUubpEWDyQtC1g-AJFWcXtJrxnhERKN0szPF_2YvzNbAIBQwWcr3cCbwBPSmiGkUhHHnYtryP5HSEsa2fndC2ut" src="images/KB92o4WgQ0czd_KLWPZnmwpYIh73N1rTtUbPhdIfgvg8duYubGUubpEWDyQtC1g-AJFWcXtJrxnhERKN0szPF_2YvzNbAIBQwWcr3cCbwBPSmiGkUhHHnYtryP5HSEsa2fndC2ut" width="800"/>
+      </span>
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000;">
+      <strong>
+        3. Refresh the customer page and check the dashboard
+      </strong>
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size">
+        <img class="confluence-embedded-image confluence-external-resource" data-image-src="https://lh4.googleusercontent.com/57LFLpGe5n9cGJT3m_4bqWzQBxmfbTLIBmKcu-ppHFBBcdfvqUI30EIOAcEOr7dQh0FXGSUjl7BUJHGl8vjUhZcNA7pLrFKV5eP8PGd6ikM9VzWNur23zVIVFSsnExd5XEHxD4gE" src="images/57LFLpGe5n9cGJT3m_4bqWzQBxmfbTLIBmKcu-ppHFBBcdfvqUI30EIOAcEOr7dQh0FXGSUjl7BUJHGl8vjUhZcNA7pLrFKV5eP8PGd6ikM9VzWNur23zVIVFSsnExd5XEHxD4gE" width="800"/>
+      </span>
+    </span>
+  </p>
+  <h1 id="ManagedSecurityonFortiGateFirewall-SecuritymanagementwithMicroservice">
+    <span style="color: #000000; text-decoration: none;">
+      Security management with Microservice
+    </span>
+  </h1>
+  <p>
+    <span style="color: #000000;">
+      <span style="text-decoration: none;">
+        Attach the folder “
+      </span>
+      <span style="text-decoration: none;">
+        ManagedSecurity
+      </span>
+      <span style="text-decoration: none;">
+        ” in the Microservice repository to the device.
+      </span>
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size">
+        <img class="confluence-embedded-image confluence-external-resource" data-image-src="https://lh4.googleusercontent.com/2ZiK-FXvRi1FceEs4kmDkZphw7H8ZuFbleMDgxW6_OY1mIA14nIZVLvtFIz0flLfiyhYr7T40jHQLG2Iip2EbwNGOvjRWx2nhuOftr1hRUrm-LchHufAaeh7dxtwrEuHWKJPl2vO" src="images/2ZiK-FXvRi1FceEs4kmDkZphw7H8ZuFbleMDgxW6_OY1mIA14nIZVLvtFIz0flLfiyhYr7T40jHQLG2Iip2EbwNGOvjRWx2nhuOftr1hRUrm-LchHufAaeh7dxtwrEuHWKJPl2vO" width="800"/>
+      </span>
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      Then go the the device config tab and see if you can configure a route on the FortiGate (or an address).
+    </span>
+  </p>
+  <h1 id="ManagedSecurityonFortiGateFirewall-Cleanupthelab">
+    <span style="color: #000000; text-decoration: none;">
+      Cleanup the lab
+    </span>
+  </h1>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      At the end of the session, make sure that you rollback the device config to its initial configuration (use the Change Management GUI) and delete the customer.
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+      <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size">
+        <img class="confluence-embedded-image confluence-external-resource" data-image-src="https://lh5.googleusercontent.com/0Qq_yBBYqkB5KGgVicDtkQhr2-Hio_cGsVRrAEUAKjOERFG0XBLKMKm99YQ_uY36PPwnxfeGUA6iMQ12_f110Ij6B53F6mzXUlYOb1-IClIXZZ_L6ixlY10eC9HKX22vTllFuiEA" src="images/0Qq_yBBYqkB5KGgVicDtkQhr2-Hio_cGsVRrAEUAKjOERFG0XBLKMKm99YQ_uY36PPwnxfeGUA6iMQ12_f110Ij6B53F6mzXUlYOb1-IClIXZZ_L6ixlY10eC9HKX22vTllFuiEA" width="800"/>
+      </span>
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+  <p>
+    <span style="color: #000000; text-decoration: none;">
+       
+    </span>
+  </p>
+</div>
+
+
+
+        </div>

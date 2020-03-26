@@ -1,0 +1,700 @@
+= Msa Logs
+:toc: left
+:toc-title: Content
+:imagesdir: ../../resources/
+:ext-relative: adoc
+
+This article will explain to you all about logs for each of the MSA
+modules. It also provides the log rotation configuration for that
+particular log.
+
+These logs will help troubleshoot any problems in MSA.
+
+[[MSALogs-Database]]
+== Database
+
+[cols=",,,",options="header",]
+|===
+|Log File and Path |Information |Log Rotation |Rotation-Configuration
+|/opt/base/velocity.log/opt/base/velocity.log.1 |velocity.log is created
+when a configuration of a module (/opt/base/configure) is launched.
+Velocity is the tool for resolving templates, i.e. to replace variables
+according to vars.ctx and generating config files. |Not rotated. |
+
+|/opt/base/logs/ubi-base.log |This log is for DB schema upgrade. |Not
+rotated. |
+
+|/opt/database/9.3/pgstartup.log |Logs for PostgreSQL startup. |Not
+rotated. |
+
+|/opt/database/9.3/data/pg_log/postgresql-Fri.log |Logs for PostgreSQL
+server. |Rotates every day. Maximum one week of logs kept on the disk
+|Managed by PostgreSQL
+|===
+
+[[MSALogs-Configurator-MSAConfigurationModule]]
+== Configurator - MSA Configuration Module
+
+[cols=",,,",options="header",]
+|===
+|Log File and Path |Information |Log Rotation |Rotation-Configuration
+|/opt/configurator/configure-output.2018-09-24T13:53:44.log a|
+Output log when configurator is launched.
+
+A new file is created with time on each launch.
+
+|Not rotated. |
+
+|/opt/configurator/velocity.log/opt/configurator/velocity.log.1
+|velocity.log is created when a configuration of a module
+(/opt/configurator/configure) is launched. Velocity is the tool for
+resolving templates, i.e. to replace variables according to vars.ctx and
+generate config files. |Not rotated. |
+
+|/opt/configurator/script/velocity.log |velocity.log is created when a
+configuration of a module (/opt/configurator/script) is launched. |Not
+rotated. |
+
+|/opt/ubi-webconf/logs/ubi-smartconfd-daemon.log |Logs for webconf
+queues. |Rotated yearly. |/etc/logrotate.d/ubi-webconf
+
+|/opt/ubi-webconf/logs/ubi-webconfd-daemon.log |Logs for web-based
+configuration created for the first time after MSA installation.
+|Rotated yearly. |/etc/logrotate.d/ubi-webconf
+
+|/var/log/webconfd.log |Logs for webconf daemon. |Not rotated. |
+|===
+
+[[MSALogs-DMS-ModuleforDNSUpdateandOtherUtility]]
+== DMS - Module for DNS Update and Other Utility
+
+[cols=",,,",options="header",]
+|===
+|Log file and Path |Information |Log Rotation |Rotation-Configuration
+|/opt/dms/velocity.log/opt/dms/velocity.log.1 |velocity.log is created
+when a configuration of a module (/opt/dms/configure) is launched. |Not
+rotated. |
+
+|/opt/dms/logs/checkEOS.log |Logs related to Cisco EOL/EOS feature. a|
+Rotated daily.
+
+Files are kept for 30 days max.
+
+|/etc/logrotate.d/dms
+
+|/opt/dms/logs/diskcleaner.log |Logs for diskcleaner, which cleans disk
+space on certain directories based on the size configured in the
+configurator. a|
+Rotated daily.
+
+Files are kept for 30 days max.
+
+|/etc/logrotate.d/dms
+
+|/opt/dms/logs/generate_cert.log |Log for generating self-sign
+certificate. a|
+Rotated daily.
+
+Files are kept for 30 days max.
+
+|/etc/logrotate.d/dms
+
+|/opt/dms/logs/ubi-dms.log |[.inline-comment-marker]#Logs for dms cron.#
+|Not rotated. |
+
+|/opt/dms/logs/dsmsIsAlive.log |Logs for checking the smsd is alive
+status. a|
+Rotated daily.
+
+Files are kept for 30 days max.
+
+|/etc/logrotate.d/dms
+
+|[.inline-comment-marker]#/opt/dms/logs/facturation.log# a|
+[.deprecated]#DEPRECATED#
+
+| |
+|===
+
+[[MSALogs-API-ModuleforMSAAPIs]]
+== API - Module for MSA APIs
+
+[cols=",,,",options="header",]
+|===
+|Log File and Path |Information |Log Rotation |Rotation-Configuration
+|/var/log/ubi-jentreprise.log |API deploy logs. |Not rotated. |
+
+|/opt/ubi-jentreprise/ant/generate-classpath.log |Ant build logs. |Not
+rotated. |
+
+|/opt/ubi-jentreprise/modules/tester/api-tester/curl-xml/bin/answers.log
+|API tester logs. |Not rotated. |
+
+|/var/log/jboss-service.log a|
+[.deprecated]#DEPRECATED#
+
+| |
+
+|/opt/jboss/velocity.log/opt/jboss/velocity.log.1 |Velocity log for
+JBoss. |Not rotated. |
+
+|/opt/jboss/jboss-5.1.0.GA/logs/jboss.log |JBoss server log - shows
+errors related to SOAP or REST API a|
+Rotated if file size exceeds 10000KB.
+
+Maximum 100 files kept.
+
+|/opt/jboss/jboss-5.1.0.GA/server/ubiqube/conf/jboss-log4j.xml
+
+|/opt/jboss/jboss-5.1.0.GA/logs/jboss_console.log a|
+[.deprecated]#DEPRECATED#
+
+| |
+
+|/opt/jboss/jboss-5.1.0.GA/logs/twiddle.log a|
+[.deprecated]#DEPRECATED#
+
+| |
+
+|/opt/jboss/jboss-5.1.0.GA/logs/ubi-oneapm.log a|
+[.deprecated]#DEPRECATED#
+
+| |
+
+|/opt/jboss/jboss-5.1.0.GA/logs/ubi-report-mail.log a|
+[.deprecated]#DEPRECATED#
+
+| |
+
+|/opt/jboss/jboss-5.1.0.GA/logs/ubi-report-statistics.log a|
+[.deprecated]#DEPRECATED#
+
+| |
+
+|/opt/jboss/jboss-5.1.0.GA/logs/ubi-report.log a|
+[.deprecated]#DEPRECATED#
+
+| |
+
+|/opt/jboss/jboss-5.1.0.GA/logs/ubi-rest.log |Logs for REST API request.
+a|
+Rotated if file size exceeds 1000KB.
+
+Maximum 50 files kept.
+
+|/opt/jboss/jboss-5.1.0.GA/server/ubiqube/conf/jboss-log4j.xml
+
+|/opt/jboss/jboss-5.1.0.GA/logs/ubi-scanEngine.log a|
+[.deprecated]#DEPRECATED#
+
+| |
+
+|/opt/jboss/jboss-5.1.0.GA/logs/ubi-scheduler.log a|
+[.deprecated]#DEPRECATED#
+
+| |
+
+|/opt/jboss/jboss-5.1.0.GA/logs/ubi-stagingConsole.log a|
+[.deprecated]#DEPRECATED#
+
+| |
+
+|/opt/jboss/jboss-5.1.0.GA/logs/ubi-ws.log |Logs for SOAP API request.
+a|
+Rotated if file size exceeds 1000KB.
+
+Maximum 50 files kept.
+
+|/opt/jboss/jboss-5.1.0.GA/server/ubiqube/conf/jboss-log4j.xml
+
+|/opt/jboss/jboss-5.1.0.GA/logs/velocity.log |Velocity log for JBoss
+|Not rotated. |
+
+|/opt/jboss/jboss-5.1.0.GA/logs/processLog/process_SERVICEID.log |Logs
+for each service on Workflow engine. a|
+Rotated if file size exceeds 10MB.
+
+Maximum 5 files kept.
+
+|/etc/logrotate.d/ubi-jentreprise
+
+|/opt/jboss/jboss-5.1.0.GA/server/ubiqube/data/hypersonic/localDB.log
+|JBoss hypersonic DB logs for managing users. |Not rotated but old logs
+will be flushed on every JBoss boot. |Taken care of by JBoss.
+
+|/opt/jboss/jboss-5.1.0.GA/server/ubiqube/log/boot.log |JBoss boot log.
+|Not rotated but old logs will be flushed on every JBoss start. |Taken
+care of by JBoss.
+
+|/opt/jboss/latest/logs/ubi_synchronize_file_servers.log |Log for
+synchronizing file server for firmware update. |Not rotated. |
+|===
+
+[[MSALogs-GUI-WebPortal]]
+== GUI - Web Portal
+
+In addition to log rotation of this module, the MSA disk cleaner will
+clean old files on the logs directory (/opt/ses/logs,
+/opt/tomcat/latest/logs), if the size of the directory is exceeded
+(which is 4GB by default) UBI_DISK_USAGE_INTERNAL_LOGS
+
+[cols=",,,",options="header",]
+|===
+|Log File and Path |Information |Log Rotation |Rotation-Configuration
+|/var/log/ubi-ses-service.log |GUI app deploy logs. |Not rotated. |
+
+|[.inline-comment-marker]##/opt/ses/velocity.log##[.inline-comment-marker]##/opt/ses/velocity.log.1##
+|Velocity logs for ubi-SES. |Not rotated. |
+
+|/opt/ses/ant/velocity.log |Velocity logs for SES ANT. |Not rotated. |
+
+|/opt/ses/generated/server_ALL/velocity.log a|
+[.deprecated]#DEPRECATED#
+
+| |
+
+|/opt/ses/logs/mod_jk.log |Logs for Apache AJP requests.
+|[.inline-comment-marker]#Not rotated but old logs are flushed out on
+every httpd server start.# |
+
+|/opt/ses/logs/ses_watch.log a|
+[.deprecated]#DEPRECATED#
+
+| |
+
+|/opt/ses/logs/ubi-ses.configure-output.log |SES configure logs. a|
+Rotated daily.
+
+Log kept for 30 days max.
+
+|/etc/logrotate.d/ubi-ses
+
+|/opt/ses/logs/wget_ses.log |Logs for SES KPI results.
+|[.inline-comment-marker]#Not rotated.# |
+
+|/opt/ses/templates/server_ALL/velocity.log a|
+[.deprecated]#DEPRECATED#
+
+| |
+
+|/opt/ses/logs/mapview.logs |Google MapView logs. a|
+Rotated if file size exceeds 2500KB.
+
+Maximum 5 files kept.
+
+|/opt/ses/templates/server_N/log4j.xml
+
+|/opt/ses/logs/ses.logs |Main logs for GUI module. a|
+Rotated if file size exceeds 2500KB.
+
+Maximum 14 files kept.
+
+|/opt/ses/templates/server_N/log4j.xml
+
+|/opt/ses/logs/ses_activityReport.logs |GUI user activity logs. a|
+Rotated if file size exceeds 2500KB.
+
+Maximum 30 files kept.
+
+|/opt/ses/templates/server_N/log4j.xml
+
+|/opt/ses/logs/ses_database.logs a|
+[.deprecated]#DEPRECATED#
+
+| |
+
+|/opt/ses/logs/ses_remote_service_helper.logs a|
+[.deprecated]#DEPRECATED#
+
+| |
+
+|/opt/ses/logs/ses_sms.logs |Logs for GUI and SecEngine communication.
+a|
+Rotated if file size exceeds 2500KB.
+
+Maximum 10 files kept.
+
+|/opt/ses/templates/server_N/log4j.xml
+
+|/opt/ses/logs/ses_stringManager.logs |Logs for GUI locale. a|
+Rotated if file size exceeds 2500KB.
+
+Maximum 2 files kept.
+
+|/opt/ses/templates/server_N/log4j.xml
+
+|/opt/ses/logs/ses_voip.logs a|
+[.deprecated]#DEPRECATED#
+
+| |
+
+|/opt/ses/logs/ses_vulnerability_scanner.logs a|
+[.deprecated]#DEPRECATED#
+
+| |
+
+|/opt/ses/logs/access_log |[.inline-comment-marker]#HTTPd# access logs.
+|Not rotated but old logs are flushed on HTTPd restart. |
+
+|/opt/ses/logs/error_log |HTTPd error logs. |Not rotated, but old logs
+are flushed on HTTPd restart. |
+
+|/opt/ses/logs/rewrite_log |HTTPd rewrite logs |Not rotated but old logs
+are flushed on HTTPd restart. |
+
+|/opt/ses/logs/ssl_engine_log |HTTPd SSL logs. |Not rotated. |
+
+|/opt/ses/logs/ssl_request_log |HTTPd SSL request logs. |Not rotated. |
+
+|[.inline-comment-marker]#/opt/ses/logs/tomcat_access_log# a|
+[.deprecated]#DEPRECATED#
+
+| |
+
+|/var/log/tomcat-service.log |Service logs for Tomcat. |Not rotated. |
+
+|/opt/tomcat/velocity.log |Velocity logs for Tomcat. |Not rotated. |
+
+|[.inline-comment-marker]#/opt/tomcat/apache-tomcat-8.5.33/logs/catalina.out#
+|Tomcat a|
+Rotated on the first write past midnight and the filename will be
+\{prefix}\{date}\{suffix}, where the date is yyyy-MM-dd.
+
+No limit for the days kept.
+
+|Taken care of by Tomcat.
+
+|/opt/tomcat/apache-tomcat-8.5.33/logs/host-manager.2018-11-28.log |Logs
+of the related web applications. a|
+Rotated on the first write past midnight and the filename will be
+\{prefix}\{date}\{suffix}, where the date is yyyy-MM-dd.
+
+No limit for the days kept.
+
+|Taken care of by Tomcat.
+
+|/opt/tomcat/apache-tomcat-8.5.33/logs/localhost.2018-11-28.log |Local
+host context initialization logging. a|
+Rotated on the first write past midnight and the filename will be
+\{prefix}\{date}\{suffix}, where the date is yyyy-MM-dd.
+
+No Limit for the days kept.
+
+|Taken care of by Tomcat.
+
+|/opt/tomcat/apache-tomcat-8.5.33/logs/manager.2018-11-28.log |Logs of
+the related web applications. a|
+Rotated on the first write past midnight and the filename will be
+\{prefix}\{date}\{suffix}, where the date is yyyy-MM-dd.
+
+No limit for the days kept.
+
+|Taken care of by Tomcat.
+|===
+
+[[MSALogs-SecEngine]]
+== SecEngine
+
+In addition to the log rotation of this module, the MSA disk cleaner
+will clean old files on the logs directory (/opt/sms/logs,
+/opt/dump_core_file), if the size of the directory is exceeded (which is
+4GB by default) UBI_DISK_USAGE_INTERNAL_LOGS
+
+[cols=",,,",options="header",]
+|===
+|Log File and Path |Information |Log Rotation |Rotation-Configuration
+a|
+/opt/sms/velocity.log
+
+/opt/sms/velocity.log.1
+
+|Velocity log for SMS module. |Not rotated. |
+
+|/opt/sms/logs/ElasticSearchBulk.log |Bulk upload logs from SecEngine to
+Elasticsearch. a|
+Rotated daily.
+
+Maximum file Kept based on UBI_SMS_INTERNAL_LOG_KEEP.
+
+|/opt/sms/templates/etc/logrotate-sms
+
+|/opt/sms/logs/batchupdated.log |Logs for syncing two database schemas.
+a|
+Rotated daily.
+
+Maximum file Kept based on UBI_SMS_INTERNAL_LOG_KEEP.
+
+|/opt/sms/templates/etc/logrotate-sms
+
+|/opt/sms/logs/clean_spool_log.log |Logs for clean files in
+UBI_EXPORTED_LOGS_PATH. a|
+Rotated daily.
+
+Maximum file Kept based on UBI_SMS_INTERNAL_LOG_KEEP.
+
+|/opt/sms/templates/etc/logrotate-sms
+
+|/opt/sms/logs/configure.log |Logs for /opt/sms/configure. |Not rotated.
+|
+
+|/opt/sms/logs/diskcleaner.log |Disk cleaner logs. |Not rotated. |
+
+|/opt/sms/logs/install.log |SecEngine RPM install log. |Not rotated. |
+
+|/opt/sms/logs/rrd_cmd.log |RRD file write log. a|
+Rotated daily.
+
+Maximum file Kept based on UBI_SMS_INTERNAL_LOG_KEEP
+
+|/opt/sms/templates/etc/logrotate-sms
+
+|/opt/sms/logs/sms_agregatord.log |SecEngine alert module log. a|
+Rotated daily.
+
+Maximum file Kept based on UBI_SMS_INTERNAL_LOG_KEEP.
+
+|/opt/sms/templates/etc/logrotate-sms
+
+|/opt/sms/logs/sms_mail_php.log |Alert mail logs.
+|[.inline-comment-marker]#Not rotated.# |
+
+|/opt/sms/logs/sms_parserd.log |SecEngine syslog parsing logs. a|
+Rotated daily.
+
+Maximum file Kept based on UBI_SMS_INTERNAL_LOG_KEEP.
+
+|/opt/sms/templates/etc/logrotate-sms
+
+|/opt/sms/logs/sms_reportlogd.log a|
+[.deprecated]#DEPRECATED#
+
+a|
+Rotated daily.
+
+Maximum file Kept based on UBI_SMS_INTERNAL_LOG_KEEP.
+
+|/opt/sms/templates/etc/logrotate-sms
+
+|/opt/sms/logs/sms_syslogd.log |Syslog processing log. a|
+Rotated daily.
+
+Maximum file Kept based on UBI_SMS_INTERNAL_LOG_KEEP.
+
+|/opt/sms/templates/etc/logrotate-sms
+
+|/opt/sms/logs/sms_sysstatd.log |SecEngine monitoring profile statistics
+log. a|
+Rotated daily.
+
+Maximum file Kept based on UBI_SMS_INTERNAL_LOG_KEEP.
+
+|/opt/sms/templates/etc/logrotate-sms
+
+|/opt/sms/logs/sms_watch.log |Log for SecEngine watchdog. a|
+Rotated daily.
+
+Maximum file Kept based on UBI_SMS_INTERNAL_LOG_KEEP.
+
+|/opt/sms/templates/etc/logrotate-sms
+
+|/opt/sms/logs/smsd.log |Logs for SecEngine communication with device
+and operations. a|
+Rotated daily.
+
+Maximum file Kept based on UBI_SMS_INTERNAL_LOG_KEEP.
+
+|/opt/sms/templates/etc/logrotate-sms
+
+|/opt/sms/logs/ubi-sms.log |Logs for SecEngine stop and start. a|
+Rotated daily.
+
+Maximum file Kept based on UBI_SMS_INTERNAL_LOG_KEEP.
+
+|/opt/sms/templates/etc/logrotate-sms
+
+|/opt/sms/logs/sms_php.errors.log a|
+[.deprecated]#DEPRECATED#
+
+| |
+
+|/opt/sms/logs/check_rrd_files.log a|
+[.deprecated]#DEPRECATED#
+
+| |
+
+|/opt/sms/logs/sms_change_mgmt.log a|
+[.deprecated]#DEPRECATED#
+
+| |
+
+|/opt/dump_core_file/*.core |Core dump files for SecEngine daemons a|
+Rotated daily.
+
+Maximum 30 files kept.
+
+|/opt/sms/templates/etc/logrotate-sms
+|===
+
+[[MSALogs-D-MSA]]
+== D-MSA
+
+In addition to the log rotation of this module, the MSA disk cleaner
+will clean old files on the logs directory (/opt/ubisysconf/ha/logs), if
+the size of the directory is exceeded (which is 4GB by default)
+UBI_DISK_USAGE_INTERNAL_LOGS.
+
+[cols=",,,",options="header",]
+|===
+|Log File and Path |Information |Log Rotation |Rotation-Configuration
+|/opt/ubisysconf/velocity.log |Velocity logs for D-MSA module. |Not
+rotated. |
+
+|/opt/ubisysconf/ha/logs/ha_back.log |D-MSA HA failover logs. a|
+Rotated if sized exceeds 50 MB.
+
+Maximum 30 file kept.
+
+|/etc/logrotate.d/dmsa_logrotate
+
+|/opt/ubisysconf/ha/logs/ha_sync.log |D-MSA HA replication logs. a|
+Rotated if sized exceeds 50 MB.
+
+Maximum 30 file kept.
+
+|/etc/logrotate.d/dmsa_logrotate
+|===
+
+[[MSALogs-MSA-Backup]]
+== MSA - Backup
+
+[cols=",,,",options="header",]
+|===
+|Log File and Path |Information |Log Rotation |Rotation-Configuration
+|/var/log/ubi-backup.log |MSA backup restore logs. |Not Rotated. |
+|===
+
+[[MSALogs-ElasticSearch]]
+== ElasticSearch
+
+[cols=",,,",options="header",]
+|===
+|Log File and Path |Information |Log Rotation |Rotation-Configuration
+|/var/log/elasticsearch/index_management.log |Log for the ES indexes
+optimization process (ES OPTIMIZE API). a|
+Rotated daily.
+
+Previous log day file is compressed.
+
+Compressed log file kept for 30 days max.
+
+|/etc/logrotate.d/elasticsearch
+
+|/var/log/elasticsearch/log_retention.log |Log for ES data logs/indexes
+deletion older than N days/weeks/months/years. a|
+Rotated daily.
+
+Previous log day file is compressed.
+
+Compressed log file kept for 30 days max.
+
+|/etc/logrotate.d/elasticsearch
+
+|/var/log/elasticsearch/ubiqube.log |Log for cluster global
+status/action. a|
+Rotated daily.
+
+Previous log day file is compressed.
+
+Compressed log file kept for 30 days max.
+
+|/etc/logrotate.d/elasticsearch
+
+|/var/log/elasticsearch/ubiqube_deprecation.log |Warn HTTP headers when
+a deprecated API feature is used and will be removed or rewritten in a
+future release. |Not rotated. |
+
+|/var/log/elasticsearch/ubiqube_index_indexing_slowlog.log |Log slow
+indexing process (query and fetch phases), display the sent request
+clearly. a|
+Rotated daily.
+
+Previous log day file is compressed.
+
+Compressed log file kept for 30 days max.
+
+|/etc/logrotate.d/elasticsearch
+
+|/var/log/elasticsearch/ubiqube_index_search_slowlog.log |Log slow
+search (query and fetch phases), display the sent request clearly. a|
+Rotated daily.
+
+Previous log day file is compressed.
+
+Compressed log file kept for 30 days max.
+
+|/etc/logrotate.d/elasticsearch
+
+|/opt/ubi-elasticsearch/velocity.log/opt/ubi-elasticsearch/velocity.log.1
+|Velocity logs for Elasticsearch module. |Not rotated. |
+
+|/opt/ubi-elasticsearch/logs/application.log a|
+[.deprecated]#DEPRECATED#
+
+| |
+|===
+
+[[MSALogs-LogStash]]
+== LogStash
+
+[cols=",,,",options="header",]
+|===
+|Log File and Path |Information |Log Rotation |Rotation-Configuration
+|/var/log/logstash-stderr.log |Log for logstash error messages. |Not
+rotated. |
+
+|/var/log/logstash-stdout.log |Log to follow the results of events'
+pipeline for quick iteration (by adding *"output \{ stdout \{}}*" to
+logstash conf file). |Not rotated. |
+
+|/var/log/logstash/logstash-plain.log |Log for logstash global
+status/action, file config check. a|
+Rotated daily/rotated if file size exceeds 5MB.
+
+Files kept for 2 days max.
+
+|/etc/logstash/log4j2.properties
+|===
+
+[[MSALogs-ZTD-ZeroTouchDeployment]]
+== ZTD - Zero Touch Deployment
+
+[cols=",,,",options="header",]
+|===
+|Log File and Path |Information |Log Rotation |Rotation-Configuration
+|/opt/ubi-ztd/logs/ztd-http-server.log |Logs for ZTD HTTP server. a|
+Rotated if size exceeds 2MB.
+
+Maximum 30 logs kept.
+
+|/opt/ubisysconf/ha/logs
+|/opt/ubi-ztd/logs/ztd.log |Log for ZTD module. a|
+Rotated if size exceeds 2MB.
+
+Maximum 30 logs kept.
+
+|/opt/ubisysconf/ha/logs
+|===
+
+[[MSALogs-OtherLogs]]
+== Other Logs
+
+[cols=",,,",options="header",]
+|===
+|Log File and Path |Information |Log Rotation |Rotation-Configuration
+|/opt/install/msa_install.log |MSA install log, this file is updated
+only once, which takes place at the first MSA installation. |Not
+rotated. |
+
+|/opt/ubi-filter/velocity.log |Velocity log for MSA iptables modules.
+|Not rotated. |
+|===

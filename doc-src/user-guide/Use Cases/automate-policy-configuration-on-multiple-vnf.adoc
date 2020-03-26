@@ -1,0 +1,246 @@
+= Automate Policy Configuration On Multiple Vnf
+:toc: left
+:toc-title: Content
+:imagesdir: ../resources/
+:ext-relative: adoc
+
+== Overview
+
+The tutorial
+link:/documentation/design-a-simple-firewall-microservice-with-a-linux-device/[Design
+a Simple Firewall Microservice on Linux] went through the steps of
+designing, developing and testing a simple firewall service on a
+Linux-based VNF.
+
+This tutorial will guide you through the steps to automate the
+configuration of simple firewall policy on multiple Linux-based VNF.
+
+To achieve this automation, we will use a Workflow and a set of
+processes that will be described in detail below.
+
+NOTE: getting the sources
+
+The sources of this tutorial are available on GitHub at
+https://github.com/openmsa/Workflows/tree/master/Tutorials/Simple_Firewall
+
+== Use Case Overview
+
+* The user selects one or several firewalls to manage.
+* The user enters a new security rule (IP and port) to block.
+* The user selects an existing security rule and deletes it from the
+firewall configuration.
+
+=== Implementation Steps of the Workflow
+
+* Step 1: Define the parameters.
+* Step 2: Implement the process to instantiate a new service.
+* Step 3: Implement the process to delete the service.
+* Step 4: Implement the process to configure a new security policy.
+* Step 5: Implement the process to remove existing security policies.
+
+== Design & Implementation
+
+=== Variable Definition
+
+Just as for any design/development activity, the design of the
+functionality starts by defining the interface (or the API).
+
+For this simple firewall function we need the following variables:
+
+* List of firewall devices
+* rule ID/Rule IP/Rule Port
+* array of (Rule ID/Rule IP/Rule Port)
+
+link:[image:images/image2018-7-18_15-49-43.png[Image,width=800]]
+
+==== The List of Devices
+
+The user will be able to select one or more devices to update. This list
+will be stored in an array in the $context of the workflow instance.
+
+Create a variable $http://params.devices.0.id[params.devices.0.id], type
+it as "Device"
+
+The ".0." means that the workflow engine will consider this variable as
+an array. In our case we are going to store the list for device ID.
+
+==== The Rule ID/IP/Port
+
+We need these three variables for the process that will create the rule.
+The IP and the port should be typed as Integer and the IP should be
+typed as IP Address.
+
+* $http://params.id[params.id]
+* $params.dst_port
+* $params.src_ip
+
+==== The Array of Rules (ID/IP/Port)
+
+Since we want to be able to manage the rules and therefore create and
+delete them, we need to store the rules that were configured in the
+Workflow instance.
+
+We will use an array with three entries:
+
+* $http://params.rules.0.id[params.rules.0.id]
+* $params.rules.0.dst_port
+* $params.rules.0.src_ip
+
+==== How to Handle the Rule Deletion
+
+This implementation of a simple firewall management workflow provides a
+way to configure firewall policy and to un-configure the policies. In
+order to delete a rule, the rule should be removed from the workflow
+instance as well as from the device.
+
+For this use case, we have chosen to use a flag "delete" to flag the
+rules that the deletion process will have to remove from the device in
+addition to the $context of the Workflow instance.
+
+A boolean variable will be used:
+
+* $params.delete
+
+=== Processes Definition
+
+==== The Firewall Service Instance Creation/Deletion
+
+These can be implemented by simple CREATE and DELETE processes.
+
+The process to instantiate the workflow instance doesn't require any
+logic but should expose a selectable list of devices to choose from.
+
+==== The Process to Add a Rule on Multiple Devices
+
+This process will use the microservice simple_firewall designed in the
+tutorial link:/documentation/design-a-simple-firewall-microservice-with-a-linux-device/[Design
+a Simple Firewall Microservice on Linux].
+
+This process provides the multi-device automation by applying the
+configuration to the list of devices selected during the service
+instantiation. It is also leveraging the abstraction layer provided by
+the Microservice definition to allow multi-vendor policy configuration:
+as long as the vendor specific Microservices are exposing the same
+interface (name and variables), the process will execute the order
+regardless of the device specifications.
+
+In order to apply the policy on multiple devices, use a forEach over the
+array "devices" in the $context.
+
+....
+foreach ($context['devices'] as $deviceidRow)
+....
+
+Extract the device database ID.
+
+....
+ $devicelongid = substr($deviceidRow['id'], 3);
+....
+
+Build the microservice JSON params for the *CREATE* operation.
+
+....
+ $micro_service_vars_array = array ();
+....
+
+....
+ $micro_service_vars_array ['object_id'] = $context ['id'];
+....
+
+....
+ $micro_service_vars_array ['src_ip'] = $context ['src_ip'];
+....
+
+....
+ $micro_service_vars_array ['dst_port'] = $context ['dst_port'];
+....
+
+[source,p3]
+----
+----
+
+....
+ $object_id = $context ['id'];
+....
+
+[source,p3]
+----
+----
+
+[source,p2]
+----
+ $simple_firewall = array (
+----
+
+[source,p4]
+----
+   'simple_firewall' => array (
+----
+
+[source,p2]
+----
+     $object_id => $micro_service_vars_array 
+----
+
+[source,p2]
+----
+   ) 
+----
+
+[source,p2]
+----
+ );
+----
+
+Call the *CREATE* function of the Microservice.
+
+[source,p2]
+----
+ $response = execute_command_and_verify_response ( $devicelongid, CMD_CREATE, $simple_firewall, "CREATE simple_firewall" );
+----
+
+==== The Process to Remove a Rule on Multiple Devices
+
+This process will iterate through the list of the rules stored in the
+array "rules", and for each array line with the flag "delete" set to
+true, it will call the DELETE operation of the Microservice
+simple_firewall for each device stored in the array "devices"
+
+For each rule and device, create the JSON parameters to pass to the
+*DELETE* function of the Microservice.
+
+[source,p1]
+----
+   $object_id = $rule_id;
+----
+
+[source,p1]
+----
+   $simple_firewall = array (
+----
+
+[source,p1]
+----
+     'simple_firewall' => $object_id 
+----
+
+[source,p1]
+----
+   );
+----
+
+Call the *DELETE* function of the Microservice.
+
+[source,p1]
+----
+   $response = execute_command_and_verify_response ( $device_id, CMD_DELETE, $simple_firewall, "DELETE simple_firewall" );
+----
+
+== Wrap-up
+
+This tutorial provides a simple case of multi-device, multi-vendor
+firewall policy management. It is using the integration between the
+workfow and the microservices.
+
+Feel free to download the source code from GitHub and run it on your
+setup.

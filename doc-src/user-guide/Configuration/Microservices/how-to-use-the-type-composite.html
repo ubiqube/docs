@@ -1,0 +1,38 @@
+<div class="documentation-content">
+<div class="wiki-content" id="main-content">
+    <div class="confluence-information-macro confluence-information-macro-information conf-macro output-block" data-hasbody="true" data-macro-name="info">
+        <p class="title">NOTE: Source Code</p>
+        <div class="confluence-information-macro-body">
+            <p>The source code for this tutorial is available on GitHub at: <a class="external-link" href="https://github.com/openmsa/Microservices/tree/master/Tutorials/LINUX/Generic/Tutorial3" rel="nofollow" target="_blank">https://github.com/openmsa/Microservices/tree/master/Tutorials/LINUX/Generic/Tutorial3</a></p>
+        </div>
+    </div>
+    <p>The variable type composite provide the means to add control over the behaviour of the Microservice user form.</p>
+    <p>It can be used for instance to show/hide part of the form based on the value of another component of the form.</p>
+    <p>As in the example below: if 'show A' is checked to true, the field 'A' is displayed</p>
+    <p><a class="image-popup-fit-width" href="">
+        <img alt="Image" src="images/image2019-3-26_18-1-18.png" width="500"/>
+    </a></p>
+    <p>otherwise it's hidden.</p>
+    <p><a class="image-popup-fit-width" href="">
+        <img alt="Image" src="images/image2019-3-26_18-2-55.png" width="500"/>
+    </a></p>
+    <p>In order to implement this behaviour with the Microservice designer the variables should be defined as below</p>
+    <p><a class="image-popup-fit-width" href="">
+        <img alt="Image" src="images/image2019-3-27_9-47-57.png" width="500"/>
+    </a></p>
+    <p>The state of $param.a depends on the value of $param.show therefore the type of $param.a should be set to 'Composite' and the 'advanced parameters of $param.a have to be edited to configure its behaviour.</p>
+    <p>In the section 'Type', when type is set to Composite the fields 'Selector variable' and 'Selector values' are displayed.</p>
+    <p>The field 'Selector variable' will list all other variables that could be used to control the behaviour of the current variable.</p>
+    <p>The values for the selector will depend on the type of the selector.</p>
+    <p>For example true/false will be available for boolean variable but for other types  such as String, it's possible to use predefined values or set some specific value.</p>
+    <p><a class="image-popup-fit-width" href="">
+        <img alt="Image" src="images/image2019-3-27_9-52-12.png" width="800"/>
+    </a></p>
+    <div class="confluence-information-macro confluence-information-macro-information conf-macro output-block" data-hasbody="true" data-macro-name="info">
+        <p class="title">NOTE: Regarding the variable type Composite, the section "Name", "Values", "Other parameter" should not be used. Instead, configuration has to be done with the advanced parameter of each selector value.</p>
+        
+    </div>
+</div>
+
+          
+        </div>
