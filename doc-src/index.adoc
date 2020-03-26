@@ -25,6 +25,5 @@ a|
 [link=release_notes{outfilesuffix}]
 image::images/release-notes.png[alt=Release Notes Guide]
 
-
 link:release_notes{outfilesuffix}[Release Notes]
 |===
