@@ -12,9 +12,11 @@ This documentation contains a set of doc, tutorials and examples to help you get
 == Microservices
 
 === Examples 
+
 - link:microservices_getting_started_developing{outfilesuffix}[Getting Started with Microservice Design]
 
 === Reference
+
 - link:microservice_smarty_templating{outfilesuffix}[Microservice Templating with PHP Smarty]
 
 === API
@@ -22,13 +24,20 @@ This documentation contains a set of doc, tutorials and examples to help you get
 - link:microservice_order_command_api{outfilesuffix}[Microservice Order Command REST API]
 - link:microservice_stack_management_api{outfilesuffix}[Microservice Order Stack Management API]
 
+////
+TODO
 == Workflows 
 
 - link:workflow_getting_started_developing{outfilesuffix}[Getting Started with Workflow Design]
 
+////
 == Vendor Use Cases
-- link:vendor_cisco_ios_itf_mngt{outfilesuffix}[Cisco IOS: Interfaces Management]
-- link:vendor_fortigate_security_mngt{outfilesuffix}[Fortinet Fortigate: Managed Security]
-- link:vendor_multivendor_firewall_policy_mngt{outfilesuffix}[Multi-vendor Firewall Policy Update]
 
+- link:vendor_cisco_ios_itf_mngt{outfilesuffix}[Cisco IOS: Interfaces Management]
+//// 
+TODO
+- link:vendor_fortigate_security_mngt{outfilesuffix}[Fortinet Fortigate: Managed Security]
+
+- link:vendor_multivendor_firewall_policy_mngt{outfilesuffix}[Multi-vendor Firewall Policy Update]
+////
 
