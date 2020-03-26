@@ -1,9 +1,9 @@
-= User Guide
+= Manager Guide
 :doctype: book
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-The user guide provides provides the documentation to help you understand the key concepts of the {product_name} and help you understand how to use the {product_name} in an operational environment. 
+The manager guide provides the documentation to help you understand the key concepts of the {product_name} and help you understand how to use the {product_name} in an operational environment. 
 
 == Getting Started
 
