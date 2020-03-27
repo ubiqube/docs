@@ -9,7 +9,7 @@ a|
 [link=user-guide/index{outfilesuffix}]
 image::images/user-guide.png[alt=User Guide] 
 
-link:user-guide/index{outfilesuffix}[User Guide] a| 
+link:user-guide/index{outfilesuffix}[Manager Guide] a| 
 [link=developer-guide/index{outfilesuffix}]
 image::images/dev-guide.png[alt=Developer Guide]
 
