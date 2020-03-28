@@ -1,15 +1,19 @@
 = Architecture Overview
 :doctype: book
-:imagesdir: ../resources/images
+:imagesdir: ./resources
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 The {product_name} orchestrator consists of several components running on docker containers.
 
-== Overview of the {product_name} platform
+== Overview of the platform
 - The {product_name} API server: this server provides a REST API layer on top of all the functions, it also provides the Workflow Engine responsible for executing the automated processes
 - The {product_name} core engine: this component, composed of several daemons is responsible for the configuration of the Managed Entities, the assurance and collecting the syslogs.
 - A PostgreSQL database: the {product_name} stores its state in a PostgreSQL database.
 - An Elasticsearch cluster: the {product_name} collects and stores the events and the alarms in an Elasticsearch server.
 - A BPM engine based on Camunda, fully integrated with Workflow Engine.
 - A Subversion based server to store the history of the configurations of the Managed Entities
-- REST API and UI: To control the {product_name}, you can use either the web based interface or the REST API. B
+- REST API and UI: To control the {product_name}, you can use either the web based interface or the REST API.
+
+== Overview of the docker containers
+
+image:images/docker_containers.png[]

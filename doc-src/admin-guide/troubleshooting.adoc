@@ -1,0 +1,76 @@
+= Troubleshooting guide
+:toc: left
+:imagesdir: ./resources/
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+== How do I check that the docker containers are deployed ?
+On a Linux like system, from the directory where you ran the `docker-compose up -d` command (working directory), run `docker-compose images`
+
+[source]
+----
+$ docker-compose images
+   Container                Repository                Tag         Image Id       Size  
+---------------------------------------------------------------------------------------
+docker_api_1       ubiqube/msa2                   api-20.0      59703619e8f0   7.111 GB
+docker_camunda_1   camunda/camunda-bpm-platform   7.12.0        ccda669a96fc   255.1 MB
+docker_db_1        ubiqube/msa2                   db-20.0       e8eee0194267   5.537 GB
+docker_es_1        ubiqube/msa2                   es-20.0       e3844db59c35   5.537 GB
+docker_front_1     ubiqube/msa2                   front-20.0    3f96ebe79bc5   10.71 MB
+docker_kibana_1    ubiqube/msa2                   kibana-20.0   8e8f14f8b2c9   5.537 GB
+docker_ui_1        ubiqube/msa2                   ui-20.0       517fea2710fa   34.71 MB
+----
+- *front*: runs the UI
+- *api*: runs the  the CoreEngine, the API sever and the legacy UI
+- *db*: runs the PostgreSQL databased
+- *camunda*: runs the BPM engine
+- *es*: runs the Elasticsearch server
+- *kibana*: run the kibana server
+
+Verify that all the containers are up.
+
+This will also show you the network port mapping
+
+[source]
+----
+$ docker-compose ps
+      Name                  Command             State                               Ports                             
+----------------------------------------------------------------------------------------------------------------------
+docker_api_1       /sbin/init                   Up      0.0.0.0:2223->22/tcp                                          
+docker_camunda_1   /sbin/tini -- ./camunda.sh   Up      8000/tcp, 8080/tcp, 9404/tcp                                  
+docker_db_1        run ubi-base                 Up                                                                    
+docker_es_1        run elasticsearch            Up                                                                    
+docker_front_1     nginx -g daemon off;         Up      0.0.0.0:443->443/tcp, 0.0.0.0:514->514/udp, 0.0.0.0:80->80/tcp
+docker_kibana_1    run kibana                   Up                                                                    
+docker_ui_1        nginx -g daemon off;         Up      80/tcp      
+----
+
+
+== I can't login on the UI
+
+Here are a set of useful CLI command that you can run from the working directory
+
+Check the status of the main service in the container "api"
+[source]
+----
+$ docker-compose exec api /opt/sms/bin/check_services_status.sh
+wildfly                                                    [  OK  ]
+tomcat                                                     [  OK  ]
+ubi-dms                                                    [  OK  ]
+ubi-sms                                                    [  OK  ]
+ubi-webconf                                                [  OK  ]
+----
+
+Check the status of the database
+[source]
+----
+$ docker-compose exec db service postgresql-9.3 status
+postgresql-9.3 (pid  52) is running...
+----
+
+Monitor the logs of the API server. Run the cmd below and try to login.
+Report any error from the logs
+[source]
+----
+docker-compose exec api tail -F /opt/wildfly/logs/console.log
+----
+

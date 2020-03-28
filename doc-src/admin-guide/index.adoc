@@ -2,12 +2,14 @@
 :imagesdir: ../resources/images
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-The {product_name} Installation and Configuration Guide will show you how to install, configure and activate the {product_name}ctivator.
+The Installation and Configuration Guide will show you how to install, configure and activate the {product_name}.
 
-* link:installation{outfilesuffix}[How to install the {product_name}]
-* link:license_activation{outfilesuffix}[How to activate the {product_name}]
-* link:upgrade{outfilesuffix}[How to upgrade the {product_name}]
+* link:installation{outfilesuffix}[Installation]
+* link:license_activation{outfilesuffix}[License Activation]
+* link:upgrade{outfilesuffix}[{product_name} Upgrade]
 * link:architecture_overview{outfilesuffix}[Architecture]
+* link:troubleshooting{outfilesuffix}[Troubleshooting]
+
 
 
 
