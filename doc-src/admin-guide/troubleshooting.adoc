@@ -74,3 +74,22 @@ Report any error from the logs
 docker-compose exec api tail -F /opt/wildfly/logs/console.log
 ----
 
+If the API server is not responding or if you can't login after you waited a few minutes, run the command below to restart the API server and monitor the logs
+
+[source]
+----
+$ docker-compose exec api service wildfly restart              
+removing previous configuration
+setting new configuration
+error reading input file
+
+[...]
+
+BUILD SUCCESSFUL
+Total time: 0 seconds
+moving ear to /opt/wildfly/standalone/deployments/
+Using Mode: standalone/
+wildfly started with errors, please see server log for details            [  OK  ]
+----
+
+Then monitor the logs as explained above
