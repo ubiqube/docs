@@ -24,21 +24,28 @@ of the VM running the .ova flavour of MSA:
 - 16Go, 4CPU, 100Go
 
 
-Linux (or Linux VM) docker engine
----------------------------------
+Docker for Linux (or Linux VM)
+------------------------------
 
 	sudo sysctl -w vm.max_map_count=262144
 	sudo tee -a /etc/sysctl.conf <<< "vm.max_map_count=262144"
 
 
-MacOS docker engine
--------------------
+Docker for Mac
+--------------
 
-	TODO: document if/howto set vm.max_map_count=262144
+From the command line, run:
 
+	screen ~/Library/Containers/com.docker.docker/Data/vms/0/tty
+	
+Press enter and use`sysctl` to configure vm.max_map_count:
 
-Windows docker engine
----------------------
+	sysctl -w vm.max_map_count=262144
+	
+To exit the screen session, type Ctrl a d.
+
+Docker for Windows
+------------------
 
 	docker-machine create -d virtualbox  \
 		--virtualbox-cpu-count=2 \
