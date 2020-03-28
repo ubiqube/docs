@@ -21,7 +21,7 @@ image:images/gui_admin_dashboard.png[Admin Dashboard]
 					  Each of the graphs represents the status of the managed entities for the named customer.
 | Alarms 			| Shows the alarms raised by the Assurance system (coming soon)
 | Managed Entities	| Shows the entities managed by this {product_name}. Entities can be network element such as routers or firewalls, cloud or uCPE management system,...
-| Configurations	| Shows the Microservices and the Templates available in the {product_name} Repository. 
+| Integration	| Shows the Microservices and the Templates available in the {product_name} Repository. 
 						
 					  Configuration will also show the Deployement Settings created in this {product_name}
 | Automation		| Shows the Workflows that are in use and available for use in the system. You can add a Workflow to a Customer from there.
@@ -102,8 +102,8 @@ Finally, on this screen you can also perform a simple search of the managed enti
 
 TIP: See also - link:managed_entities{outfilesuffix}[Managed Entities] for a detailed documentation on managed entities
 
-== Configuration
-To see the list of Microservices], templates and deployment settings, click on the "Configurations" link in the left menu.
+== Integration
+To see the list of Microservices, templates and deployment settings, click on the "Integration" link in the left menu.
 
 //// 
 TODO: update screenshot
