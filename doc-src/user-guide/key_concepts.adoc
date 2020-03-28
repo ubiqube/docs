@@ -19,12 +19,12 @@ On the {product_name} login screen, there are two different types of logins sele
 
 We call these personas, and this is the purpose of each one:
 
-.Administrator
-This will give you access to the administrator dashboard, that allows you to monitor and manage the entities configured in your {product_name} installation.  
+.Manager
+This will give you access to the manager dashboard, that allows you to monitor and manage the entities configured in your {product_name} installation.  
 This dashboard represents the "Ops" half of the "DevOps" approach, see here for more details: link:gui_overview{outfilesuffix}#_administrator_and_manager_dashboard[GUI Overview]
 
 .Developer
-This will give you access to the developer dashboard, that allows you to design business processes, write workflows and develop microservices in your {product_name}.  
+This will give you access to the developer dashboard, that allows you to design business processes, write workflows, or use visual workflows and develop microservices in your {product_name}.  
 This dashboard represents the "Dev" half of the "DevOps" approach, see here for more details: The developer dashboard
 
 NOTE: The username and password you use to access either dashboard is the same, the selection on the login screen simply determines which dashboard you can see after logging in.
@@ -37,16 +37,16 @@ The term "Managed Entity" encompasses manageable entities such as network elemen
 The term "Configurations" relates to Microservices, Templates and Deployment Settings.
 
 .Templates
-Configuration Templates provide a simple way to provide day 0 configuration during the activation managed entity.
+Configuration Templates provide a simple way to provide what is termed in the Telco world as 'day 0' configuration during the activation managed entity.
 
-{product_name} configuration engine runs on PHP Smarty and allow some scripting to add logic to the generation of the configuration
+{product_name} configuration engine runs on PHP Smarty and allows some scripting to add logic to the generation of the configuration.
 
 .Microservices
-Microservices can be used to manage a wide variety of services on numerous types of devices, such as network equipment, virtualization infrastructure managers, or even Linux servers.
+Microservices can be used to manage a wide variety of services on numerous types of entities, such as network equipment, virtualization infrastructure managers, or even Linux servers.
 
 Microservices is the abstration layer between the specificities of the Managed Entities and the genericity required for a true multi-vendor management system.
 
-Microservice will let you define your managed services in a fine grained and modular manner and provide all the required function to create, update, delete, import these services in a production environement.
+Microservices will let you define your managed services in a fine-grained and modular manner and provide all the required functions to create, read, update, delete and import these services in a production environment.
 
 .Deployment Settings
 Deployment Settings are the logical entities that will bind together the Configurations and the Managed Entities.
@@ -58,11 +58,11 @@ Deployment Settings are the logical entities that will bind together the Configu
 The link:automation_workflows{outfilesuffix}[Workflow] layer addresses domain-specific scenarios which can be highly technically scripted, appealing to DevOps and SecOps engineers. 
 
 .BPM
-The link:bpm{outfilesuffix}[BPM] layer offers a visual workflow editor to make {product_name} a strong SOAR contender for business process design which appeals to realities and are not enshrined in vendor-specific boundaries. Maximum security remediation policies can be applied as engineers creatively imagine a process applied to all domains involved (security, routing, switching, cloud hosting, etc.).
+The link:bpm{outfilesuffix}[BPM] layer offers a visual workflow editor to make {product_name} a strong SOAR contender for business process design which appeals to realities and is not enshrined in vendor-specific boundaries. Maximum security remediation policies can be applied as engineers creatively imagine a process applied to all domains involved (security, routing, switching, cloud hosting, etc.).
 
 == The UI
 
-*Vision*: {product_name} is to enable a ‘DevOps-ready’ Orchestration Continuum to enable the design of integrated automation solutions across the entire tech ecosystem (datacenter to WAN, edge computing and IoT: all wrapped with security).
+*Vision*: {product_name} is to enable a ‘DevOps-ready’ Integrated Automation Platform to enable the design of multi-vendor, multi-cloud solutions across the entire tech ecosystem (datacenter to WAN, edge computing and IoT: all wrapped with security).
 
 
 *Target users*:  SI engineers developing (DevOps) end-to-end solutions for their business customers, or end-users managing the lifecycle of their infrastructure or the services they are deploying (Telco, Cloud, MSSP, etc.).
@@ -76,7 +76,7 @@ A UX reflecting the above wide variety of technical scenarios and user experienc
 * *An end-user-centric environment*.
 . A UX structure in line with our modular {product_name} marketing (microservices, workflows, etc.) for consistency and greater concept adoption.
 . A universal taxonomy (naming and tagging) that would appeal to the entire ecosystem no matter the domain or the use case (datacenter, services, security, networking, wireless, wireline, IoT, etc.).
-. A modern UX where navigation experience matters more than feature list.
+. A modern UX where navigation user experience matters more than feature list.
 . A UX that connects to our community for greater intel and information-sharing among all of the {product_name} users and developers.
 . A UX that becomes an evergreen platform, which we continue to improve over time, making our ‘agility by design’ claim a tangible reality for our customers and partners.
 . A UX that becomes a strategic module of the {product_name} strategy as we head towards 5G, edge computing and IoT. 
@@ -91,7 +91,7 @@ The 7 terms that define the tree of the {product_name} navigation:
 |
  1. Managed Entities (used to be devices)
  
- 2. Configurations (category for config profiles and Microservices)
+ 2. Integration (category for config profiles and Microservices)
  
  3. Automation (category for Workflow)
  
