@@ -11,5 +11,10 @@ The Installation and Configuration Guide will show you how to install, configure
 * link:troubleshooting{outfilesuffix}[Troubleshooting]
 
 
+// Attempt to navigate within Documentation, but will have to see if adoc converts to HTML appropriately so link
+// not lost
+//
+// Go back to Main Menu: link:../index.adoc[Index]
+//
 
 
