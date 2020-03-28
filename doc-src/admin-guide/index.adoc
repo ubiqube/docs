@@ -9,5 +9,10 @@ The {product_name} Installation and Configuration Guide will show you how to ins
 * link:upgrade{outfilesuffix}[How to upgrade the {product_name}]
 * link:architecture_overview{outfilesuffix}[Architecture]
 
+/// Attempt to navigate within Documentation, but will have to see if adoc converts to HTML appropriately so link
+/// not lost
+///
+/// Go back to Main Menu: link:../index.adoc[Index]
+///
 
 
