@@ -24,6 +24,10 @@ The manager guide provides the documentation to help you understand the key conc
 - link:portal_overview{outfilesuffix}[Portal Overview]
 - link:tenants_and_users{outfilesuffix}[Tenants and Users]
 
+== Architecture
+- link:../admin-guide/architecture_overview{outfilesuffix}[Architecture]
+
+
 
 
 
