@@ -31,15 +31,73 @@ In a nutshell:
 
 Then browse to: https://localhost with the credentials ncroot/ubiqube
 
+image:images/connection_page.png[]
+
 == Install steps
 
-.install steps from readme in docker/
+=== Install MSA-v2 on your docker engine
+
+1. check your dockerhub account password - or create a new account
+2. ask for access to private repo: `ubiqube/msa2`
+3. check your docker engine has access to dockerhub
+4. create a new directory: `ddmsa/`
+5. cd `ddmsa/`
+6. download: [docker-compose.yml][docker-compose]
+7. run: `docker login`
+8. run: `docker-compose up -d`
+9. browse: https://localhost/
+
+
+=== Requirements on the host machine
+
+The host machine should have hardware specs similar to that
+of the VM running the .ova flavour of MSA:
+
+- 16Go, 4CPU, 100Go
+
+=== Docker for Linux (or Linux VM)
 ----
-include::{sourcedir}/../docker/README.md[]
+sudo sysctl -w vm.max_map_count=262144
+sudo tee -a /etc/sysctl.conf <<< "vm.max_map_count=262144"
 ----
 
+== Docker for Mac
+
+From the command line, run:
+----
+screen ~/Library/Containers/com.docker.docker/Data/vms/0/tty
+----	
+Press enter and use`sysctl` to configure vm.max_map_count:
+----
+sysctl -w vm.max_map_count=262144
+----	
+To exit the screen session, type Ctrl a d.
+
+=== Docker for Windows
+----
+docker-machine create -d virtualbox  \
+	--virtualbox-cpu-count=2 \
+	--virtualbox-memory=8192 \
+	--virtualbox-disk-size=50000 \
+	default
+----
+
+In the docker VM, do as for Linux host above:
+----
+sudo sysctl -w vm.max_map_count=262144
+sudo tee -a /etc/sysctl.conf <<< "vm.max_map_count=262144"
+----
+
+The docker VM is mapped to a local IP on the Windows host,
+access to the msa is _NOT_ done via `https://localhost`,
+you must lookup the IP with:
+
+```
+$ docker-machine ls
+NAME      ACTIVE   DRIVER       STATE     URL                         SWARM   DOCKER     ERRORS
+default   *        virtualbox   Running   tcp://192.168.99.100:2376           v19.03.5
+```
 Below is a trace of an install session.
-
 
 == Sample install session
 
@@ -86,7 +144,6 @@ Password:
 Login Succeeded
 ----
 
-
 .docker-compose up -d  (again)
 ----
 $ docker-compose up -d
@@ -129,9 +186,7 @@ Creating docker_kibana_1
 Creating docker_es_1 ... done
 Creating docker_api_1 ...
 Creating docker_api_1 ... done
-
 ----
-
 
 .docker-compose ps
 ----
@@ -156,12 +211,7 @@ docker_ui_1        nginx -g daemon off;        Up      80/tcp
 
 
 .browse to the web-ui
+https://localhost (ncroot / ubiqube)
 
-https://localhost
-
-[NOTE]
-====
-There might be a pop-up warning of a self-signed cert that need to be accepted to proceed.
-
+NOTE: There might be a pop-up warning of a self-signed cert that need to be accepted to proceed.
 Users might need to wait a few minutes after they access the localhost as it takes a few minutes for the {product_name} to start in the background before they logon
-====
