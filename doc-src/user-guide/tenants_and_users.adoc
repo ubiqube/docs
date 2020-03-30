@@ -70,7 +70,7 @@ A typical administrator job is to create the users and the customers within its 
 
 Privileged managers are restricted to a single operator tenant.
 
-Within their tenant, a privileged manager has full access rights and can perform tasks such as customer management, device management, user and right management.
+Within their tenant, a privileged manager has full access rights and can perform tasks such as customer management, device management, user and rights management.
 
 Managers are restricted to a single operator tenant and, within this tenant, to a subset of customers.
 
