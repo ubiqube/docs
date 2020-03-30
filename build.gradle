@@ -10,10 +10,16 @@ repositories {
 
 asciidoctor {
 
-   attributes \
+  requires ['asciidoctor-diagram']
+
+  options \
+    safe: :safe
+
+  attributes \
   	'source-highlighter' : 'rouge',
     'linkcss': true,
-    'product_name': 'MSA(TM)'
+    'product_name': 'MSActivator(TM)',
+    'allow-uri-read': '' 
  
   sourceDir  file('doc-src')
   outputDir  file('build/docs')
