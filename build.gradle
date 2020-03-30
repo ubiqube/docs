@@ -10,11 +10,6 @@ repositories {
 
 asciidoctor {
 
-  requires ['asciidoctor-diagram']
-
-  options \
-    safe: :safe
-
   attributes \
   	'source-highlighter' : 'rouge',
     'linkcss': true,
