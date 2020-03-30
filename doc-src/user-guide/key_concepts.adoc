@@ -25,7 +25,8 @@ This dashboard represents the "Ops" half of the "DevOps" approach, see here for 
 
 .Developer
 This will give you access to the developer dashboard, that allows you to design business processes, write workflows, or use visual workflows and develop microservices in your {product_name}.  
-This dashboard represents the "Dev" half of the "DevOps" approach, see here for more details: The developer dashboard
+This dashboard represents the "Dev" half of the "DevOps" approach, see here for more details: 
+link:gui_overview{outfilesuffix}#developer-dashboard[GUI Overview]
 
 NOTE: The username and password you use to access either dashboard is the same, the selection on the login screen simply determines which dashboard you can see after logging in.
 
