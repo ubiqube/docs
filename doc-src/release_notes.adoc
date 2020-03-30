@@ -16,7 +16,7 @@ The {product_name} UX structure is in line with our modular {product_name} archi
 
 TIP: Go to link:user-guide/gui_overview{outfilesuffix}[GUI overview] to get a detailed description of this new user interface.
 
-== Automation: Business Process Modeling
+== Automation: Business Process Modeling (BPM)
 
 The {product_name} Automation stack has been enriched with a business process modeling (BPM) visual workflow editor. 
 
