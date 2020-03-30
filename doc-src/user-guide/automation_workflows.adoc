@@ -82,7 +82,7 @@ Each icon will give you some information about the instance:
 image:images/automation_workflow_instance_info.png[]
 
 - Details: lists the Workflow variable and their values. This is the state of the instance.
-- History: list the processes that were executed. For each process you can get the user that triggered the execution, the start and end time, the status of the execution.
+- History: lists the processes that were executed. For each process you can get the user that triggered the execution, the start and end time, the status of the execution.
 
 The history will let you audit the process past executions and access all their the details.
 
@@ -105,10 +105,10 @@ The Workflow engine is responsible for
 
 == Access Rights
 
-As privileged administrator (ncroot) or adminitrator, you have access to multiple tenants and their related customers.
-You can list the wokflows that are in used (ie. associated to a customer) by clicking on the "Automation" link on the left menu.
+As privileged administrator (ncroot) or administrator, you have access to multiple tenants and their related customers.
+You can list the workflows that are in used (ie. associated to a customer) by clicking on the "Automation" link on the left menu.
 
-As a manager you will anly be able to select the customer in your tenant.
+As a manager you will only be able to select the customer in your tenant.
 
 image:images/automation_wf_list_as_admin.png[Workflow List as Admin]
 
