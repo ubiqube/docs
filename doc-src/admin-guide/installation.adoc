@@ -97,7 +97,7 @@ $ docker-machine ls
 NAME      ACTIVE   DRIVER       STATE     URL                         SWARM   DOCKER     ERRORS
 default   *        virtualbox   Running   tcp://192.168.99.100:2376           v19.03.5
 ```
-Below is a trace of an install session.
+Below is a sample install session.
 
 == Sample install session
 
@@ -211,7 +211,8 @@ docker_ui_1        nginx -g daemon off;        Up      80/tcp
 
 
 .browse to the web-ui
-https://localhost (ncroot / ubiqube)
+https://localhost/ (ncroot / ubiqube)
 
-NOTE: There might be a pop-up warning of a self-signed cert that need to be accepted to proceed.
-Users might need to wait a few minutes after they access the localhost as it takes a few minutes for the {product_name} to start in the background before they logon
+NOTE: There might be a pop-up warning of a self-signed cert that needs to be accepted to proceed.
+
+NOTE: Users might need to wait a few minutes after they access the localhost as it takes a few minutes for the {product_name} to start in the background before they logon
