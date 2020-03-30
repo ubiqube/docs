@@ -3,7 +3,7 @@
 :imagesdir: ./resources
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-The {product_name} orchestrator consists of several components running on docker containers.
+The {product_name} is an Integrated Automation Platform, which consists of several components running on Docker containers.
 
 == Overview of the platform
 - The {product_name} API server: this server provides a REST API layer on top of all the functions, it also provides the Workflow Engine responsible for executing the automated processes
