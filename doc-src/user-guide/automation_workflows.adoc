@@ -10,10 +10,10 @@ This guide explains how to list workflows, select them and run them.
 
 A Workflow is composed of:
 
-1) A collection of processes, where each process is composed of a set of executable tasks.
-2) A list of variables that will be stored in the database and are holding the state of a Workflow instance.
-3) A list of alarm queries used to trigger reactive processes.
-4) Some administrative information used to manage the service in the service console.
+- A collection of processes, where each process is composed of a set of executable tasks.
+- A list of variables that will be stored in the database and are holding the state of a Workflow instance.
+- A list of alarm queries used to trigger reactive processes.
+- Some administrative information used to manage the service in the service console.
 
 == Workflow Selection
 
