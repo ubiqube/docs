@@ -23,16 +23,16 @@ image:images/gui_admin_dashboard.png[Admin Dashboard]
 | Managed Entities	| Shows the entities managed by this {product_name}. Entities can be network element such as routers or firewalls, cloud or uCPE management system,...
 | Integration	| Shows the Microservices and the Templates available in the {product_name} Repository. 
 						
-					  Configuration will also show the Deployement Settings created in this {product_name}
+					  Configuration will also show the Deployment Settings created in this {product_name}
 | Automation		| Shows the Workflows that are in use and available for use in the system. You can add a Workflow to a Customer from there.
-| BPM				| Create or Load you business process modelings, integrate them with Workflows and Microservices.
+| BPM				| Create or Load your business process modelings, integrate them with Workflows and Microservices.
 | Assurance			| View the Monitoring configuration. You can edit Monitoring configuration and configure your own SNMP based KPI to monitor your Managed Entities. (coming soon)
 | Repository		| Organise your files such as Templates, Microservices, Workflows, Firmware images in the Repository. (coming soon)
 | Settings			| For license activation and system health status. (coming soon)
 | Auto-refresh 		| Set an overall refresh period in seconds.
 |===
 
-=== Status Graphes
+=== Status Graphs
 
 image:images/dashboard_status_graph_overview.png[alt=Status Graph, width=200px]
 
@@ -169,7 +169,7 @@ The three swimlanes match the three main layers of the {product_name} framework,
 This is where you can develop new workflows for your application.  In {product_name}, workflows can be written in either PHP or Python.  A workflow is a series of tasks that you can develop to carry out any set of complex tasks that you wish to automate via our orchestration engine.
 
 .Microservices Library
-This is where you can develop new microservices for you application.  
+This is where you can develop new microservices for your application.  
 In {product_name}, a microservice is a way to wrap commands (Create/Read/Update/Delete/Import) into a service, that can be invoked with a workflow or even from outside {product_name} via our REST API.  
 The microservices are typically used for managing the configuration of managed entities in an abstracted, vendor-neutral way.
 
