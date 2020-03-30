@@ -2,12 +2,12 @@
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-This documentation contains a set of doc, tutorials and examples to help you getting familiar with the {product_name}.
+This documentation contains a set of documentation, tutorials and examples to help you get familiar with the {product_name}.
 
 == API & SDK
 - link:rest_api{outfilesuffix}[REST API]
-- link:workflow_python_sdk{outfilesuffix}[Python SDK for Workflow Developement]
-- link:workflow_php_sdk{outfilesuffix}[PHP SDK for Workflow Developement]
+- link:workflow_python_sdk{outfilesuffix}[Python SDK for Workflow Development]
+- link:workflow_php_sdk{outfilesuffix}[PHP SDK for Workflow Development]
 
 == Microservices
 
@@ -25,6 +25,7 @@ This documentation contains a set of doc, tutorials and examples to help you get
 - link:microservice_stack_management_api{outfilesuffix}[Microservice Order Stack Management API]
 
 ////
+
 TODO
 == Workflows 
 
@@ -34,10 +35,13 @@ TODO
 == Vendor Use Cases
 
 - link:vendor_cisco_ios_itf_mngt{outfilesuffix}[Cisco IOS: Interfaces Management]
+
 //// 
+
 TODO
 - link:vendor_fortigate_security_mngt{outfilesuffix}[Fortinet Fortigate: Managed Security]
 
 - link:vendor_multivendor_firewall_policy_mngt{outfilesuffix}[Multi-vendor Firewall Policy Update]
+
 ////
 
