@@ -6,18 +6,18 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 Workflows allows the creation and management of complex processes.
 
 .Summary
-This guide explains of to list the workflow, select them and run them.
+This guide explains how to list workflows, select them and run them.
 
-A Workflows is composed of:
+A Workflow is composed of:
 
-- A collection of processes, each process is composed of a set of executable tasks.
-- A list of variables that will be stored in the database and are holding the state of a Workflow instance.
-- A list of alarm queries used to trigger reactive processes.
-- Some administrative information used to manage the service in the service console.
+1) A collection of processes, where each process is composed of a set of executable tasks.
+2) A list of variables that will be stored in the database and are holding the state of a Workflow instance.
+3) A list of alarm queries used to trigger reactive processes.
+4) Some administrative information used to manage the service in the service console.
 
 == Workflow Selection
 
-In order to use a Workflow, it has first to be associated to a Customer.
+In order to use a Workflow, it has first to be associated to a customer.
 To do so, you need to select a WF from the list and click on "Add to..."
 
 image:images/automation_wf_list_add_to_customer.png[Workflow Add to Customer]
@@ -26,10 +26,10 @@ This will open a dialog popup where customer will able to select the customer to
 
 == Workflow Use
 
-To run a Worflow you must first select a Customer from the Customer selection list at the top of the screen.
+To run a Workflow you must first select a customer from the customer selection list at the top of the screen.
 
 This will display the customer management dashboard for the Workflows.
-This dashboard show the overall status of process execution
+This dashboard shows the overall status of process execution.
 
 image:images/automation_manager_dashboard.png[Workflow Manager Dashboard]
 
@@ -44,10 +44,10 @@ image:images/automation_workflow_instance_list.png[Workflow Instance List]
 
 ==== Instance Lifecycle
 
-Before you can start using a Workflow you need to create a new instance of the Workflow (you can think of that as using a class to create a new object instance in object oriented programming - OOP).
+Before you can start using a Workflow, you need to create a new 'instance' of the Workflow. (For programmers, this is akin to thinking of using a class to create an object instance in Object-Oriented Programming, or OOP).
 
-The action on the top right will create a new instance and open a user form where you will be able to provide some parameters related to the creation of the instance (you can thnk of this as passing parameter to the contructor in OOP). 
-The form may not always require parameter (this would be the case of the default constructor in OOP)
+The action on the top right will create a new instance and open a user form where you will be able to provide some parameters related to the creation of the instance (you can think of this as passing a parameter to the constructor in OOP). 
+The form may not always require parameters (this would be the case of the default constructor in OOP).
 
 The example below shows a user form with some network related information, scroll down and click on "Run" to execute the instance creation process.
 
