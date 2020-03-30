@@ -35,7 +35,7 @@ If the variables are updated they will be used for that particular activation bu
 When the activation is started the dialog shows the progress of the Managed Entity activation. 
 This will update as the activation progresses and will show whether the activation succeeds or fails.
 
-NOTE: the activation of the managed entity is excuted by the Adapter specific to the Managed Entity model.
+NOTE: the activation of the managed entity is executed by the Adapter specific to the Managed Entity model.
 //// 
 TODO : add detail screen info when screen is not static anymore
 
