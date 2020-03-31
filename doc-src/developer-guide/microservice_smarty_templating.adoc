@@ -5,7 +5,7 @@
 :source-highlighter: pygments
 
 == Smarty Templates
-The Smarty templates are used to generate output using variables and control structures like if/then/else conditional branches or foreach loops.
+The Smarty templates are used to generate output using variables and control structures like if/then/else conditional branches or for/each loops.
 The outputs are used to configure devices or retrieve data from the database.
 
 === Variables
@@ -44,14 +44,14 @@ Smarty has a specific meaning for the '.' dot character, so it is not allowed in
 
 In order to reference the value of another object, the Smarty modifier '|object_id' can be use.
 
-Example.
+Example:
 ----
 v2.0/subnets/{$subnets[$params.object_id|object_id].uuid}
 ----
-will fetch the uuid parameter of the subnets object having $params.object_id id.
+will fetch the uuid parameter of the 'subnets' object having $params.object_id id.
 
 === Control Structures
-Control structures are used to generated output using complex data, like list of objects, or optional parts.
+Control structures are used to generate output using complex data, like list of objects, or optional parts.
 
 ==== Conditionals
 ----
@@ -104,7 +104,7 @@ telephony-service
 ----
 {foreach} is used to loop over an associative array as well a numerically-indexed array, unlike {section} which is for looping over numerically-indexed arrays only. 
 
-The syntax for {foreach} is much easier than {section}, but as a tradeoff it can only be used for a single array. Every {foreach} tag must be paired with a closing {/foreach} tag.
+The syntax for {foreach} is much easier than {section}, but as a trade off it can only be used for a single array. Every {foreach} tag must be paired with a closing {/foreach} tag.
 |===
 |Attribute Name	|Type		|Required	|Default	|Description
 |from			|array		|Yes		|n/a		|The array you are looping through
