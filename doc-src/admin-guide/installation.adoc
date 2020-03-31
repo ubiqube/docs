@@ -2,58 +2,95 @@
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-TIP: this document elaborates on https://github.com/ubiqube/docs/tree/master/docker
-
 == Overview
 
 The {product_name} docker application has the following structure:
 
 image:images/docker_containers.png[overall architecture]
 
-The application ships as:
-- docker-compose.yml
-- set of images, available from dockerhub:ubiqube/msa2
+== Prerequisites
+
+Before starting this tutorial, first install link:https://docs.docker.com/install/[Docker] on your machine. 
+Next install link:https://docs.docker.com/compose/install/[Docker Compose] on your machine.
 
 == Installing the application
 
-The following assumes you have a docker engine at hand,
-with internet access.
+The easiest way to get started with the {product_name} is to use the link:https://github.com/ubiqube/quickstart[quickstart guide on github].
 
-
-Browse to https://github.com/ubiqube/docs/tree/master/docker
-and follow the steps.
-
-In a nutshell:
-
-* download https://github.com/ubiqube/docs/tree/master/docker/docker-compose.yml
-* docker-compose up -d
-
-
-Then browse to: https://localhost with the credentials ncroot/ubiqube
-
-image:images/connection_page.png[]
-
-== Install steps
-
-=== Install MSA-v2 on your docker engine
+This quickstart guide will setup a mini-lab composed of the MSA-2 containers as well as a Linux container that you can use to experiment on. (see below for mode details)
 
 1. check your dockerhub account password - or create a new account
 2. ask for access to private repo: `ubiqube/msa2`
 3. check your docker engine has access to dockerhub
-4. create a new directory: `ddmsa/`
-5. cd `ddmsa/`
-6. download: [docker-compose.yml][docker-compose]
-7. run: `docker login`
-8. run: `docker-compose up -d`
-9. browse: https://localhost/
+4. clone this repo: `git clone https://github.com/ubiqube/quickstart.git`
+5. `cd quickstart`
+6. run: `docker login`
+7. run: `docker-compose -f docker-compose.yml -f lab/docker-compose.lab.yml up -d`
+8. browse: https://localhost/ and connect as username `ncroot`, password `ubiqube`
+
+image:images/connection_page.png[]
+
+NOTE: To get the access to the UBiqube dockerhub private repository please contact us at info@ubiqube.com.
+NOTE: It might take a few minutes after connecting to https://localhost/ to be able to login.
+NOTE: There might be a pop-up warning of a self-signed cert that needs to be accepted to proceed.
 
 
-=== Requirements on the host machine
+When Docker Compose is done deploying and the MSA platform is running, you will be able to open the dashboard at link:https://127.0.0.1[]. 
+
+When you see the following output, the MSA platform is ready to be used
+
+```
+Creating quickstart_ui_1      ... done
+Creating quickstart_db_1      ... done
+Creating quickstart_es_1      ... done
+Creating quickstart_me_1      ... done
+Creating quickstart_camunda_1 ... done
+Creating quickstart_kibana_1  ... done
+Creating quickstart_api_1     ... done
+Creating quickstart_front_1   ... done
+```
+
+If you get a gateway error, the web server is probably still starting and you may have to wait for 10-20 more seconds before trying again.
+
+To get an interactive shell on the MSA main container (this will be needed later)
+```
+docker-compose exec api bash
+```
+
+=== Mini-lab Details 
+image:images/minilab_containers.png[mini lab containers]
+ 
+In addition to add a Linux container (linux.me / 172.20.0.101) for experimentation, the mini-lab also comes with the following pre-installed:
+
+. A trial license valid for 30 days, limited to 5 Managed Entities
+. The REST Generic adapter from link:https://github.com/openmsa/Adaptors/tree/master/adapters/rest_generic[github.com/openmsa/Adaptors]
+. A set of Micorservices from various vendors from link:https://github.com/openmsa/Microservices[github.com/openmsa/Microservices]
+. A predefined environment with a tenant and a customer
+
+
+== Breaking down/Resetting the quickstart environment
+To fully clean up or reset the environment, run the following commands:
+
+1. `docker-compose -f docker-compose.yml -f lab/docker-compose.lab.yml down`
+2. `docker volume prune -f`
+3. `docker ps -a | grep "ubiqube" | awk '{print $3}' | xargs docker rmi`
+4. `docker images | grep "ubiqube" | awk '{print $3}' | xargs docker rmi`
+
+This will give you a clean environment next time you run docker-compose up.
+
+To completely clean up your docker images you can also do `docker rmi $(docker images -a -q)`.
+WARNING: this will wipe out every images from your docker engine.
+
+
+== Requirements on the host machine
 
 The host machine should have hardware specs similar to that
 of the VM running the .ova flavour of MSA:
+.on a PC
+- 8Go, 2CPU, 100Go
+.on a production environment 
+- minimum 16Go, 4CPU, 100Go
 
-- 16Go, 4CPU, 100Go
 
 === Docker for Linux (or Linux VM)
 ----
@@ -61,7 +98,7 @@ sudo sysctl -w vm.max_map_count=262144
 sudo tee -a /etc/sysctl.conf <<< "vm.max_map_count=262144"
 ----
 
-== Docker for Mac
+=== Docker for Mac
 
 From the command line, run:
 ----
@@ -97,122 +134,3 @@ $ docker-machine ls
 NAME      ACTIVE   DRIVER       STATE     URL                         SWARM   DOCKER     ERRORS
 default   *        virtualbox   Running   tcp://192.168.99.100:2376           v19.03.5
 ```
-Below is a sample install session.
-
-== Sample install session
-
-The following makes direct use of a git clone of this repo.
-
-.clone this repo
-----
-$ git clone https://github.com/ubiqube/docs.git gh.ubi.docs
-[...]
-
-$ cd gh.ubi.docs/docker
-----
-
-.docker-compose up -d
-----
-$ docker-compose up -d
-----
-
-.ouptut
-----
-Creating network "docker_default" with the default driver
-Creating volume "docker_monitoring" with default driver
-Creating volume "docker_license" with default driver
-Creating volume "docker_repo.contents" with default driver
-Creating volume "docker_db" with default driver
-Creating volume "docker_kibana" with default driver
-Creating volume "docker_repo.entities" with default driver
-Creating volume "docker_change-mgt" with default driver
-Creating volume "docker_es" with default driver
-Pulling db (ubiqube/msa2:db-20.0)...
-ERROR: pull access denied for ubiqube/msa2, repository does not exist or may require 'docker login'
-----
-
-.docker login
-----
-$ docker login
-----
-
-.output
-----
-Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com to create one.
-Username: ofa4ubi
-Password:
-Login Succeeded
-----
-
-.docker-compose up -d  (again)
-----
-$ docker-compose up -d
-----
-
-.output
-----
-Pulling db (ubiqube/msa2:db-20.0)...
-db-20.0: Pulling from ubiqube/msa2
-923e5b97c6ca: Downloading [===>                                               ]  206.3MB/2.677GB
-88eb9217dbf6: Download complete
-
-[...]
-
-Pulling api (ubiqube/msa2:api-20.0)...
-api-20.0: Pulling from ubiqube/msa2
-923e5b97c6ca: Already exists
-44bd1be23b47: Pull complete
-ee48504090e3: Pull complete
-cb38798a1f36: Pull complete
-d08aab2cd6ed: Pull complete
-4b44f07a2340: Pull complete
-907333b6c030: Pull complete
-d9e192b60932: Pull complete
-8b615636b9ad: Pull complete
-Digest: sha256:111e325a14ac76d24ba1d956c97704e0144ea087c3125eb7b725e031728a3641
-Status: Downloaded newer image for ubiqube/msa2:api-20.0
-
-Creating docker_es_1 ...
-Creating docker_ui_1 ...
-Creating docker_kibana_1 ...
-Creating docker_front_1 ...
-Creating docker_camunda_1 ...
-Creating docker_db_1 ...
-Creating docker_ui_1
-Creating docker_db_1
-Creating docker_camunda_1
-Creating docker_front_1
-Creating docker_kibana_1
-Creating docker_es_1 ... done
-Creating docker_api_1 ...
-Creating docker_api_1 ... done
-----
-
-.docker-compose ps
-----
-$ docker-compose ps
-----
-
-.output
-----
-      Name                  Command            State             Ports
---------------------------------------------------------------------------------
-docker_api_1       /sbin/init                  Up      0.0.0.0:2223->22/tcp
-docker_camunda_1   /sbin/tini --               Up      8000/tcp, 8080/tcp,
-                   ./camunda.sh                        9404/tcp
-docker_db_1        run ubi-base                Up
-docker_es_1        run elasticsearch           Up
-docker_front_1     nginx -g daemon off;        Up      0.0.0.0:443->443/tcp,
-                                                       0.0.0.0:514->514/udp,
-                                                       0.0.0.0:80->80/tcp
-docker_kibana_1    run kibana                  Up
-docker_ui_1        nginx -g daemon off;        Up      80/tcp
-----
-
-
-.browse to the web-ui
-https://localhost/ (ncroot / ubiqube)
-
-NOTE: There might be a pop-up warning of a self-signed cert that needs to be accepted to proceed.
-
-NOTE: Users might need to wait a few minutes after they access the localhost as it takes a few minutes for the {product_name} to start in the background before they logon
