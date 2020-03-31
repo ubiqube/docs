@@ -24,17 +24,12 @@ This documentation contains a set of documentation, tutorials and examples to he
 - link:microservice_order_command_api{outfilesuffix}[Microservice Order Command REST API]
 - link:microservice_stack_management_api{outfilesuffix}[Microservice Order Stack Management API]
 
-////
-
-TODO
 == Workflows 
 
 - link:workflow_getting_started_developing{outfilesuffix}[Getting Started with Workflow Design]
-////
 
 == DevOps Best Practices
 - link:devops_best_practices{outfilesuffix}[DevOps Guide]
-
 
 == Vendor Use Cases
 
