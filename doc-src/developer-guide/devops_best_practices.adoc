@@ -1,4 +1,4 @@
-= Multi Vendor Firewall Policy Orchestration
+= DevOps Best Practice Guide
 :doctype: book 
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
