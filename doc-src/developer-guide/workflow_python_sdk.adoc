@@ -5,10 +5,10 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :source-highlighter: pygments
 
 
-IMPORTANT: TODO
+// IMPORTANT: TODO
 
-The {product_name} provides a support for Python SDK dedicated to developping automation workflows. 
-This SDK provides a set of functions that can be used to call the link:rest_api{outfilesuffix}[{product_name} REST API] and automate action on the {product_name} such as create and activate managed entities, call microservice function, call processes from other workflows,...
+The {product_name} provides a support for Python SDK dedicated to developing automation workflows. 
+This SDK provides a set of functions that can be used to call the link:rest_api{outfilesuffix}[{product_name} REST API] and automate action on the {product_name} such as create and activate managed entities, call microservice function, call processes from other workflows...
 
 The SDK API documentation is available online on your {product_name} instance at: https://<MSA IP address>/msa_sdk/
 
@@ -20,11 +20,11 @@ from msa_sdk.variables import Variables
 import json
 
 """
-The Variables library controls how variables are passed between the tasks and the orchestration engine. While the Device library is used to perform any MSA function to manage a device.
+The Variables library controls how variables are passed between the tasks and the integrated automation engine. While the Device library is used to perform any {product_name} function to manage a device.
 
 In the first task, a device will be created. This is done by creating a Device object and calling its create() method. In order to create a new device object, a number of variables must be declared initially.
 
-This is done by creating a new Variables object and then using its add() method to create the new variables from the input parameters. Once all the variables are created, they are submitted to the orchestration engine using the task_call() method.
+This is done by creating a new variable object and then using its add() method to create the new variables from the input parameters. Once all the variables are created, they are submitted to the integrated automation engine using the task_call() method.
 """
 
 dev_var = Variables()
@@ -41,7 +41,7 @@ dev_var.add('password_admin', var_type='Password')
 context = Variables.task_call(dev_var)
 
 """
-Next, the new device object will be created by calling the Device constructor. The device can then be created in the MSA by calling its create() method.
+Next, the new device object will be created by calling the Device constructor. The device can then be created in the {product_name} by calling its create() method.
 
 For future tasks, the device_id will be stored in context and the task will end with a 'Task OK' message. All the variables created in this task will be made available to the next task.
 """
