@@ -3,13 +3,13 @@
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :source-highlighter: pygments
 
-The {product_name} provides a support for PHP SDK dedicated to developping automation workflows. 
-This SDK provides a set of functions that can be used to call the link:rest_api{outfilesuffix}[{product_name} REST API] and automate action on the {product_name} such as create and activate managed entities, call microservice function, call processes from other workflows,...
+The {product_name} provides a support for PHP SDK dedicated to developing automation workflows. 
+This SDK provides a set of functions that can be used to call the link:rest_api{outfilesuffix}[{product_name} REST API] and automate action on the {product_name} such as create and activate managed entities, call microservice function, call processes from other workflows...
 
 == Where to Find the Source Code of the SDK?
 The SDK functions are implemented in a set of PHP files stored in the {product_name} repository under `+/opt/fmc_repository/Process/Reference/Common/Library+`
 
-The PHP file are organised by API topic and contains the functions that are calling the REST API.
+The PHP files are organised by API topic and contains the functions that are calling the REST API.
 
 These functions can be called directly when implementing the tasks of the workflow processes.
 
@@ -17,7 +17,7 @@ These functions can be called directly when implementing the tasks of the workfl
 
 === Sample Implementation of a SDK PHP function
 
-The source code below shows the implementation of one of the function provided by the SKD
+The source code below shows the implementation of one of the functions provided by the SDK.
 
 [source,php]
 ----
@@ -147,7 +147,7 @@ $response = synchronize_objects_and_verify_response($managed_entity_id);  <1>
 <1> The variable $managed_entity_id is the database ID of the managed entity
 
 == Useful Functions
-Here are a list of some of the most commonly used functions
+Here is a list of some of the most commonly used functions.
 
 === Managed Entities
 
