@@ -98,7 +98,7 @@ The device configuration is not impacted.
 curl -u ncroot:ncroot_pwd -XPOST http://MSA_IP/ubi-api-rest/orderstack/execute/{deviceId}
 ----
 .Description
-Generates the configuration based on the stacked orders for a device and stores the configuration items in the database and executes all the commands on the device.Description
+Generates the configuration based on the stacked orders for a device and stores the configuration items in the database and executes all the commands on the device.
 
 .Parameters
 - deviceId: the database identifier of the managed device, for example: 123.
@@ -113,7 +113,7 @@ end loop
 The SMS verb is equivalent to the following command: sms -e JSCALLCOMMAND -i 'deviceId commandName 2' -c 'objectParameters'
 
 .Note
-In the CLI command above the parameter 2 is used along with commands such as CREATE, UPDATE or DELETE and generate the configuration, stores the configuration items in the database and applies the configuration to the device.
+In the CLI command above the parameter 2 is used along with commands such as CREATE, UPDATE or DELETE which will generate the configuration, store the configuration items in the database and apply the configuration to the device.
 
 === List the Orders in the Stack
 [source]
