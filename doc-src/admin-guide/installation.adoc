@@ -75,10 +75,31 @@ docker-compose exec api /usr/bin/create_tenant_customer.sh
 
 This will create a tenant, one customer named "Tyrell" and a managed entity named "linux_me" with a fixed management IP 172.20.0.101
 
-You can connect to linux_me with the CLI command
+image:images/quickstart_linux_me.png[]
+
+
+You can connect to linux_me with the CLI command `docker-compose exec linux_me bash`
 
 ```
-docker-compose exec linux_me bash 
+$ docker-compose exec linux_me bash
+
+[root@linux_me /]# ifconfig 
+eth0      Link encap:Ethernet  HWaddr 02:42:AC:14:00:65  
+          inet addr:172.20.0.101  Bcast:172.20.0.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:29 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:3 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:1878 (1.8 KiB)  TX bytes:142 (142.0 b)
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:0 (0.0 b)  TX bytes:0 (0.0 b)
+
 ```
 
 
