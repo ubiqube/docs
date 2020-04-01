@@ -10,13 +10,13 @@ This documentation contains a set of documentation, tutorials and examples to he
 - link:workflow_php_sdk{outfilesuffix}[PHP SDK for Workflow Development]
 
 == Microservices
-
 === Examples 
 
 - link:microservices_getting_started_developing{outfilesuffix}[Getting Started with Microservice Design]
 
 === Reference
 
+- link:microservice_editor{outfilesuffix}[Microservice Editor]
 - link:microservice_smarty_templating{outfilesuffix}[Microservice Templating with PHP Smarty]
 
 === API
@@ -30,7 +30,10 @@ This documentation contains a set of documentation, tutorials and examples to he
 
 == DevOps Best Practices
 - link:devops_best_practices{outfilesuffix}[DevOps Guide]
-
+//// 
+TODO
+- link:adapter_development{outfilesuffix}[Adapter Development]
+////
 == Vendor Use Cases
 
 - link:vendor_cisco_ios_itf_mngt{outfilesuffix}[Cisco IOS: Interfaces Management]
