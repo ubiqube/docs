@@ -158,6 +158,7 @@ As an example, let's say we have three instances of `syslogd` Microservices on t
 - SyslogConf
 - MSASyslogConf 
 - NMSSyslogconf
+
 The response of the import will be the following JSON object, that will be part of the http response:
 
 [source,json]
