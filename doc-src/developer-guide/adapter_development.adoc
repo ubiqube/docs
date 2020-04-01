@@ -1,0 +1,6 @@
+= Adapter Developemnt
+:doctype: book 
+:imagesdir: ./resources/
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:source-highlighter: pygments
+
