@@ -141,10 +141,10 @@ As shown above, the http body contains what's called "object parameters" in gene
 === Root Element
 The root element of the JSON body is the Microservice definition identifier. Here, the first JSON element refers to the Microservice definition name.
 
-In the example above it is "syslogd". This is the same string that is used when creating a Microservice definition in the Microservices builder. Hence, in the above case the Microservice was named: "syslogd.xml"
+In the example above it is `syslogd`. This is the same string that is used when creating a Microservice definition in the Microservices builder. Hence, in the above case the Microservice was named: `syslogd.xml`.
 
 === Microservice Instance JSON Object
-The JSON element at the next level is the object_id of the Microservice instance, in the above case it is: "SyslogConf".
+The JSON element at the next level is the object_id of the Microservice instance, in the above case it is: `SyslogConf`.
 
 NOTE: the object_id is also passed as an instance variable.
 
@@ -153,12 +153,12 @@ The third level of JSON elements is the instance variables, represented in a sta
 
 In this case the value of the variable {commandName} is IMPORT (import operation of Microservice) and the http response body will contain the list of Microservice instances.
 
-As an example, let's say we have three instances of "syslogd" Microservices on the device, with instance names:
+As an example, let's say we have three instances of `syslogd` Microservices on the device, with instance names:
 
 - SyslogConf
 - MSASyslogConf 
 - NMSSyslogconf
-The response of the import will be the following JSON object, that will be part of http response:
+The response of the import will be the following JSON object, that will be part of the http response:
 
 [source,json]
 ----
