@@ -40,14 +40,14 @@ When Docker Compose is done deploying and the MSA platform is running, you will 
 When you see the following output, the MSA platform is ready to be used
 
 ```
-Creating quickstart_ui_1      ... done
-Creating quickstart_db_1      ... done
-Creating quickstart_es_1      ... done
-Creating quickstart_me_1      ... done
-Creating quickstart_camunda_1 ... done
-Creating quickstart_kibana_1  ... done
-Creating quickstart_api_1     ... done
-Creating quickstart_front_1   ... done
+Creating quickstart_linux_me_1 ... done
+Creating quickstart_es_1       ... done
+Creating quickstart_db_1       ... done
+Creating quickstart_ui_1       ... done
+Creating quickstart_kibana_1   ... done
+Creating quickstart_camunda_1  ... done
+Creating quickstart_api_1      ... done
+Creating quickstart_front_1    ... done
 ```
 
 If you get a gateway error, the web server is probably still starting and you may have to wait for 10-20 more seconds before trying again.
