@@ -21,7 +21,8 @@ Many other Adapters are available on the Github repository: https://github.com/o
 The installation of an Adapter is covered in this documentation: link:https://github.com/openmsa/Adaptors/blob/master/doc/How_to_install_a_new_adapter.md[How to install an Adapter]
 
 == REST Generic Adapter
-The REST Generic adapter, available on Github at will allow you to integrate most of the vendor that expose a REST management interface API, it is included in the mini lab (see link:../user-guide/quickstart{outfilesuffix}[Quickstart] for more details)
+The REST Generic adapter, available on Github at will allow you to integrate most of the vendor that expose a REST management interface API
+It is included in the mini lab (see link:../user-guide/quickstart{outfilesuffix}[Quickstart] for more details)
 
 == Adapter SDK
 
