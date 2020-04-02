@@ -28,22 +28,17 @@ This documentation contains a set of documentation, tutorials and examples to he
 
 - link:workflow_getting_started_developing{outfilesuffix}[Getting Started with Workflow Design]
 
+== Adapters
+- link:adapter_development{outfilesuffix}[Adapter Development]
+
 == DevOps Best Practices
 - link:devops_best_practices{outfilesuffix}[DevOps Guide]
-//// 
-TODO
-- link:adapter_development{outfilesuffix}[Adapter Development]
+
 ////
-== Vendor Use Cases
-
-- link:vendor_cisco_ios_itf_mngt{outfilesuffix}[Cisco IOS: Interfaces Management]
-
-//// 
-
 TODO
+== Vendor Use Cases
+- link:vendor_cisco_ios_itf_mngt{outfilesuffix}[Cisco IOS: Interfaces Management]
 - link:vendor_fortigate_security_mngt{outfilesuffix}[Fortinet Fortigate: Managed Security]
-
 - link:vendor_multivendor_firewall_policy_mngt{outfilesuffix}[Multi-vendor Firewall Policy Update]
-
 ////
 
