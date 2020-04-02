@@ -35,9 +35,10 @@ This API exposes functions such as:
 . Provisioning
 . Update conf
 . Backup conf
-. Microservice command (CREATE, UPDATE, DELETE, IMPORT)
+. Microservice commands (CREATE, UPDATE, DELETE, IMPORT)
 . …
 
+==== Custom commands
 It is possible to implement new custom commands that will be callable from the SecEngine API (verb JSACMD MY_COMMAND)
 
 === Status Polling
