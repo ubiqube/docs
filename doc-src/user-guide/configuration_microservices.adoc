@@ -27,7 +27,7 @@ image:images/configurations_me_list_admin.png[Microservice List]
 
 From this page you can search for a named Microservice by using the search field with the magnifier icon.
 
-image:images/configurations_me_search.png[Microservice Search]
+image:images/configurations_ms_search.png[Microservice Search]
 
 From this page you can create a new Microservice or edit an existing one which is part of Microservice design (cf. section below).
 

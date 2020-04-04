@@ -1,4 +1,4 @@
-= Getting Started Developing Microservices
+= Getting Started with Microservices Design
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :source-highlighter: pygments
