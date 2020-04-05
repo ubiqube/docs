@@ -1,0 +1,15 @@
+= Microservice Editor
+:imagesdir: ./resources/
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:source-highlighter: pygments
+
+
+== Overview
+
+The main difference between the CLI and REST (Json/XML) Microservice definition is the implementation of the functions Create/Update/...
+
+CLI Microservice definition is covered in this documentation: link:microservice_editor{outfilesuffix}[Microservice Editor].
+
+This documentation uses the link:https://github.com/openmsa/Adaptors/tree/master/adapters/rest_generic[REST Generic adapter] and the {product_name} REST API to illustrate the design of XML Microservice.
+
+TODO
