@@ -12,4 +12,16 @@ CLI Microservice definition is covered in this documentation: link:microservice_
 
 This documentation uses the link:https://github.com/openmsa/Adaptors/tree/master/adapters/rest_generic[REST Generic adapter] and the {product_name} REST API to illustrate the design of XML Microservice.
 
-TODO
+== Microservice implementation
+
+Create a new Microservice "msa_tenant" with XML as the configuration type and REST Generic for the vendor and model.
+
+image:images/microservice_editor_xml_information.png[]
+
+In the Import function, we will implement a parser the will list the tenants of the {product_name} with the REST API
+
+
+*HTTP Request:* `+/ubi-api-rest/lookup/v1/operators+`
+
+*Method:* `+GET+`
+
