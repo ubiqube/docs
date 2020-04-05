@@ -34,6 +34,8 @@ The editor UI will adjust based on the configuration type.
 
 WARNING: this setting cannot be changed when editing a Microservice.
 
+NOTE: this documentation focuses on a CLI based Microservice, you can go through this documentation for a building a xml based Microservice: link:microservice_xml_editor{outfilesuffix}[XML Microservice editor].
+
 Click on "Create Microservice" to create the Microservice.
 
 Once created, you can search for your Microservice in the list and attach it to a link:../user-guide/configuration_deployment_settings{outfilesuffix}[deployment setting], you can also edit it or delete it.
@@ -51,11 +53,85 @@ It is not mandatory to implement all the functions, this will depend on your req
 
 === The functions Create, Update and Delete
 
-These functions are implemented in PHP Samrty templating language (see link:microservice_smarty_templating{outfilesuffix}[] for more detail)
+.Create and Update
+These functions are implemented in PHP Smarty templating language (see link:microservice_smarty_templating{outfilesuffix}[] for more detail)
 
-IMPORTANT: TODO
+For instance, the CLI commands to create or delete an iptable rule to allow or block a port and an IP are:
+
+----
+sudo iptables -A INPUT -p tcp --dport <PORT TO BLOCK> -s <IP TO BLOCK> -j DROP
+sudo iptables -A FORWARD -p tcp --dport <PORT TO BLOCK> -s <IP TO BLOCK> -j DROP
+----
+
+this is how it would be implemented in the Create function of the Microservice
+----
+sudo iptables -A INPUT -p tcp --dport {$params.dst_port} -s {$params.src_ip} -j DROP
+sudo iptables -A FORWARD -p tcp --dport {$params.dst_port} -s {$params.src_ip}  -j DROP
+----
+
+As you can see the parameters are prefixed with `$params.` and this is the reason why the variable editor section will automatically add `$params.` to the variable.
+
+The implementation of the Update will be similar and will of course depend on the CLI syntax.
+
+image:images/microservice_console_cli_create.png[]
+
+.Delete
+The deletion of the iptables INPUT and FORWARD rules is executed with the CLI command below:
+
+----
+sudo iptables -D INPUT -p tcp --dport <PORT TO BLOCK>  -s <IP TO BLOCK>  -j DROP 
+sudo iptables -D FORWARD -p tcp --dport <PORT TO BLOCK>  -s <IP TO BLOCK>  -j DROP
+---- 
+
+This will be implemented as: 
+----
+sudo iptables -D INPUT -p tcp --dport {$simple_firewall.$object_id.dst_port} -s {$simple_firewall.$object_id.src_ip} -j DROP
+sudo iptables -D FORWARD -p tcp --dport {$simple_firewall.$object_id.dst_port} -s {$simple_firewall.$object_id.src_ip} -j DROP
+----
+
+The syntax {$simple_firewall.$object_id.dst_port} provides a way to access the Microservice variable values in the MSActivator configuration database. 
+
+The convention is as follow:
+----
+{$<MICROSERVICE NAME>.$object_id.<VARIABLE NAME>}
+----
+
+In our case:
+
+- MICROSERVICE NAME => simple_firewall 
+- VARIABLE NAME => dst_port
+- MICROSERVICE NAME is the name of the Microservice file without the .xml extension.
+
+.Example 
+simple_firewall.xml => simple_firewall
+
+image:images/microservice_console_cli_delete.png[]
 
 
+=== The function Import
+The role of the Import command is to import the current device configuration into the {product_name} database.
 
+The implementation of the Import is based on a set of regular expressions that build a parser that will extract the values of the Microservice variables.
 
+The Import is made of 3 parts:
+
+- the command to run on the device (for CLI command based device).
+- the configuration parser, implemented with a set of regular expressions. Only the Microservice identifier extractor is mandatory.
+- a set of post import operations implemented in Smarty language (https://www.smarty.net/).
+
+This regex will extract the firewall parameter and store them in the database
+----
+@(?<object_id>\d+)    DROP       tcp  --  (?<src_ip>([0-9]{1,3}\.){3}[0-9]{1,3})[^:]+:(?<dst_port>\d+)@
+----
+
+NOTE: the variable `object_id` is a mandatory parameter and will be used to identify the Microservice instance in the database.
+
+== Testing the Microservice
+The Microservice is ready to be tested. 
+
+Make sure that you can add and delete a policy rule, that it's reflected on the Linux firewall, and that the parameters are also properly synchronised after a call to Create or Delete.
+
+You can also add some iptables rules manually on the Linux CLI and run a configuration synchronisation to make sure that your manual changes are properly imported.
+
+image:images/microservice_console_create_instance.png[]
 

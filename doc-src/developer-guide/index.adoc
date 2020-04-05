@@ -17,6 +17,7 @@ This documentation contains a set of documentation, tutorials and examples to he
 === Reference
 
 - link:microservice_editor{outfilesuffix}[Microservice Editor]
+- link:microservice_xml_editor{outfilesuffix}[XML Microservice Editor]
 - link:microservice_smarty_templating{outfilesuffix}[Microservice Templating with PHP Smarty]
 
 === API
