@@ -1,9 +1,14 @@
-License Activation
-==================
-:toc: left
-:toc-title: Content 
+= License Activation
 :imagesdir: ./resources/
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:doctype: book
 
+If you have installed the {product_name} with the quickstart, you already have a trial license limited to 5 Managed Entities and valid for 30 days to get started.
+
+In case you are starting to do a longer PoC or need to have a production license, you probably have received a new license from your UBiqube sales representative.
+In that case you need to use this documentation to activate the new license.
+
+== License activation
 
 You must be connected as a privileged administrator (ncroot) on the classic portal (/UBI/en) to install the license.
 
