@@ -1,0 +1,8 @@
+= Microservice Auto-rendering UI
+:imagesdir: ./resources/
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:source-highlighter: pygments
+
+This documentation will help you understand how the Microservice variable definition is used to design the UI that will be displayed to the user when using the link:../user-guide/configuration_microservices{outfilesuffix}[Microservice console].
+
+TODO

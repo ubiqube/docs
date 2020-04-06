@@ -19,6 +19,7 @@ This documentation contains a set of documentation, tutorials and examples to he
 - link:microservice_editor{outfilesuffix}[Microservice Editor]
 ////
 TODO
+- link:microservice_auto-rendering_ui{outfilesuffix}[Microservice Auto Rendering UI]
 - link:microservice_xml_editor{outfilesuffix}[XML Microservice Editor]
 ////
 - link:microservice_smarty_templating{outfilesuffix}[Microservice Templating with PHP Smarty]
