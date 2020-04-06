@@ -20,6 +20,10 @@ The functional duality of the {product_name} being an operation platform as well
 
 The {product_name} UX structure is in line with our modular {product_name} architecture (microservices, workflows, etc.) for consistency and greater concept adoption.
 
+The Developer User now features access to three editors which include Microservices, Workflows and BPM from the one screen.
+
+This has allowed opening of all the screens for the Workflow Editor to be able to create processes, tasks and code.
+
 TIP: Go to link:user-guide/gui_overview{outfilesuffix}[GUI overview] to get a detailed description of this new user interface.
 
 == Enhancements
@@ -46,7 +50,7 @@ The reason {product_name} is now containerized reflects not only a move in the i
 
 == Fixes
 
-Page items from various sections of the user interface have been removed to ensure the {product_name} is itself an evergreen product and has the agility to grow.
+Various fixes have been made to the product to ensure its continued ability to empower users, ensure a smoother user experience and deliver the value that businesses need in today's environment while being ahead in terms of features, being evergreen and the agility of the {product_name} to grow.
 
 === Specific Technical Fixes
 
@@ -65,4 +69,12 @@ Page items from various sections of the user interface have been removed to ensu
 * MSA-7526 [Workflow]: execute service API returns 500
 * MSA-7115 [API]: some parameters for loadExtendedParamaterMap do not have their type
 * MSA-5662 [API]: rest API call to create a manager returns status code 404 on MSA V2
+* MSA-7547 Deployment Setting: Manufacturer and Model returned as UNKNOWN
+* MSA-7609 [Microservice Editor] Wrong vendor and model displayed when editing Microservice
+* MSA-7504 Deployment Setting Vendor and Model drop down values disappear on performing edit for 2nd time a ME must be filtered
+* MSA-6997 Microservice: filter is not case sensitive
+* MSA-7601 [MSA2] editing a deployment service causes deletion of all DS for a customer
+* MSA-7674 2.x: newly created WF can be attached to a customer but not listed in list of customer WF
+* MSA-6927 Microservice: Delete API returns 422 Unprocessable Entity
+
 
