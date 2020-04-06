@@ -51,18 +51,18 @@ Page items from various sections of the user interface have been removed to ensu
 === Specific Technical Fixes
 
 * MSA-7533 [Managed Entity]: list of supported vendors when creating a ME must be filtered
-* MSA-7547 [Deployment Setting]: Manufacturer and Model returned as UNKNOWNMSA-7533
-* MSA-7605 [Deployment Settings] Managed entities not being attached
-* MSA-7504 [Deployment Setting]:  Vendor and Model drop down values disappear on performing edit for 2nd time
+* MSA-7547 [Deployment Setting]: manufacturer and Model returned as UNKNOWNMSA-7533
+* MSA-7605 [Deployment Settings] managed entities not being attached
+* MSA-7504 [Deployment Setting]: vendor and Model drop down values disappear on performing edit for 2nd time
 * MSA-7601 [Deployment Setting]: editing a deployment setting causes deletion of all DS for a customer
-* MSA-7124 [Microservices]: Extended Parameters inconsistencies
-* MSA-7459 [Microservices]: Synchronize API to return fetched Objects
-* MSA-7116 [Microservices]:keepOnImport loadExtendedParamaterMap has wrong type
-* MSA-7027 [Microservices]: Issues parsing microservice parser structure
-* MSA-7609 [Microservice Editor]: Wrong vendor and model displayed when editing Microservice
+* MSA-7124 [Microservices]: extended Parameters inconsistencies
+* MSA-7459 [Microservices]: synchronize API to return fetched Objects
+* MSA-7116 [Microservices]: keepOnImport loadExtendedParamaterMap has wrong type
+* MSA-7027 [Microservices]: issues parsing microservice parser structure
+* MSA-7609 [Microservice Editor]: wrong vendor and model displayed when editing Microservice
 * MSA-6470 [Workflow]: wf-details does not retrieve the latest workflows
-* MSA-7618 [Workflow]: When filtering by Customer, the Workflows still display all workflows assigned to every customer.
+* MSA-7618 [Workflow]: when filtering by Customer, the Workflows still display all workflows assigned to every customer.
 * MSA-7526 [Workflow]: execute service API returns 500
-* MSA-7115 [API]: Some parameters for loadExtendedParamaterMap do not have their type
-* MSA-5662 [API]: Rest API call to create a manager returns status code 404 on MSA V2
+* MSA-7115 [API]: some parameters for loadExtendedParamaterMap do not have their type
+* MSA-5662 [API]: rest API call to create a manager returns status code 404 on MSA V2
 
