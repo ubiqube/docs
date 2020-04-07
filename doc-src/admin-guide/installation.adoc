@@ -118,14 +118,10 @@ WARNING: this will wipe out every images from your docker engine.
 
 
 == Requirements on the host machine
-
-The host machine should have hardware specs similar to that
-of the VM running the .ova flavour of MSA:
 .on a PC
-- 8Go, 2CPU, 100Go
+- 4Go, 2CPU, 100Go
 .on a production environment 
-- minimum 16Go, 4CPU, 100Go
-
+- minimum 16Go, 4CPU, 200Go
 
 === Docker for Linux (or Linux VM)
 ----
