@@ -2,7 +2,13 @@
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-This documentation contains a set of documentation, tutorials and examples to help you get familiar with the {product_name}.
+This documentation contains a set of documentation, tutorials and examples to help you get familiar with the {product_name} as a development platform.
+
+To open the developer portal, you can just select the "Developer" link and login with your credentials.
+
+For the dashboard, you will be able to work on the design of your BPM, your Workflows and your Microservices.
+
+image:images/developer_dashboard.png[developer dashboard]
 
 == API & SDK
 - link:rest_api{outfilesuffix}[REST API]
