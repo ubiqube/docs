@@ -3,6 +3,13 @@
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-This link:https://github.com/ubiqube/quickstart/README.adoc[quickstart guide] will gets you started with the {product_name} orchestration tool.
+
+The quickstart guide will gets you started with the {product_name} orchestration tool.
+
+This guide is composed of a link:https://github.com/ubiqube/quickstart[git repository] which is mainly a set of docker and docker-compose files to pull the {product_name} from Dockerhub 
+
+The docker-compose will create the {product_name} containers and a Managed Entity that you can use to become familiar with the {product_name}.
+
+This mini lab is detailed in the link:../admin-guide/installation{outfilesuffix}[installation guide]
 
 
