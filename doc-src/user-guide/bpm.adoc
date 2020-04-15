@@ -1,23 +1,19 @@
 = BPM
 :doctype: book
-:toc: left
-:toc-title: Content 
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-The integrated BPM engine can be accessed by clicking the "BPM" link in the left menu. 
+The integrated BPM engine can be accessed by clicking the "Automation" link in the left menu. 
 
-////
-TODO
-////
+You need to select a customer to see the list of BPM available because BPM defintion are customer specific.
 
+Select a BPM from the list and click on it name to open it.
 
-== REST API
+image:images/bpm_example.png[]
 
-You can access the BPM engine via its REST API in order to start process instances, complete tasks and much more. 
+Click on "Execute BPM" to execute the BPM Process.
 
-Check out the link:https://docs.camunda.org/manual/7.12/reference/rest/?__hstc=252030934.61b0d006ec2a4dde6243c8bc708902e7.1582894819763.1582894819763.1582894819763.1&__hssc=252030934.6.1582894819763&__hsfp=3656928582[REST API Reference] for a complete overview.
+Each task will do an asynchronous call to the workflow, making the BPM execution immediate.
 
-== BPMN Standard Coverage
+The Workflow processes are not running in the background and you can ckeck the status of them by going to the "Workflow" in the "Integration" section.
 
-The BPMN engine supports most of the symbols defined in the BPMN 2.0 standard.View the Docs: link:https://docs.camunda.org/manual/7.12/reference/bpmn20/?__hstc=252030934.61b0d006ec2a4dde6243c8bc708902e7.1582894819763.1582894819763.1582894819763.1&__hssc=252030934.6.1582894819763&__hsfp=3656928582[BPMN 2.0 Coverage] for more details
