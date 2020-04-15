@@ -56,9 +56,37 @@ IMPORTANT: you should only select workflow processes with the type CREATE.
 You can save your BPM design anytime and edit it later.
 The BPM files are stored in the repository under `/opt/fmc_repository/Datafiles/<TENANT ID>/<CUSTOMER ID>/bpmn`
 
-== Simple BPM design
+== The Helloworld BPM
 
-TODO
+This tutorial will show you, in a simple way how to create a new BPM and call a Workflow.
+
+It is using the Helloworld example wich is detailed in this documentation: link:workflow_getting_started_developing{outfilesuffix}[Getting Started Developing Workflows].
+
+As stated above, the BPM tasks can only call Workflow process with the type CREATE.
+Before creating the BPM, you need to add a new process to the Helloworld workflow and make sure its type is CREATE. 
+This process can have a single task and you can reuse the PHP code from the Helloworld tutorial.
+
+image:images/workflow_helloworld_add_create_process_for_bpm.png[]  
+
+Once this is done, go to the "BPM" section under "Automation" and click on "+ Create BPM".
+
+Add a Task Activity and an End Event.
+
+Click on the task, select the Helloworld workflow, then from the list of process, select the new CREATE process.
+Provide a value for the parameter name and save the BPM
+
+image:images/bpm_helloworld_design.png[]
+
+To test your BPM, click on it's name from the list of BPM and click on "Execute BPM".
+
+image:images/bpm_helloworld_execute.png[]
+
+You can check that the workflow process was executed and the message is visible in the processes execution status.
+
+image:images/bpm_helloworld_execute_process.png[]
+
+
+
 
 
 
