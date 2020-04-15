@@ -17,7 +17,17 @@ The Automation Module provides the IT automation developer with a unified develo
 
 On the {product_name} login screen, there are two different types of logins selectable via this toggle switch Administrator/Developer
 
-We call these personas, and this is the purpose of each one:
+Login as a developer, you can easily access and work on the design of your automation processes.
+
+The swimlanes are matching the 3 layers of integration and automation: BPM, Workflows and Microservices
+
+image:images/key_concepts_dev_dashboard.png[]
+
+Login as an admin, you can directly start monitoring and managing your system.
+
+image:images/key_concepts_admin_dashboard.png[]
+
+This is the purpose of each one
 
 .Manager
 This will give you access to the manager dashboard, that allows you to monitor and manage the entities configured in your {product_name} installation.  
@@ -86,23 +96,27 @@ A UX reflecting the above wide variety of technical scenarios and user experienc
 
 The 7 terms that define the tree of the {product_name} navigation:
 
-[frame=none]
+[frame=none, cols="2*"]
 |===
 
-|
- 1. Managed Entities (used to be devices)
+a|
  
- 2. Integration (category for config profiles and Microservices)
+ 1. Integration 
  
- 3. Automation (category for Workflow)
+   a. Managed Entities
  
- 4. Assurance (category for Monitoring, Logs, Alarms)
+   b. Microservices 
  
- 5. Repository
+   c. Deployment Settings
  
- 6. Admin (for users etc.)
+ 2. Automation 
  
- 7. Settings | image:images/terminology.png[alt=Terminology, width=200]
+   a. BPM 
+ 
+   b. Workflow
+ 
+| 
+ image:images/terminology.png[alt=Terminology, width=200]
 |===
 
 
