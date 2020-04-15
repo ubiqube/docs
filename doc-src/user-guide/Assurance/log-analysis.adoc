@@ -1,0 +1,208 @@
+= Log Analysis
+:toc: left
+:toc-title: Content
+:imagesdir: ../resources/
+:ext-relative: adoc
+
+[[main-content]]
+[[LogAnalysis-Overview]]
+== Overview
+
+The MSActivator can collect, index and store events received from
+devices. Once indexed, the logs are fully searchable from the user
+interface.
+
+The diagram below shows the syslog processing steps from the device to
+Elasticsearch. 
+
+link:[image:images/Log_Analysis_event_flow.png[Image,width=800]]
+
+[[LogAnalysis-LogAnalysisPortal]]
+=== Log Analysis Portal
+
+[[LogAnalysis-Access]]
+==== Access
+
+Log analysis over multiple devices is available by accessing the
+analytics from the customer tenant page, 'LOGS & REPORTS' tab.
+
+link:[image:images/image2018-4-10_15-47-45.png[Image,width=800]]
+
+Or for a single device, from the devices page, in the 'Logs' sub-task.
+
+link:[image:images/image2018-4-10_15-49-21.png[Image,width=800]]
+
+The main diffrences between these 2 levels of access is the ability, on
+the customer tenant, to perform a log analysis over multiple devices
+and/or multiple vendors.
+
+link:[image:images/image2018-4-10_17-18-24.png[Image,width=800]]
+
+The page is divided into 3 sections:
+
+* on the top, the default text search form 
+* on the left, the search options
+* on the main part, the search results
+
+[[LogAnalysis-SearchOptions]]
+==== Search Options
+
+[[LogAnalysis-DeviceSelection]]
+===== Device Selection
+
+link:[image:images/Loganal_device_sel.png[Image,width=359,height=121]]
+
+This is the list of devices with log collection enabled. Select the
+devices you want to include.
+
+[[LogAnalysis-TimeRangeSelection]]
+===== Time Range Selection
+
+link:[image:images/Loganal_time_sel.png[Image,width=300,height=184]]
+
+When device logs are collected and parsed, the log timestamp is
+extracted and indexed in the field fw_time. The timestamp is typed as a
+date by the Elasticsearch engine, which will allow to search by time
+range. By default, the search on logs is done on all logs that have a
+timestamp between the current time minus 24 hours and the current time
+plus 24 hours.
+
+You can search within (default) or outside the specified time range by
+using the “time range inclusion” radio buttons.
+
+By default, the time range calendar is set to the UTC time zone. It is
+possible to change it to another time zone. If you need assistance
+changing default timezones, please contact UBIqube support.
+
+[[LogAnalysis-ResultsViewingOptions]]
+===== Results Viewing Options
+
+You can adjust the grouping, list size, and sort method using the radio
+button selections below.
+
+link:[image:images/Loganal_resultPage_sel.png[Image,width=321,height=138]]
+
+[[LogAnalysis-ResultsperPage]]
+====== Results per Page
+
+By default, the search results are limited to 10 results per page. You
+may select to display up to 1,000 results per page. The number of
+results is limited to 1000 in order to avoid displaying performance
+issues (web browsers may experience poor performance when trying to
+display thousands of results per page).
+
+[[LogAnalysis-PagingThroughtheResults]]
+====== Paging Through the Results
+
+You can navigate through the results pages using the “previous” and
+“next” buttons.
+
+link:[image:images/Loganal_resultPage_paging.png[Image,width=765,height=248]]
+
+[[LogAnalysis-ResultAgregation]]
+====== Result Agregation
+
+Result can be grouped (aggregated) by fields based on the field value.
+
+For example, results can be grouped by date, source IP, destination IP,
+etc. This is useful to get information on how many source IP/destination
+IPs occur per day.
+
+link:[image:images/Loganal_resultPage_groupedSearch_folded.png[Image,width=800]]
+
+Once grouping is selected, the result details can be viewed by expanding
+the line item:
+
+link:[image:images/Loganal_resultPage_groupedSearch_unfolded.png[Image,width=800]]
+
+[[LogAnalysis-QueryLanguage]]
+===== Query Language
+
+The filter applies on the source IP, the destination IP, and the
+destination port of the logs.
+
+[[LogAnalysis-ConditionalOperators]]
+====== Conditional Operators
+
+Each search field is associated with a list of operators to apply on the
+search. The three possible operators are MUST, MUST_NOT and SHOULD.
+
+* If MUST is selected, the search result will only contain results that
+match the associated condition.
+* If MUST NOT is selected, the search result will not contain any result
+that matches the associated search terms. 
+* If SHOULD is selected, the search result will contain results matching
+the search terms, but can also contain results matching other terms.
+
+By default, the operator is MUST.
+
+[[LogAnalysis-FilteronSourceandDestinationIP]]
+====== Filter on Source and Destination IP
+
+The source IP and destination IP accepts single IPs, IP ranges, or
+subnets. The following queries are valid examples:
+
+Search all logs with 10.1.111.252 as the source IP:
+
+link:[image:images/Loganal_filter_sel_srcIPMust.png[Image,width=800]]
+
+Search all logs with the source IP within the range
+10.1.111.1-10.1.112.1:
+
+link:[image:images/Loganal_filter_sel_srcIPRangeMust.png[Image,width=800]]
+
+Search all logs with the source IP out of the the subnet 10.1.11.1/24:
+
+link:[image:images/Loganal_filter_sel_srcIPSubnetMustNot.png[Image,width=800]]
+
+[[LogAnalysis-FilteronDestinationPort]]
+====== Filter on Destination Port
+
+Search on destination port will accept arguments such as single port
+(ex: 22), port list (ex: 22,161,514) or port range (ex: 20-25).
+
+The following query examples are valid:
+
+Search all logs with destination port 22:
+
+link:[image:images/Loganal_filter_sel_dstPort.png[Image,width=800]]
+
+Search all logs with source port in the range 6000-7000:
+
+link:[image:images/Loganal_filter_sel_dstPortRange.png[Image,width=800]]
+
+Search all log with destination port not in the list 22,443,161:
+
+link:[image:images/Loganal_filter_sel_dstPortList.png[Image,width=800]]
+
+[[LogAnalysis-FullTextSearch]]
+====== Full Text Search
+
+link:[image:images/Full_text_search_field.png[Image,width=800]]
+
+Text search allows searching directly in the raw log. This search field
+supports the search engine query syntax.
+
+When the results per page size is set to 10 or 50, the results page will
+dynamically be refreshed based on the terms in the text search input
+field. For larger results per page size, you will need to click search
+before the results refresh.
+
+[[LogAnalysis-ResultManagement]]
+==== Result Management
+
+Once a search returns any hits, several option are available to the user
+for the employment of the results.
+
+[[LogAnalysis-ResultDetails]]
+===== Result Details
+
+For each result, the user can view the details of the result by
+expanding the result row (click the green "+"):
+
+link:[image:images/Loganal_resultPage_searchdetail_unfolded.png[Image,width=800]]
+
+[[LogAnalysis-VideoTutorial]]
+==== Video Tutorial
+
+video::videos/MSActivator-16.2-Device-Logs.mp4[image,width=500,height=380]

@@ -1,0 +1,92 @@
+= How To Use A Microservice As A Dynamic Data Provider For List
+:toc: left
+:toc-title: Content
+:imagesdir: ../resources/
+:ext-relative: adoc
+
+[[main-content]]
+NOTE: The sources of this tutorial are available on GitHub at:
+Microservice: https://github.com/openmsa/Microservices/tree/master/Tutorials/LINUX/Generic/Tutorial1
+Workflow: https://github.com/openmsa/Workflows/tree/master/Tutorials/Microservice_reference
+
+In this tutorial you will learn how to use a Microservice to act as a
+data provider for a Workflow variable.
+
+The Microservice will be used to import the data with its IMPORT
+function and the Workflow will use these values to build a dropdown
+list.
+
+This tutorial uses the Microservice *user.xml* that was built in this
+link:../Configuration/Microservices/getting-started-developing-microservices.adoc[other
+tutorial].
+
+When using the Microservice on a Linux device, you can see the list of
+users configured on the device.
+
+link:[image:images/image2019-5-7_17-52-24.png[Image,width=800]]
+
+On the workflow side, you need to declare 2 variables:
+
+link:[image:images/image2019-5-7_17-55-51.png[Image,width=800]]
+
+* a first variable with the type device. This variable will let you
+select the device you want to use to run the IMPORT.
+* another variable with the type "Microservice reference". In the
+advanced parameter, Type, section of this variable you'll have to select
+the microservice the device variable to use
+
+link:[image:images/image2019-5-7_17-56-26.png[Image,width=800]]
+
+[[HowtoUseaMicroserviceasaDynamicDataProviderforList-MicroserviceandWorkflowInteraction]]
+== Microservice and Workflow Interaction
+
+On the Microservice console, the users are listed, the column object_id
+contains the user-names.
+
+With the Workflow variable definition above, the variable will be
+rendered as a list that contains the usernames from the Microservice.
+
+link:[image:images/image2019-5-9_16-12-57.png[Image,width=800]]
+
+We can do a simple test by adding a user directly on the Linux device
+
+....                            
+
+[root@Demo17-1 ~]# useradd aaa_test123
+[root@Demo17-1 ~]#
+....
+
+Then execute the Workflow process "refresh user", the code is available
+on github but below is the PHP code of the task. This task is calling a
+PHP function synchronize_objects_and_verify_response to call the IMPORT
+functions of the Microservices attached to the managed device
+
+....
+
+                                     
+<?php
+function list_args()
+{
+
+}
+
+$id = substr($context['device'], 3);
+$response = synchronize_objects_and_verify_response($id);
+$response = json_decode($response, true);
+if ($response['wo_status'] !== ENDED) {
+    $response = prepare_json_response(FAILED, $response['wo_comment'], $context, true);
+    echo $response;
+    exit;
+}
+ 
+task_success('Task OK');
+task_error('Task FAILED');
+?>
+....
+
+Calling this function is equivalent to click on "Synchronize with
+device" on the Microservice management console.
+
+The workflow instance variable list is then updated with the new user
+
+link:[image:images/image2019-5-9_16-31-28.png[Image,width=800]]

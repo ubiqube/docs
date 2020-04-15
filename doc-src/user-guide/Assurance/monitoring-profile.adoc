@@ -1,0 +1,76 @@
+= Monitoring Profile
+:toc: left
+:toc-title: Content
+:imagesdir: ../resources/
+:ext-relative: adoc
+
+[[main-content]]
+The MSActivator has SNMP-based monitoring capabilities and provides an
+easy way to monitor KPI, plot KPI data on graphs, and configure alarms
+based on threshold crossing.
+
+Monitoring is configured using monitoring profiles that aggregate the
+KPI to monitor the definition of the graphs and thresholds (defined by
+MIB and OID).
+
+[[MonitoringProfile-CreateaNewMonitoringProfile]]
+== Create a New Monitoring Profile
+
+The scope of a monitoring profile is the customer tenant. A monitoring
+profile can be used to monitor several devices.
+
+To create a new monitoring profile, click
+image:images/image2018-4-5_17-52-58.png[Image,width=24]  (top right on
+the Customer page) and select "Monitoring Profile".
+
+[[MonitoringProfile-ConfigureKPIandAlerting]]
+=== Configure KPI and Alerting
+
+link:[image:images/image2018-4-5_17-56-24.png[Image,width=800]]
+
+Provide a name for the profile and add your KPIs.
+
+It is important to select the correct "Type" (counter or gauge) for the
+OID. The type is defined in the MIB you are using.
+
+The selection of the polling frequency is also key when scaling, because
+polling a large number of KPIs on a large number of devices has impacts
+on the MSActivator resources (CPU, Memory, Disk). Be sure to select an
+appropriate polling frequency.
+
+The threshold configuration can be used to configure alarms that are
+generated when the KPI goes over or under a predefined value. Select
+"never" to deactivate alarms for a KPI.
+
+Learn how to configure alarms with the
+link:../Assurance/alarm-management.adoc[Alarm Management] guide.
+
+[[MonitoringProfile-DefineGraphsandRendering]]
+=== Define Graphs and Rendering
+
+link:[image:images/image2018-4-5_18-3-4.png[Image,width=800]]
+
+[[MonitoringProfile-MonitorYourKPI]]
+=== Monitor Your KPI 
+
+In order to monitor your KPI, you need to associate a monitoring profile
+to a link:../Getting%20Started/managed-devices.adoc[Managed Device].
+
+Select the 'PROFILES' tab on the Customer page to list the monitoring
+profiles.
+
+link:[image:images/image2018-4-9_9-40-2.png[Image,width=800]]
+
+Click image:images/image2018-4-9_9-41-50.png[image,width=20]  to select
+the dialog to associate a monitoring profile to a managed device.
+
+Once the monitoring profile is associated with the managed device, the
+monitoring module of the MSActivator will start polling the KPIs and
+will record the values in its KPI database.
+
+link:[image:images/image2018-4-9_10-2-6.png[Image,width=800]]
+
+[[MonitoringProfile-VideoTutorial]]
+==== Video Tutorial
+
+video::videos/MSActivator-16.2-Creating-a-Monitoring-Profile.mp4[image,width=500,height=380]

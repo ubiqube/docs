@@ -1,0 +1,143 @@
+= Repository Management
+:toc: left
+:toc-title: Content
+:imagesdir: ../resources/
+:ext-relative: adoc
+
+== Overview
+
+With the Repository Management feature, the MSActivator user can upload
+files into the MSActivator repository and manage them via the web
+portal.
+
+== How to Access the Repository
+
+The repository can be accessed by either administrator or manager
+accounts.
+
+Click on image:images/image2018-4-5_16-53-7.png[Icon,width=24] to open
+the repository
+
+link:[image:images/image2018-4-5_16-53-46.png[Image,width=800]]
+
+=== Repository Icons and Behaviors https://training.ubiqube.com/16.2/wikiTraining/index.php/Image:Repository_home_page_colapsed.png[]
+
+The configuration repository is used to store configuration files, which
+can later be used in file-based configuration profiles or can be
+directly attached to Devices.
+
+==== Actions on the Repository Top Node
+
+===== Add an Operator
+
+image:images/Add_operator.gif[Icon,width=16,height=16] : adds an
+operator to this repository
+
+This action is only relevant for users that have an administrator role.
+
+===== Get Information About the Repository
+
+image:images/Help.gif[Icon,width=16,height=16] : displays the list of
+profiles or devices that use files from this repository.
+
+==== Actions on the Operator Nodes
+
+As one or more operator(s) can be associated with a Configuration
+repository, an operator can also be associated with a Customer or a
+Manufacturer.
+
+===== Add a Customer
+
+image:images/Add_customer.gif[Icon,width=16,height=16] : the user can
+select and add one or more customers from its managed customer list.
+
+Adding a Customer acts as a filter: any file uploaded in a sub-folder of
+a Customer will only be selectable for the associated Customer.
+
+===== Add a Manufacturer
+
+image:images/Add_manufacturer.gif[Icon,width=16,height=16] : the user
+can select and add the managed device manufacturers.
+
+Adding a Manufacturer acts as a filter: any file uploaded in a
+sub-folder of a Manufacturer will only be available for the selected
+Manufacturer.
+
+==== Actions on the Customer Node
+
+image:images/Add_manufacturer.gif[Icon,width=16,height=16] : the user
+can select and add the managed device manufacturers.
+
+Files uploaded to a sub-folder of a selected manufacturer will only be
+available for the devices of that manufacturer (which are also attached
+to the selected customer).
+
+==== Adding/Removing Folders and Files
+
+===== Adding/Removing Folders and Files
+
+image:images/Add_directory.gif[Icon,width=16,height=16] : the user can
+add a sub-folder to any of the following: Customer, Manufacturer or
+folder.image:images/Action_delete.gif[Icon,width=14,height=16] : the
+user can delete any of the following: Customer, Manufacturer, folder or
+file.
+
+The delete action is not available if the object is attached to a
+template-based configuration profile or a device, or if the object is a
+folder which contains a file attached to a template-based configuration
+profile or a device.Hovering over
+the image:images/Help.gif[Icon,width=16,height=16] icon displays the
+list of profiles and devices that have a reference to any of the files
+in the corresponding sub-tree.
+
+===== Add Files
+
+image:images/Add_upload_Configuration.gif[Icon,width=16,height=16] the
+user can add a file to the selected folder.Via the dialog window, the
+user can either upload a file from his file system
+(image:images/Action_upload.gif[Icon,width=16,height=16] Import from
+disk), or create a new file directly
+(image:images/Modify.gif[Icon,width=16,height=16] Create new file).
+
+Only text files can be uploaded in the configuration repository. Binary
+file upload is not supported.
+
+If the User chooses to create a new file (
+image:images/Modify.gif[Icon,width=16,height=16]), they will be able to
+create it via the edition window:
+
+link:[image:images/image2018-4-5_16-55-33.png[Image,width=800]]
+
+A File name, a Tag and a free text Comment can be given to the a file.
+
+Depending on the repository selected (Workflow, Microservices,etc.), the
+system will create the proper file.
+
+NOTE: Don't forget to add the .xml extension to the name of the Workflow
+when creating the file, otherwise the Workflow will not be available in
+order to to be attached to a customer.
+
+===== Add Files in Folder AutoAttached
+
+The user can automatically attach a file to a device when the device is
+created. This is useful when services have to be automatically
+associated to devices.
+
+In order to define the set of files (templates or microservices) to
+associate to a device, the files must be uploaded under a folder that
+goes by the name "AutoAttached". There is no dedicated action button to
+create this folder, therefore it is up to the user to make sure that the
+folder name and its location is correct.
+
+The folder AutoAttached has to be created under a Model folder,
+otherwise the files it contains will be ignored.
+
+In the example below, every file found under AutoAttached will
+automatically be attached to all newly created Fortinet/Generic.
+
+link:[image:images/Repository_home_page_colapsed.png[Image,width=800]]
+
+[[RepositoryManagement-VideoTutorial]]
+==== Video Tutorial
+
+video::videos/MSActivator-16.2-Repository.mp4[image,width=500,height=380]

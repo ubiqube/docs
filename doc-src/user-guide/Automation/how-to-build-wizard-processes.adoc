@@ -1,0 +1,57 @@
+= How To Build Wizard Processes
+:toc: left
+:toc-title: Content
+:imagesdir: ../resources/
+:ext-relative: adoc
+
+[[main-content]]
+NOTE: Source Code
+
+The source code for this tutorial is available on GitHub at:
+https://github.com/openmsa/Workflows-Microservices/tree/master/WORKFLOWS/Tutorials/Process_Wizard
+
+It is possible to design processes with multiple tasks and configure the
+process to execute in a wizard-like way, with execution pause to allow
+the user to input parameters during the process execution.
+
+The sample Workflow "Process_Wizard" has 2 processes, the main process
+"compute" will ask for the user to provide 2 integer values and
+calculate the sum of the 2 integers.
+
+In order to configure the task to put the process execution on hold, the
+keyword PAUSE should be used as a parameter of prepare_json_response:
+
+....
+
+<?php
+/**
+ * This file is necessary to include to use all the in-built libraries of /opt/fmc_repository/Reference/Common
+ */
+require_once
+'/opt/fmc_repository/Process/Reference/Common/common.php';
+/**
+ * List all the parameters required by the task
+ */
+function list_args() {
+  create_var_def('a', 'Integer');
+}
+
+/**
+ * Use the keyword PAUSE to put the task in a PAUSE state, waiting for the user to click on the
+ * continue icon and optionnaly input some parameters
+ */
+
+$ret = prepare_json_response(PAUSED, 'Task pause', $context, true);
+echo "$ret\n";
+?>
+....
+
+When a task is paused, it will appear colored in orange in the instance
+list screen.
+
+link:[image:images/image2019-2-12_16-33-41.png[Image,width=800]]
+
+The user must click on continue (the arrow pointing downward) in the
+"live console" to open a new dialogue to enter the parameters.
+
+link:[image:images/image2019-2-12_16-35-27.png[Image,width=800]]

@@ -1,0 +1,39 @@
+= How To Use A Workflow As A Dynamic Data Provider For List
+:toc: left
+:toc-title: Content
+:imagesdir: ../resources/
+:ext-relative: adoc
+
+[[main-content]]
+NOTE: The source code for this tutorial is available on GitHub
+at:link:[https://github.com/openmsa/Workflows/tree/master/Tutorials/Dyn_List_Workflow_Data_Provider]
+
+This tutorial explains how to use the variable type "Workflow Reference"
+to act as a dynamic data provider with a list of referenced workflow
+instances.
+
+This is useful for calling a process from another process of the same
+workflow or another workflow as explained in
+link:../Automation/workflow-rest-api-and-function-library.adoc[Workflow
+REST API and Function Library].
+
+The "data provider" workflow below has 3 instances
+
+link:[image:images/image2019-4-23_17-15-41.png[Image,width=800]]
+
+These instances can be listed with a variable "workflow reference" to
+allow another workflow to use these references and call a process from a
+selected instance
+
+link:[image:images/image2019-4-23_17-15-5.png[Image,width=800]]
+
+[[HowtoUseaWorkflowasaDynamicDataProviderforList-VariableConfiguration]]
+== Variable Configuration
+
+Edit the workflow variables and set the type to "workflow reference"
+
+link:[image:images/image2019-4-23_17-30-32.png[Image,width=800]]
+
+In the  advanced parameters screen, select the workflow to refer to
+
+link:[image:images/image2019-4-23_17-32-53.png[Image,width=800]]

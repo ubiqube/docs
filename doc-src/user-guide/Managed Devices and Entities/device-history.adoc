@@ -1,0 +1,89 @@
+= Device History
+:toc: left
+:toc-title: Content
+:imagesdir: ../resources/
+:ext-relative: adoc
+
+== Configuration Change Management
+
+The last tab on the device page is called “History”.
+
+It provides information about your hardware, the different versions of
+firmware and licences, as well as information on the device
+configuration.
+
+=== Asset History Management
+
+The system keeps the history of the assets that were installed on the
+device and creates an internal event (prefixed by
+"[.confluence-link]#VNOC#") event that can be used to trigger
+link:../Assurance/alarm-management.adoc[alarms].
+
+The managed assets are defined and discovered by the device adaptor and
+can be customized to adapt to the device model or by adding additional
+properties.
+
+==== Illustration with a Firewall
+
+The firmware version is v6.0.0.
+
+link:[image:images/image2018-9-28_18-10-34.png[Image,width=800]]
+
+After the image upgrade to v6.0.1, the firmware inventory shows the
+history of the images that were applied.
+
+link:[image:images/image2018-9-28_18-23-33.png[Image,width=800]]
+
+The alarm management shows the VNOC event raised by the upgrade.
+
+link:[image:images/image2018-9-28_18-29-57.png[Image,width=800]]
+
+=== Configuration Change Management
+
+The MSActivator maintains all the versions of the running configurations
+of the managed devices in its configuration database.
+
+Every time the MSActivator configures a device or detects a
+configuration change, it will fetch the current configuration, version
+it and store it in its configuration database.
+
+This configuration will be available later to manage configuration
+changes.
+
+NOTE: Every night the MSActivator analyses the configuration of all its
+managed devices and tracks modifications that may have been done
+manually on the device.
+
+The configuration history is available on the Devices page, then going
+to the "History" tab and selecting "Change Mgt".
+
+link:[image:images/image2019-1-30_11-3-8.png[Image,width=800]]
+
+The change management shows the list of all configuration versions that
+were archived since the device's
+link:../Getting%20Started/getting-started-with-the-msactivator.adoc[initial
+provisioning:]
+
+link:[image:images/image2019-1-30_11-6-16.png[Image,width=800]]
+
+The user has access to functions such as:
+
+* comparing two versions of the configuration
+* downloading a selected configuration version
+* showing the details of the configuration, which are:
+** the running configuration
+** the configuration that was actually applied
+** the errors that may have been raised during the configuration
+* creating a tag to identify a specific version
+* backing up the current running configuration
+* rolling back the current configuration to one of the previous
+configuration versions
+
+NOTE: Calling the configuration rollback should be done carefully
+because it will completely replace the current running configuration of
+the device with the rollback version.
+In most cases, it also reboots the device.
+
+==== Video Tutorial
+
+video::videos/MSActivator-16.2-Device-History.mp4[image,width=500,height=380]

@@ -1,0 +1,92 @@
+= Managed Devices
+:toc: left
+:toc-title: Content
+:imagesdir: ../resources/
+:ext-relative: adoc
+
+== Device Creation
+
+Managed devices are created inside the Customer Tenant by clicking on
+image:images/Customer_Portal_deviceCreationIcon.png[Icon,width=24] and
+selecting "Device" from the list.
+
+link:[image:images/image2018-4-1_20-20-24.png[Image,height=250]]
+
+Switch to "Expert" view (click on
+image:images/image2018-4-1_20-24-7.png[Icon,width=48]) to display all
+the fields.
+
+Choose the manufacturer and model of your device.
+
+link:[image:images/image2018-4-1_20-23-3.png[Image,width=800]]
+
+NOTE: The Manufacturer and Model of the device will be used to select
+the Device Adaptor for managing the device.
+
+Fill out the form according to the following spreadsheet:
+
+[width="100%",cols="34%,33%,33%",options="header",]
+|=======================================================================
+|Field Name |Description |Mandatory
+|Name |A free text field to specify a name for the device. |Yes
+
+|External reference a|
+A unique value that can be used to identify the device.
+
+Usually used for integration with third party tools.
+
+ |No
+
+|Management IP address |The IP address used by the MSActivator to manage
+and monitor the device. |Yes
+
+|Management interface name |The MSActivator polling engine will use this
+information to look into the MIB for the OID of traffic monitoring
+information. |No
+
+|Hostname |The hostname of the device that will be used by the syslog
+collector to match the syslog to a device in the MSActivator database.
+|No
+
+|User name |The login used by the MSActivator configuration module to
+execute configuration actions on the device. |Yes
+
+|User Password |The password for the login. |Yes
+
+|Silver Monitoring |Activate SNMP based monitoring. |No
+
+|SNMP community |The community to use by the MSActivator to execute SNMP
+requests on the device. a|
+Yes
+
+(if Silver monitoring is enabled)
+
+|Monitoring port |Default is SNMP port 161, but it can be customized if
+required. a|
+Yes
+
+(if Silver monitoring is enabled)
+
+|Gold Monitoring |Activate to enable syslog collecting without parsing
+the syslogs. |No
+
+|Security Reports |Activate syslog collecting and parsing. |No
+|=======================================================================
+
+Click save to create the device.
+
+== Device Activation
+
+The activation of a device (also known as Initial Provisioning) is the
+action that will check the device connectivity, optionally configure it
+with an initial (templated) configuration, and mark it as activated.
+
+Once activated, the MSActivator can manage and monitor the device.
+
+The steps to activate a device are:
+
+From the Device page, in the "Details" tab, select "Initial
+provisioning" from the "Actions" drop down. This will activate the
+Device.
+
+link:[image:images/image2018-4-5_12-24-35.png[Image,width=800]]

@@ -1,0 +1,30 @@
+= Database Template Variables
+:toc: left
+:toc-title: Content
+:imagesdir: ../../resources/
+:ext-relative: adoc
+
+[[main-content]]
+Here are the main variables that will be used in the
+link:./configuration-template.adoc[Template Based
+Provisioning].
+
+*$SD* is the main entry point of all other variables.
+
+*$SD->SDID*: UBique ID of the device.
+
+*$SD->SD_HOSTNAME*: Hostname of the device.
+
+*$SD->SD_LOGIN_ENTRY*: Connection login to log onto the device.
+
+*$SD->SD_PASSWD_ENTRY*: Connection password to log onto the device.
+
+*$SD->SD_PASSWD_ADM*: (Cisco only) enable password/secret of the device.
+
+*$SD->SD_SNMP_COMMUNITY*: SNMP community configured by the SOC onto the
+device.
+
+*$SD->SD_EXTERNAL_REFERENCE*: External reference of the device.
+
+*$SD->SD_INTERFACE_list.E->INT_IP_ADDR*: External/management IP address
+of the device.

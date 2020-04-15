@@ -1,0 +1,49 @@
+= Device Activity Report
+:toc: left
+:toc-title: Content
+:imagesdir: ../resources/
+:ext-relative: adoc
+
+== Overview
+
+The device activity report presents all actions related to the device
+and puts them in a report that can be downloaded as PDF or XLS. The
+device action can be:
+
+* Device creation/edition
+* Initial Provisioning
+* Activate without device connection
+* Update configuration
+* Attach/Detach files from repository
+* Update license
+* Update firmware
+* Send data files
+* Get device tech report
+* Get configuration
+
+You can view some samples here:
+
+* https://d20ftpvh66dtxq.cloudfront.net/Dev_activity_report.pdf[Media:Dev
+activity report.pdf]
+* https://d20ftpvh66dtxq.cloudfront.net/Dev_activity_report.xls[Media:Dev
+activity report.xls]
+
+== Access and generation
+
+The report is available at the device home inside the new portal only.
+Click the "History" tab, then on PDF or XLS on the right next to the
+"Change Mgt" button.
+
+link:[image:images/DeviceActivityReport.png[Image,width=800]]
+
+After clicking, a new window is opened with a preview of the report.
+
+link:[image:images/DevAcReport.png[Image,width=800]]
+
+== Feature Management
+
+The feature is controlled by the configuration property device activity
+report, supported in *DeviceBoardContent* in the set of customization
+files under /opt/ses/WebContent/operators/XYZ
+
+Set it to 1 to enable it (default) or 0 to disable it.

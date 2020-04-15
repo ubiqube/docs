@@ -1,0 +1,14 @@
+= Dashboard
+:toc: left
+:toc-title: Content
+:imagesdir: ../resources/
+:ext-relative: adoc
+
+[[main-content]]
+This short video will explore the different functions of the MSActivator
+dashboard.
+
+[[Dashboard-VideoTutorial]]
+== Video Tutorial
+
+video::videos/MSActivator-16.2-Dashboard.mp4[image,width=500,height=380]

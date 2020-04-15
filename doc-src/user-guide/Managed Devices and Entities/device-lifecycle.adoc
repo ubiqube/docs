@@ -1,0 +1,337 @@
+= Device Lifecycle
+:toc: left
+:toc-title: Content
+:imagesdir: ../resources/
+:ext-relative: adoc
+
+[[main-content]]
+When does the MSActivator accesses the managed devices for monitoring,
+asset management or configuration management ?
+
+[[DeviceLifecycle-AccessOverview]]
+== [.inline-comment-marker]#Access Overview#
+
+[width="99%",cols="20%,16%,16%,16%,16%,16%",]
+|=======================================================================
+| |Protocol |Read/Write/Listen |Period |Trigger* |Comment
+
+|Monitoring | | | | |
+
+|Device status |ICMP |R |1 min. |auto |
+
+|Monitoring Profile |UDP/161 |R |1 min. |auto |Port and frequency can be
+customised.
+
+|SNMP Trap |UDP/162 |L | |auto |
+
+|Log Analytic |UDP/514 |L | |auto |
+
+|Asset a|
+TCP/22
+
+TCP/80
+
+TCP/443
+
+any other protocol to access the managed devices
+
+ |R |24 hour |auto/manual a|
+This depends on the managed devices and its adapter, usual cases are
+either remote CLI command call with SSH or REST API.
+
+Can be triggered manually with the SecEngine command FORCEASSET
+
+|Configuration | | | | |
+
+|Initial provisioning a|
+TCP/22
+
+TCP/80
+
+TCP/443
+
+other protocol to access the managed devices
+
+ |W/R | | a|
+This depends on the managed devices and its adapter, usual case are
+either remote CLI command call with SSH or REST API.
+
+Port can be customised to support managed entities behind NAT (PAT is
+needed).
+
+It is possible to support a fall-back mechanism based on TFTP and Telnet
+when secure connection fails or is not supported by the device (see
+below for details).
+
+|Microservice a|
+TCP/22
+
+TCP/80
+
+TCP/443
+
+other protocol to access the managed devices
+
+ |W/R | |manual |(same as above)
+
+|Template a|
+TCP/22
+
+TCP/80
+
+TCP/443
+
+other protocol to access the managed devices
+
+ |W/R | |manual/auto a|
+(same as above)
+
+The configuration update can be configured to be triggered automatically
+upon configuration change in MSActivator database.
+
+|Change Management a|
+TCP/22
+
+TCP/80
+
+TCP/443
+
+other protocol to access the managed devices
+
+ a|
+W (for configuration rollback)
+
+R (for configuration backup)
+
+ |24 hour |auto/manual a|
+Global backup of all managed devices is executed every 24h.
+
+Rollback action can only be triggered manual from UI or with API.
+
+|=======================================================================
+
+
+NOTE: * info on what triggers an action: automated/scheduled and/or manual
+
+[[DeviceLifecycle-Monitoring]]
+== Monitoring
+
+[[DeviceLifecycle-DeviceStatus]]
+=== Device Status
+
+MSA monitoring engine checks for ICMP reachability every minute. The
+status of a managed entity is graphically represented by 4 colours:
+blue, green, yellow and red and displayed on the user portal
+
+link:[image:images/image2019-11-13_14-34-23.png[Image,width=800,height=59]]
+
+NOT ACTIVE :  the managed entity is created in the MSActivator database
+but not yet activated with initial provisioning. The MSActivator is not
+monitoring or managing this device yet
+
+NOTE: once a managed entity is created it's immediately accounted for
+the MSActivator product license even if it's not activated
+
+UP : the managed entity  was activated and is currently monitored using
+ICMP
+
+CRITICAL : the managed entity  is monitored and at least one ICMP
+request failed but at most 5 ICMP requests failed
+
+DOWN : There was 5 ICMP request failures in a row and the 6th one failed
+
+==== IPUP/IPDOWN events
+
+When a device status changes, the MSActivator will generate some
+internal events that can be used to configure some alarms.
+
+[[DeviceLifecycle-Rulesforstatuschange]]
+===== Rules for status change
+
+When the status changes from UP or CRITICAL to DOWN, an event IPDOWN is
+generated.
+
+When the status changes from DOWN to UP, an event IPUP is generated.
+
+If a device is DOWN but a syslog is collected and detected to be coming
+from the device, an IPUP will be generated but the status will stay
+DOWN.
+
+These events will be stored in the Elasticsearch cluster and will be
+available for alarm management just like a regular syslog.
+
+link:[image:images/image2019-11-14_12-0-58.png[Image,width=800]]
+
+[[DeviceLifecycle-MonitoringProfile]]
+=== Monitoring Profile
+
+The link:../Assurance/monitoring-profile.adoc[monitoring profiles] are
+based on SNMP request to get the KPI values from the managed entities.
+
+When a monitoring profile is associated to a managed entity, the
+MSActivator monitoring engine (polld) will start polling for the KPI by
+sending an SNMP request to the managed entity and storing the result in
+a dedicated database.
+
+If the SNMP request fails, by default, no action will be taken,
+monitoring data will not be recorded and the graph will show an empty
+gray bar.
+
+[[DeviceLifecycle-AssetManagement]]
+=== Asset Management
+
+The asset management module is in charge of maintaining the device
+link:../Managed%20Devices%20and%20Entities/device-history.adoc[asset
+history] up to date.
+
+The implementation of the asset management is vendor specific and
+therefore implemented in the adapter in a PHP script located in
+/opt/sms/bin/php/polld/ named <DA Model>_mgmt.php.
+
+When the managed entity  is activated, this script will be executed and
+is in charge of getting assets information about the managed entity such
+as it's firmware version, serial number, memory,...
+
+To get this information the MSActivator will connect to the managed
+entity  and read the information. Usually this is done with REST API or
+SSH/CLI, depending on the managed entity  capabilities.
+
+The asset management task is scheduled to run once a day for every
+managed device.
+
+It is possible to force the refresh of the asset with the SecEngine
+command FORCEASSET.
+
+    POST /sms/verb/FORCEASSET/{deviceId}
+
+example:
+
+    curl -u ncroot:PASSWORD  -XPOST http://127.0.0.1/ubi-api-rest/sms/verb/FORCEASSET/2127
+
+on a Fortigate firewall, the asset management daemon (polld) will
+connect on the device with SSH, use some CLI command to get the required
+info and store the information in the database
+
+....
+2019/11/14:10:22:06:(D):sms_polld:MSA2127:sd_poll_task:: RECEIVED: 
+
+2019/11/14:10:22:06:(I):sms_polld:MSA2127:sd_poll_task::  firmware       [FortiGate-VM64-AWSONDEMAND v6.0.6,build0272,190716
+(GA)]
+
+2019/11/14:10:22:06:(I):sms_polld:MSA2127:sd_poll_task::  model          [FortiGate-VM64-AWSONDEMAND]
+
+2019/11/14:10:22:06:(I):sms_polld:MSA2127:sd_poll_task::  serial         [FGTAWS00088ED20A]
+
+2019/11/14:10:22:06:(I):sms_polld:MSA2127:sd_poll_task::  cpu            [Intel(R) Xeon(R) Platinum 8124M CPU @ 3.00GHz]
+
+2019/11/14:10:22:06:(I):sms_polld:MSA2127:sd_poll_task::  ips_version    [6.00741(2015-12-01
+02:30)]
+
+2019/11/14:10:22:06:(I):sms_polld:MSA2127:sd_poll_task::  av_version     [1.00000(2018-04-09
+18:07)]
+
+2019/11/14:10:22:06:(D):sms_polld:MSA2127:sd_poll_task:: SENDCMD: [exit]
+....
+
+This information is shown on the MSActivator UI
+
+link:[image:images/image2019-11-14_11-27-50.png[Image,width=800]]
+
+[[DeviceLifecycle-LogAnalytic]]
+=== Log Analytic
+
+The link:../Assurance/log-analysis.adoc[log analytic] module is part of
+MSActivator assurance. The MSActivator can collect syslogs sent from a
+managed entity.
+
+The syslogs are collected by the SecEngine syslog collector (syslogd) on
+UDP/514
+
+[[DeviceLifecycle-ConfigurationManagement]]
+== Configuration Management
+
+[[DeviceLifecycle-InitialProvisioning]]
+=== Initial Provisioning
+
+In order to activate a managed entity, the initial provisioning is a
+mandatory step.
+
+The initial provisioning is a multiple steps process where the
+MSActivator configuration engine will try to connect on the managed
+entity, push an optional initial configuration and backup the running
+configuration in it's configuration change management database.
+
+It is possible to trigger the
+link:../Getting%20Started/managed-devices.adoc[initial provisioning]
+with the API or the UI.
+
+[[DeviceLifecycle-ConfigurationTemplates]]
+=== Configuration Templates
+
+link:/documentation/configuration-template/[Configuration Templates] can
+be used to update a device configuration.
+
+By default, template based configuration has to be triggered manually
+(with the UI or API) but it is possible to configure a managed entity to
+activate the automated configuration update.
+
+If the automated configuration update is activated, any configuration
+related change on the managed device attributes (host name, management
+interface,... or any configuration variable) will trigger a
+configuration update.
+
+link:[image:images/image2019-11-14_11-43-14.png[Image,width=800]]
+
+[[DeviceLifecycle-Microservices]]
+=== Microservices
+
+link:/documentation/microservices/[Microservice] can be designed to read
+and import a managed entity  configuration items or to create/update a
+managed entity  configuration item.
+
+[[DeviceLifecycle-ConfigurationChangeManagement]]
+=== Configuration Change Management
+
+[[DeviceLifecycle-Backup]]
+==== Backup
+
+The
+link:../Managed%20Devices%20and%20Entities/device-history.adoc[configuration
+change management module] will backup the running configuration of a
+managed entity each time the configuration is changed either by an
+initial provisioning or a configuration update.
+
+The module will also execute a daily backup of the configuration of all
+the managed entities registered and activated in the MSActivator. This
+is to ensure that manual configuration are also backed up and detected
+(it is possible to configure an alarm to get notified when a manual
+configuration occurs).
+
+The backup process is implemented in the device adapter.
+
+[[DeviceLifecycle-Rollback]]
+==== Rollback
+
+The configuration change management module can also be used to rollback
+a managed entity configuration to a previous configuration. The
+MSActivator will use the selected configuration to replace the device
+running configuration. The rollback process is implemented in the device
+adapter.
+
+[[DeviceLifecycle-AdditionalConsiderations]]
+== Additional Considerations
+
+It is possible to use non-secure protocol such as TFTP or Telnet to
+manage devices.
+
+This is as per implemented in the device adapter and it is a design
+choice to use these protocol for device management.
+
+In most cases, these protocols are used as a fall back mechanism when
+the use of the default secure protocol fails. For instance, some device
+are initially configure to support Telnet only and the initial
+provisioning can use Telnet to activate SSH.
+
+When TFTP is used, the connection is always initiated by the device
+toward the MSA. The initiation of the connection is done by sending some
+CLI commands (or call some REST API) on the device.

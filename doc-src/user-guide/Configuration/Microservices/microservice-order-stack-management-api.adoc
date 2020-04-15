@@ -1,0 +1,295 @@
+= Microservice Order Stack Management Api
+:toc: left
+:toc-title: Content
+:imagesdir: ../../resources/
+:ext-relative: adoc
+
+[[main-content]]
+[[MicroserviceOrderStackManagementAPI-Overview]]
+== Overview
+
+This documentation describes the order stack management API.
+
+This REST API is also used internally by the MSActivator portal, as an
+example you can read the page on
+link:../Configuration/Microservices/microservice-order-stack-management.adoc[Microservice
+Order Stack Management].
+
+Each API is described below with the REST call, a textual description,
+the parameters and a section 'detail'. The 'detail' section provides
+some insight into the inner workings of the API. For instance, what is
+the database table impacted or what SecEngine API command is being used.
+
+The detail on the SecEngine API command is very important because it is
+directly related to the *adaptor implementation* for a specific vendor.
+
+[[MicroserviceOrderStackManagementAPI-APIDescription]]
+== API Description
+
+[[MicroserviceOrderStackManagementAPI-AddanOrdertotheStack]]
+=== Add an Order to the Stack
+
+    curl -u ncroot:ncroot_pwd -XPUT http://MSA_IP/ubi-api-rest/orderstack/command/{deviceId}/{commandName} -d {objectParameters}
+
+[[MicroserviceOrderStackManagementAPI-Description]]
+==== Description
+
+Adds a command in the stack and returns the ID of the order in the
+stack.
+
+[[MicroserviceOrderStackManagementAPI-Parameters]]
+==== Parameters
+
+*deviceId*: the database identifier of the managed device, for example:
+123. *commandName*: possible values are CREATE UPDATE IMPORT
+DELETE **objectParameters**: in JSON format, for example:
+
+....
+'{
+"interface" : {
+   "port2" : {
+       "ip" : "1.2.4.5",
+       "object_id" : "port2",
+       "mask" : "255.255.255.0"
+         }
+     }
+}'
+....
+
+[[MicroserviceOrderStackManagementAPI-Detail]]
+==== Detail
+
+Write into database (redsms.sd_crud_object).
+
+[[MicroserviceOrderStackManagementAPI-GeneratetheConfigurationfromtheStack]]
+=== Generate the Configuration from the Stack
+
+    curl -u ncroot:ncroot_pwd -XGET http://MSA_IP/ubi-api-rest/orderstack/configuration/{deviceId}
+
+[[MicroserviceOrderStackManagementAPI-Description.1]]
+==== Description
+
+Generates the configuration based on the stacked orders for a device.
+
+[[MicroserviceOrderStackManagementAPI-Parameters.1]]
+==== Parameters
+
+*deviceId*: the database identifier of the managed device, for example:
+123.
+
+[[MicroserviceOrderStackManagementAPI-Detail.1]]
+==== Detail
+
+loop on commands in the stack  call SMS verb end loop
+
+The SMS verb is equivalent to the following CLI command command:
+
+....
+sms -e JSCALLCOMMAND -i 'deviceId commandName 0' -c 'objectParameters'
+....
+
+NOTE: In the CLI command above the parameter 0 is used along with commands
+such as CREATE, UPDATE or DELETE and *generate configuration without
+access to the database or the device*
+
+[[MicroserviceOrderStackManagementAPI-GeneratstheConfigurationandStoretheConfigurationfromtheStack]]
+=== Generats the Configuration and Store the Configuration from the Stack
+
+    curl -u ncroot:ncroot_pwd -XPUT http://MSA_IP/ubi-api-rest/orderstack/configuration/{deviceId}
+
+[[MicroserviceOrderStackManagementAPI-Description.2]]
+==== Description
+
+Generates the configuration based on the stacked orders for a device and
+stores the configuration items in the database.
+
+[[MicroserviceOrderStackManagementAPI-Parameters.2]]
+==== Parameters
+
+*deviceId*: the database identifier of the managed device, for example:
+123.
+
+[[MicroserviceOrderStackManagementAPI-Detail.2]]
+==== Detail
+
+    loop on commands in the stack
+        call SMS verb
+        write in database (redsms.sd_crud_object)
+    end loop
+
+The SMS verb is equivalent to the following command:
+`sms -e JSCALLCOMMAND -i 'deviceId commandName 1' -c 'objectParameters'`
+
+NOTE: In the CLI command above the parameter 1 is used along with commands
+such as CREATE, UPDATE or DELETE and generate the configuration and
+*stores the configuration items in the database.*
+The device configuration is not impacted.
+
+[[MicroserviceOrderStackManagementAPI-GeneratetheConfigurationfromtheStackandApplytotheDevice]]
+=== Generate the Configuration from the Stack and Apply to the Device
+
+    curl -u ncroot:ncroot_pwd -XPOST http://MSA_IP/ubi-api-rest/orderstack/execute/{deviceId}
+
+[[MicroserviceOrderStackManagementAPI-Description.3]]
+==== Description
+
+Generates the configuration based on the stacked orders for a device and
+stores the configuration items in the database and executes all the
+commands on the device.
+
+[[MicroserviceOrderStackManagementAPI-Parameters.3]]
+==== Parameters
+
+*deviceId*: the database identifier of the managed device, for example:
+123.
+
+[[MicroserviceOrderStackManagementAPI-Detail.3]]
+==== Detail
+
+....
+loop on commands in the stack
+  call SMS verb
+  write in database (table redsms.sd_crud_object)
+  execute command on the device
+end loop
+....
+
+The SMS verb is equivalent to the following command:
+`sms -e JSCALLCOMMAND -i 'deviceId commandName 2' -c 'objectParameters'`
+
+NOTE: In the CLI command above the parameter 2 is used along with commands
+such as CREATE, UPDATE or DELETE and generate the configuration, stores
+the configuration items in the database and *applies the configuration*
+to the device.
+
+[[MicroserviceOrderStackManagementAPI-ListtheOrdersintheStack]]
+=== List the Orders in the Stack
+    curl -u ncroot:ncroot_pwd -XGET http://MSA_IP/ubi-api-rest/orderstack/{deviceId}
+
+[[MicroserviceOrderStackManagementAPI-Description.4]]
+==== Description
+
+Lists the stacked orders for a device.
+
+[[MicroserviceOrderStackManagementAPI-Parameters.4]]
+==== Parameters
+
+*deviceId*: the database identifier of the managed device, for example:
+123.
+
+[[MicroserviceOrderStackManagementAPI-Detail.4]]
+==== Detail
+
+Read from the database (table redsms.sd_crud_object).
+
+[[MicroserviceOrderStackManagementAPI-GettheDetailofaStackCommand]]
+=== Get the Detail of a Stack Command
+    curl -u  ncroot:ncroot_pwd -XGET http://MSA_IP/ubi-api-rest/orderstack/command/{deviceId}/{commandId}
+
+[[MicroserviceOrderStackManagementAPI-Description.5]]
+==== Description
+
+Gets the detail of a stack command based on its identifier in the stack.
+
+[[MicroserviceOrderStackManagementAPI-Parameters.5]]
+==== Parameters
+
+*deviceId*: the database identifier of the managed device, for example:
+123.*commandId*: the identifier of the command in the stack.
+
+[[MicroserviceOrderStackManagementAPI-Detail.5]]
+==== Detail
+
+Read in database (redsms.sd_crud_object).
+
+[[MicroserviceOrderStackManagementAPI-CleartheStack]]
+=== Clear the Stack
+
+    curl -u ncroot:ncroot_pwd -XDELETE http://MSA_IP/ubi-api-rest/orderstack/{deviceId}
+
+[[MicroserviceOrderStackManagementAPI-Description.6]]
+==== Description
+
+Clears the stack for a device.
+
+[[MicroserviceOrderStackManagementAPI-Parameters.6]]
+==== Parameters
+
+*deviceId*: the database identifier of the managed device, for example:
+123.
+
+[[MicroserviceOrderStackManagementAPI-Detail.6]]
+==== Detail
+
+Remove in database (redsms.sd_crud_object)
+
+[[MicroserviceOrderStackManagementAPI-DeleteaCommandfromtheStack]]
+=== Delete a Command from the Stack
+
+    curl -u  ncroot:ncroot_pwd -XDELETE http://MSA_IP/ubi-api-rest/orderstack/command/{deviceId}/{commandId}
+
+[[MicroserviceOrderStackManagementAPI-Description.7]]
+==== Description
+
+Deletes a command from the stack based on the command ID.
+
+[[MicroserviceOrderStackManagementAPI-Parameters.7]]
+==== Parameters
+
+*deviceId*: the database identifier of the managed device, for example:
+123.*commandId*: the identifier of the command in the stack.
+
+[[MicroserviceOrderStackManagementAPI-Detail.7]]
+==== Detail
+
+Remove in database (redsms.sd_crud_object).
+
+[[MicroserviceOrderStackManagementAPI-ApplytheConfigurationforaDevice]]
+=== Apply the Configuration for a Device
+
+    curl -u ncroot:ncroot_pwd -XPUT http://MSA_IP/ubi-api-rest/device/push_configuration/{deviceId} -d {configuration}
+
+[[MicroserviceOrderStackManagementAPI-Description.8]]
+==== Description
+
+Perform a push configuration for a device.
+
+[[MicroserviceOrderStackManagementAPI-Parameters.8]]
+==== Parameters
+
+*deviceId*: the database identifier of the managed device, for example:
+123.*configuration*: the configuration in JSON format.
+
+Example:
+
+....
+{
+    "configuration": "config system interface\nedit port1\nset ip 192.168.1.10 255.255.255.0\nend"
+}
+....
+
+[[MicroserviceOrderStackManagementAPI-Detail.8]]
+==== Detail
+
+Applies the configuration to the device.
+
+[[MicroserviceOrderStackManagementAPI-GettheStatusofthepush_configurationAPI]]
+=== Get the Status of the push_configuration API
+
+    curl -u ncroot:ncroot_pwd  -X GET http://MSA_IP/ubi-api-rest/device/push_configuration/status/{deviceId}
+
+[[MicroserviceOrderStackManagementAPI-Description.9]]
+==== Description
+
+Gets the status of the push configuration from the device.
+
+[[MicroserviceOrderStackManagementAPI-Parameters.9]]
+==== Parameters
+
+*deviceId*: the database identifier of the managed device, for example:
+123.
+
+[[MicroserviceOrderStackManagementAPI-Detail.9]]
+==== Detail
+
+Read the status from the database.

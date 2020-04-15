@@ -1,5 +1,4 @@
-Documentation
-=============
+= Documentation
 :toc: left
 :toc-title: Content 
 :imagesdir: ./resources/
@@ -22,17 +21,18 @@ The guide Automate Policy Configuration on Multiple VNF will walk you through th
 == Tutorials
 These tutorials are made up of a set of short articles that explain the main features of the MSActivator.
 
-- link:tenants_and_users.adoc[Tenants and Users]
-- Microservices
-- Automation
-- Portal Overview
+- link:++./Getting Started/tenants-and-users.adoc++[Tenants and Users]
+- link:./Configuration/Microservices/microservices.adoc[Microservices]
+- link:./Automation/getting-started-developing-workflows.adoc[Automation]
+- link:++./Getting Started/portal-overview.adoc++[Portal Overview]
 
 == SLA Management
-- Log Analysis
-- KPI Monitoring
-- Alarm Management
+- link:./Assurance/log-analysis.adoc[Log Analysis]
+- link:./Assurance/monitoring-profile.adoc[KPI Monitoring]
+- link:./Assurance/alarm-management.adoc[Alarm Management]
 
 == Administration Guides
 The MSActivator Installation and Configuration Guide will show you how to install, configure and activate the MSActivator.
 
+- link:./Administration/[Administration]
 

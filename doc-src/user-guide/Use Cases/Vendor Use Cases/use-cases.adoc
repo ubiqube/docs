@@ -1,0 +1,23 @@
+= Automate Policy Configuration On Multiple Vnf
+:toc: left
+:toc-title: Content
+:imagesdir: ../resources/
+:ext-relative: adoc
+
+
+[[main-content]]
+Please visit the links below to explore our different use cases in
+Linux, Fortigate, Cisco and PaloAlto.
+
+* Linux
+** link:./Linux/iptables-management-with-a-microservice.adoc[iptables
+Management with a Microservice]
+* Fortigate
+** link:./Fortinet/managed-security-on-fortigate-firewall.adoc[Managed
+Security on FortiGate Firewall]
+* Cisco +
+** [.confluence-link]#link:./Cisco/interfaces-management-on-cisco-ios.adoc[Interfaces
+Management on Cisco IOS]#
+* [.confluence-link]#PaloAlto#
+** link:./PaloAlto/order-stack-management-on-paloalto.adoc[Order
+Stack Management on PaloAlto] +

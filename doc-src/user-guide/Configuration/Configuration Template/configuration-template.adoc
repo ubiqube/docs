@@ -1,0 +1,95 @@
+= Configuration Template
+:toc: left
+:toc-title: Content
+:imagesdir: ../resources/
+:ext-relative: adoc
+
+[[main-content]]
+[[ConfigurationTemplate-ConfigurationTemplateattheProfileLevel]]
+Configuration Template at the Profile Level
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Configuration templates can be grouped together using a
+link:./configuration-profile.adoc[Configuration Profile].
+
+link:++../../Getting Started/managed-devices.adoc++[Managed devices] can be attached to
+a link:../configuration-profile.adoc[Configuration Profile].
+
+This is useful when a managed service is defined as a group of
+configuration templates and/or Microservices, and has to be applied
+consistently to multiple link:++../../Getting Started/managed-devices.adoc++[Managed devices].
+
+The SecEngine module will resolve the template for each device's
+configuration variables and update the device's configuration, one by
+one, with the created configuration.
+
+NOTE: It is possible to add a specific template per device (see section
+below).
+
+[[ConfigurationTemplate-ConfigurationTemplateattheDeviceLevel]]
+Configuration Template at the Device Level
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In addition to the configuration profile, it is possible to associate a
+template directly to a device.
+
+[[ConfigurationTemplate-Howtoaddconfigurationtemplatestoadevice]]
+How to add configuration templates to a device
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+From the device home page menu, select *General -> Edit Configuration
+Files*
+
+Adding configuration templates to a device is similar to adding a
+template to a configuration profile:
+
+1.  Select a template from the
+link:../configuration-repository.adoc[Configuration Repository].
+2.  Configure the variables attached to the template on the bottom
+panel.
+3.  Save.
+
+https://d20ftpvh66dtxq.cloudfront.net/EditConfigurationFilesDevice.png[image:https://d20ftpvh66dtxq.cloudfront.net/EditConfigurationFilesDevice.png[Image,width=800]]
+
+[[ConfigurationTemplate-Viewingattachedfiles]]
+Viewing attached files
+^^^^^^^^^^^^^^^^^^^^^^^
+
+From the device home page, select the *Configuration files* tab:
+
+https://d20ftpvh66dtxq.cloudfront.net/Device_config_files.png[image:https://d20ftpvh66dtxq.cloudfront.net/Device_config_files.png[Image,width=800]]
+
+This tab shows all the templates attached to the device.
+
+* In black: the template that are directly attached to the device
+* In gray: the templates that are attached to a profile (if the device
+is attached to a configuration profile)
+
+image:https://d20ftpvh66dtxq.cloudfront.net/Script_post.gif'%20%%7D[image,height=16] and image:https://d20ftpvh66dtxq.cloudfront.net/Script_pre.gif[image,height=16]
+indicate if the template was attached as a pre-configuration or a
+post-configuration template.
+
+[[ConfigurationTemplate-Viewingtheresolvedtemplates]]
+Viewing the resolved templates
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+As explained in the
+link:../configuration-repository.adoc[Configuration Repository]
+page, configuration files that can be uploaded in the repository are
+templates. +
+Therefore, they contain variables that have to be declared.
+
+Templates can also contain variables coming from the database. The
+variables are available through the entry point *\{$SD}* see:
+link:./database-template-variables.adoc[Database template
+variables]
+
+Once templates are associated to a device (directly or through a
+profile), it is possible to view the resulting configuration file:
+
+* Right click on the attached file and choose *View generated file*:
+
+https://d20ftpvh66dtxq.cloudfront.net/Device_config_files_resolved_template.png[image:https://d20ftpvh66dtxq.cloudfront.net/Device_config_files_resolved_template.png[Image,width=800]]
+
+https://training.ubiqube.com/17.1/wikiTraining/index.php/Image:Device_config_files_resolved_template.png[ +
+]

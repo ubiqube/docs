@@ -1,0 +1,35 @@
+= How To Import An Array
+:toc: left
+:toc-title: Content
+:imagesdir: ../../resources/
+:ext-relative: adoc
+
+== Overview
+
+This tutorial details the IMPORT object implementation in the case of a
+simple variable array on a CLI based device. The following example uses
+a Cisco configuration sample.
+
+== Configuration Sample
+
+Here is an example of the configuration that you want to import in your
+object.
+
+....
+### DHCP helper-address ###
+interface FastEthernet0
+  ip helper-address 1.2.3.4
+  ip helper-address 2.3.4.5
+....
+
+== Configuration Parser Import to use
+
+link:[image:images/image2018-3-14_14-26-39.png[Image,width=800]]
+
+== Variables
+
+link:[image:images/image2018-3-14_14-27-23.png[Image,width=800]]
+
+== Result in the Microservice Console
+
+link:[image:images/image2018-3-14_14-28-3.png[Image,width=800]]

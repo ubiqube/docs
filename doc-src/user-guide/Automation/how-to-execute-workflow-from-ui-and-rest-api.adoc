@@ -1,0 +1,34 @@
+= How To Execute Workflow From Ui And Rest Api
+:toc: left
+:toc-title: Content
+:imagesdir: ../resources/
+:ext-relative: adoc
+
+[[main-content]]
+If a Workflow needs to be invoked from a portal and REST API in the
+command line, the Workflow needs to include extra code.
+
+The reason for this is because when you invoke the Workflow from UI
+Portal, all the parameters go into the $context, but when you invoke the
+Workflow from the command line using REST APIs, all the input parameters
+go into the $parameters. 
+
+The Workflow engine only considers the parameters set in $context.
+Therefore, all the parameters provided on the command line will go into
+$parameters and will not be considered for the execution. Instead,
+previously saved parameters will be used. 
+
+In order to ensure that a Workflow can be executed from both the UI and
+the command line, it should have some code which will copy the
+parameters from $patameters to $context. The code is as follows:
+
+....
+
+if(isset($parameters) ){
+    $context['<param_name_1>'] = $parameters['<param_name_1>'];
+    $context['<param_name_2>'] = $parameters['<param_name_2>'];
+   ......
+   ....
+ }
+....
+link:[image:images/MSA-2878.gif[Image,height=250]]

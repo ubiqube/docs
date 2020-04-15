@@ -1,0 +1,30 @@
+= Device Overview
+:toc: left
+:toc-title: Content
+:imagesdir: ../resources/
+:ext-relative: adoc
+
+== Overview
+
+By clicking on any device from the device list, you will be directed to
+the device overview page.
+
+Besides showing the name and status of the device, it also provides more
+detailed information like the serial number and the firmware the device
+is running on.
+
+Basic details of the device, like the device name and IP address, can be
+edited with the edit tool and the device can also be removed here.
+
+Click on the “Attach Files” button to add configurations (Microservices
+and/or templates) to the device.
+
+Examples of these are templates for the initial device configuration,
+files to update a specific configuration, or even Microservices to
+enable a Day-2 configuration of an existing device setup.
+
+Firmware images can also be attached to automate image upgrades.
+
+=== *Video Tutorial*
+
+video::videos/MSActivator-16.2-Device-Overview.mp4[image,width=500,height=380]
