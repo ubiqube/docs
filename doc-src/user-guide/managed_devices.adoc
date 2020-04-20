@@ -1,6 +1,6 @@
 :toc: left
 :toc-title: Content 
-=======
+===============
 Managed Devices
 ===============
 :toc: left
