@@ -4,10 +4,7 @@
 :imagesdir: ../resources/
 :ext-relative: adoc
 
-[[main-content]]
-[[ConfigurationTemplate-ConfigurationTemplateattheProfileLevel]]
-Configuration Template at the Profile Level
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+== Configuration Template at the Profile Level
 
 Configuration templates can be grouped together using a
 link:./configuration-profile.adoc[Configuration Profile].
@@ -26,16 +23,12 @@ one, with the created configuration.
 NOTE: It is possible to add a specific template per device (see section
 below).
 
-[[ConfigurationTemplate-ConfigurationTemplateattheDeviceLevel]]
-Configuration Template at the Device Level
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+== Configuration Template at the Device Level
 
 In addition to the configuration profile, it is possible to associate a
 template directly to a device.
 
-[[ConfigurationTemplate-Howtoaddconfigurationtemplatestoadevice]]
-How to add configuration templates to a device
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+=== How to add configuration templates to a device
 
 From the device home page menu, select *General -> Edit Configuration
 Files*
@@ -51,9 +44,7 @@ panel.
 
 https://d20ftpvh66dtxq.cloudfront.net/EditConfigurationFilesDevice.png[image:https://d20ftpvh66dtxq.cloudfront.net/EditConfigurationFilesDevice.png[Image,width=800]]
 
-[[ConfigurationTemplate-Viewingattachedfiles]]
-Viewing attached files
-^^^^^^^^^^^^^^^^^^^^^^^
+=== Viewing attached files
 
 From the device home page, select the *Configuration files* tab:
 
@@ -69,9 +60,7 @@ image:https://d20ftpvh66dtxq.cloudfront.net/Script_post.gif'%20%%7D[image,height
 indicate if the template was attached as a pre-configuration or a
 post-configuration template.
 
-[[ConfigurationTemplate-Viewingtheresolvedtemplates]]
-Viewing the resolved templates
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+=== Viewing the resolved templates
 
 As explained in the
 link:../configuration-repository.adoc[Configuration Repository]

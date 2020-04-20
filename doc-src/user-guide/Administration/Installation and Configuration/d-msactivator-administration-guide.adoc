@@ -952,11 +952,9 @@ the SecEngine passive node always work in pairs.
 In case of failure of the active node, the passive node takes over by
 starting the SecEngine services and getting the IP connectivity.
 
-[[D-MSActivatorAdministrationGuide-SecEngineActive/SecEnginePassiveHAusecasesbelow:]]
 ==== SecEngine Active/SecEngine Passive HA use cases below:
 
-[[D-MSActivatorAdministrationGuide-Case1:StandardOperation]]
-===== [.inline-comment-marker]#Case 1: Standard Operation#
+===== Case 1: Standard Operation
 
 The SecEngine active and passive node are both connected to the
 interconnection network and the management network.
@@ -966,7 +964,6 @@ to the Service IP#1, i.e. on *eth1:1* interface.
 
 link:[image:images/image2018-10-22_19-56-5.png[Image,width=800]]
 
-[[D-MSActivatorAdministrationGuide-Case2:ManagementNetworkFailure]]
 ===== Case 2: Management Network Failure
 
 In case of management network failure detected by the *HA monitoring
@@ -984,14 +981,12 @@ administrator about the failover.
 
 link:[image:images/image2018-10-22_19-59-55.png[Image,width=800]]
 
-[[D-MSActivatorAdministrationGuide-Case3:InterconnectionNetworkFailure]]
 ===== Case 3: Interconnection Network Failure
 
 Similar to case #2
 
 link:[image:images/image2018-10-22_20-2-36.png[Image,width=800]]
 
-[[D-MSActivatorAdministrationGuide-Case4:ServerFailure]]
 ===== Case 4: Server Failure
 
 The SecEngine active node goes down (e.g. an OS failure or the
@@ -1002,7 +997,6 @@ Case 2 and Case 3.
 
 link:[image:images/image2018-10-22_20-5-19.png[Image,width=800]]
 
-[[D-MSActivatorAdministrationGuide-Case5:MSASoftwareServiceFailure]]
 ===== Case 5: MSA Software Service Failure
 
 The service watchdog detects the failure, restarts the service and sends
@@ -1012,7 +1006,6 @@ an email to notify the MSA administrator.
 
 link:[image:images/image2018-10-22_20-8-55.png[Image,width=800]]
 
-[[D-MSActivatorAdministrationGuide-Case6:MSAUnrecoverableSoftwareServiceFailure]]
 ===== Case 6: MSA Unrecoverable Software Service Failure
 
 In some cases, if the MSA service couldn't be restarted by the watchdog,
@@ -1020,7 +1013,6 @@ and it will remain down, and HA failover occurs as in Case 2 and Case 3.
 
 link:[image:images/Service_failure.png[Image,width=800]]
 
-[[D-MSActivatorAdministrationGuide-HAScriptsandProcesses]]
 === HA Scripts and Processes
 
 The HA is divided in two process:
@@ -1028,7 +1020,6 @@ The HA is divided in two process:
 . Synchronization process
 . Failover process
 
-[[D-MSActivatorAdministrationGuide-SynchronizationProcess]]
 ==== Synchronization Process
 
 Every minute, a synchronization script is launched. It checks the need
@@ -1061,7 +1052,6 @@ launch the below script from the webnode.
 
 *sh /opt/ubisysconf/ha/config_vctx.sh*
 
-[[D-MSActivatorAdministrationGuide-FailoverProcess]]
 ===== Failover Process 
 
 Every minute, on theSecEngine passive node, a script
@@ -1092,7 +1082,6 @@ link:[image:images/backup_time.png[Image,height=130]]
 The HA monitoring logs are available in this file
 /opt/ubi-sysconf/ha/logs/ha_backup.log.
 
-[[D-MSActivatorAdministrationGuide-FailoverProcessSteps]]
 ====== Failover Process Steps
 
 As part of the failover process, the actions below are carried out by a
@@ -1114,7 +1103,6 @@ script ("/opt/base/tools/SetRepNodeInDb.sh Sec-1 Sec-Rep-1 1")
 . Send mail about HA failover to D-MSA adminstrator mail ID- defined in
 configurator on UBI_MAIL_SERVERADMIN
 
-[[D-MSActivatorAdministrationGuide-RevertingFailover]]
 ====== Reverting Failover
 
 Reverting failover is to make the failed node active again and backup
@@ -1152,7 +1140,6 @@ which is going to be active.
 . Set the original node status to "active" in DB, by running the script
 "*/opt/base/tools/SetMsaNodeInDb.sh*" from Sec-1.
 
-[[D-MSActivatorAdministrationGuide-DeactivatingtheHAFailover]]
 ====== Deactivating the HA Failover
 
 This is done by simply removing the backup section in servers.conf in
@@ -1160,7 +1147,6 @@ the webnode and launching the below script from the webnode.
 
 sh /opt/ubisysconf/ha/config_vctx.sh
 
-[[D-MSActivatorAdministrationGuide-DeactivatingtheHAFailoverTemporarilyforUpgradeProcessandActivatingBack]]
 ====== *Deactivating the HA Failover Temporarily for Upgrade Process and Activating Back*
 
 While upgrading the D-MSA nodes the service will restart. Just to make
@@ -1182,7 +1168,6 @@ command in the passive node
 #rm –f /opt/ubisysconf/ha/ha.backupmode
 ----
 
-[[D-MSActivatorAdministrationGuide-HAstatusinGUI-ncroot->Maintenance->Systemadministration->DMSAstatus]]
 ====== HA status in GUI - ncroot->Maintenance->System administration ->DMSA status
 
 The following describes how each status is set in DB.
