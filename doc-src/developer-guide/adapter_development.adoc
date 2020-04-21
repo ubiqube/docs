@@ -16,7 +16,7 @@ The libraries are implemented in PHP which makes extension and customization eas
 == How to find, install, activate the Adapters
 The Adapters are packaged in the {product_name}, in the "api" container (see link:../admin-guide/architecture_overview{outfilesuffix}[Architecture] for more details).
 
-Many other Adapters are available on the Github repository: https://github.com/openmsa/Adaptors[github.com/openmsa/Adaptors,window=_blank]
+Many other Adapters are available on the https://github.com/openmsa/Adaptors[Adaptor Github repository,window=_blank]
 
 The installation of an Adapter is covered in this documentation: link:https://github.com/openmsa/Adaptors/blob/master/doc/How_to_install_a_new_adapter.md[How to install an Adapter,window=_blank]
 
