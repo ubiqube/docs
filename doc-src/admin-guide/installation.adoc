@@ -25,7 +25,7 @@ This quickstart guide will setup a mini-lab composed of the MSA-2 containers as 
 4. clone this repo: `git clone https://github.com/ubiqube/quickstart.git`
 5. `cd quickstart`
 6. run: `docker login`
-7. run: `docker-compose -f docker-compose.yml up -d`
+7. run: `docker-compose up -d`
 8. browse: https://localhost/ and connect as username `ncroot`, password `ubiqube`
 
 image:images/connection_page.png[]
