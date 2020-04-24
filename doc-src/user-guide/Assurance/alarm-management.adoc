@@ -1,8 +1,8 @@
 = Alarm Management
-:toc: left
-:toc-title: Content
 :imagesdir: ../resources/
 :ext-relative: adoc
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
 
 [[main-content]]
 [[AlarmManagement-Overview]]
@@ -130,14 +130,10 @@ Two types of criteria are available for configuration:
 
 link:[image:images/Alarm_management_rulemngt.png[Image]]
 
-The alarm recipient is a list of checkboxes (customer, manager,
-privileged manager and administrator). It is mandatory to select at
-least one recipient for the rule. Each recipient is associated to a role
-as defined by the MSActivator
-https://training.ubiqube.com/16.2/wikiTraining/index.php/Lab_Setup_%28Portal%29_Concepts[RBAC].
-This selection determines who will be contacted when an alarm is
-triggered. An alarm can also be sent to a group of users based on the
-roles selected by the alarm recipient check-boxes.
+The alarm recipient is a list of checkboxes (customer, manager, privileged manager and administrator). It is mandatory to select at least one recipient for the rule. 
+Each recipient is associated to a role as defined by the MSActivator.
+
+This selection determines who will be contacted when an alarm is triggered. An alarm can also be sent to a group of users based on the roles selected by the alarm recipient check-boxes.
 
 [[AlarmManagement-AutomatedProcessExecution]]
 ==== Automated Process Execution 

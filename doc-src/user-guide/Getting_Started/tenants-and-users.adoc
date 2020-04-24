@@ -1,6 +1,5 @@
 = Tenants And Users
-:toc: left
-:toc-title: Content
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :imagesdir: ../resources/
 :ext-relative: adoc
 
@@ -55,7 +54,7 @@ link:[image:images/image2018-4-1_11-30-13.png[Image,width=800]]
 
 In the "Contacts" form, the email is a mandatory field. This email will
 be used to send Alarms. Alarm management is explained in the
-link:../Assurance/alarm-management.adoc[Alarm Management] guide.
+link:../Assurance/alarm-management{outfilesuffix}[Alarm Management] guide.
 
 Save the Customer form and navigate to the new Customer Tenant (click on
 the Customer name in the customer list).
