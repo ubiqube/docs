@@ -4,7 +4,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == Overview
 
-The {product_name} docker application has the following structure:
+The {product_name} Docker application has the following structure:
 
 image:images/docker_containers.png[overall architecture]
 
