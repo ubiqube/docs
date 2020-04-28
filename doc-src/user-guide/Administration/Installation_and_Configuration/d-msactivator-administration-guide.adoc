@@ -1,6 +1,5 @@
 = D Msactivator Administration Guide
-:toc: left
-:toc-title: Content
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :imagesdir: ../../resources/
 :ext-relative: adoc
 
@@ -1027,7 +1026,7 @@ for synchronization and starts the synchronization only if the time
 defined in *server.conf* is reached. The folder and hosts impacted by
 the synchronization are defined in the file *sync.conf,* please see the
 section
-*link:../Administration/Installation%20and%20Configuration/d-msactivator-administration-guide.adoc[6.3.3] *
+*link:../Administration/Installation_and_Configuration/d-msactivator-administration-guide{outfilesuffix}6.3.3] *
 for more detail on sync.conf.
 
 */opt/ubisysconf/ha/ha-sync.sh*

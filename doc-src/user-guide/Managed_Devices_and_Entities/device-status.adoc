@@ -1,6 +1,5 @@
 = Device Status
-:toc: left
-:toc-title: Content
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :imagesdir: ../resources/
 :ext-relative: adoc
 
@@ -16,7 +15,7 @@ Internet Control Message Protocol, or ICMP, to check connectivity.
 
 There are four different statuses. Blue means that this device has never
 been activated before and requires
-link:../Getting%20Started/managed-devices.adoc[initial provisioning].
+link:../Getting_Started/managed-devices{outfilesuffix}initial provisioning].
 
 Red means that the device has been activated before, but it is not
 reachable at the moment.

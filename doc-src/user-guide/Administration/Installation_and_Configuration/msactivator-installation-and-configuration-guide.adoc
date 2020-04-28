@@ -1,6 +1,5 @@
 = Msactivator Installation And Configuration Guide
-:toc: left
-:toc-title: Content
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :imagesdir: ../../resources/
 :ext-relative: adoc
 
@@ -234,7 +233,7 @@ you need to de-activate the Hyper-V support.
 
 Example of error messages with VirtualBox:
 
-link:[image:images/Hyper-V%20error_1.jpg[Image,width=800]]
+link:[image:images/Hyper-V_error_1.jpg[Image,width=800]]
 
 First, launch a command prompt as an Administrator by a right-click on
 the command prompt entry in the windows menu and selection of "Run as
