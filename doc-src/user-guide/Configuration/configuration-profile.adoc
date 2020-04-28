@@ -1,19 +1,18 @@
 = Configuration Profile
-:toc: left
-:toc-title: Content
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :imagesdir: ../resources/
 :ext-relative: adoc
 
 [[main-content]]
 Configuration profiles are a collection
-of link:../Configuration/Microservices/microservices.adoc[Microservices] and configuration
+of link:../Configuration/Microservices/microservices{outfilesuffix}Microservices] and configuration
 templates that can be grouped and associated with devices to build a
 consistent configuration.
 
 A managed device can only be associated with one configuration profile.
 
-A link:++./Configuration Template/configuration-template.adoc++[configuration
-template] and/or a link:../Configuration/Microservices/microservices.adoc[Microservices] can
+A link:Configuration Template/configuration-template{outfilesuffix}configuration
+template] and/or a link:../Configuration/Microservices/microservices{outfilesuffix}Microservices] can
 be associated with multiple configuration profiles.
 
 [[ConfigurationProfile-VideoTutorial]]

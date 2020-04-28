@@ -1,6 +1,5 @@
 = Getting Started Developing Workflows
-:toc: left
-:toc-title: Content
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :imagesdir: ../resources/
 :ext-relative: adoc
 
@@ -33,7 +32,7 @@ From the workflow repository, select the folder "Helloworld" and create
 a new workflow:
 
 Note: If there is no "Helloworld" folder, you will need to create one.
-See link:../Repository%20Management/repository-management.adoc[Repository
+See link:../Repository_Management/repository-management{outfilesuffix}Repository
 Management] for instruction on how to create a folder.
 
 link:[image:images/howto_workflow_1.png[Image,width=800]]

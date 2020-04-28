@@ -1,6 +1,5 @@
 = Microservices
-:toc: left
-:toc-title: Content
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :imagesdir: ../../resources/
 :ext-relative: adoc
 

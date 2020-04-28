@@ -1,0 +1,6 @@
+doc-src/**/*.html
+Gemfile
+Guardfile
+.gradle/
+build/
+build.gradle

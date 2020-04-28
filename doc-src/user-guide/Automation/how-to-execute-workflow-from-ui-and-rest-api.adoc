@@ -1,6 +1,5 @@
 = How To Execute Workflow From Ui And Rest Api
-:toc: left
-:toc-title: Content
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :imagesdir: ../resources/
 :ext-relative: adoc
 
