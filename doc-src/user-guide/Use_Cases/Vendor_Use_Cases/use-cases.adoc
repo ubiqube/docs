@@ -9,14 +9,14 @@ Please visit the links below to explore our different use cases in
 Linux, Fortigate, Cisco and PaloAlto.
 
 * Linux
-** link:Linux/iptables-management-with-a-microservice{outfilesuffix}iptables
+** link:Linux/iptables-management-with-a-microservice{outfilesuffix}[iptables
 Management with a Microservice]
 * Fortigate
-** link:Fortinet/managed-security-on-fortigate-firewall{outfilesuffix}Managed
+** link:Fortinet/managed-security-on-fortigate-firewall{outfilesuffix}[Managed
 Security on FortiGate Firewall]
 * Cisco +
-** [.confluence-link]#link:Cisco/interfaces-management-on-cisco-ios{outfilesuffix}Interfaces
+** [.confluence-link]#link:Cisco/interfaces-management-on-cisco-ios{outfilesuffix}[Interfaces
 Management on Cisco IOS]#
 * [.confluence-link]#PaloAlto#
-** link:PaloAlto/order-stack-management-on-paloalto{outfilesuffix}Order
+** link:PaloAlto/order-stack-management-on-paloalto{outfilesuffix}[Order
 Stack Management on PaloAlto] +

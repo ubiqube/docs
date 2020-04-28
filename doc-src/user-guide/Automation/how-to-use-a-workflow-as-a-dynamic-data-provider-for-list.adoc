@@ -13,7 +13,7 @@ instances.
 
 This is useful for calling a process from another process of the same
 workflow or another workflow as explained in
-link:../Automation/workflow-rest-api-and-function-library{outfilesuffix}Workflow
+link:../Automation/workflow-rest-api-and-function-library{outfilesuffix}[Workflow
 REST API and Function Library].
 
 The "data provider" workflow below has 3 instances

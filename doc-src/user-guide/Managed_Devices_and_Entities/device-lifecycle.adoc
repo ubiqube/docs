@@ -164,7 +164,7 @@ link:[image:images/image2019-11-14_12-0-58.png[Image,width=800]]
 [[DeviceLifecycle-MonitoringProfile]]
 === Monitoring Profile
 
-The link:../Assurance/monitoring-profile{outfilesuffix}monitoring profiles] are
+The link:../Assurance/monitoring-profile{outfilesuffix}[monitoring profiles] are
 based on SNMP request to get the KPI values from the managed entities.
 
 When a monitoring profile is associated to a managed entity, the
@@ -180,7 +180,7 @@ gray bar.
 === Asset Management
 
 The asset management module is in charge of maintaining the device
-link:../Managed_Devices_and_Entities/device-history{outfilesuffix}asset
+link:../Managed_Devices_and_Entities/device-history{outfilesuffix}[asset
 history] up to date.
 
 The implementation of the asset management is vendor specific and
@@ -239,7 +239,7 @@ link:[image:images/image2019-11-14_11-27-50.png[Image,width=800]]
 [[DeviceLifecycle-LogAnalytic]]
 === Log Analytic
 
-The link:../Assurance/log-analysis{outfilesuffix}log analytic] module is part of
+The link:../Assurance/log-analysis{outfilesuffix}[log analytic] module is part of
 MSActivator assurance. The MSActivator can collect syslogs sent from a
 managed entity.
 
@@ -261,7 +261,7 @@ entity, push an optional initial configuration and backup the running
 configuration in it's configuration change management database.
 
 It is possible to trigger the
-link:../Getting_Started/managed-devices{outfilesuffix}initial provisioning]
+link:../Getting_Started/managed-devices{outfilesuffix}[initial provisioning]
 with the API or the UI.
 
 [[DeviceLifecycle-ConfigurationTemplates]]
@@ -295,7 +295,7 @@ managed entity  configuration item.
 ==== Backup
 
 The
-link:../Managed_Devices_and_Entities/device-history{outfilesuffix}configuration
+link:../Managed_Devices_and_Entities/device-history{outfilesuffix}[configuration
 change management module] will backup the running configuration of a
 managed entity each time the configuration is changed either by an
 initial provisioning or a configuration update.

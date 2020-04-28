@@ -11,7 +11,7 @@ This documentation describes the order stack management API.
 
 This REST API is also used internally by the MSActivator portal, as an
 example you can read the page on
-link:../Configuration/Microservices/microservice-order-stack-management{outfilesuffix}Microservice
+link:../Configuration/Microservices/microservice-order-stack-management{outfilesuffix}[Microservice
 Order Stack Management].
 
 Each API is described below with the REST call, a textual description,

@@ -42,7 +42,7 @@ generated when the KPI goes over or under a predefined value. Select
 "never" to deactivate alarms for a KPI.
 
 Learn how to configure alarms with the
-link:../Assurance/alarm-management{outfilesuffix}Alarm Management] guide.
+link:../Assurance/alarm-management{outfilesuffix}[Alarm Management] guide.
 
 [[MonitoringProfile-DefineGraphsandRendering]]
 === Define Graphs and Rendering
@@ -53,7 +53,7 @@ link:[image:images/image2018-4-5_18-3-4.png[Image,width=800]]
 === Monitor Your KPI 
 
 In order to monitor your KPI, you need to associate a monitoring profile
-to a link:../Getting_Started/managed-devices{outfilesuffix}Managed Device].
+to a link:../Getting_Started/managed-devices{outfilesuffix}[Managed Device].
 
 Select the 'PROFILES' tab on the Customer page to list the monitoring
 profiles.

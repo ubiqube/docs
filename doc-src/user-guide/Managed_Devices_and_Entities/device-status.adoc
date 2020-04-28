@@ -15,7 +15,7 @@ Internet Control Message Protocol, or ICMP, to check connectivity.
 
 There are four different statuses. Blue means that this device has never
 been activated before and requires
-link:../Getting_Started/managed-devices{outfilesuffix}initial provisioning].
+link:../Getting_Started/managed-devices{outfilesuffix}[initial provisioning].
 
 Red means that the device has been activated before, but it is not
 reachable at the moment.

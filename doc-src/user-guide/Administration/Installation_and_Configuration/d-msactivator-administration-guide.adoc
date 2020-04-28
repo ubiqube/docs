@@ -1026,7 +1026,7 @@ for synchronization and starts the synchronization only if the time
 defined in *server.conf* is reached. The folder and hosts impacted by
 the synchronization are defined in the file *sync.conf,* please see the
 section
-*link:../Administration/Installation_and_Configuration/d-msactivator-administration-guide{outfilesuffix}6.3.3] *
+*link:../Administration/Installation_and_Configuration/d-msactivator-administration-guide{outfilesuffix}[6.3.3] *
 for more detail on sync.conf.
 
 */opt/ubisysconf/ha/ha-sync.sh*

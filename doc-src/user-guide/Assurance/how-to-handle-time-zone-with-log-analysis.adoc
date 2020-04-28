@@ -6,7 +6,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 == Overview
 
 The MSActivator provides syslog collection, analysis and indexing with
-its link:../Assurance/log-analysis{outfilesuffix}Log Analysis] module. The
+its link:../Assurance/log-analysis{outfilesuffix}[Log Analysis] module. The
 syslogs collecting and analysing module of the MSActivator parses the
 syslogs to extract the fields that will be stored and indexed in
 Elasticsearch. Because not every device sends its time zone
@@ -15,7 +15,7 @@ information, and therefore the extracts the syslog date without any time
 zone related information. By default, the MSActivator assigns the GMT
 time zone to the syslogs. A potential issue is that if the sending
 device is not in GMT, its syslogs will be incorrectly indexed and the
-link:../Assurance/log-analysis{outfilesuffix}Log Analysis] module will show
+link:../Assurance/log-analysis{outfilesuffix}[Log Analysis] module will show
 inaccurate results.
 
 The picture below illustrates this case with a Cisco ASA security syslog
@@ -49,7 +49,7 @@ If your managed devices are configured with various time zones, then you
 need to configure the time zone specifically for each devices.
 
 This can be done by implementing a
-link:../Configuration/Microservices/getting-started-developing-microservices{outfilesuffix}Microservice]
+link:../Configuration/Microservices/getting-started-developing-microservices{outfilesuffix}[Microservice]
 with a parameter *$param.timezone* that will take the value of the time
 zone needed to add to the syslogs.
 

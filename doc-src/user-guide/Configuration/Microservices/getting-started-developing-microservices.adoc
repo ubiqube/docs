@@ -203,7 +203,7 @@ delete the entry from the database AND remove the configuration from the
 device (in this case we want to delete a user).
 
 This syntax is also widely used when implementing the READ and LIST (See
-link:../Configuration/Microservices/getting-started-developing-microservices{outfilesuffix}How
+link:../Configuration/Microservices/getting-started-developing-microservices{outfilesuffix}[How
 to Use List & Read])
 
 === Going Further
