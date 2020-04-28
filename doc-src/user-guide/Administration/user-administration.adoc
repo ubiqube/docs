@@ -1,6 +1,5 @@
 = User Administration
-:toc: left
-:toc-title: Content
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :imagesdir: ../resources/
 :ext-relative: adoc
 
@@ -11,7 +10,7 @@
 Set a global account locking policy for users.
 
 Use the
-link:../Support%20and%20Maintenance/cli-configuration-tool.adoc[MSActivator
+link:../Support_and_Maintenance/cli-configuration-tool{outfilesuffix}MSActivator
 CLI based configuration] at Web Portal configuration → Advanced
 Configuration to set the number of accepted login failures and the
 duration of the account lock.
@@ -22,7 +21,7 @@ Set a global password expiration policy and enforce user password
 updates on a regular basis.
 
 Use the
-link:../Support%20and%20Maintenance/cli-configuration-tool.adoc[MSActivator
+link:../Support_and_Maintenance/cli-configuration-tool{outfilesuffix}MSActivator
 CLI based configuration] at JEntreprise configuration → General
 Configuration to set the user password validity in days.
 
@@ -71,7 +70,7 @@ access to their account.
 NOTE: The password recovery can only work if the user has provided a valid
 email in his profile and if the MSActivator has been properly configured
 to send email (see
-link:../Administration/Installation%20and%20Configuration/msactivator-installation-and-configuration-guide.adoc[MSActivator
+link:../Administration/Installation_and_Configuration/msactivator-installation-and-configuration-guide{outfilesuffix}MSActivator
 Installation and Configuration Guide]).
 
 ==== Login page

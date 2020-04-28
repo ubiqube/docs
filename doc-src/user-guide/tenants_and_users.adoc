@@ -1,8 +1,7 @@
 =================
 Tenants and Users
 =================
-:toc: left
-:toc-title: Content 
+ifdef::env-github,env-browser[:outfilesuffix: .adoc] 
 :imagesdir: ./resources/
 
 

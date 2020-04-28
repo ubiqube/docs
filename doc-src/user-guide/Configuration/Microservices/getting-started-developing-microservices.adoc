@@ -1,6 +1,5 @@
 = Getting Started Developing Microservices
-:toc: left
-:toc-title: Content
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :imagesdir: ../../resources/
 :ext-relative: adoc
 
@@ -204,7 +203,7 @@ delete the entry from the database AND remove the configuration from the
 device (in this case we want to delete a user).
 
 This syntax is also widely used when implementing the READ and LIST (See
-link:../Configuration/Microservices/getting-started-developing-microservices.adoc[How
+link:../Configuration/Microservices/getting-started-developing-microservices{outfilesuffix}How
 to Use List & Read])
 
 === Going Further

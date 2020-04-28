@@ -1,13 +1,12 @@
 = How To Consume Microservice Methods From Workflow
-:toc: left
-:toc-title: Content
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :imagesdir: ../resources/
 :ext-relative: adoc
 
 [[main-content]]
 Thanks to the MSActivator's DevOps friendly nature, consuming these APIs
 (explained in
-link:../Configuration/Microservices/microservices-order-command-rest-api.adoc[Microservices
+link:../Configuration/Microservices/microservices-order-command-rest-api{outfilesuffix}Microservices
 Order Command REST API]) in Workflows will no longer be a pain point.
 
 There are APIs ready to be consumed using simple PHP methods that are
@@ -46,7 +45,7 @@ representing the OpenStack device in the MSActivator.
 
 The _$response_ variable contains the encoded JSON object response, as
 mentioned in the http response in
-link:../Configuration/Microservices/microservices-order-command-rest-api.adoc[Microservices
+link:../Configuration/Microservices/microservices-order-command-rest-api{outfilesuffix}Microservices
 Order Command REST API]. For a more simplified usage of that encoded
 JSON, it can be decoded into an array variable in PHP, as shown below:
 
@@ -95,7 +94,7 @@ $object_parameters, $comment, $connection_timeout = 60, $max_time =
 Where: _$device_id_ : is the numeric part of the MSActivator device ID
 on which you need to invoke microservice methods._$command_name_ : is
 the same as the \{commandName} mentioned in
-link:../Configuration/Microservices/microservices-order-command-rest-api.adoc[How
+link:../Configuration/Microservices/microservices-order-command-rest-api{outfilesuffix}How
 to Manage Microservices from REST API.] _$object_parameters_ : is the
 decoded JSON object in PHP array variable.
 

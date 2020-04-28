@@ -1,13 +1,12 @@
 = Profiles
-:toc: left
-:toc-title: Content
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :imagesdir: ../resources/
 :ext-relative: adoc
 
 Within the MSActivator, there are two kinds of profiles:
 
-* link:../Assurance/monitoring-profile.adoc[Monitoring Profiles]
-* link:../Configuration/configuration-profile.adoc[Configuration
+* link:../Assurance/monitoring-profile{outfilesuffix}Monitoring Profiles]
+* link:../Configuration/configuration-profile{outfilesuffix}Configuration
 Profiles] - to aggregate multiple functions for several devices.
 
 Monitoring profiles let you define a set of Key Performance Indicators,

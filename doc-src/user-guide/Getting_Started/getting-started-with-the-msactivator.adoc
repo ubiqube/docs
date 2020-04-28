@@ -1,6 +1,5 @@
 = Getting Started With The Msactivator
-:toc: left
-:toc-title: Content
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :imagesdir: ../resources/
 :ext-relative: adoc
 
@@ -94,10 +93,10 @@ This model leads to classical rule mapping or **R**ole **B**ased
 
 link:[image:images/privileged-administrator-v3.jpg[Image,width=800]]
 
-The guide to link:../Getting%20Started/tenants-and-users.adoc[Tenants
+The guide to link:../Getting_Started/tenants-and-users{outfilesuffix}Tenants
 and Users] will help you create your first tenants and users after the
 initial installation of the MSActivator. The guide to
-link:../Getting%20Started/managed-devices.adoc[Managed Devices] will
+link:../Getting_Started/managed-devices{outfilesuffix}Managed Devices] will
 help you get started with device creation and activation.
 
 === Simple Security Management with the MSActivator

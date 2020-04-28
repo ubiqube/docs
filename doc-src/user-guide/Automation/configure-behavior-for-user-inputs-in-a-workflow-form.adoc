@@ -1,6 +1,5 @@
 = Configure Behavior For User Inputs In A Workflow Form
-:toc: left
-:toc-title: Content
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :imagesdir: ../resources/
 :ext-relative: adoc
 

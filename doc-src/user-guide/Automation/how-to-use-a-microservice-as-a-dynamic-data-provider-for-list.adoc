@@ -1,6 +1,5 @@
 = How To Use A Microservice As A Dynamic Data Provider For List
-:toc: left
-:toc-title: Content
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :imagesdir: ../resources/
 :ext-relative: adoc
 
@@ -17,7 +16,7 @@ function and the Workflow will use these values to build a dropdown
 list.
 
 This tutorial uses the Microservice *user.xml* that was built in this
-link:../Configuration/Microservices/getting-started-developing-microservices.adoc[other
+link:../Configuration/Microservices/getting-started-developing-microservices{outfilesuffix}other
 tutorial].
 
 When using the Microservice on a Linux device, you can see the list of
