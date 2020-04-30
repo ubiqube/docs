@@ -1,5 +1,5 @@
 = Getting Started Developing Workflows
-ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+ifdef::env-github,env-browser[:outfilesuffix: {outfilesuffix}[]]
 :imagesdir: ../resources/
 :ext-relative: adoc
 
@@ -15,6 +15,19 @@ such as:
 * VNF lifecycle management
 * Configuration audit and verification
 * Automated Customer on-boarding
+
+=== Tutorials
+
+- link:workflow-rest-api-and-function-library{outfilesuffix}[Workflow Rest Api And Function Library]
+- link:workflow-engine{outfilesuffix}[Workflow Engine]
+- link:workflow-design-and-use{outfilesuffix}[Workflow Design And Use]
+- link:how-to-use-a-workflow-as-a-dynamic-data-provider-for-list{outfilesuffix}[How To Use A Workflow As A Dynamic Data Provider For List]
+- link:how-to-use-a-microservice-as-a-dynamic-data-provider-for-list{outfilesuffix}[How To Use A Microservice As A Dynamic Data Provider For List]
+- link:how-to-pass-values-between-tasks{outfilesuffix}[How To Pass Values Between Tasks]
+- link:how-to-execute-workflow-from-ui-and-rest-api{outfilesuffix}[How To Execute Workflow From Ui And Rest Api]
+- link:how-to-consume-microservice-methods-from-workflow{outfilesuffix}[How To Consume Microservice Methods From Workflow]
+- link:how-to-call-a-process-with-the-api{outfilesuffix}[How To Call A Process With The API]
+- link:configure-behavior-for-user-inputs-in-a-workflow-form{outfilesuffix}[Configure Behavior For User Inputs In A Workflow Form]
 
 == The "Helloworld" Workflow
 

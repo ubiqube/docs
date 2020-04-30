@@ -35,6 +35,16 @@ portal. Scripting is not mandatory but simple programming functions,
 such as conditional statements, loops, and variable assignments, are
 available to incorporate advanced function behaviors.
 
+
+- link:microservices-order-command-rest-api{outfilesuffix}[Microservices Order Command Rest Api]
+- link:microservice-templating-with-php-smarty{outfilesuffix}[Microservice Templating With Php Smarty]
+- link:microservice-order-stack-management{outfilesuffix}[Microservice Order Stack Management]
+- link:microservice-order-stack-management-api{outfilesuffix}[Microservice Order Stack Management Api]
+- link:how-to-use-the-type-composite{outfilesuffix}[How To Use The Type Composite]
+- link:how-to-import-an-array{outfilesuffix}[How To Import An Array]
+- link:how-to-create-complex-constraints{outfilesuffix}[How To Create Complex Constraints]
+- link:getting-started-developing-microservices{outfilesuffix}[Getting Started Developing Microservices]
+
 == Video Tutorial
 === Using Microservices
 
