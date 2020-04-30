@@ -24,6 +24,13 @@ enable a Day-2 configuration of an existing device setup.
 
 Firmware images can also be attached to automate image upgrades.
 
-=== *Video Tutorial*
+=== Video Tutorial
 
 video::videos/MSActivator-16.2-Device-Overview.mp4[image,width=500,height=380]
+
+== Tutorials
+
+- link:device-status{outfilesuffix}[Device Status]
+- link:device-lifecycle{outfilesuffix}[Device Lifecycle]
+- link:device-history{outfilesuffix}[Device History]
+- link:device-activity-report{outfilesuffix}[Device Activity Report]
