@@ -22,10 +22,8 @@ device action can be:
 
 You can view some samples here:
 
-* https://d20ftpvh66dtxq.cloudfront.net/Dev_activity_report.pdf[Media:Dev
-activity report.pdf]
-* https://d20ftpvh66dtxq.cloudfront.net/Dev_activity_report.xls[Media:Dev
-activity report.xls]
+* https://d20ftpvh66dtxq.cloudfront.net/Dev_activity_report.pdf[Media:Dev activity report.pdf]
+* https://d20ftpvh66dtxq.cloudfront.net/Dev_activity_report.xls[Media:Dev activity report.xls]
 
 == Access and generation
 
