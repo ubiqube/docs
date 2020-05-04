@@ -1,4 +1,5 @@
 = Developer Guide
+:doctype: book 
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
@@ -15,7 +16,7 @@ image:images/developer_dashboard.png[developer dashboard]
 - link:bpm_getting_started_developing{outfilesuffix}[Getting Started with BPM]
 
 == Workflows 
-
+- link:workflow_editor{outfilesuffix}[Workflow Editor]
 - link:workflow_getting_started_developing_php{outfilesuffix}[Getting Started with Workflow Design (PHP)]
 - link:workflow_getting_started_developing_python{outfilesuffix}[Getting Started with Workflow Design (Python)]
 
