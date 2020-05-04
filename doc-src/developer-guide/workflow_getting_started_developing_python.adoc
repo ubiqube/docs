@@ -101,7 +101,7 @@ from msa_sdk.msa_api import MSA_API
 context = Variables.task_call()
 my_name = context['name']
 
-ret = MSA_API.process_content('ENDED', f'Hello {my_name}, context, True)
+ret = MSA_API.process_content('ENDED', f'Hello {my_name}', context, True)
 print(ret)
 ----
 
