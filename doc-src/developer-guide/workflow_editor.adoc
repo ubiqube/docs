@@ -1,0 +1,28 @@
+= Workflow Editor
+:doctype: book 
+:imagesdir: ./resources/
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:source-highlighter: pygments
+
+The workflow editor is a web based UI tool for designing, developping, testing and releasing automation workflows
+
+With the workflow editor, you can create new workflows or edit existing workflows.
+
+This document explains how to use the editor to design workflow and implement the in PHP or in Python.
+
+The Workflow designer and execution engine are located, in the architecture layer, between the BPM and the Microservice
+
+image:images/workflow_overall_architecture.png[width=80%] 
+
+== Overview
+
+A workflow is a automation entity that can be used to automates all sort of simple to complex processes.
+
+A workflow is defined by
+
+- a set of variable that can be used to hold the state of a workflow instance
+- a set of processes makes out of tasks that where the execution program is defined
+
+The tasks are scripts that can be implemented either in PHP or in Python.
+
+=== The lifecycle of a workflow. 
