@@ -5,7 +5,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 Workflows allows the creation and management of complex processes.
 
-.Summary
+== Overview
 This guide explains how to list workflows, select them and run them.
 
 A Workflow is composed of:
