@@ -1,4 +1,5 @@
 = Getting Started Developing Workflows in Python
+:doctype: book 
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
@@ -27,7 +28,7 @@ From the Developer dashboard click on "+ Create"
 
 image:images/developer_dashboard_workflow.png[]
 
-In the tab "Information", set a name, a description and set the Workflow variable name to service_id and save your workflow.
+In the tab "Information", set a name, a description and set the link:workflow_editor{outfilesuffix}[Workflow variable name] to service_id and save your workflow.
 
 image:images/workflow_helloworld_create_python.png[]
 
@@ -100,7 +101,7 @@ from msa_sdk.msa_api import MSA_API
 context = Variables.task_call()
 my_name = context['name']
 
-ret = MSA_API.process_content('ENDED', 'Hello '+my_name, context, True)
+ret = MSA_API.process_content('ENDED', f'Hello {my_name}, context, True)
 print(ret)
 ----
 
