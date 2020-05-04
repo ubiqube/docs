@@ -1,10 +1,11 @@
-= Getting Started Developing Workflows
+= Getting Started Developing Workflows in Python
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == Overview
 
-This tutorial walks you through the design and development of your first workflow.
+This tutorial walks you through the design and development of your first workflow in Python. 
+This tutorial is similar to the link:workflow_getting_started_developing_php{outfilesuffix}[Helloworld example in PHP]
 
 link:../user-guide/automation_workflows{outfilesuffix}[Workflows] can be used to automate a wide variety of tasks and processes, such as:
 
@@ -28,11 +29,11 @@ image:images/developer_dashboard_workflow.png[]
 
 In the tab "Information", set a name, a description and set the Workflow variable name to service_id and save your workflow.
 
-image:images/workflow_helloworld_create.png[]
+image:images/workflow_helloworld_create_python.png[]
 
 Create a variable "Name" in the tab "Variable".
 
-image:images/workflow_helloworld_add_variable.png[]
+image:images/workflow_helloworld_add_variable_python.png[]
 
 To start testing your workflow, you need to associate it to a customer. 
 Make sure that you have no tenant selected, go to the "Automation" section, you should see your workflow in the list. 
@@ -49,7 +50,7 @@ image:images/workflow_helloworld_attach_to_customer_1.png[width=600,height=349]
 
 Once done, you can select your customer, list its workflows and edit it with the pencil icon.
 
-image:images/workflow_helloworld_edit.png[]
+image:images/workflow_helloworld_edit_python.png[]
 
 === Create the Processes
 
@@ -61,25 +62,21 @@ NOTE: even though for most use cases, a single "CREATE" process is sufficient, i
 
 For this tutorial you will create one process named "create instance" and add one task to this process. This task will simply display a message to the process execution console.
 
-[source, php]
+[source, python]
 ----
-<?php
-/**
- * This file is necessary to include to use all the in-built libraries of /opt/fmc_repository/Reference/Common
- */
-require_once '/opt/fmc_repository/Process/Reference/Common/common.php';
-/**
- * List all the parameters required by the task
- */
-function list_args() { }
-/**
- * End of the task do not modify after this point
- */
-task_exit(ENDED, "workflow initialised");
-?>
+from msa_sdk.variables import Variables
+from msa_sdk.msa_api import MSA_API
+
+dev_var = Variables()
+dev_var.add('name', var_type='String')
+
+context = Variables.task_call(dev_var)
+
+ret = MSA_API.process_content('ENDED', 'workflow initialised', context, True)
+print(ret)
 ----
 
-image:images/workflow_helloworld_add_task.png[]
+image:images/workflow_helloworld_add_task_python.png[]
 
 Once done, save the Workflow.
 
@@ -97,50 +94,29 @@ Use the code below to create a task that will read the name from the user form a
 
 [source, php]
 ----
-<?php
-/**
- * This file is necessary to include to use all the in-built libraries of /opt/fmc_repository/Reference/Common
- */
-require_once '/opt/fmc_repository/Process/Reference/Common/common.php';
-/**
- * List all the parameters required by the task
- */
-function list_args()
-{
-  create_var_def('name', 'String');
-}
-check_mandatory_param('name');
+from msa_sdk.variables import Variables
+from msa_sdk.msa_api import MSA_API
 
-/**
- * get the value of name from the context and create a variable out of it
- */
-$name=$context['name'];
-/**
- * print the value in the log file /opt/jboss/latest/log/process.log 
- */
-logToFile($name);
+context = Variables.task_call()
+my_name = context['name']
 
-/**
- * End of the task do not modify after this point
- */
-task_exit(ENDED, "Hello " . $name);
-
-?>
+ret = MSA_API.process_content('ENDED', 'Hello '+my_name, context, True)
+print(ret)
 ----
 
 === Test the Workflow
 
 Use the "+ create instance" action to execute the "create instance" process and create a new instance of your workflow.
 
-image:images/workflow_helloworld_create_new_instance.png[]
+image:images/workflow_helloworld_create_new_instance_python.png[]
 
 A new instance is available and you can execute the process "print message".
 
-image:images/workflow_helloworld_new_instance.png[]
+image:images/workflow_helloworld_new_instance_python.png[]
 
 The process "print message" will start executing and will executes the tasks sequencially.
 
-image:images/workflow_helloworld_display_name.png[]
+image:images/workflow_helloworld_display_name_python.png[]
 
 The name will be displayed in the task execution status popoup, below the name of the task.
  
