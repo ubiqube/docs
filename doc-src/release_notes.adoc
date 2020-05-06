@@ -3,6 +3,15 @@
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :doctype: book
 
+== Latest Release 
+The latest {product_name} release is 2.0.1. 
+
+The convention works as follows:
+- x.y.z, where x, y, z represent numbers and
+- x = major release (major upgrade of product), 
+- y = minor release (features, changes)
+- z = bug or security fixes
+
 == User Experience (UX)
 
 {product_name} introduces a completely new UX empowering the user with a holistic approach to managing a wide range of entities such as firewalls, UTMs, switches, etc. and also managing cloud infrastructure or physical data center assets.
@@ -76,5 +85,22 @@ Various fixes have been made to the product to ensure its continued ability to e
 * MSA-7601 [MSA2] editing a deployment service causes deletion of all DS for a customer
 * MSA-7674 2.x: newly created WF can be attached to a customer but not listed in list of customer WF
 * MSA-6927 Microservice: Delete API returns 422 Unprocessable Entity
+* MSA-4389 [API/DB] record user ID at each execution of a process
+* MSA-7490 [2.0 UI] issues after updating Deployment settings  
+* MSA-7665 2.0 Port - Parameterise the First time change password      
+* MSA-7686 [MS 2.x] attach MS to DS if there is no existing DS shows confusing
+* MSA-7687 [MS 2.x] when a new MS is created with a space in the name it should be stored with a "_" in place of the space
+* MSA-7690 [MS 2.x] Editor has no XPath option for REST MS (config type = XML)
+* MSA-7716 [MS] import options not supported  
+* MSA-7719 WF + MS variable advanced parameters failing on create / edit.
+* MSA-7755 BPM - Cannot trigger update process from BPM      
+* MSA-7767 Swagger Doc Update             
+* MSA-6841 [UI 2.0] explicit loading of a URL leads to Not Found message        
+* MSA-7325 [2.0 UI] Deployment Settings ME not listed (unable to detach it)
+* MSA-7429 Creating new customer and attaching WF needs as wildfly restart
+* MSA-7648 UBI Context : User password management - force to change password at first login does not appear until clicked on Customer
+* MSA-7675 getServiceInstanceOwner does not return allowSchedule in process instance       
+* MSA-7715 Port 20.0.0- Parameterise the First time change password - popup
+* MSA-7758 Transaction Error on Get Deployment settings API              
 
 
