@@ -9,7 +9,11 @@ To open the developer portal, you can just select the "Developer" link and login
 
 For the dashboard, you will be able to work on the design of your BPM, your Workflows and your Microservices.
 
-image:images/developer_dashboard.png[developer dashboard]
+image:images/developer_dashboard.png[developer dashboard, width=600px]
+
+== Use Case 
+
+- link:simple_firewall_policy_mngt{outfilesuffix}[Basic Firewall Policy Orchestration]
 
 == BPM
 
