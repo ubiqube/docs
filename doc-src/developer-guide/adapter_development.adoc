@@ -41,7 +41,7 @@ This API exposes functions such as:
 . Microservice commands (CREATE, READ, UPDATE, DELETE, IMPORT)
 . …
 
-==== Custom commands
+=== Custom commands
 It is possible to implement new custom commands that will be callable from the {product_name} API (verb JSACMD MY_COMMAND).
 
 === Status Polling
