@@ -14,7 +14,8 @@ asciidoctor {
   	'source-highlighter' : 'rouge',
     'linkcss': true,
     'product_name': 'MSActivator(TM)',
-    'allow-uri-read': '' 
+    'allow-uri-read': '',
+    'sectlinks': true
  
   sourceDir  file('doc-src')
   outputDir  file('build/docs')
