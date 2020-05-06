@@ -67,7 +67,7 @@ These are the steps to follow to build the Microservice. These steps are usually
 - Step 4: Implement the IMPORT command.
 - Step 5: Test and check the Linux vFW via the command line interface.
 
-==== Step 1: Create a new microservice
+==== Create a new microservice
 
 Create a new microservice `simple_firewall` 
 
@@ -75,7 +75,7 @@ image:images/simple_firewall_new_ms.png[width=600px]
 
 NOTE: You can refer to the documentation on link:microservice_editor{outfilesuffix}[microservice editor] to learn how to create a new link:../user-guide/configuration_microservices{outfilesuffix}[microservice].
 
-==== Step 2: Implement the CREATE command
+==== Implement the CREATE command
 
 The creation of a filtering rule using iptable can be implemented with the CLI command below:
 
@@ -120,7 +120,7 @@ target     prot opt source               destination
 DROP       tcp  --  192.168.23.45        0.0.0.0/0           tcp dpt:2345 
 ----
 
-==== Step 3: Implement the DELETE command
+==== Implement the DELETE command
 
 The deletion of the iptables INPUT and FORWARD rules is executed with the CLI command below:
 
@@ -157,7 +157,7 @@ MICROSERVICE NAME is the name of the Microservice file without the .xml extensio
 simple_firewall.xml => simple_firewall
 ****
 
-==== Step 4: Implement the IMPORT command
+==== Implement the IMPORT command
 
 The role of the IMPORT command is to import the current device configuration into the MSActivator database.
 
@@ -206,7 +206,7 @@ The regular expression below will extract the object_id, the src_ip and the dst_
 
 image:images/simple_firewall_ms_import_func.png[width=600px]
 
-==== Step 5: Test and check the Linux vFW via the command line interface
+==== Test and check the Linux vFW via the command line interface
 
 The microservice is ready to be tested. 
 
@@ -230,7 +230,171 @@ And use "Synchronize with Managed Entity" to import the new rule in the configur
 
 image:images/simple_firewall_ms_import_new_rule.png[width=600px]
 
+==== Conclusion
+
+With the microservice design, you have been defining an abstraction layer on top of a security VNF. 
+This Microservice defines de facto an API for a simple firewall management.
+You can call the Create/Update/Delete function of the microservice `simple_firewall` from a script or a third party REST client.
+
+----
+command CREATE
+parameters {"simple_firewall":{"44":{"dst_port":"9876","object_id":"44","src_ip":"192.168.23.1"}}}
+----
+
+This use case could be extended to other vendors provided that the microservices are defining the same variables: dst_port, src_ip, object_id (which is mandatory)
+
 === Workflow design
+
+In this section you are going to create a workflow on top of the microservice.
+
+You will see that the implementation of the workflow doesn't not depend on the vendor provided that some condition on the microservice design are met:
+
+- the name of the microservice should be the same for every supported vendor.
+- each vendor microservice will have to implement the same set of variables.
+
+The workflow will be a very simple workflow with 3 processes, implemented in python.
+
+- process `Create Firewall Service` (type CREATE)
+- process `Add Filter Rule` (type UPDATE)
+- process `Delete Service` (type DELETE)
+
+==== Create a new workflow
+
+image:images/simple_firewall_new_wf.png[width=600px]
+
+IMPORTANT: set the workflow language to *python* and set *service_id* as the workflow variable name.
+
+==== Add the variables
+
+You need 3 variables to map with the simple_firewall microservice:
+
+- id: for the firewall rule ID - type: Integer
+- src_ip: for the source IP to block - type: String
+- dst_port: for the destination port to block - type: Integer
+- device: to allow the user to select the managed entity to configure - type: Device
+
+image:images/simple_firewall_wf_variables.png[width=600px]
+
+NOTE: the type Device is a special type that will let the user select a managed entity from the process execution screen
+
+==== Implement the processes
+Create the processes and for each processes add a task.
+
+Make sure that each process type is correcty set as detailed above.
+
+The source code below can be direclty copied in the tasks.
+
+===== process Create Firewall Service
+
+[source, python]
+----
+from msa_sdk.variables import Variables   	<1>  
+from msa_sdk.msa_api import MSA_API
+
+dev_var = Variables()
+dev_var.add('device', var_type='Device')  	<2>
+context = Variables.task_call(dev_var)    	<3>
+
+ret = MSA_API.process_content('ENDED',    	<4>
+                              f'Firewall service created. Managed Entity: {context["device"]}',
+                              context, True)
+print(ret)
+----
+
+<1> import the modules based on your requirement. Modules are described in the link:workflow_python_sdk{outfilesuffix}[SKD]
+<2> define the variables that will be rendered in the process execution UI
+<3> initialize the link:workflow_editor{outfilesuffix}#context[context]
+<4> create the task execution output
+
+===== process Add Filter Rule
+[source, python]
+----
+import json
+from msa_sdk.variables import Variables
+from msa_sdk.msa_api import MSA_API
+from msa_sdk.order import Order
+
+dev_var = Variables()															<1>
+dev_var.add('id', var_type='Integer')
+dev_var.add('src_ip', var_type='String')
+dev_var.add('dst_port', var_type='Integer')
+context = Variables.task_call(dev_var)
+
+device_id = context['device']													<2>
+
+# extract the database ID
+devicelongid = device_id[-3:]
+
+	
+micro_service_vars_array = {'object_id': context['id'],							<3>
+                            'src_ip': context['src_ip'],
+                            'dst_port': context['dst_port']
+                            }
+object_id = context['id']
+simple_firewall = {'simple_firewall': {object_id: micro_service_vars_array}}	<4>
+
+order = Order(devicelongid)														<5>
+
+order.command_execute('CREATE', json.dumps(simple_firewall))					<6>
+
+response = json.loads(order.content)											<7>
+
+if 'wo_status' not in response.keys():
+  ret = MSA_API.process_content('FAILED', f'Policy update failed - {response}', context, True)
+elif response['wo_status'] is 'ENDED':
+  if 'rules' not in context.keys() or conext['rules'] is '':
+    index = 0
+  else:
+    index = len(context['rules'])
+  context['rules'] = {index: {													<8>
+                              'delete': False,
+                              'id': context['id'],
+                              'src_ip': context['src_ip'],
+                              'dst_port': context['dst_port']
+                             }
+                       }
+  ret = MSA_API.process_content(response['wo_status'], response['wo_comment'], context, True)
+else:
+  ret = MSA_API.process_content('FAILED', f'Policy update failed - {response}', context, True)
+print(ret)
+----
+
+<1> list all the parameters required by the task
+<2> read the ID of the selected managed entity  
+<3> build the microservice JSON parameters for the CREATE
+<4> create the array, make sure that the key is the name of the microservice
+<5> call the CREATE for simple_firewall MS for each device
+<6> call the microservice CREATE with the parameters. Make sure to transform the array to JSON
+<7> get the response and process it
+<8> add any new rule in a dedicated array in the context
+
+===== process Delete Service
+
+[source, python]
+----
+from msa_sdk.variables import Variables
+from msa_sdk.msa_api import MSA_API
+
+dev_var = Variables()
+context = Variables.task_call()
+
+ret = MSA_API.process_content('ENDED', f'Firewall service deleted', context, True)
+print(ret)
+----
+
+==== Run the workflow
+
+Go to the "Automation" section of your sub-tenant and select the workflow.
+
+Click on "+ Create Firewall Service" (this action is generated based on the name of the process type CREATE), select a managed entity and click "Run"
+
+image:images/simple_firewall_wf_exec_create.png[]
+
+A new instance of the workflow is now created and you can call the process to create a firewall rule with "Add Filter Rule"
+
+image:images/simple_firewall_wf_exec_update.png[]
+
+Delete the instance with the process "Delete Service"
 
 
 == Getting the Sources

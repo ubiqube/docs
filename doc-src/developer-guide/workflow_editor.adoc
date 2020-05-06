@@ -32,6 +32,7 @@ There are 3 main type of workflow processes:
 - UPDATE: to execute an automated process that will (but it's not mandatory) update the state of the process
 - DELETE: to execute an automated process that will also remove the instance of the workflow
 
+[#context]
 === The state of a workflow instance
 
 The variables are used to define the current state of a workflow instance.
