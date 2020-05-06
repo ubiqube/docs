@@ -6,11 +6,13 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 == Latest Release 
 The latest {product_name} release is 2.0.1. 
 
-The convention works as follows:
-- x.y.z, where x, y, z represent numbers and
-- x = major release (major upgrade of product), 
-- y = minor release (features, changes)
-- z = bug or security fixes
+The convention works as follows: x.y.z (all representing numbers) and
+
+x = major release (major upgrade of product), 
+
+y = minor release (features, changes)
+
+z = bug or security fixes
 
 == User Experience (UX)
 
