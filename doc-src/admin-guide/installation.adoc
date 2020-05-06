@@ -58,7 +58,7 @@ To get an interactive shell on the MSA main container (this will be needed later
 ```
 docker-compose exec api bash
 ```
-
+[#mini-lab]
 === Mini-lab Details 
 image:images/minilab_containers.png[mini lab containers]
  
