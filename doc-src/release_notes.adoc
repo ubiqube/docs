@@ -65,6 +65,8 @@ Various fixes have been made to the product to ensure its continued ability to e
 
 === Specific Technical Fixes
 
+= 2.0.0 Fixes
+
 * MSA-7533 [Managed Entity]: list of supported vendors when creating a ME must be filtered
 * MSA-7547 [Deployment Setting]: manufacturer and Model returned as UNKNOWNMSA-7533
 * MSA-7605 [Deployment Settings] managed entities not being attached
@@ -87,6 +89,9 @@ Various fixes have been made to the product to ensure its continued ability to e
 * MSA-7601 [MSA2] editing a deployment service causes deletion of all DS for a customer
 * MSA-7674 2.x: newly created WF can be attached to a customer but not listed in list of customer WF
 * MSA-6927 Microservice: Delete API returns 422 Unprocessable Entity
+
+= 2.0.1 Fixes
+
 * MSA-4389 [API/DB] record user ID at each execution of a process
 * MSA-7490 [2.0 UI] issues after updating Deployment settings  
 * MSA-7665 2.0 Port - Parameterise the First time change password      
