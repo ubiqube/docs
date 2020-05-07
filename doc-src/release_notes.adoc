@@ -104,5 +104,26 @@ Various fixes have been made to the product to ensure its continued ability to e
 * MSA-7675 getServiceInstanceOwner does not return allowSchedule in process instance       
 * MSA-7715 Port 20.0.0- Parameterise the First time change password - popup
 * MSA-7758 Transaction Error on Get Deployment settings API              
+* MSA-6609 Microservices console - Text in the confirmation dialog box on deleting the row in MS screen shows huge row names
+* MSA-6762 ME create/edit: admin (or at least ncroot) should be able to view the password in clear text                   
+* MSA-6793 [ME] ME nature is not editable         
+* MSA-7048 Microservice: variable extractors pending API updates       
+* MSA-7373 Variable type mismatch between API and XML for worklow           
+* MSA-7397 [MSA2] Configurations / create deployment setting : warning label should be made more visible
+* MSA-7448 [UI2.0] in deployment settings, the column "Microservices" should be renamed "Microservices & Templates"  
+* MSA-7529 Safari - Infinite loop on Automation section - caused by Data format
+* MSA-7582 Display boolean values in MS console table body    
+* MSA-7607 [MSA2] GUI deployment setting : text label truncated         
+* MSA-7619 Workflow instanciate label typo                   
+* MSA-7628 [Microservices] Inconsistency between microservice list and microservice detail for vendors and models
+* MSA-7629 Regression: User message not displayed when Managed Entity is created or updated                  
+* MSA-7661 Selected customer is not reset properly on logout
+* MSA-7693 Show task templates when you create a new tas  
+* MSA-7808 getMicroserviceObjectDefinition does not return xpath in parser   
+* MSA-7517 Put a practical error message on device/v2/apply-config                
+* MSA-7518 device/v2/apply-config returns an error after device is successfully updated         
+* MSA-7617 label issue on attach customer to workflow dialog popup   
+* MSA-7717 A lot of ME configure tabs are blank 
+* MSA-7889 Add python template
 
 
