@@ -268,7 +268,7 @@ IMPORTANT: set the workflow language to *python* and set *service_id* as the wor
 
 ==== Add the variables
 
-You need 3 variables to map with the simple_firewall microservice:
+You need 4 variables to map with the simple_firewall microservice:
 
 - id: for the firewall rule ID - type: Integer
 - src_ip: for the source IP to block - type: String
@@ -339,36 +339,45 @@ order = Order(devicelongid)														<5>
 
 order.command_execute('CREATE', json.dumps(simple_firewall))					<6>
 
-response = json.loads(order.content)											<7>
+content = json.loads(order.content)											<7>
 
-if 'wo_status' not in response.keys():
-  ret = MSA_API.process_content('FAILED', f'Policy update failed - {response}', context, True)
-elif response['wo_status'] is 'ENDED':
-  if 'rules' not in context.keys() or conext['rules'] is '':
-    index = 0
-  else:
-    index = len(context['rules'])
-  context['rules'] = {index: {													<8>
-                              'delete': False,
-                              'id': context['id'],
-                              'src_ip': context['src_ip'],
-                              'dst_port': context['dst_port']
-                             }
-                       }
-  ret = MSA_API.process_content(response['wo_status'], response['wo_comment'], context, True)
+# check if the response is OK
+if order.response.ok:
+
+    if 'rules' in context.keys():
+        num = len(context['rules'])
+    else:
+        context['rules'] = {}
+        num = 0
+
+    context['rules'][num] = {}						<8>
+    context['rules'][num]['delete'] = False
+    context['rules'][num]['id'] = context['id']
+    context['rules'][num]['src_ip'] = context['src_ip']
+    context['rules'][num]['dst_port'] = context['dst_port']
+
+    ret = MSA_API.process_content('ENDED',
+                                  f'STATUS: {content["status"]}, \
+                                    MESSAGE: {content["message"]}',
+                                  context, True)
 else:
-  ret = MSA_API.process_content('FAILED', f'Policy update failed - {response}', context, True)
+    ret = MSA_API.process_content('FAILED',
+                                  f'Policy update failed \
+                                  - {order.content}',
+                                  context, True)
+
+
 print(ret)
 ----
 
 <1> list all the parameters required by the task
 <2> read the ID of the selected managed entity  
 <3> build the microservice JSON parameters for the CREATE
-<4> create the array, make sure that the key is the name of the microservice
+<4> create the dictionary, make sure that the key is the name of the microservice
 <5> call the CREATE for simple_firewall MS for each device
-<6> call the microservice CREATE with the parameters. Make sure to transform the array to JSON
+<6> call the microservice CREATE with the parameters. Make sure to transform the dictionary to JSON
 <7> get the response and process it
-<8> add any new rule in a dedicated array in the context
+<8> add any new rule in a dedicated dictionary in the context
 
 ===== process Delete Service
 
