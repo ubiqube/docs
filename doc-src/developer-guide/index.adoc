@@ -7,10 +7,7 @@ This documentation contains a set of documentation, tutorials and examples to he
 
 To open the developer portal, you can just select the "Developer" link and login with your credentials.
 
-For the dashboard, you will be able to work on the design of your BPM, your Workflows and your Microservices.
-
-[link=developer_portal{outfilesuffix}]
-image::images/developer_dashboard.png[developer dashboard, width=600px]
+From the dashboard, you can start designign your BPM, your Workflows and your Microservices.
 
 == Developer Portal
 
@@ -23,20 +20,21 @@ image::images/developer_dashboard.png[developer dashboard, width=600px]
 == BPM
 
 - link:bpm_getting_started_developing{outfilesuffix}[Getting Started with BPM]
+- link:bpm_editor{outfilesuffix}[BPM Editor]
 
 == Workflows 
-- link:workflow_editor{outfilesuffix}[Workflow Editor]
 - link:workflow_getting_started_developing_php{outfilesuffix}[Getting Started with Workflow Design (PHP)]
 - link:workflow_getting_started_developing_python{outfilesuffix}[Getting Started with Workflow Design (Python)]
+- link:workflow_editor{outfilesuffix}[Workflow Editor]
 
 == Microservices
 === Examples 
 
 - link:microservices_getting_started_developing{outfilesuffix}[Getting Started with Microservice Design]
+- link:microservice_editor{outfilesuffix}[Microservice Editor]
 
 === Reference
 
-- link:microservice_editor{outfilesuffix}[Microservice Editor]
 ////
 TODO
 - link:microservice_auto-rendering_ui{outfilesuffix}[Microservice Auto Rendering UI]
