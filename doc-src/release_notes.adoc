@@ -69,66 +69,66 @@ Various fixes have been made to the product to ensure its continued ability to e
 
 * MSA-7533 [Managed Entity]: list of supported vendors when creating a ME must be filtered
 * MSA-7547 [Deployment Setting]: manufacturer and Model returned as UNKNOWNMSA-7533
-* MSA-7605 [Deployment Settings] managed entities not being attached
+* MSA-7605 [Deployment Settings]: managed entities not being attached
 * MSA-7504 [Deployment Setting]: vendor and Model drop down values disappear on performing edit for 2nd time
 * MSA-7601 [Deployment Setting]: editing a deployment setting causes deletion of all DS for a customer
+* MSA-7547 [Deployment Settings]: Manufacturer and Model returned as UNKNOWN
+* MSA-7504 [Deployment Settings]: Vendor and Model drop down values disappear on performing edit for 2nd time a ME must be filtered
+* MSA-7601 [Deployment Settings]: editing a deployment setting causes deletion of all DS for a customer
 * MSA-7124 [Microservices]: extended Parameters inconsistencies
 * MSA-7459 [Microservices]: synchronize API to return fetched Objects
 * MSA-7116 [Microservices]: keepOnImport loadExtendedParamaterMap has wrong type
 * MSA-7027 [Microservices]: issues parsing microservice parser structure
 * MSA-7609 [Microservice Editor]: wrong vendor and model displayed when editing Microservice
+* MSA-6997 [Microservices]: filter is not case sensitive
+* MSA-7609 [Microservice] Wrong vendor and model displayed when editing Microservice
+* MSA-6927 [Microservices]: Delete API returns 422 Unprocessable Entity
 * MSA-6470 [Workflow]: wf-details does not retrieve the latest workflows
 * MSA-7618 [Workflow]: when filtering by Customer, the Workflows still display all workflows assigned to every customer.
+* MSA-7674 [Workflow]: newly created WF can be attached to a customer but not listed in list of customer WF
 * MSA-7526 [Workflow]: execute service API returns 500
 * MSA-7115 [API]: some parameters for loadExtendedParamaterMap do not have their type
 * MSA-5662 [API]: rest API call to create a manager returns status code 404 on MSA V2
-* MSA-7547 Deployment Setting: Manufacturer and Model returned as UNKNOWN
-* MSA-7609 [Microservice Editor] Wrong vendor and model displayed when editing Microservice
-* MSA-7504 Deployment Setting Vendor and Model drop down values disappear on performing edit for 2nd time a ME must be filtered
-* MSA-6997 Microservice: filter is not case sensitive
-* MSA-7601 [MSA2] editing a deployment service causes deletion of all DS for a customer
-* MSA-7674 2.x: newly created WF can be attached to a customer but not listed in list of customer WF
-* MSA-6927 Microservice: Delete API returns 422 Unprocessable Entity
 
 === 2.0.1 Fixes
 
-* MSA-4389 [API/DB] record user ID at each execution of a process
-* MSA-7490 [2.0 UI] issues after updating Deployment settings  
-* MSA-7665 2.0 Port - Parameterise the First time change password      
-* MSA-7686 [MS 2.x] attach MS to DS if there is no existing DS shows confusing
-* MSA-7687 [MS 2.x] when a new MS is created with a space in the name it should be stored with a "_" in place of the space
-* MSA-7690 [MS 2.x] Editor has no XPath option for REST MS (config type = XML)
-* MSA-7716 [MS] import options not supported  
-* MSA-7719 WF + MS variable advanced parameters failing on create / edit.
-* MSA-7755 BPM - Cannot trigger update process from BPM      
-* MSA-7767 Swagger Doc Update             
-* MSA-6841 [UI 2.0] explicit loading of a URL leads to Not Found message        
-* MSA-7325 [2.0 UI] Deployment Settings ME not listed (unable to detach it)
-* MSA-7429 Creating new customer and attaching WF needs as wildfly restart
-* MSA-7648 UBI Context : User password management - force to change password at first login does not appear until clicked on Customer
-* MSA-7675 getServiceInstanceOwner does not return allowSchedule in process instance       
-* MSA-7715 Port 20.0.0- Parameterise the First time change password - popup
-* MSA-7758 Transaction Error on Get Deployment settings API              
-* MSA-6609 Microservices console - Text in the confirmation dialog box on deleting the row in MS screen shows huge row names
-* MSA-6762 ME create/edit: admin (or at least ncroot) should be able to view the password in clear text                   
-* MSA-6793 [ME] ME nature is not editable         
-* MSA-7048 Microservice: variable extractors pending API updates       
-* MSA-7373 Variable type mismatch between API and XML for worklow           
-* MSA-7397 [MSA2] Configurations / create deployment setting : warning label should be made more visible
-* MSA-7448 [UI2.0] in deployment settings, the column "Microservices" should be renamed "Microservices & Templates"  
-* MSA-7529 Safari - Infinite loop on Automation section - caused by Data format
-* MSA-7582 Display boolean values in MS console table body    
-* MSA-7607 [MSA2] GUI deployment setting : text label truncated         
-* MSA-7619 Workflow instanciate label typo                   
-* MSA-7628 [Microservices] Inconsistency between microservice list and microservice detail for vendors and models
-* MSA-7629 Regression: User message not displayed when Managed Entity is created or updated                  
-* MSA-7661 Selected customer is not reset properly on logout
-* MSA-7693 Show task templates when you create a new tas  
-* MSA-7808 getMicroserviceObjectDefinition does not return xpath in parser   
-* MSA-7517 Put a practical error message on device/v2/apply-config                
-* MSA-7518 device/v2/apply-config returns an error after device is successfully updated         
-* MSA-7617 label issue on attach customer to workflow dialog popup   
-* MSA-7717 A lot of ME configure tabs are blank 
-* MSA-7889 Add python template
+* MSA-4389 [API/DB]: record user ID at each execution of a process
+* MSA-7767 [API]: Swagger Doc Update             
+* MSA-7758 [API]: Transaction Error on Get Deployment settings API              
+* MSA-7373 [API]: Variable type mismatch between API and XML for worklow           
+* MSA-7517 [API]: Put a practical error message on device/v2/apply-config                
+* MSA-7518 [API]: device/v2/apply-config returns an error after device is successfully updated         
+* MSA-7617 [UI]: label issue on attach customer to workflow dialog popup   
+* MSA-7717 [UI]: A lot of ME configure tabs are blank 
+* MSA-7490 [UI]: issues after updating Deployment settings  
+* MSA-7607 [UI]: deployment setting : text label truncated         
+* MSA-7665 [UI]: Parameterise the First time change password      
+* MSA-6841 [UI]: explicit loading of a URL leads to Not Found message        
+* MSA-7325 [UI]: Deployment Settings ME not listed (unable to detach it)
+* MSA-7715 [UI]: Parameterise the First time change password - popup
+* MSA-7448 [UI]: in deployment settings, the column "Microservices" should be renamed "Microservices & Templates"  
+* MSA-7397 [UI]: Configurations / create deployment setting : warning label should be made more visible
+* MSA-7529 [UI]: Safari - Infinite loop on Automation section - caused by Data format
+* MSA-7648 [UI]: UBI Context : User password management - force to change password at first login does not appear until clicked on Customer
+* MSA-7629 [UI]: Regression: User message not displayed when Managed Entity is created or updated                  
+* MSA-7661 [UI]: Selected customer is not reset properly on logout
+* MSA-7808 [Microservices]: getMicroserviceObjectDefinition does not return xpath in parser   
+* MSA-7686 [Microservices]: attach MS to DS if there is no existing DS shows confusing
+* MSA-7687 [Microservices]: when a new MS is created with a space in the name it should be stored with a "_" in place of the space
+* MSA-7690 [Microservices]: Editor has no XPath option for REST MS (config type = XML)
+* MSA-7716 [Microservices]: import options not supported  
+* MSA-7628 [Microservices]: Inconsistency between microservice list and microservice detail for vendors and models
+* MSA-7048 [Microservices]: variable extractors pending API updates       
+* MSA-7582 [Microservices]: Display boolean values in MS console table body    
+* MSA-6609 [Microservices]: Microservices console - Text in the confirmation dialog box on deleting the row in MS screen shows huge row names
+* MSA-7619 [Workflow]: instanciate label typo                   
+* MSA-7719 [Workflow / Microservices]: variable advanced parameters failing on create / edit.
+* MSA-7889 [Workflow]: Add python template
+* MSA-7693 [Workflow]: Show task templates when you create a new task  
+* MSA-7429 [Workflow]: Creating new customer and attaching WF needs as wildfly restart
+* MSA-7675 [Workflow]: getServiceInstanceOwner does not return allowSchedule in process instance       
+* MSA-7755 [BPM] Cannot trigger update process from BPM      
+* MSA-6762 [ME]: create/edit: admin (or at least ncroot) should be able to view the password in clear text                   
+* MSA-6793 [ME]: nature is not editable         
 
 
