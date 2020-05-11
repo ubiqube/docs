@@ -316,30 +316,37 @@ from msa_sdk.variables import Variables
 from msa_sdk.msa_api import MSA_API
 from msa_sdk.order import Order
 
-dev_var = Variables()															<1>
+# ====================================(1)=======================================
+dev_var = Variables()
 dev_var.add('id', var_type='Integer')
 dev_var.add('src_ip', var_type='String')
 dev_var.add('dst_port', var_type='Integer')
 context = Variables.task_call(dev_var)
 
-device_id = context['device']													<2>
-
+# ====================================(2)=======================================
+device_id = context['device']
 # extract the database ID
 devicelongid = device_id[-3:]
 
-	
-micro_service_vars_array = {'object_id': context['id'],							<3>
-                            'src_ip': context['src_ip'],
-                            'dst_port': context['dst_port']
+# ====================================(3)=======================================
+micro_service_vars_array = {"object_id": context['id'],
+                            "src_ip": context['src_ip'],
+                            "dst_port": context['dst_port']
                             }
+
 object_id = context['id']
-simple_firewall = {'simple_firewall': {object_id: micro_service_vars_array}}	<4>
 
-order = Order(devicelongid)														<5>
+# ====================================(4)=======================================
+simple_firewall = {"simple_firewall": {object_id: micro_service_vars_array}}
 
-order.command_execute('CREATE', json.dumps(simple_firewall))					<6>
+# ====================================(5)=======================================
+order = Order(devicelongid)
 
-content = json.loads(order.content)											<7>
+# ====================================(6)=======================================
+order.command_execute('CREATE', json.dumps(simple_firewall))
+
+# ====================================(7)=======================================
+content = json.loads(order.content)
 
 # check if the response is OK
 if order.response.ok:
@@ -350,7 +357,8 @@ if order.response.ok:
         context['rules'] = {}
         num = 0
 
-    context['rules'][num] = {}						<8>
+# ====================================(8)=======================================
+    context['rules'][num] = {}
     context['rules'][num]['delete'] = False
     context['rules'][num]['id'] = context['id']
     context['rules'][num]['src_ip'] = context['src_ip']
