@@ -1,4 +1,4 @@
-= Basic Firewall Policy Orchestration
+= Firewall Policy Orchestration
 :toc: left
 :toclevels: 4 
 :doctype: book 

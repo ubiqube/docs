@@ -15,7 +15,7 @@ From the dashboard, you can start designign your BPM, your Workflows and your Mi
 
 == Use Case 
 
-- link:simple_firewall_policy_mngt{outfilesuffix}[Basic Firewall Policy Orchestration]
+- link:simple_firewall_policy_mngt{outfilesuffix}[Firewall Policy Orchestration]
 
 == BPM
 
@@ -33,7 +33,7 @@ From the dashboard, you can start designign your BPM, your Workflows and your Mi
 - link:microservices_getting_started_developing{outfilesuffix}[Getting Started with Microservice Design]
 - link:microservice_editor{outfilesuffix}[Microservice Editor]
 
-=== Reference
+=== References
 
 ////
 TODO
