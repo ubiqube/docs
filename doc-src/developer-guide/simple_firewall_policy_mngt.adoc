@@ -348,7 +348,7 @@ simple_firewall = {"simple_firewall": {object_id: micro_service_vars_array}}
 order = Order(devicelongid)
 
 # ====================================(6)=======================================
-order.command_execute('CREATE', json.dumps(simple_firewall))
+order.command_execute('CREATE', simple_firewall)
 
 # ====================================(7)=======================================
 content = json.loads(order.content)
