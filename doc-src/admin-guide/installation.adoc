@@ -110,7 +110,7 @@ To fully clean up or reset the environment, run the following commands:
 
 1. `docker-compose -f docker-compose.yml down`
 2. `docker volume prune -f`
-3. `docker ps -a | grep "ubiqube" | awk '{print $3}' | xargs docker rmi`
+3. `docker ps -a | grep "ubiqube" | awk '{print $1}' | xargs docker rm`
 4. `docker images | grep "ubiqube" | awk '{print $3}' | xargs docker rmi`
 
 This will give you a clean environment next time you run docker-compose up.
@@ -128,7 +128,8 @@ WARNING: this will wipe out every images from your docker engine.
 === Docker for Linux (or Linux VM)
 ----
 sudo sysctl -w vm.max_map_count=262144
-sudo tee -a /etc/sysctl.conf <<< "vm.max_map_count=262144"
+echo 'vm.max_map_count = 262144' > /etc/sysctl.d/50-msa.conf
+sudo sysctl -p /etc/sysctl.d/50-msa.conf
 ----
 
 === Docker for Mac
