@@ -290,14 +290,19 @@ The source code below can be direclty copied in the tasks.
 
 [source, python]
 ----
-from msa_sdk.variables import Variables   	<1>  
+# ====================================(1)=======================================
+from msa_sdk.variables import Variables
 from msa_sdk.msa_api import MSA_API
 
 dev_var = Variables()
-dev_var.add('device', var_type='Device')  	<2>
-context = Variables.task_call(dev_var)    	<3>
+# ====================================(2)=======================================
+dev_var.add('device', var_type='Device')
 
-ret = MSA_API.process_content('ENDED',    	<4>
+# ====================================(3)=======================================
+context = Variables.task_call(dev_var)
+
+# ====================================(4)=======================================
+ret = MSA_API.process_content('ENDED',
                               f'Firewall service created. Managed Entity: {context["device"]}',
                               context, True)
 print(ret)
