@@ -109,6 +109,7 @@ Save and close, select managed entity and click on the tab "configure", select t
 
 image:images/simple_firewall_test_ms.png[width=600px]
 
+Please make sure linux_me is activated, otherwise "Activate" it.
 Then click "Apply Changes".
 
 Once the configuration has been applied, you can connect to the managed entity CLI and verify that the iptables configuration was pushed as expected.
@@ -137,7 +138,7 @@ This will be written in the Delete command of the microservice as:
 [source]
 ----
 sudo iptables -D INPUT -p tcp --dport {$simple_firewall.$object_id.dst_port} -s {$simple_firewall.$object_id.src_ip} -j DROP
-sudo iptables -D FORWARD -p tcp --dport {$simple_firewall.$object_id.dst_port} -s {$simple_firewall.$object_id.src_ip} -j DRO
+sudo iptables -D FORWARD -p tcp --dport {$simple_firewall.$object_id.dst_port} -s {$simple_firewall.$object_id.src_ip} -j DROP
 ----
 
 ****
