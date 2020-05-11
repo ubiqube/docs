@@ -11,7 +11,7 @@ This documentation will guide you through the implementation of a simple workflo
 
 == Overview
 
-This simple firewall policy management tutorial will show you:
+This firewall policy management tutorial will show you:
 
 - how to use the Microservices and the Workflows to create a layer of abstraction on top of your managed entities.
 - how to call a Microservice from a Workflow
@@ -21,14 +21,14 @@ The firewall will be implemented by a Linux VNF and we will use link:https://en.
 
 NOTE: This tutorial can be implemented with the link:../admin-guide/installation{outfilesuffix}#mini-lab[mini lab] and its Linux based managed entity.
 
-- The user must be able to specify an IP address and a service (network port number) on the workflow end-user UI console
+The high level specifications for this use case are:
+
+- The user must be able to specify an IP address and a service (network port) on the workflow end-user UI console
 - The user must be able to select a managed entity to configure
 - The workflow will use the two parameters IP and port to automatically configure the firewall selected by the user
 
 == Implementation
-
 === Microservice design
-
 ==== Firewall Implementation on Linux
 
 - Based on Linux iptables
@@ -36,13 +36,12 @@ NOTE: This tutorial can be implemented with the link:../admin-guide/installation
 
 ===== Iptables
 
-Below are some example of iptable used to perform IP/port based filtering
+Below are some sample iptable CLI commands used to perform IP/port based filtering
 
 .Create a rule
 [source]
 ----
 sudo iptables -A INPUT -p tcp --dport <PORT TO BLOCK> -s <IP TO BLOCK> -j DROP
-
 sudo iptables -A FORWARD -p tcp --dport <PORT TO BLOCK> -s <IP TO BLOCK> -j DROP
 ----
 
@@ -61,7 +60,8 @@ DROP       tcp  --  92.103.182.20        0.0.0.0/0           tcp dpt:80
 
 ===== Implementation steps
 
-These are the steps to follow to build the Microservice. These steps are usually the generic steps to design and develop Microservices with other vendors and services.
+These are the steps to follow to build the Microservice. 
+These steps are the usual steps designing and developping Microservices.
 
 - Step 1: Create a new Microservice in the repository.
 - Step 2: Implement the CREATE command.
