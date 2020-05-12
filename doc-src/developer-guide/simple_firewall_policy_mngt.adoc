@@ -290,19 +290,15 @@ The source code below can be direclty copied in the tasks.
 
 [source, python]
 ----
-# ====================================(1)=======================================
-from msa_sdk.variables import Variables
+from msa_sdk.variables import Variables             <1>
 from msa_sdk.msa_api import MSA_API
 
 dev_var = Variables()
-# ====================================(2)=======================================
-dev_var.add('device', var_type='Device')
+dev_var.add('device', var_type='Device')            <2>
 
-# ====================================(3)=======================================
-context = Variables.task_call(dev_var)
+context = Variables.task_call(dev_var)              <3>
 
-# ====================================(4)=======================================
-ret = MSA_API.process_content('ENDED',
+ret = MSA_API.process_content('ENDED',              <4>
                               f'Firewall service created. Managed Entity: {context["device"]}',
                               context, True)
 print(ret)
@@ -321,37 +317,30 @@ from msa_sdk.variables import Variables
 from msa_sdk.msa_api import MSA_API
 from msa_sdk.order import Order
 
-# ====================================(1)=======================================
-dev_var = Variables()
+dev_var = Variables()                               <1>
 dev_var.add('id', var_type='Integer')
 dev_var.add('src_ip', var_type='String')
 dev_var.add('dst_port', var_type='Integer')
 context = Variables.task_call(dev_var)
 
-# ====================================(2)=======================================
-device_id = context['device']
+device_id = context['device']                       <2>
 # extract the database ID
 devicelongid = device_id[-3:]
 
-# ====================================(3)=======================================
-micro_service_vars_array = {"object_id": context['id'],
+micro_service_vars_array = {"object_id": context['id'],     <3>
                             "src_ip": context['src_ip'],
                             "dst_port": context['dst_port']
                             }
 
 object_id = context['id']
 
-# ====================================(4)=======================================
-simple_firewall = {"simple_firewall": {object_id: micro_service_vars_array}}
+simple_firewall = {"simple_firewall": {object_id: micro_service_vars_array}}        <4>
 
-# ====================================(5)=======================================
-order = Order(devicelongid)
+order = Order(devicelongid)                 <5>
 
-# ====================================(6)=======================================
-order.command_execute('CREATE', simple_firewall)
+order.command_execute('CREATE', simple_firewall)        <6>
 
-# ====================================(7)=======================================
-content = json.loads(order.content)
+content = json.loads(order.content)         <7>
 
 # check if the response is OK
 if order.response.ok:
@@ -362,8 +351,7 @@ if order.response.ok:
         context['rules'] = {}
         num = 0
 
-# ====================================(8)=======================================
-    context['rules'][num] = {}
+    context['rules'][num] = {}              <8>
     context['rules'][num]['delete'] = False
     context['rules'][num]['id'] = context['id']
     context['rules'][num]['src_ip'] = context['src_ip']
