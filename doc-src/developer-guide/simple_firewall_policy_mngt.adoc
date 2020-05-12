@@ -162,7 +162,10 @@ simple_firewall.xml => simple_firewall
 
 ==== Implement the IMPORT command
 
-The role of the IMPORT command is to import the current device configuration into the MSActivator database.
+Once you are able to create new rules, you need to make sure that the {product_name} microservice database is reflecting the configuration on the managed entity.
+To acheive that, you need to implement the IMPORT function.
+
+The role of the IMPORT command is to import the current device configuration into the {product_name} database.
 
 The implementation of the IMPORT is based on a set of regular expressions that build a parser that will extract the values of the Microservice variables.
 
@@ -178,7 +181,7 @@ To list the iptables rules the CLI command to use is:
 
 [source]
 ----
-# iptables -L INPUT -n
+# sudo iptables -L INPUT -n
 Chain INPUT (policy ACCEPT)
 target     prot opt source               destination         
 DROP       tcp  --  192.168.1.2          0.0.0.0/0           tcp dpt:80 
@@ -191,7 +194,7 @@ NOTE: The use of grep here is a straightforward way, specific to this use case, 
 
 [source]
 ----
-# iptables --line-numbers -L INPUT -n | grep -v Chain | grep -v num
+# sudo iptables --line-numbers -L INPUT -n | grep -v Chain | grep -v num
 1    DROP       tcp  --  192.168.1.2          0.0.0.0/0           tcp dpt:80 
 2    DROP       tcp  --  192.168.1.4          0.0.0.0/0           tcp dpt:443 
 ----
@@ -222,7 +225,7 @@ Add another IP to block.
 ----
 [root@linux_me /]# sudo iptables -A INPUT -p tcp --dport 2345 -s 192.168.67.98 -j DROP
 [root@linux_me /]# sudo iptables -A FORWARD -p tcp --dport 2345 -s 192.168.67.98 -j DROP
-[root@linux_me /]# iptables -L INPUT -n
+[root@linux_me /]# sudo iptables -L INPUT -n
 Chain INPUT (policy ACCEPT)
 target     prot opt source               destination         
 DROP       tcp  --  192.168.23.45        0.0.0.0/0           tcp dpt:2345 
