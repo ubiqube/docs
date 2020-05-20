@@ -3,22 +3,31 @@
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
+The quickstart covers how you can quickly get started using the {product_name} orchestration tool by installing a mini lab.
 
-The quickstart guide will gets you started with the {product_name} orchestration tool.
+.Prerequisites
+The following prerequisites are required for a successful use of {product_name}:
 
-This guide is composed of a link:https://github.com/ubiqube/quickstart[git repository] which is mainly a set of docker and docker-compose files to pull the {product_name} from Dockerhub 
+- link:https://docs.docker.com/install/[Docker]
+- link:https://docs.docker.com/compose/install/[Docker Compose]
 
-The docker-compose will create the {product_name} containers and a [managed entity] that you can use to become familiar with the {product_name}.
+.Github repository
+This guide will is composed of a link:https://github.com/ubiqube/quickstart[git repository] which is mainly a set of Dockerfile and docker-compose.xml files to pull the {product_name} from link:https://hub.docker.com/[Dockerhub] 
+
+.Mini lab
+The docker-compose will create the mini lab which is composed of the {product_name} containers and a link:managed_entities{outfilesuffix}[managed entity] that you can use to experiment on.
 
 .Installation
 The installation of the mini lab is detailed in the link:../admin-guide/installation{outfilesuffix}[installation guide]
 
 .Activation
-The mini lab is composed of the {product_name} and one link:managed_entities{outfilesuffix}[managed entity] that need to be activated. The managed entity is configured with one user `msa` with the password `ubiqube`.
+The mini lab needs to be activated. The managed entity is configured with one user `msa` with the password `ubiqube`.
 
 NOTE: In case you have updated the {product_name} with `docker-compose up -d` or `docker-compose pull`, you might experience cache issue (for instance, your changes may not be reflected on the UI). To solve that, you can clean your browser cache or use a browser private session.
-////
-TODO
+
+.Trial license
+The {product_name} comes with a trial license valid for 30 days and limited to 5 managed entities.
+
 .Video tutorial
 video::./video/quickstart.mp4[mini lab installation and activation,width=600px,poster=./video/quickstart_poster.png]
-////
+
