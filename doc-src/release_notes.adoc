@@ -59,6 +59,10 @@ The {product_name} runs on a set of Docker containers. A Docker container image 
 
 The reason {product_name} is now containerized reflects not only a move in the industry itself, but it allows for much greater scalability and modular design than past iterations of the product.
 
+== Core Engine
+
+No changes have been made to the core engine from previous versions of the product.  This allows consistency from branches of OpenMSA (community version).
+
 == Fixes
 
 Various fixes have been made to the product to ensure its continued ability to empower users, ensure a smoother user experience and deliver the value that businesses need in today's environment while being ahead in terms of features, being evergreen and the agility of the {product_name} to grow.
