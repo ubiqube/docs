@@ -65,8 +65,8 @@ These steps are the usual steps designing and developping Microservices.
 
 - Step 1: Create a new Microservice in the repository.
 - Step 2: Implement the CREATE command.
-- Step 3: Implement the DELETE command.
-- Step 4: Implement the IMPORT command.
+- Step 3: Implement the IMPORT command.
+- Step 4: Implement the DELETE command.
 - Step 5: Test and check the Linux vFW via the command line interface.
 
 ==== Create a new microservice
@@ -112,53 +112,16 @@ image:images/simple_firewall_test_ms.png[width=600px]
 Please make sure linux_me is activated, otherwise "Activate" it.
 Then click "Apply Changes".
 
-Once the configuration has been applied, you can connect to the managed entity CLI and verify that the iptables configuration was pushed as expected.
+Once the configuration has been applied, you can connect to the managed entity CLI and verify that iptables was configured as expected.
 [source]
 ----
 $ docker-compose exec linux_me bash
 
-[root@linux_me /]# iptables -L INPUT -n
+[root@linux_me /]# sudo iptables --line-numbers -L INPUT -n
 Chain INPUT (policy ACCEPT)
 target     prot opt source               destination         
 DROP       tcp  --  192.168.23.45        0.0.0.0/0           tcp dpt:2345 
 ----
-
-==== Implement the DELETE command
-
-The deletion of the iptables INPUT and FORWARD rules is executed with the CLI command below:
-
-[source]
-----
-sudo iptables -D INPUT -p tcp --dport <PORT TO BLOCK>  -s <IP TO BLOCK>  -j DROP 
-sudo iptables -D FORWARD -p tcp --dport <PORT TO BLOCK>  -s <IP TO BLOCK>  -j DROP 
-----
-
-This will be written in the Delete command of the microservice as:
-
-[source]
-----
-sudo iptables -D INPUT -p tcp --dport {$simple_firewall.$object_id.dst_port} -s {$simple_firewall.$object_id.src_ip} -j DROP
-sudo iptables -D FORWARD -p tcp --dport {$simple_firewall.$object_id.dst_port} -s {$simple_firewall.$object_id.src_ip} -j DROP
-----
-
-****
-IMPORTANT: The syntax `{$simple_firewall.$object_id.dst_port}` provides a way to access the Microservice variable values in the MSActivator configuration database. 
-
-The convention is as follow:
-----
-{$<MICROSERVICE NAME>.$object_id.<VARIABLE NAME>}
-----
-In our case:
-
-MICROSERVICE NAME => simple_firewall 
-
-VARIABLE NAME => dst_port
-
-MICROSERVICE NAME is the name of the Microservice file without the .xml extension.
-
-.Example
-simple_firewall.xml => simple_firewall
-****
 
 ==== Implement the IMPORT command
 
@@ -236,6 +199,43 @@ And use "Synchronize with Managed Entity" to import the new rule in the configur
 
 image:images/simple_firewall_ms_import_new_rule.png[width=600px]
 
+==== Implement the DELETE command
+
+The deletion of the iptables INPUT and FORWARD rules is executed with the CLI command below:
+
+[source]
+----
+sudo iptables -D INPUT -p tcp --dport <PORT TO BLOCK>  -s <IP TO BLOCK>  -j DROP 
+sudo iptables -D FORWARD -p tcp --dport <PORT TO BLOCK>  -s <IP TO BLOCK>  -j DROP 
+----
+
+This will be written in the Delete command of the microservice as:
+
+[source]
+----
+sudo iptables -D INPUT -p tcp --dport {$simple_firewall.$object_id.dst_port} -s {$simple_firewall.$object_id.src_ip} -j DROP
+sudo iptables -D FORWARD -p tcp --dport {$simple_firewall.$object_id.dst_port} -s {$simple_firewall.$object_id.src_ip} -j DROP
+----
+
+****
+IMPORTANT: The syntax `{$simple_firewall.$object_id.dst_port}` provides a way to access the Microservice variable values in the MSActivator configuration database. 
+
+The convention is as follow:
+----
+{$<MICROSERVICE NAME>.$object_id.<VARIABLE NAME>}
+----
+In our case:
+
+MICROSERVICE NAME => simple_firewall 
+
+VARIABLE NAME => dst_port
+
+MICROSERVICE NAME is the name of the Microservice file without the .xml extension.
+
+.Example
+simple_firewall.xml => simple_firewall
+****
+
 ==== Conclusion
 
 With the microservice design, you have been defining an abstraction layer on top of a security VNF. 
@@ -308,7 +308,7 @@ ret = MSA_API.process_content('ENDED',              <4>
 print(ret)
 ----
 
-<1> import the modules based on your requirement. Modules are described in the link:workflow_python_sdk{outfilesuffix}[SKD]
+<1> import the link:workflow_python_sdk{outfilesuffix}[modules] based on your requirement
 <2> define the variables that will be rendered in the process execution UI
 <3> initialize the link:workflow_editor{outfilesuffix}#context[context]
 <4> create the task execution output
