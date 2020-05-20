@@ -3,11 +3,11 @@
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :source-highlighter: pygments
 
-You can use the The Microservice editor UI to create or update a Microservice.
+You can use the the microservice editor UI to create or update a microservice.
 
-To create or edit a Microservice you can go to the "Integration" section and select the Microservice tab
+To create or edit a microservice you can go to the "Integration" section and select the Microservice tab
 
-image:../../user-guide/resources/images/configurations_ms_search.png[]
+image:../../user-guide/resources/images/configurations_ms_search.png[width=720px]
 
 == Getting started
 
@@ -16,13 +16,13 @@ If you want to directly get stated with a simple exmaple that can run on the min
 
 == Microservice Editor Overview
 
-The Microservice console is composed of a vertical menu on the left and a main screen
+The microservice console is composed of a vertical menu on the left and a main screen
 
-image:images/microservice_console_information.png[] 
+image:images/microservice_console_information.png[width=720px] 
 
 Microservices are vendor specific, the implementations of the functions to create, update, delete or import a managed entity configuration will depend on the managed entity, the type of remote management interface, the format of the configuration, how it is structured,...
 
-It is important to select the correct vendor/model information because this will be used by the link:../user-guide/configuration_deployment_settings{outfilesuffix}[deployment settings] to filter the Microservices that are eligible for selection.
+It is important to select the correct vendor/model information because this will be used by the link:../user-guide/configuration_deployment_settings{outfilesuffix}[deployment settings] to filter the microservice that are eligible for selection.
 
 It is also important to select the proper configuration type:
 
@@ -32,17 +32,16 @@ It is also important to select the proper configuration type:
 
 The editor UI will adjust based on the configuration type.
 
-WARNING: this setting cannot be changed when editing a Microservice.
+WARNING: this setting cannot be changed when editing a microservice.
 
-NOTE: this documentation focuses on a CLI based Microservice, you can go through this documentation for a building a xml based Microservice: link:microservice_xml_editor{outfilesuffix}[XML Microservice editor].
+NOTE: this documentation focuses on a CLI based microservice, you can go through this documentation for a building a xml based Microservice: link:microservice_xml_editor{outfilesuffix}[XML Microservice editor].
 
-Click on "Create Microservice" to create the Microservice.
+Click on "Create Microservice" to create the microservice.
 
-Once created, you can search for your Microservice in the list and attach it to a link:../user-guide/configuration_deployment_settings{outfilesuffix}[deployment setting], you can also edit it or delete it.
+Once created, you can search for your microservice in the list and attach it to a link:../user-guide/configuration_deployment_settings{outfilesuffix}[deployment setting], you can also edit it or delete it.
 
-image:images/configurations_ms_search_2.png[] 
-
-NOTE: The easiest way to design a Microservice is to use a test managed entity and do you development in a code-test-fix cycle. This documentation uses the Linux Managed Entity provided by the link:../user-guide/quickstart{outfilesuffix}[mini-lab].
+NOTE: The easiest way to design a microservice is to use a managed entity dedicated to testing and follow in a code-test-fix development cycle.
+This documentation uses the Linux Managed Entity provided by the link:../user-guide/quickstart{outfilesuffix}[mini-lab].
 
 image:images/deployment_setting_linux_mngt.png[]
 
