@@ -3,6 +3,9 @@
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :source-highlighter: pygments
+:toc: left
+:toclevels: 4 
+
 
 The workflow editor is a web based UI tool for designing, developping, testing and releasing automation workflows
 

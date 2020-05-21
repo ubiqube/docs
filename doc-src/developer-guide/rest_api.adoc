@@ -1,11 +1,13 @@
 = REST API
+:toc: left
+:toclevels: 4 
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :doctype: book
 
 The {product_name} provides a support for REST API. These API can be used by third-party service, application or script to manage your {product_name} instance.
 
-.Enabling REST API Support
+.Enabling REST API support
 The API is enabled by default. No additional configuration is required.
 
 .Authentication
@@ -31,7 +33,7 @@ curl -H 'Accept: application/json' -H "Authorization: Bearer eyJhbGciOiJIUzUxMiJ
 == Example API commands
 For the full list of available commands, see the {product_name} API guide on your {product_name} instance: http://<MSA IP or FQDN>/swagger
 
-=== User Login
+=== User login
 *HTTP Request:* `+/ubi-api-rest/auth/token+`
 
 *Method:* `+POST+`
@@ -84,7 +86,7 @@ For the full list of available commands, see the {product_name} API guide on you
 <1> the authentication token to use in the HTTP header of the REST API calls
 <2> the JSON response has been shortened for this documentation
 
-=== Ping an IP Address from the CoreEngine
+=== Ping an IP address from the CoreEngine
 
 *HTTP Request:* `+/ubi-api-rest/device/ping/{$ip_address}+`
 
@@ -116,7 +118,7 @@ For the full list of available commands, see the {product_name} API guide on you
 }
 ----
 
-=== Call IMPORT from a Microservice 
+=== Call IMPORT from a microservice 
 *HTTP Request:* `+/ubi-api-rest/ordercommand/execute/{device_id}/{command_name}+`
 
 *Method:* `+POST+`

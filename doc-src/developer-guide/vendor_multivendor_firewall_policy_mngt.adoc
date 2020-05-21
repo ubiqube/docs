@@ -1,14 +1,17 @@
 = Multi Vendor Firewall Policy Orchestration
+:toc: left
+:toclevels: 4 
 :doctype: book 
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:source-highlighter: pygments
 
-IMPORTANT: TODO
+TODO
 
-== Overview
 This documentation will guide you through a simple use case of automating the configuration of a firewall policy on multiple security vendors.
 
-This use case is a simple illustration on how to 
+== Overview
+
 
 
 

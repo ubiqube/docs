@@ -1,4 +1,6 @@
 = Adapter Development
+:toc: left
+:toclevels: 4 
 :doctype: book 
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
@@ -13,7 +15,7 @@ The {product_name} provides a library of device adaptors ready to use.
 The libraries are implemented in PHP which makes extension and customization easy.
 
 
-== How to find, install, activate the Adapters
+== How to find, install, activate the adapters
 The Adapters are packaged in the {product_name}, in the "api" container (see link:../admin-guide/architecture_overview{outfilesuffix}[Architecture] for more details).
 
 Many other Adapters are available on the https://github.com/openmsa/Adaptors[Adaptor Github repository,window=_blank]

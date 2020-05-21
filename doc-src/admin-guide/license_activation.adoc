@@ -1,7 +1,9 @@
 = License Activation
+:toc: left
+:toclevels: 4 
+:doctype: book 
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:doctype: book
 
 If you have installed the {product_name} with the quickstart, you already have a trial license limited to 5 Managed Entities and valid for 30 days to get started.
 

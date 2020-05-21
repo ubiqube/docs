@@ -1,4 +1,6 @@
 = DevOps Best Practice Guide
+:toc: left
+:toclevels: 4 
 :doctype: book 
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]

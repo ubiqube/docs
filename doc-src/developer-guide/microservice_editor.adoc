@@ -2,6 +2,9 @@
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :source-highlighter: pygments
+:toc: left
+:toclevels: 4 
+:doctype: book 
 
 You can use the the microservice editor UI to create or update a microservice.
 

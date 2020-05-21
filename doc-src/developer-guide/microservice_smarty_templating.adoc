@@ -1,6 +1,7 @@
 = Microservice Templating with PHP Smarty
 :toc: left
-:toc-title: Content 
+:toclevels: 4 
+:doctype: book
 :imagesdir: ./resources/
 :source-highlighter: pygments
 

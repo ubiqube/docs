@@ -1,4 +1,7 @@
 = Microservice Editor
+:toc: left
+:toclevels: 4 
+:doctype: book 
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :source-highlighter: pygments

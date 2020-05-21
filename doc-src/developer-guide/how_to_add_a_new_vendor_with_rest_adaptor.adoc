@@ -1,0 +1,20 @@
+= How to create a new vendor based on the REST Generic adapter
+:toc: left
+:toclevels: 4 
+:doctype: book 
+:imagesdir: ./resources/
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:source-highlighter: pygments
+
+The REST Generic adapter will let you quickly integrate a new managed entity with a REST based management API but you may want to also have the vendor name and entity model appear in the list of supported vendor instead of REST-Generic.
+
+Doing so will allow you to filter the microservice and deployment setting based on the vendor name and model name. 
+This will ease the organisation of your integration files.
+
+== How to
+
+Let's assume that you want to add the vendor_A / model_X to the supported vendor.
+
+You will need an access to the {product_name} CLI of the API container (see link:architecture_overview{outfilesuffix}[architecture] for more details).
+
+
