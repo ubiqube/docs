@@ -59,7 +59,7 @@ To get an interactive shell on the MSA main container (this will be needed later
 docker-compose exec api bash
 ```
 [#mini-lab]
-=== Mini-lab Details 
+=== Mini-lab details 
 image:images/minilab_containers.png[mini lab containers]
  
 In addition to add a Linux container (linux.me / 172.20.0.101) for experimentation, the mini-lab also comes with the following pre-installed:
@@ -105,7 +105,7 @@ lo        Link encap:Local Loopback
 ```
 
 
-== Breaking down/Resetting the quickstart environment
+== Breaking down/resetting the quickstart environment
 To fully clean up or reset the environment, run the following commands:
 
 1. `docker-compose -f docker-compose.yml down`
@@ -116,12 +116,14 @@ To fully clean up or reset the environment, run the following commands:
 This will give you a clean environment next time you run docker-compose up.
 
 To completely clean up your docker images you can also do `docker rmi $(docker images -a -q)`.
+
 WARNING: this will wipe out every images from your docker engine.
 
 
 == Requirements on the host machine
 .on a PC
 - 4GB, 2CPU, 100GB
+
 .on a production environment 
 - minimum 16GB, 4CPU, 200GB
 
