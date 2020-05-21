@@ -22,7 +22,7 @@ Many other Adapters are available on the https://github.com/openmsa/Adaptors[Ada
 
 The installation of an Adapter is covered in this documentation: link:https://github.com/openmsa/Adaptors/blob/master/doc/How_to_install_a_new_adapter.md[How to install an Adapter,window=_blank]
 
-== REST Generic Adapter
+== REST Generic adapter
 The REST Generic adapter, available on link:https://github.com/openmsa/Adaptors/tree/master/adapters/rest_generic[Github,window=_blank] will allow you to integrate most vendors that exposes a REST management interface API.
 
 This adapter is included in the mini lab (see link:../user-guide/quickstart{outfilesuffix}[Quickstart] for more details)
