@@ -121,9 +121,9 @@ WARNING: this will wipe out every images from your docker engine.
 
 == Requirements on the host machine
 .on a PC
-- 4Go, 2CPU, 100Go
+- 4GB, 2CPU, 100GB
 .on a production environment 
-- minimum 16Go, 4CPU, 200Go
+- minimum 16GB, 4CPU, 200GB
 
 === Docker for Linux (or Linux VM)
 ----
