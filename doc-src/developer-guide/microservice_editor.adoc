@@ -41,6 +41,8 @@ NOTE: this documentation focuses on a CLI based microservice, you can go through
 
 Click on "Create Microservice" to create the microservice.
 
+NOTE: it is not recommended to change the filename of a microservice after its creation.
+
 Once created, you can search for your microservice in the list and attach it to a link:../user-guide/configuration_deployment_settings{outfilesuffix}[deployment setting], you can also edit it or delete it.
 
 NOTE: The easiest way to design a microservice is to use a managed entity dedicated to testing and follow in a code-test-fix development cycle.
