@@ -2,9 +2,13 @@
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :doctype: book
+:docinfo: shared
+:toc: left
+:toclevels: 4 
 
+ 
 == Latest Release 
-The latest {product_name} release is 2.0.1. 
+The latest {product_name} release is {revnumber}. 
 
 The convention works as follows: x.y.z (all representing numbers) and
 
