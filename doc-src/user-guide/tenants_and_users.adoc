@@ -1,8 +1,9 @@
 = Tenants and Users
-:toc: left
-:toc-title: Content 
 :doctype: book
 :imagesdir: ./resources/
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:toc: left
+:toclevels: 4 
 
 
 After installing, configuring and activating the {product_name}, you will start creating tenants and users.

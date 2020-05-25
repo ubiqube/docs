@@ -1,9 +1,9 @@
-= Workflow Editor
-:toc: left
-:toclevels: 4 
-:doctype: book 
+= Developer Portal
+:doctype: book
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:toc: left
+:toclevels: 4 
 :source-highlighter: pygments
 
 The developer portal provides the tools to design, develop and test automated and integrated processes.

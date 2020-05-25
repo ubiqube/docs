@@ -2,6 +2,8 @@
 :doctype: book
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:toc: left
+:toclevels: 4 
 
 The quickstart covers how you can quickly get started using the {product_name} orchestration tool by installing a mini lab.
 

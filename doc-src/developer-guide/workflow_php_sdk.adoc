@@ -1,9 +1,9 @@
 = PHP SDK
-:toc: left
-:toclevels: 4 
 :doctype: book
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:toc: left
+:toclevels: 4 
 :source-highlighter: pygments
 
 The {product_name} provides a support for PHP SDK dedicated to developing automation workflows. 

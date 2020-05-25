@@ -1,9 +1,10 @@
 = DevOps Best Practice Guide
-:toc: left
-:toclevels: 4 
-:doctype: book 
+:doctype: book
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:toc: left
+:toclevels: 4 
+:source-highlighter: pygments
 
 The {product_name} is a platform for designing and developing network and security automation applications.
 
