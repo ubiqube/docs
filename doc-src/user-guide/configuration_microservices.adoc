@@ -1,6 +1,9 @@
 = Microservices
 :doctype: book
 :imagesdir: ./resources/
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:toc: left
+:toclevels: 4 
 
 The {product_name} Microservices engine is designed as a networking object-based programming language.
 

@@ -2,6 +2,8 @@
 :doctype: book
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:toc: left
+:toclevels: 4 
 
 The integrated BPM engine can be accessed by clicking the "Automation" link in the left menu. 
 

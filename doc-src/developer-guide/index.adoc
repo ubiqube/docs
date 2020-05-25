@@ -1,7 +1,10 @@
 = Developer Guide
-:doctype: book 
+:doctype: book
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:toc: left
+:toclevels: 4 
+:source-highlighter: pygments
 
 This documentation contains a set of documentation, tutorials and examples to help you get familiar with the {product_name} as a development platform.
 

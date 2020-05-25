@@ -1,9 +1,9 @@
 = How to create a new vendor based on the REST Generic adapter
-:toc: left
-:toclevels: 4 
-:doctype: book 
+:doctype: book
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:toc: left
+:toclevels: 4 
 :source-highlighter: pygments
 
 The REST Generic adapter will let you quickly integrate a new managed entity with a REST based management API but you may want to also have the vendor name and entity model appear in the list of supported vendor instead of REST-Generic.

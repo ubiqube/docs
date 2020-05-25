@@ -1,10 +1,10 @@
 = Microservice Order Stack Management API
-:toc: left
-:toclevels: 4 
-:doctype: book 
+:doctype: book
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:doctype: book
+:toc: left
+:toclevels: 4 
+:source-highlighter: pygments
 
 
 == Overview

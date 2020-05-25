@@ -1,6 +1,8 @@
 = How to Upgrade the {product_name}
 :doctype: book 
 :imagesdir: ./resources/
+:toc: left
+:toclevels: 4 
 
 == Upgrading the Application
 

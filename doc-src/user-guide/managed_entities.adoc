@@ -2,6 +2,8 @@
 :doctype: book
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:toc: left
+:toclevels: 4 
 
 In order to become a manageable entity in the {product_name}, an entity has to be created and activated in the {product_name}.
 

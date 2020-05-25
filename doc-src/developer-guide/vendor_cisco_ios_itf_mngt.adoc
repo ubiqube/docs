@@ -1,9 +1,10 @@
 = Interfaces Management on Cisco IOS
-:doctype: book 
-:toc: left
-:toclevels: 4 
+:doctype: book
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:toc: left
+:toclevels: 4 
+:source-highlighter: pygments
 
 == Overview
 In this tutorial you will learn how to create a Microservice to manage the interfaces of a Cisco IOS router.
