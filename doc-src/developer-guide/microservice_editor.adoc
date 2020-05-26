@@ -4,7 +4,6 @@
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :toc: left
 :toclevels: 4 
-:doctype: book 
 :source-highlighter: pygments
 
 
@@ -18,8 +17,7 @@ image:../../user-guide/resources/images/configurations_ms_search.png[width=720px
 
 If you want to directly get stated with a simple exmaple that can run on the mini-lab (see link:../user-guide/quickstart{outfilesuffix}[quickstart]) you can go to this guide: link:microservices_getting_started_developing{outfilesuffix}[Getting Started with Microservices Design]. 
 
-
-== Microservice Editor Overview
+== Microservice editor overview
 
 The microservice console is composed of a vertical menu on the left and a main screen
 
@@ -52,7 +50,7 @@ This documentation uses the Linux Managed Entity provided by the link:../user-gu
 
 image:images/deployment_setting_linux_mngt.png[]
 
-== Microservice Implementation
+== CLI microservice implementation
 
 The Microservice API is made of several functions that can be implemented. 
 It is not mandatory to implement all the functions, this will depend on your requirements and can be done incrementally.
@@ -132,7 +130,7 @@ This regex will extract the firewall parameter and store them in the database
 
 NOTE: the variable `object_id` is a mandatory parameter and will be used to identify the Microservice instance in the database.
 
-== Testing the Microservice
+=== Testing the microservice
 The Microservice is ready to be tested. 
 
 Make sure that you can add and delete a policy rule, that it's reflected on the Linux firewall, and that the parameters are also properly synchronised after a call to Create or Delete.
