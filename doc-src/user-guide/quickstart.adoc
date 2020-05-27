@@ -17,7 +17,7 @@ The following prerequisites are required for a successful use of {product_name}:
 This guide will is composed of a link:https://github.com/ubiqube/quickstart[git repository] which is mainly a set of Dockerfile and docker-compose.xml files to pull the {product_name} from link:https://hub.docker.com/[Dockerhub] 
 
 .Mini lab
-The docker-compose will create the mini lab which is composed of the {product_name} containers and a link:managed_entities{outfilesuffix}[managed entity] that you can use to experiment on.
+The docker-compose will create the mini lab which is composed of the {product_name} containers and a link:managed_entities{outfilesuffix}[managed entity] (docker container: linux.me / 172.20.0.101) that you can use to experiment on.
 
 .Installation
 The installation of the mini lab is detailed in the link:../admin-guide/installation{outfilesuffix}[installation guide]
