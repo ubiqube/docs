@@ -48,7 +48,7 @@ Once created, you can search for your microservice in the list and attach it to 
 NOTE: The easiest way to design a microservice is to use a managed entity dedicated to testing and follow in a code-test-fix development cycle.
 This documentation uses the Linux Managed Entity provided by the link:../user-guide/quickstart{outfilesuffix}[mini-lab].
 
-image:images/deployment_setting_linux_mngt.png[]
+image:images/deployment_setting_linux_mngt.png[width=720px]
 
 == CLI microservice implementation
 
@@ -77,7 +77,7 @@ As you can see the parameters are prefixed with `$params.` and this is the reaso
 
 The implementation of the Update will be similar and will of course depend on the CLI syntax.
 
-image:images/microservice_console_cli_create.png[]
+image:images/microservice_console_cli_create.png[width=720px]
 
 .Delete
 The deletion of the iptables INPUT and FORWARD rules is executed with the CLI command below:
@@ -109,7 +109,7 @@ In our case:
 .Example 
 simple_firewall.xml => simple_firewall
 
-image:images/microservice_console_cli_delete.png[]
+image:images/microservice_console_cli_delete.png[width=720px]
 
 
 === The function Import
@@ -137,5 +137,50 @@ Make sure that you can add and delete a policy rule, that it's reflected on the 
 
 You can also add some iptables rules manually on the Linux CLI and run a configuration synchronisation to make sure that your manual changes are properly imported.
 
-image:images/microservice_console_create_instance.png[]
+image:images/microservice_console_create_instance.png[width=720px]
+
+
+== XML microservice implementation
+
+XML microservice are used to manage entities that expose a REST API.
+
+=== The functions Create, Update and Delete
+
+.Create and Update
+These functions will call the REST API design to create or update the managed entity configuration.
+
+For instance, the REST API to create a new tenant is
+
+*HTTP Request:* `+/operator/{$prefix}+`
+
+*Method:* `+POST+`
+[cols=3*,options="header"]
+|===
+| Parameter Name
+| Type
+| Description
+
+| name
+| String
+| the name of the tenant
+|===
+
+*Example:*
+[source]
+----
+POST /ubi-api-rest/operator/TST/name=my_tenant
+----
+
+image:images/microservice_console_xml_create_1.png[width=720px]
+
+In case you need to pass in a JSON payload with the parameters, the microservice Create will look like this.
+
+image:images/microservice_console_xml_create_1.png[width=720px]
+
+
+
+.Delete
+
+
+image:images/microservice_console_xml_delete.png[]
 
