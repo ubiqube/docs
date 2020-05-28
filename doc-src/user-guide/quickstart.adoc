@@ -14,10 +14,10 @@ The following prerequisites are required for a successful use of {product_name}:
 - link:https://docs.docker.com/compose/install/[Docker Compose]
 
 .Github repository
-This guide will is composed of a link:https://github.com/ubiqube/quickstart[git repository] which is mainly a set of Dockerfile and docker-compose.xml files to pull the {product_name} from link:https://hub.docker.com/[Dockerhub] 
+This guide is composed of a link:https://github.com/ubiqube/quickstart[git repository] which is mainly a set of Dockerfile and docker-compose.xml files to pull the {product_name} from link:https://hub.docker.com/[Dockerhub] 
 
 .Mini lab
-The docker-compose will create the mini lab which is composed of the {product_name} containers and a link:managed_entities{outfilesuffix}[managed entity] (docker container: linux.me / 172.20.0.101) that you can use to experiment on.
+`docker-compose` will create the mini lab which is composed of the {product_name} containers and a link:managed_entities{outfilesuffix}[managed entity] (docker container: linux.me / 172.20.0.101) that you can use to experiment on.
 
 .Installation
 The installation of the mini lab is detailed in the link:../admin-guide/installation{outfilesuffix}[installation guide]
@@ -31,5 +31,19 @@ NOTE: In case you have updated the {product_name} with `docker-compose up -d` or
 The {product_name} comes with a trial license valid for 30 days and limited to 5 managed entities.
 
 .Video tutorial
+This video detail the steps for installing and activating the mini lab.
+
 video::./video/quickstart.mp4[mini lab installation and activation,width=600px,poster=./video/quickstart_poster.png]
 
+.Going further with the mini lab
+After you have installed and activated the mini lab, here are a list of tutorials that will allow you to go further with the {product_name}.
+
+These tutorials can be completely executed with the mini lab.
+
+- link:../developer-guide/workflow_getting_started_developing_python{outfilesuffix}[Helloworld Workflow for Python].
+- link:../developer-guide/workflow_getting_started_developing_php{outfilesuffix}[Helloworld Workflow for PHP].
+- link:../developer-guide/bpm_getting_started_developing{outfilesuffix}[Helloworld BPMP].
+- link:../developer-guide/microservices_getting_started_developing{outfilesuffix}[Getting Started with Microservices Design]: design a simple microservice to manage Linux users.
+- link:../developer-guide/simple_firewall_policy_mngt{outfilesuffix}[Firewall Policy Orchestration]: design micorservices and workflow to orchestrate firewall policy.
+
+.Getting more 
