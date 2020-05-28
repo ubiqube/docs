@@ -24,7 +24,7 @@ This tutorial assumes you have a properly configured, running {product_name}.
 
 If you have followed the link:../admin-guide/installation{outfilesuffix}[quickstart guide] you should have a running {product_name} with a Linux Centos6 Managed Entity created and activated.
 
-image:images/quickstart_linux_me.png[]
+image:images/quickstart_linux_me.png[width=700px]
 
 == Microservice Design
 As a first example of Microservices, we will start with managing this Linux Managed Entity. 
@@ -39,6 +39,7 @@ and to delete a user use the command:
 `userdel`.
 
 [source,shell]
+----
 [root@managed-linux ~]# cat /etc/passwd
 root:x:0:0:root:/root:/bin/bash
 bin:x:1:1:bin:/bin:/sbin/nologin
@@ -46,13 +47,14 @@ bin:x:1:1:bin:/bin:/sbin/nologin
 sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin
 oprofile:x:16:16:Special user account to be used by OProfile:/home/oprofile:/sbin/nologin
 tcpdump:x:72:72::/:/sbin/nologin
+----
 
 The list of users in /etc/passwd contains the system users that we want to exclude from the scope of the Microservice. We will cover this later in this tutorial.
 
 === Create a new Microservice
 Click on the "Integration" from the left menu, select the tab "Microservices" and click on "Create Microservice"
 
-image:images/microservice_creation.png[]
+image:images/microservice_creation.png[width=700px]
 
 === Import the Users with the IMPORT Function
 
@@ -82,7 +84,7 @@ TIP: it may be useful to use an online regular expression tester when developing
 
 Once validated, this regular expression can be used in the field "Micro service identifier extractor" of the IMPORT function builder:
 
-image:images/microservice_import.png[]
+image:images/microservice_import.png[width=700px]
 
 NOTE: the variables such as object_id, password, have to be created in the variable section of the Microservice.
 
@@ -94,7 +96,7 @@ To create a variable, you need to go to the "Variables" section in the left menu
 NOTE: When refering to a variable in the Create/Update or Delete functions, you will always have to prefix them by `$params.` (see below). 
 This is why the UI to create the variable is showing the string "$params."
 
-image:images/microservice_variable.png[]
+image:images/microservice_variable.png[width=700px]
 
 ////
 You can also select a type for the variables.
@@ -135,7 +137,7 @@ You are now ready to implement the CREATE:
 useradd -m -d {$params.home_dir} -c "{$params.comment}" -p {$params.password} {$params.object_id}
 ----
 
-image:images/microservice_function_create.png[]
+image:images/microservice_function_create.png[width=700px]
 
 and the DELETE:
 
