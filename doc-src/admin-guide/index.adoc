@@ -1,6 +1,10 @@
 = Administration Guide
-:imagesdir: ../resources/images
+:doctype: book
+:imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:toc: left
+:toclevels: 4 
+:source-highlighter: pygments
 
 The Installation and Configuration Guide will show you how to install, configure and activate the {product_name}.
 
