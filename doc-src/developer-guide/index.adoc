@@ -8,10 +8,6 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 This documentation contains a set of documentation, tutorials and examples to help you get familiar with the {product_name} as a development platform.
 
-To open the developer portal, you can just select the "Developer" link and login with your credentials.
-
-From the dashboard, you can start designign your BPM, your Workflows and your Microservices.
-
 == Developer Portal
 
 - link:developer_portal{outfilesuffix}[Developer portal]
