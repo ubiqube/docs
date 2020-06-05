@@ -1,0 +1,31 @@
+= How to Setup the Public Cloud Automation Workflow for AWS
+:doctype: book
+:imagesdir: ./resources/
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:toc: left
+:toclevels: 4 
+
+== Overview
+This documentation explains how to setup an environement to do simple VNF orchestration on Amazon Web Service.
+
+== Prerequisites
+The following prerequisites are required:
+
+- a valid access to an AWS account with enough privilege to programmatically manages the EC2 instances.
+
+== Setup
+=== Create the AWS managed entity
+
+Start by creating a new managed entity in a subtenant.
+
+You can use one of the subtenant from the link:quickstart{outfilesuffix}[mini lab] and click on "+ Create Managed Entity" from the Integration section on the left menu.
+
+Set the vendor and model to AWS / Generic.
+
+For the management IP address, you'll have to get the address of the AWS region you are going to use:
+----
+$ ping eu-west-1.console.aws.amazon.com
+PING eu-west-1.console.aws.amazon.com (54.239.38.117): 56 data bytes
+64 bytes from 54.239.38.117: icmp_seq=0 ttl=229 time=35.925 ms
+64 bytes from 54.239.38.117: icmp_seq=1 ttl=229 time=36.983 ms
+----

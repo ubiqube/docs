@@ -1,0 +1,25 @@
+= Version 2.1
+:imagesdir: ./resources/
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:doctype: book
+:toc: left
+:toclevels: 4 
+
+Various fixes have been made to the product to ensure its continued ability to empower users, ensure a smoother user experience and deliver the value that businesses need in today's environment while being ahead in terms of features, being evergreen and the agility of the {product_name} to grow.
+
+== Specific technical fixes
+
+=== 2.1.0 rc1 (release candidate 1)
+
+* MSA-7855 : [Microservices] synchronize API v2 not triggering any action on SecEngine
+* MSA-7459 : [Microservices] synchronize API to return fetched Objects
+* MSA-7970 : [Microservices] configuration parser: correspondence for multiple regexp
+* MSA-7801 : [Microservices] list view vs details view API data inconsistency
+* MSA-7801 : [Microservices] list view vs details view API data inconsistency
+* MSA-7628 : [Microservices] Inconsistency between microservice list and microservice detail for vendors and models
+* MSA-8015 : [API] DeviceRS form fields - get default fields for Custom Device adapters
+* MSA-7835 : [API] getMicroserviceObjectDefinition does not return multiple regexp under array
+* MSA-7830 : [API] managed entity create and edit API doesn't accept all values
+* MSA-7882 : [API] Swagger doc update for remaining RS
+
+

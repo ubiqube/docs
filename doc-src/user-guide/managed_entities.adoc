@@ -7,46 +7,86 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 In order to become a manageable entity in the {product_name}, an entity has to be created and activated in the {product_name}.
 
-== Create, Update and Activate a Managed Entity
-To create a Managed Entity, click the "Create" button on the Managed Entity Listing page.
+== Create, update and activate a managed entity
+To create a managed entity, click the "Create" button on the managed entity Listing page.
  
-This will bring you to the Create Managed Entity form.
+This will bring you to the form to create a managed entity.
 
-The fields marked with a "*" are required to create a Managed Entity. 
+The fields marked with a * are mandatory to create a managed entity. 
 If a tenant or customer is selected on the global filter, then they will be pre-populated in the form. Otherwise a tenant and customer must be selected.
 
 The selections in the "Vendor" and "Model" fields will determine the fields displayed in the "Management Information" and "Advanced Information" sections. 
-Different Managed Entity types have different associated variables that are used in their provisioning and operation.
+Different managed entity types have different associated variables that are used in their provisioning and operation.
 
 NOTE: the selection of the vendor and model will determine the Adapter that will be used by the CoreEngine for configuration and assurance. 
 It's important to select an adapter that is compatible with the managed entity model.
 Once a managed entity is created, it is not possible to change the model, the managed entity will have to be recreated.
 
-The Create Managed Entity form can be closed by pressing the "X" button in the top bar. Any data entered into the fields will be preserved for when the user returns to the form. Clicking the "Discard Changes" button will display a prompt confirming that all changes will be lost. 
+The Create managed entity form can be closed by pressing the "X" button in the top bar. Any data entered into the fields will be preserved for when the user returns to the form. Clicking the "Discard Changes" button will display a prompt confirming that all changes will be lost. 
 If the user accepts the form state will be reset.
 
-The update form can be accessed by clicking the pencil icon on the Managed Entity Listing page or on the Managed Entity Detail page.
+The update form can be accessed by clicking the pencil icon on the managed entity Listing page or on the managed entity Detail page.
 
-=== Managed Entity Activation
-A Managed Entity can be activated by pressing the "Activate" button the Managed Entity Detail screen.
+=== Managed entity activation
+A managed entity can be activated by pressing the "Activate" button the managed entity Detail screen.
 
 This will show a form that takes the variables such as management IP, username and password that will be used in the activation. 
 These fields may be pre-populated by the values given in the create form. 
 If the variables are updated they will be used for that particular activation but will not be persistent.
 
-When the activation is started the dialog shows the progress of the Managed Entity activation. 
+When the activation is started the dialog shows the progress of the managed entity activation. 
 This will update as the activation progresses and will show whether the activation succeeds or fails.
 
-NOTE: the activation of the managed entity is executed by the Adapter specific to the Managed Entity model.
-//// 
-TODO : add detail screen info when screen is not static anymore
+NOTE: the activation of the managed entity is executed by the Adapter specific to the managed entity model.
 
-
-
-== Managed Entity Detail Screen
+== Detail screen
 The managed entity details screen is used to display the details of the selected entity.  
 You can reach this screen via searching for a managed entity via the global search feature in the top navigation, or by selected an entity in the managed entities list:
 The information such as the serial number, firmware, memory ... are retreived dynamically by the entity adapter once the entity is activated.
+
+== Configuration
+
+Managed entities can be configured with link:./configuration_microservices{outfilesuffix}[microservices].
+
+In order to be able to use one or several microservices to configure a managed entity, the microservices must be associated to the managed entity via link:configuration_deployment_settings{outfilesuffix}[deployment settings].
+
+Once associated to the managed entity, you can navigate to the managed entity tab "Configure" to access the link:./configuration_microservices{outfilesuffix}#microservice-console[microservice configuration console].
+
+On the left menu of the console, you can see the list of the microservices that are associated to the current managed entity with the deployment setting.
+
+=== Synchronisation with the managed entity
+
+In order to import the configuration from the actual managed entity into the {product_name} configuration database, you need to click on the link "Synchronize with Managed Entity".
+
+This will call the CoreEngine and run the Import of each of the microservice.
+
+The Import function may not always be implemented (this depends on the design of the microservice), therefore, the CoreEngine will simply skip these microservices.
+
+Once the synchronization is done, the console will display the microservice instance, one by line, for each microservice.
+
+In order to ensure that the configuration stored in the database is exactly reflecting the actual configuration of the managed entity, the microservice instances, specific to the current managed entity, are deleted from the database before the actual import can start.
+
+=== Configuration of the managed entity
+
+You can create a new microservice instance by selecting a microservice on the left menu and clicking "+ Add Row" and providing the input parameters to configure.
+
+The input parameters are defined in the microservice "Variable" section.
+
+"+ Add Row" is only available when the Create function of the selected microservice is implemented.
+
+To update or delete a microservice instance, you need to select the row and click on "Edit" or "Remove". These action are only available if the Update or the Delete functions of the microservice are implemented.
+
+Once you have updated your microservice, you can either click on "Discard Changes" or "Apply Changes".
+
+"Discard Changes" will remove all the orders that where stacked and stored in memory.
+
+"Apply Changes" will unstack all the orders and pass all the orders that were stacked to the CoreEngine configuration daemon.
+The configuration daemon will process the order, build the configuration and apply on the managed entity.
+
+
+=== Stacking
+
+//// 
 
 include::./managed_entity_lifecycle{outfilesuffix}[]
 

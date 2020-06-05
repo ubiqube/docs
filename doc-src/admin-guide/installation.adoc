@@ -20,16 +20,9 @@ Next install link:https://docs.docker.com/compose/install/[Docker Compose] on yo
 
 The easiest way to get started with the {product_name} is to use the link:https://github.com/ubiqube/quickstart[quickstart guide on github].
 
-This quickstart guide will setup a mini-lab composed of the MSA-2 containers as well as a Linux container that you can use to experiment on. (see below for mode details)
+This quickstart guide will setup a mini-lab composed of the {product_name} containers as well as a Linux container that you can use to experiment on. (see below for mode details)
 
-1. check your dockerhub account password - or create a new account
-2. ask for access to private repo: `ubiqube/msa2`
-3. check your docker engine has access to dockerhub
-4. clone this repo: `git clone https://github.com/ubiqube/quickstart.git`
-5. `cd quickstart`
-6. run: `docker login`
-7. run: `docker-compose up -d`
-8. browse: https://localhost/ and connect as username `ncroot`, password `ubiqube`
+include::./doc-src/admin-guide/installation_install_steps.adoc[]
 
 image:images/connection_page.png[]
 
@@ -65,7 +58,7 @@ docker-compose exec api bash
 === Mini-lab details 
 image:images/minilab_containers.png[mini lab containers]
  
-In addition to add a Linux container (linux.me / 172.20.0.101) for experimentation, the mini-lab also comes with the following pre-installed:
+In addition to a Linux container (linux.me / 172.20.0.101) for experimentation, the mini-lab also comes with the following pre-installed:
 
 . A trial license valid for 30 days, limited to 5 Managed Entities
 . The REST Generic adapter from link:https://github.com/openmsa/Adaptors/tree/master/adapters/rest_generic[github.com/openmsa/Adaptors]
@@ -125,45 +118,8 @@ WARNING: this will wipe out every images from your docker engine.
 
 
 == Requirements on the host machine
-.on a PC
-- 4GB, 2CPU, 100GB
 
-.on a production environment 
-- minimum 16GB, 4CPU, 200GB
-
-=== Docker for Linux (or Linux VM)
-----
-sudo sysctl -w vm.max_map_count=262144
-echo 'vm.max_map_count = 262144' > /etc/sysctl.d/50-msa.conf
-sudo sysctl -p /etc/sysctl.d/50-msa.conf
-----
-
-=== Docker for Mac
-
-From the command line, run:
-----
-screen ~/Library/Containers/com.docker.docker/Data/vms/0/tty
-----	
-Press enter and use`sysctl` to configure vm.max_map_count:
-----
-sysctl -w vm.max_map_count=262144
-----	
-To exit the screen session, type Ctrl a d.
-
-=== Docker for Windows
-----
-docker-machine create -d virtualbox  \
-	--virtualbox-cpu-count=2 \
-	--virtualbox-memory=8192 \
-	--virtualbox-disk-size=50000 \
-	default
-----
-
-In the docker VM, do as for Linux host above:
-----
-sudo sysctl -w vm.max_map_count=262144
-sudo tee -a /etc/sysctl.conf <<< "vm.max_map_count=262144"
-----
+include::./doc-src/admin-guide/installation_setup_requirement.adoc[]
 
 The docker VM is mapped to a local IP on the Windows host,
 access to the msa is _NOT_ done via `https://localhost`,

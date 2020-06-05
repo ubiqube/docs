@@ -96,6 +96,11 @@ wildfly started with errors, please see server log for details            [  OK 
 
 Then monitor the logs as explained above.
 
+=== Wildfly startup failure `fatal KILL command`
+
+If wildfly fails to start with an error similar to `fatal KILL command` then you probably haven't allocated enough memory to your docker engine (see link:../user-guide/quickstart{outfilesuffix}#prerequisites[prerequisites])
+
+
 The above steps should resolve common reasons why the {product_name} is not functioning properly.  If there is something that is still not working properly, then please contact UBiqube.
 
 

@@ -7,35 +7,66 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 The quickstart covers how you can quickly get started using the {product_name} orchestration tool by installing a mini lab.
 
-.Prerequisites
+== Video tutorial
+This video details the steps for installing and activating the mini lab.
+
+video::afP4jmZfp9Q[youtube,width=600px,height=360] 
+
+[#prerequisites]
+== Prerequisites
 The following prerequisites are required for a successful use of {product_name}:
+//// 
+TODO specify that its for PC and add the specification CPU, RAM,...
+////
 
-- link:https://docs.docker.com/install/[Docker]
-- link:https://docs.docker.com/compose/install/[Docker Compose]
+. A recent version of Git. 
+. A working docker and docker-compose setup
+* link:https://docs.docker.com/install/[Docker]
+* link:https://docs.docker.com/compose/install/[Docker Compose]
 
+include::./doc-src/admin-guide/installation_setup_requirement.adoc[]
+
+////
 .Github repository
 This guide is composed of a link:https://github.com/ubiqube/quickstart[git repository] which is mainly a set of Dockerfile and docker-compose.xml files to pull the {product_name} from link:https://hub.docker.com/[Dockerhub] 
+////
 
-.Mini lab
-`docker-compose` will create the mini lab which is composed of the {product_name} containers and a link:managed_entities{outfilesuffix}[managed entity] (docker container: linux.me / 172.20.0.101) that you can use to experiment on.
+== Step 1: mini lab creation
 
-.Installation
-The installation of the mini lab is detailed in the link:../admin-guide/installation{outfilesuffix}[installation guide]
+include::./doc-src/admin-guide/installation_install_steps.adoc[]
 
-.Activation
-The mini lab needs to be activated. The managed entity is configured with one user `msa` with the password `ubiqube`.
+NOTE: The installation and the architecture of the mini lab is detailed in the link:../admin-guide/installation{outfilesuffix}[installation guide].
 
-NOTE: In case you have updated the {product_name} with `docker-compose up -d` or `docker-compose pull`, you might experience cache issue (for instance, your changes may not be reflected on the UI). To solve that, you can clean your browser cache or use a browser private session.
+== Step 2: activation
+The mini lab come with a Linux container (linux.me / 172.20.0.101) for experimentation.
+The Linux container is configured with one user `msa`, password `ubiqube`.
 
-.Trial license
-The {product_name} comes with a trial license valid for 30 days and limited to 5 managed entities.
+As the mini lab comes with a trial license valid for 30 days and limited to 5 managed entities, you can also experiment on additional managed entities.
 
-.Video tutorial
-This video detail the steps for installing and activating the mini lab.
+In order to ease your discovery of the {product_name}, we are providing a script that will create the mini lab environment for you: 
+- 1 tenant
+- 1 subtenant
+- a managed entity to manage the Linux container 
+- some microservices and workflow to start configuring the managed entity.
 
-video::./video/quickstart.mp4[mini lab installation and activation,width=600px,poster=./video/quickstart_poster.png]
+To create the mini lab environement, run the CLI command from where you have clonned the quickstart Github project:
 
-.Going further with the mini lab
+```
+docker-compose exec api /usr/bin/create_mini_lab.sh
+```
+
+== Mini lab detailed description
+=== Use case 1: firewall orchestration on Linux
+
+This lab use case will show you in a simple way how you can use the {product_name} to automate the configuration of iptables based firewall policy on the Linux container included in the mini lab.
+
+The use case is detailled in this guide: link:../developer-guide/simple_firewall_policy_mngt{outfilesuffix}[Firewall Policy Automation]
+
+You can use the guide to recreate the use case step by step or you may also directly run the use case with the workflow and microservices that are installed in the mini-lab.
+
+video::XoLGZd7-KdY[youtube,width=600px,height=360] 
+
+== Going further with the mini lab
 After you have installed and activated the mini lab, here are a list of tutorials that will allow you to go further with the {product_name}.
 
 These tutorials can be completely executed with the mini lab.
@@ -45,5 +76,3 @@ These tutorials can be completely executed with the mini lab.
 - link:../developer-guide/bpm_getting_started_developing{outfilesuffix}[Helloworld BPMP].
 - link:../developer-guide/microservices_getting_started_developing{outfilesuffix}[Getting Started with Microservices Design]: design a simple microservice to manage Linux users.
 - link:../developer-guide/simple_firewall_policy_mngt{outfilesuffix}[Firewall Policy Orchestration]: design micorservices and workflow to orchestrate firewall policy.
-
-.Getting more 
