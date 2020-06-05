@@ -5,7 +5,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :toc: left
 :toclevels: 4 
 
-The {product_name} Microservices engine is designed as a networking object-based programming language.
+The {product_name} microservices engine is designed as a networking object-based programming language.
 
 Any feature of any device can be managed with one or more Microservices. 
 Microservice designers define the variables and implement the Create | Read | Update | Delete method.
@@ -48,7 +48,7 @@ You can access the console by selecting the managed entity you want to configure
 
 image:images/microservice_console.png[Microservice Search]
 
-
+For more documentation about configuring managed entities with the microservices, you can go to this link:managed_entities{outfilesuffix}[documentation].
 
 == Microservice Design
 

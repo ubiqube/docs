@@ -84,8 +84,6 @@ Once you have updated your microservice, you can either click on "Discard Change
 The configuration daemon will process the order, build the configuration and apply on the managed entity.
 
 
-=== Stacking
-
 //// 
 
 include::./managed_entity_lifecycle{outfilesuffix}[]
