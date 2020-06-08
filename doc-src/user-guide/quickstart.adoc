@@ -44,6 +44,7 @@ The Linux container is configured with one user `msa`, password `ubiqube`.
 As the mini lab comes with a trial license valid for 30 days and limited to 5 managed entities, you can also experiment on additional managed entities.
 
 In order to ease your discovery of the {product_name}, we are providing a script that will create the mini lab environment for you: 
+
 - 1 tenant
 - 1 subtenant
 - a managed entity to manage the Linux container 
@@ -60,9 +61,11 @@ docker-compose exec api /usr/bin/create_mini_lab.sh
 
 This lab use case will show you in a simple way how you can use the {product_name} to automate the configuration of iptables based firewall policy on the Linux container included in the mini lab.
 
-The use case is detailled in this guide: link:../developer-guide/simple_firewall_policy_mngt{outfilesuffix}[Firewall Policy Automation]
+The development of this use case is detailled in this guide: link:../developer-guide/simple_firewall_policy_mngt{outfilesuffix}[Firewall Policy Automation]
 
 You can use the guide to recreate the use case step by step or you may also directly run the use case with the workflow and microservices that are installed in the mini-lab.
+
+For that, you'll have to select the subtenant named "TYRELL CORPORATION", click on the link "Automation" on the left menu and select the tab "Workflows". The workflow to use is "Simple Firewall (Python)"
 
 video::XoLGZd7-KdY[youtube,width=600px,height=360] 
 
