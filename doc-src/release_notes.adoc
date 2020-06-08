@@ -24,8 +24,8 @@ Various fixes have been made to the product to ensure its continued ability to e
 
 === Specific technical fixes
 
-- link:./release_notes/release_2.0{outfilesuffix}[version 2.0]
-- link:./release_notes/release_2.1{outfilesuffix}[version 2.1]
+- link:./release-notes/release_2.0{outfilesuffix}[version 2.0]
+- link:./release-notes/release_2.1{outfilesuffix}[version 2.1]
 
 
 == User experience (UX)
