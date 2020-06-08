@@ -67,7 +67,7 @@ You can use the guide to recreate the use case step by step or you may also dire
 
 For that, you'll have to select the subtenant named "TYRELL CORPORATION", click on the link "Automation" on the left menu and select the tab "Workflows". The workflow to use is "Simple Firewall (Python)"
 
-video::XoLGZd7-KdY[youtube,width=600px,height=360] 
+video::QRwv78yQWss[youtube,width=600px,height=360] 
 
 == Going further with the mini lab
 After you have installed and activated the mini lab, here are a list of tutorials that will allow you to go further with the {product_name}.
