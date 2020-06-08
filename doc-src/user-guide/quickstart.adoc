@@ -10,7 +10,7 @@ The quickstart covers how you can quickly get started using the {product_name} o
 == Video tutorial
 This video details the steps for installing and activating the mini lab.
 
-video::afP4jmZfp9Q[youtube,width=600px,height=360] 
+video::A7zT-AZf2cg[youtube,width=600px,height=360] 
 
 [#prerequisites]
 == Prerequisites
