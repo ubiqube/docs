@@ -1,9 +1,9 @@
 
-1. Check your docker engine has access to dockerhub. You can, for instance, run `docker run hello-world` to test the access.
-2. `$ git clone https://github.com/ubiqube/quickstart.git` to clone the github repository on you computer.
+1. Check your Docker engine has access to DockerHub. You can, for instance, run `docker run hello-world` to test the access.
+2. `$ git clone https://github.com/ubiqube/quickstart.git` to clone the GitHub repository on you computer.
 3. `$ cd quickstart`
-4. `$ sudo docker login`. You need to have you own Docker ID. Authorisation will be granted by UBiqube.
+4. `$ sudo docker login` You need to have you own Docker ID. Authorisation will be granted by UBiqube.
 5. `$ sudo docker-compose up -d` to create the mini lab composed of the {product_name} containers and managed entites to experiment on.
 6. Browse: link:https://localhost/[] and connect with username `ncroot` and password `ubiqube`. The portal might take a few minutes to be up and running.
 
-NOTE: In case you have updated the {product_name} with `docker-compose up -d` or `docker-compose pull`, you might experience cache issues (for instance, your changes may not be reflected on the UI). To solve that, you can clean your browser cache or use a browser private session.
+NOTE: In case you have updated the {product_name} with `docker-compose up -d` or `docker-compose pull`, you might experience cache issues (for instance, your changes may not be reflected on the UI). To solve that, you can clean your browser cache, or use a browser private session.
