@@ -130,3 +130,7 @@ $ docker-machine ls
 NAME      ACTIVE   DRIVER       STATE     URL                         SWARM   DOCKER     ERRORS
 default   *        virtualbox   Running   tcp://192.168.99.100:2376           v19.03.5
 ```
+
+== Troubleshooting
+
+To access the Troubleshooting Guide, that can be found in the Admin Guide menu.
