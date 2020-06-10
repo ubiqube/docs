@@ -45,10 +45,10 @@ As the mini lab comes with a trial license valid for 30 days and limited to 5 ma
 
 In order to ease your discovery of the {product_name}, we are providing a script that will create the mini lab environment for you: 
 
-- 1 tenant
-- 1 subtenant
-- a managed entity to manage the Linux container 
-- some microservices and workflow to start configuring the managed entity.
+- 1 tenant - BladeRunner
+- 1 subtenant - Tyrell Corporation
+- a managed entity to manage the Linux container - linux_me
+- some microservices and workflow to start configuring the managed entity - users, firewall,....
 
 To create the mini lab environement, run the CLI command from where you have clonned the quickstart Github project:
 
