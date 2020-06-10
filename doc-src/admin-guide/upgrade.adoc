@@ -1,6 +1,7 @@
 = How to Upgrade the {product_name}
-:doctype: book 
+:doctype: book
 :imagesdir: ./resources/
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :toc: left
 :toclevels: 4 
 
@@ -8,6 +9,7 @@
 
 1. a new release or patch is made available by UBiqube
 2. the release/patch is published to the dockerhub registry
-3. upgrade the {product_name} installation: docker-compose pull
-4. starts the containers in the background and leaves them running: docker-compose up -d
+3. upgrade the {product_name} installation: `sudo docker-compose pull`
+4. starts the containers in the background and leaves them running: `sudo docker-compose up -d`
 
+NOTE: if you need to (re)install the {product_name} you can use the link:../user-guide/quickstart{outfilesuffix}[quickstart guide]
