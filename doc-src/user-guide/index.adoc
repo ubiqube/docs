@@ -23,8 +23,7 @@ The manager guide provides the documentation to help you understand the key conc
 - link:automation_workflows{outfilesuffix}[Workflows]
 - link:bpm{outfilesuffix}[BPM]
 
-== Role based access control
-//TODO  - link:portal_overview{outfilesuffix}[Portal Overview]
+== User management
 - link:tenants_and_users{outfilesuffix}[Tenants and Users]
 
 == Architecture
