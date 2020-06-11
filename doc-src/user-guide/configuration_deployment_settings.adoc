@@ -5,18 +5,18 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :toc: left
 :toclevels: 4 
 
-Deployment Settings will allow you to build your configurations and apply them to you Managed Entities. 
-Deployment Settings will also ease any change to your configurations: you can add/remove a template or a link:configuration_microservices{outfilesuffix}[microservice] and be assured that the change will be applied to every existing managed entities.
+Deployment Settings will allow you to build your configurations and apply them to your link:./managed_entities{outfilesuffix}[managed entities]. 
+Deployment Settings will also ease any change to your configurations: you can add/remove a template or a link:configuration_microservices{outfilesuffix}[microservice] and be assured that the change will be applied in a consistant to all your managed entities.
 
 == Deployment Settings Use
 
-You can view the Deployment Settings by clicking the "Configuration" link on the left menu and select the tab "Deployment Settings"
+You can view the deployment settings by clicking the "Integration" link on the left menu and select the tab "Deployment Settings"
 
 This page shows the list of deployment settings, sortable and searchable by name.
 
-image:images/deployment_settings_search.png[Deployment Settings Search]
+image:images/deployment_settings_search.png[Deployment Settings Search,width=1000px]
 
-A Deployment setting acts as the intermediary between a set of Managed Entities and a set of Microservices
+A Deployment setting acts as the intermediate layer between a set of managed entities and a set of microservices
 
 [ditaa]
 ....
@@ -31,9 +31,4 @@ A Deployment setting acts as the intermediary between a set of Managed Entities 
 
 == Access Control
 
-As Deployment Settings are customer specific, in order to view the existing Deployment Settings you need first to select a customer. Once selected as shown below, this enables the user to change those settings appropriately.
-
-image:images/deployment_settings.png[Deployment Settings]
-
-You can search Deployment Settings or order them as appropriate by clicking on the field headings such as Deployment Setting Name, Vendor / Model or Date Modified.
-
+The scope of a deployment settings is the subteant. In order to view the existing deployment settings you need first to select a subtenant. Once selected as shown below, this enables the user to change those settings appropriately.

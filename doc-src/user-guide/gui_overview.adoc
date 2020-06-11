@@ -11,30 +11,24 @@ IMPORTANT: TODO
 
 ////
 
-== Administrator and Manager Dashboard
+== Administrator and manager dashboard
 
 When you login as an administrator or a manager, the following dashboard is displayed
 
-image:images/gui_admin_dashboard.png[Admin Dashboard]
+image:images/gui_admin_dashboard.png[Admin Dashboard,width=1000px]
 
 [stripes=even]
 |===
 | Dashboard 		| Display graphs to show the overall status of customer Managed Entities and Workflow Instance.
 					  Each of the graphs represents the status of the managed entities for the named customer.
-| Alarms 			| Shows the alarms raised by the Assurance system (coming soon)
-| Managed Entities	| Shows the entities managed by this {product_name}. Entities can be network element such as routers or firewalls, cloud or uCPE management system,...
-| Integration	| Shows the Microservices and the Templates available in the {product_name} Repository. 
-						
-					  Configuration will also show the Deployment Settings created in this {product_name}
-| Automation		| Shows the Workflows that are in use and available for use in the system. You can add a Workflow to a Customer from there.
-| BPM				| Create or Load your business process modelings, integrate them with Workflows and Microservices.
-| Assurance			| View the Monitoring configuration. You can edit Monitoring configuration and configure your own SNMP based KPI to monitor your Managed Entities. (coming soon)
-| Repository		| Organise your files such as Templates, Microservices, Workflows, Firmware images in the Repository. (coming soon)
-| Settings			| For license activation and system health status. (coming soon)
+| Integration		| Shows the managed entities, microservices and deployment settings. 						
+| Automation		| Shows the Workflows and BPMs that are in use and available for use in the system.
+| Admin				| Manage tenants and users. 
+| Settings			| For license activation
 | Auto-refresh 		| Set an overall refresh period in seconds.
 |===
 
-=== Status Graphs
+=== Status graphs
 
 image:images/dashboard_status_graph_overview.png[alt=Status Graph, width=200px]
 
@@ -55,7 +49,7 @@ If you click on any of those status graphs, you then see a pop-up table containi
 
 image:images/dashboard_status_graph_details.png[alt=Status Graph Details, width=400px]
 
-=== Filters, Sorts and Search
+=== Filters, sorts and search
 
 On the administrator dashboard, there are a number of filter, sort, and search options available to help you organise and view your data.
 
@@ -68,7 +62,7 @@ image:images/dashboard_filter_sort_search.png[alt=Filters Sorts Search]
 
 === Navigation
 
-==== Selecting Tenants and Customers
+==== How to select tenants and Subtenants
 A central part of the navigation in {product_name} is understanding the tenant and customer that are selected.  
 You can use the drop-downs on the top of the navigation to choose which tenant and customer you want to filter the lists of managed entities, microservices, and workflows by.
 
@@ -76,45 +70,45 @@ image:images/admin_dashboard_tenant-customer_selection.png[alt=Tenant and Custom
 
 NOTE: Note that the Role-Based Access Controls (RBAC) will affect what tenants and customers will be available to you.  For example, if your account only has access to one tenant, you won't even have the option to select a different tenant.
 
-.Filters Persistence
+.Filters persistence
 One very important topic to note is that your tenant and filter selection are persistent between screens.  
 
-.Searching for Customers and Tenants
+.Searching for subtenants and tenants
 One useful feature in the tenant and customer selection drop-downs is the ability to search for an item by name.
 Auto-completion type ahead is also supported.
 
-.Clearing Filters
+.Clearing filters
 To clear your selected tenant or customer filters, you simply click on the X button in the drop-down beside the name.
 
-.Searching for Managed Entities
+.Searching for managed entities
 To perform a system-wide search for a managed entity by name, you should firstly click on the search icon in the top-right corner of the screen.
 Auto-completion type ahead is also supported.
 
 NOTE: One important point to remember about performing a managed entity search is that when you search for an entity, you are implicitly selecting the tenant that entity belongs to in the main filter drop-downs. 
 
-== Managed Entities
-To see the list of managed entities, click on the "Managed Entities" link in the left menu
 
-image:images/me_detailed_list.png[alt=Managed Entities Detailed List]
+== Integration
+
+.Managed entities
+To see the list of managed entities, click on the "Integration" link in the left menu
+
+image:images/me_detailed_list.png[alt=Managed Entities Detailed List,width=1000px]
 
 On that screen, you can use the list view toggle button to switch to a compacted view of the managed entities list.
 You can also adjust the amount of entities displayed on each page
 
 Finally, on this screen you can also perform a simple search of the managed entity you are looking for by its name.
 
-TIP: See also - link:managed_entities{outfilesuffix}[Managed Entities] for a detailed documentation on managed entities
+TIP: See also - link:managed_entities{outfilesuffix}[this documentation] for a detailed documentation on managed entities
 
-== Integration
-To see the list of Microservices, templates and deployment settings, click on the "Integration" link in the left menu.
+.Microservice and deployment settings
+To see the list of microservices and deployment settings, click on the "Integration" link in the left menu.
 
-//// 
-TODO: update screenshot
-////
-image:images/configurations_me_list.png[alt=Configurations Microservice List, width=800px]
+image:images/configurations_me_list.png[alt=Configurations Microservice List, width=1000px]
 
 You can view the list of templates and deployment settings by clicking on the tabs "Templates" "and Deployment Settings".
 
-This screen will let you build you Deployment Settings by selecting Microservice and Configuration Template.
+This screen will let you build your deployment settings by selecting microservice .
 
 You will also be able to select the Managed Entities you wish to apply you configuration service on.
 
@@ -122,25 +116,26 @@ TIP: See also - link:configuration_microservices{outfilesuffix}[Microservices] f
 
 
 == Automation
-To see the list of Workflows select the "Automation" link in the left menu.
 
-By default, if you are connected as a Manager or an Administrator you will see the list of Workflows that are associated to the Customers you are managing 
+.Workflows
+To see the list of workflows select the "Automation" link in the left menu.
 
-image:images/automation_wf_list.png[alt=Workflow List by Customer] 
+By default, if you are connected as a manager or an administrator you will see the list of Workflows that are associated to the subtenant you are managing 
 
-If you select a Customer, the list will be filtered by the selected Customer's Workflows and you will see the process execution status of the Workflow instances.
+image:images/automation_wf_list.png[alt=Workflow List by Customer,width=1000px] 
 
-image:images/automation_wf_list_by_customer.png[alt=Workflow List by Customer] 
+If you select a subtenant, the list will be filtered by the selected subtenant's workflows and you will see the process execution status of the workflow instances.
 
-To see the Workflow instance for a Customer, you can click on the Workflow name
+image:images/automation_wf_list_by_customer.png[alt=Workflow List by Customer,width=1000px] 
 
-image:images/automation_wf_instance_list_by_customer.png[alt=Workflow Instance List] 
+To see the workflow instance for a subtenant, you can click on the Workflow name
+
+image:images/automation_wf_instance_list_by_customer.png[alt=Workflow Instance List,width=1000px] 
 
 From this screen you can start using the existing instances or create a new instance for the current Workflow.
 
-== BPM
-
-To see the list of Business Processes select the "BPM" link in the left menu
+.BPMs
+To see the list of Business Processes select the "Automation" link in the left menu
 
 image:images/automation_bpm_list.png[alt=BPM List] 
 
@@ -148,34 +143,26 @@ You can select a BPM by clicking on a name in the list and start working on your
 
 image:images/automation_bpm_edit.png[alt=BPM Edition] 
 
-
-
-////
-
-Developer Dashboard doc
-TODO: update for next release
-
-////
-
 == Developer Dashboard
-NOTE: This feature is not available yet. 
-The documentaion below aims at providing a early preview. 
 
-The developer dashboard in {product_name} 2.0 is available when you chose to login as a developer.  On this dashboard, one of the first things you will notice is the three vertical swimlanes:
+The developer dashboard in {product_name} is available when you chose to login as a developer.  
+On this dashboard, one of the first things you will notice is the three vertical swimlanes:
 
-image:images/gui_dev_dashboard.png[alt=Developer Dashboard]
+image:images/gui_dev_dashboard.png[alt=Developer Dashboard,width=1000px]
 
 The three swimlanes match the three main layers of the {product_name} framework, namely:
 
-.Workflow Library
-This is where you can develop new workflows for your application.  In {product_name}, workflows can be written in either PHP or Python.  A workflow is a series of tasks that you can develop to carry out any set of complex tasks that you wish to automate via our orchestration engine.
+.Workflow library
+This is where you can develop new workflows for your application.  
+In {product_name}, workflows can be written in either PHP or Python.  
+A workflow is a series of tasks that you can develop to carry out any set of complex tasks that you wish to automate via our orchestration engine.
 
-.Microservices Library
+.Microservices library
 This is where you can develop new microservices for your application.  
 In {product_name}, a microservice is a way to wrap commands (Create/Read/Update/Delete/Import) into a service, that can be invoked with a workflow or even from outside {product_name} via our REST API.  
 The microservices are typically used for managing the configuration of managed entities in an abstracted, vendor-neutral way.
 
-.Adaptor Library
+.Adaptor library
 This is where you can develop new adaptors for your application, or import existing ones.  
 The adaptors are used to connect to managed entities from {product_name}, regardless of the network protocols supported by the entity in question.  
 If an adaptor is not already available for your entity vendor in the library, a new one can be developed.
