@@ -7,6 +7,17 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 Various fixes have been made to the product to ensure its continued ability to empower users, ensure a smoother user experience and deliver the value that businesses need in today's environment while being ahead in terms of features, being evergreen and the agility of the {product_name} to grow.
 
+== New features
+=== User and tenant management (UI and REST API) 
+
+- Tenants : create, update, delete & list
+- Subtenants : create, delete & list
+- Admin : create, delete & list
+- Manager : create, delete & list
+- MSA-8009 : Adapt Variables Extended Parameter API for API Container
+ 
+NOTE: the user and tenant management features are available for preview and they need to be activated in the file docker-compose.xml in the quickstart by setting the flag FEATURE_ADMIN to true.
+
 == Specific technical fixes
 
 === 2.1.0 rc1 (release candidate 1)
@@ -17,9 +28,19 @@ Various fixes have been made to the product to ensure its continued ability to e
 * MSA-7801 : [Microservices] list view vs details view API data inconsistency
 * MSA-7801 : [Microservices] list view vs details view API data inconsistency
 * MSA-7628 : [Microservices] Inconsistency between microservice list and microservice detail for vendors and models
+* MSA-8004 : [Microservices] vendor/model is not being saved when creating a new microservice
 * MSA-8015 : [API] DeviceRS form fields - get default fields for Custom Device adapters
 * MSA-7835 : [API] getMicroserviceObjectDefinition does not return multiple regexp under array
 * MSA-7830 : [API] managed entity create and edit API doesn't accept all values
 * MSA-7882 : [API] Swagger doc update for remaining RS
+* MSA-8153 : [API] Update-device-update-device-data-in-ES-only
+* MSA-8154 : [Workflow] Service Instance Count differs in Services List view and Instances view	
+* MSA-8128 : [Workflow] Saving Workflow Causes NullPointerException
+* MSA-8123 : [Workflow] Duplicates in last executed processes in Dashboard
+* MSA-8194 : [Workflow] Existing pingME Python WF not working since upgrading to 2.1.0rc1
+
+== Notes
+
+The legacy portal “UBI/en” is now deprecated. UBiqube will not maintain it or provide any support related to this portal. 
 
 
