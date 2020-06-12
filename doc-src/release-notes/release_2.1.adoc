@@ -14,7 +14,6 @@ Various fixes have been made to the product to ensure its continued ability to e
 - Subtenants : create, delete & list
 - Admin : create, delete & list
 - Manager : create, delete & list
-- MSA-8009 : Adapt Variables Extended Parameter API for API Container
  
 NOTE: the user and tenant management features are available for preview and they need to be activated in the file docker-compose.xml in the quickstart by setting the flag FEATURE_ADMIN to true.
 
@@ -38,6 +37,7 @@ NOTE: the user and tenant management features are available for preview and they
 * MSA-8128 : [Workflow] Saving Workflow Causes NullPointerException
 * MSA-8123 : [Workflow] Duplicates in last executed processes in Dashboard
 * MSA-8194 : [Workflow] Existing pingME Python WF not working since upgrading to 2.1.0rc1
+* MSA-8009 : [Packaging] Adapt Variables Extended Parameter API for API Container
 
 == Notes
 
