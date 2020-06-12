@@ -17,6 +17,17 @@ Various fixes have been made to the product to ensure its continued ability to e
  
 NOTE: the user and tenant management features are available for preview and they need to be activated in the file docker-compose.xml in the quickstart by setting the flag FEATURE_ADMIN to true.
 
+== Upgrading
+Instructions to upgrade are here:
+https://ubiqube.com/wp-content/docs/latest/admin-guide/upgrade.html
+
+== CoreEngine
+No changes have been made to the core engine from previous versions of the product. This allows consistency from branches of OpenMSA (community version), found on GitHub: https://github.com/openmsa
+
+== Notes
+
+The legacy portal “UBI/en” is now deprecated. UBiqube will not maintain it or provide any support related to this portal. 
+
 == Specific technical fixes
 
 === 2.1.0 rc1 (release candidate 1)
@@ -39,8 +50,6 @@ NOTE: the user and tenant management features are available for preview and they
 * MSA-8194 : [Workflow] Existing pingME Python WF not working since upgrading to 2.1.0rc1
 * MSA-8009 : [Packaging] Adapt Variables Extended Parameter API for API Container
 
-== Notes
 
-The legacy portal “UBI/en” is now deprecated. UBiqube will not maintain it or provide any support related to this portal. 
 
 
