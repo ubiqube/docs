@@ -7,7 +7,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == {product_name}インストール手順
 
-1. DockerHub(https://hub.docker.com/)にアカウントを作成してください。
+1. link:https://hub.docker.com/[DockerHub]にアカウントを作成してください。
 2. 作成したアカウントのIDをUBiqubeに伝えてください。後述するイメージへのリポジトリへのアクセス権限を付与します。
 3. docker/docker-composeをマシンにインストールしてください。
 4. 以下のコマンドを実行してください。
