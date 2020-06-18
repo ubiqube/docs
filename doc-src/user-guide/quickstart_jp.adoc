@@ -5,34 +5,56 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :toc: left
 :toclevels: 4 
 
-== {product_name}インストール手順
+== インストール手順
 
-1. link:https://hub.docker.com/[DockerHub]にアカウントを作成してください。
-2. 作成したアカウントのIDをUBiqubeに伝えてください。後述するイメージへのリポジトリへのアクセス権限を付与します。
-3. docker/docker-composeをマシンにインストールしてください。
-4. 以下のコマンドを実行してください。
-# 任意のディレクトリ上で
-`git clone https://github.com/ubiqube/quickstart.git`
-`cd quickstart`
-# ユーザID/パスワードを聞かれるので、1で作成したid/passを入力してください。
-`docker login`
-`docker-compose up -d`
-5. ブラウザからhttps://localhost/ にアクセスしてください。
-6. user:ncroot, password:ubiqubeで{product_name}にログインします。(数分待つ必要があります。)
-7. コンソールに戻って以下のコマンドを実行してください。
-# サンプルデータを{product_name}に投入します。
+.step 1
+link:https://hub.docker.com/[DockerHub]にアカウントを作成してください。
+
+.step 2
+作成したアカウントのIDをUBiqubeに伝えてください。後述するイメージへのリポジトリへのアクセス権限を付与します。
+
+.step 3
+docker/docker-composeをマシンにインストールしてください。
+
+.step 4
+以下のコマンドを実行してください。
+任意のディレクトリ上で。
+----
+git clone https://github.com/ubiqube/quickstart.git
+cd quickstart
+----
+
+.step 5
+ユーザID/パスワードを聞かれるので、1で作成したid/passを入力してください。
+----
+docker login
+docker-compose up -d
+----
+
+.step 6
+ブラウザからhttps://localhost/ にアクセスしてください。
+
+.step 7
+user:ncroot, password:ubiqubeで{product_name}にログインします。(数分待つ必要があります。)
+
+.step 8
+コンソールに戻って以下のコマンドを実行してください。
+
+サンプルデータを{product_name}に投入します。
 
 ```
 docker-compose exec api /usr/bin/create_mini_lab.sh
 ```
 
-* 実行中にhttpを使用した通信を行います。localhostに対してですが、社内proxyにブロックされた例もありますので、エラーが発生した際はエラー出力の共有とともにご連絡いただければ対処方法を検討いたします。
-8. 再度ブラウザに戻り、MSAにログイン後、ダッシュボードに円グラフが二つ追加されていることが確認できればセットアップ完了です。
+NOTE: 実行中にhttpを使用した通信を行います。localhostに対してですが、社内proxyにブロックされた例もありますので、エラーが発生した際はエラー出力の共有とともにご連絡いただければ対処方法を検討いたします。
 
-* このステップにおいても、環境により、キャッシュクリア/ブラウザ/docker再起動が必要な場合があります。
+NOTE: 再度ブラウザに戻り、MSAにログイン後、ダッシュボードに円グラフが二つ追加されていることが確認できればセットアップ完了です。
+
+NOTE: このステップにおいても、環境により、キャッシュクリア/ブラウザ/docker再起動が必要な場合があります。
+
 dockerを再起動する場合は以下の手順をお試しください。
 
-```` 
+----
 docker-compose down
 docker-compose up -d
-````
+----
