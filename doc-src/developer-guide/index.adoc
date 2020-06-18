@@ -31,6 +31,9 @@ This documentation contains a set of documentation, tutorials and examples to he
 
 - link:microservices_getting_started_developing{outfilesuffix}[Getting Started with Microservice Design]
 - link:microservice_editor{outfilesuffix}[Microservice Editor]
+////
+TODO: netconf yang : http://confluence.ubiqube.com/pages/viewpage.action?pageId=31555628
+//// 
 
 === References
 

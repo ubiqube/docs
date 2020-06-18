@@ -9,8 +9,10 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 The manager guide provides the documentation to help you understand the key concepts of the {product_name} and help you understand how to use the {product_name} in an operational environment. 
 
 == Getting started
-
 - link:quickstart{outfilesuffix}[Quickstart Guide]
+- link:quickstart_jp{outfilesuffix}[Quickstart Guide (Japanese)]
+
+== Overview
 - link:key_concepts{outfilesuffix}[Key Concepts]
 - link:gui_overview{outfilesuffix}[GUI Overview]
 
