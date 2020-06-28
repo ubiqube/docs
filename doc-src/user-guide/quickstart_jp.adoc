@@ -6,36 +6,28 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 == インストール手順
 
 .step 1
-link:https://hub.docker.com/[DockerHub]にアカウントを作成してください。
+UBiqube社員に、MSA2トライアル希望の旨を連絡願います。後述するイメージへのリポジトリへのlink:https://docs.docker.com/docker-hub/access-tokens/[access token]を払い出します。
 
 .step 2
-作成したアカウントのIDをUBiqubeに伝えてください。後述するイメージへのリポジトリへのアクセス権限を付与します。
-
-.step 3
 docker/docker-composeをマシンにインストールしてください。
 
-.step 4
-以下のコマンドを実行してください。
-任意のディレクトリ上で。
+.step 3
+任意のディレクトリ上で、以下のコマンドを実行してください。
 ----
 git clone https://github.com/ubiqube/quickstart.git
 cd quickstart
-----
-
-.step 5
-ユーザID/パスワードを聞かれるので、1で作成したid/passを入力してください。
-----
 docker login
 docker-compose up -d
 ----
+IMPORTANT: `docker login`にてユーザ情報を聞かれますので、ID"msa2trial"と、1で払い出したアクセストークンを使用して下さい。
 
-.step 6
+.step 4
 ブラウザからhttps://localhost/ にアクセスしてください。
 
-.step 7
+.step 5
 user:ncroot, password:ubiqubeで{product_name}にログインします。(数分待つ必要があります。)
 
-.step 8
+.step 6
 コンソールに戻って以下のコマンドを実行してください。
 
 サンプルデータを{product_name}に投入します。
