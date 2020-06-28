@@ -52,8 +52,14 @@ In order to ease your discovery of the {product_name}, we are providing a script
 
 To create the mini lab environement, run the CLI command from where you have clonned the quickstart Github project:
 
+.First install the libraries (Microservices, Workflows and Adapters from github.com/openmsa
 ```
-docker-compose exec api /usr/bin/create_mini_lab.sh
+sudo docker-compose exec api /usr/bin/install_libraries.sh
+```
+
+.Provision the mini lab with tenants, managed entities,...
+```
+sudo docker-compose exec api /usr/bin/create_mini_lab.sh
 ```
 
 == Mini lab detailed description

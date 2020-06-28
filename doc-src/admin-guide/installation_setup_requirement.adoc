@@ -3,7 +3,7 @@
 === Resources
 
 .on a PC (for lab experimentation)
-- 4GB, 2CPU, 100GB
+- 8GB, 2CPU, 100GB
 
 .on a production environment 
 - minimum 16GB, 4CPU, 200GB
