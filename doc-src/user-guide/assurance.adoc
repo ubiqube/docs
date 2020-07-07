@@ -1,0 +1,31 @@
+= Assurance
+:doctype: book
+:imagesdir: ./resources/
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:toc: left
+:toclevels: 4 
+
+The {product_name} provides an assurance module for collecting network events and managing alarms
+
+All the events sent by the managed or monitored entities are collected, indexed and analyzed centrally.
+
+== Log analysis
+=== Overview
+
+The {product_name} can collect, index and store events received from the managed entities. 
+Once indexed, the logs are fully searchable from the user interface.
+
+The diagram below shows the syslog processing steps from the device to Elasticsearch. 
+
+image:images/assurance_log_analysis_event_flow.png[width=720px]
+
+
+== Alarm management
+=== Overview
+The alarm management module is based on the detection of events which internal (VNOC), SNMP thresholds, or sylogs sent by the managed devices and collected by the {product_name}. 
+Alarm management is designed to provide email notifications to customers or managers, to send SNMP traps to an external trap server, or trigger predetermined automated processes.
+
+The detection of events relies on rules configured at the super administrator level. 
+Rule management is available for the super administrator (ncroot). The rules are defined globally and can be modified by the SOC team. 
+The SOC team can modify the setting of the notification  on a per-event and/or per-customer basis. 
+The rules are executed on a periodic basis (the period frequency can be configured) and alarms are generated whenever a rule matches.
