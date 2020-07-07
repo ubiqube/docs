@@ -8,21 +8,41 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 Various fixes have been made to the product to ensure its continued ability to empower users, ensure a smoother user experience and deliver the value that businesses need in today's environment while being ahead in terms of features, being evergreen and the agility of the {product_name} to grow.
 
 == New features
+
+The following feature improvements are included with this release:
+
+=== Assurance
+
+Assurance (partial in RC2) - renders the logs from Elasticsearch that are collected from managed entities.  For now disabled by default and not completed, but you can enable this feature for preview via the “FEATURE_ALARMS=true” flag in your docker-compose.yml file.
+
 === User and tenant management (UI and REST API) 
 
-- Tenants : create, update, delete & list
-- Subtenants : create, delete & list
-- Admin : create, delete & list
-- Manager : create, delete & list
- 
-NOTE: the user and tenant management features are available for preview and they need to be activated in the file docker-compose.xml in the quickstart by setting the flag FEATURE_ADMIN to true.
+User management - completed the user and tenant management screens, now enabled by default.
 
-== Upgrading
-Instructions to upgrade are here:
-https://ubiqube.com/wp-content/docs/latest/admin-guide/upgrade.html
+=== Product License Management
+
+License management - license now displayed, along with ability to activate it via the settings screen.
+
+=== Workflow
+
+Workflow task templates - basic code templates for PHP and Python tasks are now included in the editor.
+
+=== Microservice
+
+Microservice reference type - the Microservice reference type has been added to the Workflow editor as an advanced type.
+
+=== REST API
+
+REST API connection status - the portal UI now handles issues connecting to the MSA REST API more eloquently, for example by displaying feedback messages to the end user until the MSA REST API is online and connected.
+
+Swagger - improved REST API documentation.
+
 
 == CoreEngine
 No changes have been made to the core engine from previous versions of the product. This allows consistency from branches of OpenMSA (community version), found on GitHub: https://github.com/openmsa
+
+== Upgrading
+Instructions to upgrade are here: https://ubiqube.com/wp-content/docs/latest/admin-guide/upgrade.html
 
 == Notes
 
@@ -31,6 +51,8 @@ The legacy portal “UBI/en” is now deprecated. UBiqube will not maintain it o
 == Specific technical fixes
 
 === 2.1.0 rc1 (release candidate 1)
+
+==== Bug fixes
 
 * MSA-7855 : [Microservices] synchronize API v2 not triggering any action on SecEngine
 * MSA-7459 : [Microservices] synchronize API to return fetched Objects
@@ -51,5 +73,45 @@ The legacy portal “UBI/en” is now deprecated. UBiqube will not maintain it o
 * MSA-8009 : [Packaging] Adapt Variables Extended Parameter API for API Container
 
 
+=== 2.1.0 rc2 (release candidate 2)
 
+==== Features
 
+MSA-8291 : [UI]: Show API connection status on UI
+MSA-7693 : [Workflow] Show task templates when you create a new task
+MSA-8292 : [Workflow] Make it possible to create/edit an OBMFRef variable including advanced parameters
+MSA-6908 : [API] Update sql query in UserDao getManagerRole with additional check
+MSA-7915 : [API] Swagger Doc Update - DeviceRS
+MSA-7946 : [API] License Management - API to upload a License
+MSA-7947 : [API] License Management - API to read the license info
+MSA-7949 : [API] User Management - API to attach and detach subtenant to manager by Id
+MSA-8251 : [Configuration] DB tables for MSA VARS
+MSA-8357 : [Admin] fuzzy search and lastModified field for list Admin
+
+==== Bug fixes
+
+MSA-7698 : [Microservice] Optional parameters (hostname, management port interface etc.) are not saved.
+MSA-8068 : [Microservice] When object_id = 0 the microservice is impossible to delete
+MSA-8311 : [Microservice] Some data not displaying in the table in the console
+MSA-8344 : [API] Manage alarm manage API bug fixes
+MSA-8356 : [API] Manager API doesn't save pwd, autofills prefix prefix with default NCL value, doesn't accept updated tenant ID
+MSA-8211 : [API] Remove buggy synchronization API from DeviceRS
+MSA-8024 : [API] it is not possible anymore to create Manager by API (classic portal)
+MSA-8053 : [API] User Mgmt: general issues
+MSA-8191 : [API] Search logs API not working
+MSA-8128 : [Workflow] Saving a workflow Causes NullPointerException
+MSA-8154 : [Workflow] Service Instance count differs in services list view and Instances view
+MSA-8198 : [Workflow] cannot save workflows
+MSA-8280 : [Workflow] editing an existing workflow (created using legacy UI) and saving will make it invisible in legacy GUI
+MSA-8288 : [Workflow] Workflow API does not return supported language for lists
+MSA-7908 : [Auth] user locked out of UI due to exception on wildfly (related to repository)
+MSA-7868 : [Admin] after login, the tenant is already assigned
+MSA-8236 : [Admin] User management for ncroot need review
+MSA-8260 : [Admin] when connected as a manager the selected tenant is not displayed
+MSA-8268 : [Admin] Set tenant for manager on login
+MSA-8289 : [Admin] tenant Ubiqube/NCL should be hidden from the UI
+MSA-8241 : [Admin] Edit Subtenant throwing NPE on further edits
+MSA-6859 : [Admin] When a customer is selected in the breadcrumb, the related tenant is not displayed
+MSA-8214 : [Adapter] Not able to find Netconf MS definitions in DS
+MSA-8259 : [Adapter] Not able to see Netconf model for Oneaccess in the UII
+ 
