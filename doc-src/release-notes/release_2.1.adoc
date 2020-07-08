@@ -13,29 +13,31 @@ The following feature improvements are included with this release:
 
 === Assurance
 
-Assurance (partial in RC2) - renders the logs from Elasticsearch that are collected from managed entities.  For now disabled by default and not completed, but you can enable this feature for preview via the “FEATURE_ALARMS=true” flag in your docker-compose.yml file.
+Assurance (partially implemented in RC2) protects against and manages risk. This release renders the logs from Elasticsearch that are collected from managed entities.  This will enable you to better manage risk and determine best courses of action, based on the data.  
 
-=== User and tenant management (UI and REST API) 
+For now this is disabled by default and not completely full assurance, but you can enable this feature for preview via the “FEATURE_ALARMS=true” flag in your docker-compose.yml file.
 
-User management - completed the user and tenant management screens, now enabled by default.
+=== User and Tenant Management (UI and REST API) 
+
+User and tenant management screens are now enabled by default.  This is designed to improve the customer experience.
 
 === Product License Management
 
-License management - license now displayed, along with ability to activate it via the settings screen.
+Licensing is now easier to maintain.  It is displayed, along with the ability to activate it via the settings screen.
 
 === Workflow
 
-Workflow task templates - basic code templates for PHP and Python tasks are now included in the editor.
+Workflow task templates (basic code templates for PHP and Python tasks) are now included in the editor.
 
 === Microservice
 
-Microservice reference type - the Microservice reference type has been added to the Workflow editor as an advanced type.
+The Microservice reference type has been added to the Workflow editor as an advanced type.
 
 === REST API
 
 REST API connection status - the portal UI now handles issues connecting to the MSA REST API more eloquently, for example by displaying feedback messages to the end user until the MSA REST API is online and connected.
 
-Swagger - improved REST API documentation.
+Swagger has improved REST API documentation.
 
 
 == CoreEngine
