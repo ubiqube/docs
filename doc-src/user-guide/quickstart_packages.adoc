@@ -265,3 +265,17 @@ a| * link:https://github.com/openmsa/Adapters/tree/master/adapters/paloalto_gene
 
 
 |===
+
+== Workflows
+
+[cols=3*,options="header"]
+|===
+| Name
+| Description
+| github.com/openmsa
+
+| BIOS Automation
+| Automate BIOS setting and image upgrade with RedFish API
+| link:https://github.com/openmsa/Workflows/tree/master/BIOS_Automation[BIOS_Automation]
+|===
+
