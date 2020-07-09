@@ -116,6 +116,14 @@ To completely clean up your docker images you can also do `docker rmi $(docker i
 
 WARNING: this will wipe out every images from your docker engine.
 
+== Upgrading the application
+
+1. a new release or patch is made available
+2. the release/patch is published to the dockerhub registry
+3. upgrade the {product_name} installation: `sudo docker-compose pull`
+4. starts the containers in the background and leaves them running: `sudo docker-compose up -d`
+
+NOTE: if you need to (re)install the {product_name} you can use the link:../user-guide/quickstart{outfilesuffix}[quickstart guide]
 
 == Requirements on the host machine
 
