@@ -80,6 +80,11 @@ a| * link:https://github.com/openmsa/Adapters/tree/master/adapters/cisco_asr[cis
 | link:https://www.fortinet.com/products/web-application-firewall/fortiweb[FortiWeb: Web Application Firewall and API Protection]
 | link:https://github.com/openmsa/Adapters/tree/master/adapters/fortiweb[fortiweb]
 
+| Huawei 
+| AR2200 Series Routers
+| link:https://support.huawei.com/enterprise/en/routers/ar2200-pid-6078842[AR2200 Series Routers]
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/huawei_generic[huawei_generic]
+
 | Hewlett Packard Enterprise
 | HP 2530 Switch Series
 | link:https://support.hpe.com/hpesc/public/docDisplay?docId=emr_na-c03597248[HP 2530]
@@ -107,6 +112,11 @@ a| * link:https://www.nec.com/en/global/prod/nw/pasolink/products/ipasolink-iX.h
 a| * link:https://github.com/openmsa/Adapters/tree/master/adapters/nec_ix[nec_ix]
 * link:https://github.com/openmsa/Adapters/tree/master/adapters/nec_nfa[nec_nfa]
 
+| Citrix
+| ADC (formelly Netscaler)
+| link:https://www.citrix.com/products/citrix-adc/[Citrix ADC]
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/citrix_adc[citrix_adc]
+
 | ETSI-MANO
 | NFVO
 | 
@@ -132,7 +142,7 @@ a| * link:https://github.com/openmsa/Adapters/tree/master/adapters/paloalto_gene
 
 | pfSense
 | Firewall
-| link:https://www.pfsense.org/products/[]
+| link:https://www.pfsense.org/products/[pfSense]
 | link:https://github.com/openmsa/Adapters/tree/master/adapters/pfsense_fw[pfsense_fw]
 
 | Rancher
@@ -150,12 +160,10 @@ a| * link:https://github.com/openmsa/Adapters/tree/master/adapters/paloalto_gene
 | link:https://github.com/openmsa/Adapters/blob/master/adapters/rest_generic/README.md[README]
 | link:https://github.com/openmsa/Adapters/tree/master/adapters/rest_generic[rest_generic]
 
-////
 | Stormshield
 | SNS
 | link:https://www.stormshield.com/fr/produits-et-services/produits/protection-des-reseaux/firmware-sns-4x/[SNS]
 | link:https://github.com/openmsa/Adapters/tree/master/adapters/stormshield[stormshield]
-////
 
 | VeEX
 | RTU
@@ -176,5 +184,84 @@ a| * link:https://github.com/openmsa/Adapters/tree/master/adapters/paloalto_gene
 | VNFM
 | 
 | link:https://github.com/openmsa/Adapters/tree/master/adapters/vnfm_generic[vnfm_generic]
+
+|===
+
+== Microservices
+
+[cols=3*,options="header"]
+|===
+| Vendor
+| Description
+| github.com/openmsa
+
+| ADVA
+| link:https://www.adva.com/en/products/open-optical-transport/optical-access/accessconnect[FSP 3000 Access Connect]
+| link:https://github.com/openmsa/Microservices/tree/master/ADVA[ADVA]
+
+| Ansible
+| link:https://docs.ansible.com/ansible/latest/user_guide/playbooks.html[Ansible Playbook]
+| link:https://github.com/openmsa/Microservices/tree/master/ANSIBLE[ANSIBLE]
+
+| Amazon Web Service
+| link:https://docs.aws.amazon.com/ec2/index.html?nc2=h_ql_doc_ec2[Amazon Elastic Compute Cloud]
+| link:https://github.com/openmsa/Microservices/tree/master/AWS[AWS]
+
+| Checkpoint R80
+| link:https://www.checkpoint.com/products/next-generation-firewall/#[Next Generation Firewalls (NGFW)]
+| link:https://github.com/openmsa/Microservices/tree/master/CHECKPOINT[CHECKPOINT]
+
+| Cisco ASA, IOS, Catalyst
+| link:https://www.cisco.com/c/en/us/index.html[Firewall, router and switch management]
+| link:https://github.com/openmsa/Microservices/tree/master/CISCO[CISCO]
+
+| Citrix ADC
+| link:https://www.citrix.com/products/citrix-adc/[Citrix Application Delivery Controller]
+| link:https://github.com/openmsa/Microservices/tree/master/CITRIX[CITRIX]
+
+| ENEA
+| link:https://www.enea.com/products/nfv-virtualization-platforms/enea-nfv-access/[Enea NFV Access]
+| link:https://github.com/openmsa/Microservices/tree/master/REST/Generic/ENEA[ENEA]
+
+| FlexiWan
+| link:http://flexiwan.com[Open source SD-WAN]
+| link:https://github.com/openmsa/Microservices/tree/master/FLEXIWAN[FLEXIWAN]
+
+| Fortinet
+| link:http://fortinet.com[Fortigate and FortiWeb firewall]
+| link:https://github.com/openmsa/Microservices/tree/master/FORTINET[FORTINET]
+
+| Juniper JunOS
+| link:https://www.juniper.net/us/en/products-services/security/srx-series/[SRX NG Firewall]
+| link:https://github.com/openmsa/Microservices/tree/master/JUNIPER/junOS_generic[JunOS generic]
+
+| Linux Generic
+| 
+| link:https://github.com/openmsa/Microservices/tree/master/LINUX[LINUX]
+
+| OpenStack
+| link:https://docs.openstack.org/api-quick-start/index.html[OpenStack API]
+| link:https://github.com/openmsa/Microservices/tree/master/OPENSTACK[OPENSTACK]
+
+| OneAccess
+| link:https://www.oneaccess-net.com/products/108/620[Virtual Network Function]
+| link:https://github.com/openmsa/Microservices/tree/master/ONEACCESS[ONEACCESS]
+
+| PaloAlto 
+| link:https://docs.paloaltonetworks.com/pan-os.html[PAN‑OS®]
+| link:https://github.com/openmsa/Microservices/tree/master/PALOALTO[PALOALTO]
+
+| pfSense 
+| link:https://www.pfsense.org/products/[pfSense firewall]
+| link:https://github.com/openmsa/Microservices/tree/master/PFSENSE[PFSENSE]
+
+| RedFish API 
+| link:https://www.dmtf.org/standards/redfish[DMTF Redfish®]
+| link:https://github.com/openmsa/Microservices/tree/master/REDFISHAPI[REDFISHAPI]
+
+| VMware vSphere vCenter
+| link:https://code.vmware.com/web/sdk/6.7/vsphere-automation-rest[vCenter REST API]
+| link:https://github.com/openmsa/Microservices/tree/master/VMWARE[VMWARE]
+
 
 |===
