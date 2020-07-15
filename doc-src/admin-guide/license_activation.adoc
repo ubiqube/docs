@@ -12,23 +12,15 @@ In that case you need to use this documentation to activate the new license.
 
 == License activation
 
-You must be connected as a privileged administrator (ncroot) on the classic portal (/UBI/en) to install the license.
+You must be connected as a privileged administrator (ncroot) to install the license.
 
-As a privileged administrator, click on the {product_name} setting gear icon at the top right of the screen. 
+As a privileged administrator, click on the link "Setting" on the left menu. 
 
-This will open the system management page where the license management is located.
+image::images/classic_msa_admin_page.png[width=720px]
 
-image::images/classic_msa_admin_page.png[alt={product_name} admin page]
+Click on "Choose file..." and select your license file (.lic).
 
-Click on "Upload" and select your license file (.lic).
-
-Once uploaded and before proceeding, the {product_name} will show you the license certificate information (the number of manageable devices and the end of support time). Verify that this information is correct before clicking apply. If this information is not correct, or you wish to change it, contact UBiqube support.
-
-This is an example of the "apply" dialog box:
-
-image:images/classic_msa_license_upload_confirm.png[alt=License upload confirmation]
-
-The web page will display the updated license information.
+If the license is valid, the web page will display the license information otherwise the license activation will be refused.
 
 
 

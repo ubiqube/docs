@@ -8,9 +8,8 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 The Installation and Configuration Guide will show you how to install, configure and activate the {product_name}.
 
-* link:installation{outfilesuffix}[Installation]
-* link:license_activation{outfilesuffix}[License Activation]
-* link:upgrade{outfilesuffix}[{product_name} Upgrade]
+* link:installation{outfilesuffix}[Installation and upgrade]
+* link:license_activation{outfilesuffix}[License activation]
 * link:architecture_overview{outfilesuffix}[Architecture]
 * link:troubleshooting{outfilesuffix}[Troubleshooting]
 

@@ -8,4 +8,6 @@
 
 IMPORTANT: for `docker login`, use the Docker ID "msa2trial" and the link:https://docs.docker.com/docker-hub/access-tokens/[access token] provided by your main point of contact at UBiqube. 
 
+NOTE: if you are upgrading your {product_name}, you should either do a clean install for the quickstart (remove the quickstart directory and got to step 2. or `cd quickstart` and do `git pull` to get the latest version.)
+
 NOTE: In case you have updated the {product_name} with `docker-compose up -d` or `docker-compose pull`, you might experience cache issues (for instance, your changes may not be reflected on the UI). To solve that, you can clean your browser cache, or use a browser private session.
