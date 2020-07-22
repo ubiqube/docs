@@ -88,6 +88,7 @@ video::QRwv78yQWss[youtube,width=600px,height=360]
 == Going further with the mini lab
 After you have installed and activated the mini lab, here are a list of tutorials that will allow you to go further with the {product_name}.
 
+.Tutorials
 These tutorials can be completely executed with the mini lab.
 
 - link:../developer-guide/workflow_getting_started_developing_python{outfilesuffix}[Helloworld Workflow for Python].
@@ -95,3 +96,6 @@ These tutorials can be completely executed with the mini lab.
 - link:../developer-guide/bpm_getting_started_developing{outfilesuffix}[Helloworld BPMP].
 - link:../developer-guide/microservices_getting_started_developing{outfilesuffix}[Getting Started with Microservices Design]: design a simple microservice to manage Linux users.
 - link:../developer-guide/simple_firewall_policy_mngt{outfilesuffix}[Firewall Policy Orchestration]: design micorservices and workflow to orchestrate firewall policy.
+
+.Demo and use cases
+ - link:ansible{outfilesuffix}[Workflow: Ansible playbook runner]
