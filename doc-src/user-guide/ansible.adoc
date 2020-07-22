@@ -1,0 +1,247 @@
+= Ansible
+:doctype: book
+:imagesdir: ./resources/
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:toc: left
+:toclevels: 4 
+
+The Ansible Service microservice enables the {product_name} use to call an Ansible playbook, that exists on a remote Linux server that {product_name} will connect to via the Linux SSH adaptor.  
+
+In this document, the architecture of a typical deployment will be discussed, along with instructions on how to run that microservice directly and via a Python workflow.
+
+== Architecture
+
+This guide assumes you have installed the link:quickstart{outfilesuffix}[quickstart mini lab].
+
+Once you have done that, you should have the following ME inside your MSA installation: linux_me / 172.20.0.101.
+
+The mini lab can be extended with an additional Linux docker container that will run Ansible.
+
+The CLI command below will update (or create) you mini lab with an additional container `ansible_me`
+
+```
+sudo docker-compose -f docker-compose.yml -f lab/ansible/docker-compose.yml up -d 
+```
+
+.Check the installation
+
+After the installation process is finished you can check that there is an "ansible" container running with the CLI cmd `sudo docker ps`
+
+```
+$sudo docker ps | grep ansible
+11eb062ef8df        ansible:me      "/sbin/init"    4 minutes ago       Up 4 minutes     0.0.0.0:2225->22    tcp     quickstart_ansible_me_1
+```
+
+The CLI command below will let you check the version of Ansible
+
+```
+$ sudo docker-compose -f docker-compose.yml -f lab/ansible/docker-compose.yml exec ansible_me ansible --version
+ansible 2.6.20
+  config file = /etc/ansible/ansible.cfg
+  configured module search path = [u'/root/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python2.6/site-packages/ansible
+  executable location = /usr/bin/ansible
+  python version = 2.6.6 (r266:84292, Jul 23 2015, 15:22:56) [GCC 4.4.7 20120313 (Red Hat 4.4.7-11)]
+```
+
+== Install the lab playbook
+
+During the installation of the container `ansible_me`, the playbook below was installed by the link:https://github.com/ubiqube/quickstart/blob/master/lab/ansible/Dockerfile[Dockerfile] in `./lab/ansible`
+
+[source, yaml]
+----
+---
+- hosts: linux_me
+  gather_facts: false
+  vars_prompt:
+    - name: dport
+      prompt: What port do you want to block?
+    - name: ip
+      prompt: What IP do you want to block?
+  tasks:
+  # create a new FW rule
+  - name: create the new rule
+    command: sudo iptables -A INPUT -p tcp --dport {{dport}} -s {{ip}} -j DROP
+  - name: create the new rule
+    command: sudo iptables -A FORWARD -p tcp --dport {{dport}} -s {{ip}} -j DROP
+----
+
+As you can see, this playbook connects to linux_me in the hosts: definition, but in order for Ansible to find that, we need to configure the Ansible hosts file next.
+
+IMPORTANT: The playbook is installed in the container under `/opt/playbooks/linux_firewall_creation.yml`
+
+.Configure Ansible hosts file
+Firstly, the linux_me hostname needs to be mapped to the 172.20.0.101 IP address so that Ansible knows where to connect.  
+
+Secondly, the linux_me:vars section provides the SSH username and password for Ansible to use when making that connection, to ensure that password prompts are suppressed when we call our playbook (normally in real Ansible deployments, SSH auth would be handle by configuring key pairs which you can also do is you wish).
+
+This is implemented by the hosts file below which is included in the ansible_me image (cf. Dockerfile in lab/)
+----
+[root@ansible_me /]# nano /etc/ansible/hosts
+
+[linux_me]
+172.20.0.101
+
+[linux_me:vars]
+ansible_connection=ssh
+ansible_user=msa
+ansible_ssh_pass=ubiqube
+----
+
+== Execute the playbook directly
+
+----
+sudo docker-compose -f docker-compose.yml -f lab/ansible/docker-compose.yml \
+    exec ansible_me  ansible-playbook /opt/playbooks/linux_firewall_creation.yml \
+    --extra-vars "dport=2001 ip=127.0.0.1"
+----
+
+You can login to linux_me 
+
+----
+sudo docker-compose exec linux_me bash
+----
+
+Confirm that IPTables was actually updated by Ansible:
+
+----
+[root@linux_me /]# iptables --line-numbers -L INPUT -n
+Chain INPUT (policy ACCEPT)
+num  target     prot opt source               destination         
+1    DROP       tcp  --  127.0.0.1            0.0.0.0/0           tcp dpt:2001 
+[root@linux_me /]# 
+----
+
+Now we have an end-to-end Ansible solution like this:
+
+image:images/ansible_end2end.png[width=720px]
+
+In the next steps we will add {product_name} in the picture.
+
+== Build the AnsibleService microservice
+
+We will now design a new microservice, "AnsibleService", that will call the `linux_firewall_creation.yml` (or any other) playbook we wish from inside  {product_name}, resulting in an improved architecture like this:
+
+image:images/ansible_end2end_with_msa.png[width=720px]
+
+=== Create a new microservice
+
+Start by link:../developer-guide/microservice_editor{outfilesuffix}[creating a new microservice] with the following definition:
+
+.Variables
+
+- object_id (Autoincrement)
+- playbook_path (String)
+- extra_vars (String)
+- extra_vars.0.var_name (String array)
+- extra_vars_res (String)
+
+.The CREATE command
+
+This command calls the playbook.  Here is the code for that (its quite simple):
+
+----
+sudo ansible-playbook {$params.playbook_path} --extra-vars {$params.extra_vars}
+----
+
+.The IMPORT command 
+
+The IMPORT command lists the playbooks in the directory, along with the extra_vars per playbook, using the following command:
+
+----
+[root@ansible_me /]# for file in /opt/playbooks/*; do echo $file; cat $file | shyaml get-values-0 0.vars_prompt |while IFS='' read -r -d '' row; do echo "$row";done | grep -E "name:"; done
+----
+/opt/playbooks/AddUser.yml
+
+name: username
+
+name: password
+
+name: host
+
+/opt/playbooks/createFW.yml
+
+name: dport
+
+name: ip
+
+Microservice Identifier Extractor: 
+
+^(?<playbook_path>\S+[^/]+?\.yml)*$
+
+
+Microservice variables extractor "array extra_vars":
+
+^\S+?:\s+?(?<var_name>\S+)$
+Post Import:
+
+{assign var='line' value=''}
+{foreach from=$params.extra_vars key=number item = varname}
+{assign var var='temp' value=$varname.var_name}
+{$line = "$line $temp"}
+{/foreach}
+{assign_object_variable var='extra_vars_res' value=$line}
+
+
+
+
+
+
+
+
+Note that command makes use of the shyaml YAML parser to get the extra_vars from the playbooks, so you will need to ensure that is installed on anisble_me:
+
+
+
+[root@ansible_me /]# yum install python-pip
+
+
+
+[root@ansible_me /]# pip install shyaml
+
+
+
+
+
+
+
+...
+
+
+
+Installing collected packages: shyaml
+
+
+
+Successfully installed shyaml-0.6.1
+
+
+
+The second part of the IMPORT command greps that list output, to extract playbook_path and extra_vars parameters for the microservice to list on the console.  TODO.
+
+Calling the AnsibleService MS from a Python WF
+There is a Python workflow available for calling the AnsibleService as part of the OpenMSA WF repo, you can find that here: https://github.com/openmsa/Workflows/tree/master/Ansible/Firewall_Management
+
+The key part of that WF is where we call the AnsibleService MS in the task code for creating a new firewall rule like so:
+
+Add_Firewall_rule_Add_Rule.py
+16
+17
+18
+19
+20
+21
+# build the Microservice JSON params for the CREATE
+micro_service_vars_array = {
+                            "playbook_path": "/opt/playbooks/createFW.yml",
+                            "extra_vars": "\"dport="+context['dst_port']+" ip="+context['src_ip']+"\""}
+ 
+playbook = {"AnsiblePlaybook": {"":micro_service_vars_array}}
+
+
+You can change that WF code to point to any playbook you wish.
+
+Calling the AnsibleService WF from the BPM
+Once you have installed the Python WF from the previous section, you can then call the WF from any new BPM in the usual way (just drag and drop in your WF into the BPM flow).
+
+
