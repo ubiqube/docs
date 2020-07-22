@@ -115,7 +115,7 @@ num  target     prot opt source               destination
 
 Now we have an end-to-end Ansible solution like this:
 
-image:images/ansible_end2end.png[width=720px]
+image:images/ansible_end2end.png[width=1000px]
 
 In the next steps we will add {product_name} in the picture.
 
@@ -123,11 +123,13 @@ In the next steps we will add {product_name} in the picture.
 
 We will now design a new microservice, "AnsibleService", that will call the `linux_firewall_creation.yml` (or any other) playbook we wish from inside  {product_name}, resulting in an improved architecture like this:
 
-image:images/ansible_end2end_with_msa.png[width=720px]
+image:images/ansible_end2end_with_msa.png[width=1000px]
 
 === Create a new microservice
 
-Start by link:../developer-guide/microservice_editor{outfilesuffix}[creating a new microservice] with the following definition:
+Start by link:../developer-guide/microservice_editor{outfilesuffix}[creating a new microservice] with the following definition
+
+image:images/ansible_ms_info.png[width=1000px]
 
 ==== Variables
 
@@ -137,6 +139,9 @@ Start by link:../developer-guide/microservice_editor{outfilesuffix}[creating a n
 - extra_vars.0.var_name (String array)
 - extra_vars_res (String)
 
+image:images/ansible_ms_variables.png[width=1000px]
+
+
 ==== The CREATE command
 
 This command calls the playbook.  Here is the code for that (its quite simple):
@@ -144,6 +149,9 @@ This command calls the playbook.  Here is the code for that (its quite simple):
 ----
 sudo ansible-playbook {$params.playbook_path} --extra-vars {$params.extra_vars}
 ----
+
+image:images/ansible_ms_create.png[width=1000px]
+
 
 ==== The IMPORT command 
 
@@ -157,13 +165,15 @@ name: dport
 name: ip
 ----
 
+image:images/ansible_ms_import_cmd.png[width=1000px]
+
 .Microservice identifier extractor: 
 
 ----
 ^(?<playbook_path>\S+[^/]+?\.yml)*$
 ----
 
-Microservice variables extractor "array extra_vars":
+.Microservice variables extractor "array extra_vars":
 ----
 ^\S+?:\s+?(?<var_name>\S+)$
 ----
@@ -177,6 +187,8 @@ Microservice variables extractor "array extra_vars":
 {/foreach}
 {assign_object_variable var='extra_vars_res' value=$line}
 ----
+
+image:images/ansible_ms_import_parser.png[width=1000px]
 
 
 == Calling the AnsibleService microservice from a Python workflow
