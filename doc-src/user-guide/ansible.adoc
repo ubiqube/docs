@@ -4,6 +4,7 @@
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :toc: left
 :toclevels: 4 
+:source-highlighter: pygments
 
 The Ansible Service microservice enables the {product_name} use to call an Ansible playbook, that exists on a remote Linux server that {product_name} will connect to via the Linux SSH adaptor.  
 
@@ -128,7 +129,7 @@ image:images/ansible_end2end_with_msa.png[width=720px]
 
 Start by link:../developer-guide/microservice_editor{outfilesuffix}[creating a new microservice] with the following definition:
 
-.Variables
+==== Variables
 
 - object_id (Autoincrement)
 - playbook_path (String)
@@ -136,7 +137,7 @@ Start by link:../developer-guide/microservice_editor{outfilesuffix}[creating a n
 - extra_vars.0.var_name (String array)
 - extra_vars_res (String)
 
-.The CREATE command
+==== The CREATE command
 
 This command calls the playbook.  Here is the code for that (its quite simple):
 
@@ -144,104 +145,62 @@ This command calls the playbook.  Here is the code for that (its quite simple):
 sudo ansible-playbook {$params.playbook_path} --extra-vars {$params.extra_vars}
 ----
 
-.The IMPORT command 
+==== The IMPORT command 
 
 The IMPORT command lists the playbooks in the directory, along with the extra_vars per playbook, using the following command:
 
 ----
+$  docker-compose -f docker-compose.yml -f lab/ansible/docker-compose.yml     exec ansible_me bash
 [root@ansible_me /]# for file in /opt/playbooks/*; do echo $file; cat $file | shyaml get-values-0 0.vars_prompt |while IFS='' read -r -d '' row; do echo "$row";done | grep -E "name:"; done
-----
-/opt/playbooks/AddUser.yml
-
-name: username
-
-name: password
-
-name: host
-
-/opt/playbooks/createFW.yml
-
+/opt/playbooks/linux_firewall_creation.yml
 name: dport
-
 name: ip
+----
 
-Microservice Identifier Extractor: 
+.Microservice identifier extractor: 
 
+----
 ^(?<playbook_path>\S+[^/]+?\.yml)*$
-
+----
 
 Microservice variables extractor "array extra_vars":
-
+----
 ^\S+?:\s+?(?<var_name>\S+)$
-Post Import:
+----
 
+.Post import:
+----
 {assign var='line' value=''}
 {foreach from=$params.extra_vars key=number item = varname}
 {assign var var='temp' value=$varname.var_name}
 {$line = "$line $temp"}
 {/foreach}
 {assign_object_variable var='extra_vars_res' value=$line}
+----
 
 
-
-
-
-
-
-
-Note that command makes use of the shyaml YAML parser to get the extra_vars from the playbooks, so you will need to ensure that is installed on anisble_me:
-
-
-
-[root@ansible_me /]# yum install python-pip
-
-
-
-[root@ansible_me /]# pip install shyaml
-
-
-
-
-
-
-
-...
-
-
-
-Installing collected packages: shyaml
-
-
-
-Successfully installed shyaml-0.6.1
-
-
-
-The second part of the IMPORT command greps that list output, to extract playbook_path and extra_vars parameters for the microservice to list on the console.  TODO.
-
-Calling the AnsibleService MS from a Python WF
+== Calling the AnsibleService microservice from a Python workflow
 There is a Python workflow available for calling the AnsibleService as part of the OpenMSA WF repo, you can find that here: https://github.com/openmsa/Workflows/tree/master/Ansible/Firewall_Management
 
-The key part of that WF is where we call the AnsibleService MS in the task code for creating a new firewall rule like so:
+The key part of that WF is where we call the AnsibleService microservice in the task code for creating a new firewall rule like so:
 
 Add_Firewall_rule_Add_Rule.py
-16
-17
-18
-19
-20
-21
+[source,python]
+----
 # build the Microservice JSON params for the CREATE
 micro_service_vars_array = {
-                            "playbook_path": "/opt/playbooks/createFW.yml",
-                            "extra_vars": "\"dport="+context['dst_port']+" ip="+context['src_ip']+"\""}
+                            "playbook_path": "/opt/playbooks/linux_firewall_creation.yml",
+                            "extra_vars": "\"dport="+context['dst_port']+" ip="+context['src_ip']+"\""
+                           }
  
 playbook = {"AnsiblePlaybook": {"":micro_service_vars_array}}
+----
 
 
 You can change that WF code to point to any playbook you wish.
 
-Calling the AnsibleService WF from the BPM
-Once you have installed the Python WF from the previous section, you can then call the WF from any new BPM in the usual way (just drag and drop in your WF into the BPM flow).
+== Calling the AnsibleService workflow from the BPM
+
+Once you have installed the Python workflow from the previous section, you can then call the workflow from any new link:../developer-guide/bpm_editor{outfilesuffix}[BPM] in the usual way (just drag and drop in your workflow into the BPM flow).
 
 
