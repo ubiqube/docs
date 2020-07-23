@@ -31,18 +31,22 @@ include::./doc-src/admin-guide/installation_setup_requirement.adoc[]
 This guide is composed of a link:https://github.com/ubiqube/quickstart[git repository] which is mainly a set of Dockerfile and docker-compose.xml files to pull the {product_name} from link:https://hub.docker.com/[Dockerhub] 
 ////
 
-== Step 1: mini lab creation
+== Mini lab creation
+
+=== Step 1: creation
 
 include::./doc-src/admin-guide/installation_install_steps.adoc[]
 
 NOTE: The installation and the architecture of the mini lab is detailed in the link:../admin-guide/installation{outfilesuffix}#mini-lab[installation guide].
 
-== Step 2: activation
-The mini lab come with a Linux container (linux.me / 172.20.0.101) for experimentation.
-The Linux container is configured with one user `msa`, password `ubiqube`.
+=== Step 2: activation
 
 The mini lab requires a valid product license in order to function properly. 
+
 Whether you are running a free trial, an advanced PoC or a production {product_name} you need to get a license from UBiqube and link:../admin-guide/license_activation{outfilesuffix}[install it].
+
+The mini lab come with a Linux container (linux.me / 172.20.0.101) for experimentation.
+The Linux container is configured with one user `msa`, password `ubiqube`.
 
 In order to ease your discovery of the {product_name}, we are providing a script that will create the mini lab environment for you: 
 
@@ -53,7 +57,8 @@ In order to ease your discovery of the {product_name}, we are providing a script
 
 To create the mini lab environement, run the CLI command from where you have clonned the quickstart Github project:
 
-.First install the libraries (Microservices, Workflows and Adapters from github.com/openmsa
+=== Step 3: install the libraries (Microservices, Workflows and Adapters from github.com/openmsa
+
 ```
 sudo docker-compose exec msa_dev /usr/bin/install_libraries.sh
 ```
@@ -62,12 +67,11 @@ At the end of the script exeecution, your need to restart the API container and 
 
 ----
 sudo docker-compose restart msa_sms
-sudo docker-compose restart msa_api
 ----
 
 NOTE: The detail of what is included in the mini lab is available here: link:quickstart_packages{outfilesuffix}[mini lab packages]. 
 
-.Provision the mini lab with tenants, managed entities,...
+== Step 4:Provision the mini lab with tenants, managed entities,...
 ```
 sudo docker-compose exec msa_dev /usr/bin/create_mini_lab.sh
 ```

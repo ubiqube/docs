@@ -1,4 +1,3 @@
-
 1. Check your Docker engine has access to DockerHub. You can, for instance, run `docker run hello-world` to test the access.
 2. `$ git clone https://github.com/ubiqube/quickstart.git` to clone the GitHub repository on you computer.
 3. `$ cd quickstart`
@@ -7,6 +6,17 @@
 6. Browse: link:https://localhost/[] and connect with username `ncroot` and password `ubiqube`. The portal might take a few minutes to be up and running.
 
 IMPORTANT: for `docker login`, use the Docker ID "msa2trial" and the link:https://docs.docker.com/docker-hub/access-tokens/[access token] provided by your main point of contact at UBiqube. 
+
+
+=== Configure elasticsearch
+
+Once the {product_name} is up and running, you will have to configure elasticsearch with the 2 CLI commands below.
+This will install the mapping we need for collecting and managing the syslogs and other network events collected by the {product_name} link:../user-guide/assurance{outfilesuffix}[assurance module].
+
+```
+sudo docker-compose exec msa_dev /usr/bin/es_cluster_settings.sh
+sudo docker-compose exec msa_dev /usr/bin/es_install_mapping.sh
+```
 
 == Fresh install or upgrade ?
 
