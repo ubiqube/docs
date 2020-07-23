@@ -14,7 +14,7 @@ The API is enabled by default. No additional configuration is required.
 .Authentication
 When making requests to {product_name} using the REST API, you will need:
 
-* A valid admin username and password (so that an authenticated session can be established).
+* A valid admin username and password (so that a token can be generated and an authenticated session can be established).
 * Appropriate access permissions for the requested resource (controlled by admin profile)
 
 Using curl, you may save the authentication information as a HTTP header to allow subsequent requests to be accepted automatically.
