@@ -17,7 +17,16 @@ You can use the [asciidoc browser extension](https://github.com/asciidoctor/asci
 Building the doc
 ----------------
 
+Clone the repository
+Chekout the branch you need to use and build the doc with the CLI command below
+
 	docker build -t ubi.docs .
+	
+if you have gradle you can also execute
+	
+	gradle asciidoc
+
+The doc is generated in build/docs/
 
 
 Inspecting the result
