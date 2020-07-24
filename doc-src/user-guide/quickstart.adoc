@@ -66,6 +66,7 @@ sudo docker-compose exec msa_dev /usr/bin/install_libraries.sh
 At the end of the script exeecution, your need to restart the API container and the CoreEngine container:
 
 ----
+sudo docker-compose restart msa_api
 sudo docker-compose restart msa_sms
 ----
 
