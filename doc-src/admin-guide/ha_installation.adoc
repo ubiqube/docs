@@ -1,0 +1,32 @@
+= High Availability Installation Guide
+:toc: left
+:toclevels: 4 
+:doctype: book 
+:imagesdir: ./resources/
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+== Overview
+
+The {product_name} provide support for high avalability with Docker swarm mode.
+
+image:images/docker_containers.png[overall architecture]
+
+== Prerequisites
+
+Before starting this tutorial, first install link:https://docs.docker.com/install/[Docker] on your machine. 
+Next install link:https://docs.docker.com/compose/install/[Docker Compose] on your machine.
+
+== Installing the application in HA mode
+
+=== Enable Docker swarm mode
+
+To enable swarm mode:
+----
+sudo docker swarm init
+----
+
+To disable the swarm mode
+----
+sudo docker swarm leave --force
+----
+
