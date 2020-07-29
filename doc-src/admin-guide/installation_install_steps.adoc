@@ -20,7 +20,7 @@ sudo docker-compose exec msa_dev /usr/bin/es_install_mapping.sh
 
 == Fresh install or upgrade ?
 
-The quickstart repository is maintained on https://github/com/ubiqube/quickstart and the latest version is available on the branch master.
+The quickstart repository is maintained on https://github.com/ubiqube/quickstart and the latest version is available on the branch master.
 
 If you are upgrading your {product_name}, you can either do a clean install for the quickstart by removing your docker containers and the quickstart directory and go to step 2. above or you can update your quickstart with `cd quickstart` and do `git pull` to get the latest version.
 
