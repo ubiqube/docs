@@ -15,6 +15,7 @@ image:images/docker_containers.png[overall architecture]
 
 Before starting this tutorial, first install link:https://docs.docker.com/install/[Docker] on your machine. 
 Next install link:https://docs.docker.com/compose/install/[Docker Compose] on your machine.
+You must also have a working internet connection to install the container components.
 
 == Installing the application
 
