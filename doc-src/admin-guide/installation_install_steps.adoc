@@ -8,16 +8,6 @@
 IMPORTANT: for `docker login`, use the Docker ID "msa2trial" and the link:https://docs.docker.com/docker-hub/access-tokens/[access token] provided by your main point of contact at UBiqube. 
 
 
-=== Configure elasticsearch
-
-Once the {product_name} is up and running, you will have to configure elasticsearch with the 2 CLI commands below.
-This will install the mapping we need for collecting and managing the syslogs and other network events collected by the {product_name} link:../user-guide/assurance{outfilesuffix}[assurance module].
-
-```
-sudo docker-compose exec msa_dev /usr/bin/es_cluster_settings.sh
-sudo docker-compose exec msa_dev /usr/bin/es_install_mapping.sh
-```
-
 == Fresh install or upgrade ?
 
 The quickstart repository is maintained on https://github.com/ubiqube/quickstart and the latest version is available on the branch master.
