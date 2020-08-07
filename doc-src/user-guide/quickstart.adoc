@@ -67,7 +67,7 @@ At the end of the script exeecution, your need to restart the API container and 
 
 ----
 sudo docker-compose restart msa_api
-sudo docker-compose restart msa_sms
+sudo docker-compose exec msa_sms /etc/init.d/ubi-sms restart
 ----
 
 NOTE: The detail of what is included in the mini lab is available here: link:quickstart_packages{outfilesuffix}[mini lab packages]. 
