@@ -13,7 +13,7 @@ image:images/docker_containers.png[overall architecture]
 
 == Prerequisites
 
-MSA High Availability mode built upon Docker Engine Swarm mode, and requires:
+MSA High Availability built upon Docker Engine Swarm mode, and requires:
 
  * At least three VMs deployed:
  ** Docker Swarm Manager
