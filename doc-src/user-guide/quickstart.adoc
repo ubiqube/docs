@@ -35,7 +35,7 @@ This guide is composed of a link:https://github.com/ubiqube/quickstart[git repos
 
 === Step 1: creation
 
-include::./doc-src/admin-guide/installation_install_steps.adoc[]
+include::./doc-src/admin-guide/installation_install_steps_a.adoc[]
 
 NOTE: The installation and the architecture of the mini lab is detailed in the link:../admin-guide/installation{outfilesuffix}#mini-lab[installation guide].
 
