@@ -77,6 +77,8 @@ NOTE: The detail of what is included in the mini lab is available here: link:qui
 sudo docker-compose exec msa_dev /usr/bin/create_mini_lab.sh
 ```
 
+include::./doc-src/admin-guide/installation_install_steps_b.adoc[]
+
 == Mini lab detailed description
 === Use case 1: firewall orchestration on Linux
 
