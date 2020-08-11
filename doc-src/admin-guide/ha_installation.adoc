@@ -72,11 +72,24 @@ NOTE: To disable the swarm mode `$ sudo docker swarm leave --force`
 === Starting MSA on Manager
 
 1. Check if all nodes are connected and active, `$ sudo docker node ls`
-2. Docker login to access containers `$ docker login` 
-3. Grab docker-compose.yml
-4. Run `docker stack deploy --with-registry-auth -c docker-compose.yml msa`
-
+2. Clone quickstart repo `$ git clone https://github.com/ubiqube/quickstart.git`
+3. Change directory `$ cd ./quickstart/`
+4. Docker login to access containers `$ docker login`
+5. Run HA installation `$ sudo docker stack deploy --with-registry-auth -c docker-compose.ha.yml msa`
+6. Verify:
+```
+$ sudo docker stack services msa
+ID                  NAME                MODE                REPLICAS            IMAGE                                                         PORTS
+7c5x50tjvmmj        msa_msa_ui          replicated          1/1                 ubiqube/msa2-ui:45b85fa03ade5a070f8df3a08c3ab64e315e38c9
+ac3mb7fhhivu        msa_camunda         replicated          1/1                 camunda/camunda-bpm-platform:latest
+e0rxtyv10lzi        msa_msa_front       replicated          1/1                 ubiqube/msa2-front:0576df6db6445ac10dd5e4503c3867e216db4302
+elx9q04c9jb8        msa_msa_linux       replicated          1/1                 efeubiqube/linuxe2e:latest
+qmrw49j2ejto        msa_msa_api         replicated          3/3                 ubiqube/msa-api:642242a9cc03553cd31436635853bd739fff420e
+s72z7aux2jox        msa_msa_bud         replicated          1/1                 ubiqube/msa2-bud:42951df0800592a00a651717ab4a13573562e63c
+tz6qsmts59z4        msa_db              replicated          1/1                 ubiqube/msa2-db:a04c9cf8ac13fe28e2d02cc2a37d1552ee6bdb44
+widazn0p3smq        msa_msa_sms         replicated          1/1                 ubiqube/msa2-sms:3e32150a5202db71211d2bd453af883894c52513
+```
 
 == Bakup
 === How to backup swarm environment:
-To link:https://docs.docker.com/engine/swarm/admin_guide/#back-up-the-swarm[backup the swarm] directory /var/lib/docker/swarm/
+In order to perform backup please refer to link:https://docs.docker.com/engine/swarm/admin_guide/#back-up-the-swarm[backup the swarm] 
