@@ -91,6 +91,13 @@ For that, you'll have to select the subtenant named "TYRELL CORPORATION", click 
 
 video::QRwv78yQWss[youtube,width=600px,height=360]
 
+=== Step 5 (optional): Setting up log aggregation for linux_me
+1. `$ sudo docker-compose exec linux_me bash` issue this command from the host machine in order to connect to linux_me.
+2. `[root@linux_me /]# echo '*.* @msa_front' > /etc/rsyslog.d/mini_lab.conf` to create rsyslog configuration.
+3. `[root@linux_me /]# service rsyslog restart` restart the service.
+
+Now you should start to see device logs for linux_me appearing in the alarm section of the MSActivator portal.
+
 == Mini lab additional info
 
 include::./doc-src/admin-guide/installation_install_steps_b.adoc[]
