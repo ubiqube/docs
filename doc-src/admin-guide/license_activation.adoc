@@ -6,7 +6,7 @@
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 Whether you have installed the {product_name} with the quickstart, or started to do a longer PoC or need a production license,  you need to install and activate a license. 
-This license will be provided by your UBiqube sales representative.
+This license will be provided by your UBiqube sales representative. If you do not yet have your license, for a production license contact your sales representative, otherwise for a free trial license please go to: link:https://ubiqube.com/free-trial/[].
 
 This documentation discusses the activate of a new license.
 

@@ -35,7 +35,7 @@ This guide is composed of a link:https://github.com/ubiqube/quickstart[git repos
 
 === Step 1: creation
 
-include::./doc-src/admin-guide/installation_install_steps.adoc[]
+include::./doc-src/admin-guide/installation_install_steps_a.adoc[]
 
 NOTE: The installation and the architecture of the mini lab is detailed in the link:../admin-guide/installation{outfilesuffix}#mini-lab[installation guide].
 
@@ -67,18 +67,19 @@ At the end of the script exeecution, your need to restart the API container and 
 
 ----
 sudo docker-compose restart msa_api
-sudo docker-compose restart msa_sms
+sudo docker-compose exec msa_sms /etc/init.d/ubi-sms restart
 ----
 
 NOTE: The detail of what is included in the mini lab is available here: link:quickstart_packages{outfilesuffix}[mini lab packages]. 
 
-=== Step 4:Provision the mini lab with tenants, managed entities,...
+=== Step 4: provision the mini lab with tenants, managed entities,...
+
 ```
 sudo docker-compose exec msa_dev /usr/bin/create_mini_lab.sh
 ```
 
-== Mini lab detailed description
-=== Use case 1: firewall orchestration on Linux
+=== Mini lab detailed description
+==== Use case 1: firewall orchestration on Linux
 
 This lab use case will show you in a simple way how you can use the {product_name} to automate the configuration of iptables based firewall policy on the Linux container included in the mini lab.
 
@@ -88,7 +89,11 @@ You can use the guide to recreate the use case step by step or you may also dire
 
 For that, you'll have to select the subtenant named "TYRELL CORPORATION", click on the link "Automation" on the left menu and select the tab "Workflows". The workflow to use is "Simple Firewall (Python)"
 
-video::QRwv78yQWss[youtube,width=600px,height=360] 
+video::QRwv78yQWss[youtube,width=600px,height=360]
+
+== Mini lab additional info
+
+include::./doc-src/admin-guide/installation_install_steps_b.adoc[]
 
 == Going further with the mini lab
 After you have installed and activated the mini lab, here are a list of tutorials that will allow you to go further with the {product_name}.
