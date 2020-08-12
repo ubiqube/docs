@@ -30,3 +30,9 @@ To disable the swarm mode
 sudo docker swarm leave --force
 ----
 
+=== Start the application in HA mode
+
+
+----
+docker stack deploy --with-registry-auth -c docker-compose.ha.yml devmsa
+----
