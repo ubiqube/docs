@@ -72,7 +72,7 @@ sudo docker-compose restart msa_sms
 
 NOTE: The detail of what is included in the mini lab is available here: link:quickstart_packages{outfilesuffix}[mini lab packages]. 
 
-== Step 4:Provision the mini lab with tenants, managed entities,...
+=== Step 4:Provision the mini lab with tenants, managed entities,...
 ```
 sudo docker-compose exec msa_dev /usr/bin/create_mini_lab.sh
 ```
