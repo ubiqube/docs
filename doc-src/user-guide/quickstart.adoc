@@ -42,14 +42,14 @@ NOTE: The installation and the architecture of the mini lab is detailed in the l
 === Step 2: install the libraries (Microservices, Workflows and Adapters from github.com/openmsa
 
 ```
-sudo docker-compose exec msa_dev /usr/bin/install_libraries.sh
+$ sudo docker-compose exec msa_dev /usr/bin/install_libraries.sh
 ```
 
 At the end of the script exeecution, your need to restart the API container and the CoreEngine container:
 
 ----
-sudo docker-compose restart msa_api
-sudo docker-compose exec msa_sms /etc/init.d/ubi-sms restart
+$ sudo docker-compose restart msa_api
+$ sudo docker-compose exec msa_sms /etc/init.d/ubi-sms restart
 ----
 
 NOTE: The detail of what is included in the mini lab is available here: link:quickstart_packages{outfilesuffix}[mini lab packages]. 
