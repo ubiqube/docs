@@ -42,7 +42,7 @@ More information Docker Engine Swarm mode you may find here: link:https://docs.d
 
 === Enable Docker swarm mode
 
-To enable swarm mode on Manager:
+To enable swarm mode on "Docker Swarm Manager" machine:
 ```
 $ sudo docker swarm init --advertise-addr 10.31.1.75
 ```
@@ -72,7 +72,7 @@ connection error: desc = "transport: Error while dialing dial tcp 10.31.1.172:23
 
 NOTE: To disable the swarm mode `$ sudo docker swarm leave --force`
 
-=== Starting MSA from the Docker Swarm Manager machine
+=== Starting MSA from the "Docker Swarm Manager" machine
 
 1. `$ sudo docker node ls` to check if all nodes are connected and active. 
 2. `$ git clone https://github.com/ubiqube/quickstart.git` clone git repository.
@@ -92,12 +92,6 @@ s72z7aux2jox        msa_msa_bud         replicated          1/1                 
 tz6qsmts59z4        msa_db              replicated          1/1                 ubiqube/msa2-db:a04c9cf8ac13fe28e2d02cc2a37d1552ee6bdb44
 widazn0p3smq        msa_msa_sms         replicated          1/1                 ubiqube/msa2-sms:3e32150a5202db71211d2bd453af883894c52513
 ```
-
-=== Start the application in HA mode
-
-----
-docker stack deploy --with-registry-auth -c docker-compose.ha.yml devmsa
-----
 
 == Bakup
 === How to backup swarm environment:
