@@ -20,8 +20,8 @@ MSA High Availability built upon Docker Engine Swarm mode, and requires:
  ** Docker Swarm Worker1
  ** Docker Swarm Worker2
  
- * A shared mount point (from a NAS or Global File System).
- ** Mount point on all VMS /mnt/NASVolume
+ * A shared mount point (from a NAS or Global File System):
+ ** Mount point on all VMs is `/mnt/NASVolume`
  
  * Each machine should have link:https://docs.docker.com/install/[Docker] and link:https://docs.docker.com/compose/install/[Docker compose] installed.
 
