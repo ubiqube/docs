@@ -72,7 +72,7 @@ connection error: desc = "transport: Error while dialing dial tcp 10.31.1.172:23
 
 NOTE: To disable the swarm mode `$ sudo docker swarm leave --force`
 
-=== Starting MSA on Manager
+=== Starting MSA from the Docker Swarm Manager machine
 
 1. `$ sudo docker node ls` to check if all nodes are connected and active. 
 2. `$ git clone https://github.com/ubiqube/quickstart.git` clone git repository.
