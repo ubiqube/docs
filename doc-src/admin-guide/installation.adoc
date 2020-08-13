@@ -61,7 +61,7 @@ image:images/minilab_containers.png[mini lab containers]
  
 In addition to a Linux container (linux.me / 172.20.0.101) for experimentation, the mini-lab also comes with the following pre-installed:
 
-. A trial license valid for 30 days, limited to 5 Managed Entities
+. A trial license valid for 30 days, limited to 10 Managed Entities
 . The REST Generic adapter from link:https://github.com/openmsa/Adaptors/tree/master/adapters/rest_generic[github.com/openmsa/Adaptors]
 . A set of Micorservices from various vendors from link:https://github.com/openmsa/Microservices[github.com/openmsa/Microservices]
 . A predefined environment with a tenant and a customer
