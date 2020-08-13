@@ -9,7 +9,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 The {product_name} Docker application has the following structure:
 
-image:images/docker_containers.png[overall architecture]
+image:images/non_ha_docker_containers.png[overall architecture]
 
 == Prerequisites
 
