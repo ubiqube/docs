@@ -13,7 +13,6 @@ The Installation and Configuration Guide will show you how to install, configure
 * link:license_activation{outfilesuffix}[License activation]
 * link:architecture_overview{outfilesuffix}[Architecture]
 * link:troubleshooting{outfilesuffix}[Troubleshooting]
-* link:assurance{outfilesuffix}[Assurance]
 
 
 // Attempt to navigate within Documentation, but will have to see if adoc converts to HTML appropriately so link
