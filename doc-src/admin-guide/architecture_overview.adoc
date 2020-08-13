@@ -18,4 +18,4 @@ The {product_name} is an Integrated Automation Platform, which consists of sever
 
 == Overview of the docker containers
 
-image:images/docker_containers.png[width=1000px]
+image:images/non_ha_containers.png[width=1000px]
