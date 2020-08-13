@@ -57,7 +57,7 @@ docker-compose exec api bash
 ```
 [#mini-lab]
 === Mini-lab details 
-image:images/minilab_containers.png[mini lab containers]
+image:images/non_ha_minilab_containers.png[mini lab containers]
  
 In addition to a Linux container (linux.me / 172.20.0.101) for experimentation, the mini-lab also comes with the following pre-installed:
 
