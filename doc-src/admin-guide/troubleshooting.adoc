@@ -26,12 +26,13 @@ quickstart_msa_front_1     ubiqube/msa2-front             74e52c480d40d29f4b9f6d
 quickstart_msa_sms_1       ubiqube/msa2-sms               9f9f30ff2ee6320e0bcf8badc94f1b0fba70b3d7   9f3d23bd3854   1.111 GB
 quickstart_msa_ui_1        ubiqube/msa2-ui                d4ea6545e76ed5d87dfe1051d2e80de1a03030e7   0071a9dacd83   38.73 MB
 ----
-- *front*: runs the UI
+- *front*: runs proxy
 - *api*: runs the CoreEngine, the API server and the legacy UI
+- *ui*: runs main UI
 - *db*: runs the PostgreSQL database
 - *camunda*: runs the BPM
 - *es*: runs the Elasticsearch server
-- *kibana*: run the Kibana server
+- *bud*: runs the batchupdate
 
 Verify that all the containers are up.
 
