@@ -15,6 +15,6 @@ This will ease the organisation of your integration files.
 
 Let's assume that you want to add the vendor_A / model_X to the supported vendor.
 
-You will need an access to the {product_name} CLI of the API container (see link:architecture_overview{outfilesuffix}[architecture] for more details).
+You will need an access to the {product_name} CLI of the API container (see link:../admin-guide/architecture_overview{outfilesuffix}[architecture] for more details).
 
 
