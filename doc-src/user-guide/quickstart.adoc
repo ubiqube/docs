@@ -45,7 +45,7 @@ NOTE: The installation and the architecture of the mini lab is detailed in the l
 $ sudo docker-compose exec msa_dev /usr/bin/install_libraries.sh
 ```
 
-At the end of the script exeecution, your need to restart the API container and the CoreEngine container:
+At the end of the script execution, your need to restart the API container and the CoreEngine container:
 
 ----
 $ sudo docker-compose restart msa_api
