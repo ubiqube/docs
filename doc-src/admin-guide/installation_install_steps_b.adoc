@@ -13,9 +13,9 @@ For each release of the {product_name}, there is a tag that you can use if you n
 
 To install a tagged version, you can checkout the tag and go to the install steps above.
 
-For example, the CLI command below will checkout the quickstart for the release 2.1.0.
+For example, the CLI command below will checkout the quickstart for the release {revnumber}.
 ----
-git checkout tags/MSA-2.1.0 -b MSA-2.1.0
+git checkout tags/{revnumber} -b {revnumber}
 ----
 
 The releases and tags are available link:https://github.com/ubiqube/quickstart/releases[here]
