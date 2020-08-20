@@ -124,7 +124,7 @@ The legacy portal “UBI/en” is now deprecated. UBiqube will not maintain it o
 
 ==== Known issues
 
-* MSA-8073 : [Microservices] MS whitespace characters omitted and automatically removed in UI
+* <<MSA-8073>> : [Microservices] MS whitespace characters omitted and automatically removed in UI
 * MSA-8739 : [Microservices] Need to be able to set "Microservice name variable"
 * MSA-8673 : [Microservices] Need to be able to set import rank for the MS definitions
 * MSA-8411 : [Admin] Admin page / Tenants : count takes into account the hidden tenant
@@ -150,6 +150,7 @@ The legacy portal “UBI/en” is now deprecated. UBiqube will not maintain it o
 * MSA-8681 : [Packaging] msa_sms, msa_bud service not started on container restart or recreate
 * MSA-8682 : [Packaging] V2 upgrade - Some files are unchanged after pulling new images
 
+[#MSA-8073]
 .MSA-8073:
 
 If you see the error like: `Unable to retrieve CommandDefinition/CISCO/ISR/Common/access_list.xml`
