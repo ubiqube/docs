@@ -50,36 +50,140 @@ Instructions to upgrade are here: https://ubiqube.com/wp-content/docs/latest/adm
 
 The legacy portal “UBI/en” is now deprecated. UBiqube will not maintain it or provide any support related to this portal. 
 
-== Specific technical fixes
+== Specific technical fixes and feauture details
 
-=== 2.1.0 rc1 (release candidate 1)
+=== 2.1.0 GA
+
+==== Features
+
+* MSA-8039 : [Assurance] Create new Alarm
+* MSA-8392 : [Assurance] Create new Alarm from log search
+* MSA-8391 : [Assurance] Edit existing Alarm
+* MSA-8037 : [Assurance] List configured Alarms
+* MSA-8151 : [Assurance] Log List general filtering
+* MSA-8375 : [Assurance] Render graphs on Managed Entity Detail page
+* MSA-8038 : [Assurance] Delete configured Alarm
+* MSA-8398 : [Assurance] Fix End to End Testing of Assurance in MSA on Docker - SecEngine Operations
+* MSA-8564 : [Assurance] sendmail missing and ipv6 is not activated
+* MSA-8582 : [Assurance] Custom elastic search image with ubi es mapping installed
+* MSA-8659 : [Assurance] adapt check_alert.php for new flat structure of alarm rules in db
+* MSA-8119 : [Admin] Update Manager
+* MSA-8121 : [Admin] Update subtenant
+* MSA-8238 : [Admin] Update Admin 
+* MSA-8331 : [Microservices] Render variable array in Add/Edit form
+* MSA-8379 : [Microservices] Variable array add action in Add/Edit form
+* MSA-8380 : [Microservices] Variable array edit action in Add/Edit form
+* MSA-8381 : [Microservices] Variable array remove action in Add/Edit form
+* MSA-8309 : [Microservices] Microservice reference variable doesn't work neither old nor new UI
+* MSA-8393 : [Workflow] add support for Microservice reference
+* MSA-7953 : [API] License Upload API to read the license and update db
+* MSA-8006 : [API] API to do CRUD operations MSA Vars from DB
+* MSA-8210 : [API] Move Swagger doc currently hosted in SES to Front Container
+* MSA-8348 : [API] add API to read RRD data
+* MSA-8321 : [Packaging] cleanup configurator variables in msa-sms
+* MSA-8147 : [Packaging] Create SecEngine Image
 
 ==== Bug fixes
 
-* MSA-7855 : [Microservices] synchronize API v2 not triggering any action on SecEngine
-* MSA-7459 : [Microservices] synchronize API to return fetched Objects
-* MSA-7970 : [Microservices] configuration parser: correspondence for multiple regexp
-* MSA-7801 : [Microservices] list view vs details view API data inconsistency
-* MSA-7801 : [Microservices] list view vs details view API data inconsistency
-* MSA-7628 : [Microservices] Inconsistency between microservice list and microservice detail for vendors and models
-* MSA-8004 : [Microservices] vendor/model is not being saved when creating a new microservice
-* MSA-8015 : [API] DeviceRS form fields - get default fields for Custom Device adapters
-* MSA-7835 : [API] getMicroserviceObjectDefinition does not return multiple regexp under array
-* MSA-7830 : [API] managed entity create and edit API doesn't accept all values
-* MSA-7882 : [API] Swagger doc update for remaining RS
-* MSA-8153 : [API] Update-device-update-device-data-in-ES-only
-* MSA-8154 : [Workflow] Service Instance Count differs in Services List view and Instances view	
-* MSA-8128 : [Workflow] Saving Workflow Causes NullPointerException
-* MSA-8123 : [Workflow] Duplicates in last executed processes in Dashboard
-* MSA-8194 : [Workflow] Existing pingME Python WF not working since upgrading to 2.1.0rc1
-* MSA-8009 : [Packaging] Adapt Variables Extended Parameter API for API Container
+* MSA-7014 : [Managed entity] the ME creation form is not reset when the browser is killed
+* MSA-7325 : [Managed entity] Deployment Settings unable to detach ME with UI
+* MSA-7380 : [Microservices] Create and Update API issues
+* MSA-8073 : [Microservices] whitespace characters omitted and automatically removed in UI
+* MSA-7814 : [Microservices] Cisco ISR/IOS MS are not listed when creating a DS
+* MSA-8197 : [Microservices] xpath object in XML array parser cannot be retrieved and stored
+* MSA-8212 : [Microservices] Not able to create Netconf MS definitions
+* MSA-8215 : [Microservices] Editing the existing netconf MS definition and saving it in the new GUI corrupts the MS definition
+* MSA-8229 : [Microservices] Update method not showing the variable values for Juniper netconf MS definitions
+* MSA-8312 : [Microservices] array variable name: "." replaced by "_" is breaking the MS
+* MSA-8320 : [Microservices] XML parser is not persisted properly: "<" and ">" are not both encoded
+* MSA-7813 : [Deployment settings] created but visible only on the legacy UI
+* MSA-7849 : [Workflow] API returns null for variables within Workflow if empty array is sent.
+* MSA-8618 : [Workflow] workflow templates are empty on MSA 2.1 GA
+* MSA-8620 : [Workflow] WF not executed via BPM
+* MSA-8378 : [Workflow] Process Execution timeout
+* MSA-8187 : [Admin] User mgmt : Save button has different name
+* MSA-8434 : [License] license upload displayed as failed if license is expired
+* MSA-8435 : [License] missing start date
+* MSA-8560 : [API] ubi-api-rest/user/v1/manager/<manager_id> breaks the DB table redone.ges_cli
+* MSA-8281 : [API] licence management : an invalid file can be loaded
+* MSA-8364 : [API] API returns inconsistent count of managed entities
+* MSA-8433 : [API] return default fields for any unknown model and manid in form fields API
+* MSA-8660 : [API] errors in Wildfly logs when editing/closing microservice
+* MSA-8397 : [Adapter] sms_send_cmd.sh in /opt/sms/bin needs to have one more case for password prompts without a ':'
+* MSA-8586 : [Adapter] Provisioning not working. PHP reference missing
+* MSA-8621 : [Adapter] Provisioning AWS Generic not working. PHP error
+* MSA-8626 : [Adapter] Provisioning Linux ME fails. PHP lib issue
+* MSA-8561 : [Assurance] No alarm triggered when the alarm name is in lowercase
+* MSA-8566 : [Assurance] ElasticSearch Indexer is not started in new containers
+* MSA-8638 : [Assurance] Flat monitoring graph on overview tab
+* MSA-8646 : [Assurance] Search of alarm show unresolved HTML (Highlight)
+* MSA-8647 : [Assurance] Threshold & Actions not loaded when editing an alarm
+* MSA-8648 : [Assurance] Deleting alarm is not working
+* MSA-8684 : [Quickstart] Mini lab script do not created the device
+* MSA-8627 : [Quickstart] Trial license is no more delivered on fresh 2.1.0 GA installation
+
+==== Known issues
+
+* MSA-8073 : [Microservices] MS whitespace characters omitted and automatically removed in UI
+* MSA-8739 : [Microservices] Need to be able to set "Microservice name variable"
+* MSA-8673 : [Microservices] Need to be able to set import rank for the MS definitions
+* MSA-8411 : [Admin] Admin page / Tenants : count takes into account the hidden tenant
+* MSA-8614 : [Admin] Admin login/username not working after being updated
+* MSA-8636 : [Admin] Subtenant cannot be edited in GUI, just after its creation
+* MSA-8735 : [Admin] Sub-tenant association is not working as expected for a Manager account
+* MSA-8736 : [Admin] Editing a Manager user always asks for a password change
+* MSA-8737 : [Admin] Not able to edit an existing admin to update admin password
+* MSA-8738 : [Admin] An Admin user should be able to access "Admin" menu to manage Managers and privileged managers
+* MSA-8612 : [API] swagger update PropertyReader
+* MSA-8641 : [API] API to GET repository resource returns needless value
+* MSA-8637 : [Adapter] Bad router hostname in asset for Linux ME
+* MSA-8622 : [Adapter] Provisioning stuck on UI for a Monitoring Generic
+* MSA-8642 : [Adapter] Bad stage result for generic model activation
+* MSA-8633 : [Workflow] SDK PHP - List config var call a deprecated API
+* MSA-8686 : [Workflow] python SDK issues
+* MSA-8740 : [Workflow] In WF console, while providing
+* MSA-8640 : [BPM] possible to associate workflows which should not be accessible for a subtenant
+* MSA-8645 : [Quickstart] SSHD is stopped on linux_me sometimes
+* MSA-8748 : [Quickstart] Hello World PHP WF is broken
+* MSA-8671 : [Managed entities] ME configuration errors are not catched
+* MSA-8745 : [Managed entities] ME creation/update form - return reason of failure in the UI - Control on fields
+* MSA-8681 : [Packaging] msa_sms, msa_bud service not started on container restart or recreate
+* MSA-8682 : [Packaging] V2 upgrade - Some files are unchanged after pulling new images
+
+.MSA-8073:
+
+If you see the error like: `Unable to retrieve CommandDefinition/CISCO/ISR/Common/access_list.xml`
+
+Possible reasons is that in your MS xml file, you have empty space between the <lines> tags as shown below:
+----
+<line>
+<array name="associations">
+<xpath>Associations/row</xpath>
+<lines>
+</lines>
+<lines></lines>
+</array>
+</line>
+----
+
+The workaround is remove any empty space between the <lines> tag as shown below:
+
+----
+<line>
+<array name="associations">
+<xpath>Associations/row</xpath>
+<lines></lines>
+<lines></lines>
+</array>
+</line>
+----
 
 
 === 2.1.0 rc2 (release candidate 2)
 
 ==== Features
 
-* MSA-8291 : [UI]: Show API connection status on UI
+* MSA-8291 : [UI] Show API connection status on UI
 * MSA-7693 : [Workflow] Show task templates when you create a new task
 * MSA-8292 : [Workflow] Make it possible to create/edit an OBMFRef variable including advanced parameters
 * MSA-6908 : [API] Update sql query in UserDao getManagerRole with additional check
@@ -117,3 +221,27 @@ The legacy portal “UBI/en” is now deprecated. UBiqube will not maintain it o
 * MSA-8214 : [Adapter] Not able to find Netconf MS definitions in DS
 * MSA-8259 : [Adapter] Not able to see Netconf model for Oneaccess in the UII
  
+
+=== 2.1.0 rc1 (release candidate 1)
+
+==== Bug fixes
+
+* MSA-7855 : [Microservices] synchronize API v2 not triggering any action on SecEngine
+* MSA-7459 : [Microservices] synchronize API to return fetched Objects
+* MSA-7970 : [Microservices] configuration parser: correspondence for multiple regexp
+* MSA-7801 : [Microservices] list view vs details view API data inconsistency
+* MSA-7801 : [Microservices] list view vs details view API data inconsistency
+* MSA-7628 : [Microservices] Inconsistency between microservice list and microservice detail for vendors and models
+* MSA-8004 : [Microservices] vendor/model is not being saved when creating a new microservice
+* MSA-8015 : [API] DeviceRS form fields - get default fields for Custom Device adapters
+* MSA-7835 : [API] getMicroserviceObjectDefinition does not return multiple regexp under array
+* MSA-7830 : [API] managed entity create and edit API doesn't accept all values
+* MSA-7882 : [API] Swagger doc update for remaining RS
+* MSA-8153 : [API] Update-device-update-device-data-in-ES-only
+* MSA-8154 : [Workflow] Service Instance Count differs in Services List view and Instances view	
+* MSA-8128 : [Workflow] Saving Workflow Causes NullPointerException
+* MSA-8123 : [Workflow] Duplicates in last executed processes in Dashboard
+* MSA-8194 : [Workflow] Existing pingME Python WF not working since upgrading to 2.1.0rc1
+* MSA-8009 : [Packaging] Adapt Variables Extended Parameter API for API Container
+
+
