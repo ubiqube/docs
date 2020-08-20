@@ -277,5 +277,9 @@ a| * link:https://github.com/openmsa/Adapters/tree/master/adapters/paloalto_gene
 | BIOS Automation
 | Automate BIOS setting and image upgrade with RedFish API
 | link:https://github.com/openmsa/Workflows/tree/master/BIOS_Automation[BIOS_Automation]
+
+| Ansible
+| Enables the {product_name} use to link:ansible{outfilesuffix}[call an Ansible playbook]
+| link:https://github.com/openmsa/Workflows/tree/master/Ansible[Ansible]
 |===
 

@@ -18,4 +18,19 @@ The {product_name} is an Integrated Automation Platform, which consists of sever
 
 == Overview of the docker containers
 
-image:images/docker_containers.png[]
+=== Containers description
+image:images/container_list.png[width=1000px]
+
+- msa_front: runs NGINX and act as the front end
+- msa_ui: run the web portal
+- msa_api: run the REST API webapp on Wildfly
+- msa_sms: runs the CoreEngine for configuration and assurance of the managed entities
+- msa_bud: takes care of cross table data synchronisation and consistency in the database
+- msa_dev: linux based container for storing the assets shared accross containers such as microservices, workflows, adapters code,...
+- camunda: BPM engine
+- msa_es: Elasticsearh container
+- msa_cerebro: Cerebro is a web based management tool for Elasticsearch
+- db: PostgreSQL database
+
+=== Networking and connectivity
+image:images/non_ha_containers.png[width=1000px]

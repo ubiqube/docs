@@ -26,10 +26,9 @@ The manager guide provides the documentation to help you understand the key conc
 == Automation
 - link:automation_workflows{outfilesuffix}[Workflows]
 - link:bpm{outfilesuffix}[BPM]
-////
+
 == Assurance
 - link:assurance{outfilesuffix}[Assurance]
-////
 
 == User management
 - link:tenants_and_users{outfilesuffix}[Tenants and users]

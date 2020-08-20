@@ -11,23 +11,28 @@ On a Linux system from the directory where you ran the `docker-compose up -d` co
 
 [source]
 ----
-$ docker-compose images
-   Container                Repository                Tag         Image Id       Size  
----------------------------------------------------------------------------------------
-docker_api_1       ubiqube/msa2                   api-20.0      59703619e8f0   7.111 GB
-docker_camunda_1   camunda/camunda-bpm-platform   7.12.0        ccda669a96fc   255.1 MB
-docker_db_1        ubiqube/msa2                   db-20.0       e8eee0194267   5.537 GB
-docker_es_1        ubiqube/msa2                   es-20.0       e3844db59c35   5.537 GB
-docker_front_1     ubiqube/msa2                   front-20.0    3f96ebe79bc5   10.71 MB
-docker_kibana_1    ubiqube/msa2                   kibana-20.0   8e8f14f8b2c9   5.537 GB
-docker_ui_1        ubiqube/msa2                   ui-20.0       517fea2710fa   34.71 MB
+$ sudo docker-compose images
+       Container                    Repository                              Tag                        Image Id       Size  
+----------------------------------------------------------------------------------------------------------------------------
+quickstart_camunda_1       camunda/camunda-bpm-platform   latest                                     699c79a099cf   259.4 MB
+quickstart_db_1            ubiqube/msa2-db                2d85a6d93725e546555c92a68f1194a044813c82   276e79c2c35f   157.8 MB
+quickstart_linux_me_1      linux                          me                                         50f54cacc02f   637.5 MB
+quickstart_msa_api_1       ubiqube/msa-api                660e15a7bf4df3736d2e620d0a52064ab10d1754   19a09b1f7b48   1.251 GB
+quickstart_msa_bud_1       ubiqube/msa2-bud               afb789f49b377e4a0f90394f485c6d4047c57afd   714aeded381f   377.2 MB
+quickstart_msa_cerebro_1   lmenezes/cerebro               latest                                     3553b54da0e7   268.2 MB
+quickstart_msa_dev_1       quickstart_msa_dev             latest                                     6db8882cb90d   737.5 MB
+quickstart_msa_es_1        elasticsearch                  7.2.1                                      1e8add8d7b66   862 MB  
+quickstart_msa_front_1     ubiqube/msa2-front             74e52c480d40d29f4b9f6d92c7a0271c55e13900   34a323f81a05   24.08 MB
+quickstart_msa_sms_1       ubiqube/msa2-sms               9f9f30ff2ee6320e0bcf8badc94f1b0fba70b3d7   9f3d23bd3854   1.111 GB
+quickstart_msa_ui_1        ubiqube/msa2-ui                d4ea6545e76ed5d87dfe1051d2e80de1a03030e7   0071a9dacd83   38.73 MB
 ----
-- *front*: runs the UI
+- *front*: runs proxy
 - *api*: runs the CoreEngine, the API server and the legacy UI
+- *ui*: runs main UI
 - *db*: runs the PostgreSQL database
 - *camunda*: runs the BPM
 - *es*: runs the Elasticsearch server
-- *kibana*: run the Kibana server
+- *bud*: runs the batchupdate
 
 Verify that all the containers are up.
 
@@ -35,63 +40,59 @@ This will also show you the network port mapping.
 
 [source]
 ----
-$ docker-compose ps
-      Name                  Command             State                               Ports                             
-----------------------------------------------------------------------------------------------------------------------
-docker_api_1       /sbin/init                   Up      0.0.0.0:2223->22/tcp                                          
-docker_camunda_1   /sbin/tini -- ./camunda.sh   Up      8000/tcp, 8080/tcp, 9404/tcp                                  
-docker_db_1        run ubi-base                 Up                                                                    
-docker_es_1        run elasticsearch            Up                                                                    
-docker_front_1     nginx -g daemon off;         Up      0.0.0.0:443->443/tcp, 0.0.0.0:514->514/udp, 0.0.0.0:80->80/tcp
-docker_kibana_1    run kibana                   Up                                                                    
-docker_ui_1        nginx -g daemon off;         Up      80/tcp      
+$ sudo docker-compose ps
+          Name                        Command               State                               Ports                             
+----------------------------------------------------------------------------------------------------------------------------------
+quickstart_camunda_1       /sbin/tini -- ./camunda.sh       Up      8000/tcp, 8080/tcp, 9404/tcp                                  
+quickstart_db_1            docker-entrypoint.sh postgres    Up      5432/tcp                                                      
+quickstart_linux_me_1      /sbin/init                       Up      0.0.0.0:2224->22/tcp                                          
+quickstart_msa_api_1       /opt/jboss/wildfly/bin/sta ...   Up      8080/tcp, 0.0.0.0:8480->8480/tcp                              
+quickstart_msa_bud_1       /usr/sbin/init                   Up                                                                    
+quickstart_msa_cerebro_1   /opt/cerebro/bin/cerebro - ...   Up      0.0.0.0:9000->9000/tcp                                        
+quickstart_msa_dev_1       /sbin/init                       Up                                                                    
+quickstart_msa_es_1        /usr/local/bin/docker-entr ...   Up      9200/tcp, 9300/tcp                                            
+quickstart_msa_front_1     /docker-entrypoint.sh ngin ...   Up      0.0.0.0:443->443/tcp, 0.0.0.0:514->514/udp, 0.0.0.0:80->80/tcp
+quickstart_msa_sms_1       /docker-entrypoint.sh            Up                                                                    
+quickstart_msa_ui_1        /docker-entrypoint.sh ./st ...   Up      80/tcp                                                        
 ----
 
 == User Interface
 === I can't login to the user interface (UI)
 
-Here are a set of useful CLI commands that you can run from the working directory ...
+Here are a set of useful CLI commands that you can run from the working directory...
 
+////
 Check the status of the main service in the container "api":
 [source]
 ----
-$ docker-compose exec api /opt/sms/bin/check_services_status.sh
+$ sudo docker-compose exec api /opt/sms/bin/check_services_status.sh
 wildfly                                                    [  OK  ]
 tomcat                                                     [  OK  ]
 ubi-dms                                                    [  OK  ]
 ubi-sms                                                    [  OK  ]
 ubi-webconf                                                [  OK  ]
 ----
+////
 
 Check the status of the database:
 [source]
 ----
-$ docker-compose exec db service postgresql-9.3 status
-postgresql-9.3 (pid  52) is running...
+$ sudo docker-compose exec db pg_isready 
+/var/run/postgresql:5432 - accepting connections
 ----
 
 Monitor the logs of the API server. Run the cmd below and try to login.
 Report any error from the logs:
 [source]
 ----
-docker-compose exec api tail -F /opt/wildfly/logs/console.log
+sudo docker-compose exec msa_api tail -F  /opt/jboss/wildfly/standalone/log/server.log
 ----
 
 If the API server is not responding or if you can't login after a few minutes, run the command below to restart the API server and monitor the logs:
 [source]
 ----
-$ docker-compose exec api service wildfly restart              
-removing previous configuration
-setting new configuration
-error reading input file
-
-[...]
-
-BUILD SUCCESSFUL
-Total time: 0 seconds
-moving ear to /opt/wildfly/standalone/deployments/
-Using Mode: standalone/
-wildfly started with errors, please see server log for details            [  OK  ]
+$ sudo docker-compose restart msa_api              
+Restarting quickstart_msa_api_1 ... done
 ----
 
 Then monitor the logs as explained above.
@@ -113,7 +114,7 @@ If you are designing a Microservice or simply operating the {product_name}, you 
 Run the CLI command below to tail the logs
 [source]
 ----
-$ docker-compose exec api tail -F /opt/sms/logs/smsd.log
+$ sudo docker-compose exec msa_sms tail -F /opt/sms/logs/smsd.log
 ----  
 
 By default, DEBUG logs are not enabled.
@@ -121,7 +122,7 @@ By default, DEBUG logs are not enabled.
 To enable the DEBUG mode, you need to connect to the container 'api' and execute the CLI command `tstsms SETLOGLEVEL 255 255`
 [source]
 ----
-$ docker-compose exec api bash
+$ sudo docker-compose exec msa_sms bash  
 [root@msa /]# tstsms SETLOGLEVEL 255 255
 OK
 [root@msa /]# 

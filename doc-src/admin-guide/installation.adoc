@@ -9,12 +9,13 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 The {product_name} Docker application has the following structure:
 
-image:images/docker_containers.png[overall architecture]
+image:images/non_ha_containers.png[overall architecture]
 
 == Prerequisites
 
 Before starting this tutorial, first install link:https://docs.docker.com/install/[Docker] on your machine. 
 Next install link:https://docs.docker.com/compose/install/[Docker Compose] on your machine.
+You must also have a working internet connection to install the container components.
 
 == Installing the application
 
@@ -52,11 +53,11 @@ If you get a gateway error, the web server is probably still starting and you ma
 
 To get an interactive shell on the MSA main container (this will be needed later)
 ```
-docker-compose exec api bash
+docker-compose exec msa_dev bash
 ```
 [#mini-lab]
 === Mini-lab details 
-image:images/minilab_containers.png[mini lab containers]
+image:images/non_ha_minilab_containers.png[mini lab containers]
  
 In addition to a Linux container (linux.me / 172.20.0.101) for experimentation, the mini-lab also comes with the following pre-installed:
 
@@ -68,7 +69,7 @@ In addition to a Linux container (linux.me / 172.20.0.101) for experimentation, 
 To automatically create the tenant, the customer and the managed entity, you can run the CLI command:
 
 ```
-docker-compose exec api /usr/bin/create_mini_lab.sh
+docker-compose exec msa_dev /usr/bin/create_mini_lab.sh
 ```
 
 This will create a tenant, one customer named "Tyrell" and a managed entity named "linux_me" with a fixed management IP 172.20.0.101

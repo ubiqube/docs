@@ -5,7 +5,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :toc: left
 :toclevels: 4 
 
-The quickstart covers how you can quickly get started using the {product_name} orchestration tool by installing a mini lab.
+The quickstart covers how you can quickly get started using {product_name} by installing a mini lab.
 
 == Video tutorial
 This video details the steps for installing and activating the mini lab.
@@ -31,55 +31,77 @@ include::./doc-src/admin-guide/installation_setup_requirement.adoc[]
 This guide is composed of a link:https://github.com/ubiqube/quickstart[git repository] which is mainly a set of Dockerfile and docker-compose.xml files to pull the {product_name} from link:https://hub.docker.com/[Dockerhub] 
 ////
 
-== Step 1: mini lab creation
+== Mini lab creation
 
-include::./doc-src/admin-guide/installation_install_steps.adoc[]
+=== Step 1: creation
+
+include::./doc-src/admin-guide/installation_install_steps_a.adoc[]
 
 NOTE: The installation and the architecture of the mini lab is detailed in the link:../admin-guide/installation{outfilesuffix}#mini-lab[installation guide].
 
-== Step 2: activation
-The mini lab come with a Linux container (linux.me / 172.20.0.101) for experimentation.
-The Linux container is configured with one user `msa`, password `ubiqube`.
+=== Step 2: install the libraries (Microservices, Workflows and Adapters) from github.com/openmsa
 
-As the mini lab comes with a trial license valid for 30 days and limited to 5 managed entities, you can also experiment on additional managed entities.
+```
+$ sudo docker-compose exec msa_dev /usr/bin/install_libraries.sh
+```
 
-In order to ease your discovery of the {product_name}, we are providing a script that will create the mini lab environment for you: 
+At the end of the script execution, you need to restart the API container and the CoreEngine container:
+
+----
+$ sudo docker-compose restart msa_api
+$ sudo docker-compose exec msa_sms /etc/init.d/ubi-sms restart
+----
+
+NOTE: The detail of what is included in the mini lab is available here: link:quickstart_packages{outfilesuffix}[mini lab packages]. 
+
+=== Step 3: provision the mini lab with tenants, managed entities, etc.
+
+The mini lab comes with a Linux container (linux_me / 172.20.0.101) for experimentation.
+Credentials for the Linux machine are:
+
+ - username: `msa`
+ - password: `ubiqube`
+
+In order to ease your discovery of {product_name}, we are providing a script that will create the mini lab environment for you: 
 
 - 1 tenant - BladeRunner
 - 1 subtenant - Tyrell Corporation
 - a managed entity to manage the Linux container - linux_me
-- some microservices and workflow to start configuring the managed entity - users, firewall,....
+- some microservices and workflow to start configuring the managed entity - users, firewall, etc.
 
-To create the mini lab environement, run the CLI command from where you have clonned the quickstart Github project:
-
-.First install the libraries (Microservices, Workflows and Adapters from github.com/openmsa
+To create the mini lab environment, run the CLI command from where you have cloned the quickstart Github project:
 ```
-sudo docker-compose exec api /usr/bin/install_libraries.sh
+$ sudo docker-compose exec msa_dev /usr/bin/create_mini_lab.sh
 ```
 
-NOTE: The detail of what is included in the mini lab is available here: link:quickstart_packages{outfilesuffix}[mini lab packages]. 
+=== Step 4 (optional): Setting up log aggregation for linux_me
+1. `$ sudo docker-compose exec linux_me bash` issue this command from the host machine in order to connect to linux_me.
+2. `[root@linux_me /]# echo '*.* @msa_front' > /etc/rsyslog.d/mini_lab.conf` to create rsyslog configuration.
+3. `[root@linux_me /]# service rsyslog restart` restart the service.
 
-.Provision the mini lab with tenants, managed entities,...
-```
-sudo docker-compose exec api /usr/bin/create_mini_lab.sh
-```
+Now you should start to see device logs for linux_me appearing in the alarm section of the {product_name} portal.
 
 == Mini lab detailed description
 === Use case 1: firewall orchestration on Linux
 
-This lab use case will show you in a simple way how you can use the {product_name} to automate the configuration of iptables based firewall policy on the Linux container included in the mini lab.
+This lab use case will show you in a simple way how you can use {product_name} to automate the configuration of iptables-based firewall policy on the Linux container included in the mini lab.
 
 The development of this use case is detailled in this guide: link:../developer-guide/simple_firewall_policy_mngt{outfilesuffix}[Firewall Policy Automation]
 
 You can use the guide to recreate the use case step by step or you may also directly run the use case with the workflow and microservices that are installed in the mini-lab.
 
-For that, you'll have to select the subtenant named "TYRELL CORPORATION", click on the link "Automation" on the left menu and select the tab "Workflows". The workflow to use is "Simple Firewall (Python)"
+For that, you'll have to select the subtenant named "TYRELL CORPORATION," click on the link "Automation" on the left menu and select the tab "Workflows." The workflow to use is "Simple Firewall (Python)."
 
-video::QRwv78yQWss[youtube,width=600px,height=360] 
+video::QRwv78yQWss[youtube,width=600px,height=360]
+
+== Mini lab additional info
+
+include::./doc-src/admin-guide/installation_install_steps_b.adoc[]
 
 == Going further with the mini lab
-After you have installed and activated the mini lab, here are a list of tutorials that will allow you to go further with the {product_name}.
+After you have installed and activated the mini lab, here are some tutorials that will allow you to go further with {product_name}.
 
+.Tutorials
 These tutorials can be completely executed with the mini lab.
 
 - link:../developer-guide/workflow_getting_started_developing_python{outfilesuffix}[Helloworld Workflow for Python].
@@ -87,3 +109,6 @@ These tutorials can be completely executed with the mini lab.
 - link:../developer-guide/bpm_getting_started_developing{outfilesuffix}[Helloworld BPMP].
 - link:../developer-guide/microservices_getting_started_developing{outfilesuffix}[Getting Started with Microservices Design]: design a simple microservice to manage Linux users.
 - link:../developer-guide/simple_firewall_policy_mngt{outfilesuffix}[Firewall Policy Orchestration]: design micorservices and workflow to orchestrate firewall policy.
+
+.Demo and use cases
+ - link:ansible{outfilesuffix}[Workflow: Ansible playbook runner]

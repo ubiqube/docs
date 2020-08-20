@@ -1,4 +1,4 @@
-= How to create a new vendor based on the REST Generic adapter
+= How to create a new vendor based on the REST Generic existing adapter
 :doctype: book
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
@@ -6,15 +6,154 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :toclevels: 4 
 :source-highlighter: pygments
 
-The REST Generic adapter will let you quickly integrate a new managed entity with a REST based management API but you may want to also have the vendor name and entity model appear in the list of supported vendor instead of REST-Generic.
+The REST Generic adapter will let you quickly integrate a new managed entity with a REST based management API but you may want to also have the vendor name and entity model both appear in the list of supported vendor instead of REST/Generic.
 
 Doing so will allow you to filter the microservice and deployment setting based on the vendor name and model name. 
+
 This will ease the organisation of your integration files.
 
-== How to
+== How to do it
 
-Let's assume that you want to add the vendor_A / model_X to the supported vendor.
+Let's assume that you want to add  vendorA / modelX to the list of supported vendors.
 
-You will need an access to the {product_name} CLI of the API container (see link:architecture_overview{outfilesuffix}[architecture] for more details).
+You will need an access to the {product_name} CLI of the msa_dev container (see link:../admin-guide/architecture_overview{outfilesuffix}[architecture] for more details).
 
+```
+$ sudo docker-compose exec msa_dev bash
+```
+
+=== Create the new model in the Adapters github repository
+
+If you followed the quickstart guide to install your instance of {product_name} the image msa_dev contains a clone of link:https://github.com/openmsa/Adapters[github.com/openmsa/Adapters]
+
+We are going to create the new model in this local repository. Using a git repository has several advantages such as using a working branch to track your changes and revert them if needed or contributing to the community by creating a pull request to submit your code.
+
+Go to the repository
+
+```
+# cd /opt/devops/OpenMSA_Adapters/
+```
+
+Go to the adapter definition directory and create a new folder for your new vendor model. 
+By convention the folder name should be defined as <vendor name>_<model name>
+
+```
+# cd adapters
+# mkdir -p vendorA_modelX/conf
+# cd vendorA_modelX/conf
+```
+
+You need to create 2 configuration files to define this new model:
+
+- device.properties : define the adapter properties for UI display (msa_ui)
+- sms_router.conf : define the adapter config for the Core Engine (msa_sms)
+
+NOTE: In the github repository you will find lot of link:https://github.com/openmsa/Adapters/blob/master/doc/[doc] and example about these files 
+
+.device.properties
+----
+# VendorA / ModelX              <1>
+manufacturer.id = 18082020      <2>
+manufacturer.name = VendorA
+model.id = 18082020             <3>
+model.name = ModelX
+
+obsolete = false
+----
+<1> any comment you find useful.
+<2> select a unique, numeric ID. Your current date it a good choice.
+<3> same as above.
+
+NOTE: the model ID and the manufacturer ID don't have to be identical and you can have several models for the same vendor by using different model ID
+
+.sms_router.conf
+----
+# VendorA / ModelX                  <1>
+model       18082020:18082020       <2>
+path        rest_generic            <3>
+----
+<1> any comment you find useful.
+<2> format: <manufacturer.id>:<model.id>.
+<3> the path to an existing adapter code (example: rest_generic).
+
+=== Update file owner
+
+```
+chown -R ncuser.ncuser /opt/devops/OpenMSA_Adapters/adapters/vendorA_modelX
+```
+
+=== Install and activate the new vendor
+
+Execute the CLI commands below
+
+----
+# cd /opt/devops/OpenMSA_Adapters/bin
+# ./da_installer install /opt/devops/OpenMSA_Adapters/adapters/vendorA_modelX
+----
+
+Output:
+
+----
+update manufacturers_properties config for vendor VendorA [18082020].
+>> update  /opt/ubi-jentreprise/generated/conf/device/custom/manufacturers.properties with 18082020,"VendorA",1
+update models_properties config for vendor VendorA [18082020], model ModelX [18082020].
+>> update  /opt/ubi-jentreprise/generated/conf/device/custom/models.properties with 18082020,18082020,"ModelX","H",0,0,1,0,0,1,0,1,0,1,0,U,0,0
+update core_engine config for vendor VendorA [18082020], model ModelX [18082020], path vendorA_modelX.
+----
+
+Exit the docker container msa_dev and restart the API container and the CoreEngine service
+
+----
+$ sudo docker-compose restart msa_api
+$ sudo docker-compose exec msa_sms /etc/init.d/ubi-sms restart
+----
+
+=== Verify your new vendor is available
+
+Once the services have restart, you can connect to the UI to check that a new vendor/model is listed when you create a new managed entity.
+
+image:images/adapter_new_vendorA_modelX.png[width=1000px]
+
+First, verify that you can create a new managed entity and try to activate it.
+
+During the activation, you can monitor the logs of smsd module from the Core Engine and check that the adapter code being used is the one from rest_generic (or any other you may have set in sms_router.conf above)
+
+Login to the CoreEngine container  
+
+----
+$docker-compose exec msa_sms bash
+----
+
+Set the configuration log level to DEBUG
+
+----
+# tstsms SETLOGLEVEL 255 255
+----
+
+Monitor the logs with tail
+
+----
+# tail -F /opt/sms/logs/smsd.log 
+----
+
+It should output something similar to that. You can verify that the managed entity activation is relying on the adapter code specified in sms_router.conf
+
+----
+2020/08/18:14:39:09:(I):smsd:BLR129:JSAPROVISIONING:: analysing verb JSAPROVISIONING arg BLR129
+2020/08/18:14:39:09:(D):smsd:BLR129:JSAPROVISIONING::   arg: 1.2.3.4 aa aa 
+2020/08/18:14:39:09:(D):smsd:BLR129:JSAPROVISIONING:: SMSSQL_GetSD current node name is msa, sdid = BLR129
+2020/08/18:14:39:09:(D):smsd:BLR129:JSAPROVISIONING:: Alloc SDINFO for BLR129
+2020/08/18:14:39:09:(D):smsd:BLR129:JSAPROVISIONING:: RUN script /opt/sms/bin/php/rest_generic/do_provisioning.php
+2020/08/18:14:39:09:(D):smsd:BLR129:JSAPROVISIONING:: LOAD_ONCE /opt/sms/bin/php/rest_generic/adaptor.php
+2020/08/18:14:39:09:(D):smsd:BLR129:JSAPROVISIONING:: LOAD_ONCE /opt/sms/bin/php/rest_generic/rest_generic_connect.php
+2020/08/18:14:39:09:(D):smsd:BLR129:JSAPROVISIONING:: LOAD_ONCE /opt/sms/bin/php/rest_generic/rest_generic_apply_conf.php
+2020/08/18:14:39:09:(D):smsd:BLR129:JSAPROVISIONING:: LOAD_ONCE /opt/sms/bin/php/rest_generic/rest_generic_connect.php
+2020/08/18:14:39:09:(D):smsd:BLR129:JSAPROVISIONING:: LOAD_ONCE /opt/sms/bin/php/rest_generic/provisioning_stages.php
+
+...
+
+2020/08/18:14:39:09:(D):smsd:BLR129:JSAPROVISIONING:: script /opt/sms/bin/php/rest_generic/do_provisioning.php executed in 0.105652 seconds
+2020/08/18:14:39:09:(D):smsd:BLR129:JSAPROVISIONING:: free SDINFO for BLR129
+2020/08/18:14:39:09:(I):smsd:BLR129:JSAPROVISIONING:: ends OK
+----
 

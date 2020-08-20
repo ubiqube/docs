@@ -1,6 +1,11 @@
 == Setup requirements
 
-=== Resources
+=== Internet Resources
+ * Ensure you have access from HOST machine(s) to:
+ ** https://github.com
+ ** https://hub.docker.com
+
+=== Hardware Resources
 
 .on a PC (for lab experimentation)
 - 8GB, 2CPU, 100GB

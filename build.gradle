@@ -18,7 +18,7 @@ asciidoctor {
   	'source-highlighter' : 'rouge',
     'linkcss': true,
     'product_name': 'MSActivator(TM)',
-    'revnumber': '2.1.0 RC2',
+    'revnumber': 'MSA-2.1.0',
     'allow-uri-read': '',
     'sectlinks': true
  

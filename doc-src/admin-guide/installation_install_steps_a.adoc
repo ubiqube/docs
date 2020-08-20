@@ -1,0 +1,11 @@
+1. Check your Docker engine has access to DockerHub. You can, for instance, run `docker run hello-world` to test the access.
+2. `$ git clone https://github.com/ubiqube/quickstart.git` to clone the GitHub repository on you computer.
+3. `$ cd quickstart`
+4. `git checkout tags/{revnumber} -b {revnumber}`
+5. `$ sudo docker login` (check the note below)
+6. `$ sudo docker-compose up -d` to create the mini lab composed of the {product_name} containers and managed entites to experiment on.
+7. Browse: link:https://localhost/[] and connect with username `ncroot` and password `ubiqube`. The portal might take a few minutes to be up and running.
+
+IMPORTANT: for `docker login`, use the Docker ID "msa2trial" and the link:https://docs.docker.com/docker-hub/access-tokens/[access token] provided by your main point of contact at UBiqube. 
+
+

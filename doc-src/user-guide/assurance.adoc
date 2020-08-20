@@ -19,13 +19,54 @@ The diagram below shows the syslog processing steps from the device to Elasticse
 
 image:images/assurance_log_analysis_event_flow.png[width=720px]
 
+=== Log Search
+
+Event stored in the ELasticsearch is searchable from MSA UI,  to search, you have to be connected as Privilege Adminstration and then go to Alarms tab as show in the below screen shot
+
+image:images/assurance_log_search.png[width=750px]
 
 == Alarm management
 === Overview
 The alarm management module is based on the detection of events which internal (VNOC), SNMP thresholds, or sylogs sent by the managed devices and collected by the {product_name}. 
-Alarm management is designed to provide email notifications to customers or managers, to send SNMP traps to an external trap server, or trigger predetermined automated processes.
+Alarm management is designed to provide email notifications to customers or managers or administrator
 
 The detection of events relies on rules configured at the super administrator level. 
 Rule management is available for the super administrator (ncroot). The rules are defined globally and can be modified by the SOC team. 
 The SOC team can modify the setting of the notification  on a per-event and/or per-customer basis. 
 The rules are executed on a periodic basis (the period frequency can be configured) and alarms are generated whenever a rule matches.
+
+=== Manage Alarm Rules
+Alarm Rule can be created from the Manage Alarms tab, as show in the below screen shot. 
+Alarm Name shoud be Unique across the SOC and it should not contain space. 
+
+
+image:images/assurance_manage_alarm.png[width=750px]
+
+=== Alarm Creation 
+
+Alarm creation contains Four sections below
+
+Detail : in this section we need to provide alarm name
+
+Conditions : requires following input
+
+ * Conditions String =>  A text that will used to search in the incoming logs to generate alarm.
+ * Subtenant => If selected, the logs search for the alarm triggering will be considered only for the Manage Entity that belongs to that subtenant
+ * Manage Entity => If selected, the logs search for the alarm triggering will be considered only for that Manage Entity
+ * Severity Levels => If selected,  alarm wil be triggered for the logs with only those Severities
+
+Threshold: No of Logs and Time period to consider for one alarm triggering
+
+Actions: The selected users will be notified with email when alarm triggered
+
+=== SMTP Configuration
+
+For Alarms to be notified as Email, we need a proper SMTP relay to be configured. Below is the command you can use to change the SMTP ip address, where 10.30.19.99 is your SMTP ip address.
+  
+----
+$ sudo docker-compose exec msa_sms sed -i -e 's/UBI_SMTP_IPADDR.*/UBI_SMTP_IPADDR=10.30.19.99/g' /opt/configurator/vars.ubiqube.net.ctx
+$ sudo docker-compose exec msa_sms sed -i -e 's/UBI_MAIL_SMTP.*/UBI_SMTP_IPADDR=10.30.19.99/g' /opt/configurator/vars.ubiqube.net.ctx
+$ sudo docker-compose exec msa_sms /etc/init.d/ubi-sms restart
+----
+
+

@@ -5,10 +5,31 @@
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-If you have installed the {product_name} with the quickstart, you already have a trial license limited to 5 Managed Entities and valid for 30 days to get started.
+Whether you have installed the {product_name} with the quickstart or started to do a longer PoC you need a license.
+Quickstart environment comes with a trial license installed automatically and valid for 30 days limited to 5 managed entities.
+If you do not have your license yet, for a production license contact your sales representative, otherwise for a free trial license please visit: link:https://ubiqube.com/free-trial/[].
 
-In case you are starting to do a longer PoC or need to have a production license, you probably have received a new license from your UBiqube sales representative.
-In that case you need to use this documentation to activate the new license.
+This documentation discusses the activate of a new license.
+
+== License types
+
+=== PROD (Production): for production setups. 
+
+A production license controls the maximum number of device that can be managed at the same time by the {product_name}.
+
+When this limit is reached, the user won't be able to create any new devices but he will be able to delete some devices in order to free a few license slot.
+
+When the expiration date is reached, the {product_name} will continue to work as usual but the product upgrade won't be allowed
+
+=== POC: for Proof of Concept
+
+A PoC license controls the maximum number of device that can be managed at the same time by the {product_name}.
+
+When this limit is reached, the user won't be able to create any new devices but he will be able to delete some devices in order to free a few license slot.
+
+When the expiration date is reached:
+
+- the {product_name} will switch to a "degraded mode": device configuration with microservice is deactivated.
 
 == License activation
 
