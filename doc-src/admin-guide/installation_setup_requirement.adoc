@@ -8,12 +8,18 @@
 === Hardware Resources
 
 .on a PC (for lab experimentation)
-- 8GB, 2CPU, 100GB
+- minimum memory:4GB (8GB to be comfortable), 2CPU, 100GB
+
+NOTE: with less that 4GB of memory, the {product_name} may not function properly.
 
 .on a production environment 
 - minimum 16GB, 4CPU, 200GB
 
 === Docker custom configuration
+
+The custom configuration below may not be needed depending on your host computer and you intended use of the {product_name}. If you are just running the product for evaluation prupose or training, don't worry too much about these at first.
+
+In a production environment, these custom configuration may be mandatory to allow your setup to support a higher workload.
 
 ////
 === Support for IPv6
