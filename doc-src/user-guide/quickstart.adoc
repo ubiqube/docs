@@ -39,6 +39,7 @@ include::./doc-src/admin-guide/installation_install_steps_a.adoc[]
 
 NOTE: The installation and the architecture of the mini lab is detailed in the link:../admin-guide/installation{outfilesuffix}#mini-lab[installation guide].
 
+[#step2]
 === Step 2: install the libraries (Microservices, Workflows and Adapters) from github.com/openmsa
 
 ```
