@@ -12,12 +12,13 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 === AWS IAM configuration
 
-The demo uses microservices, adapter and workflows to automate the orchestraion of the VNF on AWS. These rely on the AWS API to execute and will require an authentication.
+The demo uses microservices, adapter and workflows to automate the orchestration of the VNF on AWS. They rely on the AWS API to execute and will require an authentication.
 
 To run this demo use case, you need to make sure that you have an AWS IAM (Identity and Access Management) user with an access key.
 The access key will be used when creating the AWS link:managed_entities{outfilesuffix}[managed entity] (see below) 
 
 ==== IAM policy
+
 The use should be granted with a policy that allows enough privileges to manage EC2 and VPC programmatically. If you can, the easiest way to acheive this is to allow all EC2 and VPC actions.
 
 If this is not possible then here is the list of actions to be allowed to use the link:https://github.com/openmsa/Workflows[workflow] and the link:https://github.com/openmsa/Microservices[microservices] available on github.com/openmsa
@@ -78,7 +79,7 @@ PING console.eu-west-2.amazonaws.com (52.94.48.109): 56 data bytes
 
 image:images/aws_me_creation_form.png[width=1000px]
 
-Create and activate the link:managed_entities{outfilesuffix}[managed entity]. The activation, implemented by the link:https://github.com/openmsa/Adapters/tree/2.2.0GA/adapters/aws_generic[AWS Generic adapter] will try to call some REST API during it's process. A successful activation ensure that the information provided during the creation of the managed entity are correct and that the credentials are valid by calling 2 API: DescribeInstances and DescribeVpcs:
+Create and activate the link:managed_entities{outfilesuffix}[managed entity]. The activation, implemented by the link:https://github.com/openmsa/Adapters/tree/2.2.0GA/adapters/aws_generic[AWS Generic adapter] will try to call some REST API during its process. A successful activation ensure that the information provided during the creation of the managed entity are correct and that the credentials are valid by calling 2 API: DescribeInstances and DescribeVpcs:
 
 [source, php]
 ----
@@ -109,8 +110,15 @@ Create a new deployment setting in your current subtenant, set the vendor to AWS
 - Subnet
 - VPC
 
-Add your managed entity to deployment setting and verify that you can use the microservices by browsing to the managed entity page and selecting the tab "Configure". 
+Add your managed entity to the deployment setting and verify that you can use the microservices by browsing to the managed entity page and selecting the tab "Configure". 
 
 Use the action "Synchronize with Managed Entity" to import the AWS "config". On a new, blank AWS region, you should at least see the default VPC.
 
-NOTE: if the synchonisation seems to have no effect, you can try to activate the managed entity once more and run the synchronisation again.
+NOTE: if the synchronisation seems to have no effect, you can try to activate the managed entity once more and run the synchronisation again.
+
+== The VNF orchestration automation workflow.
+
+At this stage you have a managed entity with a selected vendor and a deployment setting with the microservices required for the workflow.
+
+The workflow is provided as part of the link:quickstart#step2{outfilesuffix}#step2[quickstart] setup available in the UI, under "Automation / Workflows", as "VNF Orchestration". To use it, if you haven't done so, you need to link:automation_workflows{}#use[add it to a subtenant].
+
