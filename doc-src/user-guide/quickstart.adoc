@@ -112,3 +112,5 @@ These tutorials can be completely executed with the mini lab.
 
 .Demo and use cases
  - link:ansible{outfilesuffix}[Workflow: Ansible playbook runner]
+ - link:public_cloud_orch_aws{outfilesuffix}[Workflow: VNF orchestration on AWS]
+

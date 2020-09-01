@@ -1,0 +1,8 @@
+= VNF Orchestration on AWS
+:doctype: book
+:imagesdir: ./resources/
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:toc: left
+:toclevels: 4 
+:source-highlighter: pygments
+
