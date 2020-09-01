@@ -24,7 +24,7 @@ To do so, you need to select a WF from the list and click on "Add to..."
 image:images/automation_wf_list_add_to_customer.png[Workflow Add to subtenant,width=1000px]
 
 This will open a dialog popup where subtenant will able to select the subtenant to add/remote to/from a workflow
-
+[#use]
 == Workflow use
 
 To run a workflow you must first select a subtenant from the subtenant selection list at the top of the screen.
