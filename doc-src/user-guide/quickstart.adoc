@@ -82,6 +82,10 @@ $ sudo docker-compose exec msa_dev /usr/bin/create_mini_lab.sh
 
 Now you should start to see device logs for linux_me appearing in the alarm section of the {product_name} portal.
 
+=== Step 5: start using the {product_name}
+
+Browse: link:https://localhost/[] and connect with username `ncroot` and password `ubiqube`. 
+
 == Mini lab detailed description
 === Use case 1: firewall orchestration on Linux
 
@@ -94,10 +98,6 @@ You can use the guide to recreate the use case step by step or you may also dire
 For that, you'll have to select the subtenant named "TYRELL CORPORATION," click on the link "Automation" on the left menu and select the tab "Workflows." The workflow to use is "Simple Firewall (Python)."
 
 video::QRwv78yQWss[youtube,width=600px,height=360]
-
-== Mini lab additional info
-
-include::./doc-src/admin-guide/installation_install_steps_b.adoc[]
 
 == Going further with the mini lab
 After you have installed and activated the mini lab, here are some tutorials that will allow you to go further with {product_name}.
@@ -115,3 +115,6 @@ These tutorials can be completely executed with the mini lab.
  - link:ansible{outfilesuffix}[Workflow: Ansible playbook runner]
  - link:public_cloud_orch_aws{outfilesuffix}[Workflow: VNF orchestration on AWS]
 
+== Mini lab additional info
+
+include::./doc-src/admin-guide/installation_install_steps_b.adoc[]
