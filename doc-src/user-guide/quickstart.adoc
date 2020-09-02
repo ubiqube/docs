@@ -112,8 +112,8 @@ These tutorials can be completely executed with the mini lab.
 - link:../developer-guide/simple_firewall_policy_mngt{outfilesuffix}[Firewall Policy Orchestration]: design micorservices and workflow to orchestrate firewall policy.
 
 .Demo and use cases
- - link:ansible{outfilesuffix}[Workflow: Ansible playbook runner]
- - link:public_cloud_orch_aws{outfilesuffix}[Workflow: VNF orchestration on AWS]
+ - link:demo_ansible{outfilesuffix}[Workflow: Ansible playbook runner]
+ - link:demo_public_cloud_automation_aws{outfilesuffix}[Workflow: VNF orchestration on AWS]
 
 == Mini lab additional info
 
