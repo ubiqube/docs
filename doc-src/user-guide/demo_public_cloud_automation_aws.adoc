@@ -144,7 +144,11 @@ The workflow is provided as part of the link:quickstart#step2{outfilesuffix}#ste
 
 The workflow will provide the processes to start a instance of a firewall (Fortinet Fortigate) on AWS, create the managed entity for this instance and provide the link:https://github.com/openmsa/Microservices/tree/master/FORTINET/FortigateVA[microservices] to do some simple firewall policy management.
 
-The microservices are installed in you mini-lab by the 
+The microservices for managing policies on Fortigate are installed in you mini-lab during the setup of the quickstart.
 
-The instance w
+=== Setup a deployment setting for Fortigate firewall management
+
+During the deployment of the VNF, the workflow will create 
+
+
 
