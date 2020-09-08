@@ -101,13 +101,24 @@ Then monitor the logs as explained above.
 
 If wildfly fails to start with an error similar to `fatal KILL command` then you probably haven't allocated enough memory to your docker engine (see link:../user-guide/quickstart{outfilesuffix}#prerequisites[prerequisites])
 
-
 The above steps should resolve common reasons why the {product_name} is not functioning properly.  If there is something that is still not working properly, then please contact UBiqube.
 
+== CoreEngine
 
-== Configuration Engine
+=== CoreEngine nor starting or restart fails
+If the CoreEngine doesn't (re)start propertly, for instance when running
+----
+$ sudo docker-compose exec msa_sms /etc/init.d/ubi-sms restart
+----
+
+you can check the CoreEgine configuration logs:
+
+----
+$ sudo docker-compose exec msa_sms cat /opt/sms/logs/configure.log
+----
+
 === How do I enable debug logs on the SecEngine ?
-The SecEngine logs are available on the API container (see link:architecture_overview{outfilesuffix}[architecture overview]) in the directory `/opt/sms/logs`.
+The CoreEngine logs are available on the msa_sms container (see link:architecture_overview{outfilesuffix}[architecture overview]) in the directory `/opt/sms/logs`.
 
 If you are designing a Microservice or simply operating the {product_name}, you might need to monitor the logs of the configuration engine.
 

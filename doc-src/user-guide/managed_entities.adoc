@@ -27,6 +27,7 @@ If the user accepts the form state will be reset.
 
 The update form can be accessed by clicking the pencil icon on the managed entity Listing page or on the managed entity Detail page.
 
+[#me_activation]
 === Managed entity activation
 A managed entity can be activated by pressing the "Activate" button the managed entity Detail screen.
 
@@ -37,7 +38,7 @@ If the variables are updated they will be used for that particular activation bu
 When the activation is started the dialog shows the progress of the managed entity activation. 
 This will update as the activation progresses and will show whether the activation succeeds or fails.
 
-NOTE: the activation of the managed entity is executed by the Adapter specific to the managed entity model.
+NOTE: the activation of the managed entity is executed by the adapter for this managed entity model.
 
 == Detail screen
 The managed entity details screen is used to display the details of the selected entity.  
