@@ -138,17 +138,108 @@ NOTE: if the synchronisation seems to have no effect, you can try to activate th
 
 At this stage you have a managed entity with a selected vendor and a deployment setting with the microservices required for the workflow.
 
-The workflow is provided as part of the link:quickstart#step2{outfilesuffix}#step2[quickstart] setup and is available in the UI, under "Automation / Workflows", as "VNF Orchestration". To use it, if you haven't done so, you need to link:automation_workflows{}#use[add it to a subtenant].
+The workflow is provided as part of the link:quickstart{outfilesuffix}#step2[quickstart] setup and is available in the UI, under "Automation / Workflows", as "VNF Orchestration". To use it, if you haven't done so, you need to link:automation_workflows{}#use[add it to a subtenant].
 
 === Overview of the workflow
 
 The workflow will provide the processes to start a instance of a firewall (Fortinet Fortigate) on AWS, create the managed entity for this instance and provide the link:https://github.com/openmsa/Microservices/tree/master/FORTINET/FortigateVA[microservices] to do some simple firewall policy management.
 
-The microservices for managing policies on Fortigate are installed in you mini-lab during the setup of the quickstart.
+The microservices for managing policies on Fortigate are installed in you mini lab during the setup of the quickstart. They are the ones available from Github.
+
+The Workflow has 3 main processes:
+
+.New service
+This process will ask the user to select an AWS managed entity, this is the way to select the region where the VNF will be created and to pass the AWS credentials to the workflow. 
+
+The execution of this process will trigger a microservice synchronization and will populate the workflow variables typed `Microservice Reference` with the actual values from the AWS region (ex: the list of subnets or security groups)
+
+.Launch Instance
+This process will ask the user to select data such as the AMI image ID, the subnet, the security group to use for the VM instanciation... then it will automatically launch the AWS instance, create and activate a new managed entity with a set of microservices.
+
+The result is a ready-to-use managed entity for firewall management with a Fortigate
 
 === Setup a deployment setting for Fortigate firewall management
 
-During the deployment of the VNF, the workflow will create 
+During the deployment of the VNF, the workflow will create a managed entity on the {$product_name}, activate it and (optionally) attach it to a deployment setting with some link:https://github.com/openmsa/Microservices/tree/master/FORTINET/FortigateVA[microservices].
 
+For that to work you have to create a new deployment setting with the microservices you want to use with the fortigate.
 
+When you create the deployment setting, make sure that you set the link:configuration_deployment_settings{outfilesuffix}#external_ref[external reference]. For instance, you can set it to `FGT_FW`.
+
+image:images/aws_fortigate_ds_info.png[width=1000px]
+
+Then attach the following microservices:
+
+- Address Group
+- Address Object
+- Destination NAT
+- Firewall Policy
+- Interface
+- Service Group
+- Service Object
+- Source NAT
+- Static Route
+- Syslogd
+- Timezone
+- User Interface
+
+=== Use the workflow
+
+==== New Service
+
+First you need execute the process `New Service` to select an AWS region where to create the AWS instance and to create a new workflow instance.
+
+image:images/aws_process_new_service.png[width:1000px]
+
+==== Launch Instance
+
+Then, select the process `Launch Instance`. This will open a user form where you will be able to configure the AWS instance:
+
+//// 
+TODO : update images when UI works 
+////
+image:images/aws_process_launch_instance.png[width:1000px]
+
+Some fields will require a value to be set:
+
+.Image ID: 
+This is the AMI ID for a Fortigate instance. The ID ami-0b1bed84cc40437e7 is for a FortiGate-VM64 6.0.6 in the region eu-west-2 (London). If you have created a managed entity for another region, you will have to find the correct AMI ID from the AWS marketplace
+
+image:images/aws_ec2_marketplace.png[width:1000px]
+
+.Instance Type:
+This is where you select the CPU/Memory/Storage combination for your instance. You can try with one of the type listed but you can also use another one as long as it's supported by the AMI and the region
+
+image:images/aws_ec2_instance_type.png[width:1000px]
+
+.Security Group and Subnet ID
+These 2 variables are typed as `Microservice Reference`, they will provide a list of values to choose from. These lists are populated by the corresponding microservices.
+
+This ensures that the values the user chooses are correct for the AWS region
+
+IMPORTANT: you still need to make sure that the security group and the subnet are part of the same VPC otherwise the creation of the instance will fail
+
+.Login
+The instance default login: `admin` for a Fortigate.
+
+.New Password 
+The process will assign a new password to the VNF, make sure that the new password is compatible with the VNF vendor policy (at least 8 character for fortigate)
+
+.Subtenant Id:
+Select the subtenant where the managed entity will be created
+
+.Manufacturer and Model ID
+Use 17 / 15102617 to create a managed entity Fortinet / Fortigate. This managed entity will use the link:https://github.com/openmsa/Adapters/tree/master/adapters/fortigate/conf[adapter from github]
+
+==== Run
+
+When all parameters are set, click `Run` to execute the process
+
+On the AWS EC2 console you can see the instance initializing.
+
+image:images/aws_process_instance_started.png[width=1000px]
+
+while on the workflow console you can see the process executing its task one after the other
+
+image:images/aws_process_task_exec.png[width=1000px]
 
