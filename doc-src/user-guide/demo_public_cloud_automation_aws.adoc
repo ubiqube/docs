@@ -231,6 +231,9 @@ Select the subtenant where the managed entity will be created
 .Manufacturer and Model ID
 Use 17 / 15102617 to create a managed entity Fortinet / Fortigate. This managed entity will use the link:https://github.com/openmsa/Adapters/tree/master/adapters/fortigate/conf[adapter from github]
 
+.Deployment Setting Reference
+Set the value to the deployment setting that you have prepared with the Fortigate microservices. This field is optional, if you leave it empty, the managed entity will not have the microservice associated but this is something that can be done manually later.
+
 ==== Run
 
 When all parameters are set, click `Run` to execute the process
@@ -239,7 +242,19 @@ On the AWS EC2 console you can see the instance initializing.
 
 image:images/aws_process_instance_started.png[width=1000px]
 
-while on the workflow console you can see the process executing its task one after the other
+While on the workflow console you can see the process executing its task one after the other
 
-image:images/aws_process_task_exec.png[width=1000px]
+It takes around 5 minutes to finish
+
+image:images/aws_process_ended.png[width=1000px]
+
+On the AWS EC2 console you can see the instance ready to be used
+
+image:images/aws_process_instance_ready.png[width=1000px]
+
+A new managed entity is now available in the subtenant that you selected. The name of the managed entity is set to the AWS instance id and it's management IP address is the one allocated by EC2.
+
+The managed entity is also associated to the deployment setting that you created above in this documentation.
+This allows you to directly get started with some firewall policy management on the Fortigate.
+
 
