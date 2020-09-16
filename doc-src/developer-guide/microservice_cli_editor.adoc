@@ -154,3 +154,43 @@ Make sure that you can add and delete a policy rule, that it's reflected on the 
 You can also add some iptables rules manually on the Linux CLI and run a configuration synchronisation to make sure that your manual changes are properly imported.
 
 image:images/microservice_console_create_instance.png[width=1000px]
+
+== Import function: tips and examples
+
+Below you'll find some example of CLI based configuration and the regex that can be used to extract the variables.
+
+These are only provided as example and you may have to modify them to match you needs.
+
+To help with testing and validating your regular expression, there are many online tools. We, at UBiqube, usually use this one: https://regexr.com/3bhgg
+
+=== Example 1 : Fortigate, get the syslogd3 config
+
+CLI command: `how full-configuration log syslogd3 setting`
+
+result:
+----
+config log syslogd3 setting
+    set status enable
+    set server "91.167.210.90"
+    set mode udp
+    set port 514
+    set facility local7
+    set source-ip ''
+    set format default
+end
+----
+
+Here is the Import function implementation to extract the object_id, the status, the server IP and the port.
+
+[cols=4*,options="header"]
+|===
+
+|config | regex | instance key | value
+|config log syslogd3 setting | config log (?<object_id>\S+) setting | syslogd.syslogd3.object_id | syslogd3
+|    set status enable | \s*set status (?<syslogd3_status>\S+) | syslogd.syslogd3.syslogd3_status | enable
+|    set port 514 | \s*set port (?<syslogd3_port>\d+) | syslogd.syslogd3.syslogd3_port | 514
+|    set server "91.167.210.90" | \s*set server "(?<syslogd3_server_ip>[^"]+)" | syslogd.syslogd3.syslogd3_server_ip | 91.167.210.90
+|===
+
+
+
