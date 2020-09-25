@@ -7,9 +7,10 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 The {product_name} is an Integrated Automation Platform, which consists of several components running on Docker containers.
 
+[#overview]
 == Overview of the platform
 - The {product_name} API server: this server provides a REST API layer on top of all the functions, it also provides the Workflow Engine responsible for executing the automated processes
-- The {product_name} core engine: this component, composed of several daemons is responsible for the configuration of the Managed Entities, the assurance and collecting the syslogs.
+- The {product_name} Core Engine: this component, composed of several daemons is responsible for the configuration of the Managed Entities, the assurance and collecting the syslogs.
 - A PostgreSQL database: the {product_name} stores its state in a PostgreSQL database.
 - An Elasticsearch cluster: the {product_name} collects and stores the events and the alarms in an Elasticsearch server.
 - A BPM engine based on Camunda, fully integrated with Workflow Engine.

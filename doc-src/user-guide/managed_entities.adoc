@@ -22,13 +22,67 @@ NOTE: the selection of the vendor and model will determine the Adapter that will
 It's important to select an adapter that is compatible with the managed entity model.
 Once a managed entity is created, it is not possible to change the model, the managed entity will have to be recreated.
 
-The Create managed entity form can be closed by pressing the "X" button in the top bar. Any data entered into the fields will be preserved for when the user returns to the form. Clicking the "Discard Changes" button will display a prompt confirming that all changes will be lost. 
+The managed entity creation form can be closed by pressing the "X" button in the top bar. Any data entered into the fields will be preserved for when the user returns to the form. Clicking the "Discard Changes" button will display a prompt confirming that all changes will be lost. 
 If the user accepts the form state will be reset.
 
 The update form can be accessed by clicking the pencil icon on the managed entity Listing page or on the managed entity Detail page.
 
+[#me_form_fields]
+=== Managed entity fields
+
+These are the fields available when creating a managed entity. Some are mandatory and this is made explicit by the * on the web form.
+
+NOTE: All of these values are stored in the database and available to use by the Microservices, the Workflow, the API and the Adapters.
+
+==== Tenant and subtenant
+
+.Select the tenant and subtenant the managed entity will belong to. 
+
+Only available when creating a managed entity, you can't chnange this value once the managed entity is created. If you selected the wrong tenant or subtenant you will have to recreate the managed entity.
+
+==== Basic information
+
+.Select the vendor and model for the managed entity.
+This will select the adapter the {$product_name} link:../admin-guide{outfilesuffix}#overview[Core Engine] will use for configuring and monitoring the managed entity
+
+.Select the nature of the Mmanaged entity
+The nature of the managed entity is an additional information that will help you organize your infrastructure into physical devices and virtual (private or public) ones
+
+==== Administrative information
+
+.Set a name for the managed entity
+
+The name is a free text field that you can use to identify your managed entity. 
+
+NOTE: Although the value unicity is not enforced by the {$product_name} data model, it is very common to use a hostname for the name field.
+
+==== Management information
+
+.Management IP address
+This is the IP address the {$product_name} will use to manage and monitor the entity. FQDN are not supported.
+
+.Management interface name
+You can optionaly set the management interface name here. When set, the Core Engine will use it to poll the management interface traffic with SNMP.
+
+.Hostname
+The hostname of the managed entity.
+
+.Management port
+The management port is set to 22 by default and is used as is by most CLI command based adapters but for REST API adapters you'll have to set it to the correct value.
+
+==== Advanced information
+.SNMP monitoring
+Set the SNMP community configured on the actual managed entity. 
+Optionaly set the monitoring port if it is not the default one (161)
+
+.Log analytic
+Check to collect syslogs and optionaly analyse the syslogs. The syslogs will be parsed and stored in the link:../admin-guide{outfilesuffix}#overview[Elasctisearch cluster].
+
+.Credentials
+Provide the credential to authenticate to the manage entity.
+
 [#me_activation]
-=== Managed entity activation
+== Managed entity activation
 A managed entity can be activated by pressing the "Activate" button the managed entity Detail screen.
 
 This will show a form that takes the variables such as management IP, username and password that will be used in the activation. 
@@ -40,14 +94,21 @@ This will update as the activation progresses and will show whether the activati
 
 NOTE: the activation of the managed entity is executed by the adapter for this managed entity model.
 
-== Detail screen
-The managed entity details screen is used to display the details of the selected entity.  
-You can reach this screen via searching for a managed entity via the global search feature in the top navigation, or by selected an entity in the managed entities list:
-The information such as the serial number, firmware, memory ... are retreived dynamically by the entity adapter once the entity is activated.
+== Overview screen
 
-== Configuration
+The overview screen is the main screen you will see when browsing to a managed entity
 
-Managed entities can be configured with link:./configuration_microservices{outfilesuffix}[microservices].
+image:images/me_overview_screen.png[width=1000px]
+
+The managed entity overview screen is used to display the details of the selected entity as well as assurance related information
+
+You can reach this screen via searching for a managed entity via the global search feature in the top navigation, or by selected an entity in the managed entities list.
+
+The information such as the serial number, firmware, memory ... are retreived dynamically by the adapter once the entity is activated.
+
+== Configuration with microservices
+
+Managed entities can be configured with link:./configuration_microservices{outfilesuffix}[microservices]. To access the microservice console, click on the tab "Configure" on the managed entity screen.
 
 In order to be able to use one or several microservices to configure a managed entity, the microservices must be associated to the managed entity via link:configuration_deployment_settings{outfilesuffix}[deployment settings].
 
@@ -73,9 +134,11 @@ You can create a new microservice instance by selecting a microservice on the le
 
 The input parameters are defined in the microservice "Variable" section.
 
-"+ Add Row" is only available when the Create function of the selected microservice is implemented.
+IMPORTANT: "+ Add Row" is only available when the Create function of the selected microservice is implemented.
 
-To update or delete a microservice instance, you need to select the row and click on "Edit" or "Remove". These action are only available if the Update or the Delete functions of the microservice are implemented.
+To update or delete a microservice instance, you need to select the row and click on "Edit" or "Remove". 
+
+IMPORTANT: "Edit" or "Remove" actions are only available if the Update or the Delete functions of the microservice are implemented.
 
 Once you have updated your microservice, you can either click on "Discard Changes" or "Apply Changes".
 
