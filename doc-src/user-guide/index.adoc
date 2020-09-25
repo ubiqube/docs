@@ -9,33 +9,44 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 The manager guide provides the documentation to help you understand the key concepts of the {product_name} and help you understand how to use the {product_name} in an operational environment. 
 
 == Getting started
+
 - link:quickstart{outfilesuffix}[Quickstart guide]
 - link:quickstart_jp{outfilesuffix}[Quickstart guide (Japanese)]
 - link:quickstart_packages{outfilesuffix}[Quickstart mini lab packages]
 
-
 == Overview
+
 - link:key_concepts{outfilesuffix}[Key concepts]
 - link:gui_overview{outfilesuffix}[GUI overview]
 
-== Integration
+== Infrasctucture
+
 - link:managed_entities{outfilesuffix}[Managed entities]
 - link:configuration_microservices{outfilesuffix}[Microservices]
 - link:configuration_deployment_settings{outfilesuffix}[Deployment settings]
+- link:managed_entities_topology{outfilesuffix}[Network topology]
 
 == Automation
+
 - link:automation_workflows{outfilesuffix}[Workflows]
 - link:bpm{outfilesuffix}[BPM]
 
 === Demo and use cases
+
  - link:demo_ansible{outfilesuffix}[Workflow: Ansible playbook runner]
  - link:demo_public_cloud_automation_aws{outfilesuffix}[Workflow: VNF orchestration on AWS]
 
 == Assurance
+
 - link:assurance{outfilesuffix}[Assurance]
 
-== User management
+== Admin
+
 - link:tenants_and_users{outfilesuffix}[Tenants and users]
+
+== Settings
+
+- link:settings{outfilesuffix}[Settings]
 
 == Architecture
 - link:../admin-guide/architecture_overview{outfilesuffix}[Architecture]
