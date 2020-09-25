@@ -1,0 +1,58 @@
+= Version 2.2
+:imagesdir: ./resources/
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:doctype: book
+:toc: left
+:toclevels: 4 
+
+Various fixes have been made to the product to ensure its continued ability to empower users, ensure a smoother user experience and deliver the value that businesses need in today's environment while being ahead in terms of features, being evergreen and the agility of the {product_name} to grow.
+
+== New features
+
+The following feature improvements are included with this release:
+
+=== Topology
+
+The link:../user-guide/managed_entities_topology{outfilesuffix}[topology] will allow you display a graphical view of you network based on various criteria. You will also be able to build you own topology to suit you specific requirements. By default a layer 3 tolopoly is available based on SNMP request to get the networks of you managed entities.
+
+=== Assurance
+
+Assurance  protects against and manages risk. This release renders the logs from Elasticsearch that are collected from managed entities.  This will enable you to better manage risk and determine best courses of action, based on the data.  
+
+== CoreEngine
+
+No changes have been made to the core engine from previous versions of the product. This allows consistency from branches of OpenMSA (community version), found on GitHub: https://github.com/openmsa
+
+== Upgrading
+
+Instructions to upgrade are here: link:../user-guide/quickstart{outfilesuffix}#upgrade[upgrade guide]
+
+=== Specific instruction for upgrating from 2.1.0GA to 2.2.0GA
+
+When upgrading from 2.1.0GA to 2.2.0GA, you'll have to execute the steps below to upgrade:
+
+1. `$ cd quickstart`
+2. `git checkout master`
+3. `git fetch --all`
+4. `git checkout tags/{revnumber} -b {revnumber}`
+5. `$ sudo docker login`  (if you have logged out since your last use of docker)
+6. `$ sudo docker-compose pull` to download the latest images of the {product_name}.
+7. `$ sudo docker-compose up -d` to start the mini lab composed of the {product_name} containers.
+8. `$ sudo docker-compose down`
+9. `$ sudo docker volume rm msa_sms_php`
+10. `$ sudo docker-compose up -d`
+11. `$ sudo docker-compose exec msa_dev /usr/bin/install_libraries.sh`
+12. `$ sudo docker-compose restart msa_api && docker-compose restart msa_sms`
+
+
+
+
+== Specific technical fixes and feature details
+
+=== 2.2.0 GA
+
+==== Features
+
+==== Bug fixes
+
+==== Known issues
