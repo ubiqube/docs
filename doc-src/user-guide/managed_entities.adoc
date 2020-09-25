@@ -5,7 +5,15 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :toc: left
 :toclevels: 4 
 
-In order to become a manageable entity in the {product_name}, an entity has to be created and activated in the {product_name}.
+In order to become a manageable entity, an entity such as a router, a firewall or any other network function or element, physical or virtual, has to be created and activated in the {product_name}.
+
+These entities are managed in the "Infrastructure" section of the {product_name} web UI.
+
+On this screen you can create a new manage entity or browse to an existing one to manage it.
+
+This screen provides 3 types of view and you can switch between the detailed view, the compact view or the link:managed_entities_topology{outfilesuffix}[topology] view.
+
+image:images/me_detailed_list.png[width=1000px]
 
 == Create, update and activate a managed entity
 To create a managed entity, click the "Create" button on the managed entity Listing page.
