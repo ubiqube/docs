@@ -4,6 +4,7 @@
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :toc: left
 :toclevels: 4 
+:source-highlighter: pygments
 
 The topology view is available on the portal and provides a graphical view of your network. 
 
@@ -28,7 +29,7 @@ If you want to persist the layout, you can save the topology with the save butto
 
 === SNMP
 
-The L3 SNMP mode relies on SNMP resquest to the managed entities to build the topology graph.
+The L3 SNMP mode relies on SNMP request to the managed entities to build the topology graph.
 
 image:images/topology_example.png[width=1000px]
 
@@ -39,15 +40,15 @@ The community must also be set on the managed entity on the {$product_name} link
 
 ==== How it works
 
-The topology is calculated by a workflow link:https://github.com/openmsa/Workflows/tree/master/Topology[Topology]. This workflow is automatically associated to the current subtenant when you browse to the topology screen in the "Infrastructure" section.
+The topology is calculated by a workflow link:https://github.com/openmsa/Workflows/tree/master/Topology[Topology]. This workflow is automatically associated with the current subtenant when you browse to the topology screen in the "Infrastructure" section.
 
-When you load or refresh the topology, the workflow will either create a new instance or update the last one that was created. It will loop thru each managed entity of the subtenant and execute the CLI command below for each one.
+When you load or refresh the topology, the workflow will either create a new instance or update the last one that was created. It will loop through each managed entity of the subtenant and execute the CLI command below for each one.
 
 ----
 snmpwalk -v2c -c <community> <address> IP-MIB::ipAdEntNetMask
 ----
 
-The SNMP mode will rely on the CLI command `snmpwalk -v2c -c <community> <address> IP-MIB::ipAdEntNetMask` to get the list of IP address and network mask from the link:http://www.net-snmp.org/docs/mibs/ip.html[IP MIB object].
+The SNMP mode will rely on the CLI command `snmpwalk -v2c -c <community> <address> IP-MIB::ipAdEntNetMask` to get the list of IP addresses and network masks from the link:http://www.net-snmp.org/docs/mibs/ip.html[IP MIB object].
 
 ----
 ipAdEntNetMask OBJECT-TYPE
@@ -61,8 +62,220 @@ ipAdEntNetMask OBJECT-TYPE
     ::= { ipAddrEntry 3 }
 ----
 
-For each managed entity, the topology workflow will get the list of IPv4 address of this MIB entry and it will build a data structure, stored in the {$product_name} workflow database, to represent the topology as a graph with links and nodes.
+For each managed entity, the topology workflow will get the list of IPv4 addresses of this MIB entry and it will build a data structure, stored in the {$product_name} workflow database, to represent the topology as a graph with links and nodes.
+
+
+[source, php]
+----
+$cmd = "snmpwalk -v2c -c $community $address IP-MIB::ipAdEntNetMask 2>&1";
+exec($cmd, $value, $error);                                                             <1>
+if (!$error) {
+	foreach ($value as $search) {
+		if (searchAdress($search, $matches) != false) {
+			if ($matches [1] [0] != 127) {
+				$address_link = $matches [0] [0];
+				$maskAdr = $matches [0] [1];
+				$mask = calcMask($maskAdr);
+				$address_link_masked = getNetworkByAddressAndMask($address_link, $mask);
+				$addressAndMask = $address_link_masked . "/" . $mask;
+				createTopologyNetwork(str_replace(".", "_", $addressAndMask), $addressAndMask, "network", "");  <2>
+				$context ['Nodes'] [$nodePlace] ["link"] [] ["id"] = $addressAndMask;
+			}
+		}
+	}
+} else {
+	logTofile($value, "Error : $value \n"));
+}
+----
+<1> execute the snmpwalk command to list the IP addresses and masks
+<2> create the topology links with the CIDR as the identifier
 
 === VLAN
 
+The VLAN mode provides a layer 2 view of your infrastructure.
+
+To generate this view you need first to create a new instance of the topology link:automation_workflows{outfilesuffix}[workflow] and select "VLAN" for the topology type. Once this is done you will see the layer 2 topology in the topology screen of the infrastructure.
+
 image:images/topology_example_vlan.png[width=1000px]
+
+==== Prerequisites
+
+The VLAN topology relies on microservices to get the vlan of you managed entities for a selected subtenant. It's therefore mandatory to have a microservice attached to every managed entity you need the vlan information for.
+
+The microservice for vlan should have the following characteristics:
+
+- be defined in a microservice file named vlan.xml
+- the variable object_id should be set to the vlan ID
+
+Any other variable such as the vlan name can be defined in the microservice for configuration purposes but it will not be used to generate the topology view.
+
+A few examples are available on Github:
+
+- link:https://github.com/openmsa/Microservices/blob/master/LINUX/NETWORK/vlan.xml[Linux]
+- link:https://github.com/openmsa/Microservices/blob/master/JUNIPER/junOS_generic/Vlan/vlan.xml[Juniper JunOS]
+- link:https://github.com/openmsa/Microservices/blob/master/CISCO/CATALYST_IOS/VLAN/vlan.xml[Cisco Catalyst IOS]
+
+=== How it works
+
+When you load or refresh the topology, the topology workflow will either create a new instance or update the last one that was created. 
+It will loop through each managed entity of the subtenant and import the vlan information based on the microservice implementation of the IMPORT function.
+
+For example, with a linux based switch, the regex 
+    `:\svlan_(?<object_id>\w+):\s\S+\s\S+\s\S+\s+\S+\s\S+\s\S+\s(?<state>\w+)` 
+will be applied to the result of the CLI command `ip a`:
+
+[source, shell]
+----
+# ip a | grep vlan
+4: eth4.200@eth4: <BROADCAST,MULTICAST,UP,LOWER_UP100> mtu 1500 qdisc noqueue master vlan_200 state UP qlen 1000
+5: vlan_default: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP qlen 1000
+6: vlan_100: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP qlen 1000
+7: vlan_200: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP qlen 1000
+15: eth4@if16: <BROADCAST,MULTICAST,UP,LOWER_UP100,M-DOWN> mtu 1500 qdisc noqueue master vlan_default state UP 
+41: eth1@if42: <BROADCAST,MULTICAST,UP,LOWER_UP100,M-DOWN> mtu 1500 qdisc noqueue master vlan_default state UP 
+43: eth2@if44: <BROADCAST,MULTICAST,UP,LOWER_UP100,M-DOWN> mtu 1500 qdisc noqueue master vlan_default state UP 
+45: eth3@if46: <BROADCAST,MULTICAST,UP,LOWER_UP100,M-DOWN> mtu 1500 qdisc noqueue master vlan_100 state UP 
+# 
+----
+
+and the result of the import will be 3 vlans, 100, 200 and default.
+
+For non-linux managed entities the process to export the vlan information will be different but a similar result will be stored in the database and used by the workflow to build the data structure to represent the topology.
+
+The code to build the topology node information will resemble to
+
+[source, php]
+----
+foreach ($vlans as $vlan) {
+	$vlan_id = $vlan->object_id;        <1>
+	createTopologyNetwork($vlan_id, $vlan_id, "network", "");       <2>
+	$context ['Nodes'] [$nodePlace] ["link"] [] ["id"] = $vlan_id;
+}
+----
+<1> get the value of the microservice variable object_id. It's expected to be the vlan ID.
+<2> create the topology link with the vlan ID
+
+== Create you custom topology
+
+You can create your own topology view, either based on an existing one or you can create a completely new one based on the specifics of your infrastructure.
+
+Here are the steps to add a new topology `my_topology` to your {$product_name}
+
+=== Step 1: prepare your developement environment
+
+The topology workflow is located under `/opt/fmc_repository/OpenMSA_WF/` in the container `msa_dev`, it's a git repository.
+
+Under /opt/fmc_repository/Process, there is a symlink to the git repo: `Topology -> ../OpenMSA_WF/Topology`
+
+[source, shell]
+----
+$ docker-compose exec msa_dev bash
+[root@36f98599746a /]# cd /opt/fmc_repository/OpenMSA_WF/
+[root@36f98599746a OpenMSA_WF]# git remote -v
+origin	https://github.com/openmsa/Workflows.git (fetch)
+origin	https://github.com/openmsa/Workflows.git (push)
+----
+
+You can add your own remote to your fork of the openmsa repository or work with the default one. 
+Either way, you need to create a working branch that you will use later to initiate a pull request.
+
+[source, shell]
+----
+[root@36f98599746a OpenMSA_WF]# git checkout -b my_topology
+Switched to a new branch 'my_topology'
+----
+
+=== Step 2: add a new topology type to the workflow
+
+With the {$product_name}, edit the topology workflow, edit the variable view_type and, in the "Advanced" section add `my_topology` to the values for the drop-down list. 
+
+image:images/topology_custom_update_wf.png[width=1000px]
+
+Save the workflow and use `git status` to see your change
+
+[source, shell]
+----
+[root@36f98599746a OpenMSA_WF]# git status
+On branch my_topology
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   Topology/.meta_Topology.xml
+	modified:   Topology/Topology.xml
+
+no changes added to commit (use "git add" and/or "git commit -a")
+----
+
+you can add and commit these files.
+
+[source, shell]
+----
+[root@36f98599746a OpenMSA_WF]# git lg
+* c5f8bf6 - (HEAD -> my_topology) add a new topology view type <Antoine> (5 seconds ago)
+----
+
+=== Step 3: add a new PHP script to implement the new topology
+
+Go to `/opt/fmc_repository/OpenMSA_WF/Topology/Topology_Types`
+
+[source, shell]
+----
+[root@36f98599746a Topology_Types]# pwd
+/opt/fmc_repository/OpenMSA_WF/Topology/Topology_Types
+[root@36f98599746a Topology_Types]# ll
+total 12
+-rwxr-xr-x 1 ncuser ncuser 3857 Sep 24 15:13 SNMP.php
+-rwxr-xr-x 1 ncuser ncuser  419 Sep 24 15:13 Template.php
+-rwxr-xr-x 1 ncuser ncuser 1516 Sep 24 15:13 VLAN.php
+----
+
+You can reuse any of these files to create your own script, we will use `Template.php` which is an "empty" implementation.
+
+[source, shell]
+----
+[root@36f98599746a Topology_Types]# cp Template.php my_topology.php
+[root@36f98599746a Topology_Types]# chown ncuser.ncuser my_topology.php  <1>
+[root@36f98599746a Topology_Types]# ll
+total 16
+-rwxr-xr-x 1 ncuser ncuser 3857 Sep 24 15:13 SNMP.php
+-rwxr-xr-x 1 ncuser ncuser  419 Sep 24 15:13 Template.php
+-rwxr-xr-x 1 ncuser ncuser 1516 Sep 24 15:13 VLAN.php
+-rwxr-xr-x 1 ncuser ncuser  419 Sep 27 12:55 my_topology.php
+----
+<1> set the file user and group to ncuser
+
+Add a new commit for this initial file
+
+[source, shell]
+----
+[root@36f98599746a Topology_Types]# git status
+On branch my_topology
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	my_topology.php
+
+nothing added to commit but untracked files present (use "git add" to track)
+[root@36f98599746a Topology_Types]# git add my_topology.php
+[root@36f98599746a Topology_Types]# git commit -m "new empty implementation"
+[my_topology 455ab85] new empty implementation
+ 1 file changed, 15 insertions(+)
+ create mode 100755 Topology/Topology_Types/my_topology.php
+----
+
+Now you are ready to start implementing and testing your new topology.
+
+=== Step 4: implementation and tests
+
+On the workflow screen, create a new instance with your new topology view.
+At that point the implementation will be specific to your use case.
+
+Whenever you create a new instance of the process, a dedicated log file is created in the API container, under `/opt/jboss/wildfly/standalone/log/process-<INSTANCE_ID>.log`. 
+The workflow instance ID (39 in the screenshot below) is the one displayed at the top left corner of each instance.
+
+image:images/topology_custom_exec_1.png[width=1000px]
+
+You can monitor the log for debugging purpose: `docker-compose exec msa_api  tail -F /opt/jboss/wildfly/standalone/log/process-39.log`
+
+Use the custom functions `logToFile` and `debug_dump` to output your debugging information in the log file.
+
+
