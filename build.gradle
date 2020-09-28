@@ -19,6 +19,7 @@ asciidoctor {
     'linkcss': true,
     'product_name': 'MSActivator(TM)',
     'revnumber': 'MSA-2.2.0',
+    'revnumber-prev': 'MSA-2.1.0',
     'allow-uri-read': '',
     'sectlinks': true
  
