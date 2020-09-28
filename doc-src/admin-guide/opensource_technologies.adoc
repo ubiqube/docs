@@ -43,13 +43,14 @@ URL <6>
 |	Expat           |	expat-2.2.0.tar.bz2|	MIT/X Consortium license|	No|	Statically linked|	https://libexpat.github.io/
 |	glib2           |	glibc-2.12-1.212.el6_10.3.x86_64|	Lesser General Public License, version 2.1|	No|	Dynamically linked|	http://www.centos.org/ 
 |	itext           |	itext-2.1.7.jar|	MPL1.1|	No|	Dynamic (include .jar) |https://mvnrepository.com/artifact/com.lowagie/itext/2.1.7
-|	Wildfly         |	WildFly Full 10.0.0.Final |	LGPL|	No|	Our module used it as a container|	http://www.jboss.org/jbossas/downloads/ 
+|	Wildfly         |	WildFly Full 10.0.0.Final |	LGPL|	No|	Used as a container|	http://www.jboss.org/jbossas/downloads/ 
 |	Kibana          |	kibana-7.2.0-x86_64.rpm|	Apache License 2.0|	No|	Used as an external tool.|	https://www.elastic.co/
 |	Logstash        |	logstash-7.2.0.rpm|	Apache License 2.0|	No|	Used as an external tool.|	https://www.elastic.co/
 |	Log4j           |	log4j-1.2.15.jar|	Apache Software License, Version 2.0|	No|	Dynamic (include .jar)|	http://logging.apache.org/log4j/1.2/index.html 
 |	Netsnmp         |	net-snmp-5.5-60.el6_10.1.x86_64|	BSD style|	No|	Used as an external tool|	http://net-snmp.sourceforge.net/
 |	Netsnmp         |	net-snmp-5.7.3.tar.gz|	BSD style|	No|	Statically linked|	http://net-snmp.sourceforge.net/
 |	Nfdump          |	nfdump-1.6.2.tar.gz|	BSD style|	No|	Used as an external tool|	https://sourceforge.net/projects/nfdump
+|	NGINX           |	nginx:1.19.2        |	BSD style|	No|	Used as a container|	https://hub.docker.com/_/nginx
 |	Openssh         |	openssh-5.3p1-124.el6_10.x86_64|	BSD|	No|	Used as an external tool|	http://www.openssh.com/
 |	Openssl         |	openssl-1.0.1e-58.el6_10.x86_64.rpm|	Apache style|	No|	Used as an external tool|	https://www.openssl.org
 |	Openssl         |	openssl-1.0.2j.tar.gz |	Apache style|	No|	Statically linked|	https://www.openssl.org/
