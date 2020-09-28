@@ -35,9 +35,18 @@ This guide is composed of a link:https://github.com/ubiqube/quickstart[git repos
 
 === Step 1: creation
 
-include::./doc-src/admin-guide/installation_install_steps_a.adoc[]
+1. Check your Docker engine has access to DockerHub. You can, for instance, run `docker run hello-world` to test the access.
+2. `$ git clone https://github.com/ubiqube/quickstart.git` to clone the GitHub repository on you computer.
+3. `$ cd quickstart`
+4. `git checkout tags/{revnumber} -b {revnumber}`
+5. `$ sudo docker login` (check the note below)
+6. `$ sudo docker-compose up -d` to create the mini lab composed of the {product_name} containers.
 
-NOTE: The installation and the architecture of the mini lab is detailed in the link:../admin-guide/installation{outfilesuffix}#mini-lab[installation guide].
+IMPORTANT: for `docker login`, use the Docker ID "msa2trial" and the link:https://docs.docker.com/docker-hub/access-tokens/[access token] provided by your main point of contact at UBiqube. 
+
+NOTE: If you are already running the {product_name} and wish to upgrade it to a new version check the link:#upgrade[documentation below]
+
+NOTE: The architecture of the mini lab is detailed in this link:../admin-guide/architecture_overview{outfilesuffix}[documentation].
 
 [#step2]
 === Step 2: install the libraries (Microservices, Workflows and Adapters) from github.com/openmsa
@@ -117,4 +126,36 @@ These tutorials can be completely executed with the mini lab.
 
 == Mini lab additional info
 
-include::./doc-src/admin-guide/installation_install_steps_b.adoc[]
+[#upgrade]
+=== Fresh install or upgrade ?
+
+The quickstart repository is maintained on https://github.com/ubiqube/quickstart and the latest version is available on the branch master.
+
+If you are upgrading your {product_name}, you can either do a clean install for the quickstart by removing your docker containers and the quickstart directory and go to step 2. above or you can update your quickstart with `cd quickstart` and checkout the latest version you want to upgrade to.
+
+NOTE: In case you have updated the {product_name} with `docker-compose up -d` or `docker-compose pull`, you might experience cache issues (for instance, your changes may not be reflected on the UI). To solve that, you can clean your browser cache, or use a browser private session.
+
+=== Upgrade version N to N+1
+
+Starting from version 2.2.0, the quickstart provides an upgrade script `upgrade.sh` for taking care of possible actions such as recreating some volume, executing some database specific updates,...
+
+Let's say that you are running {product_name} version {revnumber-prev}, to upgrade to the version {revnumber}, you need to follow these steps:
+
+1. `$ sudo docker login` (in case you are not authenticated yet)
+2. `$ cd quickstart`
+3. `$ git checkout master`
+4. `$ git pull`
+5. `$ git checkout tags/{revnumber} -b {revnumber}`
+6. `$ ./scripts/upgrade.sh`
+
+=== Install a specific version
+
+For each release of the {product_name}, there is a tag that you can use if you need to install a specific version of the product.
+
+To install a tagged version, you can checkout the tag and go to the install steps above.
+
+For example, the CLI command below will checkout the quickstart for the release {revnumber}.
+
+`git checkout tags/{revnumber} -b {revnumber}`
+
+The releases and tags are available link:https://github.com/ubiqube/quickstart/releases[here]
