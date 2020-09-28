@@ -274,8 +274,14 @@ The workflow instance ID (39 in the screenshot below) is the one displayed at th
 
 image:images/topology_custom_exec_1.png[width=1000px]
 
-You can monitor the log for debugging purpose: `docker-compose exec msa_api  tail -F /opt/jboss/wildfly/standalone/log/process-39.log`
+You can monitor the log for debugging purpose: `docker-compose exec msa_api  tail -F /opt/jboss/wildfly/standalone/log/process-39.log` (where 39 is the workflow instance ID
 
 Use the custom functions `logToFile` and `debug_dump` to output your debugging information in the log file.
+
+With the code provided in `Template.php` you will get topology similar to this, without any links.
+
+image:images/topology_custom_exec_2.png[width=1000px]
+
+
 
 
