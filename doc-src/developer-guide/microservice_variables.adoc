@@ -21,9 +21,15 @@ By default the type of a variable is String but other types are supported such a
 
 == Overview
 
-The variables 
+The variables are usually defined to hold the parameters to be passed to the microservice. For instance, the port and IP to block for a firewall policy. Variables can also be used to display user information that is not meant to be used for configuring the managed entity.
+
+Setting different type for variables will affect the way the microservice end user form for creating or updating it will render.
+
+For instance, the type bolean will render the variable as true/false radio buttons.
 
 == Types
 
 .String
-the default type for a variable. Accepts any value. User form renders as a input field.
+the default type for a variable. Accepts any value. User form renders as a input field without any specifc validation with regards to the value set.
+
+.
