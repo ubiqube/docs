@@ -15,7 +15,7 @@ NOTE: with less that 4GB of memory, the {product_name} may not function properly
 .on a production environment 
 - minimum 16GB, 4CPU, 200GB
 
-=== Docker custom configuration
+=== Docker optional custom configuration
 
 The custom configuration below may not be needed depending on your host computer and you intended use of the {product_name}. If you are just running the product for evaluation prupose or training, don't worry too much about these at first.
 
