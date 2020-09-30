@@ -1,4 +1,4 @@
-= Quickstart: Mini Lab Package Description
+= Quickstart: mini lab package description
 :doctype: book
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
