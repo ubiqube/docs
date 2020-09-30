@@ -6,6 +6,9 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :toclevels: 4 
 :source-highlighter: pygments
 
+//// 
+TODO 
+////
 
 Variable are usually defined to hold the parameters to be passed to the microservice. For instance, the port and IP to block for a firewall policy. Variables can also be used to display user information that is not meant to be used for configuring the managed entity.
 
