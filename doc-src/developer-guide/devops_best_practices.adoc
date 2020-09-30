@@ -14,42 +14,21 @@ These applications are located in dedicated GitHub repositories and can be forke
 
 This page explains in detail how to do this and the associated best practices.
 
-== How to Install the Microservices and the Workflows
+== How to install the microservices and the workflows
 === Overview
 As a DevOps engineer, the first step to getting familiar with the {product_name} community code is to:
 
 * Retrieve the code from GitHub
 * Install the code on the OpenMSA platform
-* Utilize the Microservices and the Workflows
+* Utilize the microservices and the workflows
 
 image:images/devops_best_practices_1.png[]
 
-=== Details
-Log in to a live {product_name} as root and perform the following actions:
+=== Default installation for the libraries.
 
-[source]
-----
-[root@DEV-OPENMSA]# cd /opt/fmc_repository
-[root@DEV-OPENMSA]# git clone https://github.com/openmsa/Workflows-Microservices.git OpenMSA
-[root@DEV-OPENMSA]# git checkout openmsa-<VERSION>
-[root@DEV-OPENMSA]# chown -R ncuser. OpenMSA/
-[root@DEV-OPENMSA]# cd CommandDefinition/
-[root@DEV-OPENMSA]# ln -s ../OpenMSA/MICROSERVICES/ OpenMSA
-[root@DEV-OPENMSA]# cd ..
-[root@DEV-OPENMSA]# cd Process/
-[root@DEV-OPENMSA]# ln -s ../OpenMSA/WORKFLOWS/ OpenMSA
-----
-Then browse to the {product_name} GUI, you can start using the microservices and workflows you've installed
+When you install the {product_name} with the link:../user-guide/quickstart{outfilesuffix}#step2[quickstart] a selected list of link:../user-guide/quickstart_packages{outfilesuffix}[libraries] (microservices, workflows and adapters) are installed by default.
 
-[source]
-----
-Automation > Workflows 
-----
-and
-[source]
-----
-Integration > Microservices
-----
+The installation is done by a script installed in the docker container link:../admin-guide/architecture_overview{outfilesuffix}#containers_description[msa_dev]
 
 == How to Design/Develop and Contribute to the Community
 As a microservice or workflow designer you'll have the opportunity to contribute to the community source code.
