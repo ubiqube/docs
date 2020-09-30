@@ -8,10 +8,11 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 The {product_name} provides a support for REST API. These API can be used by third-party service, application or script to manage your {product_name} instance.
 
-.Enabling REST API support
+== Enabling REST API support
 The API is enabled by default. No additional configuration is required.
 
-.Authentication
+[#authentication]
+== Authentication
 When making requests to {product_name} using the REST API, you will need:
 
 * A valid admin username and password (so that a token can be generated and an authenticated session can be established).
@@ -27,7 +28,7 @@ curl -H 'Content-Type: application/json' -XPOST http://<MSA IP or FQDN>/ubi-api-
 curl -H 'Accept: application/json' -H "Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuY3Jvb3QiLCJpYXQiOjE1NTY1MzUzMzUsImx2bCI6IjEiLCJleHAiOjE1NTY2MjE3MzV9.bQUkXYK7wISMyQ4zbrU0vGc2EO0cwlZKfkef85JxYH8eHiDKyOgiSBVF-IuVzFuoiErr9LzGM9gxZ1nbqyumuA" -XGET 'http://<MSA IP or FQDN>/ubi-api-rest/user/customer-by-manager-id/1
 ----
 
-.Format
+== Format
 {product_name} API uses the JSON format.
 
 
