@@ -1,4 +1,4 @@
-= DevOps Best Practice Guide
+= DevOps best practice guide
 :doctype: book
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
