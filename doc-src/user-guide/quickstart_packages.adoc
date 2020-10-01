@@ -294,11 +294,11 @@ a| * link:https://github.com/openmsa/Adapters/tree/master/adapters/paloalto_gene
 | link:https://github.com/openmsa/Workflows/tree/master/BIOS_Automation[BIOS_Automation]
 
 | Ansible
-| Enables the {product_name} to link:ansible{outfilesuffix}[call an Ansible playbook]
+| Enables the {product_name} to link:../lab-guide/ansible{outfilesuffix}[call an Ansible playbook]
 | link:https://github.com/openmsa/Workflows/tree/master/Ansible[Ansible]
 
 | Instance Management on Amazon Web Service
-| Enables the {product_name} to link:demo_public_cloud_automation_aws{outfilesuffix}[Start a VM on AWS]
+| Enables the {product_name} to link:../lab-guide/demo_public_cloud_automation_aws{outfilesuffix}[Start a VM on AWS]
 | link:https://github.com/openmsa/Workflows/tree/master/Public_Cloud/AWS/Instance_Management[AWS Instance Management]
 
 | Topology Backend Workflow

@@ -26,4 +26,13 @@ a|
 image::images/release-notes.png[alt=Release Notes Guide]
 
 link:release_notes{outfilesuffix}[Release Notes]
+
+a| 
+
+[link=lab-guide/index{outfilesuffix}]
+image::images/lab-guide.png[alt=Lab Guide] 
+
+link:lab-guide/index{outfilesuffix}[Lab Guide]
+a| 
+
 |===

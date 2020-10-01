@@ -1,0 +1,13 @@
+= Lab Guide
+:doctype: book
+:imagesdir: ./resources/
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:toc: left
+:toclevels: 4 
+:source-highlighter: pygments
+
+The Installation and Configuration Guide will show you how to install, configure and activate the {product_name}.
+
+- link:../lab-guide/demo_ansible{outfilesuffix}[Workflow: Ansible playbook runner]
+- link:../lab-guide/demo_public_cloud_automation_aws{outfilesuffix}[Workflow: VNF orchestration on AWS]
+- link:../lab/simple_firewall_policy_mngt{outfilesuffix}[Workflow: firewall policy orchestration]

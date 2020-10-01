@@ -2,7 +2,7 @@
 :doctype: book
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:toc: left
+:toc: top
 :toclevels: 4 
 
 The quickstart covers how you can quickly get started using {product_name} by installing a mini lab.
@@ -118,11 +118,11 @@ These tutorials can be completely executed with the mini lab.
 - link:../developer-guide/workflow_getting_started_developing_php{outfilesuffix}[Helloworld Workflow for PHP].
 - link:../developer-guide/bpm_getting_started_developing{outfilesuffix}[Helloworld BPMP].
 - link:../developer-guide/microservices_getting_started_developing{outfilesuffix}[Getting Started with Microservices Design]: design a simple microservice to manage Linux users.
-- link:../developer-guide/simple_firewall_policy_mngt{outfilesuffix}[Firewall Policy Orchestration]: design micorservices and workflow to orchestrate firewall policy.
+- link:../lab-guide/simple_firewall_policy_mngt{outfilesuffix}[Firewall Policy Orchestration]: design micorservices and workflow to orchestrate firewall policy.
 
 .Demo and use cases
- - link:demo_ansible{outfilesuffix}[Workflow: Ansible playbook runner]
- - link:demo_public_cloud_automation_aws{outfilesuffix}[Workflow: VNF orchestration on AWS]
+ - link:../lab-guide/demo_ansible{outfilesuffix}[Workflow: Ansible playbook runner]
+ - link:../lab-guide/demo_public_cloud_automation_aws{outfilesuffix}[Workflow: VNF orchestration on AWS]
 
 == Mini lab additional info
 

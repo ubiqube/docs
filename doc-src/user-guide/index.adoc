@@ -33,8 +33,8 @@ The manager guide provides the documentation to help you understand the key conc
 
 === Demo and use cases
 
- - link:demo_ansible{outfilesuffix}[Workflow: Ansible playbook runner]
- - link:demo_public_cloud_automation_aws{outfilesuffix}[Workflow: VNF orchestration on AWS]
+ - link:../lab-guide/demo_ansible{outfilesuffix}[Workflow: Ansible playbook runner]
+ - link:../lab-guide/demo_public_cloud_automation_aws{outfilesuffix}[Workflow: VNF orchestration on AWS]
 
 == Assurance
 
