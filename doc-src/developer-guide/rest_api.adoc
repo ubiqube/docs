@@ -172,3 +172,28 @@ For the full list of available commands, see the {product_name} API guide on you
 	"message": "access-list 789 extended deny object http 7.8.3.0 255.255.255.0 8.8.3.0 255.255.255.0 log\n"
 }
 ----
+
+[#conf_variables]
+=== Configuration variables
+
+*HTTP Request:* `+/variables/{deviceId}/{name}+`
+
+*Method:* `+GET+`
+[cols=3*,options="header"]
+|===
+| Parameter Name
+| Type
+| Description
+
+| deviceId
+| Long
+| Id of device (Number format) has to be higher than 0, Example = 3453
+
+| name
+| String
+| Name of the variable, Example = var1
+
+|===
+
+
+
