@@ -16,7 +16,7 @@ In order to managed these configuration variables, you can use the workflow link
 
 The workflow provices a simple UI to create/update/delete and list the configuation variables associated to a managed entity.
 
-To use it, execute the process *Init* to select a managed entity. *Init* will also read the database for any existing configuration variable.
+To use it, first you need to associate it to your subtenant then execute the process *Init* to select a managed entity. *Init* will also read the database for any existing configuration variable.
 
 Once created, you can use the workflow instance to manage the configuration variables.
 
