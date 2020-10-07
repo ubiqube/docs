@@ -13,11 +13,11 @@ The following feature improvements are included with this release:
 
 === Topology
 
-The link:../user-guide/managed_entities_topology{outfilesuffix}[topology] will allow you display a graphical view of you network based on various criteria. You will also be able to build you own topology to suit you specific requirements. By default a layer 3 tolopoly is available based on SNMP request to get the networks of you managed entities.
+The link:../user-guide/managed_entities_topology{outfilesuffix}[topology] will allow you to display a graphical view of your network based on various criteria. This will give sufficient insight into how your network, domain, entities are structured and interconnected. You can zoom in and out on particular aspects of the topology view, as well as find out relevant information about managed entities under your control.  In addition, you will be able to build you own topology to suit your specific requirements. By default a Layer 3 topology is available based on SNMP request to get the network data of your managed entities.
 
 === Assurance
 
-Assurance  protects against and manages risk. This release renders the logs from Elasticsearch that are collected from managed entities.  This will enable you to better manage risk and determine best courses of action, based on the data.  
+Assurance protects against and mitigates risk. This release renders the logs from Elasticsearch that are collected from managed entities.  This will enable you to better manage risk and determine the best courses of action, based on the available data.  
 
 == CoreEngine
 
