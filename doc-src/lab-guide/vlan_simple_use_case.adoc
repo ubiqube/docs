@@ -59,7 +59,7 @@ openssh (to take control over)
 
 3. Set pc_01 in vlan 200(untagged) and ping pc_04
 
-ensure with TCP dump packets are encapsulated/de-encapsulated properly
+- ensure with TCP dump packets are encapsulated/de-encapsulated properly
 
 4. Set pc_01 in vlan 200(tagged) and ping pc04
 
