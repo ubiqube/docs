@@ -30,6 +30,7 @@ asciidoctor {
   resources {
     from('doc-src') {
       include '**/*.png'
+      include '**/*.jpg'
       include '**/*.mp4'
       include '**/*.css'
       include '**/*.html'
