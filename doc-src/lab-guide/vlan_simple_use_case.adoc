@@ -6,44 +6,14 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :toclevels: 4 
 :source-highlighter: pygments
 
-== History - investigation, predicaments, fails
+== Overview
 
-I was always interested in how to make a layer2-switch or a router out of a bare Linux machine.
-
-Since I've started my career as a network engineer I became familiar with various network products and vendors, learned their advantages and disadvantages.
-
-Once I put my hands on a Linux machine and understood immediately the power of open source software, it was a moment when I began developing idea around classical open source Ethernet switch.
-
-Simple architecture assumes the presence of next components:
-
- - user-friendly interface (in 2010 it was stack of Apache, JavaScript and PHP)
-
- - database (requires planning of the database itself: tables, relations etc.)
-
- - core-engine (set of scripts to reinvigorate my idea)
-
-...well then you need to think of how to maintain that solution (backups, updates, scaling)
-
-OK, primarily I was a network engineer and didn't know much about listed functions, to be honest I didn't even know about that simple architecture.
-
-So, as you can see I'd started this path of learning and investigation long before I created this list :-)
-
-Long story short I created this solution, spent lots of time and efforts (mainly discovering best practices), and my solution was far away from production like system.
-
-I was clearly seeing what to do next, how to improve that, but there was question I should answer - is it worth it?
-
-Don't worry, I made this  Ethernet switch to gain experience basically.
-
-
-image:images/vlan_simple_1.jpg[width=600px]
-
-Today I found something awesome, something that allows me concentrate on my idea rather than database architecture or user interface.
-
-Something that will help me to create open source and maintainable Ethernet switch and has a user friendly interface.
+This lab guide will show you how to create layer2-switches or a routers out of a bare Linux machine.
 
 == Architecture
 
 Let's start from VLAN definition:
+
 A virtual LAN (VLAN) is any broadcast domain that is partitioned and isolated in a computer network at the data link layer (OSI layer 2) [https://en.wikipedia.org/wiki/Virtual_LAN] broadcast domain that is partitioned and isolated in a computer network.
 
 Linux bridge perfectly fits this requirement.
@@ -54,10 +24,11 @@ image:images/vlan_simple_2.jpg[width=600px]
 
 == Sandbox environment
 
-To make a lightweight playground topology I decided to use Docker containers, simple and cross-platform.
+To make a lightweight playground topology we are using Docker containers, simple and cross-platform.
 
 === Switch
-we need next packages on the top of basic OS (Alpine):
+
+we need these packages on the top of basic OS (Alpine):
 
 - openssh (to take control over the SWITCH)
 - bash (to make some stdout parsing)
@@ -66,34 +37,31 @@ we need next packages on the top of basic OS (Alpine):
 Docker image is 14.4MB (alpine:3.12).
 
 === Hosts
+
 we need several hosts connected to the SWITCH to test different VLAN scenarios.
 
 - pc_01, pc_02 -  placed in default_vlan, traffic from hosts untagged.
-
 - pc_03 - placed in 100 vlan, traffic from host untagged.
-
 - pc_04 - placed in 200 vlan, traffic from host tagged.
 
-packages required:
+.required packages:
+openssh (to take control over)
 
-        openssh (to take control over)
+== Scenarios
 
-Docker image is 11.7MB (alpine:3.12).
-Scenarios
-
-Default state:
+1. Default state:
 
 - pc_01, pc_02 - can ping each other, placed in default_vlan
 - pc_03 is not reachable, placed in 100 vlan
 - pc_03 is not reachable, placed in 200 vlan, encapsulates frames with 200 802.1q tag.
 
-Set pc_01 in vlan 100 and ping pc_03
+2. Set pc_01 in vlan 100 and ping pc_03
 
-Set pc_01 in vlan 200(untagged) and ping pc_04
+3. Set pc_01 in vlan 200(untagged) and ping pc_04
 
 ensure with TCP dump packets are encapsulated/de-encapsulated properly
 
-Set pc_01 in vlan 200(tagged) and ping pc04
+4. Set pc_01 in vlan 200(tagged) and ping pc04
 
 NOTE: pc_01 should have tagging enabled
 
