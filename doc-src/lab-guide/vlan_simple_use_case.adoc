@@ -1,0 +1,263 @@
+= VLAN Simple Use Case
+:doctype: book
+:imagesdir: ./resources/
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:toc: left
+:toclevels: 4 
+:source-highlighter: pygments
+
+== Overview
+
+This lab guide will show you how to create layer2-switches or a routers out of a bare Linux machine.
+
+== Architecture
+
+Let's start from VLAN definition:
+
+A virtual LAN (VLAN) is any broadcast domain that is partitioned and isolated in a computer network at the data link layer (OSI layer 2) [https://en.wikipedia.org/wiki/Virtual_LAN] broadcast domain that is partitioned and isolated in a computer network.
+
+Linux bridge perfectly fits this requirement.
+
+Let's do it in the next way: one broadcast domain - one bridge.
+
+image:images/vlan_simple_2.jpg[width=600px]
+
+== Sandbox environment
+
+To make a lightweight playground topology we are using Docker containers, simple and cross-platform.
+
+=== Switch
+
+we need these packages on the top of basic OS (Alpine):
+
+- openssh (to take control over the SWITCH)
+- bash (to make some stdout parsing)
+- tcpdump (to capture/verify tagged traffic)
+
+Docker image is 14.4MB (alpine:3.12).
+
+=== Hosts
+
+we need several hosts connected to the SWITCH to test different VLAN scenarios.
+
+- pc_01, pc_02 -  placed in default_vlan, traffic from hosts untagged.
+- pc_03 - placed in 100 vlan, traffic from host untagged.
+- pc_04 - placed in 200 vlan, traffic from host tagged.
+
+.required packages:
+openssh (to take control over)
+
+== Scenarios
+
+1. Default state:
+
+- pc_01, pc_02 - can ping each other, placed in default_vlan
+- pc_03 is not reachable, placed in 100 vlan
+- pc_03 is not reachable, placed in 200 vlan, encapsulates frames with 200 802.1q tag.
+
+2. Set pc_01 in vlan 100 and ping pc_03
+
+3. Set pc_01 in vlan 200(untagged) and ping pc_04
+
+ensure with TCP dump packets are encapsulated/de-encapsulated properly
+
+4. Set pc_01 in vlan 200(tagged) and ping pc04
+
+NOTE: pc_01 should have tagging enabled
+
+=== Dockerfile and docker-compose files
+
+- link:https://github.com/ubiqube/quickstart/blob/master/lab/vlan/docker-compose.yml[docker-compose.yml]
+- link:https://github.com/ubiqube/quickstart/blob/master/lab/vlan/pc.dockerfile[pc.dockerfile]
+- link:https://github.com/ubiqube/quickstart/blob/master/lab/vlan/switch.dockerfile[switch.dockerfile]
+
+=== Workarounds
+
+.pc.sh
+Workaround to assing certain network addresses to interfaces randomized by docker.
+
+consider "eht0" interface one that have 172.20.0.x address assigned by Docker DHCP.
+
+consider "eht1" interface one that have 10.222.x.y address assigned by Docker DHCP.
+
+[source, shell]
+----
+# WORKAROUND FOR UNCERTAIN DOCKER INTERFACE ORDER
+eth0=$(ifconfig | grep -B1 "inet addr:172.20.0." | awk '$1!="inet" && $1!="--" {print $1}')
+eth1=$(ifconfig | grep -B1 "inet addr:10.222." | awk '$1!="inet" && $1!="--" {print $1}')
+----
+
+[source, shell]
+----
+# CHANGE IP ADDRESS TO THE PROPER ONE AND MAKE 4th MACHINE TAGGED
+NUM=`echo $HOSTNAME | grep -E -o '[1-9]'`
+IPADDR=`ifconfig $eth1 | grep 'inet addr' | cut -d: -f2 | awk '{print $1}'`
+NEW_IPADDR='10.222.222.1'$NUM'/24'
+----
+
+NOTE: complete pc.sh - available link:https://github.com/ubiqube/quickstart/blob/master/lab/vlan/pc.sh[here]
+
+
+For PC_04 here is 802.1q tagging enabling, for PC_01,PC_02,PC_03 - untagged:
+
+[source, shell]
+----
+if [ $NUM = '4' ]; then
+    ip a d $IPADDR dev $eth1
+    ip link add link $eth1 name $eth1.200 type vlan id 200
+    ip a a $NEW_IPADDR dev $eth1.200
+    iplink set $eth1.200 up
+else
+    ip a d $IPADDR dev $eth1
+    ip a a $NEW_IPADDR dev $eth1
+fi
+----
+
+.switch.sh
+
+Assigns certain network addresses to interfaces randomized by docker.
+
+Creates tagged interface faced on PC_04.
+
+Uses bridge-utils to create network broadcast domains (VLANs).
+
+NOTE: complete switch.sh - available link:https://github.com/ubiqube/quickstart/blob/master/lab/vlan/switch.sh[here]
+
+
+So, at this step we are good to go and should be ready to start managing the switch.
+
+== Framework
+
+MSActivator is an Integrated Automation Platform (IAP) framework for creating user-friendly, easy, maintainable and scalable solutions...
+
+=== Step 1: register the switch
+
+image:images/vlan_simple_3.png[width=1000px]
+
+
+=== Step 2: control the bridge
+
+Then we need to think of how to control the bridge utils - microservices will help us much:
+
+image:images/vlan_simple_4.png[width=1000px]
+
+Here you can see representation of the next output
+
+[source, shell]
+----
+    switch:~# ip a
+    1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN qlen 1000
+        link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+        inet 127.0.0.1/8 scope host lo
+           valid_lft forever preferred_lft forever
+    2: eth3.200@eth3: <BROADCAST,MULTICAST,UP,LOWER_UP100> mtu 1500 qdisc noqueue master vlan_200 state UP qlen 1000
+        link/ether 02:42:0a:de:e1:0a brd ff:ff:ff:ff:ff:ff
+    3: vlan_default: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP qlen 1000
+        link/ether 02:42:0a:de:de:0a brd ff:ff:ff:ff:ff:ff
+    4: vlan_100: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP qlen 1000
+        link/ether 02:42:0a:de:e0:0a brd ff:ff:ff:ff:ff:ff
+    5: vlan_200: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP qlen 1000
+        link/ether 02:42:0a:de:e1:0a brd ff:ff:ff:ff:ff:ff
+    36: eth0@if37: <BROADCAST,MULTICAST,UP,LOWER_UP100,M-DOWN> mtu 1500 qdisc noqueue master vlan_default state UP
+        link/ether 02:42:0a:de:de:0a brd ff:ff:ff:ff:ff:ff
+        inet 10.222.222.10/24 brd 10.222.222.255 scope global eth0
+           valid_lft forever preferred_lft forever
+    48: eth1@if49: <BROADCAST,MULTICAST,UP,LOWER_UP100,M-DOWN> mtu 1500 qdisc noqueue master vlan_default state UP
+        link/ether 02:42:0a:de:df:0a brd ff:ff:ff:ff:ff:ff
+        inet 10.222.223.10/24 brd 10.222.223.255 scope global eth1
+           valid_lft forever preferred_lft forever
+    50: eth2@if51: <BROADCAST,MULTICAST,UP,LOWER_UP100,M-DOWN> mtu 1500 qdisc noqueue master vlan_100 state UP
+        link/ether 02:42:0a:de:e0:0a brd ff:ff:ff:ff:ff:ff
+        inet 10.222.224.10/24 brd 10.222.224.255 scope global eth2
+           valid_lft forever preferred_lft forever
+    54: eth3@if55: <BROADCAST,MULTICAST,UP,LOWER_UP100,M-DOWN> mtu 1500 qdisc noqueue master vlan_default state UP
+        link/ether 02:42:0a:de:e1:0a brd ff:ff:ff:ff:ff:ff
+        inet 10.222.225.10/24 brd 10.222.225.255 scope global eth3
+           valid_lft forever preferred_lft forever
+    56: eth4@if57: <BROADCAST,MULTICAST,UP,LOWER_UP,M-DOWN> mtu 1500 qdisc noqueue state UP
+        link/ether 02:42:ac:14:00:91 brd ff:ff:ff:ff:ff:ff
+        inet 172.20.0.145/24 brd 172.20.0.255 scope global eth4
+           valid_lft forever preferred_lft forever
+----
+
+image:images/vlan_simple_5.png[width=1000px]
+
+There are three interfaces which names starts with "vlan", so there is a naming convention I've chosen and I'm following, to retrieve and parse that data we just need to specify appropriate command and regexp - that is all!
+
+According to CRUD/I model we can CREATE interface (bridge), DELETE or UPDATE, let's see how it works:
+
+=== Step 3: CREATE
+
+image:images/vlan_simple_6.png[width=1000px]
+
+=== Step 4: DELETE
+
+image:images/vlan_simple_7.png[width=1000px]
+
+=== Step 5: UPDATE
+
+image:images/vlan_simple_8.png[width=1000px]
+
+=== Step 6: use the UI
+
+Finally we can see it works from UI.
+
+image:images/vlan_simple_9.png[width=1000px]
+
+For example change VLAN 100 to DOWN state:
+
+image:images/vlan_simple_10.png[width=1000px]
+
+=== Step 6: Now we can control the processes
+
+- create bridge
+- delete bridge
+- enable bridge
+- disable bridge
+
+=== Step 7: control host-faced (end-user) network interfaces
+
+Let's think how to control host-faced (end-user) network interfaces. 
+
+I suggest creating one more microservice, these feature should be decoupled in order to be reused and simplified.
+
+That is how I want to see it:
+
+image:images/vlan_simple_11.png[width=1000px]
+
+And that is how it actually looks:
+
+[source, shell]
+----
+switch:~# brctl show
+bridge name             bridge id               STP enabled     interfaces
+vlan_200                8000.02420adee10a       no              eth3.200
+vlan_100                8000.02420adee00a       no              eth2
+vlan_default            8000.02420adede0a       no              eth0
+                                                                eth1
+                                                                eth3
+----                                                                
+
+==== CREATE
+
+More complicated than first Microservice but still simple and much more flexible because it handles user input exceptions:
+
+image:images/vlan_simple_12.png[width=1000px]
+
+All you need to do is just to list command as you are in CLI and replace certain values with variables
+
+==== DELETE
+
+image:images/vlan_simple_13.png[width=1000px]
+    
+=== UPDATE
+presumes several options:
+
+- switch interface from one vlan to other: (untagged > untagged), (tagged > untagged), (tagged > untagged)
+- option (tagged > tagged) handles by DELETE (or/and) CREATE method, You create one more bridge and assign port to it.
+
+image:images/vlan_simple_14.png[width=1000px]
+    
+Finally here is an example from UI
+
+image:images/vlan_simple_15.png[width=1000px]
