@@ -1,0 +1,16 @@
+= Versions
+:imagesdir: ./resources/
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:doctype: book
+:toc: left
+:toclevels: 4 
+
+[cols=2*,options="header"]
+|===
+|Version | Link
+
+| 17.x |  https://ubiqube.com/wp-content/docs/17.x/
+| 2.0.0 Alpha|  https://ubiqube.com/wp-content/docs/2.0.0/
+| 2.0.1 Beta|  https://ubiqube.com/wp-content/docs/2.0.1/
+| 2.1.0 GA |  
+|===
