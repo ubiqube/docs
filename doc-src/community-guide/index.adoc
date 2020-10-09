@@ -1,9 +1,7 @@
 = {openmsa_name} Community Guide
 :doctype: book
 :imagesdir: ./resources/
-ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:toc: left
-:toclevels: 4 
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]s
 :source-highlighter: pygments
 
 
@@ -22,7 +20,7 @@ The {openmsa_name} Community is a place for developers & network engineers to en
 * I am new to the community. Where can I find the {openmsa_name} Community link:openmsa_code_of_conduct{outfilesuffix}[Code of Conduct]?
 * I would like to know what I am agreeing to when I contribute to {openmsa_name}. Does {openmsa_name} have a link:contributor_license_agreement{outfilesuffix}[Contributors License Agreement]?
 * I would like to contribute but I am not sure how. Are there link:how_to_contribute{outfilesuffix}[easy ways to contribute]?
-* I have a question. Which {openmsa_name} email lists will help me find answers?
+* I have a question. Which {openmsa_name} link:communication{outfilesuffix}[mailing list] will help me find answers?
 * I want to learn more about {openmsa_name}. What can I do?
 ** link:https://ubiqube.com/resources/[Read books].
 ** link:https://ubiqube.com/training/[Get certified].
@@ -31,3 +29,5 @@ The {openmsa_name} Community is a place for developers & network engineers to en
 ** link:https://www.youtube.com/channel/UCu-s4a6a2vYDM6IgNDxqG5A/about[Watch videos].
 * I would like updates about new {openmsa_name} versions. How are new releases announced?
 * I want to use the current release. How do I know which releases are current?
+
+

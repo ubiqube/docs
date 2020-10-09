@@ -6,5 +6,25 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 Thanks for being interested in helping the {openmsa_name} project!
 
-There are many ways to help the {openmsa_name} project…but first, please read and understand the Community Code of Conduct.
+There are many ways to help the {openmsa_name} project…but first, please read and understand the Community link:openmsa_code_of_conduct{outfilesuffix}[Code of Conduct].
+
+== Become a power user
+A great way to help the {openmsa_name} project is to become a power user:
+
+* Use {openmsa_name} everywhere you can
+* Read the link:https://ubiqube.com/free-trial/#documentation[official documentation]
+* Study some of the many excellent link:https://ubiqube.com/resources/[books]
+* Get link:https://ubiqube.com/training/[certified].
+
+When you become a power user, your ability and opportunities to help the {openmsa_name} project in other ways will multiply quickly.
+
+== Ask and answer questions online
+
+Use the {openmsa_name} link:https://groups.google.com/a/ubiqube.com/g/openmsa[mailing list] to reach out and communicate with your fellow {openmsa_name} users.
+
+== File and verify issues
+
+All software has bugs, and {openmsa_name} is no exception. When you find a bug, you can help tremendously by link:reporting_bugs_and_features{outfilesuffix}[telling us about it].
+
+If the bug you found already exists in an issue, you can help by verifying the behavior of the reported bug with a comment in that issue, or by reporting any additional information.
 
