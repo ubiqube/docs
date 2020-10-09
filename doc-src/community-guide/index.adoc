@@ -17,7 +17,7 @@ The {openmsa_name} Community is a place for developers & network engineers to en
 
 == Getting started
 
-* I am new to the community. Where can I find the {openmsa_name} Community link:openmsa_code_of_conduct{outfilesuffix}[Code of Conduct]?
+* I am new to the community. Where can I find the {openmsa_name} Community link:code_of_conduct{outfilesuffix}[Code of Conduct]?
 * I would like to know what I am agreeing to when I contribute to {openmsa_name}. Does {openmsa_name} have a link:contributor_license_agreement{outfilesuffix}[Contributors License Agreement]?
 * I would like to contribute but I am not sure how. Are there link:how_to_contribute{outfilesuffix}[easy ways to contribute]?
 * I have a question. Which {openmsa_name} link:communication{outfilesuffix}[mailing list] will help me find answers?
