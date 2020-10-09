@@ -7,32 +7,37 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 a| 
 [link=user-guide/index{outfilesuffix}]
-image::images/user-guide.png[alt=User Guide] 
+image::images/user-guide.png[width=200px] 
 
 link:user-guide/index{outfilesuffix}[Manager Guide] a| 
 [link=developer-guide/index{outfilesuffix}]
-image::images/dev-guide.png[alt=Developer Guide]
+image::images/dev-guide.png[width=200px]
 
 link:developer-guide/index{outfilesuffix}[Developer Guide] 
 a| 
 
 [link=admin-guide/index{outfilesuffix}]
-image::images/admin-guide.png[alt=Admin Guide] 
+image::images/admin-guide.png[width=200px] 
 
 link:admin-guide/index{outfilesuffix}[Admin Guide]
 a| 
 
 [link=release_notes{outfilesuffix}]
-image::images/release-notes.png[alt=Release Notes Guide]
+image::images/release-notes.png[width=200px]
 
 link:release_notes{outfilesuffix}[Release Notes]
 
 a| 
 
 [link=lab-guide/index{outfilesuffix}]
-image::images/lab-guide.png[alt=Lab Guide] 
+image::images/lab-guide.png[width=200px] 
 
 link:lab-guide/index{outfilesuffix}[Lab Guide]
 a| 
+
+[link=community-guide/index{outfilesuffix}]
+image::images/community-guide.png[width=200px] 
+
+link:community-guide/index{outfilesuffix}[Community Guide]
 
 |===
