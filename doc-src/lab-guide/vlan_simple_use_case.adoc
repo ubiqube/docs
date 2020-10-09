@@ -1,4 +1,12 @@
-History - investigation, predicaments, fails
+= VLAN Simple Use Case
+:doctype: book
+:imagesdir: ./resources/
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:toc: left
+:toclevels: 4 
+:source-highlighter: pygments
+
+== History - investigation, predicaments, fails
 
 I was always interested in how to make a layer2-switch or a router out of a bare Linux machine.
 
@@ -27,40 +35,44 @@ I was clearly seeing what to do next, how to improve that, but there was questio
 Don't worry, I made this  Ethernet switch to gain experience basically.
 
 
-[Ubiqube Internal Documents > VLAN simple use case > VLAN simple (2).jpg]
-
+image:images/vlan_simple_1.jpg[width=600px]
 
 Today I found something awesome, something that allows me concentrate on my idea rather than database architecture or user interface.
 
 Something that will help me to create open source and maintainable Ethernet switch and has a user friendly interface.
-Architecture
+
+== Architecture
 
 Let's start from VLAN definition:
-A virtual LAN (VLAN) is any broadcast domain that is partitioned and isolated in a computer network at the data link layer (OSI layer 2) [https://en.wikipedia.org/wiki/Virtual_LAN]
-broadcast domain that is partitioned and isolated in a computer network.
+A virtual LAN (VLAN) is any broadcast domain that is partitioned and isolated in a computer network at the data link layer (OSI layer 2) [https://en.wikipedia.org/wiki/Virtual_LAN] broadcast domain that is partitioned and isolated in a computer network.
+
 Linux bridge perfectly fits this requirement.
+
 Let's do it in the next way: one broadcast domain - one bridge.
 
-[Ubiqube Internal Documents > VLAN simple use case > VLAN simple (1).jpg]
-Sandbox environment
+image:images/vlan_simple_2.jpg[width=600px]
+
+== Sandbox environment
 
 To make a lightweight playground topology I decided to use Docker containers, simple and cross-platform.
 
-    SWITCH: we need next packages on the top of basic OS (Alpine):
+=== Switch
+we need next packages on the top of basic OS (Alpine):
 
-        openssh (to take control over the SWITCH)
-        bash (to make some stdout parsing)
-        tcpdump (to capture/verify tagged traffic)
+- openssh (to take control over the SWITCH)
+- bash (to make some stdout parsing)
+- tcpdump (to capture/verify tagged traffic)
 
 Docker image is 14.4MB (alpine:3.12).
 
-2. HOSTs. we need several hosts connected to the SWITCH to test different VLAN scenarios.
+=== Hosts
+we need several hosts connected to the SWITCH to test different VLAN scenarios.
 
-a. pc_01, pc_02 -  placed in default_vlan, traffic from hosts untagged.
+- pc_01, pc_02 -  placed in default_vlan, traffic from hosts untagged.
 
-b. pc_03 - placed in 100 vlan, traffic from host untagged.
+- pc_03 - placed in 100 vlan, traffic from host untagged.
 
-c. pc_04 - placed in 200 vlan, traffic from host tagged.
+- pc_04 - placed in 200 vlan, traffic from host tagged.
 
 packages required:
 
@@ -69,197 +81,59 @@ packages required:
 Docker image is 11.7MB (alpine:3.12).
 Scenarios
 
-    Default state:
+Default state:
 
-        pc_01, pc_02 - can ping each other, placed in default_vlan
-        pc_03 is not reachable, placed in 100 vlan
-        pc_03 is not reachable, placed in 200 vlan, encapsulates frames with 200 802.1q tag.
+- pc_01, pc_02 - can ping each other, placed in default_vlan
+- pc_03 is not reachable, placed in 100 vlan
+- pc_03 is not reachable, placed in 200 vlan, encapsulates frames with 200 802.1q tag.
 
-    Set pc_01 in vlan 100 and ping pc_03
+Set pc_01 in vlan 100 and ping pc_03
 
-    Set pc_01 in vlan 200(untagged) and ping pc_04
+Set pc_01 in vlan 200(untagged) and ping pc_04
 
-        ensure with TCP dump packets are encapsulated/de-encapsulated properly
+ensure with TCP dump packets are encapsulated/de-encapsulated properly
 
-    Set pc_01 in vlan 200(tagged) and ping pc04
+Set pc_01 in vlan 200(tagged) and ping pc04
 
-        note: pc_01 should have tagging enabled
+NOTE: pc_01 should have tagging enabled
 
+=== Dockerfile and docker-compose files
 
-Well, here is docker-compose file:
+- link:https://github.com/ubiqube/quickstart/blob/master/lab/vlan/docker-compose.yml[docker-compose.yml]
+- link:https://github.com/ubiqube/quickstart/blob/master/lab/vlan/pc.dockerfile[pc.dockerfile]
+- link:https://github.com/ubiqube/quickstart/blob/master/lab/vlan/switch.dockerfile[switch.dockerfile]
 
-version: "3.8"
+=== Workarounds
 
-services:
-
-  pc_01:
-    privileged: true
-    build:
-      context: .
-      dockerfile: pc.dockerfile
-    ports:
-      - "60622:22"
-    tty: true
-    networks:
-      default:
-        ipv4_address: 172.20.0.141
-      intranet_01:
-        ipv4_address: 10.222.222.11
-    hostname: pc_01
-  
-  pc_02:
-    privileged: true
-    build:
-      context: .
-      dockerfile: pc.dockerfile
-    ports:
-      - "60722:22"
-    tty: true
-    networks:
-      default:
-        ipv4_address: 172.20.0.142
-      # IP ADDRESS will be replaced with ENTRYPOINT script
-      intranet_02:
-        ipv4_address: 10.222.223.12
-    hostname: pc_02
-  
-  pc_03:
-    privileged: true
-    build:
-      context: .
-      dockerfile: pc.dockerfile
-    ports:
-      - "60822:22"
-    tty: true
-    networks:
-      default:
-        ipv4_address: 172.20.0.143
-      # IP ADDRESS will be replaced with ENTRYPOINT script
-      intranet_03:
-        ipv4_address: 10.222.224.12
-    hostname: pc_03
-
-  pc_04:
-    privileged: true
-    build:
-      context: .
-      dockerfile: pc.dockerfile
-    ports:
-      - "60922:22"
-    tty: true
-    networks:
-      default:
-        ipv4_address: 172.20.0.144
-      # IP ADDRESS will be replaced with ENTRYPOINT script
-      intranet_04:
-        ipv4_address: 10.222.225.12
-    hostname: pc_04
-
-  switch:
-    privileged: true
-    build:
-      context: .
-      dockerfile: switch.dockerfile
-    ports:
-      - "61022:22"
-    tty: true
-    networks:
-      default:
-        ipv4_address: 172.20.0.145
-      # DUMMY ADDRESSES - interfaces will be switched into promiscuous mode
-      intranet_01:
-        ipv4_address: 10.222.222.10
-      intranet_02:
-        ipv4_address: 10.222.223.10
-      intranet_03:
-        ipv4_address: 10.222.224.10
-      intranet_04:
-        ipv4_address: 10.222.225.10
-    hostname: switch
-
-networks:
-  default:
-    external:
-      name: quickstart_default
-  intranet_01:
-    ipam:
-      config:
-        - subnet: 10.222.222.0/24
-  intranet_02:
-    ipam:
-      config:
-        - subnet: 10.222.223.0/24
-  intranet_03:
-    ipam:
-      config:
-        - subnet: 10.222.224.0/24
-  intranet_04:
-    ipam:
-      config:
-        - subnet: 10.222.225.0/24
-
-    Docker compose file presumes using "quickstart_default" network created in advance for management plane.
-    Docker requires numbered network to be used, thus intranet networks created, IP-prefixes allocated, but IP-prefixes will be replaced.
-    pc_ services have network interfaces connected, network interface order matters, but Docker Compose 3 makes this order random, here below is simple work-around script.
-    Intranet networks - for data plane and demo use-cases.
-    "quickstart_default" network for control.
-
-PC.dockerfile looks like:
-
-FROM alpine:3.12
-
-RUN mkdir /start
-WORKDIR /start
-COPY ./pc.sh /start
-
-RUN apk add --no-cache openssh
-
-RUN /usr/bin/ssh-keygen -A
-RUN ssh-keygen -t rsa -b 4096 -f  /etc/ssh/ssh_host_key
-
-RUN ["chmod", "+x", "/start/pc.sh"]
-ENTRYPOINT ["/start/pc.sh"]
-
-SWITCH.dockerfile:
-
-FROM alpine:3.12
-
-RUN mkdir /start
-WORKDIR /start
-COPY ./switch.sh /start
-COPY ./port /root
-
-RUN apk add --no-cache openssh bash tcpdump
-
-RUN /usr/bin/ssh-keygen -A
-RUN ssh-keygen -t rsa -b 4096 -f  /etc/ssh/ssh_host_key
-
-RUN ["chmod", "+x", "/root/port"]
-RUN ["chmod", "+x", "/start/switch.sh"]
-ENTRYPOINT ["/start/switch.sh"]
-
-PC.sh - implements WA:
-
-WORKAROUND to assing certain network addresses to interfaces randomized by docker.
+.pc.sh
+Workaround to assing certain network addresses to interfaces randomized by docker.
 
 consider "eht0" interface one that have 172.20.0.x address assigned by Docker DHCP.
 
 consider "eht1" interface one that have 10.222.x.y address assigned by Docker DHCP.
 
+[source, shell]
+----
 # WORKAROUND FOR UNCERTAIN DOCKER INTERFACE ORDER
 eth0=$(ifconfig | grep -B1 "inet addr:172.20.0." | awk '$1!="inet" && $1!="--" {print $1}')
 eth1=$(ifconfig | grep -B1 "inet addr:10.222." | awk '$1!="inet" && $1!="--" {print $1}')
+----
 
-
+[source, shell]
+----
 # CHANGE IP ADDRESS TO THE PROPER ONE AND MAKE 4th MACHINE TAGGED
 NUM=`echo $HOSTNAME | grep -E -o '[1-9]'`
 IPADDR=`ifconfig $eth1 | grep 'inet addr' | cut -d: -f2 | awk '{print $1}'`
 NEW_IPADDR='10.222.222.1'$NUM'/24'
+----
 
-complete pc.sh - available here [URL]
+NOTE: complete pc.sh - available link:https://github.com/ubiqube/quickstart/blob/master/lab/vlan/pc.sh[here]
+
 
 For PC_04 here is 802.1q tagging enabling, for PC_01,PC_02,PC_03 - untagged:
 
+[source, shell]
+----
 if [ $NUM = '4' ]; then
     ip a d $IPADDR dev $eth1
     ip link add link $eth1 name $eth1.200 type vlan id 200
@@ -269,28 +143,40 @@ else
     ip a d $IPADDR dev $eth1
     ip a a $NEW_IPADDR dev $eth1
 fi
+----
 
-SWITCH.sh
+.switch.sh
 
-    Assigns certain network addresses to interfaces randomized by docker.
-    Creates tagged interface faced on PC_04.
-    Uses bridge-utils to create network broadcast domains (VLANs).
+Assigns certain network addresses to interfaces randomized by docker.
 
-complete switch.sh - available here [URL]
+Creates tagged interface faced on PC_04.
+
+Uses bridge-utils to create network broadcast domains (VLANs).
+
+NOTE: complete switch.sh - available link:https://github.com/ubiqube/quickstart/blob/master/lab/vlan/switch.sh[here]
 
 
-So, at this step we are good to go and should be ready to start managing the SWITCH.
-Framework
+So, at this step we are good to go and should be ready to start managing the switch.
 
-MSActivator is an Integrated Automation Platform (IAP) - a powerful framework to create user-friendly, easy, maintainable and scalable solutions , .
+== Framework
 
-    First thing - Register SWITCH:
-    [Ubiqube Internal Documents > VLAN simple use case > image2020-9-23_14-25-52.png]
+MSActivator is an Integrated Automation Platform (IAP) framework for creating user-friendly, easy, maintainable and scalable solutions...
 
-    Then we need to think of how to control bridge utils - microservices will help us much:
-    [Ubiqube Internal Documents > VLAN simple use case > image2020-9-23_14-30-3.png]
-    here you can see representation of the next output:
+=== Step 1: register the switch
 
+image:images/vlan_simple_3.png[width=1000px]
+
+
+=== Step 2: control the bridge
+
+Then we need to think of how to control the bridge utils - microservices will help us much:
+
+image:images/vlan_simple_4.png[width=1000px]
+
+Here you can see representation of the next output
+
+[source, shell]
+----
     switch:~# ip a
     1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN qlen 1000
         link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
@@ -324,73 +210,86 @@ MSActivator is an Integrated Automation Platform (IAP) - a powerful framework to
         link/ether 02:42:ac:14:00:91 brd ff:ff:ff:ff:ff:ff
         inet 172.20.0.145/24 brd 172.20.0.255 scope global eth4
            valid_lft forever preferred_lft forever
+----
 
-    [Ubiqube Internal Documents > VLAN simple use case > image2020-9-23_14-41-5.png]
+image:images/vlan_simple_5.png[width=1000px]
 
-    There are three interfaces which names starts with "vlan", so there is a naming convention I've chosen and I'm following, to retrieve and parse that data we just need to specify appropriate command and regexp - that is all!
-    According to CRUD/I model we can CREATE interface (bridge), DELETE or UPDATE, let's see how it works:
+There are three interfaces which names starts with "vlan", so there is a naming convention I've chosen and I'm following, to retrieve and parse that data we just need to specify appropriate command and regexp - that is all!
 
-    CREATE:
+According to CRUD/I model we can CREATE interface (bridge), DELETE or UPDATE, let's see how it works:
 
-    [Ubiqube Internal Documents > VLAN simple use case > image2020-9-23_14-42-53.png]
+=== Step 3: CREATE
 
-    DELETE
+image:images/vlan_simple_6.png[width=1000px]
 
-    [Ubiqube Internal Documents > VLAN simple use case > image2020-9-23_14-43-18.png]
+=== Step 4: DELETE
 
-    UPDATE
+image:images/vlan_simple_7.png[width=1000px]
 
-    [Ubiqube Internal Documents > VLAN simple use case > image2020-9-23_14-43-42.png]
+=== Step 5: UPDATE
 
-    Finally we can see it works from UI
+image:images/vlan_simple_8.png[width=1000px]
 
-    [Ubiqube Internal Documents > VLAN simple use case > image2020-9-23_14-49-0.png]
+=== Step 6: use the UI
 
-    For example change VLAN 100 to DOWN state:
+Finally we can see it works from UI.
 
-    [Ubiqube Internal Documents > VLAN simple use case > image2020-9-23_14-49-50.png]
-    Now we can control the processes:
-        create bridge
-        delete bridge
-        enable bridge
-        disable bridge
-    Let's think how to control host-faced (end-user) network interfaces. I suggest creating one more Microservice, these feature should be decoupled in order to be reused and simplified.
-    That is how I want to see it:
-    [Ubiqube Internal Documents > VLAN simple use case > image2020-9-23_14-59-50.png]
+image:images/vlan_simple_9.png[width=1000px]
 
-    And that is how it actually looks:
+For example change VLAN 100 to DOWN state:
 
-    switch:~# brctl show
-    bridge name     bridge id               STP enabled     interfaces
-    vlan_200                8000.02420adee10a       no              eth3.200
-    vlan_100                8000.02420adee00a       no              eth2
-    vlan_default            8000.02420adede0a       no              eth0
-                                                            eth1
-                                                            eth3
+image:images/vlan_simple_10.png[width=1000px]
 
+=== Step 6: Now we can control the processes
 
-    CREATE method - more complicated than first Microservice but still simple and much more flexible because it handles user input exceptions:
-    [Ubiqube Internal Documents > VLAN simple use case > image2020-9-23_15-2-13.png]
-    All you need to do is just to list command as you are in CLI and replace certain values with variables
-    DELETE
-    [Ubiqube Internal Documents > VLAN simple use case > image2020-9-23_15-4-28.png]
-    UPDATE - presumes several options:
-    switch interface from one vlan to other: (untagged > untagged), (tagged > untagged), (tagged > untagged)
-    Option (tagged > tagged) handles by DELETE (or/and) CREATE method, You create one more bridge and assign port to it.
-    [Ubiqube Internal Documents > VLAN simple use case > image2020-9-23_15-4-53.png]
-    Finally here is an example from UI
-    [Ubiqube Internal Documents > VLAN simple use case > image2020-9-23_15-22-28.png] 
+- create bridge
+- delete bridge
+- enable bridge
+- disable bridge
 
-Video
+=== Step 7: control host-faced (end-user) network interfaces
 
+Let's think how to control host-faced (end-user) network interfaces. 
 
-What else?
+I suggest creating one more microservice, these feature should be decoupled in order to be reused and simplified.
 
-There are more useful cases that you may develop such as:
+That is how I want to see it:
 
-    Control KVM bridging - with topology view and network configuration
-    Control OVS (open vswitch)
-    Control IPtables, NAT rules
-    Control Routing
-    Control Queuing (it may significantly improve forwarding performance)
-    And much more not only network functions but any single function or a complete service!
+image:images/vlan_simple_11.png[width=1000px]
+
+And that is how it actually looks:
+
+[source, shell]
+----
+switch:~# brctl show
+bridge name             bridge id               STP enabled     interfaces
+vlan_200                8000.02420adee10a       no              eth3.200
+vlan_100                8000.02420adee00a       no              eth2
+vlan_default            8000.02420adede0a       no              eth0
+                                                                eth1
+                                                                eth3
+----                                                                
+
+==== CREATE
+
+More complicated than first Microservice but still simple and much more flexible because it handles user input exceptions:
+
+image:images/vlan_simple_12.png[width=1000px]
+
+All you need to do is just to list command as you are in CLI and replace certain values with variables
+
+==== DELETE
+
+image:images/vlan_simple_13.png[width=1000px]
+    
+=== UPDATE
+presumes several options:
+
+- switch interface from one vlan to other: (untagged > untagged), (tagged > untagged), (tagged > untagged)
+- option (tagged > tagged) handles by DELETE (or/and) CREATE method, You create one more bridge and assign port to it.
+
+image:images/vlan_simple_14.png[width=1000px]
+    
+Finally here is an example from UI
+
+image:images/vlan_simple_15.png[width=1000px]
