@@ -8,6 +8,10 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 This documentation contains a set of documentation, tutorials and examples to help you get familiar with the {product_name} as a development platform.
 
+== Community 
+- link:../community-guide/index{outfilesuffix}[OpenMSA community guide]
+- link:devops_best_practices{outfilesuffix}[DevOps best practices]
+
 == Developer Portal
 
 - link:developer_portal{outfilesuffix}[Developer portal]
@@ -54,8 +58,6 @@ TODO: netconf yang : http://confluence.ubiqube.com/pages/viewpage.action?pageId=
 == Adapters
 - link:adapter_development{outfilesuffix}[Adapter development]
 
-== DevOps Best Practices
-- link:devops_best_practices{outfilesuffix}[DevOps guide]
 
 == API & SDK
 - link:rest_api{outfilesuffix}[REST API]
