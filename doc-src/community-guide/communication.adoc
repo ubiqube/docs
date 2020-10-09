@@ -6,7 +6,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == Code of Conduct
 
-Please read and understand the Community link:openmsa_code_of_conduct{outfilesuffix}[Code of Conduct].
+Please read and understand the Community link:code_of_conduct{outfilesuffix}[Code of Conduct].
 
 == Mailing list information
 

@@ -6,7 +6,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 Thanks for being interested in helping the {openmsa_name} project!
 
-There are many ways to help the {openmsa_name} project…but first, please read and understand the Community link:openmsa_code_of_conduct{outfilesuffix}[Code of Conduct].
+There are many ways to help the {openmsa_name} project…but first, please read and understand the Community link:code_of_conduct{outfilesuffix}[Code of Conduct].
 
 == Become a power user
 A great way to help the {openmsa_name} project is to become a power user:
