@@ -74,4 +74,33 @@ This is the container you need to use for your own devOps related work such as i
 *db* run the PostgreSQL database when the {product_name} administrative data and configuration data is stored.
 
 === Networking and connectivity
+
 image:images/non_ha_containers.png[width=1000px]
+
+=== Volumes and data
+
+In order to persist the data, the {product_name} uses docker volumes:
+
+These volumes are declared at the end of the docker-compose file:
+
+----
+volumes:
+  msa_api:          <1>
+  msa_db:           <2>
+  msa_dev:          <3>
+  msa_entities:     <4>
+  msa_repository:   <5>
+  msa_es:           <6>
+  msa_api_logs:     <7>
+  msa_sms_logs:     <8>
+  msa_bud_logs:     <9>
+----
+<1> volume shared by the containers `msa_api` and `msa_dev` to store the adapter configuration for the UI
+<2> database volume used by the container `db`
+<3> volume shared by the containers `msa_dev` and `msa_sms`, used to store the adapter git repository. This is where you can store your other DevOps related files.
+<4> volume shared by the containers `msa_dev`, `msa_api` and `msa_sms`, used to store the associations between the managed entities and the deployment settings as well as the subtenants and the workflows
+<5> volume shared by the containers `msa_dev`, `msa_api` and `msa_sms`, used to store the sources of the microservices, the workflows, the BMP,...
+<6> volume used by Elasticsearch to store the indexed data.
+<7> volume for storing API and workflow process logs
+<8> volume for storing CoreEngine logs
+<9> volume for storing Batchupdated daemon logs
