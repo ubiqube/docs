@@ -67,15 +67,21 @@ The code sample below shows how to do it.
 
 [source, php]
 ----
+from msa_sdk.orchestration import Orchestration
+from msa_sdk.msa_api import MSA_API
 import time
 
 Orchestration = Orchestration(context['UBIQUBEID'])
-async_update_list = (context['PROCESSINSTANCEID'], context['TASKID'], context['EXECNUMBER']) 	<1>
+async_update_list = (context['PROCESSINSTANCEID'], 
+                    context['TASKID'], 
+                    context['EXECNUMBER']) 	                                <1>
 
 	
-Orchestration.update_asynchronous_task_details(*async_update_list, 'going to sleep')            <2>
-time.sleep(2.4)			                                                                		<3>     
-Orchestration.update_asynchronous_task_details(*async_update_list, 'wake up')		            <4>
+Orchestration.update_asynchronous_task_details(*async_update_list, 
+                                               'going to sleep')            <2>
+time.sleep(2)			                                                    <3>     
+Orchestration.update_asynchronous_task_details(*async_update_list, 
+                                               'wake up')		            <4>
 ----
 <1> creates an array with the information about current process and task
 <2> update the UI with a message
