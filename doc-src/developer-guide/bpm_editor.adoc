@@ -10,9 +10,12 @@ The BPM editor is a web based UI for designing BPM processes.
 
 == BPM design
 
-To create a new BPM from the developer portal, click on "+ Create" from the BPM Library swimlane. 
+To create a new BPM from the developer portal, click on "+ Create" from the swimlane "BPM Library". 
 
 You can also browse through the existing BPM by clicking on "See more".
+
+image:images/developer_dashboard_bpm.png[width=600px]
+
 
 NOTE: you need to select a sub-tenant to see the BPM.
 
@@ -42,7 +45,20 @@ image:images/bpm_end_event.png[] indicates the end of the BPM process.
 
 image:images/bpm_task.png[] an executable task that can run workflow processes.
 
+image:images/bpm_gateway_event.png[] an exclusive gateway.
+
 NOTE: Support for more elements will be provided in future link../release_notes{outfilesuffix}[releases]
+
+==== Exclusive gateway (XOR)
+
+image:images/bpm_gateway.png[]
+
+The XOR gateway will let you model a decision in the process.
+
+When the execution arrives at this gateway, all outgoing sequence flows are evaluated in the order in which they have been defined. 
+The sequence flow which condition evaluates to ‘true’ is selected for continuing the process.
+
+
 
 === Connecting workflows and processes
 
