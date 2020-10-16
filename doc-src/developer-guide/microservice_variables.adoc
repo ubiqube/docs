@@ -30,16 +30,99 @@ Setting different types for variables will affect the way the microservice end u
 
 For instance, the type boolean will render the variable with true/false radio buttons.
 
-== Types
+== Defaut settings
 
-.Boolean
-This data type accepts a value of true or false. User form renders the decision gateway based which is intended to represent the two truth values of logic and Boolean algebra.
+When creating or editing a variable, there are some information that need to be provided in the "Default" section.
 
-.Integer
-This data type represents a numerical value. Integers are whole numbers that are signed (positive numbers).
+image:images/microservice_variables_edit_1.png[]
 
-.String
-The default type for a variable. Accepts any value. User form renders as a input field without any specifc validation with regards to the value set.
+=== Variable
 
-.Password
-This data type represents a multicharacter value that is hidden from plain sight (i.e. the value is represented as asterisks instead of clear text). Password data types are limited to certain sizes and can contain letters, numbers or special symbols.
+Name of the variable to use in the implementation of the microservice or when calling the REST API.
+
+=== Type
+
+The type of the variable should be one from the list below
+
+==== String
+
+The default type for a variable, it will accepts any value and the UI renders it as a input field without any specifc validation with regards to the value set.
+
+==== Boolean
+
+This data type accepts a value of true or false, the UI will render it as a checkbox.
+
+==== Integer
+
+This data type represents a numerical value, the UI will render it as an input field restricted to integer.
+
+==== Password
+NOTE: not supported yet
+
+This data type represents a multicharacter value that is hidden from plain sight (i.e. the value is represented as asterisks instead of clear text). 
+
+==== IPv4 address and mask, IPv6 mask
+NOTE: not supported yet
+
+This data type will enforce data validation against IP address formats.
+
+==== Composite
+NOTE: not supported yet
+
+The variable type composite provide the means to add control over the behaviour of the Microservice user form.
+
+It can be used, for instance, to show/hide part of the form based on the value of another component of the form.
+
+==== Link
+NOTE: not supported yet
+
+This type is useful if you wat to display a URL in the user form, for instance to link to some documentation on a web server. It is usually used in read-only mode with the URL set as the default value of the variable
+
+==== File
+NOTE: not supported yet
+
+This type is useful for allowing a user to select a file.
+
+==== Auto Increment
+
+This type is used to maintain an incremental counter in within the instances of a microservice for a managed entity. This is useful for managing the object_id.
+
+.Specific advanced parameters
+|===
+| Increment                                 | an integer to define the increment step
+| Start Incremant                           | the initial value for the variable
+| Microservices sharing the same increment  | a list of microservices that are also using the same variable and need to share a common value.
+|===
+
+==== Device 
+NOTE: not supported yet
+
+This type is used to allow the user to select a managed entity and pass it's identifier to the implementation of the microservice.
+
+=== Display Name
+
+The display value for the variable name.
+
+=== Description
+
+An optional description of this variable.
+
+== Advanced settings
+
+Depending on the selected type, some advanced parameters may be differ.
+
+[cols=2*,options="header"]
+|===
+
+| Setting                   | Description
+| Default Value             | the default value that will be used when creating a new microservice instance
+| Values for Drop-down      | a list of possible value the user can choose from
+| Allow adding free value   | available if some value(s) were provided for drop-down
+| Mandatory                 | a value has to be provided for this variable
+| Read only variable        | the value cannot be edited
+| Group variable            | group some variables in the link:../user-guide/microservices{outfilesuffix}#microservice-console[microservice console] (see link:#group_variables[below])
+| Show only in edit view    | 
+|===
+
+[#group_variables]
+=== Group Variables
