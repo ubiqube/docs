@@ -18,7 +18,7 @@ image:images/developer_dashboard_bpm.png[width=600px]
 
 NOTE: you need to select a sub-tenant to see the BPM.
 
-=== Create a new BPM
+== Create a new BPM
 
 Click on "Create" to create a new BPM editor.
 
@@ -34,9 +34,9 @@ You can save your BPM at anytime and edit it later. When you save you BPM, you n
 
 NOTE: A BPM is associated to a single sub-tenant.
 
-=== Design a BPM process
+== Design a BPM process
 
-==== BPMN elements
+=== BPMN elements
 
 The {product_name} BPM engine supports the following BPMN elements:
 
@@ -50,7 +50,7 @@ image:images/bpm_gateway_event.png[] represents an exclusive decision gateway (o
 
 NOTE: Support for more elements will be provided in future link:../release_notes{outfilesuffix}[releases]
 
-==== Exclusive gateway (XOR)
+=== Exclusive gateway (XOR)
 
 image:images/bpm_gateway.png[width=600px]
 
@@ -71,19 +71,19 @@ Select one of `Failed`, `Warning` or `Success` which are related to the link:wor
 
 IMPORTANT: as there is no support for an `else` sort of condition, you need to make sure that your decision gateway is considering all prossible statuses of the inbound task. 
 
-=== Connecting workflows and processes
+== Connecting workflows and processes
 
 Select an executable task to see the list of workflows (based on the sub-tenant selected), then select a process and provide its input parameters.
 
 image:images/bpm_edit.png[width=600px]
 
-=== Execution tracking
+== Execution tracking
 
 The BPM engine will start executing the BPM tasks one by one and the status of the current workflow process execution will be updated live in the "LATEST EXECUTIONRESULT" view while the detail of the process execution will be displayed.
 
 image:../../user-guide/resources/images/bpm_execution_tracking.png[width=600px]
 
-=== Execution flow control
+== Execution flow control
 
 By default, the BPM execution will stop whenever the associated workflow process execution fails but you may need to make sure that the BPM continues to execute despite the failure. This is typically the case when there is a decision gateway where execution is routed based on the status of the process execution.
 
@@ -91,7 +91,7 @@ To allow the BPM process to continue executing after a workflow process executio
 
 image:images/bpm_task_control_flow.png[width=600px]
 
-=== Parallel execution
+== Parallel execution
 
 Although parallel gateway for modeling concurrency is not supported, it is possible to design a BPM process with basic support for parallel execution.
 
