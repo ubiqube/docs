@@ -7,6 +7,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == Adapters
 
+.Adapters installed as part of the quickstart
 [cols=4*,options="header"]
 |===
 | Vendor
@@ -189,6 +190,7 @@ a| * link:https://github.com/openmsa/Adapters/tree/master/adapters/paloalto_gene
 
 == Microservices
 
+.Microservices installed as part of the quickstart
 [cols=3*,options="header"]
 |===
 | Vendor
@@ -268,6 +270,7 @@ a| * link:https://github.com/openmsa/Adapters/tree/master/adapters/paloalto_gene
 
 == Workflows
 
+.Workflows installed as part of the quickstart
 [cols=3*,options="header"]
 |===
 | Name
