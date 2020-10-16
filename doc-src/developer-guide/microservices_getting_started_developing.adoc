@@ -111,7 +111,7 @@ NOTE: the variables such as object_id, password, etc. are automatically created 
 
 === Run the first test
 
-In order to use your Microservice, you need to associate it to a link:../user-guide/managed_entities{outfilesuffix}[Managed Entity] with a link:../user-guide/configuration_deployment_settings{outfilesuffix}[Deployment Setting] and use the synchronisation button from the link:../user-guide/configuration_microservices{outfilesuffix}[Microservice Console].
+In order to use your Microservice, you need to associate it to a link:../user-guide/managed_entities{outfilesuffix}[Managed Entity] with a link:../user-guide/configuration_deployment_settings{outfilesuffix}[Deployment Setting] and use the synchronisation button from the link:../user-guide/microservices{outfilesuffix}[Microservice Console].
 
 Save your work, run the synchronization, and view at the result.
 

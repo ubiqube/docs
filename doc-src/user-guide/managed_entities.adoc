@@ -154,11 +154,11 @@ The information such as the serial number, firmware, memory ... are retreived dy
 
 == Configuration with microservices
 
-Managed entities can be configured with link:./configuration_microservices{outfilesuffix}[microservices]. To access the microservice console, click on the tab "Configure" on the managed entity screen.
+Managed entities can be configured with link:microservices{outfilesuffix}[microservices]. To access the microservice console, click on the tab "Configure" on the managed entity screen.
 
 In order to be able to use one or several microservices to configure a managed entity, the microservices must be associated to the managed entity via link:configuration_deployment_settings{outfilesuffix}[deployment settings].
 
-Once associated to the managed entity, you can navigate to the managed entity tab "Configure" to access the link:./configuration_microservices{outfilesuffix}#microservice-console[microservice configuration console].
+Once associated to the managed entity, you can navigate to the managed entity tab "Configure" to access the link:microservices{outfilesuffix}#microservice-console[microservice configuration console].
 
 On the left menu of the console, you can see the list of the microservices that are associated to the current managed entity with the deployment setting.
 
