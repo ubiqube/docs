@@ -100,15 +100,9 @@ A variable can be used to store data in the context of the workflow instance and
 
 It is possible to define a variable for "internal" use and decide to keep is hidden from the end-user.
 
-A variable has a name, a type and a display name.
+A variable has a name, a type and a display name
 
-==== Variable types
-- String: will render as a text input field.
-- Integer: will render as an integer input field.
-- Boolean: will render as a radio button.
-- Device: will render as a list with the managed entities.
-
-The "Advanced" tab will allow you to provide more control over the way variable fields are displayed: provide a list of default value, read-only or read-write, visible or hidden, ....
+This link:workflow_variables{outfilesuffix}[documentation] will give you more details on the variables and the various types available.
 
 === Workflow processes
 
