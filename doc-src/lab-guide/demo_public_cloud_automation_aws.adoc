@@ -8,13 +8,13 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == Overview
 
-This documentation will drive you throught the process of installating and using a workflow for automating the deployment of a VNF on AWS public cloud infrastructure. 
+This documentation will drive you throught the process of installing and using a workflow for automating the deployment of a VNF on AWS public cloud infrastructure. 
 
-It's a example, simple enough to be installed and used in a lab environment without to much configuration but complex enough to show how the {product_name} can be used for such a thing as VNF orchaestration automation in a public cloud.
+It's an example this is simple enough to be installed and used in a lab environment without too much configuration, but complex enough to show how the {product_name} can be used for such a thing as VNF orchaestration automation in a public cloud.
 
 === About soure code
 
-The source code for the workflows and microservices referenced in this is freely available in the OpenMSA github repository:
+The source code for the workflows and microservices referenced, is freely available in the OpenMSA github repository:
 
 - Public cloud AWS workflow: https://github.com/openmsa/Workflows/tree/master/Public_Cloud/AWS/Instance_Management
 - AWS microservices: https://github.com/openmsa/Microservices/tree/master/AWS/Generic
@@ -24,7 +24,7 @@ The source code for the workflows and microservices referenced in this is freely
 
 === AWS Account
 
-To be able to run this demo, you need to have an AWS account with enough privileged to create some IAM user and policy.
+To be able to run this demo, you need to have an AWS account with sufficient privileges to create some IAM user and policy.
 
 === AWS IAM configuration
 

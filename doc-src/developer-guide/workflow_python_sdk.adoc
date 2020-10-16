@@ -14,8 +14,11 @@ This SDK provides a set of functions that can be used to call the link:rest_api{
 
 The SDK API documentation is available online on your {product_name} instance at: https://<MSA IP address>/msa_sdk/
 
-== Sample call of a function in a workflow task.
-[source,python]
+== Code samples
+
+=== Sample call of a function in a workflow task.
+
+[source, python]
 ----
 from msa_sdk.device import Device
 from msa_sdk.variables import Variables
@@ -53,3 +56,34 @@ context['device_id'] = new_device.device_id
 
 print(new_device.process_content('ENDED', 'Task OK', context, False))
 ----
+
+=== Output messages to the process execution UI
+
+When a task runs, it is often useful to be able to provide real time message update on the UI.
+
+image:images/workflow_process_exec_status_custom_msg.png[width=1000px]
+
+The code sample below shows how to do it.
+
+[source, php]
+----
+from msa_sdk.orchestration import Orchestration
+from msa_sdk.msa_api import MSA_API
+import time
+
+Orchestration = Orchestration(context['UBIQUBEID'])
+async_update_list = (context['PROCESSINSTANCEID'], 
+                    context['TASKID'], 
+                    context['EXECNUMBER']) 	                                <1>
+
+	
+Orchestration.update_asynchronous_task_details(*async_update_list, 
+                                               'going to sleep')            <2>
+time.sleep(2)			                                                    <3>     
+Orchestration.update_asynchronous_task_details(*async_update_list, 
+                                               'wake up')		            <4>
+----
+<1> creates an array with the information about current process and task
+<2> update the UI with a message
+<3> execute some code
+<4> update the UI with another message

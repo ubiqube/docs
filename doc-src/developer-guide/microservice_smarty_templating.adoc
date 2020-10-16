@@ -6,12 +6,32 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :toclevels: 4 
 :source-highlighter: pygments
 
-== Smarty Templates
+== Smarty templates
+
 The Smarty templates are used to generate output using variables and control structures like if/then/else conditional branches or for/each loops.
-The outputs are used to configure devices or retrieve data from the database.
+
+The output is used to configure the managed entities or retrieve data from the database.
+
+
+== Parameter substitution in microservice
+
+Whether you are developing a CLI or and XML (REST) based microservice, the CoreEngine will rely on parameter substitution to generate the configuration or the call to the REST API.
+
+The parameters, coming from the web UI or the REST API are passed to the template engine as a JSON payload.
+
+For ClI microservices, the parameters, extracted from the JSON payload will be used to generate the piece of configuration to apply to the managed entity (this is the role of the link:adapter_development{outfilesuffix}[adapter]).
+
+image:images/microservice_parameter_substitution_cli.png[]
+
+For XML/REST, the parameters are used to build the REST API call, either by updating the path and/or by updating the payload
+
+image:images/microservice_parameter_substitution_xml.png[]
+
 
 === Variables
-==== From Database
+
+==== From database
+
 For an object object_name, the instance instance_id can accessed with the syntax
 ----
 {$object_name.instance_id}
@@ -24,13 +44,16 @@ Array values can be accessed with the syntax
 ----
 {$object_name.instance_id.array_name.array_index}
 ----
-==== From Parameters
+
+==== From parameters
+
 Variables generated from parameters are accessed by using the syntax
 ----
 {$params.name}
 ----
 
-==== Special Case of object_id 
+==== Special case of object_id 
+
 ---- 
 {$object_id} 
 ----
@@ -53,9 +76,11 @@ v2.0/subnets/{$subnets[$params.object_id|object_id].uuid}
 will fetch the uuid parameter of the 'subnets' object having $params.object_id id.
 
 === Control Structures
+
 Control structures are used to generate output using complex data, like list of objects, or optional parts.
 
 ==== Conditionals
+
 ----
 {if},{elseif},{else}
 ----
@@ -101,6 +126,7 @@ telephony-service
 ----
 
 ==== Loops
+
 ----
 {foreach},{foreachelse}
 ----
@@ -127,7 +153,7 @@ telephony-service
 {/foreach}
 ----
 
-==== Variable Assignment
+==== Variable assignment
 Under certain circumstances it is necessary to use a local temporary variable to generate the output.
 ----
 {assign}
@@ -139,6 +165,7 @@ Under certain circumstances it is necessary to use a local temporary variable to
 |var			|string		|Yes		|n/a		|The name of the variable being assigned
 |value			|string		|Yes		|n/a		|The value being assigned
 |===
+
 .Example
 ----
 !
@@ -151,10 +178,12 @@ end mailbox
 {/foreach}
 !
 ----
-=== Common Problems
+=== Common problems
+
 The templates are extracted from the XML definition files, and evaluated with Smarty. Some behavior must be known prior to developing templates.
 
-==== XML Non Supported Characters
+==== XML non supported characters
+
 Templates within XML definition files must not contain characters like < or >. You'll get an error:
 ----
 Bad format for local file due to XML parsing error.
@@ -177,7 +206,7 @@ Templates must be embedded into a <[CDATA[ ]]> tag to avoid most of the problems
 ]]></operation>
 </command>
 ----
-==== Extra Line Break and Space Characters
+==== Extra line break and space characters
 The templates reflects what is written within the <operation> and </operation> tags, that's why it is recommended to write
 image:images/smarty_recommended_line_break.png[]
 When a Smarty command like {if} {foreach}, or also an ending tag like {/if} {/foreach}, is immediately followed by a line break, then this line break is REMOVED by Smarty. 
@@ -210,7 +239,8 @@ Sometimes the line cannot be split, the solution is to either add a space charac
 
 image:images/smarty_extra_line_break.png[]
 
-==== Syntax Errors
+==== Syntax errors
+
 The Smarty syntax is very strict, for example an error in the template
 
 image:images/smarty_syntax_error.png[]
@@ -245,6 +275,7 @@ syntax error: 'if' statement requires arguments
 ----
 
 ==== Usage of the {$object_id} variable
+
 The {$object_id} variable is used to reference objects into the database and is used as a variable name in Smarty in the template resolution.
 
 When the parameters are passed to the engine the JSON payload is:

@@ -1,0 +1,34 @@
+= OpenMSA Community Guide
+
+:doctype: book
+:imagesdir: ./resources/
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]s
+:source-highlighter: pygments
+
+
+Welcome to the {openmsa_name} Community Guide!
+
+The purpose of this guide is to teach you everything you need to know about being a contributing member of the {openmsa_name} community. All types of contributions are welcome and necessary to {openmsa_name}'s continued success.
+
+This page outlines the most common situations and questions that bring readers to this section.
+
+== What is the {openmsa_name} community?
+
+The {openmsa_name} Community is a place for developers & network engineers to engage with others who share a passion for DevOps solutions for the Networking and Security space.
+
+== Getting started
+
+* I am new to the community. Where can I find the {openmsa_name} Community link:code_of_conduct{outfilesuffix}[Code of Conduct]?
+* I would like to know what I am agreeing to when I contribute to {openmsa_name}. Does {openmsa_name} have a link:contributor_license_agreement{outfilesuffix}[Contributors License Agreement]?
+* I would like to contribute but I am not sure how. Are there link:how_to_contribute{outfilesuffix}[easy ways to contribute]?
+* I have a question. Which {openmsa_name} link:communication{outfilesuffix}[mailing list] will help me find answers?
+* I want to learn more about {openmsa_name}. What can I do?
+** link:https://ubiqube.com/resources/[Read books].
+** link:https://ubiqube.com/training/[Get certified].
+** link:https://ubiqube.com/news/[Attend events].
+** link:../user-guide/quickstart{outfilesuffix}[Review getting started guides].
+** link:https://www.youtube.com/channel/UCu-s4a6a2vYDM6IgNDxqG5A/about[Watch videos].
+* I would like updates about new {openmsa_name} versions. How are new releases announced?
+* I want to use the current release. How do I know which releases are current?
+
+

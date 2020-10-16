@@ -1,0 +1,13 @@
+= Communicating
+:doctype: book
+:imagesdir: ./resources/
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:source-highlighter: pygments
+
+== Code of Conduct
+
+Please read and understand the Community link:code_of_conduct{outfilesuffix}[Code of Conduct].
+
+== Mailing list information
+
+* link:https://groups.google.com/a/ubiqube.com/g/openmsa[OpenMSA] is a mailing for users and developer of the {openmsa_name} community. This is where you can ask question and get answers about {openmsa_name} and any related topic. 

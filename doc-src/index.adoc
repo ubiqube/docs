@@ -6,24 +6,21 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 |===
 
 a| 
-[link=user-guide/index{outfilesuffix}]
-image::images/user-guide.png[alt=User Guide] 
-
 link:user-guide/index{outfilesuffix}[Manager Guide] a| 
-[link=developer-guide/index{outfilesuffix}]
-image::images/dev-guide.png[alt=Developer Guide]
 
 link:developer-guide/index{outfilesuffix}[Developer Guide] 
 a| 
 
-[link=admin-guide/index{outfilesuffix}]
-image::images/admin-guide.png[alt=Admin Guide] 
-
 link:admin-guide/index{outfilesuffix}[Admin Guide]
 a| 
 
-[link=release_notes{outfilesuffix}]
-image::images/release-notes.png[alt=Release Notes Guide]
-
 link:release_notes{outfilesuffix}[Release Notes]
+
+a| 
+
+link:lab-guide/index{outfilesuffix}[Lab Guide]
+a| 
+
+link:community-guide/index{outfilesuffix}[Community Guide]
+
 |===

@@ -1,0 +1,16 @@
+= {product_name} Lab Guides
+:doctype: book
+:imagesdir: ./resources/
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:toc: left
+:toclevels: 4 
+:source-highlighter: pygments
+
+This documentation will point you to some of the labs and demos that are available for you to get familiar with the {product_name}
+
+For each 
+
+- link:../lab-guide/demo_ansible{outfilesuffix}[Workflow: Ansible playbook runner]
+- link:../lab-guide/demo_public_cloud_automation_aws{outfilesuffix}[Workflow: VNF orchestration on AWS]
+- link:../lab-guide/simple_firewall_policy_mngt{outfilesuffix}[Workflow: firewall policy orchestration]
+- link:../lab-guide/vlan_simple_use_case{outfilesuffix}[VLAN simple use case]
