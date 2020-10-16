@@ -33,7 +33,6 @@ The support for additional variable types has been added to help you design user
 
 The support for additional variable types has been added to help you design user-friendly link:../developer-guide/workflow_editor{outfilesuffix}[workflows] and provide an enhanced integrated experience with your microservices.
 
-
 === Assurance
 
 Assurance protects against and mitigates risk. This release renders the logs from Elasticsearch that are collected from managed entities.  This will enable you to better manage risk and determine the best courses of action, based on the available data.  
