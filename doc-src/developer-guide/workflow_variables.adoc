@@ -93,9 +93,29 @@ This type is used to maintain an incremental counter in within the instances of 
 |===
 
 ==== Device 
-NOTE: not supported yet
 
 This type is used to allow the user to select a managed entity and pass it's identifier to the implementation of the workflow.
+
+In the task implementation you need to list the variable with "Device" for the type
+
+.PHP
+[source, php]
+----
+function list_args()
+{
+  create_var_def('my_device', 'Device');
+}
+----
+
+.Python
+[source, python]
+----
+from msa_sdk.variables import Variables
+
+TaskVariables = Variables()
+
+TaskVariables.add('my_device', var_type = 'Device')
+----
 
 === Display Name
 
@@ -154,5 +174,3 @@ To create a variable array, you need to follow a precise naming convention: `$pa
 
 .a variable array with 2 elements
 image:images/workflow_variables_array_1.png[width=700px]
-
-This type of variables should be when extracting configuration with an array variable extractor in the Import function of the workflow.
