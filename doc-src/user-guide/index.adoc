@@ -22,7 +22,7 @@ The manager guide provides the documentation to help you understand the key conc
 == Infrasctucture
 
 - link:managed_entities{outfilesuffix}[Managed entities]
-- link:configuration_microservices{outfilesuffix}[Microservices]
+- link:microservicesmicroservices{outfilesuffix}[Microservices]
 - link:configuration_deployment_settings{outfilesuffix}[Deployment settings]
 - link:managed_entities_topology{outfilesuffix}[Network topology]
 
