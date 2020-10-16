@@ -18,7 +18,7 @@ image:images/microservice_console_variables.png[width=700px]
 
 When you create a new microservice, the variable object_id, which is mandatory, will be set and cannot be deleted. It can be edited to set its type and other advanced properties.
 
-All variables are referenced with the prefix `$param` which is automatically set in the variable editor screen and when a variable has to be referenced in one of the microservice functions, you need to use the syntax `{$param.your_variable}` (see below for more examples).
+All variables are referenced with the prefix `$params` which is automatically set in the variable editor screen and when a variable has to be referenced in one of the microservice functions, you need to use the syntax `{$params.your_variable}` (see below for more examples).
 
 By default the type of a variable is String but other types are supported such as Integer, Boolean, Password, IpAddress, ObjectRef,...
 
