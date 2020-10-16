@@ -88,7 +88,7 @@ This type is used to maintain an incremental counter in within the instances of 
 .Specific advanced parameters
 |===
 | Increment                                 | an integer to define the increment step
-| Start Incremant                           | the initial value for the variable
+| Start Increment                           | the initial value for the variable
 | Workflows sharing the same increment  | a list of workflows that are also using the same variable and need to share a common value.
 |===
 
