@@ -1,10 +1,7 @@
 = OpenMSA Community Guide
-
 :doctype: book
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]s
-:source-highlighter: pygments
-
 
 Welcome to the {openmsa_name} Community Guide!
 
