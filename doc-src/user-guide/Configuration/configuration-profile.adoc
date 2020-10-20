@@ -4,16 +4,11 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :ext-relative: adoc
 
 [[main-content]]
-Configuration profiles are a collection
-of link:../Configuration/Microservices/microservices{outfilesuffix}Microservices] and configuration
-templates that can be grouped and associated with devices to build a
-consistent configuration.
+Configuration profiles are a collection of link:../Configuration/Microservices/microservices{outfilesuffix}[Microservices] and link:Configuration_Template/configuration-template{outfilesuffix}[configuration template] that are gathered to create a consistent configuration.
 
 A managed device can only be associated with one configuration profile.
 
-A link:Configuration Template/configuration-template{outfilesuffix}configuration
-template] and/or a link:../Configuration/Microservices/microservices{outfilesuffix}Microservices] can
-be associated with multiple configuration profiles.
+A link:Configuration_Template/configuration-template{outfilesuffix}[configuration template] and/or a link:../Configuration/Microservices/microservices{outfilesuffix}[Microservices] can be associated with multiple configuration profiles.
 
 [[ConfigurationProfile-VideoTutorial]]
 == Video Tutorial
