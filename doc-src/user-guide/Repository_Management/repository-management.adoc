@@ -19,7 +19,7 @@ the repository
 
 link:[image:images/image2018-4-5_16-53-46.png[Image,width=800]]
 
-=== Repository Icons and Behaviors https://training.ubiqube.com/16.2/wikiTraining/index.php/Image:Repository_home_page_colapsed.png[]
+=== Repository Icons and Behaviors
 
 The configuration repository is used to store configuration files, which
 can later be used in file-based configuration profiles or can be

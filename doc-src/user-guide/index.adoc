@@ -34,8 +34,9 @@ These tutorials are made up of a set of short articles that explain the main fea
 - link:Getting_Started/profiles{outfilesuffix}[Profile]
 - link:Configuration/Microservices/microservices{outfilesuffix}[Microservices]
 - link:Configuration/Configuration_Template/configuration-template{outfilesuffix}[Configuration Template]
-- link:Configuration/configuration-profile{outfilesuffix}[Configuration Profile]‡
+- link:Configuration/configuration-profile{outfilesuffix}[Configuration Profile]
 - link:Automation/getting-started-developing-workflows{outfilesuffix}[Automation]
+- link:Repository_Management/repository-management{outfilesuffix}[Repository]
 
 
 == SLA Management
@@ -48,5 +49,6 @@ These tutorials are made up of a set of short articles that explain the main fea
 == Administration Guides
 The MSActivator Installation and Configuration Guide will show you how to install, configure and activate the MSActivator.
 
+- link:Administration/user-administration{outfilesuffix}[Administration]
 - link:Administration/user-administration{outfilesuffix}[Administration]
 
