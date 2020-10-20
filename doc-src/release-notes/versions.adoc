@@ -44,14 +44,17 @@ The list below describes the features that exist in the version 17.x and that ar
 
 ==== Infrastructure
 
-[cols=4*,options="header"]
+[cols=5*,options="header"]
 |===
-|                   | Feature                                                                    | Short description                     | Status ({product_name-version})  
-|Managed entity     |                                                                            |                                       |           
-|                   | link:../user-guide/managed_entities{outfilesuffix}#asset_info[Asset]       | Asset information                     | available   
-|                   | link:../user-guide/managed_entities{outfilesuffix}#monitoring[Monitoring]  | ICMP based monitoring information     | partially available   
-|                   | link:../user-guide/managed_entities{outfilesuffix}#microservice[Monitoring]| Microservice based configuration      | partially available   
-|                   | Template                                                                   | Template based configuration          | not available   
+|   Section                | Feature                                                                    | Short description                     | Status ({product_name-version})  | Link to previous doc
+|Managed entity     |                                                                            |                                       |           |  
+|                   | link:../user-guide/managed_entities{outfilesuffix}#asset_info[Asset]       | Asset and configuration history management                     | partially available  | link:https://ubiqube.com/wp-content/docs/17.x/user-guide/Managed_Devices_and_Entities/device-history.html[asset management]
+|                   | link:../user-guide/managed_entities{outfilesuffix}#monitoring[Monitoring]  | ICMP based monitoring information     | partially available   |  link:https://ubiqube.com/wp-content/docs/17.x/user-guide/Assurance/monitoring-profile.html[KPI monitoring]
+|                   | link:../user-guide/managed_entities{outfilesuffix}#microservice[Microservice]| Microservice based configuration    | partially available   | link:https://ubiqube.com/wp-content/docs/17.x/user-guide/Configuration/Microservices/microservices.html[microservices]
+|                   | link:../user-guide/assurance{outfilesuffix}#log_anal[Log analytics]        | Collect/index/search logs and events  | available   | link:https://ubiqube.com/wp-content/docs/17.x/user-guide/Assurance/log-analysis.html[log analysis]
+|                   | Template                                                                   | Template based configuration          | not available|   link:https://ubiqube.com/wp-content/docs/17.x/user-guide/Configuration/Configuration_Template/configuration-template.html[template]
+|                   | Dashboard and report                                                       | Build and display log based dashboard | not available  | link:https://ubiqube.com/wp-content/docs/17.x/user-guide/Assurance/dashboard.html[dashboard]
 
-|Deployment Setting |                                                           |                      |           
+|Deployment setting |  link:../configuration_deployment_settings{outfilesuffix}[deployment settings]|defines the microservices to allocate to the managed entities|available| link:[configuration profile]
+
 |===
