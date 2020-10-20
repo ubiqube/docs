@@ -97,9 +97,8 @@ Although parallel gateway for modeling concurrency is not supported, it is possi
 
 [cols=2*, grid=none, frame=none]
 |===
-image:images/bpm_parallel_exec_1.png[]
-|
-image:images/bpm_parallel_exec_2.png[]
+| image:images/bpm_parallel_exec_1.png[]
+| image:images/bpm_parallel_exec_2.png[]
 |===
 
 These 2 use cases are equivalent, the processes will simply run in parallel, independantely, until the end event is reached.
