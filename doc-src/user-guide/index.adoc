@@ -28,11 +28,14 @@ The guide starts by showing you a simple user management use case on a Linux sys
 == Tutorials
 These tutorials are made up of a set of short articles that explain the main features of the MSActivator.
 
+- link:Getting_Started/portal-overview{outfilesuffix}[Portal Overview]
 - link:Getting_Started/tenants-and-users{outfilesuffix}[Tenants and Users]
 - link:Managed_Devices_and_Entities/device-overview{outfilesuffix}[Device]
+- link:Getting_Started/profiles{outfilesuffix}[Profile]
 - link:Configuration/Microservices/microservices{outfilesuffix}[Microservices]
+- link:Configuration/Configuration_Template/configuration-template{outfilesuffix}[Configuration Template]
+- link:Configuration/configuration-profile{outfilesuffix}[Configuration Profile]‡
 - link:Automation/getting-started-developing-workflows{outfilesuffix}[Automation]
-- link:Getting_Started/portal-overview{outfilesuffix}[Portal Overview]
 
 
 == SLA Management
