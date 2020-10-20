@@ -18,7 +18,7 @@ asciidoctor {
   	'source-highlighter' : 'rouge',
     'linkcss': true,
     'product_name': 'MSActivator(TM)',
-    'product_name-version': 'MSActivator-2.2.0' 
+    'product_name-version': 'MSActivator-2.2.0',
     'openmsa_name': 'OpenMSA(TM)',
     'revnumber': 'MSA-2.2.0',
     'revnumber-prev': 'MSA-2.1.0',
