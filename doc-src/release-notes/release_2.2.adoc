@@ -13,11 +13,31 @@ The following feature improvements are included with this release:
 
 === Topology
 
-The link:../user-guide/managed_entities_topology{outfilesuffix}[topology] will allow you to display a graphical view of your network based on various criteria. This will give sufficient insight into how your network, domain, entities are structured and interconnected. You can zoom in and out on particular aspects of the topology view, as well as find out relevant information about managed entities under your control.  In addition, you will be able to build you own topology to suit your specific requirements. By default a Layer 3 topology is available based on SNMP requests to get the network data of your managed entities.
+The {product_name} link:../user-guide/managed_entities_topology{outfilesuffix}[topology] will allow you to display a graphical view of your network based on various criteria.
+
+The topology will give insight into how your network, domain and entities are structured and interconnected. You can zoom in and out on particular aspects of the topology view, as well as find out relevant information about managed entities under your control.
+
+In addition, you will be able to build you own topology to suit your specific requirements. By default a Layer 3 topology is available based on SNMP requests to get the network data of your managed entities.
+
+=== BPM
+
+The {product_name} BPM link:../user-guide/bpm{outfilesuffix}[execution console] provides a simple and comprehensive UI to track the execution of your BPM processes in real time.
+
+The BPM link:../developer-guide/bpm_editor{outfilesuffix}[editor] has an extended coverage of the BPMN 2.0 standard with the addition of decision gateways as well as additional control over the execution flow of your BPM processes.
+
+=== Microservices
+
+The support for additional variable types has been added to help you design user-friendly link:../developer-guide/microservice_variables{outfilesuffix}[microservices] and provide extended abstraction possibilities.
+
+=== Workflows
+
+The support for additional variable types has been added to help you design user-friendly link:../developer-guide/workflow_editor{outfilesuffix}[workflows] and provide an enhanced integrated experience with your microservices.
 
 === Assurance
 
 Assurance protects against and mitigates risk. This release renders the logs from Elasticsearch that are collected from managed entities.  This will enable you to better manage risk and determine the best courses of action, based on the available data.  
+
+You will be able to create and manage your own librairies of alarms and decide if an alarm will trigger an automated process or simply send a notification, or both.
 
 == CoreEngine
 
@@ -27,29 +47,24 @@ No changes have been made to the core engine from previous versions of the produ
 
 Instructions to upgrade are here: link:../user-guide/quickstart{outfilesuffix}#upgrade[upgrade guide]
 
-=== Specific instruction for upgrating from 2.1.0GA to 2.2.0GA
+=== Specific instructions for upgrating from 2.1.0GA to 2.2.0GA
 
-When upgrading from 2.1.0GA to 2.2.0GA, you'll have to execute the steps below to upgrade:
+Starting from version 2.2.0, the quickstart provides an upgrade script `upgrade.sh` for taking care of possible actions such as recreating some volume, executing some database specific updates,...
 
-1. `$ cd quickstart`
-2. `git checkout master`
-3. `git fetch --all`
-4. `git checkout tags/{revnumber} -b {revnumber}`
-5. `$ sudo docker login`  (if you have logged out since your last use of docker)
-6. `$ sudo docker-compose pull` to download the latest images of the {product_name}.
-7. `$ sudo docker-compose up -d` to start the mini lab composed of the {product_name} containers.
-8. `$ sudo docker-compose down`
-9. `$ sudo docker volume rm msa_sms_php`
-10. `$ sudo docker-compose up -d`
-11. `$ sudo docker-compose exec msa_dev /usr/bin/install_libraries.sh`
-12. `$ sudo docker-compose restart msa_api && docker-compose restart msa_sms`
+To upgrade your {product_name} version {revnumber-prev}, to the version {revnumber}, you need to follow these steps:
 
-
-
+1. `$ sudo docker login` (in case you are not authenticated yet)
+2. `$ cd quickstart`
+3. `$ git checkout master`
+4. `$ git pull`
+5. `$ git checkout tags/{revnumber} -b {revnumber}`
+6. `$ ./scripts/upgrade.sh`
 
 == Specific technical fixes and feature details
 
 === 2.2.0 GA
+
+TODO: add JIRA
 
 ==== Features
 
