@@ -8,13 +8,19 @@ repositories {
     jcenter()
 }
 
+asciidoctor.doFirst {
+    delete file('build/docs')
+}
+
 asciidoctor {
 
   attributes \
   	'source-highlighter' : 'rouge',
     'linkcss': true,
     'product_name': 'MSActivator(TM)',
-    'allow-uri-read': '' 
+    'allow-uri-read': '' ,
+    'revnumber': 'MSA-17.x'
+
  
   sourceDir  file('doc-src')
   outputDir  file('build/docs')
@@ -22,8 +28,10 @@ asciidoctor {
   resources {
     from('doc-src') {
       include '**/*.png'
+      include '**/*.jpg'
       include '**/*.mp4'
       include '**/*.css'
+      include '**/*.html'
     }
 
     into '.'
