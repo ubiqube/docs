@@ -26,6 +26,7 @@ Event stored in the ELasticsearch is searchable from MSA UI,  to search, you hav
 
 image:images/assurance_log_search.png[width=1000px]
 
+[#alarm]
 == Alarm management
 
 === Overview
@@ -95,4 +96,6 @@ $ sudo docker-compose exec msa_sms sed -i -e 's/UBI_MAIL_SMTP.*/UBI_SMTP_IPADDR=
 $ sudo docker-compose exec msa_sms /etc/init.d/ubi-sms restart
 ----
 
+== KPI monitoring
 
+ICMP based network availability is available for each managed entity on the link:managed_entities{outfilesuffix}#overview["Overview"] screen. 

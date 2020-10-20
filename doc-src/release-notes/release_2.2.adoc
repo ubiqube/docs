@@ -47,11 +47,11 @@ No changes have been made to the core engine from previous versions of the produ
 
 Instructions to upgrade are here: link:../user-guide/quickstart{outfilesuffix}#upgrade[upgrade guide]
 
-=== Specific instruction for upgrating from 2.1.0GA to 2.2.0GA
+=== Specific instructions for upgrating from 2.1.0GA to 2.2.0GA
 
 Starting from version 2.2.0, the quickstart provides an upgrade script `upgrade.sh` for taking care of possible actions such as recreating some volume, executing some database specific updates,...
 
-Let's say that you are running {product_name} version {revnumber-prev}, to upgrade to the version {revnumber}, you need to follow these steps:
+To upgrade your {product_name} version {revnumber-prev}, to the version {revnumber}, you need to follow these steps:
 
 1. `$ sudo docker login` (in case you are not authenticated yet)
 2. `$ cd quickstart`

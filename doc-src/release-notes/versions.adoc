@@ -2,16 +2,56 @@
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :doctype: book
-:toc: left
-:toclevels: 4 
 
 [cols=2*,options="header"]
 |===
 |Version | Link
 
-| 17.x |  link:https://ubiqube.com/wp-content/docs/17.x/user-guide[https://ubiqube.com/wp-content/docs/17.x]
+| 2.2.0 GA (latest) |  https://ubiqube.com/wp-content/docs/latest
+| 2.1.0 GA |  https://ubiqube.com/wp-content/docs/2.1.0GA
 | 2.0.0 Alpha|  https://ubiqube.com/wp-content/docs/2.0.0
 | 2.0.1 Beta|  https://ubiqube.com/wp-content/docs/2.0.1
-| 2.1.0 GA |  https://ubiqube.com/wp-content/docs/2.1.0GA
-| 2.2.0 GA (latest) |  https://ubiqube.com/wp-content/docs/latest
+| 17.7 |  link:https://ubiqube.com/wp-content/docs/17.x/user-guide[https://ubiqube.com/wp-content/docs/17.x]
+|===
+
+== What are the differences between the version 17.x and the {product_name-version} latest release?
+
+=== New features
+
+==== Architecture
+
+{product_name} link:admin-guide/architecture_overview{outfilesuffix}[architecture] has be deeply reviewed from being made out of componenets running directly on dedicated VM and using multiple VM to handle HA to be cloud native, Docker container based, using Docker Swarm to handle high availability. 
+
+==== Product delivery
+
+Along with the architecture changes, the product delivery was also changed and {product_name-version} is made available as downloadable Docker images stored on link:https://hub.docker.com/orgs/ubiqube[Dockerhub].
+
+==== Enhanced UX
+
+The {product_name-version} UI is a completely new user interface with an enhanced user experience. This new UI will allow you to increased your daily productivity whether you are operating an infrastructure or designing some automation services. 
+
+Each of these roles have a dedicated space, Manager or Developer space, providing your most useful tools at hand reach as well as providing unified dashboard to give you an insight of your most important data.
+
+==== BPM
+
+{product_name} now provides the support for BPM link:../developer-guide/bpm_editor{outfilesuffix}[design] and link:../user-guide/bpm{outfilesuffix}[execution]
+
+The BPM engine is based on Camunda, the BPM design and execution UI is fully integrated in the {product_name}.
+
+=== Ported features
+
+The list below describes the features that exist in the version 17.x and that are partially or fully ported in  {product_name-version}.
+
+==== Infrastructure
+
+[cols=4*,options="header"]
+|===
+|                   | Feature                                                                    | Short description                     | Status ({product_name-version})  
+|Managed entity     |                                                                            |                                       |           
+|                   | link:../user-guide/managed_entities{outfilesuffix}#asset_info[Asset]       | Asset information                     | available   
+|                   | link:../user-guide/managed_entities{outfilesuffix}#monitoring[Monitoring]  | ICMP based monitoring information     | partially available   
+|                   | link:../user-guide/managed_entities{outfilesuffix}#microservice[Monitoring]| Microservice based configuration      | partially available   
+|                   | Template                                                                   | Template based configuration          | not available   
+
+|Deployment Setting |                                                           |                      |           
 |===
