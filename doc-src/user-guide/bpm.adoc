@@ -19,4 +19,5 @@ NOTE: We advise you to keep the BPM execution screen open until the end of the B
 
 image:images/bpm_execution_tracking.png[width=700px]
 
+NOTE: click link:../developer-guide/bpm_editor{outfilesuffix}[here] if you are interested in learning about BPM design
 
