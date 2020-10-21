@@ -15,6 +15,33 @@ The {product_name} provides support for high avalability, based on "Docker Engin
 
 image:images/ha_containers.png[overall architecture]
 
+With docker swarm, there is two types of nodes link:https://docs.docker.com/engine/swarm/how-swarm-mode-works/nodes/#manager-nodes[managers] and link:https://docs.docker.com/engine/swarm/how-swarm-mode-works/nodes/#worker-nodes[workers].
+
+Manager nodes handle cluster management tasks such as:
+
+* maintaining cluster state
+* scheduling services
+* serving swarm mode HTTP API endpoints
+
+=> A 3 manager swarm tolerates a maximum loss of 1 manager
+
+=> Adding more managers does NOT mean increased scalability or higher performance. In general, the opposite is true.
+
+
+*Worker nodes* are also instances of Docker Engine but their sole purpose is to execute containers.
+Worker nodes don’t participate in the Raft distributed state, make scheduling decisions, or serve the swarm mode HTTP API.
+
+=== Configure manager nodes for fault tolerance
+
+Based on docker link:https://docs.docker.com/engine/swarm/admin_guide/#add-manager-nodes-for-fault-tolerance[documentation], it's better to maintain an odd number of managers in the swarm to support manager node failure.
+
+|===
+
+
+
+|===
+
+
 == Prerequisites
 
 MSA High Availability is built upon Docker Engine Swarm mode, and requires:
