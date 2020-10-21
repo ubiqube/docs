@@ -102,9 +102,9 @@ Depending to new numbers of containers, VM can be scaled to create docker manage
 MSA High Availability is built upon Docker Engine Swarm mode, and requires:
 
  * At least three VMs deployed:
- ** Docker Swarm Manager
- ** Docker Swarm Worker1
- ** Docker Swarm Worker2
+ ** Docker Swarm Manager1
+ ** Docker Swarm Manager2
+ ** Docker Swarm Manager3
  
  * A shared mount point (from a NAS or Global File System):
  ** Mount point on all VMs is `/mnt/NASVolume`
@@ -115,14 +115,14 @@ NOTE: The IP address of the manager machine must be assigned to a network interf
 
 Because other nodes contact the manager node on its IP address, you should use a fixed IP address.
 
-* The following ports must be available on Manager node:
+* The following ports must be available on Manager node (see below link:#configure_firewall[configure the firewall] on how to configure this on CentOS 7):
  ** TCP port 2377 for cluster management communications
  ** TCP and UDP port 7946 for communication among nodes
  ** UDP port 4789 for overlay network traffic
 
 NOTE: If you plan on creating an overlay network with encryption (--opt encrypted), you also need to ensure ip protocol 50 (ESP) traffic is allowed.
 
-More information about Docker Engine Swarm mode you may find here: link:https://docs.docker.com/engine/swarm/swarm-tutorial/[Swarm Tutorial].
+More information about Docker Engine Swarm available here: link:https://docs.docker.com/engine/swarm/swarm-tutorial/[Swarm Tutorial].
 
 
 == Installing the application in HA mode
@@ -161,6 +161,9 @@ NOTE: To disable the swarm mode `$ sudo docker swarm leave --force`
 
 === Starting MSA from the "Docker Swarm Manager" machine
 
+The quickstart project provides a link:https://github.com/ubiqube/quickstart/blob/master/docker-compose.simple.ha.yml[sample docker compose] file to help you getting started with {product_name} on Docker Swarm
+
+
 1. `$ sudo docker node ls` to check if all nodes are connected and active. 
 2. `$ git clone https://github.com/ubiqube/quickstart.git` clone git repository.
 3. `$ cd ./quickstart/` to change directory.
@@ -170,7 +173,7 @@ NOTE: To disable the swarm mode `$ sudo docker swarm leave --force`
 7. Verify:
 ```
 $ sudo docker stack services msa
-ID                  NAME                MODE                REPLICAS            IMAGE                                                         PORTS
+ID                  NAME                MODE                REPLICAS            IMAGE                                                  
 7c5x50tjvmmj        msa_msa_ui          replicated          1/1                 ubiqube/msa2-ui:45b85fa03ade5a070f8df3a08c3ab64e315e38c9
 ac3mb7fhhivu        msa_camunda         replicated          1/1                 camunda/camunda-bpm-platform:latest
 e0rxtyv10lzi        msa_msa_front       replicated          1/1                 ubiqube/msa2-front:0576df6db6445ac10dd5e4503c3867e216db4302
