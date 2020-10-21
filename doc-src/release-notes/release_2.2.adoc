@@ -60,8 +60,8 @@ Let's say that you are running {product_name} version {revnumber-prev}, to upgra
 5. `$ git checkout tags/{revnumber} -b {revnumber}`
 6. `$ ./scripts/upgrade.sh`
 
-==== Migrate your BPM from 2.1.0GA to 2.2.0GA ====
-With the introduction of decision gateway and other bug fixes, the format of BPM has been updated. If you have created a BPM in 2.1, you need to follow those operations:
+==== Migrate your BPM from {revnumber-prev} to {revnumber} ====
+With the introduction of decision gateway and other bug fixes, the format of BPM has been updated. If you have created a BPM in {revnumber-prev}, you need to follow those operations:
 
 - In the BPM console, **edit your BPM file**
 
