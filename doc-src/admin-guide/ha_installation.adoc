@@ -243,4 +243,4 @@ docker swarm scale ha_msa_api=3
 ---- 
 
 .Scale up and down (permanent)
-Change the docker-compose file alter the "replicas" number and run "docker stack deploy --with-registry-auth -c docker-compose.simple.ha.yml ha"
+Change the docker-compose file alter the "replicas" number and run `docker stack deploy --with-registry-auth -c docker-compose.simple.ha.yml ha`
