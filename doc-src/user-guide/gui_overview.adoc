@@ -112,7 +112,7 @@ This screen will let you build your deployment settings by selecting microservic
 
 You will also be able to select the Managed Entities you wish to apply you configuration service on.
 
-TIP: See also - link:configuration_microservices{outfilesuffix}[Microservices] for a detailed documentation on managed entities
+TIP: See also - link:microservices{outfilesuffix}[Microservices] for a detailed documentation on managed entities
 
 
 == Automation

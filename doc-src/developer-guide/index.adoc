@@ -18,7 +18,7 @@ This documentation contains a set of documentation, tutorials and examples to he
 
 == Use Case 
 
-- link:../lab/simple_firewall_policy_mngt{outfilesuffix}[Firewall policy orchestration]
+- link:../lab-guide/simple_firewall_policy_mngt{outfilesuffix}[Firewall policy orchestration]
 
 == BPM
 
