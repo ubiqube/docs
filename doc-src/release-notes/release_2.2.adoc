@@ -27,7 +27,7 @@ No changes have been made to the core engine from previous versions of the produ
 
 Instructions to upgrade are here: link:../user-guide/quickstart{outfilesuffix}#upgrade[upgrade guide]
 
-=== Specific instruction for upgrating from 2.1.0GA to 2.2.0GA
+=== Specific instruction for upgrating from {revnumber-prev} to {revnumber}
 
 When upgrading from 2.1.0GA to 2.2.0GA, you'll have to execute the steps below to upgrade:
 
