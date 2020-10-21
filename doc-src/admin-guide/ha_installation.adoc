@@ -23,7 +23,7 @@ Manager nodes handle cluster management tasks such as:
 * scheduling services
 * serving swarm mode HTTP API endpoints
 
-=> A 3 manager swarm tolerates a maximum loss of 1 manager
+=> A swarm with 3 managers will tolerates a maximum loss of 1 manager
 
 => Adding more managers does NOT mean increased scalability or higher performance. In general, the opposite is true.
 
@@ -35,12 +35,67 @@ Worker nodes don’t participate in the Raft distributed state, make scheduling 
 
 Based on docker link:https://docs.docker.com/engine/swarm/admin_guide/#add-manager-nodes-for-fault-tolerance[documentation], it's better to maintain an odd number of managers in the swarm to support manager node failure.
 
+* Smarm size : number of manager nodes in your HA setup
+* Majority : minimum number of manager nodes required for the stability of HA platform (quorum)
+* Fault tolerance: number of manager nodes you can lose and still have a stable setup
+
+[cols=3*,options="header",width=50%]
+|===
+|Swarm Size | Majority | Fault Tolerance
+| 1| 1| 0
+| 2| 2| 0
+| 3| 2| 1
+| 4| 3| 1
+| 5| 3| 2
+| 6| 4| 2
 |===
 
+=== Roles of each container
 
-
+[cols=5*,options="header",%autowidth]
+|===
+| Name | Role | Size | Load profile | Backup required (yes/no)
+| *API*	| The REST API (Wildfly) used by our web UI to execute core MSActivator functionality.  All core functionality in MSActivator is driven by REST APIs.  You can also call these directly, by-passing the UI if you wish.	| L	| API traffic. Medium-high CPU and RAM usage, depending on how many Workflows are being executed, web UI traffic, and general REST API usage. *Scale up* API containers to handle higher API load.|	No
+| *BUD*	| Batch update service in charge of copying data from customer database (UI) to sec engine database (SMS).	| S	| Similar to SMS itself, scale up for handling higher managed entity loads.|	No
+| *CAM*	| BPM engine (Camunda).	| L	| BPM processing. Medium-high CPU and RAM usage, depending on how many BPMs are executed in the deployment. *Scale up* CAM containers to handle a higher BPM execution load.|	No
+| *CER*	| Elasticsearch index management web interface (Cerebo)	| S	| Small amount of web traffic ({product_name} admins), used to manage Elasticsearch indexes.  One instance is sufficient, MSActivator can run without Cerebo so no need to load balance this container.|	No
+| *DB*	| The database (PostgreSQL) that is used internally by MSActivator to store application data in.	| L	| Primary database used by MSActivator.  API, and therefore web UI traffic, results in database queries. *Scale up* in a replicated configuration for higher loads (CPU).  As MSActivator stores syslogs in ES and not DB, DB (PostgreSQL) data growth tends to be small.|Yes
+| *DEV*	| Contains your library code, for example workflows, microservices, BPMs, and device adaptors that you use in your MSActivator deployment.  Custom automatons you create via the web UI are stored here (on a network file mount that you can back up).	| M	| Mainly disc I/O (reading files, saving files etc.).  No business logic, this container is mainly a file mount.  You should create that mount outside of the container (e.g. a NAS), and backup that storage.  Disc space usage is low (depending on how big your libraries are).|	Yes
+| *ES* | The big data engine (Elasticsearch) that is used by MSActivator to optionally store managed entity syslogs too. The required search index used by the UI is also stored here.| XL	| Search indexing and querying traffic.  On light usage, the search index used to drive the UI search in MSActivator is stored here.  On heavy usage, the managed entity syslogs are collected and stored here.  Under heavy usage (CPU, RAM, disc I/O). *Scale up* in a clustered configuration.| Yes
+| *Front* | Nginx, acts as a proxy that exposes ports that can be accessed from outside of the MSActivator installation (web UI, REST API etc.).	| S	| Web and API traffic.  No business processing or data management, simple proxy server with low CPU and RAM usage.|	No
+| *linux_me* ("Quickstart" only)	| Linux container used as a lab managed entitiy for demo only, useful for training.  Not required in production deployments.| S	| Very light local traffic, only for demo, training, or development purposes.  No need to deploy this container in production, can ignore.|	No
+| *SMS*	| CoreEngine for managing entities, pushing configuration and collecting syslogs.	| S	| Runs Linux daemons for managing entities.  Medium-high CPU, RAM, and disc I/O depending on how many entities are being managed in the deployment. *Scale up* when more entities need to be managed|	No
+| *UI* | Runs the portal web UI on an Nginx web server| S	| Web traffic.  No business processing or data management, all handled by the API backend.  The UI is just a presentation layer.  Low CPU and RAM usage. |	No
 |===
 
+=== Recommended container sizes
+
+1. Containers use the resources of the server hosting them (no hard limits per container).
+2. Point 1. above is important when you can deploy multiple containers per host: simple add the specs for each container together to get the correct size for the server that hosts them.
+3. Persistent file storage (database files, ES indexes etc.) should be stored outside of Docker containers, and mounted to those containers for required access.
+
+[cols=2*,options="header",width=50%]
+|===
+| Size  | Resources
+| XS    | 1 CPU, 1 GB RAM, 50 GB disc
+| S     | 2 CPU, 2 GB RAM, 100 GB disc
+| M     | 2 CPU, 4 GB RAM, 250 GB disc
+| L     | 4 CPU, 8 GB RAM, 500 GB disc
+| XL    | 8 CPU, 16 GB RAM, 1 TB disc
+|===
+
+=== Customer profiles for HA
+
+To help you define containers needs based on your requirement, here 4 customers profiles.
+
+Depending to new numbers of containers, VM can be scaled to create docker manager nodes and worker nodes.
+
+[cols=4*]
+|===
+| Simple: HA platform with minimum activities | Standard: HA platform with mix of activities | Automation: Execute many WF and BPM | Assurance: Collect syslogs and monitor entities
+| image:images/ha_profile_1.png[]| image:images/ha_profile_2.png[]| image:images/ha_profile_3.png[]| image:images/ha_profile_4.png[]
+
+|===
 
 == Prerequisites
 
@@ -130,3 +185,62 @@ widazn0p3smq        msa_msa_sms         replicated          1/1                 
 
 In order to perform a backup please refer to link:https://docs.docker.com/engine/swarm/admin_guide/#back-up-the-swarm[backup the swarm] which will give you the information you need.
 
+== Commands and tips
+
+.Manager setup
+----
+docker swarm init --advertise-addr 10.31.1.172
+docker stack deploy --with-registry-auth -c docker-compose.simple.ha.yml ha
+----
+
+.Worker to join the cluster
+----
+(Token retrieve after executing swarn init on the manager)
+docker swarm join --token SWMTKN-1-5s84r5gaj2vh6t3duf1ed5vrh7paj6vacmdihtnmxzyzojvp75-aepejepsfgw8ffz38ajentpia 10.31.1.172:2377
+----
+
+.Manager to join the cluster
+----
+(Token retrieve after executing swarm join-token manager on the manager)
+docker swarm join --token SWMTKN-1-5s84r5gaj2vh6t3duf1ed5vrh7paj6vacmdihtnmxzyzojvp75-aepejepsfgw8ffz38ajentpia 10.31.1.172:2377
+----
+
+.Nodes part of the HA cluster
+----
+# docker node ls
+ID                            HOSTNAME            STATUS              AVAILABILITY        MANAGER STATUS      ENGINE VERSION
+1s9p18pjsl7og0xw5xw5yqpbh *   QA-UBI-HADKR-MAN1   Ready               Active              Leader              19.03.12
+3v5r08jy7hvktdgl59bco75vl     QA-UBI-HADKR-MAN2   Ready               Active              Reachable           19.03.12
+mmq5197bflac56ry8dpsl6hef     QA-UBI-HADKR-MAN3   Ready               Active              Reachable           19.03.12
+----
+
+.Services deployed
+----
+# docker service ls
+ID                  NAME                MODE                REPLICAS               IMAGE                                                            PORTS
+qyse3efoadw6        ha_camunda          replicated          1/1 (max 1 per node)   camunda/camunda-bpm-platform:latest                   
+vdjii0atvfmr        ha_db               replicated          1/1                    ubiqube/msa2-db:2b7c486764c882abe1a720094ec5159d3bd75389
+whb2cd6aepnt        ha_msa_api          replicated          1/1 (max 1 per node)   ubiqube/msa-api:01c2449225961e288c0d0e47795193b97da28a8c
+ikoxzkf15hdc        ha_msa_bud          replicated          1/1                    ubiqube/msa2-bud:26cf8835dadb548dd8c23edc8b7d671c1489d10b
+prl9sferl4fm        ha_msa_cerebro      replicated          1/1 (max 1 per node)   lmenezes/cerebro:latest                                          *:9000->9000/tcp
+nesi7prjk38a        ha_msa_dev          replicated          1/1                    ubiqube/msa2-linuxdev:f1da0641d2dc5af04d98559c7540cdbac7393a33
+e008xt6hirr4        ha_msa_es           replicated          1/1 (max 1 per node)   ubiqube/msa2-es:037a2067826b36e646b45e5a148431346f62f3a6
+bpipa8eiljjq        ha_msa_front        replicated          1/1 (max 1 per node)   ubiqube/msa2-front:d0285edfb9d59047b006da091a28b7ea7c1ead2e
+q4286mbi47j6        ha_msa_linux        replicated          1/1                    efeubiqube/linuxe2e:latest                            
+xi0m7pmk6pwn        ha_msa_sms          replicated          1/1 (max 1 per node)   ubiqube/msa2-sms:feefa4f1f72a0c28d8f01aaa455ec2f834becbed
+a4te8kezivvu        ha_msa_ui           replicated          1/1 (max 1 per node)   ubiqube/msa2-ui:4ab34eda0af7540a3c19ccc657b0ec2e3fd3d57
+----
+
+.Leave the cluster
+----
+docker swarm leave --force
+----
+
+.Scale up and down (not permanent)
+----
+# To scale msa_api to 3 instances
+docker swarm scale ha_msa_api=3
+---- 
+
+.Scale up and down (permanent)
+Change the docker-compose file alter the "replicas" number and run "docker stack deploy --with-registry-auth -c docker-compose.simple.ha.yml ha"
