@@ -2,7 +2,6 @@
 :doctype: book
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:source-highlighter: pygments
 
 Thanks for being interested in helping the {openmsa_name} project!
 

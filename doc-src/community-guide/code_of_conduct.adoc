@@ -1,4 +1,4 @@
-= OpenMSA Code of Conduct
+= {openmsa_name} Code of Conduct
 :doctype: book
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
