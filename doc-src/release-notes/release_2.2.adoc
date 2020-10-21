@@ -47,11 +47,11 @@ No changes have been made to the core engine from previous versions of the produ
 
 Instructions to upgrade are here: link:../user-guide/quickstart{outfilesuffix}#upgrade[upgrade guide]
 
-=== Specific instructions for upgrating from 2.1.0GA to 2.2.0GA
+=== Specific instruction for upgrating from 2.1.0GA to 2.2.0GA
 
 Starting from version 2.2.0, the quickstart provides an upgrade script `upgrade.sh` for taking care of possible actions such as recreating some volume, executing some database specific updates,...
 
-To upgrade your {product_name} version {revnumber-prev}, to the version {revnumber}, you need to follow these steps:
+Let's say that you are running {product_name} version {revnumber-prev}, to upgrade to the version {revnumber}, you need to follow these steps:
 
 1. `$ sudo docker login` (in case you are not authenticated yet)
 2. `$ cd quickstart`
@@ -60,14 +60,79 @@ To upgrade your {product_name} version {revnumber-prev}, to the version {revnumb
 5. `$ git checkout tags/{revnumber} -b {revnumber}`
 6. `$ ./scripts/upgrade.sh`
 
+==== Migrate your BPM from {revnumber-prev} to {revnumber} ====
+
+With the introduction of decision gateways and other bug fixes, the format of BPM has been updated. If you have created a BPM in {revnumber-prev}, you need to follow those operations:
+
+- In the BPM console, **edit your BPM file**
+
+- For each task, **select again your workflow, process and parameters** you want to execute
+
+- **Save and execute your BPM**
+
 == Specific technical fixes and feature details
 
 === 2.2.0 GA
 
-TODO: add JIRA
-
 ==== Features
+
+* MSA-8388 - [UI/Search] Enhancement of the search UI to retrieve MS,WF and BPM + multitenancy + redirect to the selected element
+* MSA-8403 - [API/Doc] Swagger doc update - DeviceRS modification
+* MSA-8440 - [Workflow] Alarm based workflow execution
+* MSA-8527 - [Microservice] Microservice reference type advanced parameters for MS and WF
+* MSA-8583 - [Upgrade] image manager to efficiently manage docker images on the host
+* MSA-8632 - [Container] Set same uid and gid for users in containers
+* MSA-8635 - [API] new API to read the Topology data for a given customer
+* MSA-8689 - [Workflow] Camunda external task workers - implementation
+* MSA-8692 - [API] API to retrieve microserviceReference data at runtime
+* MSA-8722 - [Workflow] Stop or pause the workflow
+* MSA-8775 - [API] API call to include latest alarms numbers + list of alarm generated
+* MSA-8776 - [API] Alarms enhancement: last execution time, pagination,...
+* MSA-8795 - [UI/UX] Rename"integration" to "infrastructure" on the manager UI
+* MSA-8828 - [Microservice] Show only in edit view' variable option lacks in microservice UI
+* MSA-8831 - [Microservice] There is no option to know the microservice filename to make reference to in the UI
+* MSA-8840 - [API] License - restrict to only one in database
+* MSA-8842 - [API] Remove vendor and models properties delivered default by api-container
+* MSA-8843 - [HA] Make sure alarm generations are not duplicated
+* MSA-8844 - [Workflow] Create topology without WF, add legends
+* MSA-8854 - [BPM] Implementation of execution tracking
+* MSA-8858 - [Workflow/API] Create API to activate the topology
+* MSA-8864 - [BPM] execute process by reference and add API to get status by process external reference
+* MSA-8880 - [API] Adapt the configurationObjects endpoint for API change
+* MSA-8937 - [Workflow/BPM] Workflow task status in the BPM variable
+* MSA-9005 - [API] API to detach mulitple subtenant from workflow
+* MSA-9010 - [BPM] Decision gateway enhancement
+* MSA-9014 - [BPM] Camunda external task: consider resume on fail parameter from BPM
 
 ==== Bug fixes
 
-==== Known issues
+* MSA-7939 - [Workflow] Variable type isn't correctly persisted in $context
+* MSA-8192 - [Microservice] Microservice can be saved with empty name
+* MSA-8205 - [Workflow] cannot create process the first time you create a workflow
+* MSA-8319 - [UI] issue with display (and data) when logged as manager
+* MSA-8621 - [API] Provisioning AWS Generic : not use ListAccessKeys
+* MSA-8657 - [API] Activate a ME without connection is missing
+* MSA-8661 - [API] SecEngine DeviceId.php is updated only at the time of initial provisioning
+* MSA-8682 - [Upgrade] Some files are not changed after pulling the new images
+* MSA-8742 - [Managed Entities] Autofill the external reference field with the database UBI ID
+* MSA-8743 - [Workflow] $context doesn't correctly pass list() between tasks
+* MSA-8744 - [API] license upload issue
+* MSA-8754 - [Workflow] Variable name with deep object does not store its value
+* MSA-8780 - [Workflow] workflow attachment : not possible to remove attached subtenant
+* MSA-8797 - [Alarm] Show all workflows in alarm edition, even when subtenant is selected
+* MSA-8800 - [UI/Admin] when deleting a subtenant, workflow must be detached as well
+* MSA-8809 - [HA - Activation of ME not possible on HA
+* MSA-8877 - [Workflow] Ping Python workflow always returns success, even for non reachable IP
+* MSA-8878 - [Deployment Setting] Deployment setting do not work if wildfly debug is activated
+* MSA-8887 - [CoreEngine] sms_polld ping retries are not correct
+* MSA-8909 - [UI/Search] Regression - filter input is not working
+* MSA-8919 - [Alarm] No more possible to edit an alarm rule
+* MSA-8933 - [Microservice] Fix routing issue for the microservice console
+* MSA-8948 - [UI] You cannot delete a sub-tenant on msa2.ubiqube.com
+* MSA-8960 - [API] API returning wrong microservices URIs
+* MSA-8961 - [Workflow] Unable to load microservice object
+* MSA-8967 - [Workflow] process scheduling button is visible although scheduling is not supported
+* MSA-8983 - [Microservice] in some cases, the "Import" section of XML microservice can't be edited
+* MSA-8995 - [Workflow] some inconsitancies found in workflow data (graphs + instance counts)
+* MSA-8996 - [User Management] not possible to detach/attach subtenant to an edited manager
+* MSA-9086 - [Workflow] Array variables not displayed properly in the workflow console is causing all values to be lost in the backend for next process invocation
