@@ -52,7 +52,7 @@ NOTE: The architecture of the mini lab is detailed in this link:../admin-guide/a
 === Step 2: install the libraries (Microservices, Workflows and Adapters) from github.com/openmsa
 
 ```
-$ sudo docker-compose exec msa_dev /usr/bin/install_libraries.sh
+$ sudo docker-compose exec msa_dev /usr/bin/install_libraries.sh all
 ```
 
 At the end of the script execution, you need to restart the API container and the CoreEngine container:
@@ -61,6 +61,8 @@ At the end of the script execution, you need to restart the API container and th
 $ sudo docker-compose restart msa_api
 $ sudo docker-compose restart msa_sms
 ----
+
+NOTE: more explainations on the script `install_libraries.sh` can be found link:#install_librairies[here].
 
 NOTE: The detail of what is included in the mini lab is available here: link:quickstart_packages{outfilesuffix}[mini lab packages]. 
 
@@ -139,7 +141,9 @@ NOTE: In case you have updated the {product_name} with `docker-compose up -d` or
 
 Starting from version 2.2.0, the quickstart provides an upgrade script `upgrade.sh` for taking care of possible actions such as recreating some volume, executing some database specific updates,...
 
-Let's say that you are running {product_name} version {revnumber-prev}, to upgrade to the version {revnumber}, you need to follow these steps:
+==== Steps 1: upgrade the {product_name}
+
+Let's say that you are running version {revnumber-prev}, to upgrade to the version {revnumber}, you need to follow these steps:
 
 1. `$ sudo docker login` (in case you are not authenticated yet)
 2. `$ cd quickstart`
@@ -147,6 +151,23 @@ Let's say that you are running {product_name} version {revnumber-prev}, to upgra
 4. `$ git pull`
 5. `$ git checkout tags/{revnumber} -b {revnumber}`
 6. `$ ./scripts/upgrade.sh`
+
+==== Steps 2: update the community librairies
+
+Install the libraries (Microservices, Workflows and Adapters) from github.com/openmsa
+
+```
+$ sudo docker-compose exec msa_dev /usr/bin/install_libraries.sh all --no-lic
+```
+
+NOTE: if you don't use the option --no-lic, a new trial license will be installed. This will overwrite any existing license you may have installed separately.
+
+At the end of the script execution, you need to restart the API container and the CoreEngine container:
+
+----
+$ sudo docker-compose restart msa_api
+$ sudo docker-compose restart msa_sms
+----
 
 === Install a specific version
 
@@ -159,3 +180,30 @@ For example, the CLI command below will checkout the quickstart for the release 
 `git checkout tags/{revnumber} -b {revnumber}`
 
 The releases and tags are available link:https://github.com/ubiqube/quickstart/releases[here]
+
+[#install_libraries]
+=== install_libraries script
+
+The script `install_libraries.sh` is installed in the container link:../admin-guide/architecture_overview{outfilesuffix}#_msa_dev[msa_dev]
+
+This script is designed to populate the libraries for a fresh install or to update your libraries with the latest version from Github.
+
+----
+$ docker-compose exec msa_dev /usr/bin/install_libraries.sh --help
+usage: install_libraries.sh all|ms|wf|da [--no-lic] [-y]
+
+this script installs some librairies available @github.com/openmsa
+
+Commands:
+all:          install everything: worflows, microservices and adapters
+ms:           install the microservices from https://github.com/openmsa/Microservices
+wf:           install the worflows from https://github.com/openmsa/Workflows
+da:           install the adapters from https://github.com/openmsa/Adapters
+Options:
+--no-lic:     skip license installation
+-y:           answer yes for all questions
+----
+
+In case of calling this script on an existing setup, it will take care of merging the code from the Github master branch into your local development branch. With the option `-y`, an automated merge will be attempted, without the option, the script will ask for user input.
+
+IMPORTANT: when running the script on an existing setup, use the option `--no-lic` to make sure that your current license is not overwritten by a new trial license. 
