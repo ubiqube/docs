@@ -131,9 +131,9 @@ More information about Docker Engine Swarm mode you may find here: link:https://
 
 To enable swarm mode on the "Docker Swarm Manager" machine:
 ```
-$ sudo docker swarm init --advertise-addr 10.31.1.75
+$ sudo docker swarm init --advertise-addr <SWARM MANAGER IP>
 ```
-Replace 10.31.1.75 with your Swarm Manager IP address. 
+Replace *SWARM MANAGER IP* with your Swarm Manager IP address. 
 
 Normal output contains "docker swarm join" command:
 ```
@@ -141,13 +141,13 @@ Swarm initialized: current node (efkok8n0eiy4f6xu48zaro3x8) is now a manager.
 
 To add a worker to this swarm, run the following command:
 
-    docker swarm join --token SWMTKN-1-4okdpjkrwzocwgqor1o9r5ck0xah646emhtgf9d3t4f4n11jgn-5a9ms5okxyxzjmcbz09pc9ujq 10.31.1.75:2377
+    docker swarm join --token SWMTKN-1-4okdpjkrwzocwgqor1o9r5ck0xah646emhtgf9d3t4f4n11jgn-5a9ms5okxyxzjmcbz09pc9ujq <SWARM MANAGER IP>:2377
 
 To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
 ```
 To enable swarm mode on Workers:
 ```
-$ sudo docker swarm join --token SWMTKN-1-4okdpjkrwzocwgqor1o9r5ck0xah646emhtgf9d3t4f4n11jgn-5a9ms5okxyxzjmcbz09pc9ujq 10.31.1.75:2377
+$ sudo docker swarm join --token SWMTKN-1-4okdpjkrwzocwgqor1o9r5ck0xah646emhtgf9d3t4f4n11jgn-5a9ms5okxyxzjmcbz09pc9ujq <SWARM MANAGER IP>:2377
 ```
 Normally you should see:
 ```
@@ -165,8 +165,9 @@ NOTE: To disable the swarm mode `$ sudo docker swarm leave --force`
 2. `$ git clone https://github.com/ubiqube/quickstart.git` clone git repository.
 3. `$ cd ./quickstart/` to change directory.
 4. `$ docker login` Docker login to access containers.
-5. `$ sudo docker stack deploy --with-registry-auth -c docker-compose.ha.yml msa` to run installation.
-6. Verify:
+5. `$ git checkout tags/{revnumber} -b {revnumber}`
+6. `$ sudo docker stack deploy --with-registry-auth -c docker-compose.simple.ha.yml msa` to run installation.
+7. Verify:
 ```
 $ sudo docker stack services msa
 ID                  NAME                MODE                REPLICAS            IMAGE                                                         PORTS
@@ -179,6 +180,8 @@ s72z7aux2jox        msa_msa_bud         replicated          1/1                 
 tz6qsmts59z4        msa_db              replicated          1/1                 ubiqube/msa2-db:a04c9cf8ac13fe28e2d02cc2a37d1552ee6bdb44
 widazn0p3smq        msa_msa_sms         replicated          1/1                 ubiqube/msa2-sms:3e32150a5202db71211d2bd453af883894c52513
 ```
+
+IMPORTANT: on *CentOS 7* you need to link:#configure_firewall[configure the firewall] to allow Docker Swarm.
 
 == Backup
 === How to backup the swarm environment:
@@ -244,3 +247,70 @@ docker swarm scale ha_msa_api=3
 
 .Scale up and down (permanent)
 Change the docker-compose file alter the "replicas" number and run `docker stack deploy --with-registry-auth -c docker-compose.simple.ha.yml ha`
+
+[#configure_firewall]
+== Firewall configuration
+
+FirewallD is the default firewall application on CentOS 7, but on a new CentOS 7 server, it is disabled out of the box. So let’s enable it and add the network ports necessary for Docker Swarm to function.
+
+Before starting, verify its status (use sudo if you don't have root privileges):
+
+`systemctl status firewalld`
+
+It should not be running, so start it (if it's not installed, use `yum install firewalld` to install it:
+
+`systemctl start firewalld`
+
+Then enable it so that it starts on boot:
+
+`systemctl enable firewalld`
+
+On the node that will be a Swarm manager, use the following commands to open the necessary ports:
+
+----
+firewall-cmd --add-port=2376/tcp --permanent
+firewall-cmd --add-port=2377/tcp --permanent
+firewall-cmd --add-port=7946/tcp --permanent
+firewall-cmd --add-port=7946/udp --permanent
+firewall-cmd --add-port=4789/udp --permanent
+----
+
+NOTE: Note: If you make a mistake and need to remove an entry, type: `firewall-cmd --remove-port=port-number/tcp —permanent`. 
+
+Afterwards, reload the firewall:
+
+`firewall-cmd --reload`
+
+Then restart Docker.
+
+`systemctl restart docker`
+
+Then on each node that will function as a Swarm worker, execute the following commands:
+
+----
+firewall-cmd --add-port=2376/tcp --permanent
+firewall-cmd --add-port=7946/tcp --permanent
+firewall-cmd --add-port=7946/udp --permanent
+firewall-cmd --add-port=4789/udp --permanent
+----
+
+Afterwards, reload the firewall:
+
+`firewall-cmd --reload`
+
+Then restart Docker.
+
+`systemctl restart docker`
+
+You’ve successfully used FirewallD to open the necessary ports for Docker Swarm.
+
+
+=== Ouside network access
+
+If you’ll be testing applications on the cluster that require outside network access, be sure to open the necessary ports. 
+
+For example, if you’ll be testing a Web application that requires access on port 80, add a rule that grants access to that port using the following command on all the nodes (managers and workers) in the cluster:
+
+`firewall-cmd --add-port=80/tcp --permanent`
+
+Remember to reload the firewall when you make this change.
