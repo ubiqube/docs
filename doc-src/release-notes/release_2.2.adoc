@@ -62,7 +62,7 @@ Let's say that you are running {product_name} version {revnumber-prev}, to upgra
 
 ==== Migrate your BPM from {revnumber-prev} to {revnumber} ====
 
-With the introduction of decision gateway and other bug fixes, the format of BPM has been updated. If you have created a BPM in {revnumber-prev}, you need to follow those operations:
+With the introduction of decision gateways and other bug fixes, the format of BPM has been updated. If you have created a BPM in {revnumber-prev}, you need to follow those operations:
 
 - In the BPM console, **edit your BPM file**
 
