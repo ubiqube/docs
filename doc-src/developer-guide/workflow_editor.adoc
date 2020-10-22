@@ -189,5 +189,13 @@ logToFile("a message");
 .Log a message in Python
 [source, python]
 ----
+from msa_sdk.variables import Variables
+from msa_sdk import util
 
+dev_var = Variables()
+
+context = Variables.task_call(dev_var)
+process_id = context['SERVICEINSTANCEID']
+
+util.log_to_process_file(process_id, 'a message') 
 ----
