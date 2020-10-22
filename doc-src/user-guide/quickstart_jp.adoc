@@ -17,21 +17,22 @@ docker/docker-composeをマシンにインストールしてください。
 
 .step 3
 任意のディレクトリ上で、以下のコマンドを実行してください。
-----
-git clone https://github.com/ubiqube/quickstart.git
-cd quickstart
-docker login
-docker-compose up -d
-----
+
+1. `$ git clone https://github.com/ubiqube/quickstart.git` 
+2. `$ cd quickstart`
+3. `git checkout tags/{revnumber} -b {revnumber}`
+4. `$ sudo docker login` 
+5. `$ sudo docker-compose up -d` 
+
 IMPORTANT: `docker login`にてユーザ情報を聞かれますので、ID"msa2trial"と、1で払い出したアクセストークンを使用して下さい。
 
-.step 4
+.step 5
 ブラウザからhttps://localhost/ にアクセスしてください。
 
-.step 5
+.step 6
 user:ncroot, password:ubiqubeで{product_name}にログインします。(数分待つ必要があります。)
 
-.step 6
+.step 7
 コンソールに戻って以下のコマンドを実行してください。
 
 サンプルデータを{product_name}に投入します。
