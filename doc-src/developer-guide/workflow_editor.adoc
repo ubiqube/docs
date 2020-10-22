@@ -6,32 +6,35 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :toclevels: 4 
 :source-highlighter: pygments
 
+//// 
+TODO 
+////
 
-The workflow editor is a web based UI tool for designing, developping, testing and releasing automation workflows
+The workflow editor is a web based UI tool for designing, developing, testing and releasing automation workflows.
 
 With the workflow editor, you can create new workflows or edit existing workflows.
 
-This document explains how to use the editor to design workflow and implement the in PHP or in Python.
+This document explains how to use the editor to design workflows and implement them in PHP or in Python.
 
-The Workflow designer and execution engine are located, in the architecture layer, between the BPM and the Microservice
+The Workflow designer and execution engine are located in the architecture layer, between the BPM and the Microservice.
 
 image:images/workflow_overall_architecture.png[width=80%] 
 
 == Workflow overview
 
-A workflow is a automation entity that can be used to automates all sort of simple to complex processes.
+A workflow is a automation entity that can be used to automate all sorts of simple to complex processes.
 
 A workflow is defined by
 
-- a set of variable that can be used to hold the state of a workflow instance.
-- a set of processes made out of tasks. This is where the execution coded.
+- a set of variables that can be used to hold the state of a workflow instance;
+- a set of processes made out of tasks. This is where the execution is coded.
 
 The tasks are scripts that can be implemented either in PHP or in Python.
 
 [#lifecycle]
 === The lifecycle of a workflow
 
-There are 3 main type of workflow processes: 
+There are 3 main types of workflow processes: 
 
 - CREATE: to execute an automated process and create a new instance of the workflows
 - UPDATE: to execute an automated process that will (but it's not mandatory) update the state of the process
@@ -51,7 +54,7 @@ NOTE: these documentations to get more details and code samples on this topic: l
 The variables are used to define the current state of a workflow instance, this state is maintained in a context which is persisted in the database.
 
 For each workflow instance, the variable and their values are stored in the database in a context.
-This context is accessible in read-write mode anytime in the process tasks in order to store a value of a variable or read a value from a variable.
+This context is accessible in read-write mode anytime in the process tasks, in order to store a value of a variable or read a value from a variable.
 
 .Example:
 in Python: read a value from the context
@@ -80,7 +83,8 @@ set a value in the context
 $context['name'] = $my_name;
 ----
 
-The context is updated in the database after each task execution.
+The context is persisted in the database and its value is updated after each task execution.
+
 This is how variable values can be passed, during the execution of a process, from one task to another.
 
 NOTE: by default, the variables that are declared a persisted in the context but you can also create local variables in the tasks and store them in the context.
@@ -95,32 +99,26 @@ Provide the information related to the workflow:
 
 - Workflow Name: the name of the worklfow
 - Description: a description of the workflow
-- Workflow Variable Name: default to service_id (see below for more detail about this field). 
+- Workflow Variable Name: default to service_id (see below for more detail about this field)
 - Workflow Language: PHP or PYTHON (this cannot be edited)
 
 === Workflow variables
 
-Use "+ Create Variable" to add variable to this workflow.
+Use "+ Create Variable" to add a variable to this workflow.
 
 A variable can be used to store data in the context of the workflow instance and it can also be used to generate the user input fields when executing a process from the UI.
 
 It is possible to define a variable for "internal" use and decide to keep is hidden from the end-user.
 
-A variable has a name, a type and a display name.
+A variable has a name, a type and a display name
 
-==== Variable types
-- String: will render as a text input field.
-- Integer: will render as an integer input field.
-- Boolean: will render as radio button.
-- Device: will render as a list with the managed entities 
-
-The "Advanced" tab will allo you to provide more control over the way variable fields are displayed: provide a list of default value, read-only or read-write, visible or hidden,...
+This link:workflow_variables{outfilesuffix}[documentation] will give you more details on the variables and the various types available.
 
 === Workflow processes
 
 A workflow can have as many processes as needed. The processes provide the "public" functions exposed by a workflow either with the UI or the link:rest_api{outfilesuffix}[REST API].
 
-To create a process, click on the "+" and provide a name and a type (CREATE, UPDATE or DELETE)
+To create a process, click on the "+" and provide a name and a type (CREATE, UPDATE or DELETE).
 
 NOTE: the other types listed in the UI are not supported yet.
 
@@ -128,11 +126,11 @@ NOTE: the other types listed in the UI are not supported yet.
 
 The tasks are the smallest execution unit of a workflow. 
 
-A process can have as many tasks as needed and althought it's possible to implement a process with a single task, splitting the overall process execution into smaller tasks will ease the code maintenance and the execution monitoring.
+A process can have as many tasks as needed and although it's possible to implement a process with a single task, splitting the overall process execution into smaller tasks will ease the code maintenance and the execution monitoring.
 
 Depending on the workflow language selected when creating the workflow, the task should be implemented either in Python or in PHP.
 
-When creating a new task, the UI will propulate the code editor with a pre-defined code template that you can use to start coding your tasks.
+When creating a new task, the UI will populate the code editor with a pre-defined code template that you can use to start coding your tasks.
 
 ===== PHP template
 
@@ -172,3 +170,24 @@ task_success('Task OK');   // or task_error('Task FAILED');                     
 <4> code example: assign a variable with a modified value from another variable.
 <5> code example: task execution status will depend on the value of a variable
 <6> end of the task.
+
+[#logging]
+== Logging and troubleshooting
+
+You can add debugging information to help you with your developement and also provide useful information for troubleshooting task in production.
+
+The log files are generated per workflow instance in the container `msa_api` under `/opt/jboss/wildfly/standalone/log/`. The log files are formated as `process-XX.log` where XX is the instance ID.
+
+.Log a message in PHP
+[source, php]
+----
+require_once '/opt/fmc_repository/Process/Reference/Common/common.php';
+
+logToFile("a message");
+----
+
+.Log a message in Python
+[source, python]
+----
+
+----
