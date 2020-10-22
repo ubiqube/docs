@@ -69,7 +69,7 @@ This data type will enforce data validation against IP address formats.
 ==== Composite
 NOTE: not supported yet
 
-The variable type composite provide the means to add control over the behaviour of the Microservice user form.
+The variable type composite provide the means to add control over the behaviour of the microservice user form.
 
 It can be used, for instance, to show/hide part of the form based on the value of another component of the form.
 
@@ -90,7 +90,7 @@ This type is used to maintain an incremental counter in within the instances of 
 .Specific advanced parameters
 |===
 | Increment                                 | an integer to define the increment step
-| Start Incremant                           | the initial value for the variable
+| Start Increment                           | the initial value for the variable
 | Microservices sharing the same increment  | a list of microservices that are also using the same variable and need to share a common value.
 |===
 
@@ -157,4 +157,6 @@ To create a variable array, you need to follow a precise naming convention: `$pa
 .a variable array with 2 elements
 image:images/microservice_variables_array_1.png[width=700px]
 
-This type of variables should be when extracting configuration with an array variable extractor in the Import function of the microservice.
+This type of variables should be used when extracting configuration with an array variable extractor in the Import function of the microservice.
+
+image:images/microservice_variables_array_2.png[width=700px]
