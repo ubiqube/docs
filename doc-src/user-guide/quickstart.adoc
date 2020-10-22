@@ -36,11 +36,11 @@ This guide is composed of a link:https://github.com/ubiqube/quickstart[git repos
 === Step 1: creation
 
 1. Check your Docker engine has access to DockerHub. You can, for instance, run `docker run hello-world` to test the access.
-2. `$ git clone https://github.com/ubiqube/quickstart.git` to clone the GitHub repository on you computer.
-3. `$ cd quickstart`
+2. `git clone https://github.com/ubiqube/quickstart.git` to clone the GitHub repository on you computer.
+3. `cd quickstart`
 4. `git checkout tags/{revnumber} -b {revnumber}`
-5. `$ sudo docker login` (check the note below)
-6. `$ sudo docker-compose up -d` to create the mini lab composed of the {product_name} containers.
+5. `docker login` (check the note below)
+6. `docker-compose up -d` to create the mini lab composed of the {product_name} containers.
 
 IMPORTANT: for `docker login`, use the Docker ID "msa2trial" and the link:https://docs.docker.com/docker-hub/access-tokens/[access token] provided by your main point of contact at UBiqube. 
 
@@ -51,16 +51,11 @@ NOTE: The architecture of the mini lab is detailed in this link:../admin-guide/a
 [#step2]
 === Step 2: install the libraries (Microservices, Workflows and Adapters) from github.com/openmsa
 
-```
-$ sudo docker-compose exec msa_dev /usr/bin/install_libraries.sh all
-```
+`docker-compose exec msa_dev /usr/bin/install_libraries.sh all`
 
 At the end of the script execution, you need to restart the API container and the CoreEngine container:
 
-----
-$ sudo docker-compose restart msa_api
-$ sudo docker-compose restart msa_sms
-----
+`docker-compose restart msa_api && docker-compose restart msa_sms`
 
 NOTE: more explainations on the script `install_libraries.sh` can be found link:#install_librairies[here].
 
@@ -87,7 +82,7 @@ $ sudo docker-compose exec msa_dev /usr/bin/create_mini_lab.sh
 ```
 
 === Step 4 (optional): Setting up log aggregation for linux_me
-1. `$ sudo docker-compose exec linux_me bash` issue this command from the host machine in order to connect to linux_me.
+1. `docker-compose exec linux_me bash` issue this command from the host machine in order to connect to linux_me.
 2. `[root@linux_me /]# echo '*.* @msa_front' > /etc/rsyslog.d/mini_lab.conf` to create rsyslog configuration.
 3. `[root@linux_me /]# service rsyslog restart` restart the service.
 
@@ -139,35 +134,36 @@ NOTE: In case you have updated the {product_name} with `docker-compose up -d` or
 
 === Upgrade version N to N+1
 
-Starting from version 2.2.0, the quickstart provides an upgrade script `upgrade.sh` for taking care of possible actions such as recreating some volume, executing some database specific updates,...
-
-==== Steps 1: upgrade the {product_name}
+Starting from version 2.2.0, the quickstart provides an upgrade script `upgrade.sh` for taking care of possible actions such as recreating some volume, executing some database specific updates, update the libraries,...
 
 Let's say that you are running version {revnumber-prev}, to upgrade to the version {revnumber}, you need to follow these steps:
 
-1. `$ sudo docker login` (in case you are not authenticated yet)
-2. `$ cd quickstart`
-3. `$ git checkout master`
-4. `$ git pull`
-5. `$ git checkout tags/{revnumber} -b {revnumber}`
-6. `$ ./scripts/upgrade.sh`
+1. `docker login` (in case you are not authenticated yet)
+2. `cd quickstart`
+3. `git checkout master`
+4. `git pull`
+5. `git checkout tags/{revnumber} -b {revnumber}`
+6. `./scripts/upgrade.sh` 
 
-==== Steps 2: update the community librairies
 
-Install the libraries (Microservices, Workflows and Adapters) from github.com/openmsa
+==== Note for Windows user
 
-```
-$ sudo docker-compose exec msa_dev /usr/bin/install_libraries.sh all --no-lic
-```
+If you are running docker natively on Windows, the script upgrade.sh may not work. In that case you need to execute manually the Docker CLI commands to upgrade your setup:
 
-NOTE: if you don't use the option --no-lic, a new trial license will be installed. This will overwrite any existing license you may have installed separately.
+1. `docker-compose down`
+2. `sms_php_vol=$(docker volume ls | awk '{print $2}' | grep msa_sms_php)`
+3. `docker volume rm $sms_php_vol`
+4. `sms_devices_vol=$(docker volume ls | awk '{print $2}' | grep msa_sms_devices)`
+5. `docker volume rm $sms_devices_vol`
+6. `dev_vol=$(docker volume ls | awk '{print $2}' | grep msa_dev)`
+7. `docker volume rm $dev_vol`
+8. `docker-compose up -d --build`
+9. `docker-compose exec msa_dev rm -rf /opt/fmc_repository/Process/Reference`
+10. `docker-compose exec msa_dev /usr/bin/install_libraries.sh all --no-lic`
+11. `docker-compose restart msa_api && docker-compose restart msa_sms`
+12. `msa_api=$(docker ps -q -f name=msa_api)`
+13: `docker exec -it -u root $msa_api crond`
 
-At the end of the script execution, you need to restart the API container and the CoreEngine container:
-
-----
-$ sudo docker-compose restart msa_api
-$ sudo docker-compose restart msa_sms
-----
 
 === Install a specific version
 
