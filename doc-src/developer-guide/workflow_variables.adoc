@@ -117,6 +117,153 @@ TaskVariables = Variables()
 TaskVariables.add('my_device', var_type = 'Device')
 ----
 
+===== List of managed entities
+
+A very common use of the type `Device` to automate configuration (or any other automated action) over a list of managed entities.
+
+You can do that by creating a array variable with the type `Device` and loop through the array in the task.
+
+.Sample task to list managed entities
+[source, python]
+----
+from msa_sdk.variables import Variables
+from msa_sdk.msa_api import MSA_API
+from msa_sdk import util
+
+dev_var = Variables()
+dev_var.add('me_list.0.id', var_type='Device')                    <1>
+
+context = Variables.task_call(dev_var)
+process_id = context['SERVICEINSTANCEID']                         <2>
+
+me_list = context['me_list']                                      <3>
+
+for me_id in me_list:                                             <4>
+    util.log_to_process_file(process_id, me_id)                 
+
+ret = MSA_API.process_content('ENDED', 'Task OK', context, True)
+print(ret)
+----
+<1> declare the the array variable to be displayed in UI
+<2> read the current process ID
+<3> read the list of managed entities selected by the user on the UI
+<4> loop through the list and print each managed entity ID in the process log file
+
+==== Customer (Subtenant)
+
+This type will allow the user to select a subtenant and use the subtenant ID from the workflow instance context in the task.
+
+The source code below will let the user select a subtenant and display the subtenant ID on the execution console
+
+.Sample task to create a UI to select a subtenant
+[source, php]
+----
+<?php
+require_once '/opt/fmc_repository/Process/Reference/Common/common.php';
+
+function list_args()
+{
+  create_var_def('subtenant', 'Customer');    <1>
+}
+
+$subtenant = $context['subtenant'];           <2>
+
+task_success('Task OK: '.$subtenant);         <3>
+?>
+----
+<1> declare the variable subtenant to be displayed in the user form
+<2> read the variable value from the context
+<3> print the value on the execution console
+
+image:images/workflow_console_variables_customer.png[width=700px]
+
+===== List of subtenant
+
+If you need to select multiple subtenants, you have to create an array variable with the type `Customer`.
+
+With the variable `$params.subtenants.0.id` typed as `Customer`, the code below will ask for the user to select 1 or more subtenant, print the identifier of each one in the link:workflow_editor{outfilesuffix}#logging[process log file] and display the number of subtenant selected on the UI.
+
+.Sample task to list the subtenant
+[source, php]
+----
+<?php
+require_once '/opt/fmc_repository/Process/Reference/Common/common.php';
+
+function list_args()
+{
+  create_var_def('subtenants.0.id', 'Customer');
+}
+
+$subtenants = $context['subtenants'];
+
+foreach ($subtenants as $subtenant) {           <1>
+  logToFile("subtenant: ".$subtenant['id']);    <2>
+}
+
+task_success('Task OK: '.sizeof($subtenants )." subtenant selected");
+?>
+----
+<1> loop through the list of subtenants
+<2> log the value in the process log file
+
+==== Microservice reference
+
+This type is one of the key to integrate workflows and microservices, it will allow you to use the data imported by the microservice from a managed entity in your automation code.
+
+To use this type you need 2 variables:
+1. a variable with the type `Device` to select the managed entity to get the data from
+2. a variable with the type `Microservice Reference` to select the microservice that will pull the data
+
+When creating a variable typed `Microservice Reference` you need to select the `Device` variable and the microservice.
+
+In the exmaple below, the variable `$params.user` is typed as `Microservice Reference`. In the "Advanced" tab, the field "Microservice Reference" references one or several microservice and the field "Device ID" references a managed entity.
+
+image:images/workflow_console_variables_ms_ref.png[width=700px]
+
+.Sample PHP task to create the UI to select a managed entity and select a microservice instance from this managed entity
+[source, PHP]
+----
+<?php
+
+require_once '/opt/fmc_repository/Process/Reference/Common/common.php';
+
+function list_args()
+{
+  create_var_def('me', 'Device');
+  create_var_def('user', 'ObjectRef');
+}
+
+task_success('Task OK');
+?>
+----
+
+It also possible to use an array to select multiple values from the microservice
+
+image:images/workflow_console_variables_multiple_ms_ref.png[width=400px]
+
+.Sample PHP task to select multiple values from the microservice instance
+[source, PHP]
+----
+<?php
+
+require_once '/opt/fmc_repository/Process/Reference/Common/common.php';
+
+function list_args()
+{
+  create_var_def('me', 'Device');
+  create_var_def('users.0.user', 'ObjectRef');
+}
+
+task_success('Task OK');
+?>
+----
+
+==== Service reference (workflow reference)
+NOTE: not supported yet
+
+This type is useful for referencing a workflow from another one.
+
+
 === Display Name
 
 The display value for the variable name.

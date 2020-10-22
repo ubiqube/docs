@@ -160,3 +160,24 @@ task_success('Task OK');   // or task_error('Task FAILED');                     
 <4> code example: assign a variable with a modified value from another variable.
 <5> code example: task execution status will depend on the value of a variable
 <6> end of the task.
+
+[#logging]
+== Logging and troubleshooting
+
+You can add debugging information to help you with your developement and also provide useful information for troubleshooting task in production.
+
+The log files are generated per workflow instance in the container `msa_api` under `/opt/jboss/wildfly/standalone/log/`. The log files are formated as `process-XX.log` where XX is the instance ID.
+
+.Log a message in PHP
+[source, php]
+----
+require_once '/opt/fmc_repository/Process/Reference/Common/common.php';
+
+logToFile("a message");
+----
+
+.Log a message in Python
+[source, python]
+----
+
+----
