@@ -29,6 +29,7 @@ This documentation contains a set of documentation, tutorials and examples to he
 - link:workflow_getting_started_developing_php{outfilesuffix}[Getting started with workflow design (PHP),window=_blank]
 - link:workflow_getting_started_developing_python{outfilesuffix}[Getting started with workflow design (Python),window=_blank]
 - link:workflow_editor{outfilesuffix}[Workflow editor,window=_blank]
+- link:workflow_variables{outfilesuffix}[Workflow variables,window=_blank]
 
 == Microservices
 
