@@ -43,15 +43,21 @@ POST /api/tenancy/tenants/
 
 In case you need to pass in a JSON payload with the parameters, the microservice Create will look like this.
 
-image:images/microservice_console_xml_create_1.png[width=1000px]
+image:images/microservice_console_xml_create_1.png[width=700px]
 
 ==== Delete
 
-image:images/microservice_console_xml_delete.png[width=1000px]
+image:images/microservice_console_xml_delete.png[width=700px]
+
+==== Import
+
+image:images/microservice_console_xml_import.png[width=700px]
+
+
 
 The main difference between the CLI and REST (Json/XML) Microservice definition is the implementation of the functions Create/Update/...
 
 CLI Microservice definition is covered in this documentation: link:microservice_cli_editor{outfilesuffix}[CLI microservice editor].
 
-This documentation uses the link:https://github.com/openmsa/Adaptors/tree/master/adapters/rest_generic[REST Generic adapter] and the {product_name} REST API to illustrate the design of XML Microservice.
+This documentation uses the link:https://github.com/openmsa/Adaptors/tree/master/adapters/rest_netbox[Netbox REST adapter] and the link:https://netbox.readthedocs.io/en/stable/rest-api/overview/[Netbox] REST API to illustrate the design of XML Microservice.
 

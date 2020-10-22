@@ -10,52 +10,52 @@ The manager guide provides the documentation to help you understand the key conc
 
 == Getting started
 
-- link:quickstart{outfilesuffix}[Quickstart guide]
-- link:quickstart_jp{outfilesuffix}[Quickstart guide (Japanese)]
-- link:quickstart_packages{outfilesuffix}[Quickstart mini lab packages]
+- link:quickstart{outfilesuffix}[Quickstart guide,window=_blank]
+- link:quickstart_jp{outfilesuffix}[Quickstart guide (Japanese),window=_blank]
+- link:quickstart_packages{outfilesuffix}[Quickstart mini lab packages,window=_blank]
 
 == Overview
 
-- link:key_concepts{outfilesuffix}[Key concepts]
-- link:gui_overview{outfilesuffix}[GUI overview]
+- link:key_concepts{outfilesuffix}[Key concepts,window=_blank]
+- link:gui_overview{outfilesuffix}[GUI overview,window=_blank]
 
 == Infrasctucture
 
-- link:managed_entities{outfilesuffix}[Managed entities]
-- link:configuration_microservices{outfilesuffix}[Microservices]
-- link:configuration_deployment_settings{outfilesuffix}[Deployment settings]
-- link:managed_entities_topology{outfilesuffix}[Network topology]
+- link:managed_entities{outfilesuffix}[Managed entities,window=_blank]
+- link:microservicesmicroservices{outfilesuffix}[Microservices,window=_blank]
+- link:configuration_deployment_settings{outfilesuffix}[Deployment settings,window=_blank]
+- link:managed_entities_topology{outfilesuffix}[Network topology,window=_blank]
 
 == Automation
 
 === Workflows
 
-- link:automation_workflows{outfilesuffix}[Workflows]
-- link:automation_workflow_utilities{outfilesuffix}[Useful workflows]
+- link:automation_workflows{outfilesuffix}[Workflows,window=_blank]
+- link:automation_workflow_utilities{outfilesuffix}[Useful workflows,window=_blank]
 
 === BPM
 
-- link:bpm{outfilesuffix}[BPM]
+- link:bpm{outfilesuffix}[BPM,window=_blank]
 
 === Demo and use cases
 
- - link:../lab-guide/demo_ansible{outfilesuffix}[Workflow: Ansible playbook runner]
- - link:../lab-guide/demo_public_cloud_automation_aws{outfilesuffix}[Workflow: VNF orchestration on AWS]
+ - link:../lab-guide/demo_ansible{outfilesuffix}[Workflow: Ansible playbook runner,window=_blank]
+ - link:../lab-guide/demo_public_cloud_automation_aws{outfilesuffix}[Workflow: VNF orchestration on AWS,window=_blank]
 
 == Assurance
 
-- link:assurance{outfilesuffix}[Assurance]
+- link:assurance{outfilesuffix}[Assurance,window=_blank]
 
 == Admin
 
-- link:tenants_and_users{outfilesuffix}[Tenants and users]
+- link:tenants_and_users{outfilesuffix}[Tenants and users,window=_blank]
 
 == Settings
 
-- link:settings{outfilesuffix}[Settings]
+- link:settings{outfilesuffix}[Settings,window=_blank]
 
 == Architecture
-- link:../admin-guide/architecture_overview{outfilesuffix}[Architecture]
+- link:../admin-guide/architecture_overview{outfilesuffix}[Architecture,window=_blank]
 
 
 

@@ -31,6 +31,7 @@ A workflow is defined by
 
 The tasks are scripts that can be implemented either in PHP or in Python.
 
+[#lifecycle]
 === The lifecycle of a workflow
 
 There are 3 main types of workflow processes: 
@@ -39,12 +40,18 @@ There are 3 main types of workflow processes:
 - UPDATE: to execute an automated process that will (but it's not mandatory) update the state of the process
 - DELETE: to execute an automated process that will also remove the instance of the workflow
 
+The status a normal process execution is defined by the implementation of the tasks and it's the responsibility of the developer to handle the termination status. As a developer, you have 3 statuses, defined by constants in PHP or Python, that you can use in your task to define the condition for transiting from a task to the next one.
+
+- ENDED: the execution was successful, the next task will be executed and if it was the last task, the process will be marked as "Success".
+- WARNING: the execution was successful but some warning were raised, the next task will be executed  and if it was the last task, the process status will be displayed as "Warning".
+- FAILED: the execution failed, the process execution will stop at the current task and the process status will be noted as "Failed".
+
+NOTE: these documentations to get more details and code samples on this topic: link:workflow_php_sdk{outfilesuffix}[PHP SDK] and link:workflow_python_sdk{outfilesuffix}[Python SDK]
+
 [#context]
-=== The state of a workflow instance
+=== How to persist the state of a workflow instance
 
-The variables are used to define the current state of a workflow instance.
-
-For instance, a boolean variable `running` can be set to true or false depending of the state of the managed process.
+The variables are used to define the current state of a workflow instance, this state is maintained in a context which is persisted in the database.
 
 For each workflow instance, the variable and their values are stored in the database in a context.
 This context is accessible in read-write mode anytime in the process tasks, in order to store a value of a variable or read a value from a variable.
@@ -77,7 +84,10 @@ $context['name'] = $my_name;
 ----
 
 The context is persisted in the database and its value is updated after each task execution.
+
 This is how variable values can be passed, during the execution of a process, from one task to another.
+
+NOTE: by default, the variables that are declared a persisted in the context but you can also create local variables in the tasks and store them in the context.
 
 == Editor Overview
 
