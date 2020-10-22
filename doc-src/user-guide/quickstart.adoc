@@ -64,6 +64,7 @@ NOTE: The detail of what is included in the mini lab is available here: link:qui
 === Step 3: provision the mini lab with tenants, managed entities, etc.
 
 The mini lab comes with a Linux container (linux_me / 172.20.0.101) for experimentation.
+
 Credentials for the Linux machine are:
 
  - username: `msa`
