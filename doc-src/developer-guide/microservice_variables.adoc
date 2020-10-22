@@ -158,3 +158,5 @@ To create a variable array, you need to follow a precise naming convention: `$pa
 image:images/microservice_variables_array_1.png[width=700px]
 
 This type of variables should be used when extracting configuration with an array variable extractor in the Import function of the microservice.
+
+image:images/microservice_variables_array_2.png[width=700px]
