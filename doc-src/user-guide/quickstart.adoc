@@ -40,7 +40,7 @@ This guide is composed of a link:https://github.com/ubiqube/quickstart[git repos
 3. `cd quickstart`
 4. `git checkout tags/{revnumber} -b {revnumber}`
 5. `docker login` (check the note below)
-6. `docker-compose up -d` to create the mini lab composed of the {product_name} containers.
+6. `docker-compose up -d` to download and install the {product_name} containers and create the mini lab.
 
 IMPORTANT: for `docker login`, use the Docker ID "msa2trial" and the link:https://docs.docker.com/docker-hub/access-tokens/[access token] provided by your main point of contact at UBiqube. 
 
@@ -49,7 +49,9 @@ NOTE: If you are already running the {product_name} and wish to upgrade it to a 
 NOTE: The architecture of the mini lab is detailed in this link:../admin-guide/architecture_overview{outfilesuffix}[documentation].
 
 [#step2]
-=== Step 2: install the libraries (Microservices, Workflows and Adapters) from github.com/openmsa
+=== Step 2: install the trial license and the libraries (Microservices, Workflows and Adapters) from github.com/openmsa
+
+The free trial license is automatically installed during this step, the license is valid for 30 days and allows the creation of 5 link:../user-guide/managed_entities{outfilesuffix}[managed entities].
 
 `docker-compose exec msa_dev /usr/bin/install_libraries.sh all`
 
