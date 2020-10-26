@@ -129,6 +129,7 @@ With the introduction of decision gateways and other bug fixes, the format of BP
 * MSA-8919 - [Alarm] No more possible to edit an alarm rule
 * MSA-8933 - [Microservice] Fix routing issue for the microservice console
 * MSA-8948 - [UI] You cannot delete a sub-tenant on msa2.ubiqube.com
+* MSA-8958 - [Perf] Too many GET calls to retrieve WF instance status
 * MSA-8960 - [API] API returning wrong microservices URIs
 * MSA-8961 - [Workflow] Unable to load microservice object
 * MSA-8967 - [Workflow] process scheduling button is visible although scheduling is not supported
