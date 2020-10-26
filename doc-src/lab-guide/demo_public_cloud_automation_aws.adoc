@@ -4,7 +4,7 @@
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :toc: left
 :toclevels: 4 
-:source-highlighter: highlightjs
+:source-highlighter: pygments
 
 == Overview
 
