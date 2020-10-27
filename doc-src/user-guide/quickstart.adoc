@@ -145,8 +145,9 @@ Let's say that you are running version {revnumber-prev}, to upgrade to the versi
 2. `cd quickstart`
 3. `git checkout master`
 4. `git pull`
-5. `git checkout tags/{revnumber} -b {revnumber}`
-6. `./scripts/upgrade.sh` 
+5. `git fetch --all --tags`
+6. `git checkout tags/{revnumber} -b {revnumber}`
+7. `./scripts/upgrade.sh` 
 
 
 ==== Note for Windows user
