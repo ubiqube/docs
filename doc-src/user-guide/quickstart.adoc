@@ -149,6 +149,7 @@ Let's say that you are running version {revnumber-prev}, to upgrade to the versi
 6. `git checkout tags/{revnumber} -b {revnumber}`
 7. `./scripts/upgrade.sh` 
 
+NOTE: when running the upgrade script, it will ask you if you want your local librairies to be updated with the latest version from the community. If you answer 'y', the update will be done automatically. You can also do the update later manually on the container `msa_dev`.
 
 ==== Note for Windows user
 
