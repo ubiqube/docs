@@ -137,7 +137,7 @@ NOTE: In case you have updated the {product_name} with `docker-compose up -d` or
 
 === Upgrade version N to N+1
 
-Starting from version 2.2.0, the quickstart provides an upgrade script `upgrade.sh` for taking care of possible actions such as recreating some volume, executing some database specific updates, update the libraries,...
+Starting from it's version 2.2.0, the quickstart project provides an script `upgrade.sh` for taking care of possible upgrade actions such as recreating some volumes, executing some database specific updates, update the libraries,...
 
 Let's say that you are running version {revnumber-prev}, to upgrade to the version {revnumber}, you need to follow these steps:
 
