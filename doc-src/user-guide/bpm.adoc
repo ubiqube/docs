@@ -11,11 +11,13 @@ You need to select a customer to see the list of BPM available because BPM defin
 
 Select a BPM from the list and click on it name to open it.
 
-image:images/bpm_example.png[]
+image:images/bpm_example.png[width=700px]
 
-Click on "Execute BPM" to execute the BPM Process.
+Click on "Execute BPM" to execute the BPM process. The BPM engine will start executing the BPM tasks one by one and the status of the current workflow process execution will be updated live in the "LATEST EXECUTIONRESULT" view while the detail of the process execution will be displayed.
 
-Each task will do an asynchronous call to the workflow, making the BPM execution immediate.
+NOTE: We advise you to keep the BPM execution screen open until the end of the BPM process. If you close the screen, the process will still run in the background and you can track the execution of the workflows from the "Automation" > "Workflows" page but you won't be able to recover the BPM execution screen.
 
-The Workflow processes are not running in the background and you can ckeck the status of them by going to the "Workflow" in the "Integration" section.
+image:images/bpm_execution_tracking.png[width=700px]
+
+NOTE: click link:../developer-guide/bpm_editor{outfilesuffix}[here] if you are interested in learning about BPM design
 

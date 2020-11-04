@@ -9,23 +9,23 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 The {product_name} provides a support for PHP SDK dedicated to developing automation workflows. 
 This SDK provides a set of functions that can be used to call the link:rest_api{outfilesuffix}[{product_name} REST API] and automate action on the {product_name} such as create and activate managed entities, call microservice function, call processes from other workflows...
 
-== Where to Find the Source Code of the SDK?
+== Where to find the source code of the SDK?
 The SDK functions are implemented in a set of PHP files stored in the {product_name} repository under `+/opt/fmc_repository/Process/Reference/Common/Library+`
 
 The PHP files are organised by API topic and contains the functions that are calling the REST API.
 
 These functions can be called directly when implementing the tasks of the workflow processes.
 
-== Code Samples
+== Code samples
 
-=== Sample Implementation of a SDK PHP function
+=== Sample implementation of a SDK PHP function
 
 The source code below shows the implementation of one of the functions provided by the SDK.
 
 [source,php]
 ----
 /**
- * Create Customer <1>
+ * Create Subtenant <1>
  * 
  * curl -u ncroot:ubiqube  -H "Content-Type: application/json" -XPOST 'http://ip_address/ubi-api-rest/customer/{prefix}?name={name}&reference={reference}' -d '
     {
@@ -66,13 +66,13 @@ function _customer_create ($operator_prefix, $customer_name, $external_reference
 <4> Call a SDK helper function to execute the curl request
 <5> Call a SDK helper function (defined in utility.php) to format a response with proper status, comment and response payload
 
-=== Sample call of a function in a workflow task.
+=== Sample call of a SDK function in a workflow task.
 
-[source,php]
+[source, php]
 ----
 
-// Create customer
-logToFile("Creating customer:: Creating customer\n");
+// Create subtenant
+logToFile("Creating subtenant:\n");
 
 $customer_contact_details_array = array();  	<1>
 $customer_contact_details_array['firstName'] = $customer_contact_first_name;
@@ -102,8 +102,36 @@ logToFile(debug_dump($response['wo_newparams'], "RESPONSE\n")); <6>
 <5> If the call to the function failed, echo the response and exit the task
 <6> If the call was succesful continue the task execution
 
-== Other Examples
-=== Call a Microservice CREATE/UPDATE/DELETE Function
+=== Output messages to the process execution UI
+
+When a task runs, it is often useful to be able to provide real time message update on the UI.
+
+image:images/workflow_process_exec_status_custom_msg.png[width=1000px]
+
+The code sample below shows how to do it.
+
+[source, php]
+----
+$PROCESSINSTANCEID = $context['PROCESSINSTANCEID'];
+$EXECNUMBER = $context['EXECNUMBER'];
+$TASKID = $context['TASKID'];
+$process_params = array('PROCESSINSTANCEID' => $PROCESSINSTANCEID,                      <1>
+						'EXECNUMBER' => $EXECNUMBER,
+						'TASKID' => $TASKID);
+	
+update_asynchronous_task_details($process_params, 
+                                "going to sleep for ".$context['sleep']. "sec.");        <2>
+sleep($context['sleep']);                                                                <3>     
+update_asynchronous_task_details($process_params, "wakeup");                             <4>
+----
+<1> creates an array with the information about current process and task
+<2> update the UI with a message
+<3> execute some code
+<4> update the UI with another message
+
+== Microservice functions
+
+=== Call a microservice CREATE/UPDATE/DELETE function
 
 [source,php]
 ----
@@ -137,7 +165,7 @@ $response = execute_command_and_verify_response ( $managed_entity_id, CMD_CREATE
 
 The funtion `+execute_command_and_verify_response+` is defined in `+/opt/fmc_repository/Process/Reference/Common/Library/msa_common.php+`
 
-=== Synchonize the Managed Entity Configuration
+=== Synchonize the managed entity configuration
 
 The Microservice may define an IMPORT operation that will be used to read the configuration items from the Managed Entities and import them into the {product_name} configuration database.
 
@@ -149,12 +177,12 @@ $response = synchronize_objects_and_verify_response($managed_entity_id);  <1>
 ----
 <1> The variable $managed_entity_id is the database ID of the managed entity
 
-== Useful Functions
+== Useful functions
 Here is a list of some of the most commonly used functions.
 
-=== Managed Entities
+=== Managed entities
 
-.Managed Entity Creation
+.Managed entity creation
 [source,php]
 ----
 function _device_create ($customer_id, $device_name, $manufacturer_id,
@@ -167,7 +195,7 @@ function _device_create ($customer_id, $device_name, $manufacturer_id,
 
 NOTE: if you need to set the hostname or update the credentials you can use some dedicated functions from `+device_rest.php+`
 
-.Managed Entity Activation
+.Managed entity activation
 [source,php]
 ----
 function _device_do_initial_provisioning_by_id ($device_id)
@@ -182,15 +210,16 @@ function _device_delete ($device_id) {
 ----
 *location*: `+device_rest.php+`
 
-== Tenant and Customer
-.Tenant Creation
+=== Tenant and Subtenant
+
+.Tenant creation
 [source,php]
 ----
 function _operator_create ($operator_prefix, $name)
 ----
 *location*: `+operator_rest.php+`
 
-.Customer Creation
+.Subtenant creation
 [source,php]
 ----
 function _customer_create ($operator_prefix, $customer_name, $external_reference = "", $contact_details = "{}")

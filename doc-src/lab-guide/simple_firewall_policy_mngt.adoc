@@ -75,7 +75,7 @@ Create a new microservice `simple_firewall`
 
 image:images/simple_firewall_new_ms.png[width=600px]
 
-NOTE: You can refer to the documentation on link:microservice_editor{outfilesuffix}[microservice editor] to learn how to create a new link:../user-guide/configuration_microservices{outfilesuffix}[microservice].
+NOTE: You can refer to the documentation on link:microservice_editor{outfilesuffix}[microservice editor] to learn how to create a new link:../user-guide/microservices{outfilesuffix}[microservice].
 
 ==== Implement the CREATE command
 

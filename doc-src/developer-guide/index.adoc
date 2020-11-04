@@ -8,63 +8,68 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 This documentation contains a set of documentation, tutorials and examples to help you get familiar with the {product_name} as a development platform.
 
+== Community 
+- link:../community-guide/index{outfilesuffix}[OpenMSA community guide,window=_blank]
+- link:devops_best_practices{outfilesuffix}[DevOps best practices,window=_blank]
+
 == Developer Portal
 
-- link:developer_portal{outfilesuffix}[Developer portal]
+- link:developer_portal{outfilesuffix}[Developer portal,window=_blank]
 
 == Use Case 
 
-- link:simple_firewall_policy_mngt{outfilesuffix}[Firewall Policy Orchestration]
+- link:../lab-guide/simple_firewall_policy_mngt{outfilesuffix}[Firewall policy orchestration,window=_blank]
 
 == BPM
 
-- link:bpm_getting_started_developing{outfilesuffix}[Getting Started with BPM]
-- link:bpm_editor{outfilesuffix}[BPM Editor]
+- link:bpm_getting_started_developing{outfilesuffix}[Getting started with BPM,window=_blank]
+- link:bpm_editor{outfilesuffix}[BPM Editor,window=_blank]
 
 == Workflows 
-- link:workflow_getting_started_developing_php{outfilesuffix}[Getting Started with Workflow Design (PHP)]
-- link:workflow_getting_started_developing_python{outfilesuffix}[Getting Started with Workflow Design (Python)]
-- link:workflow_editor{outfilesuffix}[Workflow Editor]
+- link:workflow_getting_started_developing_php{outfilesuffix}[Getting started with workflow design (PHP),window=_blank]
+- link:workflow_getting_started_developing_python{outfilesuffix}[Getting started with workflow design (Python),window=_blank]
+- link:workflow_editor{outfilesuffix}[Workflow editor,window=_blank]
+- link:workflow_variables{outfilesuffix}[Workflow variables,window=_blank]
 
 == Microservices
-=== Examples 
-
-- link:microservices_getting_started_developing{outfilesuffix}[Getting Started with Microservice Design]
-- link:microservice_editor{outfilesuffix}[Microservice Editor]
-////
-TODO: netconf yang : http://confluence.ubiqube.com/pages/viewpage.action?pageId=31555628
-//// 
 
 === References
 
 ////
 TODO
-- link:microservice_auto-rendering_ui{outfilesuffix}[Microservice Auto Rendering UI]
-- link:microservice_xml_editor{outfilesuffix}[XML Microservice Editor]
+- link:microservice_auto-rendering_ui{outfilesuffix}[Microservice Auto Rendering UI,window=_blank]
 ////
-- link:microservice_smarty_templating{outfilesuffix}[Microservice Templating with PHP Smarty]
+- link:microservice_xml_editor{outfilesuffix}[XML microservice editor,window=_blank]
+- link:microservice_cli_editor{outfilesuffix}[CLI microservice editor,window=_blank]
+- link:microservice_variables{outfilesuffix}[Microservice variables,window=_blank]
+- link:microservice_smarty_templating{outfilesuffix}[Microservice templating with PHP Smarty,window=_blank]
+
+=== Examples 
+
+- link:microservices_getting_started_developing{outfilesuffix}[Getting started with microservice design,window=_blank]
+////
+TODO: netconf yang : http://confluence.ubiqube.com/pages/viewpage.action?pageId=31555628
+//// 
 
 === API
 
-- link:microservice_order_command_api{outfilesuffix}[Microservice Order Command REST API]
-- link:microservice_stack_management_api{outfilesuffix}[Microservice Order Stack Management API]
+- link:microservice_order_command_api{outfilesuffix}[Microservice Order Command REST API,window=_blank]
+- link:microservice_stack_management_api{outfilesuffix}[Microservice Order Stack management API,window=_blank]
 
 == Adapters
-- link:adapter_development{outfilesuffix}[Adapter Development]
+- link:adapter_development{outfilesuffix}[Adapter development,window=_blank]
 
-== DevOps Best Practices
-- link:devops_best_practices{outfilesuffix}[DevOps Guide]
 
 == API & SDK
-- link:rest_api{outfilesuffix}[REST API]
-- link:workflow_python_sdk{outfilesuffix}[Python SDK for Workflow Development]
-- link:workflow_php_sdk{outfilesuffix}[PHP SDK for Workflow Development]
+- link:rest_api{outfilesuffix}[REST API,window=_blank]
+- link:workflow_python_sdk{outfilesuffix}[Python SDK for workflow development,window=_blank]
+- link:workflow_php_sdk{outfilesuffix}[PHP SDK for workflow development,window=_blank]
 
 ////
 TODO
 == Vendor Use Cases
-- link:vendor_cisco_ios_itf_mngt{outfilesuffix}[Cisco IOS: Interfaces Management]
-- link:vendor_fortigate_security_mngt{outfilesuffix}[Fortinet Fortigate: Managed Security]
-- link:vendor_multivendor_firewall_policy_mngt{outfilesuffix}[Multi-vendor Firewall Policy Update]
+- link:vendor_cisco_ios_itf_mngt{outfilesuffix}[Cisco IOS: interfaces management,window=_blank]
+- link:vendor_fortigate_security_mngt{outfilesuffix}[Fortinet Fortigate: managed security,window=_blank]
+- link:vendor_multivendor_firewall_policy_mngt{outfilesuffix}[Multi-vendor firewall policy update,window=_blank]
 ////
 

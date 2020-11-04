@@ -8,7 +8,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 == What is the {product_name} ?
 
 {product_name} is the leading Integrated Automation Platform (IAP) engineered by UBiqube for the continuous design of any IT infrastructure automation process. 
-It is composed of Integration and Automation Modules. 
+It is composed of Infrastructure and Automation Modules. 
 
 The Integration Module is used by infrastructure engineers to onboard / integrate the wide spectrum of related vendors and systems involved in any given IT solution, i.e. cloud
 technologies (public/private, containers, etc.), networks systems (virtual and physical, optical, 5G, etc.), security systems, IoT systems and devices, etc.. 
@@ -60,35 +60,38 @@ A tenant contains a set of subtenants. The subtenants contain the managed entiti
 - a manager has a read-only access to a set of subtenants.
 
 
-== The Managed Entities
-The term "Managed Entity" encompasses manageable entities such as network elements (routers, switches, load balancer,etc.), security elements such as firewalls, UTM, etc. but also virtual infrastructure and cloud management layers such as Openstack, AWS, VMWare or even container management platforms such as Rancher, K8,...
+== Infrastructure
 
-== Configurations
+The term "Infrastructure" relates to Managed Entities, Microservices and Deployment Settings.
 
-The term "Configurations" relates to Microservices, Templates and Deployment Settings.
-
+////
 .Templates
 Configuration Templates provide a simple way to provide what is termed in the Telco world as 'day 0' configuration during the activation managed entity.
+////
 
-{product_name} configuration engine runs on PHP Smarty and allows some scripting to add logic to the generation of the configuration.
+=== Managed entities
+The term "Managed Entity" encompasses manageable entities such as network elements (routers, switches, load balancer,etc.), security elements such as firewalls, UTM, etc. but also virtual infrastructure and cloud management layers such as Openstack, AWS, VMWare or even container management platforms such as Rancher, K8,...
 
-.Microservices
+=== Microservices 
 Microservices can be used to manage a wide variety of services on numerous types of entities, such as network equipment, virtualization infrastructure managers, or even Linux servers.
 
 Microservices is the abstraction layer between the specificities of the Managed Entities and the genericity required for a true multi-vendor management system.
 
 Microservices will let you define your managed services in a fine-grained and modular manner and provide all the required functions to create, read, update, delete and import these services in a production environment.
 
-.Deployment Settings
-Deployment Settings are the logical entities that will bind together the Configurations and the Managed Entities.
+The {product_name} configuration engine runs on PHP Smarty and allows some scripting to add logic to the generation of the configuration.
+
+=== Deployment settings
+
+Deployment settings are the logical entities that will bind together the Configurations and the Managed Entities.
 
 == Automation
 {product_name} features two automation layers designed for different degrees of abstraction that ensure maximum flexibility.
 
-.Workflow
+=== Workflow
 The link:automation_workflows{outfilesuffix}[Workflow] layer addresses domain-specific scenarios which can be highly technically scripted, appealing to DevOps and SecOps engineers. 
 
-.BPM
+=== BPM
 The link:bpm{outfilesuffix}[BPM] layer offers a visual workflow editor to make {product_name} a strong SOAR contender for business process design which appeals to realities and is not enshrined in vendor-specific boundaries. Maximum security remediation policies can be applied as engineers creatively imagine a process applied to all domains involved (security, routing, switching, cloud hosting, etc.).
 
 == The UI
@@ -121,7 +124,7 @@ The 7 terms that define the tree of the {product_name} navigation:
 
 a|
  
- 1. Integration 
+ 1. Infrastructure 
  
    a. Managed Entities
  

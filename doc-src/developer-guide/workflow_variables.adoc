@@ -1,0 +1,300 @@
+= Workflow Variables
+:doctype: book
+:imagesdir: ./resources/
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:toc: left
+:toclevels: 4 
+:source-highlighter: pygments
+
+//// 
+TODO 
+////
+
+Variables are usually used to hold the parameters to be passed to a workflow process. For instance, the port and IP address variables to block for a firewall policy. Variables can also be used to display user information that is not meant to be used for any actuall configuration.
+
+Setting variables is done from the section "Variables" on the workflow editor screen.
+
+image:images/workflow_console_variables.png[width=700px]
+
+All variables are referenced with the prefix `$params` which is automatically set in the variable editor screen and when a variable has to be referenced in one of the workflow functions, you need to use the syntax `{$params.your_variable}` (see below for more examples).
+
+By default the type of a variable is String but other types are supported such as Integer, Boolean, Password, IpAddress, ObjectRef,...
+
+== Overview
+
+The variables are usually defined to hold the parameters to be passed to the workflow. For instance, the port and IP address variables to block for a firewall policy. Variables can also be used to display user information that is not meant to be used for configuring the managed entity.
+
+Setting different types for variables will affect the way the workflow end user form, for creating or updating it, will render.
+
+For instance, the type boolean will render the variable with true/false radio buttons.
+
+== Defaut settings
+
+When creating or editing a variable, there are some information that need to be provided in the "Default" section.
+
+image:images/workflow_variables_edit_1.png[workflow_variables_edit_1]
+
+=== Variable
+
+Name of the variable to use in the implementation of the workflow or when calling the REST API.
+
+=== Type
+
+The type of the variable should be one from the list below
+
+==== String
+
+The default type for a variable, it will accepts any value and the UI renders it as a input field without any specifc validation with regards to the value set.
+
+==== Boolean
+
+This data type accepts a value of true or false, the UI will render it as a checkbox.
+
+==== Integer
+
+This data type represents a numerical value, the UI will render it as an input field restricted to integer.
+
+==== Password
+NOTE: not supported yet
+
+This data type represents a multicharacter value that is hidden from plain sight (i.e. the value is represented as asterisks instead of clear text). 
+
+==== IPv4 address and mask, IPv6 mask
+NOTE: not supported yet
+
+This data type will enforce data validation against IP address formats.
+
+==== Composite
+NOTE: not supported yet
+
+The variable type composite provide the means to add control over the behaviour of the workflow user form.
+
+It can be used, for instance, to show/hide part of the form based on the value of another component of the form.
+
+==== Link
+NOTE: not supported yet
+
+This type is useful if you wat to display a URL in the user form, for instance to link to some documentation on a web server. It is usually used in read-only mode with the URL set as the default value of the variable
+
+==== File
+NOTE: not supported yet
+
+This type is useful for allowing a user to select a file.
+
+==== Auto Increment
+
+This type is used to maintain an incremental counter in within the instances of a workflow for a managed entity. This is useful for managing the object_id.
+
+.Specific advanced parameters
+|===
+| Increment                                 | an integer to define the increment step
+| Start Increment                           | the initial value for the variable
+| Workflows sharing the same increment  | a list of workflows that are also using the same variable and need to share a common value.
+|===
+
+==== Device 
+
+This type is used to allow the user to select a managed entity and pass it's identifier to the implementation of the workflow.
+
+In the task implementation you need to list the variable with "Device" for the type
+
+.PHP
+[source, php]
+----
+function list_args()
+{
+  create_var_def('my_device', 'Device');
+}
+----
+
+.Python
+[source, python]
+----
+from msa_sdk.variables import Variables
+
+TaskVariables = Variables()
+
+TaskVariables.add('my_device', var_type = 'Device')
+----
+
+===== List of managed entities
+
+A very common use of the type `Device` to automate configuration (or any other automated action) over a list of managed entities.
+
+You can do that by creating a array variable with the type `Device` and loop through the array in the task.
+
+.Sample task to list managed entities
+[source, python]
+----
+from msa_sdk.variables import Variables
+from msa_sdk.msa_api import MSA_API
+from msa_sdk import util
+
+dev_var = Variables()
+dev_var.add('me_list.0.id', var_type='Device')                    <1>
+
+context = Variables.task_call(dev_var)
+process_id = context['SERVICEINSTANCEID']                         <2>
+
+me_list = context['me_list']                                      <3>
+
+for me_id in me_list:                                             <4>
+    util.log_to_process_file(process_id, me_id)                 
+
+ret = MSA_API.process_content('ENDED', 'Task OK', context, True)
+print(ret)
+----
+<1> declare the the array variable to be displayed in UI
+<2> read the current process ID
+<3> read the list of managed entities selected by the user on the UI
+<4> loop through the list and print each managed entity ID in the process log file
+
+==== Customer (Subtenant)
+
+This type will allow the user to select a subtenant and use the subtenant ID from the workflow instance context in the task.
+
+The source code below will let the user select a subtenant and display the subtenant ID on the execution console
+
+.Sample task to create a UI to select a subtenant
+[source, php]
+----
+<?php
+require_once '/opt/fmc_repository/Process/Reference/Common/common.php';
+
+function list_args()
+{
+  create_var_def('subtenant', 'Customer');    <1>
+}
+
+$subtenant = $context['subtenant'];           <2>
+
+task_success('Task OK: '.$subtenant);         <3>
+?>
+----
+<1> declare the variable subtenant to be displayed in the user form
+<2> read the variable value from the context
+<3> print the value on the execution console
+
+image:images/workflow_console_variables_customer.png[width=700px]
+
+===== List of subtenant
+
+If you need to select multiple subtenants, you have to create an array variable with the type `Customer`.
+
+With the variable `$params.subtenants.0.id` typed as `Customer`, the code below will ask for the user to select 1 or more subtenant, print the identifier of each one in the link:workflow_editor{outfilesuffix}#logging[process log file] and display the number of subtenant selected on the UI.
+
+.Sample task to list the subtenant
+[source, php]
+----
+<?php
+require_once '/opt/fmc_repository/Process/Reference/Common/common.php';
+
+function list_args()
+{
+  create_var_def('subtenants.0.id', 'Customer');
+}
+
+$subtenants = $context['subtenants'];
+
+foreach ($subtenants as $subtenant) {           <1>
+  logToFile("subtenant: ".$subtenant['id']);    <2>
+}
+
+task_success('Task OK: '.sizeof($subtenants )." subtenant selected");
+?>
+----
+<1> loop through the list of subtenants
+<2> log the value in the process log file
+
+==== Microservice reference
+
+This type is one of the key to integrate workflows and microservices, it will allow you to use the data imported by the microservice from a managed entity in your automation code.
+
+To use this type you need 2 variables:
+1. a variable with the type `Device` to select the managed entity to get the data from
+2. a variable with the type `Microservice Reference` to select the microservice that will pull the data
+
+When creating a variable typed `Microservice Reference` you need to select the `Device` variable and the microservice.
+
+In the exmaple below, the variable `$params.user` is typed as `Microservice Reference`. In the "Advanced" tab, the field "Microservice Reference" references one or several microservice and the field "Device ID" references a managed entity.
+
+image:images/workflow_console_variables_ms_ref.png[width=700px]
+
+.Sample PHP task to create the UI to select a managed entity and select a microservice instance from this managed entity
+[source, PHP]
+----
+<?php
+
+require_once '/opt/fmc_repository/Process/Reference/Common/common.php';
+
+function list_args()
+{
+  create_var_def('me', 'Device');
+  create_var_def('user', 'ObjectRef');
+}
+
+task_success('Task OK');
+?>
+----
+
+It also possible to use an array to select multiple values from the microservice
+
+image:images/workflow_console_variables_multiple_ms_ref.png[width=400px]
+
+.Sample PHP task to select multiple values from the microservice instance
+[source, PHP]
+----
+<?php
+
+require_once '/opt/fmc_repository/Process/Reference/Common/common.php';
+
+function list_args()
+{
+  create_var_def('me', 'Device');
+  create_var_def('users.0.user', 'ObjectRef');
+}
+
+task_success('Task OK');
+?>
+----
+
+==== Service reference (workflow reference)
+NOTE: not supported yet
+
+This type is useful for referencing a workflow from another one.
+
+
+=== Display Name
+
+The display value for the variable name.
+
+=== Description
+
+An optional description of this variable.
+
+== Advanced settings
+
+Depending on the selected type, some advanced parameters may be differ.
+
+[cols=2*,options="header"]
+|===
+
+| Setting                   | Description
+| Default Value             | the default value that will be used when creating a new workflow instance
+| Values for Drop-down      | a list of possible value the user can choose from
+| Mandatory                 | a value has to be provided for this variable
+| Read only variable        | the value cannot be edited
+| Section Header            | group some variables in the link:../user-guide/workflows{outfilesuffix}#workflow-console[workflow console] (see link:#group_variables[below]).
+| Show only in edit view    | hide the variable from the link:../user-guide/workflows{outfilesuffix}#workflow-console[workflow console]
+|===
+
+=== Array settings
+
+When you are dealing with variable arrays, these options will let you control the possible actions a user can have over the array.
+
+== Variable arrays
+
+To create a variable array, you need to follow a precise naming convention: `$params.<ARRAY NAME>.0.<ELEMENT NAME>`. The 0, is the separator that will allow the UI and the configuration engine that this variable is an array.
+
+.a variable array with 2 elements
+image:images/workflow_variables_array_1.png[width=700px]

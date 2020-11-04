@@ -23,7 +23,7 @@ z = bug or security fixes
 Various fixes have been made to the product to ensure its continued ability to empower users, ensure a smoother user experience and deliver the value that businesses need in today's environment while being ahead in terms of features, being evergreen and the agility of the {product_name} to grow.
 
 === Specific technical fixes
-
+- link:./release-notes/release_2.2{outfilesuffix}[version 2.2]
 - link:./release-notes/release_2.1{outfilesuffix}[version 2.1]
 - link:./release-notes/release_2.0{outfilesuffix}[version 2.0]
 

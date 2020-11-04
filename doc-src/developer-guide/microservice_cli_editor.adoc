@@ -1,4 +1,4 @@
-= Microservice Editor
+= CLI Microservice Editor
 :doctype: book
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
@@ -11,7 +11,7 @@ You can use the the microservice editor UI to create or update a microservice.
 
 To create or edit a microservice you can go to the "Integration" section and select the Microservice tab
 
-image:../../user-guide/resources/images/configurations_ms_search.png[width=720px]
+image:../../user-guide/resources/images/configurations_ms_search.png[width=1000px]
 
 == Getting started
 
@@ -21,7 +21,7 @@ If you want to directly get stated with a simple exmaple that can run on the min
 
 The microservice console is composed of a vertical menu on the left and a main screen
 
-image:images/microservice_console_information.png[width=720px] 
+image:images/microservice_console_information.png[width=1000px] 
 
 Microservices are vendor specific, the implementations of the functions to create, update, delete or import a managed entity configuration will depend on the managed entity, the type of remote management interface, the format of the configuration, how it is structured,...
 
@@ -48,7 +48,24 @@ Once created, you can search for your microservice in the list and attach it to 
 NOTE: The easiest way to design a microservice is to use a managed entity dedicated to testing and follow in a code-test-fix development cycle.
 This documentation uses the Linux Managed Entity provided by the link:../user-guide/quickstart{outfilesuffix}[mini-lab].
 
-image:images/deployment_setting_linux_mngt.png[width=720px]
+image:images/deployment_setting_linux_mngt.png[width=1000px]
+
+== Variables
+
+Variable are usually defined to hold the parameters to be passed to the microservice. For instance, the port and IP to block for a firewall policy. Variables can also be used to display user information that is not meant to be used for configuring the managed entity.
+
+Setting variables is done from the section "Variables" on the microservice editor screen.
+
+image:images/microservice_console_variables.png[width=1000px]
+
+When you create a new microservice, the variable object_id, which is mandatory, will be set and cannot be deleted. It can be edited to set it's type and other advanced properties.
+
+All variables are referenced with the prefix `$param` which is automatically set in the variable editor screen and when a variable has to be referenced in one of the microservice function, you need to use the syntax `{$param.your_variable}` (see below for more examples)
+
+By default the type of a variable is String but other types are supported such as Integer, Boolean, Password, IpAddress, ObjectRef,...
+
+A complete documentation on variables is available here: link:microservice_variables{outfilesuffix}[microservice variables].
+
 
 == CLI microservice implementation
 
@@ -57,8 +74,8 @@ It is not mandatory to implement all the functions, this will depend on your req
 
 === The functions Create, Update and Delete
 
-.Create and Update
-These functions are implemented in PHP Smarty templating language (see link:microservice_smarty_templating{outfilesuffix}[] for more detail)
+==== Create and Update
+These functions are implemented in PHP Smarty templating language (see link:microservice_smarty_templating{outfilesuffix}[Smarty templating] for more detail)
 
 For instance, the CLI commands to create or delete an iptable rule to allow or block a port and an IP are:
 
@@ -77,9 +94,9 @@ As you can see the parameters are prefixed with `$params.` and this is the reaso
 
 The implementation of the Update will be similar and will of course depend on the CLI syntax.
 
-image:images/microservice_console_cli_create.png[width=720px]
+image:images/microservice_console_cli_create.png[width=1000px]
 
-.Delete
+==== Delete
 The deletion of the iptables INPUT and FORWARD rules is executed with the CLI command below:
 
 ----
@@ -106,11 +123,10 @@ In our case:
 - VARIABLE NAME => dst_port
 - MICROSERVICE NAME is the name of the Microservice file without the .xml extension.
 
-.Example 
+==== Example 
 simple_firewall.xml => simple_firewall
 
-image:images/microservice_console_cli_delete.png[width=720px]
-
+image:images/microservice_console_cli_delete.png[width=1000px]
 
 === The function Import
 The role of the Import command is to import the current device configuration into the {product_name} database.
@@ -137,50 +153,44 @@ Make sure that you can add and delete a policy rule, that it's reflected on the 
 
 You can also add some iptables rules manually on the Linux CLI and run a configuration synchronisation to make sure that your manual changes are properly imported.
 
-image:images/microservice_console_create_instance.png[width=720px]
+image:images/microservice_console_create_instance.png[width=1000px]
 
+== Import function: tips and examples
 
-== XML microservice implementation
+Below you'll find some example of CLI based configuration and the regex that can be used to extract the variables.
 
-XML microservice are used to manage entities that expose a REST API.
+These are only provided as example and you may have to modify them to match you needs.
 
-=== The functions Create, Update and Delete
+To help with testing and validating your regular expression, there are many online tools. We, at UBiqube, usually use this one: https://regexr.com/3bhgg
 
-.Create and Update
-These functions will call the REST API design to create or update the managed entity configuration.
+=== Example 1 : Fortigate, get the syslogd3 config
 
-For instance, the REST API to create a new tenant is
+CLI command: `how full-configuration log syslogd3 setting`
 
-*HTTP Request:* `+/operator/{$prefix}+`
-
-*Method:* `+POST+`
-[cols=3*,options="header"]
-|===
-| Parameter Name
-| Type
-| Description
-
-| name
-| String
-| the name of the tenant
-|===
-
-*Example:*
-[source]
+result:
 ----
-POST /ubi-api-rest/operator/TST/name=my_tenant
+config log syslogd3 setting
+    set status enable
+    set server "91.167.210.90"
+    set mode udp
+    set port 514
+    set facility local7
+    set source-ip ''
+    set format default
+end
 ----
 
-image:images/microservice_console_xml_create_1.png[width=720px]
+Here is the Import function implementation to extract the object_id, the status, the server IP and the port.
 
-In case you need to pass in a JSON payload with the parameters, the microservice Create will look like this.
+[cols=4*,options="header"]
+|===
 
-image:images/microservice_console_xml_create_1.png[width=720px]
+|config | regex | instance key | value
+|config log syslogd3 setting | config log (?<object_id>\S+) setting | syslogd.syslogd3.object_id | syslogd3
+|    set status enable | \s*set status (?<syslogd3_status>\S+) | syslogd.syslogd3.syslogd3_status | enable
+|    set port 514 | \s*set port (?<syslogd3_port>\d+) | syslogd.syslogd3.syslogd3_port | 514
+|    set server "91.167.210.90" | \s*set server "(?<syslogd3_server_ip>[^"]+)" | syslogd.syslogd3.syslogd3_server_ip | 91.167.210.90
+|===
 
 
-
-.Delete
-
-
-image:images/microservice_console_xml_delete.png[]
 

@@ -1,0 +1,22 @@
+= Reporting bugs
+:doctype: book
+:imagesdir: ./resources/
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+== Reporting a bug
+
+If you find a bug that affects the {openmsa_name} librairies (Adapters, Workflows or Microservices) report it to:
+
+* https://github.com/openmsa/Adapters/issues
+* https://github.com/openmsa/Microservices/issues
+* https://github.com/openmsa/Workflows/issues
+
+You need a free GitHub account. Before reporting a bug, use the bug/issue search to see if the issue has already been reported. 
+ 
+If you are not sure if something is a bug yet, you can report the behavior on the community link:https://groups.google.com/a/ubiqube.com/g/openmsa[mailing list].
+
+== Requesting a feature
+
+The best way to get a feature into {openmsa_name} is to submit a pull request against one of the link:[Github repositories]. 
+
+See also the link:../developer-guide/devops_best_practices{outfilesuffix}[DevOps best practices] guide for more detail on submitting PR.

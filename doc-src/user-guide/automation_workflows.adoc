@@ -18,18 +18,19 @@ A Workflow is composed of:
 
 == Workflow selection
 
-In order to use a Workflow, it has first to be associated to a customer.
+In order to use a Workflow, it has first to be associated to a subtenant.
 To do so, you need to select a WF from the list and click on "Add to..."
 
-image:images/automation_wf_list_add_to_customer.png[Workflow Add to Customer,width=1000px]
+image:images/automation_wf_list_add_to_customer.png[Workflow Add to subtenant,width=1000px]
 
-This will open a dialog popup where customer will able to select the customer to add/remote to/from a workflow
-
+This will open a dialog popup where subtenant will able to select the subtenant to add/remote to/from a workflow
+[#use]
 == Workflow use
 
-To run a workflow you must first select a customer from the customer selection list at the top of the screen.
+To run a workflow you must first select a subtenant from the subtenant selection list at the top of the screen.
 
-This will display the customer management dashboard for the workflows.
+This will display the subtenant management dashboard for the workflows.
+
 This dashboard shows the overall status of process execution.
 
 image:images/automation_manager_dashboard.png[Workflow Manager Dashboard,width=1000px]
@@ -106,10 +107,10 @@ The Workflow engine is responsible for
 
 == Access rights
 
-As privileged administrator (ncroot) or administrator, you have access to multiple tenants and their related customers.
-You can list the workflows that are in used (ie. associated to a customer) by clicking on the "Automation" link on the left menu.
+As privileged administrator (ncroot) or administrator, you have access to multiple tenants and their related subtenants.
+You can list the workflows that are in used (ie. associated to a subtenant) by clicking on the "Automation" link on the left menu.
 
-As a manager you will only be able to select the customer in your tenant.
+As a manager you will only be able to select the subtenant in your tenant.
 
 == Workflow design
 

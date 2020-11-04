@@ -12,7 +12,7 @@ In this document, the architecture of a typical deployment will be discussed, al
 
 == Architecture
 
-This guide assumes you have installed the link:quickstart{outfilesuffix}[quickstart mini lab].
+This guide assumes you have installed the link:../user-guide/quickstart{outfilesuffix}[quickstart mini lab].
 
 Once you have done that, you should have the following ME inside your MSA installation: linux_me / 172.20.0.101.
 

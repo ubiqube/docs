@@ -8,11 +8,12 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 The Installation and Configuration Guide will show you how to install, configure and activate the {product_name}.
 
-* link:installation{outfilesuffix}[Installation and upgrade]
-* link:ha_installation{outfilesuffix}[High Availability Installation Guide]
-* link:license_activation{outfilesuffix}[License activation]
-* link:architecture_overview{outfilesuffix}[Architecture]
-* link:troubleshooting{outfilesuffix}[Troubleshooting]
+* link:../user-guide/quickstart{outfilesuffix}[Installation and upgrade,window=_blank]
+* link:ha_installation{outfilesuffix}[High Availability Installation Guide,window=_blank]
+* link:license_activation{outfilesuffix}[License activation,window=_blank]
+* link:architecture_overview{outfilesuffix}[Architecture,window=_blank]
+* link:troubleshooting{outfilesuffix}[Troubleshooting,window=_blank]
+* link:opensource_technologies{outfilesuffix}[Open Source Technologies,window=_blank]
 
 
 // Attempt to navigate within Documentation, but will have to see if adoc converts to HTML appropriately so link

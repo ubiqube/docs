@@ -18,7 +18,10 @@ asciidoctor {
   	'source-highlighter' : 'rouge',
     'linkcss': true,
     'product_name': 'MSActivator(TM)',
-    'revnumber': 'MSA-2.1.0',
+    'product_name-version': 'MSActivator-2.2.0',
+    'openmsa_name': 'OpenMSA(TM)',
+    'revnumber': 'MSA-2.2.0',
+    'revnumber-prev': 'MSA-2.1.0',
     'allow-uri-read': '',
     'sectlinks': true
  
@@ -28,6 +31,7 @@ asciidoctor {
   resources {
     from('doc-src') {
       include '**/*.png'
+      include '**/*.jpg'
       include '**/*.mp4'
       include '**/*.css'
       include '**/*.html'
