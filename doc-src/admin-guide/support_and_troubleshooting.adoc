@@ -1,34 +1,54 @@
-= Troubleshooting guide
+= Support and Troubleshooting Guide
 :toc: left
 :toclevels: 4 
-:doctype: book :imagesdir: ./resources/
+:doctype: book 
+:imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:source-highlighter: pygments
+:source-highlighter: highlight.js
 
-== Containers / Docker Engine
-=== How do I check that the Docker containers are deployed ?
+== Support
+=== How to install a custom SSL certificate
+
+The container *msa_front* is installed with a default self-signed certificate to allow SSL when connecting to https://localhost. While this is fine for most of the lab trials, you may want to install your own certificate to ensure a certified connection to your setup.
+
+image:images/secure_ssl_certificate.png[width=50%]
+
+==== Prerequistes
+To install your certificate you need to have the certificate file (*server.crt*) and the associated private key (*server.key*)
+
+==== Installation
+
+1. copy the two files server.crt and server.key on your docker host
+2. copy the 2 files in the front container:  `docker cp server.key server.crt $(docker ps  | grep msa_front | awk '{print $1}'):/etc/nginx/ssl/`
+3. restart the front container: `docker-compose restart msa_front`
+4. browse to https://localhost (you may have to clean your cache)
+
+== Troubleshooting
+=== Containers / Docker Engine
+==== How do I check that the Docker containers are deployed ?
 On a Linux system from the directory where you ran the `docker-compose up -d` command (working directory), run `docker-compose images`.
 
-[source]
+[source, shell]
 ----
-$ sudo docker-compose images
+$ docker-compose images
        Container                    Repository                              Tag                        Image Id       Size  
 ----------------------------------------------------------------------------------------------------------------------------
-quickstart_camunda_1       camunda/camunda-bpm-platform   latest                                     699c79a099cf   259.4 MB
-quickstart_db_1            ubiqube/msa2-db                2d85a6d93725e546555c92a68f1194a044813c82   276e79c2c35f   157.8 MB
-quickstart_linux_me_1      linux                          me                                         50f54cacc02f   637.5 MB
-quickstart_msa_api_1       ubiqube/msa-api                660e15a7bf4df3736d2e620d0a52064ab10d1754   19a09b1f7b48   1.251 GB
-quickstart_msa_bud_1       ubiqube/msa2-bud               afb789f49b377e4a0f90394f485c6d4047c57afd   714aeded381f   377.2 MB
-quickstart_msa_cerebro_1   lmenezes/cerebro               latest                                     3553b54da0e7   268.2 MB
-quickstart_msa_dev_1       quickstart_msa_dev             latest                                     6db8882cb90d   737.5 MB
-quickstart_msa_es_1        elasticsearch                  7.2.1                                      1e8add8d7b66   862 MB  
-quickstart_msa_front_1     ubiqube/msa2-front             74e52c480d40d29f4b9f6d92c7a0271c55e13900   34a323f81a05   24.08 MB
-quickstart_msa_sms_1       ubiqube/msa2-sms               9f9f30ff2ee6320e0bcf8badc94f1b0fba70b3d7   9f3d23bd3854   1.111 GB
-quickstart_msa_ui_1        ubiqube/msa2-ui                d4ea6545e76ed5d87dfe1051d2e80de1a03030e7   0071a9dacd83   38.73 MB
+quickstart_camunda_1       camunda/camunda-bpm-platform   7.13.0                                     9c773d0a9146   257.7 MB
+quickstart_db_1            ubiqube/msa2-db                c1aa0013c4d8b8c39682034a23d395be8e4d8547   48151f3aa621   158.2 MB
+quickstart_linux_me_1      quickstart_linux_me            latest                                     3d0eb1ca1738   533.1 MB
+quickstart_msa_api_1       ubiqube/msa2-api               6068794aa30160fb5696bb5c96253a4b1fb3536b   4f1ff5300692   1.179 GB
+quickstart_msa_bud_1       ubiqube/msa2-bud               43ee454c22b9ed217dac6baba9a88a345a5422c2   d0b6a867c236   725.9 MB
+quickstart_msa_cerebro_1   lmenezes/cerebro               0.9.2                                      cd2e90f84636   268.2 MB
+quickstart_msa_dev_1       quickstart_msa_dev             latest                                     704b5286200a   521.2 MB
+quickstart_msa_es_1        ubiqube/msa2-es                037a2067826b36e646b45e5a148431346f62f3a6   f99566a82028   862.6 MB
+quickstart_msa_front_1     ubiqube/msa2-front             03f833a9c34c8740256162dee5cc0ccd39e6d4ef   0557476a3f74   28.91 MB
+quickstart_msa_sms_1       ubiqube/msa2-sms               0107cbf1ac1f1d2067c69a76b107e93f9de9cbd7   e263e741f926   759.5 MB
+quickstart_msa_ui_1        ubiqube/msa2-ui                47731007fb487aac69d15678c87c8156903d9f51   0f370eab1fe6   40.66 MB
 ----
-- *front*: runs proxy
-- *api*: runs the CoreEngine, the API server and the legacy UI
-- *ui*: runs main UI
+- *msa_front*: runs NGINX web server
+- *msa_api*: runs the API
+- *msa_sms*: runs the CoreEngine
+- *msa_ui*: runs the UI
 - *db*: runs the PostgreSQL database
 - *camunda*: runs the BPM
 - *es*: runs the Elasticsearch server
@@ -40,39 +60,26 @@ This will also show you the network port mapping.
 
 [source]
 ----
-$ sudo docker-compose ps
+$ docker-compose ps
           Name                        Command               State                               Ports                             
 ----------------------------------------------------------------------------------------------------------------------------------
 quickstart_camunda_1       /sbin/tini -- ./camunda.sh       Up      8000/tcp, 8080/tcp, 9404/tcp                                  
-quickstart_db_1            docker-entrypoint.sh postgres    Up      5432/tcp                                                      
+quickstart_db_1            docker-entrypoint.sh postg ...   Up      5432/tcp                                                      
 quickstart_linux_me_1      /sbin/init                       Up      0.0.0.0:2224->22/tcp                                          
-quickstart_msa_api_1       /opt/jboss/wildfly/bin/sta ...   Up      8080/tcp, 0.0.0.0:8480->8480/tcp                              
-quickstart_msa_bud_1       /usr/sbin/init                   Up                                                                    
+quickstart_msa_api_1       /opt/jboss/wildfly/bin/sta ...   Up      8080/tcp                                                      
+quickstart_msa_bud_1       /docker-entrypoint.sh            Up                                                                    
 quickstart_msa_cerebro_1   /opt/cerebro/bin/cerebro - ...   Up      0.0.0.0:9000->9000/tcp                                        
 quickstart_msa_dev_1       /sbin/init                       Up                                                                    
 quickstart_msa_es_1        /usr/local/bin/docker-entr ...   Up      9200/tcp, 9300/tcp                                            
 quickstart_msa_front_1     /docker-entrypoint.sh ngin ...   Up      0.0.0.0:443->443/tcp, 0.0.0.0:514->514/udp, 0.0.0.0:80->80/tcp
-quickstart_msa_sms_1       /docker-entrypoint.sh            Up                                                                    
-quickstart_msa_ui_1        /docker-entrypoint.sh ./st ...   Up      80/tcp                                                        
+quickstart_msa_sms_1       /docker-entrypoint.sh            Up      0.0.0.0:69->69/tcp                                            
+quickstart_msa_ui_1        /docker-entrypoint.sh ./st ...   Up      80/tcp                                                         
 ----
 
-== User Interface
-=== I can't login to the user interface (UI)
+=== User Interface
+==== I can't login to the user interface (UI)
 
 Here are a set of useful CLI commands that you can run from the working directory...
-
-////
-Check the status of the main service in the container "api":
-[source]
-----
-$ sudo docker-compose exec api /opt/sms/bin/check_services_status.sh
-wildfly                                                    [  OK  ]
-tomcat                                                     [  OK  ]
-ubi-dms                                                    [  OK  ]
-ubi-sms                                                    [  OK  ]
-ubi-webconf                                                [  OK  ]
-----
-////
 
 Check the status of the database:
 [source]
@@ -97,18 +104,18 @@ Restarting quickstart_msa_api_1 ... done
 
 Then monitor the logs as explained above.
 
-=== Wildfly startup failure `fatal KILL command`
+==== Wildfly startup failure `fatal KILL command`
 
 If wildfly fails to start with an error similar to `fatal KILL command` then you probably haven't allocated enough memory to your docker engine (see link:../user-guide/quickstart{outfilesuffix}#prerequisites[prerequisites])
 
 The above steps should resolve common reasons why the {product_name} is not functioning properly.  If there is something that is still not working properly, then please contact UBiqube.
 
-== CoreEngine
+=== CoreEngine
 
-=== CoreEngine nor starting or restart fails
+==== CoreEngine nor starting or restart fails
 If the CoreEngine doesn't (re)start propertly, for instance when running
 ----
-$ sudo docker-compose exec msa_sms /etc/init.d/ubi-sms restart
+$ sudo docker-compose exec msa_sms restart
 ----
 
 you can check the CoreEgine configuration logs:
@@ -117,7 +124,7 @@ you can check the CoreEgine configuration logs:
 $ sudo docker-compose exec msa_sms cat /opt/sms/logs/configure.log
 ----
 
-=== How do I enable debug logs on the SecEngine ?
+==== How do I enable debug logs on the SecEngine ?
 The CoreEngine logs are available on the msa_sms container (see link:architecture_overview{outfilesuffix}[architecture overview]) in the directory `/opt/sms/logs`.
 
 If you are designing a Microservice or simply operating the {product_name}, you might need to monitor the logs of the configuration engine.

@@ -4,16 +4,15 @@
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :toc: left
 :toclevels: 4 
-:source-highlighter: pygments
 
 The Installation and Configuration Guide will show you how to install, configure and activate the {product_name}.
 
 * link:../user-guide/quickstart{outfilesuffix}[Installation and upgrade,window=_blank]
-* link:ha_installation{outfilesuffix}[High Availability Installation Guide,window=_blank]
+* link:ha_installation{outfilesuffix}[High Availability installation guide,window=_blank]
 * link:license_activation{outfilesuffix}[License activation,window=_blank]
 * link:architecture_overview{outfilesuffix}[Architecture,window=_blank]
-* link:troubleshooting{outfilesuffix}[Troubleshooting,window=_blank]
-* link:opensource_technologies{outfilesuffix}[Open Source Technologies,window=_blank]
+* link:support_and_troubleshooting{outfilesuffix}[Support and troubleshooting,window=_blank]
+* link:opensource_technologies{outfilesuffix}[Open Source technologies,window=_blank]
 
 
 // Attempt to navigate within Documentation, but will have to see if adoc converts to HTML appropriately so link
