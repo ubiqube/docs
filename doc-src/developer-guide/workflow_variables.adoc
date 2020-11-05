@@ -22,7 +22,7 @@ By default the type of a variable is String but other types are supported such a
 
 == Overview
 
-The variables are usually defined to hold the parameters to be passed to the workflow. For instance, the port and IP address variables to block for a firewall policy. Variables can also be used to display user information that is not meant to be used for configuring the managed entity.
+The variables are usually defined to hold the parameters to be passed to the workflow. For instance, the port and IP address to block for a firewall policy. Variables can also be used to display user information that is not necessarily meant to be used for configuring the managed entity.
 
 Setting different types for variables will affect the way the workflow end user form, for creating or updating it, will render.
 
@@ -65,9 +65,9 @@ This data type will enforce data validation against IP address formats.
 ==== Composite
 NOTE: not supported yet
 
-The variable type composite provide the means to add control over the behaviour of the workflow user form.
+The variable type composite provide ways to add control over the behaviour of the workflow user form.
 
-It can be used, for instance, to show/hide part of the form based on the value of another component of the form.
+It can be used, for instance, to show/hide parts of the form based on the value of another component of the form.
 
 ==== Link
 NOTE: not supported yet
@@ -92,9 +92,9 @@ This type is used to maintain an incremental counter in within the instances of 
 
 ==== Device 
 
-This type is used to allow the user to select a managed entity and pass it's identifier to the implementation of the workflow.
+This type is used to allow the user to select a managed entity and pass its identifier to the implementation of the workflow.
 
-In the task implementation you need to list the variable with "Device" for the type
+In the task implementation you need to list the variables with "Device" for the type
 
 .PHP
 [source, php]
@@ -117,7 +117,7 @@ TaskVariables.add('my_device', var_type = 'Device')
 
 ===== List of managed entities
 
-A very common use of the type `Device` to automate configuration (or any other automated action) over a list of managed entities.
+A very common use of the type `Device` is for automating configuration (or any other automated action) over a list of managed entities.
 
 You can do that by creating a array variable with the type `Device` and loop through the array in the task.
 
@@ -204,9 +204,11 @@ task_success('Task OK: '.sizeof($subtenants )." subtenant selected");
 <1> loop through the list of subtenants
 <2> log the value in the process log file
 
+TIP: the code for iterating over an array of managed entities is very similar 
+
 ==== Microservice reference
 
-This type is one of the key to integrate workflows and microservices, it will allow you to use the data imported by the microservice from a managed entity in your automation code.
+This type is the key when integrating workflows and microservices, it will allow you to use the data imported by the microservice from a managed entity in your automation code.
 
 To use this type you need 2 variables:
 1. a variable with the type `Device` to select the managed entity to get the data from
@@ -260,7 +262,6 @@ task_success('Task OK');
 NOTE: not supported yet
 
 This type is useful for referencing a workflow from another one.
-
 
 === Display Name
 
