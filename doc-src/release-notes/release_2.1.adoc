@@ -85,6 +85,7 @@ The legacy portal “UBI/en” is now deprecated. UBiqube will not maintain it o
 
 ==== Bug fixes
 
+* MSA-8832 : [Database] licences are not installed in database
 * MSA-7014 : [Managed entity] the ME creation form is not reset when the browser is killed
 * MSA-7325 : [Managed entity] Deployment Settings unable to detach ME with UI
 * MSA-7380 : [Microservices] Create and Update API issues
