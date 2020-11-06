@@ -121,7 +121,7 @@ A very common use of the type `Device` is for automating configuration (or any o
 
 You can do that by creating a array variable with the type `Device` and loop through the array in the task.
 
-.Sample task to list managed entities
+.Sample task to list managed entities (Python)
 [source, python]
 ----
 from msa_sdk.variables import Variables
@@ -137,7 +137,7 @@ process_id = context['SERVICEINSTANCEID']                         <2>
 me_list = context['me_list']                                      <3>
 
 for me_id in me_list:                                             <4>
-    util.log_to_process_file(process_id, me_id)                 
+    util.log_to_process_file(process_id, me_id['id'])             <5>    
 
 ret = MSA_API.process_content('ENDED', 'Task OK', context, True)
 print(ret)
@@ -146,6 +146,25 @@ print(ret)
 <2> read the current process ID
 <3> read the list of managed entities selected by the user on the UI
 <4> loop through the list and print each managed entity ID in the process log file
+<5> print the managed entity identifier in the process log file
+
+.Sample code to list managed entities (PHP)
+[source, php]
+----
+function list_args()
+{
+  create_var_def('devices.0.id', 'Device');
+}
+
+// read the ID of the selected managed entity  
+$devices = $context['devices'];
+
+foreach ($devices as $device) {
+  $device_id = $device['id'];
+
+  logToFile("update device $device_id");
+}
+----
 
 ==== Customer (Subtenant)
 
