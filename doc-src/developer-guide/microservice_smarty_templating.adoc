@@ -325,7 +325,7 @@ no shutdown
 
 ==== Skip the parsing of the `{$ }` structure
 
-Normally, the `{$ }` structure is used in the microservices template to specify the variables to by parsed by the Smarty templating engine (ex: `{$parms.my_variable}`) but in some case, you might need this structure to be ignored by the parser because it is part of the actual configuration to build for the managed entity.
+Normally, the `{$ }` structure is used in the microservices template to specify the variables to be parsed by the Smarty templating engine (ex: `{$parms.my_variable}`) but in some case, you might need this structure to be ignored by the parser because it is part of the actual configuration to build for the managed entity.
 
 This is where you need to use the keywords `ldelim` (left delimiter )and `rdelim` (right delimiter).
 
