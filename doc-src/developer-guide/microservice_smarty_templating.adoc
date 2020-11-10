@@ -27,9 +27,7 @@ For XML/REST, the parameters are used to build the REST API call, either by upda
 
 image:images/microservice_parameter_substitution_xml.png[]
 
-
 === Variables
-
 ==== From database
 
 For an object object_name, the instance instance_id can accessed with the syntax
@@ -325,3 +323,19 @@ no shutdown
 </command>
 ----
 
+==== Skip the parsing of the `{$ }` structure
+
+Normally, the `{$ }` structure is used in the microservices template to specify the variables to by parsed by the Smarty templating engine (ex: `{$parms.my_variable}`) but in some case, you might need this structure to be ignored by the parser because it is part of the actual configuration to build for the managed entity.
+
+This is where you need to use the keywords `ldelim` (left delimiter )and `rdelim` (right delimiter).
+
+For example consider the following pattern in the "Microservice Configuration" section of the REST based Microservice definitions:
+----
+"subUnit": "{$v_vni-0-0_WAN-1__unit}"
+----
+
+Here we want to use the '{' and '}' characters in their literal values and have to specify not to be parsed. We can do this by replacing '{' with '{ldelim}' and replacing '}' with '{rdelim}' and hence for the line mentioned above we have to change it as shown below:
+
+----
+"subUnit": "{ldelim}$v_vni-0-0_WAN-1__unit{rdelim}"
+----
