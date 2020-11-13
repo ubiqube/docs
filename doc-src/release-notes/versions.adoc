@@ -7,7 +7,8 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 |===
 |Version | Link
 
-| 2.2.0 GA (latest) |  https://ubiqube.com/wp-content/docs/latest
+| 2.3.0 GA (latest) |  https://ubiqube.com/wp-content/docs/latest
+| 2.2.0 GA |  https://ubiqube.com/wp-content/docs/2.2.0GA
 | 2.1.0 GA |  https://ubiqube.com/wp-content/docs/2.1.0GA
 | 2.0.0 Alpha|  https://ubiqube.com/wp-content/docs/2.0.0
 | 2.0.1 Beta|  https://ubiqube.com/wp-content/docs/2.0.1
