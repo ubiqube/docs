@@ -75,14 +75,13 @@ asciidoctorPdf {
 
 
   sourceDir  file('doc-src')
-  outputDir  file('build/docs')
+  outputDir  file('build/pdf')
 
   resources {
     from('doc-src') {
       include '**/*.png'
       include '**/*.jpg'
       include '**/*.mp4'
-      include '**/*.css'
       include '**/*.html'
     }
 
