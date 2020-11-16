@@ -18,6 +18,30 @@ To install your certificate you need to have the certificate file (*server.crt*)
 
 ==== Installation
 
+===== Update the docker-compose file
+
+In order to persist the certificate during the container image update you first need to update the docker-compose file.
+
+Edit the file docker-compose.yml and add `msa_front` in the volumes section and update the service `msa_front` with 
+
+----
+    volumes:
+        - "msa_front:/etc/nginx/ssl"
+----
+
+Restart your setup with `docker-compose up -d`
+
+If you are running a docker swarm then you'll only have to update the service `msa_front` with 
+
+----
+    volumes:
+        - "/mnt/NASVolume/msa_front:/etc/nginx/ssl"
+----
+
+IMPORTANT: you need to create the director `/mnt/NASVolume/msa_front` manually first
+
+===== Install the certificate
+
 1. copy the two files server.crt and server.key on your docker host
 2. copy the 2 files in the front container:  `docker cp server.key server.crt $(docker ps  | grep msa_front | awk '{print $1}'):/etc/nginx/ssl/`
 3. restart the front container: `docker-compose restart msa_front`
