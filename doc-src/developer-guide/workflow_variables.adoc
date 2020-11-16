@@ -32,8 +32,6 @@ For instance, the type boolean will render the variable with true/false radio bu
 
 When creating or editing a variable, there are some information that need to be provided in the "Default" section.
 
-image:images/workflow_variables_edit_1.png[workflow_variables_edit_1]
-
 === Variable
 
 Name of the variable to use in the implementation of the workflow or when calling the REST API.
