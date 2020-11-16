@@ -1,16 +1,23 @@
 plugins {
-    id 'org.asciidoctor.jvm.convert' version '3.1.0'
-    id 'org.asciidoctor.jvm.gems' version '3.1.0'
-    id 'org.asciidoctor.jvm.pdf' version '3.1.0'	
+    id 'org.asciidoctor.jvm.convert' version '3.2.0'
+    id 'org.asciidoctor.jvm.gems' version '3.2.0'
+    id 'org.asciidoctor.jvm.pdf' version '3.2.0'	
 }
+apply plugin: 'java'
 
 repositories {
     jcenter()
+    ruby.gems()
+}
+
+dependencies {
+  asciidoctorGems 'rubygems:rouge:3.15.0'
 }
 
 asciidoctor.doFirst {
     delete file('build/docs')
 }
+
 
 asciidoctor {
 
@@ -39,5 +46,51 @@ asciidoctor {
 
     into '.'
   }
+}
+
+asciidoctorPdf {
+  dependsOn asciidoctorGemsPrepare
+
+  baseDirFollowsSourceFile()
+  outputs.upToDateWhen { false }
+  
+  asciidoctorj {
+
+    modules {
+        pdf.version '1.5.3'
+    }
+    requires 'rouge'
+    attributes \
+ 	    'source-highlighter' : 'rouge',
+      'linkcss': true,
+      'product_name': 'MSActivator(TM)',
+      'product_name-version': 'MSActivator-2.2.0',
+      'openmsa_name': 'OpenMSA(TM)',
+      'revnumber': 'MSA-2.2.0',
+      'revnumber-prev': 'MSA-2.1.0',
+      'allow-uri-read': '',
+      'sectlinks': true,
+      'imagesoutdir': 'images'
+  }
+
+
+  sourceDir  file('doc-src')
+  outputDir  file('build/docs')
+
+  resources {
+    from('doc-src') {
+      include '**/*.png'
+      include '**/*.jpg'
+      include '**/*.mp4'
+      include '**/*.css'
+      include '**/*.html'
+    }
+
+    into '.'
+  }
 
 }
+
+// alias
+//task asciidoc(dependsOn: asciidoctor)
+task asciidoc_pdf(dependsOn: asciidoctorPdf)
