@@ -13,7 +13,7 @@ TODO: update
 
 The {product_name} provides support for high avalability, based on "Docker Engine Swarm" mode.
 
-image:images/ha_containers.png[overall architecture]
+image:images/ha_containers.png[overall architecture,width=700px]
 
 With docker swarm, there is two types of nodes link:https://docs.docker.com/engine/swarm/how-swarm-mode-works/nodes/#manager-nodes[managers] and link:https://docs.docker.com/engine/swarm/how-swarm-mode-works/nodes/#worker-nodes[workers].
 
@@ -52,7 +52,7 @@ Based on docker link:https://docs.docker.com/engine/swarm/admin_guide/#add-manag
 
 === Roles of each container
 
-[cols=5*,options="header",%autowidth]
+[cols=5*,options="header",width=90%]
 |===
 | Name | Role | Size | Load profile | Backup required (yes/no)
 | *API*	| The REST API (Wildfly) used by our web UI to execute core MSActivator functionality.  All core functionality in MSActivator is driven by REST APIs.  You can also call these directly, by-passing the UI if you wish.	| L	| API traffic. Medium-high CPU and RAM usage, depending on how many Workflows are being executed, web UI traffic, and general REST API usage. *Scale up* API containers to handle higher API load.|	No
@@ -90,12 +90,22 @@ To help you define containers needs based on your requirement, here 4 customers 
 
 Depending to new numbers of containers, VM can be scaled to create docker manager nodes and worker nodes.
 
-[cols=4*]
-|===
-| Simple: HA platform with minimum activities | Standard: HA platform with mix of activities | Automation: Execute many WF and BPM | Assurance: Collect syslogs and monitor entities
-| image:images/ha_profile_1.png[]| image:images/ha_profile_2.png[]| image:images/ha_profile_3.png[]| image:images/ha_profile_4.png[]
 
-|===
+==== Simple: HA platform with minimum activities 
+
+image:images/ha_profile_1.png[width=250px]
+
+==== Standard: HA platform with mix of activities
+
+image:images/ha_profile_2.png[width=250px]
+
+==== Automation: Execute many WF and BPM
+
+image:images/ha_profile_3.png[width=250px]
+
+==== Assurance: Collect syslogs and monitor entities
+
+image:images/ha_profile_4.png[width=250px]
 
 == Prerequisites
 

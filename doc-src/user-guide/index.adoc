@@ -6,7 +6,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :toclevels: 4 
 :source-highlighter: pygments
 
-The manager guide provides the documentation to help you understand the key concepts of the {product_name} and help you understand how to use the {product_name} in an operational environment. 
+The manager guide provides the documentation to help you understand the key concepts of the {product_name} and learn how to use the {product_name} in an operational environment. 
 
 == Getting started
 
@@ -19,10 +19,10 @@ The manager guide provides the documentation to help you understand the key conc
 - link:key_concepts{outfilesuffix}[Key concepts,window=_blank]
 - link:gui_overview{outfilesuffix}[GUI overview,window=_blank]
 
-== Infrasctucture
+== Infrastructure
 
 - link:managed_entities{outfilesuffix}[Managed entities,window=_blank]
-- link:microservicesmicroservices{outfilesuffix}[Microservices,window=_blank]
+- link:microservices{outfilesuffix}[Microservices,window=_blank]
 - link:configuration_deployment_settings{outfilesuffix}[Deployment settings,window=_blank]
 - link:managed_entities_topology{outfilesuffix}[Network topology,window=_blank]
 
