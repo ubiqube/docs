@@ -101,7 +101,7 @@ In the task implementation you need to list the variables with "Device" for the 
 ----
 function list_args()
 {
-  create_var_def('my_device', 'Device');
+  create_var_def('my_device');
 }
 ----
 
@@ -112,7 +112,7 @@ from msa_sdk.variables import Variables
 
 TaskVariables = Variables()
 
-TaskVariables.add('my_device', var_type = 'Device')
+TaskVariables.add('my_device')
 ----
 
 ===== List of managed entities
@@ -129,7 +129,7 @@ from msa_sdk.msa_api import MSA_API
 from msa_sdk import util
 
 dev_var = Variables()
-dev_var.add('me_list.0.id', var_type='Device')                    <1>
+dev_var.add('me_list.0.id')                                       <1>
 
 context = Variables.task_call(dev_var)
 process_id = context['SERVICEINSTANCEID']                         <2>
@@ -153,7 +153,7 @@ print(ret)
 ----
 function list_args()
 {
-  create_var_def('devices.0.id', 'Device');
+  create_var_def('devices.0.id');
 }
 
 // read the ID of the selected managed entity  
@@ -180,7 +180,7 @@ require_once '/opt/fmc_repository/Process/Reference/Common/common.php';
 
 function list_args()
 {
-  create_var_def('subtenant', 'Customer');    <1>
+  create_var_def('subtenant');                <1>
 }
 
 $subtenant = $context['subtenant'];           <2>
@@ -208,7 +208,7 @@ require_once '/opt/fmc_repository/Process/Reference/Common/common.php';
 
 function list_args()
 {
-  create_var_def('subtenants.0.id', 'Customer');
+  create_var_def('subtenants.0.id');
 }
 
 $subtenants = $context['subtenants'];
@@ -248,8 +248,8 @@ require_once '/opt/fmc_repository/Process/Reference/Common/common.php';
 
 function list_args()
 {
-  create_var_def('me', 'Device');
-  create_var_def('user', 'ObjectRef');
+  create_var_def('me');
+  create_var_def('user');
 }
 
 task_success('Task OK');
@@ -269,8 +269,8 @@ require_once '/opt/fmc_repository/Process/Reference/Common/common.php';
 
 function list_args()
 {
-  create_var_def('me', 'Device');
-  create_var_def('users.0.user', 'ObjectRef');
+  create_var_def('me');
+  create_var_def('users.0.user');
 }
 
 task_success('Task OK');

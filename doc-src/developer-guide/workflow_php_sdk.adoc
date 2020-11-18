@@ -4,7 +4,6 @@
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :toc: left
 :toclevels: 4 
-:source-highlighter: pygments
 
 The {product_name} provides a support for PHP SDK dedicated to developing automation workflows. 
 This SDK provides a set of functions that can be used to call the link:rest_api{outfilesuffix}[{product_name} REST API] and automate action on the {product_name} such as create and activate managed entities, call microservice function, call processes from other workflows...

@@ -34,14 +34,14 @@ This is done by creating a new variable object and then using its add() method t
 
 dev_var = Variables()
 
-dev_var.add('customer_id', var_type='Integer')
+dev_var.add('customer_id')
 dev_var.add('managed_device_name')
-dev_var.add('manufacturer_id', var_type='Integer')
-dev_var.add('model_id', var_type='Integer')
-dev_var.add('device_ip_address', var_type='IP Address')
+dev_var.add('manufacturer_id')
+dev_var.add('model_id')
+dev_var.add('device_ip_address')
 dev_var.add('login')
-dev_var.add('password', var_type='Password')
-dev_var.add('password_admin', var_type='Password')
+dev_var.add('password')
+dev_var.add('password_admin')
 
 context = Variables.task_call(dev_var)
 
