@@ -12,6 +12,8 @@ This documentation will drive you throught the process of installing and using a
 
 It's an example this is simple enough to be installed and used in a lab environment without too much configuration, but complex enough to show how the {product_name} can be used for such a thing as VNF orchaestration automation in a public cloud.
 
+video::_sY1r-Q9Y6I[youtube,width=600px,height=360] 
+
 === About soure code
 
 The source code for the workflows and microservices referenced, is freely available in the OpenMSA github repository:
