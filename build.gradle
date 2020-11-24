@@ -15,11 +15,14 @@ dependencies {
 }
 
 asciidoctor.doFirst {
-    delete file('build/docs')
+    delete file('build/html')
+    delete file('build/pdf')
 }
 
 
 asciidoctor {
+  
+  options doctype: 'book'
 
   attributes \
   	'source-highlighter' : 'rouge',
@@ -30,13 +33,14 @@ asciidoctor {
     'revnumber': 'MSA-2.3.0',
     'revnumber-prev': 'MSA-2.2.0',
     'allow-uri-read': '',
-    'sectlinks': true
- 
-  sourceDir  file('doc-src')
-  outputDir  file('build/docs')
+    'sectlinks': true,
+    'html': 'true'
+
+  sourceDir = file('docs')
+  outputDir  file('build/html')
 
   resources {
-    from('doc-src') {
+    from('docs') {
       include '**/*.png'
       include '**/*.jpg'
       include '**/*.mp4'
@@ -60,25 +64,29 @@ asciidoctorPdf {
         pdf.version '1.5.3'
     }
     requires 'rouge'
+
+    options doctype: 'book'
+
     attributes \
  	    'source-highlighter' : 'rouge',
       'linkcss': true,
       'product_name': 'MSActivator(TM)',
-      'product_name-version': 'MSActivator-2.2.0',
+      'product_name-version': 'MSActivator-2.3.0',
       'openmsa_name': 'OpenMSA(TM)',
-      'revnumber': 'MSA-2.2.0',
-      'revnumber-prev': 'MSA-2.1.0',
+      'revnumber': 'MSA-2.3.0',
+      'revnumber-prev': 'MSA-2.2.0',
       'allow-uri-read': '',
       'sectlinks': true,
-      'imagesoutdir': 'images'
+      'imagesoutdir': 'images',
+      'pdf': 'true'
+
   }
 
-
-  sourceDir  file('doc-src')
+  sourceDir  file('docs')
   outputDir  file('build/pdf')
 
   resources {
-    from('doc-src') {
+    from('docs') {
       include '**/*.png'
       include '**/*.jpg'
       include '**/*.mp4'
