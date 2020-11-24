@@ -1,0 +1,103 @@
+= Architecture Overview
+ifndef::imagesdir[:imagesdir: _images]
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+The {product_name} is an Integrated Automation Platform, which consists of several components running on Docker containers.
+
+[#overview]
+== Overview of the platform
+- The {product_name} API server: this server provides a REST API layer on top of all the functions, it also provides the Workflow Engine responsible for executing the automated processes
+- The {product_name} Core Engine: this component, composed of several daemons is responsible for the configuration of the Managed Entities, the assurance and collecting the syslogs.
+- A PostgreSQL database: the {product_name} stores its state in a PostgreSQL database.
+- An Elasticsearch cluster: the {product_name} collects and stores the events and the alarms in an Elasticsearch server.
+- A BPM engine based on Camunda, fully integrated with Workflow Engine.
+- A Subversion based server to store the history of the configurations of the Managed Entities
+- REST API and UI: To control the {product_name}, you can use either the web based interface or the REST API.
+
+== Overview of the docker containers
+
+[#containers_description]
+=== Containers description
+image:container_list.png[width=500px]
+
+==== msa_front
+*msa_front* runs NGINX and act as the front end to route the requests to the internal containers.
+
+The NGINX server is configured with a self-signed SSL certificate to allow HTTPS connection. 
+When you access the UI for the first time after the installation of the product, your browser will problably show a warning message and you will have to accept this certificate to access the web UI.
+
+==== msa_ui 
+
+*msa_ui* run the {product_name} web based interface. On a local setup you can connect to the UI with https://localhost. 
+
+==== msa_api
+
+*msa_api* run the REST API on a Wildfly based container.
+
+This container is in charge of exposing the REST API used by the web UI, the workflows or any other third party tool willing to integrate with the {product_name}.
+
+msa_api also runs all the business logic such as the scheduling of the workflow and the BPM execution, the execution of the microservice logic,...
+
+This container is also taking care of the link:../developer-guide/rest_api{outfilesuffix}#authentication[token based authentication]
+
+==== msa_sms
+
+*msa_sms* runs the CoreEngine for configuration and assurance of the managed entities.
+
+This container is in charge of getting the microservice request for configuration and transforming them, by making use of the relevant adapter, into the managed entity management language (specific CLI command, REST API,...)
+
+This container will also poll the device for assurance KPI and collect/analyse the syslogs sent by the managed entities.
+
+==== msa_bud 
+
+*msa_bud* takes care of cross table data synchronisation and consistency in the database
+
+==== msa_dev
+
+*msa_dev* is a linux based container used for storing the assets shared accross containers such as microservices, workflows, adapters code,...
+
+This is the container you need to use for your own devOps related work such as installing a new adapter, pulling or pushing code to a git repository, installing some new workflow or microservices from a git repository,...
+
+==== camunda
+
+*camunda* runs the  BPM engine
+
+==== msa_es and msa_cerebro
+
+*msa_es* and *msa_cerebro* run the Elasticsearh container and Cerebro which is a web based management tool for Elasticsearch.
+
+==== db
+
+*db* run the PostgreSQL database when the {product_name} administrative data and configuration data is stored.
+
+=== Networking and connectivity
+
+image:non_ha_containers.png[width=500px]
+
+=== Volumes and data
+
+In order to persist the data, the {product_name} uses docker volumes:
+
+These volumes are declared at the end of the docker-compose file:
+
+----
+volumes:
+  msa_api:          <1>
+  msa_db:           <2>
+  msa_dev:          <3>
+  msa_entities:     <4>
+  msa_repository:   <5>
+  msa_es:           <6>
+  msa_api_logs:     <7>
+  msa_sms_logs:     <8>
+  msa_bud_logs:     <9>
+----
+<1> volume shared by the containers `msa_api` and `msa_dev` to store the adapter configuration for the UI
+<2> database volume used by the container `db`
+<3> volume shared by the containers `msa_dev` and `msa_sms`, used to store the adapter git repository. This is where you can store your other DevOps related files.
+<4> volume shared by the containers `msa_dev`, `msa_api` and `msa_sms`, used to store the associations between the managed entities and the deployment settings as well as the subtenants and the workflows
+<5> volume shared by the containers `msa_dev`, `msa_api` and `msa_sms`, used to store the sources of the microservices, the workflows, the BMP,...
+<6> volume used by Elasticsearch to store the indexed data.
+<7> volume for storing API and workflow process logs
+<8> volume for storing CoreEngine logs
+<9> volume for storing Batchupdated daemon logs

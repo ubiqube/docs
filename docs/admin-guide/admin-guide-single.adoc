@@ -1,0 +1,47 @@
+= Administration Guide
+:toc: left
+:toclevels: 3
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+//OK HTML 
+ifdef::html[]
+:includedir: docs/admin-guide/_includes
+endif::[]
+
+// OK PDF
+ifdef::pdf[]
+:includedir: _includes
+endif::[]
+
+:leveloffset: +1
+
+The Installation and Configuration Guide will show you how to install, configure and activate the {product_name}.
+
+If you want to get started quickly, you can check the link:../user-guide/quickstart{outfilesuffix}[quickstart,window=_blank] guide.
+
+
+include::{includedir}/architecture_overview.adoc[] 
+
+include::{includedir}/license_activation.adoc[]
+
+include::{includedir}/ha_installation.adoc[]
+
+include::{includedir}/support_and_troubleshooting.adoc[]
+
+include::{includedir}/opensource_technologies.adoc[]
+
+
+//
+//* link:license_activation{outfilesuffix}[License activation,window=_blank]
+//* link:ha_installation{outfilesuffix}[High Availability installation guide,window=_blank]
+//* link:support_and_troubleshooting{outfilesuffix}[Support and troubleshooting,window=_blank]
+//* link:opensource_technologies{outfilesuffix}[Open Source technologies,window=_blank]
+
+
+// Attempt to navigate within Documentation, but will have to see if adoc converts to HTML appropriately so link
+// not lost
+//
+// Go back to Main Menu: link:../index.adoc[Index]
+//
+
+

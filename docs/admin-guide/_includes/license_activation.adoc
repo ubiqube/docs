@@ -1,0 +1,45 @@
+= License Activation
+:doctype: book 
+ifndef::imagesdir[:imagesdir: _images]
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Whether you have installed the {product_name} with the quickstart or started to do a longer PoC you need a license.
+Quickstart environment comes with a trial license installed automatically and valid for 30 days limited to 5 managed entities.
+If you do not have your license yet, for a production license contact your sales representative, otherwise for a free trial license please visit: link:https://ubiqube.com/free-trial/[].
+
+This documentation discusses the activate of a new license.
+
+== License types
+
+=== PROD (Production): for production setups. 
+
+A production license controls the maximum number of device that can be managed at the same time by the {product_name}.
+
+When this limit is reached, the user won't be able to create any new devices but he will be able to delete some devices in order to free a few license slot.
+
+When the expiration date is reached, the {product_name} will continue to work as usual but the product upgrade won't be allowed
+
+=== POC: for Proof of Concept
+
+A PoC license controls the maximum number of device that can be managed at the same time by the {product_name}.
+
+When this limit is reached, the user won't be able to create any new devices but he will be able to delete some devices in order to free a few license slot.
+
+When the expiration date is reached:
+
+- the {product_name} will switch to a "degraded mode": device configuration with microservice is deactivated.
+
+== License activation
+
+You must be connected as a privileged administrator (ncroot) to install the license.
+
+As a privileged administrator, click on the link "Setting" on the left menu. 
+
+image::classic_msa_admin_page.png[width=720px]
+
+Click on "Choose file..." and select your license file (.lic).
+
+If the license is valid, the web page will display the license information otherwise the license activation will be refused.
+
+
+
