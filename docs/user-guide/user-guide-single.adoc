@@ -1,0 +1,45 @@
+= Manager Guide
+:toc: left
+:toclevels: 3
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+//OK HTML 
+ifdef::html[]
+:includedir: docs/user-guide
+endif::[]
+
+// OK PDF
+ifdef::pdf[]
+:includedir: .
+endif::[]
+
+:leveloffset: +1
+
+The Installation and Configuration Guide will show you how to install, configure and activate the {product_name}.
+
+If you want to get started quickly, you can check the link:../user-guide/quickstart.adoc[quickstart,window=_blank] guide.
+
+include::{includedir}/key_concepts.adoc[]
+
+include::{includedir}/gui_overview.adoc[]
+
+include::{includedir}/managed_entities.adoc[]
+
+include::{includedir}/microservices.adoc[]
+
+include::{includedir}/configuration_deployment_settings.adoc[]
+
+include::{includedir}/managed_entities_topology.adoc[]
+
+include::{includedir}/automation_workflows.adoc[]
+
+include::{includedir}/automation_workflow_utilities.adoc[]
+
+include::{includedir}/bpm.adoc[]
+
+include::{includedir}/assurance.adoc[]
+
+include::{includedir}/tenants_and_users.adoc[]
+
+include::{includedir}/settings.adoc[]
+

@@ -1,5 +1,5 @@
 = Architecture Overview
-ifndef::imagesdir[:imagesdir: _images]
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 The {product_name} is an Integrated Automation Platform, which consists of several components running on Docker containers.

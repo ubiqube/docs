@@ -1,6 +1,6 @@
 = License Activation
 :doctype: book 
-ifndef::imagesdir[:imagesdir: _images]
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 Whether you have installed the {product_name} with the quickstart or started to do a longer PoC you need a license.

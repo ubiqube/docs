@@ -1,0 +1,54 @@
+= Manager Guide
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+The manager guide provides the documentation to help you understand the key concepts of the {product_name} and learn how to use the {product_name} in an operational environment. 
+
+TIP: link:user-guide-single{outfilesuffix}[view as single html]
+
+== Getting started
+
+- link:quickstart{outfilesuffix}[Quickstart guide,window=_blank]
+- link:quickstart_jp{outfilesuffix}[Quickstart guide (Japanese),window=_blank]
+- link:quickstart_packages{outfilesuffix}[Quickstart mini lab packages,window=_blank]
+
+== Overview
+
+- link:key_concepts{outfilesuffix}[Key concepts,window=_blank]
+- link:gui_overview{outfilesuffix}[GUI overview,window=_blank]
+
+== Infrastructure
+
+- link:managed_entities{outfilesuffix}[Managed entities,window=_blank]
+- link:microservices{outfilesuffix}[Microservices,window=_blank]
+- link:configuration_deployment_settings{outfilesuffix}[Deployment settings,window=_blank]
+- link:managed_entities_topology{outfilesuffix}[Network topology,window=_blank]
+
+== Automation
+
+=== Workflows
+
+- link:automation_workflows{outfilesuffix}[Workflows,window=_blank]
+- link:automation_workflow_utilities{outfilesuffix}[Useful workflows,window=_blank]
+
+=== BPM
+
+- link:bpm{outfilesuffix}[BPM,window=_blank]
+
+== Assurance
+
+- link:assurance{outfilesuffix}[Assurance,window=_blank]
+
+== Admin
+
+- link:tenants_and_users{outfilesuffix}[Tenants and users,window=_blank]
+
+== Settings
+
+- link:settings{outfilesuffix}[Settings,window=_blank]
+
+
+
+
+
+
+

@@ -5,12 +5,12 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 //OK HTML 
 ifdef::html[]
-:includedir: docs/admin-guide/_includes
+:includedir: docs/admin-guide
 endif::[]
 
 // OK PDF
 ifdef::pdf[]
-:includedir: _includes
+:includedir: .
 endif::[]
 
 :leveloffset: +1
@@ -18,7 +18,6 @@ endif::[]
 The Installation and Configuration Guide will show you how to install, configure and activate the {product_name}.
 
 If you want to get started quickly, you can check the link:../user-guide/quickstart{outfilesuffix}[quickstart,window=_blank] guide.
-
 
 include::{includedir}/architecture_overview.adoc[] 
 
