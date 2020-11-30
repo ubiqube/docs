@@ -1,0 +1,432 @@
+= Adapter Development
+ifndef::imagesdir[:imagesdir: images]
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+== Overview
+The Adapters are the "drivers" that allow the main {product_name}'s engine to seamlessly communicate with the Managed Entities for configuration assurance, event collection, et cetera.
+
+The Adapters are designed per vendor because they need to address the specifics of each vendor especially when the Managed Entitie does not provide a REST management API.
+
+The {product_name} provides a library of device adaptors ready to use. 
+The libraries are implemented in PHP which makes extension and customization easy.
+
+
+== How to find, install, activate the adapters
+The Adapters are packaged in the {product_name}, in the "api" container (see link:../admin-guide/architecture_overview{outfilesuffix}[Architecture] for more details).
+
+Many other Adapters are available on the https://github.com/openmsa/Adaptors[Adaptor Github repository,window=_blank]
+
+The installation of an Adapter is covered in this documentation: link:https://github.com/openmsa/Adaptors/blob/master/doc/How_to_install_a_new_adapter.md[How to install an Adapter,window=_blank]
+
+[#rest_adapter]
+== REST Generic adapter
+The REST Generic adapter, available on link:https://github.com/openmsa/Adaptors/tree/master/adapters/rest_generic[Github,window=_blank] will allow you to integrate most vendors that exposes a REST management interface API.
+
+This adapter is included in the mini lab (see link:../user-guide/quickstart{outfilesuffix}[Quickstart] for more details)
+
+I you need to create a new vendor based on the REST Generic adapter, you can follow this guide: link:how_to_add_a_new_vendor_with_rest_adaptor{outfilesuffix}[How to add a new REST based vendor]
+
+== Adapter SDK
+
+The Adapter SDK is composed of a set of PHP scripts that implement an API
+This API exposes functions such as:
+
+. Asset management
+. Status polling 
+. SshConnection
+. Provisioning
+. Update conf
+. Backup conf
+. Microservice commands (CREATE, READ, UPDATE, DELETE, IMPORT)
+. …
+
+=== Custom commands
+It is possible to implement new custom commands that will be callable from the {product_name} API (verb JSACMD MY_COMMAND).
+
+=== Status Polling
+
+The {product_name}'s SecEngine daemon in charge of polling the device for availability is `polld`.
+
+----
+Logs: /opt/sms/logs/sms_polld.log
+----
+
+By default, polling is using `ping`, and for scalability and performance reasons the polling mechanism is implemented in the C programming language. 
+This allows the {product_name} to poll several hundreds of managed entities per minute.
+For the devices that don’t support `ping`, or in case the polling has to be customized, it is possible to implement a custom polling in a php script:
+----
+/opt/sms/bin/polld/<model>_polld.php
+----
+
+.Custom polling example:
+On Stormshield the connection to the device is tested as shown below
+[source, php]
+----
+try
+{
+  global $sms_sd_ctx;
+  netasq_connect();
+  netasq_disconnect();
+}
+catch (Exception $e)
+{
+  netasq_disconnect();
+  return $e->getCode();
+}
+return SMS_OK;
+----
+
+=== Asset Management
+The {product_name}'s SecEngine can connect on a managed entity to fetch a set of predefined assets such as:
+
+. Firmware
+. Memory
+. CPU
+. …
+
+The specific model script retrieves information (via CLI, snmp, REST calls...) into an array. 
+The array is then passed to a specific callback in order to store the information in the database.
+[source, php]
+----
+sms_polld_set_asset_in_sd($sd_poll_elt, $asset);
+----
+.Custom Asset Management
+It is also possible to extract custom assets. 
+They will be stored in the database as a list of key values.
+
+The asset mngt module uses regular expressions to extract the asset from the configuration.
+
+These values are stored in a database that keeps the asset history.
+
+The asset script is device specific and is located in:
+----
+/opt/sms/bin/polld/<model>_mgmt.php
+----
+
+.Example on Fortigate
+Regexp:
+[source, php]
+----
+$get_system_status_asset_patterns = array(
+    'firmware'    => '@Version:\s+(?<firmware>.*)@',
+    'av_version'  => '@Virus-DB:\s+(?<av_version>.*)@',
+    'ips_version' => '@IPS-DB:\s+(?<ips_version>.*)@',
+    'serial'      => '@Serial-Number:\s+(?<serial>.*)@',
+    'license'     => '@License Status: (?<license>.*)@',
+);
+----
+The regexp is executed against the result of the CLI : `get system status`.
+
+.Example on Cisco
+Regexp:
+
+[source, php]
+----
+$show_ver_asset_patterns = array(
+  'serial' => '@Processor board ID (?<serial>\S*)@',
+  'license' => '@oftware \((?<license>[^\)]*)\)@',
+  'firmware' => '@\), Version (?<firmware>[^,]*),@',
+  'model' => '@^(?<model>[^(]*) \(.*with \d+K/\d+K bytes of memory@',
+  'cpu' => '@^.* \((?<cpu>[^\)]*)\) processor@',
+  'memory' => '@with (?<memory>\d*K/\d*K bytes) of memory@',
+  );
+----
+
+The regexp is executed against the result of the CLI `show version`.
+
+=== Configuration Management
+==== Dialog with the Managed Entity
+The following PHP scripts have to be created in the `/opt/sms/bin/php/<model>/` directory.
+
+This set of PHP scripts manages the dialog between the {produt_name} and the managed entity.
+
+.adaptor.php
+Provides access to the device for device connection and configuration update.
+
+.device_connect.php
+Manages the connection to the device (SSH, or REST, for example).
+
+==== Microservice based configuration
+PHP scripts to configure a device using objects:
+
+.<model>_command.php
+
+Manages the OBMF specificities for the device.
+
+.device_configuration.php
+Manages the main configuration methods for the managed entity (only update_conf() is used for objects).
+
+==== Template based configuration
+PHP scripts to configure a device using templates:
+
+.do_update_conf.php
+Generates and applies a configuration.
+
+This task is also called automatically when the router configuration changes.
+
+.device_configuration.php
+update_conf() should be enhanced to support configuration templates.
+
+==== Provisioning
+PHP scripts to do the initial provisioning of the device:
+
+.do_provisioning.php
+Generates and applies the initial configuration on the device.
+This is an asynchronous task, so a script must be provided to give an update on progress.
+
+.provisioning_stages.php
+Describes all the provisioning stages. This is used to store the provisioning status into the database.
+
+.prov_lock.php
+Provisioning action to lock the database for this device during the provisioning.
+
+.prov_init_conn.php
+This is the initial connection test.
+
+.prov_dns_update.php
+Add the device to the MSA local DNS.
+
+.prov_unlock.php
+Provisioning action to unlock the database for this device during the provisioning.
+
+==== Other Features
+.do_get_running_conf.php
+Called by GUI (menu Monitoring -> Get the running configuration).
+
+.do_staging.php
+Generate the staging configuration for the device (menu General -> Staging).
+
+.do_backup_conf.php
+Generate a backup of the device configuration.
+
+.do_restore_conf.php
+Restore a configuration backup on the device.
+
+.do_update_firmware.php
+Update the firmware of a device.
+
+If a script is not present, the corresponding operation on the {product_name} will give the "Function not supported by the device" error.
+
+=== Connectivity to the Devices
+For the managed entities that expose a remote CLI based management interface the adapter API requires the implementation of a class that extends SshConnection.
+
+SshConnection connection is defined in `/opt/sms/bin/php/smsd/ssh_connection.php`
+
+SshConnection  extends GenericConnection defined in `/opt/sms/bin/php/smsd/generic_connection.php`
+
+SshConnection  extends GenericConnection defined in `/opt/sms/bin/php/smsd/generic_connection.php`
+
+image:adapter_class_hierachy.png[]
+
+==== The class Connection 
+
+./opt/sms/bin/php/smsd/connection.php 
+
+This class is always overridden by a generic connection.
+It defines functions such as the "get" and "set" attributes such as the prompt, the device IP (sd_ip_config) ...
+
+The function `connect`
+It defines the main connect functions `public function connect($connectString)`.
+
+This function uses the PHP function `proc_open` to execute the connect command and opens file pointers for IO.
+The disconnect closes the IO file pointers and leaves a clean state.
+
+.Other function 
+`sendexpectone` for sending a command to a device and getting the result back.
+
+[source, php]
+----
+public function sendexpectone($origin, $cmd, $prompt='lire dans sdctx', $delay = EXPECT_DELAY, $display_error = true)
+----
+
+Example (in Fortinet adaptor)
+[source, php]
+----
+$buffer = sendexpectone(__FILE__ . ':' . __LINE__, $this, 'get system status', '#');
+----
+
+==== The class GenericConnection 
+./opt/sms/bin/php/smsd/connection.php
+This class implements a constructor that initiates a class attribute.
+
+Device information is read by calling the function `get_network_profile()`.
+
+get_network_profile is defined for each device in a PHP file located in:
+----
+/opt/sms/spool/php_db_data/<device_id>.php
+----
+This PHP file is an “image” of the device configuration as stored in the database.
+
+This design allows a quick and easy access to device configurations such as IP, credentials, interface name, SNMP community, customer ID ...
+
+==== The class SshConnection
+
+./opt/sms/bin/php/smsd/ssh_connection.php 
+
+It implements the function `do_connect()` that uses the function `connect()` from the class Connection:
+
+[source, php]
+----
+parent::connect("ssh –p 22 -o StrictHostKeyChecking=no…
+----
+
+It uses the function `expect()` to check that SSH connectivity is OK (by checking that the result contains “Permanently added”).
+
+==== The class SshKeyConnection 
+./opt/sms/bin/php/smsd/ssh_connection.php 
+
+Allows public/private keys via SSH authentication with the device.
+
+.Example
+Fortiweb WAF on AWS requires this kind of authentication.
+
+===== Other examples
+.LinuxGenericsshConnection
+----
+/opt/sms/bin/php/linux_generic/linux_generic_connect.php
+----
+
+Used in `do_update_conf.php`
+
+[source, php]
+----
+$ret = linux_generic_connect();
+----
+
+=== Implementation of ‘Update Configuration’
+Base operation for implementing:
+
+. The initial provisioning
+. The template-based configuration
+. The Microservice CREATE/UPDATE/DELETE operation
+
+Implemented by `do_update_conf.php`
+
+Can be called directly by the {product_name}'s SecEngine API, it is an asynchronous process, its status can be monitored.
+
+=== Managed Entity activation (initial provisioning)
+The {product_name} executes a set of steps to activate the device.
+
+The steps can be customized to do additional operations.
+
+.Default steps:
+Defined in `provisioning_stages.php`
+[source, php]
+----
+$provisioning_stages = array(
+0 => array('name' => 'Lock Provisioning',     'prog' => 'prov_lock'),
+1 => array('name' => 'Initial Connection',    'prog' => 'prov_init_conn'),
+2 => array('name' => 'Initial Configuration', 'prog' => 'prov_init_conf'),
+3 => array('name' => 'DNS Update',            'prog' => 'prov_dns_update'),
+4 => array('name' => 'Unlock Provisioning',   'prog' => 'prov_unlock'),
+5 => array('name' => 'Save Configuration',    'prog' => 'prov_save_conf'),
+)
+----
+
+=== Configuration backup/restore
+.do_backup_conf.php 
+Based on the verb GETSDCONF (see save_router_conf.sh) which is implemented by do_get_sd_conf.php for each device.
+
+.do_restore_conf.php
+The implementation will vary depending on the vendor.
+
+.Example
+Fortinet uses TFTP and CLI `execute restore config tftp`. Cisco ISR first tries to SCP to flash and to TFTP and then reboots.
+
+=== Connectivity fallback mechanism
+By default, the device adaptor uses secure protocols to communicate with the devices (SSH or TFTP).
+
+When these protocols fail (the device doesn’t support them or firewall restrictions – which might be unlikely), there is a fallback mechanism to protocols such as Telnet or TFTP.
+
+.Example
+in `cisco_isr_connect.php`
+
+=== Microservice implementation
+The implementation of the functions CREATE/READ/UPDATE/DELETE/IMPORT is specific to the vendor.
+
+NOTE: this is especially true for the IMPORT.
+
+CREATE/READ/UPDATE/DELETE are using the functions to apply conf, this is similar to the configuration update.
+
+IMPORT needs to be aware of the device configuration structure.
+
+It is necessary to provide a unified GUI to build the import but with devices that have different data models.
+
+NOTE: for REST based managed entities, the IMPORT is usually generic since the response is formatted in XML or JSON (cf. link:https://github.com/openmsa/Adaptors/tree/master/adapters/rest_generic[rest_generic])
+
+== The {product_name}'s SecEngine API
+As well as named verbs, these commands can be used to interact directly with the {product_name}'s SecEngine from the CLI.
+
+The can also be executed with a REST API:
+
+*HTTP Request:* `+/sms/verb/{verb}/{deviceId}+`
+
+*Method:* `+POST+`
+[cols=3*,options="header"]
+|===
+| Parameter Name
+| Type
+| Description
+
+| verb
+| String
+| the command (JSAPROVISIONING, JSCHECKPROVISIONING, JSAUPDATECONF,...)
+
+| deviceId
+| String
+| the database ID of the managed entity
+
+|===
+
+[cols=2*,options="header"]
+|===
+| COMMAND
+|
+ 
+|JSAPROVISIONING
+|Initial provisioning
+
+|JSCHECKPROVISIONING
+|Check initial provisioning status
+
+|JSAUPDATECONF
+|Update configuration
+
+|JSSTAGING
+|Staging
+
+|JSGETSDCONF
+|Get router running configuration
+
+|JSGETCONF
+|Get router generated 
+
+|===
+
+The verbs are associated to specific PHP do_<verb>.php:
+
+.Example
+----
+tstsms JSGETSDCONF UBI132
+----
+
+This will retrieve the running configuration of the device and use the implementation of `do_get_running_conf.php`.
+
+=== Operation status feedback
+During operations done by the {product_name}'s SecEngine, especially the asynchronous ones, the status of the ongoing operation can be set for the user by the PHP scripts. How to update the status depends on the operation.
+
+.Initial Provisioning
+Set provisioning status for a provisioning stage.
+[source, php]
+----
+sms_bd_set_provstatus($sms_csp, $sms_sd_info, $stage, $status, $ret, $next_status, $additionalmsg)
+----
+
+.Configuration Update
+Set the update status of the configuration update of an equipment.
+[source, php]
+----
+sms_set_status_update($sms_csp, $sdid, $error_code, $status, $e->getMessage())
+----
+
+This has covered various aspects of Adapter development.  If you have further questions, please contact info@ubiqube.com for more information.

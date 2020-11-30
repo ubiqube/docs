@@ -10,7 +10,9 @@ The quickstart covers how you can quickly get started using {product_name} by in
 == Video tutorial
 This video details the steps for installing and activating the mini lab.
 
+ifeval::["{format}"" == "html"]
 video::A7zT-AZf2cg[youtube,width=600px,height=360] 
+endif::[]
 
 [#prerequisites]
 == Prerequisites

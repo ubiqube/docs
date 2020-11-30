@@ -15,5 +15,3 @@ Click on "Execute BPM" to execute the BPM process. The BPM engine will start exe
 TIP: We advise you to keep the BPM execution screen open until the end of the BPM process. If you close the screen, the process will still run in the background and you can track the execution of the workflows from the "Automation" > "Workflows" page but you won't be able to recover the BPM execution screen.
 
 image:bpm_execution_tracking.png[width=700px]
-
-NOTE: click link:../developer-guide/bpm_editor{outfilesuffix}[here] if you are interested in learning about BPM design

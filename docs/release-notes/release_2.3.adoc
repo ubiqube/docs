@@ -1,0 +1,48 @@
+= Version 2.3
+ifndef::imagesdir[:imagesdir: images]
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Various fixes have been made to the product to ensure its continued ability to empower users, ensure a smoother user experience and deliver the value that businesses need in today's environment while being ahead in terms of features, being evergreen and the agility of the {product_name} to grow.
+
+== New features
+
+The following feature improvements are included with this release:
+
+=== Topology
+
+=== BPM
+
+=== Microservices
+
+=== Workflows
+
+=== Assurance
+
+== CoreEngine
+
+No changes have been made to the core engine from previous versions of the product. This allows consistency from branches of OpenMSA (community version), found on GitHub: https://github.com/openmsa
+
+== Upgrading
+
+Instructions to upgrade are here: link:../user-guide/quickstart{outfilesuffix}#upgrade[upgrade guide]
+
+=== Specific instruction for upgrating from {revnumber-prev} to {revnumber}
+
+Starting from version 2.2.0, the quickstart provides an upgrade script `upgrade.sh` for taking care of possible actions such as recreating some volume, executing some database specific updates,...
+
+Let's say that you are running {product_name} version {revnumber-prev}, to upgrade to the version {revnumber}, you need to follow these steps:
+
+1. `$ sudo docker login` (in case you are not authenticated yet)
+2. `$ cd quickstart`
+3. `$ git checkout master`
+4. `$ git pull`
+5. `$ git checkout tags/{revnumber} -b {revnumber}`
+6. `$ ./scripts/upgrade.sh`
+
+== Specific technical fixes and feature details
+
+=== 2.3.0 RC1
+
+==== Features
+
+==== Bug fixes

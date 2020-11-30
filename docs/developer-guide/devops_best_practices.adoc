@@ -1,0 +1,115 @@
+= DevOps best practice guide
+ifndef::imagesdir[:imagesdir: images]
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+The {product_name} is a platform for designing and developing network and security automation applications.
+
+The community applications (Microservices, Workflows and Adaptors) are available on https://github.com/openmsa[GitHub]
+
+These applications are located in dedicated GitHub repositories and can be forked and/or cloned from GitHub to your {product_name} development platform.
+
+This page explains in detail how to do this and the associated best practices.
+
+== How to install the microservices and the workflows
+
+=== Overview
+As a DevOps engineer, the first step to getting familiar with the {product_name} community code is to:
+
+* Retrieve the code from GitHub
+* Install the code on the OpenMSA platform
+* Utilize the microservices and the workflows
+
+image:devops_best_practices_1.png[]
+
+== How to design/develop and contribute to the community
+As a microservice or workflow designer you'll have the opportunity to contribute to the community source code.
+
+The easiest way is to utilize {product_name} as the design tool.  This is the most typical and recommended method. 
+
+image:devops_best_practices_4.png[]
+
+. Fork the OpenMSA repository into your GitHub account.
+. Clone the repository from your personal GitHub account to your OpenMSA DevOps platform.
+. Utilize your favorite browser to use/design/test/update Workflows and Microservices.
+. Push the changes to your GitHub account.
+. Contribute by submitting pull requests to the OpenMSA community.
+. It is possible to use your favorite IDE to ease development of Workflow tasks or Device Adaptors that are in PHP language.
+
+image:devops_best_practices_5.png[]
+
+This procedure adds a set of push/pull steps to sync the code from your PC with your {product_name} DevOps platform. 
+
+Design or edit code on your PC and IDE, such as Eclipse or a simple editor with PHP syntax highlighting, then push to the {product_name} platform to use it live.
+
+=== Default installation for the libraries.
+
+When you install the {product_name} with the link:../user-guide/quickstart{outfilesuffix}#step2[quickstart] a selected list of link:../user-guide/quickstart_packages{outfilesuffix}[libraries] (microservices, workflows and adapters) are installed by default.
+
+The installation is done by the script `install_libraries.sh` installed in the docker container link:../admin-guide/architecture_overview{outfilesuffix}#containers_description[msa_dev].
+
+=== Standard libraries installation
+
+Next, we'll see where the adapters, microservices and workflows are installed, and some of the specific facts about this installation that you need to be aware of when installing your own libraries.
+
+==== Adapters
+
+The Github repository for the adapters is located under `/opt/devops/OpenMSA_Adapters`.
+By default, the git remote is 
+
+----
+# git remote -v
+origin	https://github.com/openmsa/Adapters.git (fetch)
+origin	https://github.com/openmsa/Adapters.git (push)
+----
+
+and the branch points to master
+
+----
+# git branch
+* master
+----
+
+If you are planning to add your adapter or update an existing one, you need to add a remote to point to your own fork of the Github repository and create a dedicated branch.
+
+When you are ready with you developement, you can commit and push your changes to your remote with the new remote and use the branch as the upstream branch. 
+You will then be able to create a pull request on OpenMSA repository and start contributing to the community code.
+
+Learning about creating and installing new adapters is addressed in this link:adapter_development{outfilesuffix}[documentation].
+
+==== Microservices
+
+The Github repository for the microservices is located under `/opt/fmc_repository/OpenMSA_MS`.
+
+In a similar way to the adapters above, the remote is set to `https://github.com/openmsa/Microservices.git` and the default branch is master.
+
+You can add your own remote and push your working branch to your fork.
+
+The installation of the microservices is done under `/opt/fmc_repository/CommandDefinition/` and is based on symbolic links to the git repo.
+
+[source, shell]
+----
+# ls -la | grep LINUX
+lrwxrwxrwx  1 ncuser ncuser   25 Sep 24 09:02 .meta_LINUX -> ../OpenMSA_MS/.meta_LINUX <1> <2>
+lrwxrwxrwx  1 ncuser ncuser   19 Sep 24 09:02 LINUX -> ../OpenMSA_MS/LINUX <2>
+----
+
+<1> A symlink as to be created to the meta file
+<2> you need to set `ncuser` as the user and group for all the files under `/opt/fmc_repository/CommandDefinition/` otherwise the microservices won't be listed or editable on the UI.
+
+==== Workflows
+
+The Github repository for the workflows is located under `/opt/fmc_repository/OpenMSA_MS`.
+
+In a similar way to the microservices above, the remote is set to `https://github.com/openmsa/Workflows.git` and the default branch is master.
+
+The installation of the microservices is done under `/opt/fmc_repository/Process/` and is based on symbolic links to the git repo.
+
+[source, shell]
+----
+# ls -la | grep Topology
+lrwxrwxrwx  1 ncuser ncuser   28 Sep 24 09:02 .meta_Topology -> ../OpenMSA_WF/.meta_Topology
+lrwxrwxrwx  1 ncuser ncuser   22 Sep 24 09:02 Topology -> ../OpenMSA_WF/Topology
+----
+
+IMPORTANT: when creating the symlinks to the workflow, you need to make sure to keep the consistancy with the paths defined in the workflow definition file. 
+

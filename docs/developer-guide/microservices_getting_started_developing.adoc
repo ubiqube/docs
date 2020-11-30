@@ -1,0 +1,194 @@
+= Getting Started with Microservices Design
+ifndef::imagesdir[:imagesdir: images]
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+== Overview
+
+This tutorial explores the design and development of a Microservice.
+
+Microservices can be used to manage a wide variety of services on numerous types of devices, such as:
+
+* network equipment (routers, switches, UTM, etc.)
+* virtualization infrastructure managers (VMWare, AWS, Openstack, etc.)
+* Linux servers
+
+== Lab Setup
+
+The first step in Microservice design and development is to have a device to manage.
+
+This tutorial assumes you have a properly configured, running {product_name}.
+
+If you have followed the link:../admin-guide/installation{outfilesuffix}[quickstart guide] you should have a running {product_name} with a Linux Centos6 Managed Entity created and activated.
+
+image:quickstart_linux_me.png[width=700px]
+
+== Microservice Design
+As a first example of Microservices, we will start with managing this Linux Managed Entity. 
+
+On Linux, the CLI command to list the users is:
+`cat /etc/passwd`. 
+
+To create a new user use the command: 
+`useradd`
+
+and to delete a user use the command:
+`userdel`.
+
+[source,shell]
+----
+[root@managed-linux ~]# cat /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/sbin/nologin
+...
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin
+oprofile:x:16:16:Special user account to be used by OProfile:/home/oprofile:/sbin/nologin
+tcpdump:x:72:72::/:/sbin/nologin
+----
+
+The list of users in /etc/passwd contains the system users that we want to exclude from the scope of the Microservice. We will cover this later in this tutorial.
+
+=== Create a new Microservice
+Click on the "Integration" from the left menu, select the tab "Microservices" and click on "Create Microservice"
+
+image:microservice_creation.png[width=700px]
+
+=== Import the Users with the IMPORT Function
+
+The result of the CLI command `cat /etc/passwd` is composed of a line with the format:
+
+image:tutorial_passwd_file.png[alt=Linux passwd file, width=500]
+
+. Username: Used when user logs in. It should be between 1 and 32 characters in length.
+. Password: An "x" character indicates that an encrypted password is stored in /etc/shadow file. Please note that you need to use the passwd command to compute the hash of a password typed at the CLI, or to store/update the hash of the password in /etc/shadow file.
+. User ID (UID): Each user must be assigned a user ID (UID). UID 0 (zero) is reserved for root. UIDs 1-99 are reserved for other predefined accounts. UIDs 100-999 are reserved by the system for administrative and system accounts/groups.
+. Group ID (GID): The primary group ID (stored in /etc/group file)
+. User ID Info: The comment field. This allows you to add extra information about the users, such as user’s full name, phone number etc. This field is used by finger command.
+. Home Directory: The absolute path to the directory the user will be in when they log in. If this directory does not exists then users directory becomes /.
+. Command/Shell: The absolute path of a command or shell (/bin/bash). Typically, this is a shell. Please note that it does not have to be a shell.
+
+Now let's build the IMPORT function with the parsers to extract the information listed above.
+
+Firstly, we have to decide how the Microservice ID (the mandatory variable name "object_id") will be extracted. In this case, since the username is unique on Linux, the obvious choice is to use the username field as the object_id.
+
+The regular expression to extract the fields from the result of `cat /etc/passwd` is:
+
+[source,bash]
+----
+@(?<object_id>[^:]+):(?<password>[^:]+):(?<user_id>[^:]+):(?<group_id>[^:]+):(?<comment>[^:]*):(?<home_dir>[^:]+):(?<shell>[^:]+)@
+----
+TIP: it may be useful to use an online regular expression tester when developing and testing regular expressions. One such online tester can be found here: http://lumadis.be/regex/test_regex.php (see reference below)
+
+Once validated, this regular expression can be used in the field "Micro service identifier extractor" of the IMPORT function builder:
+
+image:microservice_import.png[width=700px]
+
+NOTE: the variables such as object_id, password, have to be created in the variable section of the Microservice.
+
+=== Variable creation
+Variable are user to store the Microservice instance state in the database.
+
+To create a variable, you need to go to the "Variables" section in the left menu and click "Create Variable".
+
+NOTE: When refering to a variable in the Create/Update or Delete functions, you will always have to prefix them by `$params.` (see below). 
+This is why the UI to create the variable is showing the string "$params."
+
+image:microservice_variable.png[width=700px]
+
+////
+You can also select a type for the variables.
+TODO: add doc on var type
+////
+
+For more detail on Microservice variables and type, you can go to this documentation: link:microservice_editor{outfilesuffix}[Microservices]
+
+////
+NOTE: the variables such as object_id, password, etc. are automatically created by the Microservice design tool. You can change the display name of the variables, reorder them, and eventually make some of them read only (for instance, you can leave the user_id, group_id and shell as read only and simply display the one generated by the Linux CLI). The password can be set as not visible to simplify the display.
+////
+
+=== Run the first test
+
+In order to use your Microservice, you need to associate it to a link:../user-guide/managed_entities{outfilesuffix}[Managed Entity] with a link:../user-guide/configuration_deployment_settings{outfilesuffix}[Deployment Setting] and use the synchronisation button from the link:../user-guide/microservices{outfilesuffix}[Microservice Console].
+
+Save your work, run the synchronization, and view at the result.
+
+=== Add and Remove Users with the CREATE and DELETE Functions
+
+On Linux, the CLI command to add a user is:
+
+[source,bash]
+useradd -m -d HOME_DIR -c COMMENT -p PASSWORD LOGIN
+
+and to delete a user is:
+
+[source,bash]
+----
+userdel -f -r  LOGIN
+----
+Since it is possible to set the password as a parameter of the user creation, you need to modify the definition of the variable "password" and make it visible and mandatory (but only in the edit view).
+
+You are now ready to implement the CREATE:
+
+[source,bash]
+----
+useradd -m -d {$params.home_dir} -c "{$params.comment}" -p {$params.password} {$params.object_id}
+----
+
+image:microservice_function_create.png[width=700px]
+
+and the DELETE:
+
+[source,bash]
+----
+userdel -f -r {$users.$object_id.object_id}
+----
+
+NOTE: the use of the syntax {$users.$object_id.object_id} in the implementation of the DELETE.
+
+$users is the name of the Microservice definition file as created in the repository: users.xml. This syntax is used to get values from the {product_name} database, where Microservice instances are stored. The syntax has to be used when implementing a DELETE because the DELETE must delete the entry from the database AND remove the configuration from the device (in this case we want to delete a user).
+
+== Going Further
+With this simple implementation you can manage users on a Linux system, but there are some additional use cases that you may want to address:
+
+* Is it possible to ignore the system users when importing (for example: bin, daemon, adm,...)?
+* What if no comment is provided?
+* What if no home dir is provided?
+
+=== How to Ignore the System Users
+
+In order to ignore system users during the import, you have to find criteria to help differentiate system users from the users created by the system admin. You can chose to ignore all users that do not have the home directory under /home. The regular expression would then look like:
+
+[source,bash]
+@(?[^:]+):(?[^:]+):(?[^:]+):(?[^:]+):(?[^:]*):(?/home/.+):(?[^:]+)@
+
+This regular expression will exclude all users that do not have a home directory under /home, but the system users below will still be imported:
+
+oprofile:x:16:16:Special user account used by OProfile: /home/oprofile:/sbin/nologin
+
+Since the shell is not part of the parameters that we have exposed in the creation form, you can decide to import the user that have /bin/bash as shell:
+
+[source,bash]
+@(?[^:]+):(?[^:]+):(?[^:]+):(?[^:]+):(?[^:]*):(?/home/.+):/bin/bash@
+
+In this case, the variable shell is no longer needed, so you can remove it from the list of the variables. You also have to update the CREATE function to make sure that the home dir will always be under /home, and you have to make sure that the variable home_dir is read only.
+
+[source,bash]
+useradd -m -d /home/{$params.object_id} -c "{$params.comment}" -p {$params.password} {$params.object_id}
+
+=== How to Handle Optional Empty Variables
+
+The comment is an optional parameter, so you need to make sure that the execution of the CLI command `useradd` will not fail if no comment is passed as a parameter.
+
+This can be achieved with a bit of scripting in the CREATE function:
+
+[source,php]
+{if empty($params.comment)}
+useradd -m -d /home/{$params.object_id} -p {$params.password} {$params.object_id}
+{else}
+useradd -m -d /home/{$params.object_id} -c "{$params.comment}" -p {$params.password} {$params.object_id}
+{/if}
+
+.Getting the Sources
+****
+The source of this tutorial is available on GitHub at link:https://github.com/openmsa/Microservices/tree/master/Tutorials/LINUX/Generic/Tutorial1[https://github.com/openmsa]
+****
+

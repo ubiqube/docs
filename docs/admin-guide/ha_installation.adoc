@@ -4,7 +4,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 The {product_name} provides support for high avalability, based on "Docker Engine Swarm" mode.
 
-ifdef::html[]
+ifeval::["{format}"" == "html"]
 video::7VOn1yitGgY[youtube,width=600px,height=360] 
 endif::[]
 
