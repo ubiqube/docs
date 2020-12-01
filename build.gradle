@@ -28,13 +28,14 @@ asciidoctor {
   	'source-highlighter' : 'rouge',
     'linkcss': true,
     'product_name': 'MSActivator(TM)',
-    'product_name-version': 'MSActivator-2.3.0',
+    'product_name-version': 'MSActivator-2.3.0.RC1',
     'openmsa_name': 'OpenMSA(TM)',
-    'revnumber': 'MSA-2.3.0',
+    'revnumber': 'MSA-2.3.0rc1',
     'revnumber-prev': 'MSA-2.2.0',
     'allow-uri-read': '',
     'sectlinks': true,
-    'html': 'true'
+    'html': 'true',
+    'format': 'html'
 
   sourceDir = file('docs')
   outputDir  file('build/html')
@@ -78,8 +79,8 @@ asciidoctorPdf {
       'allow-uri-read': '',
       'sectlinks': true,
       'imagesoutdir': 'images',
-      'pdf': 'true'
-
+      'pdf': 'true',
+      'format': 'html'
   }
 
   sourceDir  file('docs')
