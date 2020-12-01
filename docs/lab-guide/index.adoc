@@ -1,0 +1,9 @@
+= {product_name} Lab Guides
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+This documentation will point you to some of the labs and demos that are available for you to get familiar with the {product_name}
+
+- link:lab-guide/demo_ansible{outfilesuffix}[Workflow: Ansible playbook runner,window=_blank]
+- link:lab-guide/demo_public_cloud_automation_aws{outfilesuffix}[Workflow: VNF orchestration on AWS,window=_blank]
+- link:lab-guide/simple_firewall_policy_mngt{outfilesuffix}[Workflow: firewall policy orchestration,window=_blank]
+- link:lab-guide/vlan_simple_use_case{outfilesuffix}[VLAN simple use case,window=_blank]
