@@ -13,6 +13,8 @@ ifdef::pdf[]
 :includedir: .
 endif::[]
 
+
+
 == Latest release 
 The latest {product_name} release is {revnumber}. 
 

@@ -45,4 +45,60 @@ Let's say that you are running {product_name} version {revnumber-prev}, to upgra
 
 ==== Features
 
+ * MSA-7985 - [Microservice] adapt to the new API structure
+ * MSA-8535 - [CoreEngine] Review the way devices are removed in bud and sms
+ * MSA-8750 - [Dashboard] Kibana image with dashboard templates
+ * MSA-8791 - [Assurance] API for CRUD operation of full monitoring profile
+ * MSA-8792 - [Assurance] Monitoring Profile KPIs graph rendering
+ * MSA-8793 - [Assurance] List of Monitoring Profiles for a customer
+ * MSA-8794 - [Assurance] List the monitoring profile
+ * MSA-8860 - [DevOps] Import / Export UI design implementation
+ * MSA-8910 - [DevOps] API for get git info
+ * MSA-8912 - [Microservice] String advanced parameters - Local Variable and Pre-define values
+ * MSA-8921 - [DevOps] API to configure Git
+ * MSA-8977 - [API] API to import MS into local git repository
+ * MSA-8978 - [API] API to export WF, MS from local git repository
+ * MSA-8979 - [DevOps] DA/WF/MS edit or create to do a commit in local git repository with commit message
+ * MSA-8989 - [BPM] Resume a paused BPM
+ * MSA-9000 - [Workflow] API to import WF into local git repository
+ * MSA-9033 - [BPM] List BPM instances corresponding each diagrams
+ * MSA-9034 - [BPM] Get diagram from camunda and show it on Editor
+ * MSA-9046 - [BPM] Default decision branch in decision gateway
+ * MSA-9054 - [BPM] Retrieve BPM definition from camunda and show information
+ * MSA-9073 - [Microservice] variable type Auto Increment / advanced params / provide a list of other MS in "Microservices sharing the same increment:"
+ * MSA-9088 - [Assurance] List all permission profiles
+ * MSA-9089 - [RBAC] Pre-load permissions
+ * MSA-9090 - [API] CRUD of Permissions
+ * MSA-9092 - [BPM] Improve the visual styling of the BPM
+ * MSA-9099 - [Workflow] Schedule workflows
+ * MSA-9113 - [Assurance] Attach/detach ME to Monitoring Profile
+ * MSA-9120 - [DB] Remove DB parameters from MSA vars
+ * MSA-9127 - [DevOps] Git versioning of MSA libraries(BPM, DA)
+ * MSA-9128 - [Git Integration] Change WF file system structure
+ * MSA-9131 - [API] API to export/import adapters
+ * MSA-9132 - [Adapter] List manufacturer and model List from CoreEngine adapters folder
+ * MSA-9141 - [Workflow] Use the names of the devices in the workflows instead of the ID
+ * MSA-9168 - [API] API to handle the bpmn to customer attachment
+ * MSA-9187 - [DevOps] Adapt git versioning for deleting of library files(WF,MS,BPM)
+ * MSA-9192 - [CoreEngine] Remove UBI_SMS_PHP_INCLUDE_PATH and use UBI_SMS_ADAPTER_PATH instead
+ * MSA-9198 - [Assurance] API to retrieve all monitoring profiles attached to a device
+ * MSA-9199 - [Assurance] Make KPI/Graph name optional, for retrieving device default KPI rrd data
+ * MSA-9200 - [Assurance] Add filter by profile Id when retrieving rrd data for a device Id.
+
 ==== Bug fixes
+
+ * MSA-8619 - [Workflow] Default variable value isn't displayed for UPDATE process
+ * MSA-8644 - [Workflow] add support for intermediate messages for WFs in the console
+ * MSA-8874 - Missing php-snmp package in msa-sms
+ * MSA-8927 - [Search] Putting [- , ", space] after the search pattern buggy
+ * MSA-8929 - [Workflow] Scheduled workflow can never be executed after api container upgrade
+ * MSA-8971 - [Assurance] check_alert.php is using hard coded ncroot/password for WF execution through alarm
+ * MSA-9045 - [Topology] : Topology not displayed correctly
+ * MSA-9049 - [BPM] during BPM execution, some issues may occur in console
+ * MSA-9137 - [Alarm] Can't create alam
+ * MSA-9151 - [Assurance] /elastic-search/v1/alarm-rules?actorId=1 returns errorCode 500
+ * MSA-9190 - [Topology] Save action fails when you move network node
+ * MSA-9201 - [BPM] Sending get Process status response in camunda variable causing error
+ * MSA-9205 - [API] issues with API /repository/v2/resource/microservice
+ * MSA-9259 - [Topology] Topology displayed even after instance is removed
+ * MSA-9291 - [Workflow - UI have to use PUT to update Workflow
