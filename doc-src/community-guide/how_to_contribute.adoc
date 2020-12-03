@@ -1,6 +1,4 @@
 = How to Contribute
-:doctype: book
-:imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 Thanks for being interested in helping the {openmsa_name} project!

@@ -1,9 +1,6 @@
 = Settings
-:doctype: book
-:imagesdir: ./resources/
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:toc: left
-:toclevels: 4 
 
 The settings screen provides information on the current version of your {$product_name} version. This is also where you can upload and activate your product licence.
 

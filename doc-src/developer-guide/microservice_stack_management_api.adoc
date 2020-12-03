@@ -1,11 +1,6 @@
 = Microservice Order Stack Management API
-:doctype: book
-:imagesdir: ./resources/
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:toc: left
-:toclevels: 4 
-:source-highlighter: pygments
-
 
 == Overview
 This documentation describes the order stack management API.

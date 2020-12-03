@@ -1,14 +1,6 @@
 = Workflow Editor
-:doctype: book
-:imagesdir: ./resources/
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:toc: left
-:toclevels: 4 
-:source-highlighter: pygments
-
-//// 
-TODO 
-////
 
 The workflow editor is a web based UI tool for designing, developing, testing and releasing automation workflows.
 
@@ -18,7 +10,7 @@ This document explains how to use the editor to design workflows and implement t
 
 The Workflow designer and execution engine are located in the architecture layer, between the BPM and the Microservice.
 
-image:images/workflow_overall_architecture.png[width=80%] 
+image:workflow_overall_architecture.png[width=80%] 
 
 == Workflow overview
 

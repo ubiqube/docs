@@ -1,9 +1,6 @@
 = Architecture Overview
-:doctype: book
-:imagesdir: ./resources
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:toc: left
-:toclevels: 4 
 
 The {product_name} is an Integrated Automation Platform, which consists of several components running on Docker containers.
 
@@ -21,7 +18,7 @@ The {product_name} is an Integrated Automation Platform, which consists of sever
 
 [#containers_description]
 === Containers description
-image:images/container_list.png[width=1000px]
+image:container_list.png[width=500px]
 
 ==== msa_front
 *msa_front* runs NGINX and act as the front end to route the requests to the internal containers.
@@ -75,7 +72,7 @@ This is the container you need to use for your own devOps related work such as i
 
 === Networking and connectivity
 
-image:images/non_ha_containers.png[width=1000px]
+image:non_ha_containers.png[width=500px]
 
 === Volumes and data
 

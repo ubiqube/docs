@@ -1,10 +1,6 @@
 = Getting Started Developing BPM
-:doctype: book
-:imagesdir: ./resources/
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:toc: left
-:toclevels: 4 
-:source-highlighter: pygments
 
 The BPM (Business Process Modeling) will allow you to design your processes to automate and then execute these processes.
 
@@ -42,7 +38,7 @@ The BPM below is made of 1 start event, 5 integration task and an end event.
 
 Each integration task calls a workflow from the workflows that are associated to the current customer.
 
-image:images/bpm_example.png[]
+image:bpm_example.png[]
 
 
 == Create or Edit a BPM
@@ -70,7 +66,7 @@ As stated above, the BPM tasks can only call Workflow process with the type CREA
 Before creating the BPM, you need to add a new process to the Helloworld workflow and make sure its type is CREATE. 
 This process can have a single task and you can reuse the PHP code from the Helloworld tutorial.
 
-image:images/workflow_helloworld_add_create_process_for_bpm.png[]  
+image:workflow_helloworld_add_create_process_for_bpm.png[]  
 
 Once this is done, go to the "BPM" section under "Automation" and click on "+ Create BPM".
 
@@ -79,15 +75,15 @@ Add a Task Activity and an End Event.
 Click on the task, select the Helloworld workflow, then from the list of process, select the new CREATE process.
 Provide a value for the parameter name and save the BPM
 
-image:images/bpm_helloworld_design.png[]
+image:bpm_helloworld_design.png[]
 
 To test your BPM, click on it's name from the list of BPM and click on "Execute BPM".
 
-image:images/bpm_helloworld_execute.png[]
+image:bpm_helloworld_execute.png[]
 
 You can check that the workflow process was executed and the message is visible in the processes execution status.
 
-image:images/bpm_helloworld_execute_process.png[]
+image:bpm_helloworld_execute_process.png[]
 
 
 

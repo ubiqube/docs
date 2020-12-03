@@ -1,9 +1,6 @@
 = GUI Overview
-:doctype: book
-:imagesdir: ./resources/
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:toc: left
-:toclevels: 4 
 
 The {product_name} provides a web based UI split into 2 distinct spaces: a manager space and a developer space. 
 Each space is designed to match the specific requirements of manager and developer and at the same time provide a consistent user experience. 
@@ -12,7 +9,7 @@ Each space is designed to match the specific requirements of manager and develop
 
 When you login as an administrator or a manager, the following dashboard is displayed
 
-image:images/gui_admin_dashboard.png[Admin Dashboard,width=700px]
+image:gui_admin_dashboard.png[Admin Dashboard,width=700px]
 
 [cols="20,80",stripes=even,width=80%]
 |===
@@ -28,7 +25,7 @@ image:images/gui_admin_dashboard.png[Admin Dashboard,width=700px]
 
 === Status graphs
 
-image:images/dashboard_status_graph_overview.png[alt=Status Graph, width=150px]
+image:dashboard_status_graph_overview.png[alt=Status Graph, width=150px]
 
 This graph is very convenient, as it represents a lot of data in a small area.
 Firstly, it is made up of three concentric circles:
@@ -38,20 +35,20 @@ Firstly, it is made up of three concentric circles:
 
 To further illustrate this, a legend is provided on the dashboard to explain each circle purpose:
 
-image:images/dashboard_status_graph_nature.png[alt=Status Graph Nature, width=350px]
+image:dashboard_status_graph_nature.png[alt=Status Graph Nature, width=350px]
 
 NOTE: It is up to the {product_name} to decide the type of each entity when they are configuring that entity entry.
 
 Finally, the number in the center of the circles is the total number of managed entities associated with that customer.
 If you click on any of those status graphs, you then see a pop-up table containing the same details but in a matrix like so:
 
-image:images/dashboard_status_graph_details.png[alt=Status Graph Details, width=400px]
+image:dashboard_status_graph_details.png[alt=Status Graph Details, width=400px]
 
 === Filters, sorts and search
 
 On the administrator dashboard, there are a number of filter, sort, and search options available to help you organise and view your data.
 
-image:images/dashboard_filter_sort_search.png[alt=Filters Sorts Search, width=500px]
+image:dashboard_filter_sort_search.png[alt=Filters Sorts Search, width=500px]
 
 - The first icon allows you to switch between the status graphs and the compact list view of the customer entity status.
 - The second icon enables you to switch between a tenant view and a customer view.  When clicked, the status graphs will display the tenant-level status data, which aggregates all of the customers in each tenancy into a single graph per tenancy.  We will discuss customer and tenancy navigation further in the Navigating via tenant and customer filters section.
@@ -64,7 +61,7 @@ image:images/dashboard_filter_sort_search.png[alt=Filters Sorts Search, width=50
 A central part of the navigation in {product_name} is understanding the tenant and customer that are selected.  
 You can use the drop-downs on the top of the navigation to choose which tenant and customer you want to filter the lists of managed entities, microservices, and workflows by.
 
-image:images/admin_dashboard_tenant-customer_selection.png[alt=Tenant and Customer Selection, width=500px]
+image:admin_dashboard_tenant-customer_selection.png[alt=Tenant and Customer Selection, width=500px]
 
 NOTE: Note that the Role-Based Access Controls (RBAC) will affect what tenants and customers will be available to you.  For example, if your account only has access to one tenant, you won't even have the option to select a different tenant.
 
@@ -90,7 +87,7 @@ NOTE: One important point to remember about performing a managed entity search i
 === Managed entities
 To see the list of managed entities, click on the "Integration" link in the left menu
 
-image:images/me_detailed_list.png[alt=Managed Entities Detailed List,width=7	00px]
+image:me_detailed_list.png[alt=Managed Entities Detailed List,width=7	00px]
 
 On that screen, you can use the list view toggle button to switch to a compacted view of the managed entities list.
 You can also adjust the amount of entities displayed on each page
@@ -102,7 +99,7 @@ TIP: See also - link:managed_entities{outfilesuffix}[this documentation] for a d
 === Microservice
 To see the list of microservices, click on the link "Infrastructure" in the left menu.
 
-image:images/configurations_me_list.png[alt=Configurations Microservice List, width=700px]
+image:configurations_me_list.png[alt=Configurations Microservice List, width=700px]
 
 === Deployment settings
 
@@ -123,35 +120,35 @@ To see the list of workflows select the "Automation" link in the left menu.
 By default, if you are connected as a manager or an administrator you will see the list of Workflows that are associated to the subtenant you are managing 
 
 .List of all the workflows available
-image:images/automation_wf_list.png[alt=Workflow List by Customer,width=700px] 
+image:automation_wf_list.png[alt=Workflow List by Customer,width=700px] 
 
 If you select a subtenant, the list will be filtered by the selected subtenant's workflows and you will see the process execution status of the workflow instances.
 
 .List of all the workflows available for a subtenant
-image:images/automation_wf_list_by_customer.png[alt=Workflow List by Customer,width=700px] 
+image:automation_wf_list_by_customer.png[alt=Workflow List by Customer,width=700px] 
 
 To see the workflow instance for a subtenant, you can click on the Workflow name
 
 .List of the workflows instances available for a subtenant
-image:images/automation_wf_instance_list_by_customer.png[alt=Workflow Instance List,width=700px] 
+image:automation_wf_instance_list_by_customer.png[alt=Workflow Instance List,width=700px] 
 
 From this screen you can start using the existing instances or create a new instance for the current Workflow.
 
 === BPMs
 To see the list of Business Processes select the "Automation" link in the left menu
 
-image:images/automation_bpm_list.png[alt=BPM List,width=700px] 
+image:automation_bpm_list.png[alt=BPM List,width=700px] 
 
 You can select a BPM by clicking on a name in the list and start working on your BPM.
 
-image:images/automation_bpm_edit.png[alt=BPM Edition,width=700px] 
+image:automation_bpm_edit.png[alt=BPM Edition,width=700px] 
 
 == Developer Dashboard
 
 The developer dashboard in {product_name} is available when you chose to login as a developer.  
 On this dashboard, one of the first things you will notice is the three vertical swimlanes:
 
-image:images/gui_dev_dashboard.png[alt=Developer Dashboard,width=700px]
+image:gui_dev_dashboard.png[alt=Developer Dashboard,width=700px]
 
 The three swimlanes match the three main layers of the {product_name} framework, namely:
 

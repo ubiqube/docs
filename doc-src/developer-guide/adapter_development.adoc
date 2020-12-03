@@ -1,10 +1,6 @@
 = Adapter Development
-:doctype: book
-:imagesdir: ./resources/
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:toc: left
-:toclevels: 4 
-:source-highlighter: pygments
 
 == Overview
 The Adapters are the "drivers" that allow the main {product_name}'s engine to seamlessly communicate with the Managed Entities for configuration assurance, event collection, et cetera.
@@ -220,7 +216,7 @@ SshConnection  extends GenericConnection defined in `/opt/sms/bin/php/smsd/gener
 
 SshConnection  extends GenericConnection defined in `/opt/sms/bin/php/smsd/generic_connection.php`
 
-image:images/adapter_class_hierachy.png[]
+image:adapter_class_hierachy.png[]
 
 ==== The class Connection 
 

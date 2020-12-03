@@ -1,12 +1,20 @@
 = Release Notes
-:imagesdir: ./resources/
-ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:doctype: book
-:docinfo: shared
 :toc: left
-:toclevels: 4 
+:toclevels: 3
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
- 
+//OK HTML 
+ifdef::html[]
+:includedir: doc-src/release-notes
+endif::[]
+
+// OK PDF
+ifdef::pdf[]
+:includedir: .
+endif::[]
+
+
+
 == Latest release 
 The latest {product_name} release is {revnumber}. 
 
@@ -23,10 +31,14 @@ z = bug or security fixes
 Various fixes have been made to the product to ensure its continued ability to empower users, ensure a smoother user experience and deliver the value that businesses need in today's environment while being ahead in terms of features, being evergreen and the agility of the {product_name} to grow.
 
 === Specific technical fixes
-- link:./release-notes/release_2.2{outfilesuffix}[version 2.2]
-- link:./release-notes/release_2.1{outfilesuffix}[version 2.1]
-- link:./release-notes/release_2.0{outfilesuffix}[version 2.0]
 
+include::{includedir}/release_2.3.adoc[version 2.3]
+
+include::{includedir}/release_2.2.adoc[version 2.2]
+
+include::{includedir}/release_2.1.adoc[version 2.1]
+
+include::{includedir}/release_2.0.adoc[version 2.0]
 
 == User experience (UX)
 
@@ -48,8 +60,6 @@ The {product_name} UX structure is in line with our modular {product_name} archi
 The Developer User now features access to three editors which include Microservices, Workflows and BPM from the one screen.
 
 This has allowed opening of all the screens for the Workflow Editor to be able to create processes, tasks and code.
-
-TIP: Go to link:user-guide/gui_overview{outfilesuffix}[GUI overview] to get a detailed description of this new user interface.
 
 == Enhancements
 

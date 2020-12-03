@@ -1,9 +1,6 @@
 = Tenants and Users
-:doctype: book
-:imagesdir: ./resources/
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:toc: left
-:toclevels: 4 
 
 
 After installing, configuring and activating the {product_name}, you will start creating tenants and users.
@@ -12,7 +9,7 @@ This guide will walk you through the initial process of connecting and creating 
 
 Tenant and user management screens are available in the "Admin" section of the {product_name} UI.
 
-image:./images/administration_management.png[width=1000px]
+image:administration_management.png[width=1000px]
 
 == Initial connection
 
@@ -28,7 +25,7 @@ These 2 levels will let you organise your managed entities based on your need wi
 
 4 user roles are available to make sure that you can assign the access and managing roles to your users based on their actual roles in your company.
 
-image:images/concepts_tenants_users.png[width=1000px]
+image:concepts_tenants_users.png[width=1000px]
 
 == Tenancy management
 
@@ -44,7 +41,7 @@ Select the "Tenants" section in the "Admin" menu and click on the "+ Create Tena
 
 The "Tenant Prefix" is a three letters, unique identifier for the tenant. It will be combined with the subtenant or the managed database identifier to build a short, comprehensive, unique identifier that you can use to filter application logs when troubleshooting or when you need to communicate with the support team.
 
-image:./images/tenant_creation_form.png[Tenant Creation Form,width=1000px]
+image:tenant_creation_form.png[Tenant Creation Form,width=1000px]
 
 === Subtenant
 
@@ -52,7 +49,7 @@ Select the "Subtenants" section in the "Admin" menu and click on the "+ Create S
 
 Carefully select the tenant where the subtenant will be created as moving a subtenant to another tenant is not possible without database update.
 
-image:./images/subtenant_creation_form.png[Subtenant Creation Form,width=1000px]
+image:subtenant_creation_form.png[Subtenant Creation Form,width=1000px]
 
 
 //// 

@@ -1,10 +1,6 @@
 = How to create a new vendor based on the REST Generic existing adapter
-:doctype: book
-:imagesdir: ./resources/
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:toc: left
-:toclevels: 4 
-:source-highlighter: pygments
 
 The REST Generic adapter will let you quickly integrate a new managed entity with a REST based management API but you may want to also have the vendor name and entity model both appear in the list of supported vendor instead of REST/Generic.
 
@@ -112,7 +108,7 @@ $ sudo docker-compose exec msa_sms /etc/init.d/ubi-sms restart
 
 Once the services have restart, you can connect to the UI to check that a new vendor/model is listed when you create a new managed entity.
 
-image:images/adapter_new_vendorA_modelX.png[width=1000px]
+image:adapter_new_vendorA_modelX.png[width=1000px]
 
 First, verify that you can create a new managed entity and try to activate it.
 

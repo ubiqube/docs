@@ -1,10 +1,6 @@
 = XML Microservice Editor
-:doctype: book
-:imagesdir: ./resources/
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:toc: left
-:toclevels: 4 
-:source-highlighter: pygments
 
 == Overview
 
@@ -43,15 +39,15 @@ POST /api/tenancy/tenants/
 
 In case you need to pass in a JSON payload with the parameters, the microservice Create will look like this.
 
-image:images/microservice_console_xml_create_1.png[width=700px]
+image:microservice_console_xml_create_1.png[width=700px]
 
 ==== Delete
 
-image:images/microservice_console_xml_delete.png[width=700px]
+image:microservice_console_xml_delete.png[width=700px]
 
 ==== Import
 
-image:images/microservice_console_xml_import.png[width=700px]
+image:microservice_console_xml_import.png[width=700px]
 
 
 

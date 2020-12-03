@@ -1,17 +1,13 @@
 = Support and Troubleshooting Guide
-:toc: left
-:toclevels: 4 
-:doctype: book 
-:imagesdir: ./resources/
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:source-highlighter: highlight.js
 
 == Support
 === How to install a custom SSL certificate
 
 The container *msa_front* is installed with a default self-signed certificate to allow SSL when connecting to https://localhost. While this is fine for most of the lab trials, you may want to install your own certificate to ensure a certified connection to your setup.
 
-image:images/secure_ssl_certificate.png[width=50%]
+image:secure_ssl_certificate.png[width=50%]
 
 ==== Prerequistes
 To install your certificate you need to have the certificate file (*server.crt*) and the associated private key (*server.key*)

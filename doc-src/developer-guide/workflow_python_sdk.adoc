@@ -1,13 +1,6 @@
 = Python SDK
-:doctype: book
-:imagesdir: ./resources/
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:toc: left
-:toclevels: 4 
-:source-highlighter: pygments
-
-
-// IMPORTANT: TODO
 
 The {product_name} provides a support for Python SDK dedicated to developing automation workflows. 
 This SDK provides a set of functions that can be used to call the link:rest_api{outfilesuffix}[{product_name} REST API] and automate action on the {product_name} such as create and activate managed entities, call microservice function, call processes from other workflows...
@@ -61,7 +54,7 @@ print(new_device.process_content('ENDED', 'Task OK', context, False))
 
 When a task runs, it is often useful to be able to provide real time message update on the UI.
 
-image:images/workflow_process_exec_status_custom_msg.png[width=1000px]
+image:workflow_process_exec_status_custom_msg.png[width=1000px]
 
 The code sample below shows how to do it.
 

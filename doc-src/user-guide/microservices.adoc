@@ -1,9 +1,6 @@
 = Microservices
-:doctype: book
-:imagesdir: ./resources/
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:toc: left
-:toclevels: 4 
 
 The {product_name} microservices engine is designed as an automation object-based programming language.
 
@@ -25,11 +22,11 @@ Scripting is not mandatory but link:../developer-guide/microservice_smarty_templ
 
 The list of available microservices can be viewed by clicking on the "Infrastructure" link from the left menu.
 
-image:images/configurations_me_list_admin.png[Microservice List]
+image:configurations_me_list_admin.png[Microservice List]
 
 From this page you can search for a named microservice by using the search field with the magnifier icon.
 
-image:images/configurations_ms_search.png[Microservice Search]
+image:configurations_ms_search.png[Microservice Search]
 
 From this page you can create or edit microservices - which is part of microservice design (cf. section below).
 
@@ -44,7 +41,7 @@ With the microservice console you will be able to use the microservices associat
 
 You can access the console by selecting the managed entity you want to configure and going to the tab "Configure"
 
-image:images/microservice_console.png[Microservice Search]
+image:microservice_console.png[Microservice Search]
 
 For more documentation about configuring managed entities with the microservices, you can go to this link:managed_entities{outfilesuffix}[documentation].
 

@@ -1,10 +1,6 @@
 = Network Topology
-:doctype: book
-:imagesdir: ./resources/
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:toc: left
-:toclevels: 4 
-:source-highlighter: pygments
 
 The topology view is available on the portal and provides a graphical view of your network. 
 
@@ -31,7 +27,7 @@ If you want to persist the layout, you can save the topology with the save butto
 
 The L3 SNMP mode relies on SNMP request to the managed entities to build the topology graph.
 
-image:images/topology_example.png[width=1000px]
+image:topology_example.png[width=1000px]
 
 ==== Prerequisites
 
@@ -96,7 +92,7 @@ The VLAN mode provides a layer 2 view of your infrastructure.
 
 To generate this view you need first to create a new instance of the topology link:automation_workflows{outfilesuffix}[workflow] and select "VLAN" for the topology type. Once this is done you will see the layer 2 topology in the topology screen of the infrastructure.
 
-image:images/topology_example_vlan.png[width=1000px]
+image:topology_example_vlan.png[width=1000px]
 
 ==== Prerequisites
 
@@ -189,7 +185,7 @@ Switched to a new branch 'my_topology'
 
 With the {$product_name}, edit the topology workflow, edit the variable view_type and, in the "Advanced" section add `my_topology` to the values for the drop-down list. 
 
-image:images/topology_custom_update_wf.png[width=1000px]
+image:topology_custom_update_wf.png[width=1000px]
 
 Save the workflow and use `git status` to see your change
 
@@ -272,7 +268,7 @@ At that point the implementation will be specific to your use case.
 Whenever you create a new instance of the process, a dedicated log file is created in the API container, under `/opt/jboss/wildfly/standalone/log/process-<INSTANCE_ID>.log`. 
 The workflow instance ID (39 in the screenshot below) is the one displayed at the top left corner of each instance.
 
-image:images/topology_custom_exec_1.png[width=1000px]
+image:topology_custom_exec_1.png[width=1000px]
 
 You can monitor the log for debugging purpose: `docker-compose exec msa_api  tail -F /opt/jboss/wildfly/standalone/log/process-39.log` (where 39 is the workflow instance ID
 
@@ -280,7 +276,7 @@ Use the custom functions `logToFile` and `debug_dump` to output your debugging i
 
 With the code provided in `Template.php` you will get topology similar to this, without any links.
 
-image:images/topology_custom_exec_2.png[width=1000px]
+image:topology_custom_exec_2.png[width=1000px]
 
 
 

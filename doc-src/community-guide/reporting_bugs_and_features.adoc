@@ -1,6 +1,4 @@
 = Reporting bugs
-:doctype: book
-:imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == Reporting a bug

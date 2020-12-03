@@ -1,8 +1,6 @@
 = License Activation
-:toc: left
-:toclevels: 4 
 :doctype: book 
-:imagesdir: ./resources/
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 Whether you have installed the {product_name} with the quickstart or started to do a longer PoC you need a license.
@@ -37,7 +35,7 @@ You must be connected as a privileged administrator (ncroot) to install the lice
 
 As a privileged administrator, click on the link "Setting" on the left menu. 
 
-image::images/classic_msa_admin_page.png[width=720px]
+image::classic_msa_admin_page.png[width=720px]
 
 Click on "Choose file..." and select your license file (.lic).
 
