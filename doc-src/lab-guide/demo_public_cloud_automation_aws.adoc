@@ -9,7 +9,7 @@ This documentation will drive you throught the process of installing and using a
 It's an example this is simple enough to be installed and used in a lab environment without too much configuration, but complex enough to show how the {product_name} can be used for such a thing as VNF orchaestration automation in a public cloud.
 
 ifeval::["{format}"" == "html"]
-video::Cg3HBJAPTZU[youtube,width=600px,height=360] 
+video::Y1OHTJwg4HI[youtube,width=600px,height=360] 
 endif::[]
 
 === About soure code
