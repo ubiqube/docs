@@ -37,11 +37,11 @@ asciidoctor {
     'html': 'true',
     'format': 'html'
 
-  sourceDir = file('docs')
+  sourceDir = file('doc-src')
   outputDir  file('build/html')
 
   resources {
-    from('docs') {
+    from('doc-src') {
       include '**/*.png'
       include '**/*.jpg'
       include '**/*.mp4'
@@ -83,11 +83,11 @@ asciidoctorPdf {
       'format': 'html'
   }
 
-  sourceDir  file('docs')
+  sourceDir  file('doc-src')
   outputDir  file('build/pdf')
 
   resources {
-    from('docs') {
+    from('doc-src') {
       include '**/*.png'
       include '**/*.jpg'
       include '**/*.mp4'
