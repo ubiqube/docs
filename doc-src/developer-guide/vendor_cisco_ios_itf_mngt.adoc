@@ -1,10 +1,6 @@
 = Interfaces Management on Cisco IOS
-:doctype: book
-:imagesdir: ./resources/
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:toc: left
-:toclevels: 4 
-:source-highlighter: pygments
 
 == Overview
 In this tutorial you will learn how to create a Microservice to manage the interfaces of a Cisco IOS router.
@@ -35,7 +31,7 @@ GigabitEthernet2 is up, line protocol is up
 == IMPORT Method
 === Configuration Parser
 
-image:images/usecase_interface_cisco_ios_import.png[]
+image:usecase_interface_cisco_ios_import.png[]
 
 ==== Details of the parser
 [source]
@@ -70,7 +66,7 @@ This parser extracts the CIDR number of the subnet, but in the case where we wan
 ----
 
 == VARIABLES
-image:images/usecase_interface_cisco_ios_variables.png[]
+image:usecase_interface_cisco_ios_variables.png[]
 
 == UPDATE
 A simple implementation can be used here:
@@ -88,7 +84,7 @@ interface {$params.object_id}
 ----
 == Result in the Microservice Console
 
-image:images/usecase_interface_cisco_ios_import_result.png[]
+image:usecase_interface_cisco_ios_import_result.png[]
 
 == Display the Interface Status with Colors
 
@@ -104,7 +100,7 @@ Colourization is done with a POST-IMPORT that assigns the special variable '''_c
       {assign_object_variable var="_color" value=green}
 {/if}
 ----
-image:images/usecase_interface_cisco_ios_import_result_colored.png[]
+image:usecase_interface_cisco_ios_import_result_colored.png[]
 
 
 

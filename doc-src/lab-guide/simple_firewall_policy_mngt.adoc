@@ -1,10 +1,6 @@
 = Firewall Policy Orchestration
-:doctype: book
-:imagesdir: ./resources/
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:toc: left
-:toclevels: 4 
-:source-highlighter: pygments
 
 
 This documentation will guide you through the implementation of a simple workflow to block a source IP and a destination port on a Linux based VNF
@@ -73,7 +69,7 @@ These steps are the usual steps designing and developping Microservices.
 
 Create a new microservice `simple_firewall` 
 
-image:images/simple_firewall_new_ms.png[width=600px]
+ image:simple_firewall_new_ms.png[width=600px]
 
 NOTE: You can refer to the documentation on link:microservice_editor{outfilesuffix}[microservice editor] to learn how to create a new link:../user-guide/microservices{outfilesuffix}[microservice].
 
@@ -95,11 +91,11 @@ sudo iptables -A INPUT -p tcp --dport {$params.dst_port} -s {$params.src_ip} -j 
 sudo iptables -A FORWARD -p tcp --dport {$params.dst_port} -s {$params.src_ip}  -j DROP
 ----
 
-image:images/simple_firewall_ms_create_func.png[width=600px]
+ image:simple_firewall_ms_create_func.png[width=600px]
 
 You need to create the 2 variables `dst_port` and `src_ip` as well as `object_id` which is a mandatory variable.
 
-image:images/simple_firewall_ms_variables.png[width=600px]
+ image:simple_firewall_ms_variables.png[width=600px]
 
 
 At this point the microservice is ready for a first test. 
@@ -107,7 +103,7 @@ Use a link:../user-guide/configuration_deployment_settings{outfilesuffix}[deploy
 
 Save and close, select managed entity and click on the tab "configure", select the microservice simple_firewall and click on "+ Add Row"
 
-image:images/simple_firewall_test_ms.png[width=600px]
+ image:simple_firewall_test_ms.png[width=600px]
 
 Please make sure linux_me is activated, otherwise "Activate" it.
 Then click "Apply Changes".
@@ -173,7 +169,7 @@ The regular expression below will extract the object_id, the src_ip and the dst_
 (?<object_id>\d+)\s+DROP\s+tcp\s+--\s+(?<src_ip>([0-9]{1,3}\.){3}[0-9]{1,3})[^:]+:(?<dst_port>\d+)
 ----
 
-image:images/simple_firewall_ms_import_func.png[width=600px]
+ image:simple_firewall_ms_import_func.png[width=600px]
 
 ==== Test and check the Linux vFW via the command line interface
 
@@ -197,7 +193,7 @@ DROP       tcp  --  192.168.67.98        0.0.0.0/0           tcp dpt:2345
 
 And use "Synchronize with Managed Entity" to import the new rule in the configuration database.
 
-image:images/simple_firewall_ms_import_new_rule.png[width=600px]
+ image:simple_firewall_ms_import_new_rule.png[width=600px]
 
 ==== Implement the DELETE command
 
@@ -266,7 +262,7 @@ The workflow will be a very simple workflow with 3 processes, implemented in pyt
 
 ==== Create a new workflow
 
-image:images/simple_firewall_new_wf.png[width=600px]
+ image:simple_firewall_new_wf.png[width=600px]
 
 IMPORTANT: set the workflow language to *python* and set *service_id* as the workflow variable name.
 
@@ -279,7 +275,7 @@ You need 4 variables to map with the simple_firewall microservice:
 - dst_port: for the destination port to block - type: Integer
 - device: to allow the user to select the managed entity to configure - type: Device
 
-image:images/simple_firewall_wf_variables.png[width=600px]
+ image:simple_firewall_wf_variables.png[width=600px]
 
 NOTE: the type Device is a special type that will let the user select a managed entity from the process execution screen
 
@@ -404,11 +400,11 @@ Go to the "Automation" section of your sub-tenant and select the workflow.
 
 Click on "+ Create Firewall Service" (this action is generated based on the name of the process type CREATE), select a managed entity and click "Run"
 
-image:images/simple_firewall_wf_exec_create.png[]
+ image:simple_firewall_wf_exec_create.png[]
 
 A new instance of the workflow is now created and you can call the process to create a firewall rule with "Add Filter Rule"
 
-image:images/simple_firewall_wf_exec_update.png[]
+ image:simple_firewall_wf_exec_update.png[]
 
 Delete the instance with the process "Delete Service"
 

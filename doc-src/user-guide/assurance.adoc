@@ -1,9 +1,6 @@
 = Assurance
-:doctype: book
-:imagesdir: ./resources/
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:toc: left
-:toclevels: 4 
 
 The {product_name} provides an assurance module for collecting network events and managing alarms
 
@@ -18,14 +15,14 @@ Once indexed, the logs are fully searchable from the user interface.
 
 The diagram below shows the syslog processing steps from the device to Elasticsearch. 
 
-image:images/assurance_log_analysis_event_flow.png[width=1000px]
+image:assurance_log_analysis_event_flow.png[width=1000px]
 
 [#log_anal]
 === Search logs
 
 Event stored in ELasticsearch can searched from UI under the section "Alarms" > "Logs"
 
-image:images/assurance_log_search.png[width=1000px]
+image:assurance_log_search.png[width=1000px]
 
 [#alarm]
 == Alarm management
@@ -47,13 +44,13 @@ Alarm Rule can be created from the Manage Alarms tab, as show in the below scree
 Alarm Name shoud be Unique across the SOC and it should not contain space. 
 
 
-image:images/assurance_manage_alarm.png[width=1000p]
+image:assurance_manage_alarm.png[width=1000p]
 
 === Create or edit an alarm 
 
 Alarm creation contains Four sections below
 
-image:images/assurance_manage_alarm_edit.png[width=1000p]
+image:assurance_manage_alarm_edit.png[width=1000p]
 
 ==== Detail
 

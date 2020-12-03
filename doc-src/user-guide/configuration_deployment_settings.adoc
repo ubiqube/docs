@@ -1,9 +1,6 @@
 = Deployment Settings
-:doctype: book
-:imagesdir: ./resources/
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:toc: left
-:toclevels: 4 
 
 Deployment Settings will allow you to build your configurations and apply them to your link:./managed_entities{outfilesuffix}[managed entities]. 
 
@@ -17,7 +14,7 @@ You can view the deployment settings by clicking the "Integration" link on the l
 
 This page shows the list of deployment settings, sortable and searchable by name.
 
-image:images/deployment_settings_search.png[Deployment Settings Search,width=1000px]
+image:deployment_settings_search.png[Deployment Settings Search,width=1000px]
 
 A Deployment setting acts as the intermediate layer between a set of managed entities and a set of microservices
 

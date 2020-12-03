@@ -1,10 +1,6 @@
 = Managed Entities
-:doctype: book
-:imagesdir: ./resources/
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:toc: left
-:toclevels: 4 
-:source-highlighter: pygments
 
 In order to become a manageable entity, an entity such as a router, a firewall or any other network function or element, physical or virtual, has to be created and activated in the {product_name}.
 
@@ -14,7 +10,7 @@ On this screen you can create a new manage entity or browse to an existing one t
 
 This screen provides 3 types of view and you can switch between the detailed view, the compact view or the link:managed_entities_topology{outfilesuffix}[topology] view.
 
-image:images/me_detailed_list.png[width=1000px]
+image:me_detailed_list.png[width=1000px]
 
 == Create, update and activate a managed entity
 
@@ -145,7 +141,7 @@ NOTE: the activation of the managed entity is executed by the adapter for this m
 
 The overview screen is the main screen you will see when browsing to a managed entity
 
-image:images/me_overview_screen.png[width=1000px]
+image:me_overview_screen.png[width=1000px]
 
 The managed entity overview screen is used to display the details of the selected entity as well as assurance related information
 

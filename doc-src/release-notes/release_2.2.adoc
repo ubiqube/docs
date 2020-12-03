@@ -1,9 +1,5 @@
 = Version 2.2
-:imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:doctype: book
-:toc: left
-:toclevels: 4 
 
 Various fixes have been made to the product to ensure its continued ability to empower users, ensure a smoother user experience and deliver the value that businesses need in today's environment while being ahead in terms of features, being evergreen and the agility of the {product_name} to grow.
 
@@ -47,22 +43,22 @@ No changes have been made to the core engine from previous versions of the produ
 
 Instructions to upgrade are here: link:../user-guide/quickstart{outfilesuffix}#upgrade[upgrade guide]
 
-=== Specific instruction for upgrating from {revnumber-prev} to {revnumber}
+=== Specific instruction for upgrating from MSA-2.1.0 to MSA-2.2.0
 
 Starting from version 2.2.0, the quickstart provides an upgrade script `upgrade.sh` for taking care of possible actions such as recreating some volume, executing some database specific updates,...
 
-Let's say that you are running {product_name} version {revnumber-prev}, to upgrade to the version {revnumber}, you need to follow these steps:
+Let's say that you are running {product_name} version MSA-2.1.0, to upgrade to the version MSA-2.2.0, you need to follow these steps:
 
 1. `$ sudo docker login` (in case you are not authenticated yet)
 2. `$ cd quickstart`
 3. `$ git checkout master`
 4. `$ git pull`
-5. `$ git checkout tags/{revnumber} -b {revnumber}`
+5. `$ git checkout tags/MSA-2.2.0 -b MSA-2.2.0`
 6. `$ ./scripts/upgrade.sh`
 
-==== Migrate your BPM from {revnumber-prev} to {revnumber} ====
+==== Migrate your BPM from MSA-2.1.0 to MSA-2.2.0 ====
 
-With the introduction of decision gateways and other bug fixes, the format of BPM has been updated. If you have created a BPM in {revnumber-prev}, you need to follow those operations:
+With the introduction of decision gateways and other bug fixes, the format of BPM has been updated. If you have created a BPM in MSA-2.1.0, you need to follow those operations:
 
 - In the BPM console, **edit your BPM file**
 

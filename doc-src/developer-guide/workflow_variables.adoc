@@ -1,20 +1,12 @@
 = Workflow Variables
-:doctype: book
-:imagesdir: ./resources/
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:toc: left
-:toclevels: 4 
-:source-highlighter: pygments
-
-//// 
-TODO 
-////
 
 Variables are usually used to hold the parameters to be passed to a workflow process. For instance, the port and IP address variables to block for a firewall policy. Variables can also be used to display user information that is not meant to be used for any actuall configuration.
 
 Setting variables is done from the section "Variables" on the workflow editor screen.
 
-image:images/workflow_console_variables.png[width=700px]
+image:workflow_console_variables.png[width=700px]
 
 All variables are referenced with the prefix `$params` which is automatically set in the variable editor screen and when a variable has to be referenced in one of the workflow functions, you need to use the syntax `{$params.your_variable}` (see below for more examples).
 
@@ -192,7 +184,7 @@ task_success('Task OK: '.$subtenant);         <3>
 <2> read the variable value from the context
 <3> print the value on the execution console
 
-image:images/workflow_console_variables_customer.png[width=700px]
+image:workflow_console_variables_customer.png[width=700px]
 
 ===== List of subtenant
 
@@ -237,7 +229,7 @@ When creating a variable typed `Microservice Reference` you need to select the `
 
 In the exmaple below, the variable `$params.user` is typed as `Microservice Reference`. In the "Advanced" tab, the field "Microservice Reference" references one or several microservice and the field "Device ID" references a managed entity.
 
-image:images/workflow_console_variables_ms_ref.png[width=700px]
+image:workflow_console_variables_ms_ref.png[width=700px]
 
 .Sample PHP task to create the UI to select a managed entity and select a microservice instance from this managed entity
 [source, PHP]
@@ -258,7 +250,7 @@ task_success('Task OK');
 
 It also possible to use an array to select multiple values from the microservice
 
-image:images/workflow_console_variables_multiple_ms_ref.png[width=400px]
+image:workflow_console_variables_multiple_ms_ref.png[width=400px]
 
 .Sample PHP task to select multiple values from the microservice instance
 [source, PHP]
@@ -315,4 +307,4 @@ When you are dealing with variable arrays, these options will let you control th
 To create a variable array, you need to follow a precise naming convention: `$params.<ARRAY NAME>.0.<ELEMENT NAME>`. The 0, is the separator that will allow the UI and the configuration engine that this variable is an array.
 
 .a variable array with 2 elements
-image:images/workflow_variables_array_1.png[width=700px]
+image:workflow_variables_array_1.png[width=700px]

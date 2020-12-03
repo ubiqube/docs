@@ -1,19 +1,18 @@
 = High Availability Installation Guide
-:toc: left
-:toclevels: 4 
-:doctype: book 
-:imagesdir: ./resources/
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 The {product_name} provides support for high avalability, based on "Docker Engine Swarm" mode.
 
-video::7VOn1yitGgY[youtube,width=600px,height=360] 
+ifeval::["{format}"" == "html"]
+video::AtC4KmQim_A[youtube,width=600px,height=360] 
+endif::[]
 
 == Overview
 
 The {product_name} provides support for high avalability, based on "Docker Engine Swarm" mode.
 
-image:images/ha_containers.png[overall architecture,width=700px]
+image:ha_containers.png[overall architecture,width=700px]
 
 With docker swarm, there is two types of nodes link:https://docs.docker.com/engine/swarm/how-swarm-mode-works/nodes/#manager-nodes[managers] and link:https://docs.docker.com/engine/swarm/how-swarm-mode-works/nodes/#worker-nodes[workers].
 
@@ -93,19 +92,19 @@ Depending to new numbers of containers, VM can be scaled to create docker manage
 
 ==== Simple: HA platform with minimum activities 
 
-image:images/ha_profile_1.png[width=250px]
+image:ha_profile_1.png[width=250px]
 
 ==== Standard: HA platform with mix of activities
 
-image:images/ha_profile_2.png[width=250px]
+image:ha_profile_2.png[width=250px]
 
 ==== Automation: Execute many WF and BPM
 
-image:images/ha_profile_3.png[width=250px]
+image:ha_profile_3.png[width=250px]
 
 ==== Assurance: Collect syslogs and monitor entities
 
-image:images/ha_profile_4.png[width=250px]
+image:ha_profile_4.png[width=250px]
 
 == Prerequisites
 

@@ -1,11 +1,6 @@
 = Key Concepts
-:doctype: book
-:imagesdir: ./resources/
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:toc: left
-:toclevels: 4 
-
-== What is the {product_name} ?
 
 {product_name} is the leading Integrated Automation Platform (IAP) engineered by UBiqube for the continuous design of any IT infrastructure automation process. 
 It is composed of Infrastructure and Automation Modules. 
@@ -23,11 +18,11 @@ Login as a developer, you can easily access and work on the design of your autom
 
 The swimlanes are matching the 3 layers of integration and automation: BPM, Workflows and Microservices
 
-image:images/key_concepts_dev_dashboard.png[width=600px]
+image:key_concepts_dev_dashboard.png[width=600px]
 
 Login as an manager, you can directly start monitoring and managing your system.
 
-image:images/key_concepts_admin_dashboard.png[width=600px]
+image:key_concepts_admin_dashboard.png[width=600px]
 
 .Manager
 This will give you access to the manager dashboard, that allows you to monitor and manage the entities configured in your {product_name} installation.  
@@ -48,7 +43,7 @@ These 2 levels will let you organise your managed entities based on your need wi
 
 4 user roles are available to make sure that you can assign the access and managing roles to your users based on their actual roles in your company.
 
-image:images/concepts_tenants_users.png[width=600px]
+image:concepts_tenants_users.png[width=600px]
 
 .Tenants
 A tenant contains a set of subtenants. The subtenants contain the managed entities and the deployment settings.
@@ -139,7 +134,7 @@ a|
    b. Workflow
  
 | 
- image:images/terminology.png[alt=Terminology, width=200]
+ image:terminology.png[alt=Terminology, width=200]
 |===
 
 

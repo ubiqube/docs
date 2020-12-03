@@ -1,20 +1,12 @@
 = Microservice Variables
-:doctype: book
-:imagesdir: ./resources/
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:toc: left
-:toclevels: 4 
-:source-highlighter: pygments
-
-//// 
-TODO 
-////
 
 Variables are usually defined to hold the parameters to be passed to a microservice. For instance, the port and IP address variables to block for a firewall policy. Variables can also be used to display user information that is not meant to be used for configuring the managed entity.
 
 Setting variables is done from the section "Variables" on the microservice editor screen.
 
-image:images/microservice_console_variables.png[width=700px]
+image:microservice_console_variables.png[width=700px]
 
 When you create a new microservice, the variable object_id, which is mandatory, will be set and cannot be deleted. It can be edited to set its type and other advanced properties.
 
@@ -34,7 +26,7 @@ For instance, the type boolean will render the variable with true/false radio bu
 
 When creating or editing a variable, there are some information that need to be provided in the "Default" section.
 
-image:images/microservice_variables_edit_1.png[]
+image:microservice_variables_edit_1.png[]
 
 === Variable
 
@@ -128,23 +120,23 @@ Depending on the selected type, some advanced parameters may be differ.
 [#group_variables]
 === Group Variables
 
-image:images/microservice_variables_group_4.png[width=300px]
+image:microservice_variables_group_4.png[width=300px]
 
 
 You can group the variables in the microservice console by setting a section header name. The UI will gather the columns under a common header
 
 .Section A and section B
-image:images/microservice_variables_group_3.png[width=500px]
+image:microservice_variables_group_3.png[width=500px]
 
 
 It is also possible to group variables to provide a better user experience when creating or editing a microservice and go from a flat view 
 
-image:images/microservice_variables_group_1.png[width=500px]
+image:microservice_variables_group_1.png[width=500px]
 
 To a more organised view
 
 .Group A and group B
-image:images/microservice_variables_group_2.png[width=500px]
+image:microservice_variables_group_2.png[width=500px]
 
 === Array settings
 
@@ -155,8 +147,8 @@ When you are dealing with variable arrays, these options will let you control th
 To create a variable array, you need to follow a precise naming convention: `$params.<ARRAY NAME>.0.<ELEMENT NAME>`. The 0, is the separator that will allow the UI and the configuration engine that this variable is an array.
 
 .a variable array with 2 elements
-image:images/microservice_variables_array_1.png[width=700px]
+image:microservice_variables_array_1.png[width=700px]
 
 This type of variables should be used when extracting configuration with an array variable extractor in the Import function of the microservice.
 
-image:images/microservice_variables_array_2.png[width=700px]
+image:microservice_variables_array_2.png[width=700px]

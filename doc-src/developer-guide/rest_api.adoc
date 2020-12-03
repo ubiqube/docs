@@ -1,10 +1,6 @@
 = REST API
-:doctype: book
-:imagesdir: ./resources/
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:toc: left
-:toclevels: 4 
-:source-highlighter: pygments
 
 The {product_name} provides a support for REST API. These API can be used by third-party service, application or script to manage your {product_name} instance.
 

@@ -1,10 +1,6 @@
 = Ansible
-:doctype: book
-:imagesdir: ./resources/
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:toc: left
-:toclevels: 4 
-:source-highlighter: pygments
 
 The Ansible Service microservice enables the {product_name} use to call an Ansible playbook, that exists on a remote Linux server that {product_name} will connect to via the Linux SSH adaptor.  
 
@@ -12,7 +8,7 @@ In this document, the architecture of a typical deployment will be discussed, al
 
 == Architecture
 
-This guide assumes you have installed the link:../user-guide/quickstart{outfilesuffix}[quickstart mini lab].
+This guide assumes you have installed the link:../user-guide/quickstart{outfilesuffix}[quickstart mini lab,window=_blank].
 
 Once you have done that, you should have the following ME inside your MSA installation: linux_me / 172.20.0.101.
 
@@ -77,6 +73,8 @@ Firstly, the linux_me hostname needs to be mapped to the 172.20.0.101 IP address
 Secondly, the linux_me:vars section provides the SSH username and password for Ansible to use when making that connection, to ensure that password prompts are suppressed when we call our playbook (normally in real Ansible deployments, SSH auth would be handle by configuring key pairs which you can also do is you wish).
 
 This is implemented by the hosts file below which is included in the ansible_me image (cf. Dockerfile in lab/)
+
+[source, bash]
 ----
 [root@ansible_me /]# nano /etc/ansible/hosts
 
@@ -91,6 +89,7 @@ ansible_ssh_pass=ubiqube
 
 == Execute the playbook directly
 
+[source, bash]
 ----
 sudo docker-compose -f docker-compose.yml -f lab/ansible/docker-compose.yml \
     exec ansible_me  ansible-playbook /opt/playbooks/linux_firewall_creation.yml \
@@ -99,12 +98,14 @@ sudo docker-compose -f docker-compose.yml -f lab/ansible/docker-compose.yml \
 
 You can login to linux_me 
 
+[source, bash]
 ----
 sudo docker-compose exec linux_me bash
 ----
 
 Confirm that IPTables was actually updated by Ansible:
 
+[source, bash]
 ----
 [root@linux_me /]# iptables --line-numbers -L INPUT -n
 Chain INPUT (policy ACCEPT)
@@ -115,7 +116,7 @@ num  target     prot opt source               destination
 
 Now we have an end-to-end Ansible solution like this:
 
-image:images/ansible_end2end.png[width=1000px]
+image:ansible_end2end.png[width=700px]
 
 In the next steps we will add {product_name} in the picture.
 
@@ -123,13 +124,13 @@ In the next steps we will add {product_name} in the picture.
 
 We will now design a new microservice, "AnsibleService", that will call the `linux_firewall_creation.yml` (or any other) playbook we wish from inside  {product_name}, resulting in an improved architecture like this:
 
-image:images/ansible_end2end_with_msa.png[width=1000px]
+image:ansible_end2end_with_msa.png[width=700px]
 
 === Create a new microservice
 
 Start by link:../developer-guide/microservice_editor{outfilesuffix}[creating a new microservice] with the following definition
 
-image:images/ansible_ms_info.png[width=1000px]
+image:ansible_ms_info.png[width=700px]
 
 ==== Variables
 
@@ -139,18 +140,18 @@ image:images/ansible_ms_info.png[width=1000px]
 - extra_vars.0.var_name (String array)
 - extra_vars_res (String)
 
-image:images/ansible_ms_variables.png[width=1000px]
-
+image:ansible_ms_variables.png[width=700px]
 
 ==== The CREATE command
 
 This command calls the playbook.  Here is the code for that (its quite simple):
 
+[source, bash]
 ----
 sudo ansible-playbook {$params.playbook_path} --extra-vars {$params.extra_vars}
 ----
 
-image:images/ansible_ms_create.png[width=1000px]
+image:ansible_ms_create.png[width=700px]
 
 
 ==== The IMPORT command 
@@ -165,20 +166,23 @@ name: dport
 name: ip
 ----
 
-image:images/ansible_ms_import_cmd.png[width=1000px]
+image:ansible_ms_import_cmd.png[width=700px]
 
 .Microservice identifier extractor: 
 
+[source]
 ----
 ^(?<playbook_path>\S+[^/]+?\.yml)*$
 ----
 
 .Microservice variables extractor "array extra_vars":
+[source]
 ----
 ^\S+?:\s+?(?<var_name>\S+)$
 ----
 
 .Post import:
+[source]
 ----
 {assign var='line' value=''}
 {foreach from=$params.extra_vars key=number item = varname}
@@ -188,8 +192,7 @@ image:images/ansible_ms_import_cmd.png[width=1000px]
 {assign_object_variable var='extra_vars_res' value=$line}
 ----
 
-image:images/ansible_ms_import_parser.png[width=1000px]
-
+image:ansible_ms_import_parser.png[width=700px]
 
 == Calling the AnsibleService microservice from a Python workflow
 There is a Python workflow available for calling the AnsibleService as part of the OpenMSA WF repo, you can find that here: https://github.com/openmsa/Workflows/tree/master/Ansible/Firewall_Management
@@ -207,7 +210,6 @@ micro_service_vars_array = {
  
 playbook = {"AnsiblePlaybook": {"":micro_service_vars_array}}
 ----
-
 
 You can change that WF code to point to any playbook you wish.
 

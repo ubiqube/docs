@@ -1,10 +1,6 @@
 = BPM Editor
-:doctype: book
-:imagesdir: ./resources/
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:toc: left
-:toclevels: 4 
-:source-highlighter: pygments
 
 The BPM editor is a web based UI for designing BPM processes.
 
@@ -14,24 +10,21 @@ To create a new BPM from the developer portal, click on "+ Create" from the swim
 
 You can also browse through the existing BPM by clicking on "See more."
 
-image:images/developer_dashboard_bpm.png[width=600px]
+image:developer_dashboard_bpm.png[width=600px]
 
 NOTE: you need to select a sub-tenant to see the BPM.
-
 
 == BPMN elements
 
 The {product_name} BPM engine supports the following BPMN elements:
 
-image:images/bpm_start_event.png[] the first element of the BPM process.
+image:bpm_start_event.png[] the first element of the BPM process.
 
-image:images/bpm_end_event.png[] indicates the end of the BPM process.
+image:bpm_end_event.png[] indicates the end of the BPM process.
 
-image:images/bpm_task.png[] an executable task that can run workflow processes.
+image:bpm_task.png[] an executable task that can run workflow processes.
 
-image:images/bpm_gateway_event.png[] represents an exclusive decision gateway (or decision tree).
-
-NOTE: Support for more elements will be provided in future link:../release_notes{outfilesuffix}[releases]
+image:bpm_gateway_event.png[] represents an exclusive decision gateway (or decision tree).
 
 === Parallel gateway
 
@@ -39,7 +32,7 @@ Gateways can also be used to model concurrency in a process.
 
 The most straightforward gateway to introduce concurrency in a process model is the Parallel Gateway, which allows forking into multiple paths of execution or joining multiple incoming paths of execution.
 
-image:images/bpm_parallel_exec.png[width=600px]
+image:bpm_parallel_exec.png[width=600px]
 
 The functionality of the parallel gateway is based on the incoming and outgoing sequence flow(s):
 
@@ -49,11 +42,11 @@ The functionality of the parallel gateway is based on the incoming and outgoing 
 Note that a parallel gateway does not need to be ‘balanced’ (i.e., a matching number of incoming/outgoing sequence flows for corresponding parallel gateways). 
 A parallel gateway will simply wait for all incoming sequence flows and create a concurrent path of execution for each outgoing sequence flow, not influenced by other constructs in the process model. So, the following process is legal in {product_name}:
 
-image:images/bpm_parallel_exec_unbalanced.png[width=600px]
+image:bpm_parallel_exec_unbalanced.png[width=600px]
 
 === Decision gateway (XOR)
 
-image:images/bpm_gateway.png[width=600px]
+image:bpm_gateway.png[width=600px]
 
 The XOR gateway will let you model a decision in the process.
 
@@ -62,7 +55,7 @@ The sequence flow whose condition evaluates to ‘true’ is selected for contin
 
 To configure the gateway, you need to select the outbound link from the gateway, choose the inbound task and configure the condition to trasition to the next BPM task.
 
-image:images/bpm_gateway_config.png[width=600px]
+image:bpm_gateway_config.png[width=600px]
 
 ==== Operator
 
@@ -74,7 +67,7 @@ Select one of `Failed`, `Warning` or `Success` which are related to the link:wor
 ==== Default flow
 Click on the decision gateway ans select the default flow of the process when there is not suitable condition based on the result of the inbound task.
 
-image:images/bpm_gateway_default_flow.png[width=600px]
+image:bpm_gateway_default_flow.png[width=600px]
 
 == Design a BPM process
 
@@ -89,7 +82,7 @@ NOTE: A BPM process must have a StartEvent and an EndEvent.
 IMPORTANT: Only one executable BPM process can be specified in a BPM definition.
 
 .Multiple process definition in a single BPM is not supported
-image:images/bpm_multiple_process_definition.png[width=600px]
+image:bpm_multiple_process_definition.png[width=600px]
 
 You can save your BPM at anytime and edit it later. When you save you BPM, you need to select a sub-tenant.
 
@@ -99,7 +92,7 @@ NOTE: A BPM is associated to a single sub-tenant.
 
 Select an executable task to see the list of workflows (based on the sub-tenant selected), then select a process and provide its input parameters.
 
-image:images/bpm_edit.png[width=600px]
+image:bpm_edit.png[width=600px]
 
 === Execution flow control
 
@@ -107,12 +100,12 @@ By default, the BPM execution will stop whenever the associated workflow process
 
 To allow the BPM process to continue executing after a workflow process execution fails, you need to edit the BPM task and check "Continue on Failure."
 
-image:images/bpm_task_control_flow.png[width=600px]
+image:bpm_task_control_flow.png[width=600px]
 
 === Execution tracking
 
 The BPM engine will start executing the BPM tasks one by one and the status of the current workflow process execution will be updated live in the "LATEST EXECUTIONRESULT" view while the detail of the process execution will be displayed.
 
-image:../../user-guide/resources/images/bpm_execution_tracking.png[width=600px]
+image:bpm_execution_tracking.png[width=600px]
 
 

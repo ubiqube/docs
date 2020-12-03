@@ -10,7 +10,9 @@ The quickstart covers how you can quickly get started using {product_name} by in
 == Video tutorial
 This video details the steps for installing and activating the mini lab.
 
+ifeval::["{format}" == "html"]
 video::A7zT-AZf2cg[youtube,width=600px,height=360] 
+endif::[]
 
 [#prerequisites]
 == Prerequisites
@@ -160,14 +162,14 @@ Now you should start to see device logs for linux_me appearing in the alarm sect
 
 === Step 5: start using the {product_name}
 
-Browse: link:https://localhost/[] and connect with username `ncroot` and password `ubiqube`. 
+Browse: link:https://localhost/[window=_blank] and connect with username `ncroot` and password `ubiqube`. 
 
 == Mini lab detailed description
 === Use case 1: firewall orchestration on Linux
 
 This lab use case will show you in a simple way how you can use {product_name} to automate the configuration of iptables-based firewall policy on the Linux container included in the mini lab.
 
-The development of this use case is detailled in this guide: link:../developer-guide/simple_firewall_policy_mngt{outfilesuffix}[Firewall Policy Automation]
+The development of this use case is detailled in this guide: link:../lab-guide/simple_firewall_policy_mngt{outfilesuffix}[Firewall Policy Automation]
 
 You can use the guide to recreate the use case step by step or you may also directly run the use case with the workflow and microservices that are installed in the mini-lab.
 
@@ -256,6 +258,7 @@ The script `install_libraries.sh` is installed in the container link:../admin-gu
 
 This script is designed to populate the libraries for a fresh install or to update your libraries with the latest version from Github.
 
+[source, shell]
 ----
 $ docker-compose exec msa_dev /usr/bin/install_libraries.sh --help
 usage: install_libraries.sh all|ms|wf|da [--no-lic] [-y]

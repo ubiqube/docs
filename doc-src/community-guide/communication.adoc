@@ -1,6 +1,4 @@
 = Communicating
-:doctype: book
-:imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == Code of Conduct

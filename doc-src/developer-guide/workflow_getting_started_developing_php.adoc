@@ -1,10 +1,6 @@
 = Getting Started Developing Workflows in PHP
-:doctype: book
-:imagesdir: ./resources/
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:toc: left
-:toclevels: 4 
-:source-highlighter: pygments
 
 == Overview
 
@@ -28,15 +24,15 @@ This workflow is composed of 3 processes: one to create the new instance of the 
 
 From the Developer dashboard click on "+ Create"
 
-image:images/developer_dashboard_workflow.png[]
+image:developer_dashboard_workflow.png[]
 
 In the tab "Information", set a name, a description and set the Workflow variable name to service_id and save your workflow.
 
-image:images/workflow_helloworld_create.png[]
+image:workflow_helloworld_create.png[]
 
 Create a variable "Name" in the tab "Variable".
 
-image:images/workflow_helloworld_add_variable.png[]
+image:workflow_helloworld_add_variable.png[]
 
 To start testing your workflow, you need to associate it to a customer. 
 Make sure that you have no tenant selected, go to the "Automation" section, you should see your workflow in the list. 
@@ -45,15 +41,15 @@ You can use the magnifier to search for it.
 
 Use the link "Add to.." to associate the workflow to a customer.
 
-image:images/workflow_helloworld_attach_to_customer.png[]
+image:workflow_helloworld_attach_to_customer.png[]
 
 Select the customer to use for designing and testing the workflow.
 
-image:images/workflow_helloworld_attach_to_customer_1.png[width=600,height=349]
+image:workflow_helloworld_attach_to_customer_1.png[width=600,height=349]
 
 Once done, you can select your customer, list its workflows and edit it with the pencil icon.
 
-image:images/workflow_helloworld_edit.png[]
+image:workflow_helloworld_edit.png[]
 
 === Create the Processes
 
@@ -83,7 +79,7 @@ task_exit(ENDED, "workflow initialised");
 ?>
 ----
 
-image:images/workflow_helloworld_add_task.png[]
+image:workflow_helloworld_add_task.png[]
 
 Once done, save the Workflow.
 
@@ -134,17 +130,19 @@ task_exit(ENDED, "Hello " . $name);
 
 === Test the Workflow
 
+Before you can test the workflow and execute some processes, you need to link:../user-guide/automation_workflows{outfilesuffix}#workflow_selection[attach the workflow] to your current subtenant.
+
 Use the "+ create instance" action to execute the "create instance" process and create a new instance of your workflow.
 
-image:images/workflow_helloworld_create_new_instance.png[]
+image:workflow_helloworld_create_new_instance.png[]
 
 A new instance is available and you can execute the process "print message".
 
-image:images/workflow_helloworld_new_instance.png[]
+image:workflow_helloworld_new_instance.png[]
 
 The process "print message" will start executing and will executes the tasks sequencially.
 
-image:images/workflow_helloworld_display_name.png[]
+image:workflow_helloworld_display_name.png[]
 
 The name will be displayed in the task execution status popoup, below the name of the task.
  
