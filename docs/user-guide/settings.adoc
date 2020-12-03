@@ -1,7 +1,0 @@
-= Settings
-ifndef::imagesdir[:imagesdir: images]
-ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-
-The settings screen provides information on the current version of your {$product_name} version. This is also where you can upload and activate your product licence.
-
-Details about license activation is available in this documentation: link:../admin-guide/license_activation{outfilesuffix}[license activation]
