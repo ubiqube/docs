@@ -72,6 +72,11 @@ With the introduction of decision gateways and other bug fixes, the format of BP
 
 == Specific technical fixes and feature details
 
+=== 2.2.1 GA
+==== Bug fixes
+
+* MSA-9359 - [Quickstart] LinuxME centos 6 is not supported: update to Centos7
+
 === 2.2.0 GA
 
 ==== Features
