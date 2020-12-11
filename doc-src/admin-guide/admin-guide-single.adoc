@@ -1,6 +1,8 @@
 = Administration Guide
 :toc: left
 :toclevels: 3
+:single:
+
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 //OK HTML 

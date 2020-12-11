@@ -10,12 +10,3 @@ TIP: link:admin-guide-single{outfilesuffix}[view as single htm,window=_blankl]
 * link:ha_installation{outfilesuffix}[High Availability installation guide,window=_blank]
 * link:support_and_troubleshooting{outfilesuffix}[Support and troubleshooting,window=_blank]
 * link:opensource_technologies{outfilesuffix}[Open Source technologies,window=_blank]
-
-
-// Attempt to navigate within Documentation, but will have to see if adoc converts to HTML appropriately so link
-// not lost
-//
-// Go back to Main Menu: link:../index.adoc[Index]
-//
-
-

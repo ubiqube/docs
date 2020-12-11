@@ -5,7 +5,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 Whether you have installed the {product_name} with the quickstart or started to do a longer PoC you need a license.
 Quickstart environment comes with a trial license installed automatically and valid for 30 days limited to 5 managed entities.
-If you do not have your license yet, for a production license contact your sales representative, otherwise for a free trial license please visit: link:https://ubiqube.com/free-trial/[].
+If you do not have your license yet, for a production license contact your sales representative, otherwise for a free trial license please visit: link:https://ubiqube.com/free-trial/[ubiqube.com/free-trial].
 
 This documentation discusses the activate of a new license.
 

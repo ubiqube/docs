@@ -145,7 +145,7 @@ $ sudo docker-compose exec msa_sms cat /opt/sms/logs/configure.log
 ----
 
 ==== How do I enable debug logs on the SecEngine ?
-The CoreEngine logs are available on the msa_sms container (see link:architecture_overview{outfilesuffix}[architecture overview]) in the directory `/opt/sms/logs`.
+The CoreEngine logs are available on the msa_sms container in the directory `/opt/sms/logs`.
 
 If you are designing a Microservice or simply operating the {product_name}, you might need to monitor the logs of the configuration engine.
 

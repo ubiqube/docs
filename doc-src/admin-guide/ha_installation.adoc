@@ -131,7 +131,7 @@ Because other nodes contact the manager node on its IP address, you should use a
 
 NOTE: If you plan on creating an overlay network with encryption (--opt encrypted), you also need to ensure ip protocol 50 (ESP) traffic is allowed.
 
-More information about Docker Engine Swarm available here: link:https://docs.docker.com/engine/swarm/swarm-tutorial/[Swarm Tutorial].
+More information about Docker Engine Swarm available here: link:https://docs.docker.com/engine/swarm/swarm-tutorial/[swarm tutorial].
 
 
 == Installing the application in HA mode
