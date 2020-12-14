@@ -55,5 +55,7 @@ include::{includedir}/workflow_python_sdk.adoc[]
 
 include::{includedir}/workflow_php_sdk.adoc[]
 
-include::{includedir}/devops_best_practices.adoc[]
+include::{includedir}local_repository_management[]
+
+include::{includedir}/devops-best-practices.adoc[]
 

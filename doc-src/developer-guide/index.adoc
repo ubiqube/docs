@@ -59,8 +59,8 @@ endif::[]
 
 == DevOps
 
+- link:local_repository_management{outfilesuffix}[Import / Export Librairies,window=_blank]
 - link:devops-best-practices{outfilesuffix}[DevOps best practices,window=_blank]
-
 
 ifeval::["{format}"" == "html"]
 == Community 
