@@ -19,14 +19,14 @@ As a DevOps engineer, the first step to getting familiar with the {product_name}
 * Install the code on the OpenMSA platform
 * Utilize the microservices and the workflows
 
-image:devops_best_practices_1.png[]
+image:devops_best_practices_1.png[width=700px]
 
 == How to design/develop and contribute to the community
 As a microservice or workflow designer you'll have the opportunity to contribute to the community source code.
 
 The easiest way is to utilize {product_name} as the design tool.  This is the most typical and recommended method. 
 
-image:devops_best_practices_4.png[]
+image:devops_best_practices_4.png[width=700px]
 
 . Fork the OpenMSA repository into your GitHub account.
 . Clone the repository from your personal GitHub account to your OpenMSA DevOps platform.
@@ -35,7 +35,7 @@ image:devops_best_practices_4.png[]
 . Contribute by submitting pull requests to the OpenMSA community.
 . It is possible to use your favorite IDE to ease development of Workflow tasks or Device Adaptors that are in PHP language.
 
-image:devops_best_practices_5.png[]
+image:devops_best_practices_5.png[width=700px]
 
 This procedure adds a set of push/pull steps to sync the code from your PC with your {product_name} DevOps platform. 
 

@@ -59,7 +59,7 @@ endif::[]
 
 == DevOps
 
-- link:devops_best_practices{outfilesuffix}[DevOps best practices,window=_blank]
+- link:devops-best-practices{outfilesuffix}[DevOps best practices,window=_blank]
 
 
 ifeval::["{format}"" == "html"]
