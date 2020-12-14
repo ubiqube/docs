@@ -2,9 +2,9 @@
 ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-Deployment Settings will allow you to build your configurations and apply them to your link:./managed_entities{outfilesuffix}[managed entities]. 
+Deployment Settings will allow you to build your configurations and apply them to your managed entities.
 
-Deployment Settings will also ease any change to your configurations: you can add/remove a template or a link:configuration_microservices{outfilesuffix}[microservice] and be assured that the change will be applied in a consistant way across all your managed entities.
+Deployment Settings will also ease any change to your configurations: you can add/remove a template or a microservice and be assured that the change will be applied in a consistant way across all your managed entities.
 
 When using a deployment setting, you can ensure that your managed entities, associated with the deployment setting, have the same list of microservices, thus are all similar with regard to their managed services.
 
@@ -14,7 +14,7 @@ You can view the deployment settings by clicking the "Integration" link on the l
 
 This page shows the list of deployment settings, sortable and searchable by name.
 
-image:deployment_settings_search.png[Deployment Settings Search,width=1000px]
+image:deployment_settings_search.png[Deployment Settings Search,width=700px]
 
 A Deployment setting acts as the intermediate layer between a set of managed entities and a set of microservices
 

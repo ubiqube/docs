@@ -2,24 +2,19 @@
 ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
+[cols="3*"] 
 |===
 
-a| 
-link:user-guide/index{outfilesuffix}[Manager Guide] a| 
+a| link:user-guide/index{outfilesuffix}[Manager Guide,window=_blank] link:pdf/user-guide/user-guide-single.pdf[(pdf),window=_blank] 
 
-link:developer-guide/index{outfilesuffix}[Developer Guide] 
-a| 
+a| link:developer-guide/index{outfilesuffix}[Developer Guide,window=_blank] link:pdf/developer-guide/developer-guide-single.pdf[(pdf),window=_blank]
 
-link:admin-guide/index{outfilesuffix}[Admin Guide]
-a| 
+a| link:admin-guide/index{outfilesuffix}[Admin Guide,window=_blank]link:pdf/admin-guide/admin-guide-single.pdf[(pdf),window=_blank]
 
-link:release_notes{outfilesuffix}[Release Notes]
+a| link:release-notes/release_notes{outfilesuffix}[Release Notes,window=_blank]link:pdf/release-notes/release_notes.pdf[(pdf),window=_blank]
 
-a| 
+a| link:lab-guide/index{outfilesuffix}[Lab Guide,window=_blank]
 
-link:lab-guide/index{outfilesuffix}[Lab Guide]
-a| 
-
-link:community-guide/index{outfilesuffix}[Community Guide]
+a| link:community-guide/index{outfilesuffix}[Community Guide,window=_blank]
 
 |===

@@ -28,14 +28,16 @@ asciidoctor {
   	'source-highlighter' : 'rouge',
     'linkcss': true,
     'product_name': 'MSActivator(TM)',
-    'product_name-version': 'MSActivator-2.3.0.RC1',
+    'product_name-version': 'MSActivator-2.3.0 RC1',
     'openmsa_name': 'OpenMSA(TM)',
     'revnumber': 'MSA-2.3.0rc1',
     'revnumber-prev': 'MSA-2.2.0',
     'allow-uri-read': '',
     'sectlinks': true,
     'html': 'true',
-    'format': 'html'
+    'format': 'html',
+    'icons' : 'font'
+
 
   sourceDir = file('doc-src')
   outputDir  file('build/html')
@@ -72,18 +74,22 @@ asciidoctorPdf {
  	    'source-highlighter' : 'rouge',
       'linkcss': true,
       'product_name': 'MSActivator(TM)',
-      'product_name-version': 'MSActivator-2.3.0',
+      'product_name-version': 'MSActivator-2.3.0 RC1',
       'openmsa_name': 'OpenMSA(TM)',
-      'revnumber': 'MSA-2.3.0',
+      'revnumber': 'MSA-2.3.0rc1',
       'revnumber-prev': 'MSA-2.2.0',
       'allow-uri-read': '',
       'sectlinks': true,
-      'imagesoutdir': 'images',
       'pdf': 'true',
-      'format': 'html'
+      'format': 'html',
+      'icons' : 'font',
+      'page-background-image' : 'image:bg.jpg[fit=cover,pdfwidth=100%,position=top]'
   }
 
   sourceDir  file('doc-src')
+  sources {
+    include 'user-guide/user-guide-single.adoc', 'admin-guide/admin-guide-single.adoc', 'developer-guide/developer-guide-single.adoc', 'release-notes/release_notes.adoc'
+  }
   outputDir  file('build/pdf')
 
   resources {
@@ -102,3 +108,5 @@ asciidoctorPdf {
 // alias
 //task asciidoc(dependsOn: asciidoctor)
 task asciidoc_pdf(dependsOn: asciidoctorPdf)
+
+//task asciidoc_all(dependsOn: asciidoctor, asciidoctorPdf)

@@ -1,6 +1,8 @@
 = Versions
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
+== Previous versions
+
 [cols=2*,options="header"]
 |===
 |Version | Link
@@ -13,7 +15,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 | 17.7 |  link:https://ubiqube.com/wp-content/docs/17.x/user-guide[https://ubiqube.com/wp-content/docs/17.x]
 |===
 
-== What are the differences between the version 17.x and the {product_name-version} latest release?
+== Differences between version 17.x and the {product_name-version} latest release?
 
 === New features
 

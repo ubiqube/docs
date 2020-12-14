@@ -16,11 +16,11 @@ Microservices can be used to manage a wide variety of services on numerous types
 
 Microservices can be designed graphically in the {product_name} developer portal. 
 
-Scripting is not mandatory but link:../developer-guide/microservice_smarty_templating{outfilesuffix}[simple programming functions], such as conditional statements, loops, and variable assignments, is available to incorporate advanced function behaviors.
+Scripting is not mandatory but simple programming functions, such as conditional statements, loops, and variable assignments, is available to incorporate advanced function behaviors.
 
 == Use microservice
 
-The list of available microservices can be viewed by clicking on the "Infrastructure" link from the left menu.
+The list  microservices available can be viewed by clicking on the "Infrastructure" link from the left menu.
 
 image:configurations_me_list_admin.png[Microservice List]
 
@@ -30,9 +30,9 @@ image:configurations_ms_search.png[Microservice Search]
 
 From this page you can create or edit microservices - which is part of microservice design (cf. section below).
 
-The list of microservice can be sorted by name, vendor/model, modification date and number of deployment settings.
+The list of microservice can be sorted by name, vendor/model, last update date and number of deployment settings.
 
-In order to use a Microservice, it has to be associated to a link:managed_entities{outfilesuffix}[managed entity] via a link:configuration_deployment_settings{outfilesuffix}[deployment setting].
+In order to use a microservice, it has to be associated to a managed entity via a deployment setting.
 
 [#microservice-console]
 == Microservice console
@@ -43,9 +43,7 @@ You can access the console by selecting the managed entity you want to configure
 
 image:microservice_console.png[Microservice Search]
 
-For more documentation about configuring managed entities with the microservices, you can go to this link:managed_entities{outfilesuffix}[documentation].
-
 == Microservice Design
 
-Microservice design is documented in the link:../developer-guide/index{outfilesuffix}[Developer Guide]
+Microservice design is documented in the developer guide.
 

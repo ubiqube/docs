@@ -1,9 +1,23 @@
 = Administration Guide
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+ifndef::imagesdir[:imagesdir: images]
 
 The Installation and Configuration Guide will show you how to install, configure and activate the {product_name}.
 
-TIP: link:admin-guide-single{outfilesuffix}[view as single htm,window=_blankl]
+
+ifdef::html[]
+
+[.stripes-none,cols="1,10",frame=none,grid=none,options="noheader",width="50%"]
+|===
+| image:html_icon.png[width=32px]
+| link:../admin-guide/admin-guide-single{outfilesuffix}[view as single html page,window=_blank]
+
+| image:pdf_icon.png[width=32px]
+| link:admin-guide-single.pdf[download as PDF,window=_blank]
+|===
+
+endif::[]
+
 
 * link:architecture_overview{outfilesuffix}[Architecture,window=_blank]
 * link:license_activation{outfilesuffix}[License activation,window=_blank]

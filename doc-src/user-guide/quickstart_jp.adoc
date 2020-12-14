@@ -1,6 +1,5 @@
 = クイックスタートガイド 
-:doctype: book
-:imagesdir: ./resources/
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == インストール手順

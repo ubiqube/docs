@@ -43,7 +43,7 @@ Design or edit code on your PC and IDE, such as Eclipse or a simple editor with 
 
 === Default installation for the libraries.
 
-When you install the {product_name} with the link:../user-guide/quickstart{outfilesuffix}#step2[quickstart] a selected list of link:../user-guide/quickstart_packages{outfilesuffix}[libraries] (microservices, workflows and adapters) are installed by default.
+When you install the {product_name} with the link:../user-guide/quickstart{outfilesuffix}#step2[quickstart] a selected list of libraries (microservices, workflows and adapters) are installed by default.
 
 The installation is done by the script `install_libraries.sh` installed in the docker container link:../admin-guide/architecture_overview{outfilesuffix}#containers_description[msa_dev].
 

@@ -1,7 +1,8 @@
-= Release Notes
+= MSActivator(TM) Release Notes
 :toc: left
 :toclevels: 3
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+ifndef::imagesdir[:imagesdir: images]
 
 //OK HTML 
 ifdef::html[]
@@ -86,3 +87,7 @@ The reason {product_name} is now containerized reflects not only a move in the i
 == CoreEngine
 
 No changes have been made to the core engine from previous versions of the product.  This allows consistency from branches of OpenMSA (community version).
+
+:leveloffset: +1
+
+include::{includedir}/versions.adoc[]

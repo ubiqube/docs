@@ -1,9 +1,18 @@
 = Quickstart 
-:doctype: book
-:imagesdir: ./resources/
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :toc: top
-:toclevels: 4 
+:toclevels: 3
+
+//OK HTML 
+ifdef::html[]
+:includedir: doc-src/user-guide
+endif::[]
+
+// OK PDF
+ifdef::pdf[]
+:includedir: .
+endif::[]
 
 The quickstart covers how you can quickly get started using {product_name} by installing a mini lab.
 
@@ -130,8 +139,6 @@ At the end of the script execution, you need to restart the API container and th
 
 NOTE: more explainations on the script `install_libraries.sh` can be found link:#install_librairies[here].
 
-NOTE: The detail of what is included in the mini lab is available here: link:quickstart_packages{outfilesuffix}[mini lab packages]. 
-
 === Step 3: provision the mini lab with tenants, managed entities, etc.
 
 The mini lab comes with a Linux container (linux_me / 172.20.0.101) for experimentation.
@@ -176,22 +183,6 @@ You can use the guide to recreate the use case step by step or you may also dire
 For that, you'll have to select the subtenant named "TYRELL CORPORATION," click on the link "Automation" on the left menu and select the tab "Workflows." The workflow to use is "Simple Firewall (Python)."
 
 video::QRwv78yQWss[youtube,width=600px,height=360]
-
-== Going further with the mini lab
-After you have installed and activated the mini lab, here are some tutorials that will allow you to go further with {product_name}.
-
-.Tutorials
-These tutorials can be completely executed with the mini lab.
-
-- link:../developer-guide/workflow_getting_started_developing_python{outfilesuffix}[Helloworld Workflow for Python].
-- link:../developer-guide/workflow_getting_started_developing_php{outfilesuffix}[Helloworld Workflow for PHP].
-- link:../developer-guide/bpm_getting_started_developing{outfilesuffix}[Helloworld BPMP].
-- link:../developer-guide/microservices_getting_started_developing{outfilesuffix}[Getting Started with Microservices Design]: design a simple microservice to manage Linux users.
-- link:../lab-guide/simple_firewall_policy_mngt{outfilesuffix}[Firewall Policy Orchestration]: design micorservices and workflow to orchestrate firewall policy.
-
-.Demo and use cases
- - link:../lab-guide/demo_ansible{outfilesuffix}[Workflow: Ansible playbook runner]
- - link:../lab-guide/demo_public_cloud_automation_aws{outfilesuffix}[Workflow: VNF orchestration on AWS]
 
 == Mini lab additional info
 
@@ -278,3 +269,7 @@ Options:
 In case of calling this script on an existing setup, it will take care of merging the code from the Github master branch into your local development branch. With the option `-y`, an automated merge will be attempted, without the option, the script will ask for user input.
 
 IMPORTANT: when running the script on an existing setup, use the option `--no-lic` to make sure that your current license is not overwritten by a new trial license. 
+
+:leveloffset: +1
+
+include::{includedir}/libraries_packages.adoc[]

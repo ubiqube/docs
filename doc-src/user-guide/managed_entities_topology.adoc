@@ -6,9 +6,9 @@ The topology view is available on the portal and provides a graphical view of yo
 
 == Topology view
 
-The topology view is available in the "Infrastructure" section of the web user interface, in the tab "link:managed_entities{outfilesuffix}[Managed Entities]".
+The topology view is available in the "Infrastructure" section of the web user interface, in the tab "Managed Entities".
 
-When you browse to the topology view for the first time, the topology will be computed automatically based on the L3/SNMP topology mode (see below).
+When you browse to the topology view for the first time, the topology will be calculated automatically based on the L3/SNMP topology mode (see below).
 
 You can refresh the topology view, for instance after your infrastructure has been updated by clicking on the refresh button on the top right corner of the topology canvas.
 
@@ -90,7 +90,7 @@ if (!$error) {
 
 The VLAN mode provides a layer 2 view of your infrastructure.
 
-To generate this view you need first to create a new instance of the topology link:automation_workflows{outfilesuffix}[workflow] and select "VLAN" for the topology type. Once this is done you will see the layer 2 topology in the topology screen of the infrastructure.
+To generate this view you need first to create a new instance of the topology workflow and select "VLAN" for the topology type. Once this is done you will see the layer 2 topology in the topology screen of the infrastructure.
 
 image:topology_example_vlan.png[width=1000px]
 
@@ -159,7 +159,7 @@ Here are the steps to add a new topology `my_topology` to your {$product_name}
 
 === Step 1: prepare your developement environment
 
-The topology workflow is located under `/opt/fmc_repository/OpenMSA_WF/` in the container `msa_dev`, it's a git repository.
+The topology workflow is located under `/opt/fmc_repository/OpenMSA_WF/` in the container `msa_dev`, it's a git repository so you also need to make sure that it is up to date with `git status` and update your local repository with `git pull origin master` to get the latest updates.
 
 Under /opt/fmc_repository/Process, there is a symlink to the git repo: `Topology -> ../OpenMSA_WF/Topology`
 

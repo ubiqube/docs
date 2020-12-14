@@ -1,9 +1,6 @@
-= Quickstart: mini lab package description
-:doctype: book
-:imagesdir: ./resources/
+= Mini lab package description
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:toc: left
-:toclevels: 4 
 
 == Adapters
 

@@ -1,7 +1,7 @@
 = Administration Guide
 :toc: left
 :toclevels: 3
-:single:
+ifndef::imagesdir[:imagesdir: images]
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
@@ -13,6 +13,7 @@ endif::[]
 // OK PDF
 ifdef::pdf[]
 :includedir: .
+//:page-background-image: image:bg.png[fit=none,pdfwidth=50%,position=top]
 endif::[]
 
 :leveloffset: +1
