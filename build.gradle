@@ -88,7 +88,7 @@ asciidoctorPdf {
 
   sourceDir  file('doc-src')
   sources {
-    include 'user-guide/user-guide-single.adoc', 'admin-guide/admin-guide-single.adoc', 'developer-guide/developer-guide-single.adoc', 'release-notes/release_notes.adoc'
+    include 'user-guide/manager-guide-single.adoc', 'admin-guide/admin-guide-single.adoc', 'developer-guide/developer-guide-single.adoc', 'release-notes/release_notes.adoc'
   }
   outputDir  file('build/pdf')
 
