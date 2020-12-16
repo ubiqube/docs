@@ -1,4 +1,4 @@
-= Administration Guide
+= MSActivator(TM) Administration Guide
 :toc: left
 :toclevels: 3
 ifndef::imagesdir[:imagesdir: images]

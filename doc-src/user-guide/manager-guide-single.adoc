@@ -1,4 +1,4 @@
-= Manager Guide
+= MSActivator(TM) Manager Guide
 :toc: left
 :toclevels: 3
 ifdef::env-github,env-browser[:outfilesuffix: .adoc,window=_blank]

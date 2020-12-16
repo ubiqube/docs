@@ -7,10 +7,10 @@ ifdef::html[]
 [.stripes-none,cols="1,10",frame=none,grid=none,options="noheader",width="50%"]
 |===
 | image:html_icon.png[width=32px]
-| link:user-guide-single{outfilesuffix}[view as single html page,window=_blank]
+| link:manager-guide-single{outfilesuffix}[view as single html page,window=_blank]
 
 | image:pdf_icon.png[width=32px]
-| link:../pdf/user-guide/user-guide-single.pdf[download as PDF,window=_blank]
+| link:../pdf/user-guide/manager-guide-single.pdf[download as PDF,window=_blank]
 |===
 endif::[]
 
