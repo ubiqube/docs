@@ -9,9 +9,83 @@ All the events sent by the managed or monitored entities are collected, indexed 
 
 == Monitoring pofiles
 
-TODO
+=== Overview
 
-Monitoring profile will
+You can configure and monitor your KPI with the monitoring profiles. 
+
+A monitoring profiles is a way to configure a set of SNMP based KPI, configure threshold crossing based alarms and build graphs to display the KPI.
+
+A monitoring profile has to be associated to one or more managed entity(ies) and a managed entity can also be associated to several monitoring profile(s).
+
+image:assurance_mon_profile_overview_graph.png[width=700px]
+
+=== Create or edit a monitoring profile
+
+You can create a monitoring profile by browsing to the "Infrastructure" menu and selecting the tab "Monitoring Profiles" and clicking "+ Create Monitoring profile".
+
+A monitoring profile is made out of 2 parts: the SNMP polling and the graphical rendering. Although SNMP polling is mandatory to have the {product_name} poll for the KPI, the graphical rendeting is optional.
+
+==== SNMP polling
+
+Click "+ Add Rule" to add a new KPI.
+
+image:assurance_mon_profile_overview_add_rule.png[width=700px]
+
+.Name
+The name will be used internally to identify the KPI in the KPI database and in the UI to build the graphical rendering.
+
+.OID
+The MIB OID to read to get the value of the KPI. 
+
+.Type
+Select Gauge or Counter (see below for detail on this field).
+
+.Min/Max
+For gauge, the max value will be used to trim any KPI value to the value set as max.
+
+.Poll every
+Default is to poll for the KPI every minute but it possible to set a lower frequency for KPI that are less critical for instance.
+
+.Comparator, threshold and alert frequency
+Configure an alarm based on threshold crosssing (for instance if the CPU goes over 80%). See below for more details
+
+===== Gauge or Counter
+
+The rrd graph rendering will be different for counter or for gauge.
+
+For a gauge the value of the record is the value on the graph.
+
+For a counter a value in the graph is calculated with the difference between two consecutive records divided by the period of time. In other words a rrd counter will convert the input into a rate. 
+
+For example, if you monitor network traffic on an interface you need to use counter because the MIB stores the total traffic that went through the interface and what you want to see in the graph is actuall the traffic rate and see how it evolves in time
+
+image:assurance_mon_profile_graph_linux_traffic.png[width=700px]
+
+If you monitor the CPU usage, or the memory usage, you need to select a gauge becasue the MIB stores the actual current value of the KPI.
+
+.CPU usage on a linux server
+image:assurance_mon_profile_graph_linux_cpu.png[width=700px]
+
+.Memory usage on a linux server
+image:assurance_mon_profile_graph_linux_memory.png[width=700px]
+
+====== Threshold based alarm
+
+Is is possible to configure alarm based on KPI threshold crossing. 
+
+This is useful to monitor resources such as CPU or memory consumption. 
+When a KPI crosses a threshold, and alarm will be raised visible in the logs in the "Alarm" section.
+
+image:assurance_mon_profile_alarm.png[width=700px]
+
+==== Graphical rendering
+
+For each monitoring profile you can also create a graph to agregate and display 1 or more KPI defined in the SNMP polling section.
+
+Since the KPI are going to be displayed in the same graph, you need to ensure that the data is consistent. Displaying CPU load and network traffic in the same graph is allowed but will not make any sense. In this case you need to have 2 monitoring profiles for each set of KPI.
+
+image:assurance_mon_profile_overview_rendering.png[width=700px]
+
 == Log analytics
 
 === Overview
@@ -21,14 +95,14 @@ Once indexed, the logs are fully searchable from the user interface.
 
 The diagram below shows the syslog processing steps from the device to Elasticsearch. 
 
-image:assurance_log_analysis_event_flow.png[width=1000px]
+image:assurance_log_analysis_event_flow.png[width=700px]
 
 [#log_anal]
 === Search logs
 
 Event stored in ELasticsearch can searched from UI under the section "Alarms" > "Logs"
 
-image:assurance_log_search.png[width=1000px]
+image:assurance_log_search.png[width=700px]
 
 [#alarm]
 == Alarm management
