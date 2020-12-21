@@ -61,7 +61,7 @@ For example, if you monitor network traffic on an interface you need to use coun
 
 image:assurance_mon_profile_graph_linux_traffic.png[width=700px]
 
-If you monitor the CPU usage, or the memory usage, you need to select a gauge becasue the MIB stores the actual current value of the KPI.
+If you monitor the CPU usage, or the memory usage, you need to select a gauge because the MIB stores the actual value of the KPI.
 
 .CPU usage on a linux server
 image:assurance_mon_profile_graph_linux_cpu.png[width=700px]
@@ -100,7 +100,7 @@ image:assurance_log_analysis_event_flow.png[width=700px]
 [#log_anal]
 === Search logs
 
-Event stored in ELasticsearch can searched from UI under the section "Alarms" > "Logs"
+The event stored in Elasticsearch can searched from UI in the section "Alarms" > "Logs"
 
 image:assurance_log_search.png[width=700px]
 
