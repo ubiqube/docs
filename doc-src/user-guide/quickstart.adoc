@@ -58,16 +58,6 @@ The custom configuration below may not be needed depending on your host computer
 
 In a production environment, these custom configuration may be mandatory to allow your setup to support a higher workload.
 
-////
-=== Support for IPv6
-
-Follow this guide to enable IPv6 on your docker engine: link:https://docs.docker.com/config/daemon/ipv6/[Enable IPv6 support]
-
-You can also use the Docker console to configure IPv6.
-
-image:./images/docker_setting.png[]
-////
-
 ==== Docker for Linux (or Linux VM)
 
 ----
@@ -104,11 +94,6 @@ sudo sysctl -w vm.max_map_count=262144
 sudo tee -a /etc/sysctl.conf <<< "vm.max_map_count=262144"
 ----
 
-////
-.Github repository
-This guide is composed of a link:https://github.com/ubiqube/quickstart[git repository] which is mainly a set of Dockerfile and docker-compose.xml files to pull the {product_name} from link:https://hub.docker.com/[Dockerhub] 
-////
-
 == Mini lab creation
 
 === Step 1: creation
@@ -117,19 +102,23 @@ This guide is composed of a link:https://github.com/ubiqube/quickstart[git repos
 2. `git clone https://github.com/ubiqube/quickstart.git` to clone the GitHub repository on you computer.
 3. `cd quickstart`
 4. `git checkout tags/{revnumber} -b {revnumber}`
-5. `docker login` (check the note below)
-6. `docker-compose up -d` to download and install the {product_name} containers and create the mini lab.
-
-IMPORTANT: for `docker login`, use the Docker ID "msa2trial" and the link:https://docs.docker.com/docker-hub/access-tokens/[access token] provided by your main point of contact at UBiqube. 
+5. `docker-compose up -d` to download and install the {product_name} containers and create the mini lab.
 
 NOTE: If you are already running the {product_name} and wish to upgrade it to a new version check the link:#upgrade[documentation below]
 
 NOTE: The architecture of the mini lab is detailed in this link:../admin-guide/architecture_overview{outfilesuffix}[documentation].
 
 [#step2]
-=== Step 2: install the trial license and the libraries (Microservices, Workflows and Adapters) from github.com/openmsa
+=== Step 2: install the trial license 
 
-The free trial license is automatically installed during this step, the license is valid for 30 days and allows the creation of 5 link:../user-guide/managed_entities{outfilesuffix}[managed entities].
+On link:https://ubiqube.com/free-trial/[ubiqube.com], fill the form to receive a trial license by email.
+
+Open link:https://localhost/[window=_blank] and connect with username `ncroot` and password `ubiqube`. 
+
+Browse to "Settings" in the left menu and upload the free trial license you received.
+
+[#step3]
+=== Step 3: the libraries (Microservices, Workflows and Adapters) from github.com/openmsa
 
 `docker-compose exec msa_dev /usr/bin/install_libraries.sh all`
 
@@ -139,9 +128,9 @@ At the end of the script execution, you need to restart the API container and th
 
 NOTE: more explainations on the script `install_libraries.sh` can be found link:#install_librairies[here].
 
-=== Step 3: provision the mini lab with tenants, managed entities, etc.
+=== Step 4: provision the mini lab with tenants, managed entities, etc.
 
-The mini lab comes with a Linux container (linux_me / 172.20.0.101) for experimentation.
+The mini lab comes with 2 Linux container (linux_me / 172.20.0.101 and linux_me_2 / 172.20.0.102) for experimentation.
 
 Credentials for the Linux machine are:
 
@@ -152,29 +141,30 @@ In order to ease your discovery of {product_name}, we are providing a script tha
 
 - 1 tenant - BladeRunner
 - 1 subtenant - Tyrell Corporation
-- a managed entity to manage the Linux container - linux_me
-- some microservices and workflow to start configuring the managed entity - users, firewall, etc.
+- 2 managed entity to manage the Linux container - linux_me
+- some microservices and workflows to start configuring the managed entity - users, firewall, etc.
 
 To create the mini lab environment, run the CLI command from where you have cloned the quickstart Github project:
+
 ```
 $ sudo docker-compose exec msa_dev /usr/bin/create_mini_lab.sh
 ```
 
-=== Step 4 (optional): Setting up log aggregation for linux_me
+=== Step 5 (optional): Setting up log aggregation for linux_me
 1. `docker-compose exec linux_me bash` issue this command from the host machine in order to connect to linux_me.
 2. `[root@linux_me /]# echo '*.* @msa_front' > /etc/rsyslog.d/mini_lab.conf` to create rsyslog configuration.
 3. `[root@linux_me /]# service rsyslog restart` restart the service.
 
 Now you should start to see device logs for linux_me appearing in the alarm section of the {product_name} portal.
 
-=== Step 5: start using the {product_name}
+=== Step 6: start using the {product_name}
 
 Browse: link:https://localhost/[window=_blank] and connect with username `ncroot` and password `ubiqube`. 
 
 == Mini lab detailed description
 === Use case 1: firewall orchestration on Linux
 
-This lab use case will show you in a simple way how you can use {product_name} to automate the configuration of iptables-based firewall policy on the Linux container included in the mini lab.
+This lab use case will show you in a simple way how you can use {product_name} to automate the configuration of iptables-based firewall policy on the Linux containers included in the mini lab.
 
 The development of this use case is detailled in this guide: link:../lab-guide/simple_firewall_policy_mngt{outfilesuffix}[Firewall Policy Automation]
 
@@ -201,13 +191,12 @@ Starting from it's version 2.2.0, the quickstart project provides a script `upgr
 
 Let's say that you are running the version {revnumber-prev}, to upgrade to the version {revnumber} you need to follow these steps:
 
-1. `docker login` (in case you are not authenticated yet)
-2. `cd quickstart`
-3. `git checkout master`
-4. `git pull`
-5. `git fetch --all --tags`
-6. `git checkout tags/{revnumber} -b {revnumber}`
-7. `./scripts/upgrade.sh` 
+1. `cd quickstart`
+2. `git checkout master`
+3. `git pull`
+4. `git fetch --all --tags`
+5. `git checkout tags/{revnumber} -b {revnumber}`
+6. `./scripts/upgrade.sh` 
 
 NOTE: when running the upgrade script, it will ask you if you want your local librairies to be updated with the latest version from the community. If you answer 'y', the update will be done automatically. You can also do the update later manually on the container `msa_dev`.
 
