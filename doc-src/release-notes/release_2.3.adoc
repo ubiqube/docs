@@ -8,15 +8,39 @@ Various fixes have been made to the product to ensure its continued ability to e
 
 The following feature improvements are included with this release:
 
-=== Topology
-
 === BPM
+
+* New look and feel
+* Extended support for BPMN 2.0:
+** decision gateway
+** parallel gateway
+** User breakpoint
+** Per subtennt association
+** Execution instance management
+
+image:bpm.png[width=700px]
 
 === Microservices
 
 === Workflows
 
+=== DevOps
+
+Support for automated synchronisation with a remote git repository for microservices, workflows and BPM.
+
+image:devops.png[width=700px]
+
 === Assurance
+
+Monitoring profile will allow you to:
+ 
+ * Configure custom KPI.
+ * Configure threshold crossing based alarms.
+ * Design and display custom monitoring graphs.
+
+=== User management
+
+Create permision profile to control user rights.
 
 == CoreEngine
 
@@ -24,7 +48,7 @@ No changes have been made to the core engine from previous versions of the produ
 
 == Upgrading
 
-Instructions to upgrade are here: link:../user-guide/quickstart{outfilesuffix}#upgrade[upgrade guide]
+Instructions to upgrade available in the quickstart guide.
 
 === Specific instruction for upgrating from {revnumber-prev} to {revnumber}
 
@@ -32,12 +56,11 @@ Starting from version 2.2.0, the quickstart provides an upgrade script `upgrade.
 
 Let's say that you are running {product_name} version {revnumber-prev}, to upgrade to the version {revnumber}, you need to follow these steps:
 
-1. `$ sudo docker login` (in case you are not authenticated yet)
-2. `$ cd quickstart`
-3. `$ git checkout master`
-4. `$ git pull`
-5. `$ git checkout tags/{revnumber} -b {revnumber}`
-6. `$ ./scripts/upgrade.sh`
+1. `$ cd quickstart`
+2. `$ git checkout master`
+3. `$ git pull`
+4. `$ git checkout tags/{revnumber} -b {revnumber}`
+5. `$ ./scripts/upgrade.sh`
 
 == Specific technical fixes and feature details
 
