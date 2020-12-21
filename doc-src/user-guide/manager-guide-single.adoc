@@ -1,7 +1,7 @@
 = MSActivator(TM) Manager Guide
 :toc: left
 :toclevels: 3
-ifdef::env-github,env-browser[:outfilesuffix: .adoc,window=_blank]
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 ifndef::imagesdir[:imagesdir: images]
 
 //OK HTML 
