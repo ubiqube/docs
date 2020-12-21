@@ -4,7 +4,6 @@
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 ifndef::imagesdir[:imagesdir: images]
 
-
 //OK HTML 
 ifdef::html[]
 :includedir: doc-src/developer-guide
