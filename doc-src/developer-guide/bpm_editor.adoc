@@ -8,7 +8,7 @@ The BPM editor is a web based UI for designing BPM processes.
 
 To create a new BPM from the developer portal, click on "+ Create" from the swimlane "BPM Library." 
 
-You can also browse through the existing BPM by clicking on "See more."
+You can also browse through the existing BPM by clicking on "See more".
 
 image:developer_dashboard_bpm.png[width=700px]
 
@@ -18,7 +18,7 @@ NOTE: you need to select a sub-tenant to see the BPM.
 
 The {product_name} BPM engine supports the following BPMN elements:
 
-image:bpm_start_event.png[] the first element of the BPM process.
+image:bpm_start_event.png[] indicates the beginning of the BPM process.
 
 image:bpm_end_event.png[] indicates the end of the BPM process.
 
@@ -29,6 +29,8 @@ image:bpm_xor_gateway_event.png[] represents an exclusive decision gateway (XOR)
 image:bpm_parallel_gateway_event.png[] represents an parallel gateway (AND).
 
 image:bpm_breakpoint_event.png[] represents a user break point.
+
+NOTE: Bear in mind that a gateway is not a task! You have to determine facts and needs before reaching a gateway.
 
 === Parallel gateway (AND)
 
@@ -117,13 +119,13 @@ image:bpm_user_breack_point.png[width=700px]
 
 === Execution tracking
 
-The BPM engine will start executing the BPM tasks one by one and the status of the current workflow process execution will be updated live in the "LATEST EXECUTIONRESULT" view while the detail of the process execution will be displayed.
+The BPM engine will start executing the BPM tasks one by one and the status of the current workflow process execution will be updated live in the view "LATEST EXECUTION RESULT" while the detail of the process execution will be displayed.
 
 image:bpm_execution_tracking.png[width=700px]
 
 === BPM instances management
 
-BPM are associated to a subtenant and in a way which is very similar to workflows, you can manage the instances of BPM executions.
+BPM are associated to a subtenant in a way which is very similar to workflows, you can manage the instances of BPM executions.
 
 For instance, if you executed a BPM with a breakpoint, you don't need to leave the BPM execution screen open. You can trigger the execution, close the screen and later, select the instance and open it.
 
