@@ -5,7 +5,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 [cols="3*"] 
 |===
 
-a| link:user-guide/index{outfilesuffix}[Manager Guide,window=_blank] link:pdf/user-guide/user-guide-single.pdf[(pdf),window=_blank] 
+a| link:user-guide/index{outfilesuffix}[Manager Guide,window=_blank] link:pdf/user-guide/manager-guide-single.pdf[(pdf),window=_blank] 
 
 a| link:developer-guide/index{outfilesuffix}[Developer Guide,window=_blank] link:pdf/developer-guide/developer-guide-single.pdf[(pdf),window=_blank]
 
