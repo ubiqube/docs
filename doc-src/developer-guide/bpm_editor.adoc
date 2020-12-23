@@ -4,6 +4,9 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 The BPM editor is a web based UI for designing BPM processes.
 
+image:workflow_overall_architecture.png[width=700px] 
+
+
 == BPM design
 
 To create a new BPM from the developer portal, click on "+ Create" from the swimlane "BPM Library." 
