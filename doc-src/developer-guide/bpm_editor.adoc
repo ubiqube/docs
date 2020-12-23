@@ -114,7 +114,7 @@ With the execution breakpoint you can create pauses in the BPM flow execution. T
 
 Breakpoints can be used for debugging a complex BPM process without triggering all the workflow and doing a step by step execution. It can also be used to organise a complex BPM into several part and allow for manual validation of each intermediate steps.
 
-image:bpm_user_breack_point.png[width=700px]
+image:bpm_user_breakpoint.png[width=700px]
 
 
 === Execution tracking
