@@ -20,6 +20,7 @@ A workflow is composed of:
 In order to use a Workflow, it has first to be associated to a subtenant.
 To do so, you need to select a WF from the list and click on "Add to..."
 
+.Workflows available in the system
 image:automation_wf_list_add_to_customer.png[Workflow Add to subtenant,width=700px]
 
 This will open a dialog popup where subtenant will able to select the subtenant to add/remote to/from a workflow
@@ -33,6 +34,7 @@ This will display the subtenant management dashboard for the workflows.
 
 This dashboard shows the overall status of process execution.
 
+.Workflow status dashboard
 image:automation_manager_dashboard.png[Workflow Manager Dashboard,width=700px]
 
 To use a workflow, you have select it from the list at the bottom of the screen. 
@@ -42,6 +44,7 @@ This will open a screen with the list of the workflow instance and actions to cr
 
 Use the action on the top right to create a new instance of the workflow, select the actions available on an instance to call the processes available for this workflow.
 
+.Use "+ Create Firewall Service" to create a new instance of the workflow
 image:automation_workflow_instance_list.png[Workflow Instance List,width=700px]
 
 ==== Instance lifecycle
@@ -53,6 +56,7 @@ The form may not always require parameters (this would be the case of the defaul
 
 The example below shows a user form with some network related information, scroll down and click on "Run" to execute the instance creation process.
 
+.Update the workflow instance by calling one of the update or delete processes
 image:automation_workflow_instance_create_form.png[Workflow Create Form,width=700px]
 
 Once an instance is created, you can execute any process available to either update the instance state and run some automated task or delete the process instance. 
@@ -64,6 +68,22 @@ A typical example of a workflow lifecycle is the one to mangage VNF on a cloud:
 - CREATE process: the user provide the VNF specific parameters and the process execute to create the VNF on the cloud, create and activate the Managed Entity on the {product_name}.
 - UPDATE processes: the user can ask for scale up/down or configuration changes of the VNF
 - DELETE process: the VNF is removed as well as any related resources
+
+===== Process execution scheduling
+
+If a process has been configured to allow scheduling (see documentation about the workflow editor), it is possible to schedule the execution of a process.
+
+[width=100%, cols=5*,options="header"]
+|===
+| Schedule | Execute Every | Pick at least one | Start date | End date
+| Once     | NA            | NA                | define when the process should execute | NA
+| Minute   | execution frequency | NA             | define the start date | define the end date
+| Hourly   | execution frequency | NA             | define the start date | define the end date
+| Daily   | execution frequency |  Select the week day(s) for execution           | define the start date | define the end date
+| Weekly   | execution frequency | NA           | define the start date | define the end date
+| Monthly   | execution frequency | Select the month(s) for execution          | define the start date | define the end date
+|===
+
 
 === Get information about workflow instance status
 
