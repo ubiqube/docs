@@ -71,25 +71,32 @@ asciidoctorPdf {
     options doctype: 'book'
 
     attributes \
+      'sourcedir': project.sourceSets.main.java.srcDirs[0],
+      'organization' : 'UBiqube',
  	    'source-highlighter' : 'rouge',
-      'linkcss': true,
-      'product_name': 'MSActivator(TM)',
-      'product_name-version': 'MSActivator-2.3.0 GA',
-      'openmsa_name': 'OpenMSA(TM)',
-      'revnumber': 'MSA-2.3.0',
-      'revnumber-prev': 'MSA-2.2.0',
-      'allow-uri-read': '',
-      'sectlinks': true,
-      'pdf': 'true',
-      'format': 'html',
+      'linkcss' : true,
+      'product_name' : 'MSActivator(TM)',
+      'product_name-version' : 'MSActivator-2.3.0 GA',
+      'openmsa_name' : 'OpenMSA(TM)',
+      'revnumber' : 'MSA-2.3.0',
+      'revnumber-prev' : 'MSA-2.2.0',
+      'allow-uri-read' : '',
+      'sectlinks' : true,
+      'pdf' : 'true',
+      'format': 'pdf',
       'icons' : 'font',
-      'page-background-image' : 'image:bg.jpg[fit=cover,pdfwidth=100%,position=top]'
+      'pdf-style' : file('./resources/themes/ubiqube-theme.yml'),
+      //'pdf-fontsdir' : file('./resources/fonts'),
+      'page-background-image' : 'image:bg.jpg[fit=cover,pdfwidth=100%,position=top]',
+      //'front-cover-image' : 'image:admin-front-cover.pdf[]',
+      'notitle' : ''
   }
 
   sourceDir  file('doc-src')
   sources {
     include 'user-guide/manager-guide-single.adoc', 'admin-guide/admin-guide-single.adoc', 'developer-guide/developer-guide-single.adoc', 'release-notes/release_notes.adoc'
-  }
+    //include 'admin-guide/admin-guide-single.adoc'
+ }
   outputDir  file('build/pdf')
 
   resources {
@@ -106,7 +113,4 @@ asciidoctorPdf {
 }
 
 // alias
-//task asciidoc(dependsOn: asciidoctor)
 task asciidoc_pdf(dependsOn: asciidoctorPdf)
-
-//task asciidoc_all(dependsOn: asciidoctor, asciidoctorPdf)
