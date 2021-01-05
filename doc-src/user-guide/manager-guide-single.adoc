@@ -25,7 +25,11 @@ include::{includedir}/key_concepts.adoc[]
 
 include::{includedir}/gui_overview.adoc[]
 
+include::{includedir}/tenants_and_users.adoc[]
+
 include::{includedir}/managed_entities.adoc[]
+
+include::{includedir}/assurance.adoc[]
 
 include::{includedir}/microservices.adoc[]
 
@@ -38,10 +42,6 @@ include::{includedir}/automation_workflows.adoc[]
 include::{includedir}/automation_workflow_utilities.adoc[]
 
 include::{includedir}/bpm.adoc[]
-
-include::{includedir}/assurance.adoc[]
-
-include::{includedir}/tenants_and_users.adoc[]
 
 include::{includedir}/settings.adoc[]
 

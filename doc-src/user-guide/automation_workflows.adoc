@@ -6,12 +6,12 @@ Workflows allows the creation and management of complex automated processes.
 
 == Overview
 
-This guide explains how to list workflows, select them and run them.
+This guide explains how to find, select and run worflows.
 
 A workflow is composed of:
 
-- A collection of processes, where each process is composed of a set of executable tasks.
-- A list of variables that will be stored in the database and are holding the state of a workflow instance.
+- A collection of processes, where each process is composed of a set of executable tasks implemented in Python or PHP.
+- A list of variables stored in the database and are holding the state of a workflow instance.
 - Some administrative information used to manage the service in the service console.
 
 [#workflow_selection]

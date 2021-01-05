@@ -2,22 +2,25 @@
 ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
+[.center]
+image:msa_arch_assurance.png[width=400px]
+
 The {product_name} provides an assurance module for collecting network events and managing alarms
 
 All the events sent by the managed or monitored entities are collected, indexed and analyzed centrally.
 
-
-== Monitoring pofiles
+== Monitoring profiles
 
 === Overview
 
 You can configure and monitor your KPI with the monitoring profiles. 
 
-A monitoring profiles is a way to configure a set of SNMP based KPI, configure threshold crossing based alarms and build graphs to display the KPI.
+A monitoring profiles is a way to configure a set of SNMP based KPI, to configure threshold crossing based alarms and build graphs to display the KPI.
 
 A monitoring profile has to be associated to one or more managed entity(ies) and a managed entity can also be associated to several monitoring profile(s).
 
-image:assurance_mon_profile_overview_graph.png[width=700px]
+.Select a graphical rendering for a managed entity
+image:assurance_mon_profile_overview_graph.png[width=800px]
 
 === Create or edit a monitoring profile
 
@@ -29,7 +32,8 @@ A monitoring profile is made out of 2 parts: the SNMP polling and the graphical 
 
 Click "+ Add Rule" to add a new KPI.
 
-image:assurance_mon_profile_overview_add_rule.png[width=700px]
+.create a new KPI
+image:assurance_mon_profile_overview_add_rule.png[width=800px]
 
 .Name
 The name will be used internally to identify the KPI in the KPI database and in the UI to build the graphical rendering.
@@ -57,17 +61,18 @@ For a gauge the value of the record is the value on the graph.
 
 For a counter a value in the graph is calculated with the difference between two consecutive records divided by the period of time. In other words a rrd counter will convert the input into a rate. 
 
-For example, if you monitor network traffic on an interface you need to use counter because the MIB stores the total traffic that went through the interface and what you want to see in the graph is actuall the traffic rate and see how it evolves in time
+For example, if you monitor network traffic on an interface you need to use counter because the MIB stores the total traffic that went through the interface and what you want to see in the graph is actually the traffic rate and see how it evolves in time
 
-image:assurance_mon_profile_graph_linux_traffic.png[width=700px]
+.Traffic monitoring
+image:assurance_mon_profile_graph_linux_traffic.png[width=800px]
 
 If you monitor the CPU usage, or the memory usage, you need to select a gauge because the MIB stores the actual value of the KPI.
 
 .CPU usage on a linux server
-image:assurance_mon_profile_graph_linux_cpu.png[width=700px]
+image:assurance_mon_profile_graph_linux_cpu.png[width=800px]
 
 .Memory usage on a linux server
-image:assurance_mon_profile_graph_linux_memory.png[width=700px]
+image:assurance_mon_profile_graph_linux_memory.png[width=800px]
 
 ====== Threshold based alarm
 
@@ -76,7 +81,7 @@ Is is possible to configure alarm based on KPI threshold crossing.
 This is useful to monitor resources such as CPU or memory consumption. 
 When a KPI crosses a threshold, and alarm will be raised visible in the logs in the "Alarm" section.
 
-image:assurance_mon_profile_alarm.png[width=700px]
+image:assurance_mon_profile_alarm.png[width=800px]
 
 ==== Graphical rendering
 
@@ -84,7 +89,20 @@ For each monitoring profile you can also create a graph to agregate and display 
 
 Since the KPI are going to be displayed in the same graph, you need to ensure that the data is consistent. Displaying CPU load and network traffic in the same graph is allowed but will not make any sense. In this case you need to have 2 monitoring profiles for each set of KPI.
 
-image:assurance_mon_profile_overview_rendering.png[width=700px]
+.Configure the graphical rendering for a set of KPI
+image:assurance_mon_profile_overview_rendering.png[width=800px]
+
+== SNMP trap monitoring
+
+The {product_name} can collect and index SNMP traps out of the box.
+
+To monitor a managed entity with SNMP traps you need to configure the managed entity with *Collect Syslog* and *Analyse Syslog* enabled.
+
+When the {product_name} collects a trap, it relies on the trap source IP address to identify the managed entity by it's management IP address. 
+
+Once a management entity is identified, the trap will be processed the same way as a syslog and will be indexed in Elasticsearch. It will then be listed in the logs screen in the "Alarms" section.
+
+image:assurance_traps_search.png[width=800px]
 
 == Log analytics
 
@@ -95,14 +113,16 @@ Once indexed, the logs are fully searchable from the user interface.
 
 The diagram below shows the syslog processing steps from the device to Elasticsearch. 
 
-image:assurance_log_analysis_event_flow.png[width=700px]
+.Syslog event flow
+image:assurance_log_analysis_event_flow.png[width=800px]
 
 [#log_anal]
 === Search logs
 
 The event stored in Elasticsearch can searched from UI in the section "Alarms" > "Logs"
 
-image:assurance_log_search.png[width=700px]
+.Log analytics screen
+image:assurance_log_search.png[width=800px]
 
 [#alarm]
 == Alarm management
@@ -123,14 +143,15 @@ The rules are executed on a periodic basis (the period frequency can be configur
 Alarm Rule can be created from the Manage Alarms tab, as show in the below screen shot. 
 Alarm Name shoud be Unique across the SOC and it should not contain space. 
 
-
-image:assurance_manage_alarm.png[width=1000p]
+.Alarm rule management screen
+image:assurance_manage_alarm.png[width=800px]
 
 === Create or edit an alarm 
 
 Alarm creation contains Four sections below
 
-image:assurance_manage_alarm_edit.png[width=1000p]
+.Edit an alarm
+image:assurance_manage_alarm_edit.png[width=800px]
 
 ==== Detail
 
@@ -158,7 +179,7 @@ Define the number of events and the time period to consider for triggering one a
 
 ==== Notification
 
-Select the link:tenants_and_users{outfilesuffix}[user roles] that will be notified by email when an alarm is raised.
+Select the user roles that will be notified by email when an alarm is raised.
 
 ==== Actions
 
@@ -168,4 +189,4 @@ Choose the workflow and the process to execute when an alarm is triggered.
 
 For alarms to be notified as email, we need a proper SMTP relay to be configured. 
 
-To update the configuration of your setup, use this link:../developer-guide/rest_api{outfilesuffix}#msa_configuration[REST API] to update the configuration variables `UBI_SMTP_IPADDR` and `UBI_MAIL_SMTP` with the IP address of your SMTP server.
+To update the configuration of your setup, use the `POST /system-admin/v1/msa_vars` REST API to update the configuration variables `UBI_SMTP_IPADDR` and `UBI_MAIL_SMTP` with the IP address of your SMTP server.

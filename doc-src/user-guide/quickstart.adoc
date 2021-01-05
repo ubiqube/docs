@@ -113,9 +113,11 @@ NOTE: The architecture of the mini lab is detailed in this link:../admin-guide/a
 
 On link:https://ubiqube.com/free-trial/[ubiqube.com], fill the form to receive a trial license by email.
 
-Open link:https://localhost/[window=_blank] and connect with username `ncroot` and password `ubiqube`. 
+Open link:https://localhost/[window=_blank] and connect with username `ncroot` and password `ubiqube`.
 
 Browse to "Settings" in the left menu and upload the free trial license you received.
+
+NOTE: use localhost if you are using your PC as the docker host, otherwise use the IP address assigned to the docker host.
 
 [#step3]
 === Step 3: the libraries (Microservices, Workflows and Adapters) from github.com/openmsa
