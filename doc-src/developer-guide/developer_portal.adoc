@@ -4,15 +4,9 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 The developer portal provides the tools to design, develop and test automated and integrated processes.
 
+.Developer dashboard
 image:developer_dashboard.png[width=600px]
 
 After connecting to the developer portal you will see the 3 swimlanes for the automation and integration provided by the {product_name}.
 
 You can either start creating new libraries or view and edit the existing ones.
-
-
-- link:microservice_editor{outfilesuffix}[microservices]
-- link:workflow_editor{outfilesuffix}[workflows]
-- link:bpm_editor{outfilesuffix}[BPM]
-
-

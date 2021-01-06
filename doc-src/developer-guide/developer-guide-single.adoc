@@ -21,17 +21,34 @@ This documentation contains a set of tutorials and examples to help you get fami
 
 include::{includedir}/developer_portal.adoc[]
 
-include::{includedir}/bpm_getting_started_developing.adoc[]
 
 include::{includedir}/bpm_editor.adoc[]
+
+:leveloffset: +1
+
+include::{includedir}/bpm_getting_started_developing.adoc[]
+
+:leveloffset: -1
+
+include::{includedir}/workflow_editor.adoc[]
+
+:leveloffset: +1
+
+include::{includedir}/workflow_variables.adoc[]
 
 include::{includedir}/workflow_getting_started_developing_php.adoc[]
 
 include::{includedir}/workflow_getting_started_developing_python.adoc[]
 
-include::{includedir}/workflow_editor.adoc[]
+include::{includedir}/workflow_python_sdk.adoc[]
 
-include::{includedir}/workflow_variables.adoc[]
+include::{includedir}/workflow_php_sdk.adoc[]
+
+:leveloffset: -1
+
+include::{includedir}/microservice_editor.adoc[]
+
+:leveloffset: +1
 
 include::{includedir}/microservice_xml_editor.adoc[]
 
@@ -41,21 +58,20 @@ include::{includedir}/microservice_variables.adoc[]
 
 include::{includedir}/microservice_smarty_templating.adoc[]
 
+
 include::{includedir}/microservices_getting_started_developing.adoc[]
 
 include::{includedir}/microservice_order_command_api.adoc[]
 
 include::{includedir}/microservice_stack_management_api.adoc[]
 
+:leveloffset: -1
+
 include::{includedir}/adapter_development.adoc[]
 
-include::{includedir}/rest_api.adoc[]
-
-include::{includedir}/workflow_python_sdk.adoc[]
-
-include::{includedir}/workflow_php_sdk.adoc[]
-
 include::{includedir}/local_repository_management.adoc[]
+
+include::{includedir}/rest_api.adoc[]
 
 include::{includedir}/devops-best-practices.adoc[]
 

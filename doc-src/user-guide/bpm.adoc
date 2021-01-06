@@ -2,23 +2,30 @@
 ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
+ifdef::html[]
+[.center]
+image:msa_arch_bpm_use.png[width=400px]
+endif::[]
+
+*BPM* (Business Process Management) allow the execution of complex business process by automating a flow of workflow execution.
+
+== Overview
+
 The integrated BPM engine can be accessed by clicking the "Automation" link in the left menu. 
 
-You need to select a subtenant to see the list of BPM that can be executed for a specific subtenant. BPM definition and instances work in a similar way as for workflows where you first need to associate a BPM to a subtenant and then each execution of a BPM will create in instance that you can manage.
-
-Some instance may not have an end time set, this is because either the BPM is still executing or the BPM execution is paused by a user breakpoint. 
+You need to select a subtenant to see the list of BPM that can be executed for a specific subtenant. BPM definition and instances work in a similar way as for workflows: you first need to associate a BPM to a subtenant and then each execution of a BPM will create a new instance that can be managed.
 
 Use the "i" (information icon) to open a BPM instance and view it's detailed status.
 
 A BM instance can be deleted with the "trash" icon.
 
 .BPM instance for a subtenant
-image:bpm_instances.png[width=700px]
+image:bpm_instances.png[width=800px]
 
 Click on "+ Execute BPM" to execute the BPM process. The BPM engine will start executing the BPM tasks one by one and the status of the current workflow process execution will be updated live in the "LATEST EXECUTION RESULT" view while the detail of the process execution will be displayed.
 
 .BPM execution
-image:bpm_execution.png[width=700px]
+image:bpm_execution.png[width=800px]
 
 
 == Execution breakpoint
@@ -27,8 +34,10 @@ With the execution breakpoints the execution of a BPM can be paused until the us
 
 It can be used to execute complex BPM with several part and allow for manual validation of each intermediate steps.
 
+When a BPM execution is paused, the instance will be listed with an empty execution end date.
+
 .Resume a BPM execution
-image:bpm_user_breakpoint.png[width=700px]
+image:bpm_user_breakpoint.png[width=800px]
 
 
 == Execution tracking
@@ -38,5 +47,5 @@ The BPM engine will start executing the BPM tasks one by one and the status of t
 Click "Show Tasks" to see the detail of the process execution.
 
 .BPM execution tracking
-image:bpm_execution_tracking.png[width=700px]
+image:bpm_execution_tracking.png[width=800px]
 

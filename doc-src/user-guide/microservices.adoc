@@ -2,9 +2,15 @@
 ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-The {product_name} microservices engine is designed as an automation object-based programming language.
+image:msa_arch_ms_use.png[width=400px]
+
+*Microservices* can be used to manage a wide variety of services on numerous types of devices, such as network equipment, virtualization infrastructure managers, or even Linux servers.
+
+== Overview
 
 Any feature of any device can be managed with one or more microservices. 
+
+The {product_name} microservices engine is designed as an automation object-based programming language.
 Microservice designers define the variables and implement the Create | Read | Update | Delete method.
 
 Such an open and agile approach is required to provide the abstraction layer on top of any device from the core to the edge.
@@ -18,15 +24,17 @@ Microservices can be designed graphically in the {product_name} developer portal
 
 Scripting is not mandatory but simple programming functions, such as conditional statements, loops, and variable assignments, is available to incorporate advanced function behaviors.
 
-== Use microservice
+== Select microservices
 
 The list  microservices available can be viewed by clicking on the "Infrastructure" link from the left menu.
 
-image:configurations_me_list_admin.png[Microservice List]
+.List the microservices available
+image:configurations_me_list_admin.png[width=800px]
 
 From this page you can search for a named microservice by using the search field with the magnifier icon.
 
-image:configurations_ms_search.png[Microservice Search]
+.Search for microservices in the library
+image:configurations_ms_search.png[width=800px]
 
 From this page you can create or edit microservices - which is part of microservice design (cf. section below).
 
@@ -39,11 +47,12 @@ In order to use a microservice, it has to be associated to a managed entity via 
 
 With the microservice console you will be able to use the microservices associated to a managed entity to configure the managed entity.
 
-You can access the console by selecting the managed entity you want to configure and going to the tab "Configure"
+To access the console, select the managed entity and browse to the tab "Configure"
 
-image:microservice_console.png[Microservice Search]
+.Microservice console
+image:microservice_console.png[width=800px]
 
-== Microservice Design
+== Microservice design
 
 Microservice design is documented in the developer guide.
 

@@ -2,10 +2,11 @@
 ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-The workflow editor is a web based UI tool for designing, developing, testing and releasing automation workflows.
+image:msa_arch_wf_dev.png[width=400px] 
 
-image:workflow_overall_architecture.png[width=700px] 
+The *workflow editor* is a web based UI tool for designing, developing, testing and releasing automation workflows.
 
+== Overview
 
 With the workflow editor, you can create new workflows or edit existing workflows.
 

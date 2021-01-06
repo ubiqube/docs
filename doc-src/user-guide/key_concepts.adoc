@@ -2,6 +2,8 @@
 ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
+
+== Overview 
 {product_name} is the leading Integrated Automation Platform (IAP) engineered by UBiqube for the continuous design of any IT infrastructure automation process. 
 It is composed of Infrastructure and Automation Modules. 
 
@@ -18,22 +20,41 @@ Login as a developer, you can easily access and work on the design of your autom
 
 The swimlanes are matching the 3 layers of integration and automation: BPM, Workflows and Microservices
 
-image:key_concepts_dev_dashboard.png[width=600px]
+.Developer dashboard and the swimlanes
+image:key_concepts_dev_dashboard.png[width=800px]
 
 Login as an manager, you can directly start monitoring and managing your system.
 
-image:key_concepts_admin_dashboard.png[width=600px]
+.Manager dashboard and the status of the infrastructure
+image:key_concepts_admin_dashboard.png[width=800px]
 
 .Manager
 This will give you access to the manager dashboard, that allows you to monitor and manage the entities configured in your {product_name} installation.  
-This dashboard represents the "Ops" half of the "DevOps" approach, see here for more details: link:gui_overview{outfilesuffix}#_administrator_and_manager_dashboard[GUI Overview]
+This dashboard represents the "Ops" half of the "DevOps" approach, see the GUI Overview for more details.
 
 .Developer
 This will give you access to the developer dashboard, that allows you to design business processes, write workflows, or use visual workflows and develop microservices in your {product_name}.  
-This dashboard represents the "Dev" half of the "DevOps" approach, see here for more details: 
-link:gui_overview{outfilesuffix}#developer-dashboard[GUI Overview]
+This dashboard represents the "Dev" half of the "DevOps" approach, see the GUI Overview for more details. 
 
 NOTE: The username and password you use to access either dashboard is the same, the selection on the login screen simply determines which dashboard you can see after logging in.
+
+== A multi-layered architecture
+
+.{product_name} architecture overview
+image:msa_layered_arch.png[width=800px]
+
+The {product_name} architecture is composed of 2 main layers, the Automation layer and the Integration layer.
+
+Each layer is composed of 2 sub-layers:
+
+- The BPM and Workflows
+- The Microservices and Adapters
+
+Each of the layers are themselves split into 2 functional blocks: the Developement and the Management. 
+
+For instance, the microservices layer is composed of an extendable library of microservices, ready to use and the development environement to update the microservices in order to extend the library.
+
+The Reporting, Analytics and Assurance layers span vertically across the Automation and Integration layer as they are fully integrated with them.
 
 == Roles and Tenants
 
@@ -43,7 +64,8 @@ These 2 levels will let you organise your managed entities based on your need wi
 
 4 user roles are available to make sure that you can assign the access and managing roles to your users based on their actual roles in your company.
 
-image:concepts_tenants_users.png[width=600px]
+.Tenancy and user roles
+image:concepts_tenants_users.png[width=800px]
 
 .Tenants
 A tenant contains a set of subtenants. The subtenants contain the managed entities and the deployment settings.
@@ -54,15 +76,9 @@ A tenant contains a set of subtenants. The subtenants contain the managed entiti
 - a privileged manager has read/write access to a tenant and his scope cannot go out of his tenant.
 - a manager has a read-only access to a set of subtenants.
 
-
 == Infrastructure
 
-The term "Infrastructure" relates to Managed Entities, Microservices and Deployment Settings.
-
-////
-.Templates
-Configuration Templates provide a simple way to provide what is termed in the Telco world as 'day 0' configuration during the activation managed entity.
-////
+The term "Infrastructure" relates to managed entities, microservices and deployment settings.
 
 === Managed entities
 The term "Managed Entity" encompasses manageable entities such as network elements (routers, switches, load balancer,etc.), security elements such as firewalls, UTM, etc. but also virtual infrastructure and cloud management layers such as Openstack, AWS, VMWare or even container management platforms such as Rancher, K8,...
@@ -70,7 +86,7 @@ The term "Managed Entity" encompasses manageable entities such as network elemen
 === Microservices 
 Microservices can be used to manage a wide variety of services on numerous types of entities, such as network equipment, virtualization infrastructure managers, or even Linux servers.
 
-Microservices is the abstraction layer between the specificities of the Managed Entities and the genericity required for a true multi-vendor management system.
+Microservices is the abstraction layer between the specificities of the managed entities and the genericity required for a true multi-vendor management system.
 
 Microservices will let you define your managed services in a fine-grained and modular manner and provide all the required functions to create, read, update, delete and import these services in a production environment.
 
@@ -78,16 +94,20 @@ The {product_name} configuration engine runs on PHP Smarty and allows some scrip
 
 === Deployment settings
 
-Deployment settings are the logical entities that will bind together the Configurations and the Managed Entities.
+Deployment settings are the logical entities that will bind together the configurations and the managed entities.
+
+=== Monitoring profiles
+
+Monitoring profiles are the logical entities that will let you define your KPI to monitor and bind these to the monitored entities.
 
 == Automation
 {product_name} features two automation layers designed for different degrees of abstraction that ensure maximum flexibility.
 
 === Workflow
-The link:automation_workflows{outfilesuffix}[Workflow] layer addresses domain-specific scenarios which can be highly technically scripted, appealing to DevOps and SecOps engineers. 
+The workflow layer addresses domain-specific scenarios which can be highly technically scripted, appealing to DevOps and SecOps engineers. 
 
 === BPM
-The link:bpm{outfilesuffix}[BPM] layer offers a visual workflow editor to make {product_name} a strong SOAR contender for business process design which appeals to realities and is not enshrined in vendor-specific boundaries. Maximum security remediation policies can be applied as engineers creatively imagine a process applied to all domains involved (security, routing, switching, cloud hosting, etc.).
+The BPM layer offers a visual workflow editor to make {product_name} a strong SOAR contender for business process design which appeals to realities and is not enshrined in vendor-specific boundaries. Maximum security remediation policies can be applied as engineers creatively imagine a process applied to all domains involved (security, routing, switching, cloud hosting, etc.).
 
 == The UI
 
@@ -112,7 +132,7 @@ A UX reflecting the above wide variety of technical scenarios and user experienc
 
 === Terminology
 
-The 7 terms that define the tree of the {product_name} navigation:
+The 10 terms that define the tree of the {product_name} navigation:
 
 [frame=none, cols="2*"]
 |===
@@ -126,13 +146,20 @@ a|
    b. Microservices 
  
    c. Deployment Settings
+
+   d. Monitoring Profiles
  
  2. Automation 
  
    a. BPM 
  
    b. Workflow
- 
+
+ 3. Alarms
+
+  a. Logs
+
+  b. Alarms 
 | 
  image:terminology.png[alt=Terminology, width=200]
 |===

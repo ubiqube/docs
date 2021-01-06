@@ -2,8 +2,11 @@
 ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
+image:msa_arch_da_dev.png[width=400px]
+
+The *adapters* are the "drivers" that allow the main {product_name}'s engine to seamlessly communicate with the Managed Entities for configuration assurance, event collection, et cetera.
+
 == Overview
-The Adapters are the "drivers" that allow the main {product_name}'s engine to seamlessly communicate with the Managed Entities for configuration assurance, event collection, et cetera.
 
 The Adapters are designed per vendor because they need to address the specifics of each vendor especially when the Managed Entitie does not provide a REST management API.
 
