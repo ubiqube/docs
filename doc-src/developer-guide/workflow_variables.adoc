@@ -2,10 +2,9 @@
 ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-Variables are usually used to hold the parameters to be passed to a workflow process. For instance, the port and IP address variables to block for a firewall policy. Variables can also be used to display user information that is not meant to be used for any actuall configuration.
+Variables are used to hold the parameters to pass to a workflow process. For instance, the port and IP address to block in a firewall policy.
 
-Setting variables is done from the section "Variables" on the workflow editor screen.
-
+.Workflow variable section
 image:workflow_console_variables.png[width=700px]
 
 All variables are referenced with the prefix `$params` which is automatically set in the variable editor screen and when a variable has to be referenced in one of the workflow functions, you need to use the syntax `{$params.your_variable}` (see below for more examples).
@@ -14,9 +13,13 @@ By default the type of a variable is String but other types are supported such a
 
 == Overview
 
-The variables are usually defined to hold the parameters to be passed to the workflow. For instance, the port and IP address to block for a firewall policy. Variables can also be used to display user information that is not necessarily meant to be used for configuring the managed entity.
+Variables are used to hold the parameters to pass to a workflow process. For instance, the port and IP address to block in a firewall policy.
 
-Setting different types for variables will affect the way the workflow end user form, for creating or updating it, will render.
+Variables can also be used to display user information that is not necessarily meant to be used for configuring the managed entity.
+
+Setting variables is done from the section "Variables" on the workflow editor screen.
+
+The type of a variable will affect the way the workflow end user form will be rendered.
 
 For instance, the type boolean will render the variable with true/false radio buttons.
 
@@ -306,5 +309,5 @@ When you are dealing with variable arrays, these options will let you control th
 
 To create a variable array, you need to follow a precise naming convention: `$params.<ARRAY NAME>.0.<ELEMENT NAME>`. The 0, is the separator that will allow the UI and the configuration engine that this variable is an array.
 
-.a variable array with 2 elements
+.Variable array with 2 elements
 image:workflow_variables_array_1.png[width=700px]

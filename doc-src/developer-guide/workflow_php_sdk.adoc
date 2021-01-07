@@ -3,10 +3,15 @@ ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 The {product_name} provides a support for PHP SDK dedicated to developing automation workflows. 
-This SDK provides a set of functions that can be used to call the link:rest_api{outfilesuffix}[{product_name} REST API] and automate action on the {product_name} such as create and activate managed entities, call microservice function, call processes from other workflows...
+
+== Overview
+
+This SDK provides a set of functions that can be used to call the {product_name} REST API and automate actions on the {product_name} such as create and activate managed entities, call microservice function, call processes from other workflows...
+
 
 == Where to find the source code of the SDK?
-The SDK functions are implemented in a set of PHP files stored in the {product_name} repository under `+/opt/fmc_repository/Process/Reference/Common/Library+`
+
+The SDK functions are implemented in a set of PHP files stored in the {product_name} container msa_dev under `+/opt/fmc_repository/Process/Reference/Common/Library+`
 
 The PHP files are organised by API topic and contains the functions that are calling the REST API.
 
@@ -21,9 +26,9 @@ The source code below shows the implementation of one of the functions provided 
 [source,php]
 ----
 /**
- * Create Subtenant <1>
- * 
- * curl -u ncroot:ubiqube  -H "Content-Type: application/json" -XPOST 'http://ip_address/ubi-api-rest/customer/{prefix}?name={name}&reference={reference}' -d '
+ * Create Subtenant                                                                            <1>
+ * curl -u ncroot:ubiqube  -H "Content-Type: application/json" \
+ *   -XPOST 'http://ip_address/ubi-api-rest/customer/{prefix}?name={name}&reference={reference}' -d '
     {
         "name": "contactName",
         "firstName": "contactFirstName",
@@ -40,15 +45,17 @@ The source code below shows the implementation of one of the functions provided 
         }
 
     }
- *
  */
-function _customer_create ($operator_prefix, $customer_name, $external_reference = "", $contact_details = "{}") { <2>
+function _customer_create ($operator_prefix, 
+                            $customer_name, 
+                            $external_reference = "", 
+                            $contact_details = "{}") {                                            <2>
 
 	$msa_rest_api = "customer/{$operator_prefix}?name={$customer_name}&reference={$external_reference}";
-	$curl_cmd = create_msa_operation_request(OP_POST, $msa_rest_api, $contact_details); <3>
-	$response = perform_curl_operation($curl_cmd, "CREATE CUSTOMER"); <4>
+	$curl_cmd = create_msa_operation_request(OP_POST, $msa_rest_api, $contact_details);           <3>
+	$response = perform_curl_operation($curl_cmd, "CREATE CUSTOMER");                             <4>
 	$response = json_decode($response, true);
-	if ($response['wo_status'] !== ENDED) { <5>
+	if ($response['wo_status'] !== ENDED) {                                                       <5>
 		$response = json_encode($response);
 		return $response;
 	}
@@ -57,7 +64,7 @@ function _customer_create ($operator_prefix, $customer_name, $external_reference
 }
 ----
 <1> A description of the function and an sample call of the matching REST API
-<2> The function of the SDK always starts with "_"
+<2> The function of the SDK always starts with _
 <3> Call a SDK helper function to build the curl request
 <4> Call a SDK helper function to execute the curl request
 <5> Call a SDK helper function (defined in utility.php) to format a response with proper status, comment and response payload
@@ -66,11 +73,10 @@ function _customer_create ($operator_prefix, $customer_name, $external_reference
 
 [source, php]
 ----
-
 // Create subtenant
 logToFile("Creating subtenant:\n");
 
-$customer_contact_details_array = array();  	<1>
+$customer_contact_details_array = array();  	                                              <1>
 $customer_contact_details_array['firstName'] = $customer_contact_first_name;
 $customer_contact_details_array['name'] = $customer_contact_name;
 if (isset($context['email_recipient']) && $context['email_recipient']){
@@ -78,18 +84,19 @@ if (isset($context['email_recipient']) && $context['email_recipient']){
   $customer_contact_details_array['address'] = $address;
 }
 
-$customer_contact_details_json = json_encode($customer_contact_details_array);  	<2>
+$customer_contact_details_json = json_encode($customer_contact_details_array);  	          <2>
 
 // Call function to create customer
-$response = _customer_create ($operator_prefix, $customer_name, $customer_ext_reference, $customer_contact_details_json);  	<3>
+$response = _customer_create ($operator_prefix, $customer_name, $customer_ext_reference, 
+                                $customer_contact_details_json);  	                          <3>
 
-$response = json_decode($response, true); 	<4>
-if ($response['wo_status'] !== ENDED) {		<5>
+$response = json_decode($response, true); 	                                                  <4>
+if ($response['wo_status'] !== ENDED) {		                                                  <5>
     $response = json_encode($response);
     echo $response;
     exit;
 }
-logToFile(debug_dump($response['wo_newparams'], "RESPONSE\n")); <6>
+logToFile(debug_dump($response['wo_newparams'], "RESPONSE\n"));                               <6>
 ----
 <1> Build the array with the customer contact details. This parameter is defaulted by an empty array
 <2> Encode the array into it's json representation
@@ -131,8 +138,8 @@ update_asynchronous_task_details($process_params, "wakeup");                    
 
 [source,php]
 ----
-$micro_service_vars_array = array (); 			<1>
-$micro_service_vars_array ['object_id'] = $context ['id']; 	<2>
+$micro_service_vars_array = array ();                           <1>
+$micro_service_vars_array ['object_id'] = $context ['id'];      <2>
 
 $micro_service_vars_array ['src_ip'] = $context ['src_ip'];
 $micro_service_vars_array ['src_mask'] = $context ['src_mask'];
@@ -146,7 +153,7 @@ $micro_service_vars_array ['action'] = $context ['action'];
 $object_id = $context ['id'];
 
 $simple_firewall = array (
-		'simple_firewall' => array (		<3>
+		'simple_firewall' => array (                            <3>
 				$object_id => $micro_service_vars_array 
 		) 
 );
@@ -159,13 +166,11 @@ $response = execute_command_and_verify_response ( $managed_entity_id, CMD_CREATE
 <3> The value of the key should match the Microservice file name (stripped of the .xml file extension)
 <4> Call the CREATE for simple_firewall MS for each device (use CMD_UPDATE or CMD_DELETE for the other operations)
 
-The funtion `+execute_command_and_verify_response+` is defined in `+/opt/fmc_repository/Process/Reference/Common/Library/msa_common.php+`
+The funtion `+execute_command_and_verify_response+` is defined in link:https://github.com/openmsa/Workflows/blob/master/Reference/Common/Library/msa_common.php[msa_common.php]
 
-=== Synchonize the managed entity configuration
+=== Synchronize the managed entity configuration
 
-The Microservice may define an IMPORT operation that will be used to read the configuration items from the Managed Entities and import them into the {product_name} configuration database.
-
-The Code sample below uses a PHP function from the SDK to trigger this operation
+The code sample below uses a PHP function from the SDK to trigger this operation by calling the IMPORT function of a microservice
 
 [source,php]
 ----
@@ -187,24 +192,26 @@ function _device_create ($customer_id, $device_name, $manufacturer_id,
 						$log_enabled = "true", $log_more_enabled = "true", 
 						$mail_alerting = "true", $reporting = "false", $snmp_community = SNMP_COMMUNITY_DEFAULT, $managementInterface = "")
 ----
-*location*: `+device_rest.php+`
 
-NOTE: if you need to set the hostname or update the credentials you can use some dedicated functions from `+device_rest.php+`
+*location*: link:https://github.com/openmsa/Workflows/blob/master/Reference/Common/Library/device_rest.php[device_rest.php]
+
+NOTE: if you need to set the hostname or update the credentials you can use some dedicated functions from link:https://github.com/openmsa/Workflows/blob/master/Reference/Common/Library/device_rest.php[device_rest.php]
 
 .Managed entity activation
 [source,php]
 ----
 function _device_do_initial_provisioning_by_id ($device_id)
 ----
-*location*: `+device_rest.php+`
 
+*location*: link:https://github.com/openmsa/Workflows/blob/master/Reference/Common/Library/device_rest.php[device_rest.php]
 
 .Managed Entity Deletion
 [source,php]
 ----
 function _device_delete ($device_id) {
 ----
-*location*: `+device_rest.php+`
+
+*location*: link:https://github.com/openmsa/Workflows/blob/master/Reference/Common/Library/device_rest.php[device_rest.php]
 
 === Tenant and Subtenant
 
@@ -213,18 +220,20 @@ function _device_delete ($device_id) {
 ----
 function _operator_create ($operator_prefix, $name)
 ----
-*location*: `+operator_rest.php+`
+
+*location*: link:https://github.com/openmsa/Workflows/blob/master/Reference/Common/Library/operator_rest.php[operator_rest.php]
 
 .Subtenant creation
 [source,php]
 ----
 function _customer_create ($operator_prefix, $customer_name, $external_reference = "", $contact_details = "{}")
 ----
-*location*: `+customer_rest.php+`
+
+*location*: link:https://github.com/openmsa/Workflows/blob/master/Reference/Common/Library/customer_rest.php[customer_rest.php]
 
 .Getting more Examples 
 ****
-You will find many example of Workflows in https://github.com/openmsa/Workflows
+You will find many examples of Workflows in https://github.com/openmsa/Workflows
 ****
 
 
