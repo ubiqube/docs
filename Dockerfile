@@ -2,9 +2,9 @@ FROM gradle:jdk8-alpine
 
 ADD doc-src/		doc-src
 ADD build.gradle	.
-ADD docker/		docker
 
-RUN gradle asciidoctor
+RUN gradle asciidoc
+RUN gradle asciidoc_pdf
 
 USER root
 RUN apk add bash
