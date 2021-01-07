@@ -85,7 +85,7 @@ asciidoctorPdf {
       'pdf' : 'true',
       'format': 'pdf',
       'icons' : 'font',
-      'pdf-style' : file('./resources/themes/ubiqube-theme.yml'),
+      //'pdf-style' : file('./resources/themes/ubiqube-theme.yml'),
       //'pdf-fontsdir' : file('./resources/fonts'),
       'page-background-image' : 'image:bg.jpg[fit=cover,pdfwidth=100%,position=top]',
       //'front-cover-image' : 'image:admin-front-cover.pdf[]',
