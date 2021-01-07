@@ -5,7 +5,7 @@ documentation    [![build][build-icon]][build-page]
 [build-page]: ../../actions
 
 
-MSA User Manual and Admin Guide
+MSA User Manual, Admin Guide, Developer Guide and Lab Guide
 
 The doc source is written in [asciidoc](http://asciidoc.org/) format
 
@@ -25,6 +25,7 @@ Chekout the branch you need to use and build the doc with the CLI command below
 if you have gradle you can also execute
 	
 	gradle asciidoc
+	gradle asciidoc_pdf
 
 The doc is generated in build/docs/
 
