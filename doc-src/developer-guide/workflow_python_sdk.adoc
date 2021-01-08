@@ -155,6 +155,46 @@ except Exception as e:
 <3> get the microservice instances
 <4> store the instance in a variable to further reuse
 
+== How to extend the SDK
+
+=== Create a custom library of scripts
+
+You can extend the SDK by adding your own scripts in the {product_name}. The scripts have to be added in the container `msa_dev`, under the directory `/opt/fmc_repository/Process/PythonReference/custom`
+
+In a workflow task, you can use the code below to import your custom scripts
+
+[source,python]
+----
+import custom.myfile
+----
+
+or 
+
+[source,python]
+----
+from custom.myfile import SOME_METHOD
+----
+
+NOTE: You can create a git repository under `/opt/fmc_repository/Process/PythonReference/custom` with `git init` and set a link:https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes[remote,window=_blank] to a remote repository to ease the management and versioning of your custom SDK library
+
+=== Install additional Python modules
+
+To install an additional Python package you need to log into the `msa_dev` container and execute
+
+[source,shell]
+----
+python3 -m pip install \
+  --install-option="--install-lib=/opt/fmc_repository/Process/PythonReference" PACKAGE <1>
+----
+<1> PACKAGE is the name of the Python package to install
+
+To list the packages that are installed
+
+[source,shell]
+----
+python3 -m pip list
+----
+
 == Miscellaneous
 
 === Output messages to the process execution UI
