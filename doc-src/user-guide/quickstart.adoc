@@ -96,6 +96,7 @@ sudo tee -a /etc/sysctl.conf <<< "vm.max_map_count=262144"
 
 == Mini lab creation
 
+[#step1]
 === Step 1: creation
 
 1. Check your Docker engine has access to DockerHub. You can, for instance, run `docker run hello-world` to test the access.
@@ -130,6 +131,7 @@ At the end of the script execution, you need to restart the API container and th
 
 NOTE: more explainations on the script `install_libraries.sh` can be found link:#install_librairies[here].
 
+[#step4]
 === Step 4: provision the mini lab with tenants, managed entities, etc.
 
 The mini lab comes with 2 Linux container (linux_me / 172.20.0.101 and linux_me_2 / 172.20.0.102) for experimentation.
@@ -152,6 +154,7 @@ To create the mini lab environment, run the CLI command from where you have clon
 $ sudo docker-compose exec msa_dev /usr/bin/create_mini_lab.sh
 ```
 
+[#step5]
 === Step 5 (optional): Setting up log aggregation for linux_me
 1. `docker-compose exec linux_me bash` issue this command from the host machine in order to connect to linux_me.
 2. `[root@linux_me /]# echo '*.* @msa_front' > /etc/rsyslog.d/mini_lab.conf` to create rsyslog configuration.
@@ -159,6 +162,7 @@ $ sudo docker-compose exec msa_dev /usr/bin/create_mini_lab.sh
 
 Now you should start to see device logs for linux_me appearing in the alarm section of the {product_name} portal.
 
+[#step6]
 === Step 6: start using the {product_name}
 
 Browse: link:https://localhost/[window=_blank] and connect with username `ncroot` and password `ubiqube`. 
