@@ -242,3 +242,8 @@ docker-compose exec msa_sms tail -F /opt/sms/logs/sms_agregatord.log
 
 IMPORTANT: for monitoring, syslogs, alerting, parser, enabling the DEBUG logs may result in a huge volumes of logs so you need to use this carefuly. To revert the configuration use the CLI cmd above with 1 instead of 15.
 
+.Restart msa_sms to apply the configuration to the CoreEngine
+[source,bash]
+----
+docker-compose restart msa_sms
+----
