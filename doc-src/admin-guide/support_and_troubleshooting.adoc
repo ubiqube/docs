@@ -144,10 +144,10 @@ you can check the CoreEgine configuration logs:
 $ sudo docker-compose exec msa_sms cat /opt/sms/logs/configure.log
 ----
 
-==== How do I enable debug logs on the SecEngine ?
+==== How do I enable debug logs on the CoreEngine ?
 The CoreEngine logs are available on the msa_sms container in the directory `/opt/sms/logs`.
 
-If you are designing a Microservice or simply operating the {product_name}, you might need to monitor the logs of the configuration engine.
+If you are designing a Microservice or simply operating the {product_name}, you might need to monitor the logs of the *configuration* engine.
 
 Run the CLI command below to tail the logs
 [source]
@@ -169,4 +169,76 @@ OK
 This will activate the DEBUG mode until the service is restarted.
 
 Execute `tstsms SETLOGLEVEL 0` to revert to the default log level.
+
+NOTE: this will only enable DEBUG mode for the configuration engine (smsd.log)
+
+==== How do I permanently enable debug logs on the CoreEngine modules
+
+The CoreEngine is in charge of configuration but also monitoring, syslog collecting, syslog parsing, alerting,...
+
+The debug mode can also be enabled permanentely for the various modules of the CoreEngine. This configuration will remain until the docker image is updated.
+
+.Set debug for configuration logs
+[source,bash]
+----
+docker-compose exec msa_sms sed -i 's/$UBI_VSOC_DEBUG_LEVEL/15/' /opt/sms/templates/conf/smsd.conf
+----
+
+.Monitor the configuration logs
+[source,bash]
+----
+docker-compose exec msa_sms tail -F /opt/sms/logs/smsd.log
+----
+
+.Set debug for SNMP monitoring logs
+[source,bash]
+----
+docker-compose exec msa_sms sed -i 's/$UBI_VSOC_DEBUG_LEVEL/15/' /opt/sms/templates/conf/sms_polld.conf
+----
+
+.Monitor the SNMP monitoring logs
+[source,bash]
+----
+docker-compose exec msa_sms tail -F /opt/sms/logs/sms_polld.log
+----
+
+.Set debug for syslog parser logs
+[source,bash]
+----
+docker-compose exec msa_sms sed -i 's/$UBI_VSOC_DEBUG_LEVEL/15/' /opt/sms/templates/conf/sms_parserd.conf
+----
+
+.Monitor the syslog parser logs
+[source,bash]
+----
+docker-compose exec msa_sms tail -F /opt/sms/logs/sms_parserd.log
+----
+
+
+.Set debug for syslog collecting logs
+[source,bash]
+----
+docker-compose exec msa_sms sed -i 's/$UBI_VSOC_DEBUG_LEVEL/15/' /opt/sms/templates/conf/sms_syslogd.conf
+----
+
+.Monitor the syslog collecting logs
+[source,bash]
+----
+docker-compose exec msa_sms tail -F /opt/sms/logs/sms_syslogd.log
+----
+
+
+.Set debug for alerting logs
+[source,bash]
+----
+docker-compose exec msa_sms sed -i 's/$UBI_VSOC_DEBUG_LEVEL/15/' /opt/sms/templates/conf/sms_agregatord.conf
+----
+
+.Monitor the alerting logs
+[source,bash]
+----
+docker-compose exec msa_sms tail -F /opt/sms/logs/sms_agregatord.log
+----
+
+IMPORTANT: for monitoring, syslogs, alerting, parser, enabling the DEBUG logs may result in a huge volumes of logs so you need to use this carefuly. To revert the configuration use the CLI cmd above with 1 instead of 15.
 
