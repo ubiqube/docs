@@ -125,6 +125,9 @@ The event stored in Elasticsearch can searched from UI in the section "Alarms" >
 .Log analytics screen
 image:assurance_log_search.png[width=800px]
 
+[#dashboard]
+== Dashboard
+
 [#alarm]
 == Alarm management
 
@@ -172,22 +175,63 @@ If selected, the logs search for the alarm triggering will be considered only fo
 If selected, the logs search for the alarm triggering will be considered only for that Manage Entity
  
 .Severity levels
-If selected,  alarm wil be triggered for the logs with only those Severities
+If selected,  alarm wil be triggered for the logs with only those Severities.
 
 ==== Threshold 
 
-Define the number of events and the time period to consider for triggering one alarm 
+Define the number of events and the time period to consider for triggering one workflow. 
+
+With the default value 0 log within 0 minute, no workflow process execution will be triggered so you need to set it at least as 1 log within 1 minute.
 
 ==== Notification
 
 Select the user roles that will be notified by email when an alarm is raised.
 
+NOTE: make sure that you have set an email to your user
+
 ==== Actions
 
 Choose the workflow and the process to execute when an alarm is triggered.
 
-=== SMTP configuration
+=== Troubleshooting
 
-For alarms to be notified as email, we need a proper SMTP relay to be configured. 
+You can troubleshoot your alarm configuration by setting the log level of the alerting module to debug more and monitoring the logs.
 
-To update the configuration of your setup, use the `POST /system-admin/v1/msa_vars` REST API to update the configuration variables `UBI_SMTP_IPADDR` and `UBI_MAIL_SMTP` with the IP address of your SMTP server.
+.Set debug for alerting logs
+[source,bash]
+----
+docker-compose exec msa_sms sed -i 's/$UBI_VSOC_DEBUG_LEVEL/15/' /opt/sms/templates/conf/sms_agregatord.conf
+----
+
+.Restart msa_sms to apply the configuration to the CoreEngine
+[source,bash]
+----
+docker-compose restart msa_sms
+----
+
+.Monitor the alerting logs
+[source,bash]
+----
+docker-compose exec msa_sms tail -F /opt/sms/logs/sms_agregatord.log
+----
+
+=== Testing
+
+You can test the triggering of a process execution with the simple workflow "Security Event Detection" included in the minilab.
+
+This worklow will execute a process to display the raw log that cause the alarm.
+
+image:alarm_vnoc_detection.png[width=800px]
+
+To trigger an event you can, for instance, stop one of the Linux container which will raise a IPDOWN event.
+
+image:alarm_vnoc_event.png[width=800px]
+
+A new instance of the workflow should be created
+
+image:alarm_vnoc_workflow_instance.png[width=800px]
+
+
+=== Email alerting: SMTP configuration
+
+For alarms to be notified as email, we need the Docker host to be properly configured as a SMTP server or relay.

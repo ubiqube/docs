@@ -214,7 +214,6 @@ docker-compose exec msa_sms sed -i 's/$UBI_VSOC_DEBUG_LEVEL/15/' /opt/sms/templa
 docker-compose exec msa_sms tail -F /opt/sms/logs/sms_parserd.log
 ----
 
-
 .Set debug for syslog collecting logs
 [source,bash]
 ----

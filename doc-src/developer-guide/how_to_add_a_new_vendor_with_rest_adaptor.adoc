@@ -2,6 +2,8 @@
 ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
+== Overview
+
 The REST Generic adapter will let you quickly integrate a new managed entity with a REST based management API but you may want to also have the vendor name and entity model both appear in the list of supported vendor instead of REST/Generic.
 
 Doing so will allow you to filter the microservice and deployment setting based on the vendor name and model name. 
@@ -12,7 +14,7 @@ This will ease the organisation of your integration files.
 
 Let's assume that you want to add  vendorA / modelX to the list of supported vendors.
 
-You will need an access to the {product_name} CLI of the msa_dev container (see link:../admin-guide/architecture_overview{outfilesuffix}[architecture] for more details).
+You will need an access to the {product_name} CLI of the msa_dev container.
 
 ```
 $ sudo docker-compose exec msa_dev bash
