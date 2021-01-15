@@ -57,6 +57,9 @@ endif::[]
 - link:workflow_python_sdk{outfilesuffix}[Python SDK for workflow development,window=_blank]
 - link:workflow_php_sdk{outfilesuffix}[PHP SDK for workflow development,window=_blank]
 
+== Assurance
+- link:kibana_dashboard[Kibana dashboard customisation,window=_blank]
+
 == DevOps
 
 - link:local_repository_management{outfilesuffix}[Import / Export Librairies,window=_blank]

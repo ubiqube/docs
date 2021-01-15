@@ -73,5 +73,7 @@ include::{includedir}/local_repository_management.adoc[]
 
 include::{includedir}/rest_api.adoc[]
 
+include::{includedir}/kibana_dashboard.adoc[]
+
 include::{includedir}/devops-best-practices.adoc[]
 

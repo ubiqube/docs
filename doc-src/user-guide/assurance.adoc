@@ -136,8 +136,15 @@ You can access Kibana on port 5601 (https://localhost:5601) and use Kibana to:
 - create your own dashboard templates
 - reuse or edit the dashboard included in the {product_name}
 
+=== Deploy an existing dashboard for a subtenant
 
+You can use the workflow "Deploy Dashboard" to deploy the dashboards packaged in the {product_name}.
 
+image:dashboard_wf_deployed.png[width=800px]
+
+Use the Kibana URL from the workflow instance to browse to the Kibana dashboard
+
+image:dashboard_kibana_deployed.png[width=800px]
 
 [#alarm]
 == Alarm management
