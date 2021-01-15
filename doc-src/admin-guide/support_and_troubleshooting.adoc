@@ -40,7 +40,7 @@ IMPORTANT: you need to create the director `/mnt/NASVolume/msa_front` manually f
 
 1. copy the two files server.crt and server.key on your docker host
 2. copy the 2 files in the front container:  `docker cp server.key server.crt $(docker ps  | grep msa_front | awk '{print $1}'):/etc/nginx/ssl/`
-3. restart the front container: `docker-compose restart msa_front`
+3. force recreate front to refresh certificates container: `docker service update --force FRONT_SERVICE_NAME`
 4. browse to https://localhost (you may have to clean your cache)
 
 == Troubleshooting
