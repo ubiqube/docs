@@ -42,11 +42,11 @@ The default type for a variable, it will accepts any value and the UI renders it
 
 ==== Boolean
 
-This data type accepts a value of true or false, the UI will render it as a checkbox.
+Accepts a value of true or false, the UI will render it as a checkbox.
 
 ==== Integer
 
-This data type represents a numerical value, the UI will render it as an input field restricted to integer.
+Represents a numerical value, the UI will render it as an input field restricted to integer.
 
 ==== Password
 NOTE: not supported yet
@@ -77,7 +77,7 @@ This type is useful for allowing a user to select a file.
 
 ==== Auto Increment
 
-This type is used to maintain an incremental counter in within the instances of a microservice for a managed entity. This is useful for managing the object_id.
+Maintains an incremental counter within the instances of a microservice for a managed entity. This is useful for managing the object_id.
 
 .Specific advanced parameters
 |===
@@ -90,6 +90,16 @@ This type is used to maintain an incremental counter in within the instances of 
 NOTE: not supported yet
 
 This type is used to allow the user to select a managed entity and pass it's identifier to the implementation of the microservice.
+
+==== Microservice Reference
+
+Reference an other microservice from a microservice and use the referenced microservice variable value. 
+
+By default the value used from the referenced is the object_id.
+
+The referenced microservice should be configured in the "Advanced" section:
+
+- "Microservice Reference": enter the name of the microservice to reference. The form field will provide the list of possible microservice to choose from based on the the input value. It is possible to select more that one microservice in order to import values from different part of the configuration imported by the referenced microservice.
 
 === Display Name
 
