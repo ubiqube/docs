@@ -18,15 +18,15 @@ image:deployment_settings_search.png[Deployment Settings Search,width=700px]
 
 A Deployment setting acts as the intermediate layer between a set of managed entities and a set of microservices
 
-[ditaa]
+[blockdiag]
 ....
-            +-----------------+n                                                                     
-            | Microservices   |------\    1                                                          
-            +-----------------+       -----+----------------------+ 1      n +------------------+    
-                                           | Deployment Settings  |----------| Managed Entities |    
-            +-----------------+       -----+----------------------+          +------------------+    
-            |    Templates    |------/     1                                                          
-            +-----------------+n                                                                                                    
+    +---------------+n                                                                     
+    | Microservices |------\1                                                          
+    +---------------+       +----------------------+ 1      n +------------------+    
+                            | Deployment Settings  |----------| Managed Entities |    
+    +---------------+       +----------------------+          +------------------+    
+    |    Templates  |------/1                                                          
+    +---------------+n                                                                                                    
 .... 
 
 === Create, update, delete

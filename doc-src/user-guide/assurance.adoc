@@ -128,6 +128,17 @@ image:assurance_log_search.png[width=800px]
 [#dashboard]
 == Dashboard
 
+Dashboard will allow you to visualize the data store in Elasticsearch
+
+You can access Kibana on port 5601 (https://localhost:5601) and use Kibana to:
+
+- discover the data indexed and stored in Elasticsearch 
+- create your own dashboard templates
+- reuse or edit the dashboard included in the {product_name}
+
+
+
+
 [#alarm]
 == Alarm management
 
@@ -159,7 +170,7 @@ image:assurance_manage_alarm_edit.png[width=800px]
 
 ==== Detail
 
-in this section we need to provide a name for the alarm
+Provide a name for the alarm
 
 ==== Conditions
 
