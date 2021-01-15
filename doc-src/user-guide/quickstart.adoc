@@ -145,25 +145,17 @@ In order to ease your discovery of {product_name}, we are providing a script tha
 
 - 1 tenant - BladeRunner
 - 1 subtenant - Tyrell Corporation
-- 2 managed entity to manage the Linux container - linux_me
+- 2 managed entities to manage the Linux container - linux_me
 - some microservices and workflows to start configuring the managed entity - users, firewall, etc.
 
 To create the mini lab environment, run the CLI command from where you have cloned the quickstart Github project:
 
 ```
-$ sudo docker-compose exec msa_dev /usr/bin/create_mini_lab.sh
+$ docker-compose exec msa_dev /usr/bin/create_mini_lab.sh
 ```
 
 [#step5]
-=== Step 5 (optional): Setting up log aggregation for linux_me
-1. `docker-compose exec linux_me bash` issue this command from the host machine in order to connect to linux_me.
-2. `[root@linux_me /]# echo '*.* @msa_front' > /etc/rsyslog.d/mini_lab.conf` to create rsyslog configuration.
-3. `[root@linux_me /]# service rsyslog restart` restart the service.
-
-Now you should start to see device logs for linux_me appearing in the alarm section of the {product_name} portal.
-
-[#step6]
-=== Step 6: start using the {product_name}
+=== Step 5: start using the {product_name}
 
 Browse: link:https://localhost/[window=_blank] and connect with username `ncroot` and password `ubiqube`. 
 
@@ -172,7 +164,7 @@ Browse: link:https://localhost/[window=_blank] and connect with username `ncroot
 
 This lab use case will show you in a simple way how you can use {product_name} to automate the configuration of iptables-based firewall policy on the Linux containers included in the mini lab.
 
-The development of this use case is detailled in this guide: link:../lab-guide/simple_firewall_policy_mngt{outfilesuffix}[Firewall Policy Automation]
+The development of this use case is detailled in this guide: Firewall Policy Automation
 
 You can use the guide to recreate the use case step by step or you may also directly run the use case with the workflow and microservices that are installed in the mini-lab.
 
