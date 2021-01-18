@@ -10,8 +10,20 @@ repositories {
     ruby.gems()
 }
 
+
+
+asciidoctorj {
+    modules {
+       diagram.use() 
+       diagram.version '2.0.5' 
+    }
+}
+
+
+
 dependencies {
   asciidoctorGems 'rubygems:rouge:3.15.0'
+  asciidoctorGems 'rubygems:asciidoctor-diagram:2.0.5'
 }
 
 asciidoctor.doFirst {
@@ -20,8 +32,10 @@ asciidoctor.doFirst {
 }
 
 
-asciidoctor {
-  
+asciidoctor {    
+
+    version = '2.0.12'
+
   options doctype: 'book'
 
   attributes \
