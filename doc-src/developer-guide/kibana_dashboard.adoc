@@ -43,7 +43,7 @@ Save the visualization and browse to the dashboards
 .list of dashboards
 image:kibana_dashboards.png[width=800px]
 
-=== Create a dashbaord
+=== Create a dashboard
 
 Click on "+ Create new dashboard" to create a new dashboard and click "Add" to list the visualizations and select yours.
 
@@ -64,18 +64,39 @@ image:kibana_dashboard_visualization_add_filter.png[width=800px]
 .save the dashboard with "Store time with dashboard"
 image:kibana_dashboard_visualization_save.png[width=800px]
 
-From you browser URL, select the dashboard ID and copy it to your clipboard.
+==== Update the reference and name of the dashboard
 
-`http://3.10.63.66:5601/app/kibana#/dashboard/*db6989f0-574c-11eb-877b-a99b89c2b54d*...`
+By default Kibana saves the dashboard with a UID to identify it but here is how to update your dashbaord and give it a human readable name that you can use in the deployment workflow.
 
-=== Deploy the dashboard
+Step 1: export the dashboard
+
+From Kibana management, go to "Saved Objects" and select your dashboard, export is as an ndjson file. Leave the option "Include related object" off.
+
+Step 2: edit the ndjson file
+
+With your favorite text editor, edit the file and update the properties "title" and "id". Both properties should be set to the same value starting with "template_".
+
+.Example
+----
+"id":"template_my_dashboard"
+"title":"template_my_dashboard"
+----
+
+Step 3: import the dashboard
+
+Step 4: deploy the dashboard with the selected name
 
 On the {product_name} UI, select your subtenant, make sure the workflow "Deploy Dashboard" is attached and click "+ Create Dashboard".
 
-Use the dashboard ID for the field "Template name", provide a name of your choice for the Dashbaord.
+Set the template name to name you used in the ndjson file and provide a name of your choice for the Dashboard.
 
-image:kibana_dashboard_deploy.png[[width=800px]]
+.deploy the dashboard
+image:kibana_dashboard_deploy_from_template.png[width=800px]
 
 Execute the process and use the URL provided in the process execution status to open your custom dashboard.
 
 NOTE: you need to edit the URL to use the proper IP address of your {product_name}
+
+.dashboard deployed in Kibana
+image:kibana_dashboard_deployed_from_template.png[width=800px]
+
