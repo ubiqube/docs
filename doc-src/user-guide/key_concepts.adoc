@@ -14,7 +14,28 @@ The Automation Module provides the IT automation developer with a unified develo
 
 == Understanding the Different Personas
 
-On the {product_name} login screen, there are two different types of logins selectable via this toggle switch Administrator/Developer
+On the {product_name} login screen, there are two different types of logins selectable via a toggle switch Manager/Developer
+
+image:msa_login_screen.png[width=800px]
+
+=== Manager
+
+This will give you access to the manager dashboard, that allows you to monitor and manage the entities configured in your {product_name} installation.
+
+This dashboard represents the "Ops" part of the "DevOps" approach, see the GUI Overview for more details.
+
+Login as an manager, you can directly start monitoring and managing your system.
+
+.Manager dashboard and the status of the infrastructure
+image:key_concepts_admin_dashboard.png[width=800px]
+
+=== Developer
+
+Access to the developer dashboard, to design business processes, write workflows, or use visual workflows and develop microservices in the {product_name}.
+
+Configure your remote Git repositories to do code versioning management, share you code with your team, publish your code and contribute to the community.
+
+This dashboard represents the "Dev" part of the "DevOps" approach, see the GUI Overview for more details. 
 
 Login as a developer, you can easily access and work on the design of your automation processes.
 
@@ -22,19 +43,6 @@ The swimlanes are matching the 3 layers of integration and automation: BPM, Work
 
 .Developer dashboard and the swimlanes
 image:key_concepts_dev_dashboard.png[width=800px]
-
-Login as an manager, you can directly start monitoring and managing your system.
-
-.Manager dashboard and the status of the infrastructure
-image:key_concepts_admin_dashboard.png[width=800px]
-
-.Manager
-This will give you access to the manager dashboard, that allows you to monitor and manage the entities configured in your {product_name} installation.  
-This dashboard represents the "Ops" half of the "DevOps" approach, see the GUI Overview for more details.
-
-.Developer
-This will give you access to the developer dashboard, that allows you to design business processes, write workflows, or use visual workflows and develop microservices in your {product_name}.  
-This dashboard represents the "Dev" half of the "DevOps" approach, see the GUI Overview for more details. 
 
 NOTE: The username and password you use to access either dashboard is the same, the selection on the login screen simply determines which dashboard you can see after logging in.
 
