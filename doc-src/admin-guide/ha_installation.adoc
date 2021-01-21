@@ -116,7 +116,18 @@ MSA High Availability is built upon Docker Engine Swarm mode, and requires:
  ** Docker Swarm Manager3
  
  * A shared mount point (from a NAS or Global File System):
- ** Mount point on all VMs is `/mnt/NASVolume`
+ ** Mount point on all VMs is `/mnt/NASVolume`. All those folders must be created manually to have HA platform working correctly
+ 
+ *** msa_api
+ *** msa_db
+ *** msa_dev
+ *** msa_entities
+ *** msa_es
+ *** msa_front
+ *** msa_repository
+ *** msa_svn
+ *** rrd_repository with inside sub folders monitor, ping and snmp
+ 
  
  * Each machine should have link:https://docs.docker.com/install/[Docker] and link:https://docs.docker.com/compose/install/[Docker compose] installed.
 
@@ -194,6 +205,20 @@ widazn0p3smq        msa_msa_sms         replicated          1/1                 
 ```
 
 IMPORTANT: on *CentOS 7* you need to link:#configure_firewall[configure the firewall] to allow Docker Swarm.
+
+== OpenMSA library
+To have predefined Device Adapters, Microservices and Workflows from https://github.com/openmsa, on the node where msa_dev is running, execute this command
+
+----
+docker exec  $(docker ps -q -f name=msa_dev) /usr/bin/install_libraries.sh
+----
+
+Once done, restart msa_api and msa_sms services
+
+----
+docker service update --force devmsaha_msa_api
+docker service update --force devmsaha_msa_sms
+----
 
 == Backup
 === How to backup the swarm environment:
