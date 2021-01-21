@@ -46,12 +46,13 @@ sudo iptables -A FORWARD -p tcp --dport <PORT TO BLOCK> -s <IP TO BLOCK> -j DROP
 ----
 iptables -L INPUT -n | grep -v Chain | grep -v target
 ----
+
 Returns
+
 [source]
 ----
 DROP       tcp  --  92.103.182.20        0.0.0.0/0           tcp dpt:
 DROP       tcp  --  92.103.182.20        0.0.0.0/0           tcp dpt:80
-[source]
 ----
 
 ===== Implementation steps
@@ -85,6 +86,7 @@ sudo iptables -A FORWARD -p tcp --dport <PORT TO BLOCK> -s <IP TO BLOCK> -j DROP
 These commands take 2 parameters, a port and an IP address.
 
 Add a CREATE function to your microservice and copy the implementation below:
+
 [source]
 ----
 sudo iptables -A INPUT -p tcp --dport {$params.dst_port} -s {$params.src_ip} -j DROP
@@ -109,6 +111,7 @@ Please make sure linux_me is activated, otherwise "Activate" it.
 Then click "Apply Changes".
 
 Once the configuration has been applied, you can connect to the managed entity CLI and verify that iptables was configured as expected.
+
 [source]
 ----
 $ docker-compose exec linux_me bash
@@ -294,12 +297,12 @@ from msa_sdk.variables import Variables             <1>
 from msa_sdk.msa_api import MSA_API
 
 dev_var = Variables()
-dev_var.add('device', var_type='Device')            <2>
+dev_var.add('devices.0.id', var_type='Device')      <2>
 
 context = Variables.task_call(dev_var)              <3>
 
 ret = MSA_API.process_content('ENDED',              <4>
-                              f'Firewall service created. Managed Entity: {context["device"]}',
+                              f'Firewall service created. {len(context["devices"])} Managed Entity selected',
                               context, True)
 print(ret)
 ----
@@ -312,46 +315,45 @@ print(ret)
 ===== process Add Filter Rule
 [source, python]
 ----
-import json
-from msa_sdk.variables import Variables
-from msa_sdk.msa_api import MSA_API
-from msa_sdk.order import Order
-
-dev_var = Variables()                               <1>
+# List all the parameters required by the task
+dev_var = Variables()                                                       <1>
 dev_var.add('id', var_type='Integer')
 dev_var.add('src_ip', var_type='String')
 dev_var.add('dst_port', var_type='Integer')
 context = Variables.task_call(dev_var)
+process_id = context['SERVICEINSTANCEID']
 
-device_id = context['device']                       <2>
-# extract the database ID
-devicelongid = device_id[-3:]
+devices = context['devices']
+for device in devices:  
+  # extract the database ID
+  device_db_id = device['id'][-3:]                                              <2>
 
-micro_service_vars_array = {"object_id": context['id'],     <3>
-                            "src_ip": context['src_ip'],
-                            "dst_port": context['dst_port']
-                            }
+  # build the Microservice JSON params for the CREATE
+  micro_service_vars_array = {"object_id": context['id'],                       <3>
+                              "src_ip": context['src_ip'],
+                              "dst_port": context['dst_port']
+                              }
 
-object_id = context['id']
+  object_id = context['id']                                                     <4>
 
-simple_firewall = {"simple_firewall": {object_id: micro_service_vars_array}}        <4>
+  simple_firewall = {"simple_firewall": {object_id: micro_service_vars_array}}       <5>
 
-order = Order(devicelongid)                 <5>
+  # call the CREATE for simple_firewall MS for each device
+  order = Order(device_db_id)
+  order.command_execute('CREATE', simple_firewall)              <6>
 
-order.command_execute('CREATE', simple_firewall)        <6>
+  # convert dict object into json
+  content = json.loads(order.content)                    <7>
 
-content = json.loads(order.content)         <7>
-
-# check if the response is OK
-if order.response.ok:
-
+  # check if the response is OK
+  if order.response.ok:
     if 'rules' in context.keys():
-        num = len(context['rules'])
+      num = len(context['rules'])
     else:
-        context['rules'] = {}
-        num = 0
+      context['rules'] = {}
+      num = 0
 
-    context['rules'][num] = {}              <8>
+    context['rules'][num] = {}                      <8>
     context['rules'][num]['delete'] = False
     context['rules'][num]['id'] = context['id']
     context['rules'][num]['src_ip'] = context['src_ip']
@@ -359,16 +361,16 @@ if order.response.ok:
 
     ret = MSA_API.process_content('ENDED',
                                   f'STATUS: {content["status"]}, \
-                                    MESSAGE: {content["message"]}',
+                                  MESSAGE: {content["message"]}',
                                   context, True)
-else:
+  else:
     ret = MSA_API.process_content('FAILED',
                                   f'Policy update failed \
                                   - {order.content}',
                                   context, True)
 
-
 print(ret)
+
 ----
 
 <1> list all the parameters required by the task
