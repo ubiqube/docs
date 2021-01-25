@@ -9,7 +9,7 @@ The following feature improvements are included with this release:
 
 === Topology
 
-The {product_name} link:../user-guide/managed_entities_topology{outfilesuffix}[topology] will allow you to display a graphical view of your network based on various criteria.
+The {product_name} topology will allow you to display a graphical view of your network based on various criteria.
 
 The topology will give insight into how your network, domain and entities are structured and interconnected. You can zoom in and out on particular aspects of the topology view, as well as find out relevant information about managed entities under your control.
 
@@ -17,23 +17,23 @@ In addition, you will be able to build you own topology to suit your specific re
 
 === BPM
 
-The {product_name} BPM link:../user-guide/bpm{outfilesuffix}[execution console] provides a simple and comprehensive UI to track the execution of your BPM processes in real time.
+The {product_name} BPM execution console provides a simple and comprehensive UI to track the execution of your BPM processes in real time.
 
-The BPM link:../developer-guide/bpm_editor{outfilesuffix}[editor] has an extended coverage of the BPMN 2.0 standard with the addition of decision gateways as well as additional control over the execution flow of your BPM processes.
+The BPM editor has an extended coverage of the BPMN 2.0 standard with the addition of decision gateways as well as additional control over the execution flow of your BPM processes.
 
 === Microservices
 
-The support for additional variable types has been added to help you design user-friendly link:../developer-guide/microservice_variables{outfilesuffix}[microservices] and provide extended abstraction possibilities.
+The support for additional variable types has been added to help you design user-friendly microservices and provide extended abstraction possibilities.
 
 === Workflows
 
-The support for additional variable types has been added to help you design user-friendly link:../developer-guide/workflow_editor{outfilesuffix}[workflows] and provide an enhanced integrated experience with your microservices.
+The support for additional variable types has been added to help you design user-friendly workflows and provide an enhanced integrated experience with your microservices.
 
 === Assurance
 
 Assurance protects against and mitigates risk. This release renders the logs from Elasticsearch that are collected from managed entities.  This will enable you to better manage risk and determine the best courses of action, based on the available data.  
 
-You will be able to create and manage your own librairies of alarms and decide if an alarm will trigger an automated process or simply send a notification, or both.
+You will be able to create and manage your own libraries of alarms and decide if an alarm will trigger an automated process or simply send a notification, or both.
 
 == CoreEngine
 
@@ -41,7 +41,7 @@ No changes have been made to the core engine from previous versions of the produ
 
 == Upgrading
 
-Instructions to upgrade are here: link:../user-guide/quickstart{outfilesuffix}#upgrade[upgrade guide]
+Instructions to upgrade are available in the admin guide
 
 === Specific instruction for upgrating from MSA-2.1.0 to MSA-2.2.0
 
@@ -72,7 +72,7 @@ With the introduction of decision gateways and other bug fixes, the format of BP
 
 ==== Features
 
-* MSA-8388 - [UI/Search] Enhancement of the search UI to retrieve MS,WF and BPM + multitenancy + redirect to the selected element
+* MSA-8388 - [UI/Search] Enhancement of the search UI to retrieve MS,WF and BPM + multi-tenancy + redirect to the selected element
 * MSA-8403 - [API/Doc] Swagger doc update - DeviceRS modification
 * MSA-8440 - [Workflow] Alarm based workflow execution
 * MSA-8527 - [Microservice] Microservice reference type advanced parameters for MS and WF
@@ -96,7 +96,7 @@ With the introduction of decision gateways and other bug fixes, the format of BP
 * MSA-8864 - [BPM] execute process by reference and add API to get status by process external reference
 * MSA-8880 - [API] Adapt the configurationObjects endpoint for API change
 * MSA-8937 - [Workflow/BPM] Workflow task status in the BPM variable
-* MSA-9005 - [API] API to detach mulitple subtenant from workflow
+* MSA-9005 - [API] API to detach multiple subtenant from workflow
 * MSA-9010 - [BPM] Decision gateway enhancement
 * MSA-9014 - [BPM] Camunda external task: consider resume on fail parameter from BPM
 
@@ -130,6 +130,6 @@ With the introduction of decision gateways and other bug fixes, the format of BP
 * MSA-8961 - [Workflow] Unable to load microservice object
 * MSA-8967 - [Workflow] process scheduling button is visible although scheduling is not supported
 * MSA-8983 - [Microservice] in some cases, the "Import" section of XML microservice can't be edited
-* MSA-8995 - [Workflow] some inconsitancies found in workflow data (graphs + instance counts)
+* MSA-8995 - [Workflow] some inconsistencies found in workflow data (graphs + instance counts)
 * MSA-8996 - [User Management] not possible to detach/attach subtenant to an edited manager
 * MSA-9086 - [Workflow] Array variables not displayed properly in the workflow console is causing all values to be lost in the backend for next process invocation
