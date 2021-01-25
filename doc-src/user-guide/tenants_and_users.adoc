@@ -2,10 +2,9 @@
 ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
+The {product_name} platform provides a multi-roles and multi-tenancy hierarchy that should accommodate all your specifics requirement.
 
-After installing, configuring and activating the {product_name}, you will start creating tenants and users.
-
-This guide will walk you through the initial process of connecting and creating tenants and users.
+== Overview
 
 Tenant and user management screens are available in the "Admin" section of the {product_name} UI.
 

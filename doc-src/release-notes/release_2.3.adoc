@@ -48,18 +48,19 @@ image:bpm_instance.png[width=700px]
 
 As manager, you can now benefit from the scheduled execution of your workflow processes and fully automate the management of your infrastructure.
 
-The {product_name} workflow designer comes with a new set of variable types Such as "Composite"
-* Advanced custom UI design with variable type composite 
-
 image:workflow_scheduling.png[width=700px]
+
+The {product_name} workflow designer comes with a new set of variable types.
+
+- Advanced dynamic UI rendering with variable type composite: allow some dynamic end user form rendering at runtime.
 
 === Microservices
 
 The microservice designer now provides a new set of variable type such as
 
-* Password: auto-renders as a password web form input field.
-* Link: auto-renders as a URL.
-* Composite: advanced custom UI design and rendering.
+- Composite: advanced dynamic UI rendering with variable type composite: allow some dynamic end user form rendering at runtime.
+- Password: auto-renders as a password web form input field.
+- Link: auto-renders as a URL.
 
 === DevOps
 
@@ -71,10 +72,13 @@ image:devops.png[width=700px]
 
 ==== Monitoring Profile
 
-Monitoring profile will allow you to:
+The {product_name} provides a complete suite of assurance module from KPI monitoring to alarm management and dashboards. Closed loop assurance is possible as every components of the {product_name} are fully integrated. You can easily do the following:
  
- - Configure custom KPI with threshold crossing based alarms.
- - Design and display custom monitoring graphs.
+- Configure and monitor your custom KPI with threshold crossing based alarms.
+- Design and display your own monitoring graphs and decide what you want your end users to see in their homepage dashboards.
+- Collect SNMP traps from your managed entities
+- Collect network events such as syslogs, netflow traffic.
+- Configure alarm based on your KPIs and/or events and sent email notification , SNMP traps or even execute workflow processes to automate remediation.
 
 image:monitoring_profile.png[width=700px]
 
