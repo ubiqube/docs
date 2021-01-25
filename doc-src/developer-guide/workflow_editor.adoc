@@ -91,7 +91,7 @@ To create a new workflow, connect to the link:developer_portal{outfilesuffix}[de
 
 Provide the information related to the workflow:
 
-- Workflow Name: the name of the worklfow
+- Workflow Name: the name of the workflow
 - Description: a description of the workflow
 - Workflow Variable Name: default to service_id (see below for more detail about this field)
 - Workflow Language: PHP or PYTHON (this cannot be edited)
@@ -121,7 +121,7 @@ image:workflow_editor_new_process.png[width=700px]
 
 ==== Process scheduling
 
-Scheduling of process execution can be authorize when defining a process by checking "Allow sheduling" on the process definition screen.
+Scheduling of process execution can be authorize when defining a process by checking "Allow scheduling" on the process definition screen.
 
 When scheduling is allowed, the user execute the process either the usual way by clicking "Run" or use "Schedule" to configure the process execution scheduling.
 
@@ -177,9 +177,19 @@ task_success('Task OK');   // or task_error('Task FAILED');                     
 [#logging]
 == Logging and troubleshooting
 
-You can add debugging information to help you with your developement and also provide useful information for troubleshooting task in production.
+You can add debugging information to help you with your development and also provide useful information for troubleshooting task in production.
 
-The log files are generated per workflow instance in the container `msa_api` under `/opt/jboss/wildfly/standalone/log/`. The log files are formated as `process-XX.log` where XX is the instance ID.
+The log files are generated per workflow instance in the container `msa_api` under `/opt/jboss/wildfly/standalone/logs/`. The log files are formatted as `process-XX.log` where XX is the workflow instance ID.
+
+.39 is the workflow instance ID
+image:workflow_instance_id.png[width=700px]
+
+You can monitor the logs of a process with the CLI command below
+
+.Monitor the process execution logs
+----
+docker-compose exec msa_api tail -F  /opt/wildfly/logs/processLog/process-XX.log
+----
 
 .Log a message in PHP
 [source, php]

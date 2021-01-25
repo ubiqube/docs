@@ -12,6 +12,7 @@ Each API is described below with the REST call, a textual description, the param
 The detail on the SecEngine API command is very important because it is directly related to the adaptor implementation for a specific vendor.
 
 == API description
+
 === Add an order to the Stack
 curl -u ncroot:ncroot_pwd -XPUT http://MSA_IP/ubi-api-rest/orderstack/command/{deviceId}/{commandName} -d {objectParameters}
 
@@ -23,7 +24,7 @@ Adds a command in the stack and returns the ID of the order in the stack.
 - commandName: possible values are CREATE UPDATE IMPORT DELETE
 - objectParameters: in JSON format, for example:
 
-[source]
+[source,json]
 ----
 '{
 "interface" : {
@@ -64,11 +65,12 @@ sms -e JSCALLCOMMAND -i 'deviceId commandName 0' -c 'objectParameters'
 .Note
 In the CLI command above the parameter 0 is used along with commands such as CREATE, UPDATE or DELETE and generate configuration without access to the database or the device
 
-=== Generates the configuration and store the sonfiguration from the stack
+=== Generates the configuration and store the configuration from the stack
 [source]
 ----
 curl -u ncroot:ncroot_pwd -XPUT http://MSA_IP/ubi-api-rest/orderstack/configuration/{deviceId}
 ----
+
 .Description
 Generates the configuration based on the stacked orders for a device and stores the configuration items in the database.
 
@@ -76,12 +78,14 @@ Generates the configuration based on the stacked orders for a device and stores 
 - deviceId: the database identifier of the managed device, for example: 123.
 
 .Detail
+----
 loop on commands in the stack
   call SMS verb
   write in database (redsms.sd_crud_object)
 end loop
+----
 
-The SMS verb is equivalent to the following command: sms -e JSCALLCOMMAND -i 'deviceId commandName 1' -c 'objectParameters'
+The SMS verb is equivalent to the following command: `sms -e JSCALLCOMMAND -i 'deviceId commandName 1' -c 'objectParameters'`
 
 .Note
 In the CLI command above the parameter 1 is used along with commands such as CREATE, UPDATE or DELETE and generate the configuration and stores the configuration items in the database.
@@ -89,10 +93,12 @@ In the CLI command above the parameter 1 is used along with commands such as CRE
 The device configuration is not impacted.
 
 === Generate the configuration from the stack and apply to the device
+
 [source]
 ----
 curl -u ncroot:ncroot_pwd -XPOST http://MSA_IP/ubi-api-rest/orderstack/execute/{deviceId}
 ----
+
 .Description
 Generates the configuration based on the stacked orders for a device and stores the configuration items in the database and executes all the commands on the device.
 
@@ -100,11 +106,13 @@ Generates the configuration based on the stacked orders for a device and stores 
 - deviceId: the database identifier of the managed device, for example: 123.
 
 .Detail
+----
 loop on commands in the stack
   call SMS verb
   write in database (table redsms.sd_crud_object)
   execute command on the device
 end loop
+----
 
 The SMS verb is equivalent to the following command: sms -e JSCALLCOMMAND -i 'deviceId commandName 2' -c 'objectParameters'
 
@@ -112,10 +120,12 @@ The SMS verb is equivalent to the following command: sms -e JSCALLCOMMAND -i 'de
 In the CLI command above the parameter 2 is used along with commands such as CREATE, UPDATE or DELETE which will generate the configuration, store the configuration items in the database and apply the configuration to the device.
 
 === List the orders in the stack
+
 [source]
 ----
 curl -u ncroot:ncroot_pwd -XGET http://MSA_IP/ubi-api-rest/orderstack/{deviceId}
 ----
+
 .Description
 Lists the stacked orders for a device.
 
@@ -126,6 +136,7 @@ Lists the stacked orders for a device.
 Read from the database (table redsms.sd_crud_object).
 
 === Get the detail of a stack command
+
 [source]
 ----
 curl -u  ncroot:ncroot_pwd -XGET http://MSA_IP/ubi-api-rest/orderstack/command/{deviceId}/{commandId}
@@ -141,10 +152,12 @@ Gets the detail of a stack command based on its identifier in the stack.
 Read in database (redsms.sd_crud_object).
 
 === Clear the stack
+
 [source]
 ----
 curl -u ncroot:ncroot_pwd -XDELETE http://MSA_IP/ubi-api-rest/orderstack/{deviceId}
 ----
+
 .Description
 Clears the stack for a device.
 
@@ -155,6 +168,7 @@ Clears the stack for a device.
 Remove in database (redsms.sd_crud_object)
 
 === Delete a command from the stack
+
 [source]
 ----
 curl -u  ncroot:ncroot_pwd -XDELETE http://MSA_IP/ubi-api-rest/orderstack/command/{deviceId}/{commandId}
@@ -170,10 +184,12 @@ Deletes a command from the stack based on the command ID.
 Remove in database (redsms.sd_crud_object).
 
 === Apply the configuration for a device
+
 [source]
 ----
 curl -u ncroot:ncroot_pwd -XPUT http://MSA_IP/ubi-api-rest/device/push_configuration/{deviceId} -d {configuration}
 ----
+
 .Description
 Perform a push configuration for a device.
 
@@ -188,14 +204,17 @@ Perform a push configuration for a device.
     "configuration": "config system interface\nedit port1\nset ip 192.168.1.10 255.255.255.0\nend"
 }
 ----
+
 .Detail
 Applies the configuration to the device.
 
 === Get the status of the API push_configuration 
+
 [source]
 ----
 curl -u ncroot:ncroot_pwd  -X GET http://MSA_IP/ubi-api-rest/device/push_configuration/status/{deviceId}
 ----
+
 .Description
 Gets the status of the push configuration from the device.
 

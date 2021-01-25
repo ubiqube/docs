@@ -11,7 +11,7 @@ Configuration variables can be associated to any managed entity in order to add 
 
 In order to managed these configuration variables, you can use the workflow link:https://github.com/openmsa/Workflows/tree/master/Utils/Manage_Device_Conf_Variables[Manage Device Variables].
 
-The workflow provices a simple UI to create/update/delete and list the configuation variables associated to a managed entity.
+The workflow provides a simple UI to create/update/delete and list the configuration variables associated to a managed entity.
 
 To use it, first you need to associate it to your subtenant then execute the process *Init* to select a managed entity. *Init* will also read the database for any existing configuration variable.
 

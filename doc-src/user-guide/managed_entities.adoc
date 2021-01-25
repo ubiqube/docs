@@ -4,7 +4,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 image:msa_arch_da_use.png[width=400px]
 
-*Managed Entities* are the logical representation of any element of an infrastruucture such as network devices, security devices, VNF, VIM,...
+*Managed Entities* are the logical representation of any element of an infrastructure such as network devices, security devices, VNF, VIM,...
 
 == Overview
 
@@ -51,14 +51,14 @@ NOTE: All of these values are stored in the database and available to use by the
 
 .Select the tenant and subtenant the managed entity will belong to. 
 
-Only available when creating a managed entity, you can't chnange this value once the managed entity is created. If you selected the wrong tenant or subtenant you will have to recreate the managed entity.
+Only available when creating a managed entity, you can't change this value once the managed entity is created. If you selected the wrong tenant or subtenant you will have to recreate the managed entity.
 
 ==== Basic information
 
 .Select the vendor and model for the managed entity.
 This will select the adapter the {$product_name} link:../admin-guide{outfilesuffix}#overview[Core Engine] will use for configuring and monitoring the managed entity
 
-.Select the nature of the Mmanaged entity
+.Select the nature of the managed entity
 The nature of the managed entity is an additional information that will help you organize your infrastructure into physical devices and virtual (private or public) ones
 
 ==== Administrative information
@@ -67,7 +67,7 @@ The nature of the managed entity is an additional information that will help you
 
 The name is a free text field that you can use to identify your managed entity. 
 
-NOTE: Although the value unicity is not enforced by the {$product_name} data model, it is very common to use a hostname for the name field.
+NOTE: Although the value uniqueness is not enforced by the {$product_name} data model, it is very common to use a hostname for the name field.
 
 ==== Management information
 
@@ -77,7 +77,7 @@ This is the IP address the {$product_name} will use to manage and monitor the en
 IMPORTANT: hostname or FQDN (Fully Qualified Domain Name) is not supported.
 
 .Management interface name
-You can optionaly set the management interface name here. When set, the CoreEngine will attempt to use to poll the management interface traffic with SNMP.
+You can optionally set the management interface name here. When set, the CoreEngine will attempt to use to poll the management interface traffic with SNMP.
 
 .Hostname
 The hostname of the managed entity.
@@ -106,7 +106,7 @@ Set the SNMP community configured on the actual managed entity.
 Optionaly set the monitoring port if it is not the default one (161)
 
 .Log analytics
-Check to collect syslogs and optionaly analyse the syslogs. The syslogs will be parsed and stored in the Elasctisearch cluster.
+Check to collect syslogs and optionally analyse the syslogs. The syslogs will be parsed and stored in the Elasctisearch cluster.
 
 NOTE: log analytics must be enabled for SNMP trap monitoring.
 
@@ -118,14 +118,14 @@ The authentication is done at the adapter layer whenever it is required.
 [#me_conf_var]
 === Configuration variables
 
-In addition to the UI fields, it is also possible to create custom additional configuration variable to a managed entity. Configuration variables are offer a convenient way to extend the data model of the managed entity without any core product customisation.
+In addition to the UI fields, it is also possible to create custom additional configuration variable to a managed entity. Configuration variables are offer a convenient way to extend the data model of the managed entity without any core product customization.
 
 A configuration variables is a key/value couple stored in the database, associated to a managed entity.
 
 Once a configuration variable is set on a managed entity, it is available to the microservices, the configuration templates and the device adapter but it can also simply be used to add additional administrative information to a managed entity.
 
 .Example 1: the REST generic adapter
-The link:https://github.com/openmsa/Adapters/tree/master/adapters/rest_generic[REST generic adapter] uses configuration variables to customise it's behavior and adapt itself to the various type of REST API (BASIC auth vs. Token auth, HTTP vs. HTTPS,...)
+The link:https://github.com/openmsa/Adapters/tree/master/adapters/rest_generic[REST generic adapter] uses configuration variables to customize it's behavior and adapt itself to the various type of REST API (BASIC auth vs. Token auth, HTTP vs. HTTPS,...)
 
 [source, PHP]
 ----

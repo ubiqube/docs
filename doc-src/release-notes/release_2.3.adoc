@@ -16,20 +16,42 @@ image:custom_manager_dashboard.png[width=700px]
 
 === BPM
 
-* New look and feel
-* Extended support for BPMN 2.0:
-** decision gateway
-** parallel gateway
-** user breakpoint
-** per subtenant association
-** execution instance management
+The {product_name} BPM designer and execution console come with a new look and feel as well as an extended set of new features.
+
+An extended support for BPMN 2.0 will allow you to model your most complex business processes.
 
 image:bpm.png[width=700px]
 
+==== Decision gateway
+
+Allow your BPM process to take smart decisions based on the result of executed workflow and control the overall flow of the business process execution.
+
+==== Parallel gateway
+
+In a complex business process, very often activities can be carried out in parallel and one activity may depend on others. To address this, you can use parallel gateway.
+
+==== User breakpoint
+
+Some activity may require a human action to be carried out, like verifying the current state of the infrastructure being updated. Is is also possible that during the design phase of your BPM process you need to set some breakpoint to understand how your workflows are behaving and to debug then.
+
+You can use the user breakpoint for that.
+
+==== Reusability and execution management
+
+BPM management is now similar to workflow and microservice management: design one, associate it to subtenants and run it from a subtenant.
+
+Each BPM execution creates a new BPM instance that you can manage separately.
+
+image:bpm_instance.png[width=700px]
+
 === Workflows
 
-* Process execution scheduling
+As manager, you can now benefit from the scheduled execution of your workflow processes and fully automate the management of your infrastructure.
+
+The {product_name} workflow designer comes with a new set of variable types Such as "Composite"
 * Advanced custom UI design with variable type composite 
+
+image:workflow_scheduling.png[width=700px]
 
 === Microservices
 
@@ -41,7 +63,7 @@ The microservice designer now provides a new set of variable type such as
 
 === DevOps
 
-Support for automated synchronisation with a remote git repository for microservices, workflows and BPM.
+Support for automated synchronization with a remote git repository for microservices, workflows and BPM.
 
 image:devops.png[width=700px]
 
@@ -67,9 +89,13 @@ Deploy your dashboards or the ones from the {product_name} packaged library and 
 
 === User management
 
+////
 ==== Permission profile
 
 Create permission profiles to control user access rights.
+
+image:permission_profile.png[width=700px]
+////
 
 ==== Audit record
 

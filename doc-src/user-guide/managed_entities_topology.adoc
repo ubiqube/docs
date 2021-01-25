@@ -67,7 +67,7 @@ $cmd = "snmpwalk -v2c -c $community $address IP-MIB::ipAdEntNetMask 2>&1";
 exec($cmd, $value, $error);                                                             <1>
 if (!$error) {
 	foreach ($value as $search) {
-		if (searchAdress($search, $matches) != false) {
+		if (searchAddress($search, $matches) != false) {
 			if ($matches [1] [0] != 127) {
 				$address_link = $matches [0] [0];
 				$maskAdr = $matches [0] [1];
@@ -157,7 +157,7 @@ You can create your own topology view, either based on an existing one or you ca
 
 Here are the steps to add a new topology `my_topology` to your {$product_name}
 
-=== Step 1: prepare your developement environment
+=== Step 1: prepare your development environment
 
 The topology workflow is located under `/opt/fmc_repository/OpenMSA_WF/` in the container `msa_dev`, it's a git repository so you also need to make sure that it is up to date with `git status` and update your local repository with `git pull origin master` to get the latest updates.
 

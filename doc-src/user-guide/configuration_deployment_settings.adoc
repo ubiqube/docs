@@ -4,7 +4,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 Deployment Settings will allow you to build your configurations and apply them to your managed entities.
 
-Deployment Settings will also ease any change to your configurations: you can add/remove a template or a microservice and be assured that the change will be applied in a consistant way across all your managed entities.
+Deployment Settings will also ease any change to your configurations: you can add/remove a template or a microservice and be assured that the change will be applied in a consistent way across all your managed entities.
 
 When using a deployment setting, you can ensure that your managed entities, associated with the deployment setting, have the same list of microservices, thus are all similar with regard to their managed services.
 
@@ -51,7 +51,7 @@ This will enforce consistency within you system.
 
 ==== Delete
 
-You can delete a deployment setting any time. When you delete a deployment setting, the microservices won't be available to the managed entity but any configuration previoulsy fetched from the maaged entity will still be stored in the database.
+You can delete a deployment setting any time. When you delete a deployment setting, the microservices won't be available to the managed entity but any configuration previously fetched from the managed entity will still be stored in the database.
 
 [#external_ref]
 ==== External reference
@@ -64,4 +64,4 @@ This is what external reference is made for. You can set it to your own value as
 
 == Access Control
 
-The scope of a deployment settings is the subteant. In order to view the existing deployment settings you need first to select a subtenant. Once selected as shown below, this enables the user to change those settings appropriately.
+The scope of a deployment settings is the subtenant. In order to view the existing deployment settings you need first to select a subtenant. Once selected as shown below, this enables the user to change those settings appropriately.

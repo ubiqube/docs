@@ -58,9 +58,9 @@ Each layer is composed of 2 sub-layers:
 - The BPM and Workflows
 - The Microservices and Adapters
 
-Each of the layers are themselves split into 2 functional blocks: the Developement and the Management. 
+Each of the layers are themselves split into 2 functional blocks: the Development and the Management. 
 
-For instance, the microservices layer is composed of an extendable library of microservices, ready to use and the development environement to update the microservices in order to extend the library.
+For instance, the microservices layer is composed of an extendable library of microservices, ready to use and the development environment to update the microservices in order to extend the library.
 
 The Reporting, Analytics and Assurance layers span vertically across the Automation and Integration layer as they are fully integrated with them.
 
@@ -68,7 +68,7 @@ The Reporting, Analytics and Assurance layers span vertically across the Automat
 
 The {product_name} has 2 levels of tenancy: tenant and subtenant. 
 
-These 2 levels will let you organise your managed entities based on your need will ensuring that access restriction based on the user role is fully respected.
+These 2 levels will let you organize your managed entities based on your need will ensuring that access restriction based on the user role is fully respected.
 
 4 user roles are available to make sure that you can assign the access and managing roles to your users based on their actual roles in your company.
 
@@ -119,7 +119,7 @@ The BPM layer offers a visual workflow editor to make {product_name} a strong SO
 
 == The UI
 
-*Vision*: {product_name} is to enable a ‘DevOps-ready’ Integrated Automation Platform to enable the design of multi-vendor, multi-cloud solutions across the entire tech ecosystem (datacenter to WAN, edge computing and IoT: all wrapped with security).
+*Vision*: {product_name} is to enable a ‘DevOps-ready’ Integrated Automation Platform to enable the design of multi-vendor, multi-cloud solutions across the entire tech ecosystem (data center to WAN, edge computing and IoT: all wrapped with security).
 
 
 *Target users*:  SI engineers developing (DevOps) end-to-end solutions for their business customers, or end-users managing the lifecycle of their infrastructure or the services they are deploying (Telco, Cloud, MSSP, etc.).
@@ -132,7 +132,7 @@ A UX reflecting the above wide variety of technical scenarios and user experienc
 * *A developer-centric environment*.
 * *An end-user-centric environment*.
 . A UX structure in line with our modular {product_name} architecture (microservices, workflows, etc.) for consistency and greater concept adoption.
-. A universal taxonomy (naming and tagging) that would appeal to the entire ecosystem no matter the domain or the use case (datacenter, services, security, networking, wireless, wireline, IoT, etc.).
+. A universal taxonomy (naming and tagging) that would appeal to the entire ecosystem no matter the domain or the use case (data center, services, security, networking, wireless, wireline, IoT, etc.).
 . A modern UX where navigation user experience matters more than feature list.
 . A UX that connects to our community for greater intel and information-sharing among all of the {product_name} users and developers.
 . A UX that becomes an evergreen platform, which we continue to improve over time, making our ‘agility by design’ claim a tangible reality for our customers and partners.

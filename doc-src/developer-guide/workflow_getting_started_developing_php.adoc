@@ -57,7 +57,7 @@ image:workflow_helloworld_edit.png[]
 
 In order to be used, every Workflow should be instantiated first. This is the role of the process with the type "Create".
 
-NOTE: even though for most use cases, a single "CREATE" process is sufficient, it is possible to have several "CREATE" processes to support various ways of creating the Workflow instance (You can relate that to having several object construtor in an OOP language such as Java). 
+NOTE: even though for most use cases, a single "CREATE" process is sufficient, it is possible to have several "CREATE" processes to support various ways of creating the Workflow instance (You can relate that to having several object constructor in an OOP language such as Java). 
 
 For this tutorial you will create one process named "create instance" and add one task to this process. This task will simply display a message to the process execution console.
 
@@ -140,11 +140,11 @@ A new instance is available and you can execute the process "print message".
 
 image:workflow_helloworld_new_instance.png[]
 
-The process "print message" will start executing and will executes the tasks sequencially.
+The process "print message" will start executing and will executes the tasks sequentially.
 
 image:workflow_helloworld_display_name.png[]
 
-The name will be displayed in the task execution status popoup, below the name of the task.
+The name will be displayed in the task execution status popup, below the name of the task.
  
 
 

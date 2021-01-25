@@ -102,6 +102,7 @@ quickstart_msa_ui_1        /docker-entrypoint.sh ./st ...   Up      80/tcp
 Here are a set of useful CLI commands that you can run from the working directory...
 
 Check the status of the database:
+
 [source]
 ----
 $ sudo docker-compose exec db pg_isready 
@@ -110,15 +111,16 @@ $ sudo docker-compose exec db pg_isready
 
 Monitor the logs of the API server. Run the cmd below and try to login.
 Report any error from the logs:
+
 [source]
 ----
-sudo docker-compose exec msa_api tail -F  /opt/jboss/wildfly/standalone/log/server.log
+docker-compose exec msa_api tail -F  /opt/jboss/wildfly/standalone/logs/server.log
 ----
 
 If the API server is not responding or if you can't login after a few minutes, run the command below to restart the API server and monitor the logs:
 [source]
 ----
-$ sudo docker-compose restart msa_api              
+$ docker-compose restart msa_api              
 Restarting quickstart_msa_api_1 ... done
 ----
 
@@ -126,22 +128,22 @@ Then monitor the logs as explained above.
 
 ==== Wildfly startup failure `fatal KILL command`
 
-If wildfly fails to start with an error similar to `fatal KILL command` then you probably haven't allocated enough memory to your docker engine (see link:../user-guide/quickstart{outfilesuffix}#prerequisites[prerequisites])
+If Wildfly fails to start with an error similar to `fatal KILL command` then you probably haven't allocated enough memory to your docker engine 
 
 The above steps should resolve common reasons why the {product_name} is not functioning properly.  If there is something that is still not working properly, then please contact UBiqube.
 
 === CoreEngine
 
 ==== CoreEngine nor starting or restart fails
-If the CoreEngine doesn't (re)start propertly, for instance when running
+If the CoreEngine doesn't (re)start properly, for instance when running
 ----
-$ sudo docker-compose exec msa_sms restart
+docker-compose exec msa_sms restart
 ----
 
-you can check the CoreEgine configuration logs:
+you can check the CoreEngine configuration logs:
 
 ----
-$ sudo docker-compose exec msa_sms cat /opt/sms/logs/configure.log
+docker-compose exec msa_sms cat /opt/sms/logs/configure.log
 ----
 
 ==== How do I enable debug logs on the CoreEngine ?
@@ -176,7 +178,7 @@ NOTE: this will only enable DEBUG mode for the configuration engine (smsd.log)
 
 The CoreEngine is in charge of configuration but also monitoring, syslog collecting, syslog parsing, alerting,...
 
-The debug mode can also be enabled permanentely for the various modules of the CoreEngine. This configuration will remain until the docker image is updated.
+The debug mode can also be enabled permanently for the various modules of the CoreEngine. This configuration will remain until the docker image is updated.
 
 .Set debug for configuration logs
 [source,bash]

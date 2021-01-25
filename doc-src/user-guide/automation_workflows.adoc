@@ -8,7 +8,7 @@ image:msa_arch_wf_use.png[width=400px]
 
 == Overview
 
-This guide explains how to find, select and run worflows.
+This guide explains how to find, select and run workflows.
 
 A workflow is composed of:
 
@@ -65,7 +65,7 @@ Once an instance is created, you can execute any process available to either upd
 The process to delete an instance can also execute some automated tasks before removing the instance from the list.
 
 .Example
-A typical example of a workflow lifecycle is the one to mangage VNF on a cloud:
+A typical example of a workflow lifecycle is the one to manage VNF on a cloud:
 
 - CREATE process: the user provide the VNF specific parameters and the process execute to create the VNF on the cloud, create and activate the Managed Entity on the {product_name}.
 - UPDATE processes: the user can ask for scale up/down or configuration changes of the VNF
@@ -75,6 +75,9 @@ A typical example of a workflow lifecycle is the one to mangage VNF on a cloud:
 
 If a process has been configured to allow scheduling (see documentation about the workflow editor), it is possible to schedule the execution of a process.
 
+image:workflow_scheduling.png[width=800px]
+
+.Workflow scheduling
 [width=100%, cols=5*,options="header"]
 |===
 | Schedule | Execute Every | Pick at least one | Start date | End date
@@ -95,7 +98,7 @@ The list of workflow instances can be filtered by the status of the execution of
 - Running: list the instances that have a process running
 - Failed: list the instances that had a process execution failure
 - Warning: list the instances where the last process execution ended with a warning
-- Success: list the instances where the last process execution ended succesfully
+- Success: list the instances where the last process execution ended successfully
 
 The status of a process and how a process can end with one of the possible statuses is defined by the process, in the tasks.
 
@@ -136,4 +139,4 @@ As a manager you will only be able to select the subtenant in your tenant.
 
 == Workflow design
 
-Workflow design is explained in the link:../developer-guide/index{outfilesuffix}[developer guide]
+Workflow design is explained in the developer guide.
