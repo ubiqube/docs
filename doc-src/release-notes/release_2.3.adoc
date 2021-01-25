@@ -8,21 +8,36 @@ Various fixes have been made to the product to ensure its continued ability to e
 
 The following feature improvements are included with this release:
 
+=== Custom Manager Dashboard
+
+Choose the important data you want to see as a manager in your dashboard
+
+image:custom_manager_dashboard.png[width=700px]
+
 === BPM
 
 * New look and feel
 * Extended support for BPMN 2.0:
 ** decision gateway
 ** parallel gateway
-** User breakpoint
-** Per subtennt association
-** Execution instance management
+** user breakpoint
+** per subtenant association
+** execution instance management
 
 image:bpm.png[width=700px]
 
+=== Workflows
+
+* Process execution scheduling
+* Advanced custom UI design with variable type composite 
+
 === Microservices
 
-=== Workflows
+The microservice designer now provides a new set of variable type such as
+
+* Password: auto-renders as a password web form input field.
+* Link: auto-renders as a URL.
+* Composite: advanced custom UI design and rendering.
 
 === DevOps
 
@@ -32,15 +47,36 @@ image:devops.png[width=700px]
 
 === Assurance
 
+==== Monitoring Profile
+
 Monitoring profile will allow you to:
  
- * Configure custom KPI.
- * Configure threshold crossing based alarms.
- * Design and display custom monitoring graphs.
+ - Configure custom KPI with threshold crossing based alarms.
+ - Design and display custom monitoring graphs.
+
+image:monitoring_profile.png[width=700px]
+
+
+==== Integrated Kibana dashboards
+
+link:https://www.elastic.co/kibana[Kibana] is now included in the {product_name}. Kibana is a free and open user interface that lets you visualize your Elasticsearch data and navigate the Elastic Stack.
+
+Design your Kibana visualization and dashbaord to provide comprehensive view over your infrastructure event and data flow.
+
+Deploy your dashboards or the ones from the {product_name} packaged library and provide subtenant level view to your users. 
 
 === User management
 
-Create permision profile to control user rights.
+==== Permission profile
+
+Create permission profiles to control user access rights.
+
+==== Audit record
+
+Every {product_name} user actions are recorded in an audit log for later auditing and reporting.
+
+image:auditing_logs.png[width=700px]
+
 
 == CoreEngine
 
