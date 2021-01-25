@@ -1,4 +1,4 @@
-= GUI Overview
+= Manager and Developer Portal
 ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
