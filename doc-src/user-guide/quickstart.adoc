@@ -237,7 +237,7 @@ This script is designed to populate the libraries for a fresh install or to upda
 [source, shell]
 ----
 $ docker-compose exec msa_dev /usr/bin/install_libraries.sh --help
-usage: install_libraries.sh all|ms|wf|da [--no-lic] [-y]
+usage: install_libraries.sh all|ms|wf|da|py|mano|quickstart [--lic] [-y]
 
 this script installs some libraries available @github.com/openmsa
 
@@ -246,8 +246,12 @@ all:          install everything: workflows, microservices and adapters
 ms:           install the microservices from https://github.com/openmsa/Microservices
 wf:           install the workflows from https://github.com/openmsa/Workflows
 da:           install the adapters from https://github.com/openmsa/Adapters
+mano:         install/update the python-sdk from https://github.com/openmsa/etsi-mano
+py:           install/update the python-sdk from https://github.com/openmsa/python-sdk
+quickstart:   install/update the local quickstart from https://github.com/ubiqube/quickstart
+
 Options:
---no-lic:     skip license installation
+--lic:     force license installation
 -y:           answer yes for all questions
 ----
 
