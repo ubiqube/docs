@@ -203,20 +203,18 @@ NOTE: when running the upgrade script, it will ask you if you want your local li
 
 If you are running docker natively on Windows, the script upgrade.sh may not work. In that case you need to execute manually the Docker CLI commands to upgrade your setup:
 
-1. `docker-compose down`
-2. `sms_php_vol=$(docker volume ls | awk '{print $2}' | grep msa_sms_php)`
-3. `docker volume rm $sms_php_vol`
-4. `sms_devices_vol=$(docker volume ls | awk '{print $2}' | grep msa_sms_devices)`
-5. `docker volume rm $sms_devices_vol`
-6. `dev_vol=$(docker volume ls | awk '{print $2}' | grep msa_dev)`
-7. `docker volume rm $dev_vol`
-8. `docker-compose up -d --build`
-9. `docker-compose exec msa_dev rm -rf /opt/fmc_repository/Process/Reference`
-10. `docker-compose exec msa_dev /usr/bin/install_libraries.sh all --no-lic`
-11. `docker-compose restart msa_api && docker-compose restart msa_sms`
-12. `msa_api=$(docker ps -q -f name=msa_api)`
-13: `docker exec -it -u root $msa_api crond`
+If your original version is 2.1, plz refer to upgrade script first provided with 2.2.0 GA
+In any cases, perform those commands
 
+1. `docker-compose down`
+2. `docker-compose up -d --build`
+3. `docker-compose exec msa_dev /usr/bin/install_libraries.sh all`
+4. `docker-compose restart msa_api && docker-compose restart msa_sms`
+5: `docker exec -it -u root msa_api crond`
+6. `docker-compose exec msa_dev /usr/bin/migrate_bpmn.sh -r`
+7. `docker-compose exec msa_dev /usr/bin/clean_old_topology_instances.sh`
+8. `docker exec -u root -w /home/install/scripts/ -it  msa_es bash -c './install.sh'`
+9. `docker exec -u root -w /home/install/ -it  msa_kibana bash -c 'php install_default_template_dash_and_visu.php'`
 
 === Install a specific version
 
