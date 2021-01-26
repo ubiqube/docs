@@ -203,14 +203,13 @@ NOTE: when running the upgrade script, it will ask you if you want your local li
 
 If you are running docker natively on Windows, the script upgrade.sh may not work. In that case you need to execute manually the Docker CLI commands to upgrade your setup:
 
-If your original version is 2.1, plz refer to upgrade script first provided with 2.2.0 GA
-In any cases, perform those commands
+If your original version is 2.1, plz refer to upgrade script first provided with 2.2.0 GA. In any cases, perform those commands
 
 1. `docker-compose down`
 2. `docker-compose up -d --build`
 3. `docker-compose exec msa_dev /usr/bin/install_libraries.sh all`
 4. `docker-compose restart msa_api && docker-compose restart msa_sms`
-5: `docker exec -it -u root msa_api crond`
+5. `docker exec -it -u root msa_api crond`
 6. `docker-compose exec msa_dev /usr/bin/migrate_bpmn.sh -r`
 7. `docker-compose exec msa_dev /usr/bin/clean_old_topology_instances.sh`
 8. `docker exec -u root -w /home/install/scripts/ -it  msa_es bash -c './install.sh'`
