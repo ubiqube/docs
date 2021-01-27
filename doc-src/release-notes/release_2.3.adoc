@@ -101,7 +101,7 @@ Create permission profiles to control user access rights and delegate action suc
 
 image:permission_profile.png[width=700px]
 
-NOTE: version 2.3 permission support is limited to create and delete managed entities.
+NOTE: version 2.3 permission support is limited to create and delete managed entities and the feature is disabled by default. To enable it, edit the docker-compose file and set FEATURE_PERMISSION_PROFILES to true for the container msa_ui
 
 
 ==== Audit record

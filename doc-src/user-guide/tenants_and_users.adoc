@@ -122,8 +122,6 @@ By default, managers have a very restricted access to the data. They can only vi
 
 A permission profile is an aggregation of rights such as "create a device", "activate a device", "configure a device",... that are turned on or off depending on your user management policy. This profile is applied to a set of one or more users.
 
-you can create a permission profile 
+you can create a permission profile as ncroot from the "Admin" section.
 
 image:permission_profile.png[width=800px]
-
-NOTE: Permission profiles are a key feature for configuring and providing self-care management to an end-user. 
