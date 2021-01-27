@@ -137,7 +137,7 @@ Report any error from the logs:
 
 [source]
 ----
-docker-compose exec msa_api tail -F  /opt/jboss/wildfly/standalone/logs/server.log
+docker-compose exec msa_api tail -F  /opt/jboss/wildfly/standalone/log/server.log
 ----
 
 If the API server is not responding or if you can't login after a few minutes, run the command below to restart the API server and monitor the logs:
