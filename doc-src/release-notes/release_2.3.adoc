@@ -80,7 +80,7 @@ This will enable you to better manage risk and determine best courses of action,
 
 ==== Monitoring Profile
 
-The {product_name} provides a complete suite of assurance module from KPI monitoring to alarm management and dashboards. Closed loop assurance is possible as every components of the {product_name} are fully integrated. With the monitoring profile you can do the following:
+The {product_name} provides a complete suite of assurance modules from KPI monitoring to alarm management and dashboards. Closed loop assurance is possible as every components of the {product_name} are fully integrated. With the monitoring profile you can do the following:
  
 - Configure and monitor your custom KPI with threshold crossing based alarms.
 - Design and display your own monitoring graphs and decide what you want your end users to see in their homepage dashboards.
