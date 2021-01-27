@@ -72,15 +72,19 @@ image:devops.png[width=700px]
 
 === Assurance
 
+Assurance protects against and manages risk. This release provides the ability to monitor your KPI by polling them with SNMP or by collecting SNMP traps. 
+
+You can create and manage alarms based on events collected from the network or created internally. You can also create an alarm based on KPI threshold crossing.  
+
+This will enable you to better manage risk and determine best courses of action, based on the data. 
+
 ==== Monitoring Profile
 
-The {product_name} provides a complete suite of assurance module from KPI monitoring to alarm management and dashboards. Closed loop assurance is possible as every components of the {product_name} are fully integrated. You can easily do the following:
+The {product_name} provides a complete suite of assurance module from KPI monitoring to alarm management and dashboards. Closed loop assurance is possible as every components of the {product_name} are fully integrated. With the monitoring profile you can do the following:
  
 - Configure and monitor your custom KPI with threshold crossing based alarms.
 - Design and display your own monitoring graphs and decide what you want your end users to see in their homepage dashboards.
-- Collect SNMP traps from your managed entities
-- Collect network events such as syslogs, netflow traffic.
-- Configure alarm based on your KPIs and/or events and sent email notification , SNMP traps or even execute workflow processes to automate remediation.
+- Configure alarms based on your KPIs and/or events and send email notifications, send SNMP traps or even execute workflow processes to do automated remediation.
 
 image:monitoring_profile.png[width=700px]
 
