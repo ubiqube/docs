@@ -10,7 +10,9 @@ The following feature improvements are included with this release:
 
 === Custom Manager Dashboard
 
-Choose the important data you want to see as a manager in your dashboard
+By default the manager dashboard displays the most important data to help you keep an eye on the status of your infrastructure. As your infrastructure evolves, so will your priorities and you may need to focus on some specific parts of your system while still being able to see the big picture.
+
+To address this requirement, you can now choose the important data you want to see as a manager in your dashboard. For instance, make the topology part of your landing page, or select a managed entity and see it's KPI right away. You can also decide to assign dedicated views to your users so they can focus on their parts: monitoring, automation, integration.
 
 image:custom_manager_dashboard.png[width=700px]
 
@@ -24,21 +26,21 @@ image:bpm.png[width=700px]
 
 ==== Decision gateway
 
-Allow your BPM process to take smart decisions based on the result of executed workflow and control the overall flow of the business process execution.
+Allow your BPM process to make smart decisions based on the result of executed workflow and control the overall flow of the business process execution.
 
 ==== Parallel gateway
 
-In a complex business process, very often activities can be carried out in parallel and one activity may depend on others. To address this, you can use parallel gateway.
+In a complex business process, very often activities can be carried out in parallel and one activity may depend on others. To address this, you can use a parallel gateway.
 
 ==== User breakpoint
 
-Some activity may require a human action to be carried out, like verifying the current state of the infrastructure being updated. Is is also possible that during the design phase of your BPM process you need to set some breakpoint to understand how your workflows are behaving and to debug then.
+Some activities may require a human action to be carried out, like verifying the current state of the infrastructure being updated. It is also possible that during the design phase of your BPM process you need to set some breakpoints in order to better understand how your workflows are behaving and to debug then.
 
 You can use the user breakpoint for that.
 
 ==== Reusability and execution management
 
-BPM management is now similar to workflow and microservice management: design one, associate it to subtenants and run it from a subtenant.
+BPM management is now similar to workflow and microservice management: design one and associate it to subtenants and run it from a subtenant.
 
 Each BPM execution creates a new BPM instance that you can manage separately.
 
@@ -84,7 +86,7 @@ The {product_name} provides a complete suite of assurance modules from KPI monit
  
 - Configure and monitor your custom KPI with threshold crossing based alarms.
 - Design and display your own monitoring graphs and decide what you want your end users to see in their homepage dashboards.
-- Configure alarms based on your KPIs and/or events and send email notifications, send SNMP traps or even execute workflow processes to do automated remediation.
+Configure alarm based on your KPI predefined thresholds and send email notification , SNMP traps or even execute workflow processes to automate remediation.
 
 image:monitoring_profile.png[width=700px]
 
@@ -93,7 +95,7 @@ image:monitoring_profile.png[width=700px]
 
 link:https://www.elastic.co/kibana[Kibana] is now included in the {product_name}. Kibana is a free and open user interface that lets you visualize your Elasticsearch data and navigate the Elastic Stack.
 
-Design your Kibana visualization and dashboard to provide comprehensive view over your infrastructure event and data flow.
+Design your Kibana visualization and dashboard to provide a comprehensive view over your infrastructure event and data flow.
 
 image:kibana_dashboard.png[width=700px]
 
