@@ -114,7 +114,6 @@ The audit logs are available for each user in the "Profile" menu, under "Audit L
 
 image:audit_logs.png[width=800px]
 
-////
 === Roles and rights management : permission profiles
 
 The {product_name} provides a simple authorization mechanism based on 4 user roles, the privileged administrator, the administrator, the privileged manager, and the manager.
@@ -128,5 +127,3 @@ you can create a permission profile
 image:permission_profile.png[width=800px]
 
 NOTE: Permission profiles are a key feature for configuring and providing self-care management to an end-user. 
-
-////

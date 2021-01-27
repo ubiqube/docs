@@ -3,13 +3,14 @@ ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == Support
+
 === How to install a custom SSL certificate
 
 The container *msa_front* is installed with a default self-signed certificate to allow SSL when connecting to https://localhost. While this is fine for most of the lab trials, you may want to install your own certificate to ensure a certified connection to your setup.
 
 image:secure_ssl_certificate.png[width=50%]
 
-==== Prerequistes
+==== Prerequisites
 To install your certificate you need to have the certificate file (*server.crt*) and the associated private key (*server.key*)
 
 ==== Installation
@@ -44,8 +45,28 @@ IMPORTANT: you need to create the director `/mnt/NASVolume/msa_front` manually f
 4. browse to https://localhost (you may have to clean your cache)
 
 == Troubleshooting
+
 === Containers / Docker Engine
+
+==== Install the {product_name} behind a proxy
+
+Often the {product_name} has to be installed on a host that sits behind a proxy. This requires some specific configuration on the host, on docker and also on the {product_name} containers themselves:
+
+Proxy setting on the host OS where the proxy needs to be specified and used. This is needed to download all the necessary docker packages as well as docker-compose on the machine. Those settings are different depending on the OS that might be used. 
+
+Once installed, docker does not inherit the proxy settings from the host machine. Proxy settings need to be specified in  dockers configuration file  to download the necessary {product_name} images.
+
+However, along with that the "no proxy" option should be specified for the internal container to containers communication. Falling to do so will result in  all the traffic routed  the proxy.
+
+.Set the no proxy option on the containers
+----
+export no_proxy=''172.20.0.0/24"
+----
+
+link:https://docs.docker.com/network/proxy/[Docker Documentation | Configure Docker to use a proxy server]
+
 ==== How do I check that the Docker containers are deployed ?
+
 On a Linux system from the directory where you ran the `docker-compose up -d` command (working directory), run `docker-compose images`.
 
 [source, shell]
@@ -65,14 +86,15 @@ quickstart_msa_front_1     ubiqube/msa2-front             03f833a9c34c8740256162
 quickstart_msa_sms_1       ubiqube/msa2-sms               0107cbf1ac1f1d2067c69a76b107e93f9de9cbd7   e263e741f926   759.5 MB
 quickstart_msa_ui_1        ubiqube/msa2-ui                47731007fb487aac69d15678c87c8156903d9f51   0f370eab1fe6   40.66 MB
 ----
+
 - *msa_front*: runs NGINX web server
 - *msa_api*: runs the API
-- *msa_sms*: runs the CoreEngine
+- *msa_sms*: runs the CoreEngine daemons
 - *msa_ui*: runs the UI
 - *db*: runs the PostgreSQL database
 - *camunda*: runs the BPM
 - *es*: runs the Elasticsearch server
-- *bud*: runs the batchupdate
+- *bud*: runs the batchupdated daemon
 
 Verify that all the containers are up.
 
@@ -97,6 +119,7 @@ quickstart_msa_ui_1        /docker-entrypoint.sh ./st ...   Up      80/tcp
 ----
 
 === User Interface
+
 ==== I can't login to the user interface (UI)
 
 Here are a set of useful CLI commands that you can run from the working directory...

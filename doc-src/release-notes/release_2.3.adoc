@@ -52,7 +52,9 @@ image:workflow_scheduling.png[width=700px]
 
 The {product_name} workflow designer comes with a new set of variable types.
 
-- Advanced dynamic UI rendering with variable type composite: allow some dynamic end user form rendering at runtime.
+- Composite: advanced dynamic UI rendering with variable type composite: allow some dynamic end user form rendering at runtime.
+- Password: auto-renders as a password web form input field.
+- Link: auto-renders as a URL.
 
 === Microservices
 
@@ -87,19 +89,20 @@ image:monitoring_profile.png[width=700px]
 
 link:https://www.elastic.co/kibana[Kibana] is now included in the {product_name}. Kibana is a free and open user interface that lets you visualize your Elasticsearch data and navigate the Elastic Stack.
 
-Design your Kibana visualization and dashbaord to provide comprehensive view over your infrastructure event and data flow.
+Design your Kibana visualization and dashboard to provide comprehensive view over your infrastructure event and data flow.
 
-Deploy your dashboards or the ones from the {product_name} packaged library and provide subtenant level view to your users. 
+image:kibana_dashboard.png[width=700px]
 
 === User management
 
-////
 ==== Permission profile
 
-Create permission profiles to control user access rights.
+Create permission profiles to control user access rights and delegate action such as creating or deleting a managed entity to a manager.
 
 image:permission_profile.png[width=700px]
-////
+
+NOTE: version 2.3 permission support is limited to create and delete managed entities.
+
 
 ==== Audit record
 
@@ -116,7 +119,7 @@ No changes have been made to the core engine from previous versions of the produ
 
 Instructions to upgrade available in the quickstart guide.
 
-=== Specific instruction for upgrating from {revnumber-prev} to {revnumber}
+=== Specific instruction for upgrading from {revnumber-prev} to {revnumber}
 
 Starting from version 2.2.0, the quickstart provides an upgrade script `upgrade.sh` for taking care of possible actions such as recreating some volume, executing some database specific updates,...
 
@@ -129,6 +132,98 @@ Let's say that you are running {product_name} version {revnumber-prev}, to upgra
 5. `$ ./scripts/upgrade.sh`
 
 == Specific technical fixes and feature details
+
+=== 2.3.0 GA
+
+==== Bug fixes
+
+* MSA-8982 - [Workflow] XML definition file is modified at each save even if there is no actual change done on UI
+* MSA-9105 - [Admin] API error when updating an Admin
+* MSA-9106 - [Workflow] when a variable has the type "Microservice reference" the field "Microservice Reference" in advanced tab is not mandatory
+* MSA-9107 - [Logs/Alarm - Partial word pattern is not working
+* MSA-9114 - [Workflow] ServiceId should be optional in scheduling API
+* MSA-9119 - [Workflow] MSA stopped accepting double byte characters
+* MSA-9142 - [Microservice] variable type Auto Increment cannot be used when set as mandatory
+* MSA-9152 - [Logs] Bad timestamp displayed on log page
+* MSA-9165 - [Monitoring profile] Issues on Monitoring Profile creation/edition UI
+* MSA-9180 - [Admin] ncroot password can be changed by a manager
+* MSA-9194 - [Assurance] Same KPI name in multiple monitoring profile
+* MSA-9236 - [Logs] "Filter by" should be preset to the current Tenant / Subtenant if there is one selected
+* MSA-9241 - [Workflow] WF instances are not displayed correctly on the management dashboard
+* MSA-9246 - [Assurance] # (hash) is missing in monitoring profile colours
+* MSA-9247 - [Assurance] Spaces in KPIs names are getting replaced by underscores
+* MSA-9276 - [Microservice] Impossible to add a variable extractor inside an array variable extractor in MS Import
+* MSA-9292 - [Assurance] Remove workarounds from the monitoring profile UI code
+* MSA-9305 - [CoreEngine] Bad encrypted password in sms_db.conf
+* MSA-9351 - [BPM] workflow list not exhaustive in task
+* MSA-9352 - [BPM] BPM failed instances not reported
+* MSA-9354 - [BPM] BPM instance execution result not refreshed automatically in some cases
+* MSA-9356 - [BPM] some issues on deleting BPM instances
+* MSA-9357 - [Managed Entities] data scale on graphs are not always consistent
+* MSA-9369 - [Admin] A manager can remove a tenant
+* MSA-9390 - [BPM] BPM page goes on infinite loop when deleting a BPM
+* MSA-9392 - [DevOps] when adding a new git repository, API checks for "master" branch but on github the default branch is "main"
+* MSA-9405 - [DevOps] new commits are created but no save action was done on UI
+* MSA-9413 - [Users] Managers cannot see any Microservices
+* MSA-9428 - [Adapter] The json keys containing ':' are getting morphed from the JSON response of REST APIs
+* MSA-9429 - [API] WF can't be deleted after subtenant is removed
+* MSA-9434 - [Workflow] process creation: clarify the list of supported types
+* MSA-9435 - [Workflow] add a task to a process fails with "Bpmn with filename already exists"
+* MSA-9440 - [Workflows] : not possible to create task in WF
+* MSA-9446 - [User -  CoreEngine user must be protected against deletion
+* MSA-9449 - [BPM] Change the structure for the task result
+* MSA-9484 - [ CoreEngine] Postfix is not started in msa-sms container
+* MSA-9494 - [Admin] ncroot user email is configured with support@ubiqube.com
+* MSA-9495 - [Assurance] subtenant is not a valid user role for Alarm notification
+* MSA-9500 - [Admin] role name is displayed in french
+* MSA-9505 - [Permission] configuration.view does not exist on the profile for profiles
+* MSA-9521 - [Workflow] Workflow is stored without full behavior object
+* MSA-9551 - [User] as privileged manager, no microservices are listed under Infrastructure->Microservices
+* MSA-9569 - [BPM] BPM does not trigger a DELETE process
+
+==== Features
+
+* MSA-8531 - [Microservice] reference to a variable in another MS, except object_id
+* MSA-8855 - [BPM] record execution history of BPM processes
+* MSA-8989 - [BPM] Resume a paused BPM
+* MSA-9098 - [UI] add the possibility to permanently add a custom certificate to Front-Nginx
+* MSA-9099 - [Workflow] Schedule workflows
+* MSA-9135 - [BPM] Change API to ready for Design-time/Run-time separation
+* MSA-9136 - [BPM] Subtenant attachment for BPM
+* MSA-9153 - [RBAC] API to record Audit logs
+* MSA-9154 - [RBAC] Audit Log screen on profile page
+* MSA-9155 - [RBAC] API to return all the audit logs
+* MSA-9157 - [SDK] Implement data to push_configuration in Py SDK
+* MSA-9166 - [BPM] Make WF node glowing
+* MSA-9167 - [BPM] create new repo bpmn and have all new BPMN created under that.
+* MSA-9169 - [BPM] migrate old bpmn folder structure to new bpmn folder structure have the entries in /opt/fmc_entities as part of 2.3GA upgrade script
+* MSA-9254 - [API] API to check if entities files contains reference to the library file that doesn't exist any more(manual delete))
+* MSA-9263 - [RBAC] Annotations to define action and description for all the rest apis used by UI(only POST, PUT, DELETE)
+* MSA-9264 - [RBAC] Index Audit logs in ES through rest outbound filter
+* MSA-9265 - [Assurance] Delete a monitoring profile
+* MSA-9274 - [BPM] make some elements read only when editing BPM instance
+* MSA-9280 - [BPM] List bpmn files from new directory structure
+* MSA-9281 - [BPM] list all the bpmn files attached to that customer
+* MSA-9282 - [API] API to detach bpm from the subtenant
+* MSA-9290 - [DevOps] Switch to new APIs for BPM
+* MSA-9299 - [Assurance] Monitoring profile - change Y label to units
+* MSA-9301 - [Workflow] Save workflows in workflows directory
+* MSA-9341 - [SDK] upload Python reference library files
+* MSA-9353 - [BPM] user always redirected to tab "All instances"
+* MSA-9363 - [Workflow] Allow schedule in process when saving workflow
+* MSA-9388 - [CoreEngine] lower the size of msa_sms and msa_bud images
+* MSA-9396 - [BPM] List of attached BPM for a selected subtenant
+* MSA-9397 - [BPM] Display file name of BPM
+* MSA-9398 - [BPM] Hide graphs when listing the BPMs without subtenant
+* MSA-9399 - [BPM] Remove version column from BPM instance detail screen
+* MSA-9406 - [API] API to do just git pull from the remote repository
+* MSA-9407 - [DevOps] Configure user.name in the git config at the repository level on git configure API
+* MSA-9422 - [Monitoring Profile] SNMP polling/UX: remove Min and change behavior of Max
+* MSA-9430 - [BPM/API] Number of attached sub-tenants in list bpm api
+* MSA-9456 - [Assurance] enable SNMP trap forwarding on front container
+* MSA-9487 - [Workflow] Change icons and colors
+* MSA-9498 - [Alarm] show WF/Process name as Info level in agregatord.log
+* MSA-9536 - [Design] Lighter glow and inset
 
 === 2.3.0 RC1
 
@@ -175,7 +270,7 @@ Let's say that you are running {product_name} version {revnumber-prev}, to upgra
 
 ==== Bug fixes
 
- * MSA-9137 - [Alarm] Can't create alam
+ * MSA-9137 - [Alarm] Can't create alarm
  * MSA-9205 - [API] issues with API /repository/v2/resource/microservice
  * MSA-8971 - [Assurance] check_alert.php is using hard coded ncroot/password for WF execution through alarm
  * MSA-9151 - [Assurance] /elastic-search/v1/alarm-rules?actorId=1 returns errorCode 500

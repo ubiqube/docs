@@ -9,7 +9,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == Local libraries repositories overview
 
-The libraires are stored in the location below
+The libraries are stored in the location below
 
 - *BPM*: /opt/fmc_repository/Bpmn/bpmns
 - *Workflow*: /opt/fmc_repository/Process/workflows
@@ -94,7 +94,7 @@ nothing to commit, working tree clean
 * 5290a81 - Initial commit with existing files <jboss> (18 hours ago)
 ----
 
-Every updates on the librairies are commited and pushed to the remote upstream. 
+Every updates on the libraries are committed and pushed to the remote upstream. 
 
 You can use git CLI commands to view the differences between 2 commits (`git diff`) and also to revert your changes (`git reset`) 
 
