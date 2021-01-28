@@ -25,3 +25,10 @@ All software has bugs, and {openmsa_name} is no exception. When you find a bug, 
 
 If the bug you found already exists in an issue, you can help by verifying the behavior of the reported bug with a comment in that issue, or by reporting any additional information.
 
+== Contribute to the documentation
+
+You may feel a little overwhelmed with the idea of going into a project and giving back. Maybe you don’t feel your coding skills are up to the task. But you can contribute in more than one way to projects. You can help with documentation!
+
+Understanding code is an important part of learning to code and writing documentation, however trivial, shows an understanding of not just the code but of people who are trying to access it.
+
+The {product_name} documentation is hosted in link:https://github.com/ubiqube/docs[Github]. 
