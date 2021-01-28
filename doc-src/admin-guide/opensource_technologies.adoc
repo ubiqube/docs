@@ -1,4 +1,4 @@
-= Opensource technologies used in {$product_name}
+= Open source technologies used in {product_name}
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 [cols="a,a,a,a,a,a"]

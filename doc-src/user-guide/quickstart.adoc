@@ -1,4 +1,5 @@
 = Quickstart 
+:front-cover-image: image:quickstart-front-cover.pdf[]
 ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :toc: top
@@ -7,6 +8,12 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 //OK HTML 
 ifdef::html[]
 :includedir: doc-src/user-guide
+
+[.stripes-none,cols="1,10",frame=none,grid=none,options="noheader",width="50%"]
+|===
+| image:pdf_icon.png[width=32px] | link:../pdf/user-guide/quickstart.pdf[download as PDF,window=_blank]
+|===
+
 endif::[]
 
 // OK PDF
@@ -16,19 +23,18 @@ endif::[]
 
 The quickstart covers how you can quickly get started using {product_name} by installing a mini lab.
 
+ifeval::["{format}" == "html"]
+
 == Video tutorial
 This video details the steps for installing and activating the mini lab.
 
-ifeval::["{format}" == "html"]
 video::A7zT-AZf2cg[youtube,width=600px,height=360] 
+
 endif::[]
 
 [#prerequisites]
 == Prerequisites
 The following prerequisites are required for a successful use of {product_name}:
-//// 
-TODO specify that its for PC and add the specification CPU, RAM,...
-////
 
 . A recent version of Git. 
 . A working docker and docker-compose setup
@@ -171,7 +177,11 @@ You can use the guide to recreate the use case step by step or you may also dire
 
 For that, you'll have to select the subtenant named "TYRELL CORPORATION," click on the link "Automation" on the left menu and select the tab "Workflows." The workflow to use is "Simple Firewall (Python)."
 
+ifeval::["{format}" == "html"]
+
 video::QRwv78yQWss[youtube,width=600px,height=360]
+
+endif::[]
 
 == Mini lab additional info
 
@@ -259,6 +269,10 @@ In case of calling this script on an existing setup, it will take care of mergin
 
 IMPORTANT: when running the script on an existing setup, use the option `--no-lic` to make sure that your current license is not overwritten by a new trial license. 
 
+ifeval::["{format}" == "html"]
+
 :leveloffset: +1
 
 include::{includedir}/libraries_packages.adoc[]
+
+endif::[]
