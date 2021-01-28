@@ -28,6 +28,8 @@ image:bpm.png[width=700px]
 
 Allow your BPM process to make smart decisions based on the result of executed workflow and control the overall flow of the business process execution.
 
+NOTE: if you are using a BPM created with {product_name}-2.2 that has some decision gateways, then you need to edit it, reset the gateway conditions and save before you can run it with {product_name}-2.3
+
 ==== Parallel gateway
 
 In a complex business process, very often activities can be carried out in parallel and one activity may depend on others. To address this, you can use a parallel gateway.
