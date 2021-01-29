@@ -119,6 +119,8 @@ MSA High Availability is built upon Docker Engine Swarm mode, and requires:
  ** Mount point on all VMs is `/mnt/NASVolume`. All those folders must be created manually to have HA platform working correctly
  
  *** msa_api
+ *** msa_api_logs
+ *** msa_sms_logs
  *** msa_db
  *** msa_dev
  *** msa_entities
