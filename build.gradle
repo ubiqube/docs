@@ -99,17 +99,13 @@ asciidoctorPdf {
       'pdf' : 'true',
       'format': 'pdf',
       'icons' : 'font',
-      //'pdf-style' : file('./resources/themes/ubiqube-theme.yml'),
-      //'pdf-fontsdir' : file('./resources/fonts'),
       'page-background-image' : 'image:bg.jpg[fit=cover,pdfwidth=100%,position=top]',
-      //'front-cover-image' : 'image:admin-front-cover.pdf[]',
       'notitle' : ''
   }
 
   sourceDir  file('doc-src')
   sources {
-    include 'user-guide/manager-guide-single.adoc', 'admin-guide/admin-guide-single.adoc', 'developer-guide/developer-guide-single.adoc', 'release-notes/release_notes.adoc'
-    //include 'admin-guide/admin-guide-single.adoc'
+    include 'user-guide/manager-guide-single.adoc', 'admin-guide/admin-guide-single.adoc', 'developer-guide/developer-guide-single.adoc', 'release-notes/release_notes.adoc', 'user-guide/quickstart.adoc'
  }
   outputDir  file('build/pdf')
 
