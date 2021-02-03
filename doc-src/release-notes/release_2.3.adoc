@@ -196,6 +196,7 @@ Let's say that you are running {product_name} version {revnumber-prev}, to upgra
 * MSA-9356 - [BPM] some issues on deleting BPM instances
 * MSA-9449 - [BPM] Change the structure for the task result
 * MSA-9390 - [BPM] BPM page goes on infinite loop when deleting a BPM
+* MSA-9612 - [Workflow] issues when using variables of type Microservice Reference
 * MSA-8982 - [Workflow] XML definition file is modified at each save even if there is no actual change done on UI
 * MSA-9114 - [Workflow] ServiceId should be optional in scheduling API
 * MSA-9119 - [Workflow] MSA stopped accepting double byte characters
