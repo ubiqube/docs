@@ -179,7 +179,7 @@ task_success('Task OK');   // or task_error('Task FAILED');                     
 
 You can add debugging information to help you with your development and also provide useful information for troubleshooting task in production.
 
-The log files are generated per workflow instance in the container `msa_api` under `/opt/jboss/wildfly/standalone/logs/`. The log files are formatted as `process-XX.log` where XX is the workflow instance ID.
+The log files are generated per workflow instance in the container `msa_api` under `/opt/wildfly/logs/processLog/`. The log files are formatted as `process-XX.log` where XX is the workflow instance ID.
 
 .39 is the workflow instance ID
 image:workflow_instance_id.png[width=700px]
