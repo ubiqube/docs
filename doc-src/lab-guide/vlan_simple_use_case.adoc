@@ -124,7 +124,7 @@ So, at this step we are good to go and should be ready to start managing the swi
 
 == Framework
 
-MSActivator is an Integrated Automation Platform (IAP) framework for creating user-friendly, easy, maintainable and scalable solutions...
+{product_name} is an Integrated Automation Platform (IAP) framework for creating user-friendly, easy, maintainable and scalable solutions...
 
 === Step 1: register the switch
 

@@ -46,11 +46,17 @@ BPM management is now similar to workflow and microservice management: design on
 
 Each BPM execution creates a new BPM instance that you can manage separately.
 
+The full history of BPM executions is now retained, which is completely consistent with the Workflow history management.
+
 image:bpm_instance.png[width=700px]
 
 === Workflows
 
-As manager, you can now benefit from the scheduled execution of your workflow processes and fully automate the management of your infrastructure.
+Managers can now benefit from the scheduled execution of the workflow processes and fully automate the management of infrastructure. 
+
+Scheduled Workflows allow a process execution to be scheduled to run at a certain point in time: once, every minute, hourly, daily, weekly, monthly. 
+
+The Workflow developer can decide whether to enable this feature or not, via the Workflow editor.
 
 image:workflow_scheduling.png[width=700px]
 
@@ -64,13 +70,15 @@ The {product_name} workflow designer comes with a new set of variable types.
 
 The microservice designer now provides a new set of variable type such as
 
-- Composite: advanced dynamic UI rendering with variable type composite: allow some dynamic end user form rendering at runtime.
+//- Composite: advanced dynamic UI rendering with variable type composite: allow some dynamic end user form rendering at runtime.
 - Password: auto-renders as a password web form input field.
 - Link: auto-renders as a URL.
 
 === DevOps
 
-Support for automated synchronization with a remote git repository for microservices, workflows and BPM.
+Developers love Git, so UBiqube has enabled Git integration in the Developer Dashboard. 
+
+This means that as a developer, once they configure their {product_name} to connect to their Git repositories, the following code changes will automatically sync with those Git repositories: BPM, Workflows, Microservices.
 
 image:devops.png[width=700px]
 
@@ -95,9 +103,9 @@ image:monitoring_profile.png[width=700px]
 
 ==== Integrated Kibana dashboards
 
-link:https://www.elastic.co/kibana[Kibana] is now included in the {product_name}. Kibana is a free and open user interface that lets you visualize your Elasticsearch data and navigate the Elastic Stack.
+For those {product_name} users that are experienced ELK-stack users, we are now including the link:https://www.elastic.co/kibana[Kibana] dashboard as a dedicated Docker container with {product_name} 2.3. 
 
-Design your Kibana visualization and dashboard to provide a comprehensive view over your infrastructure event and data flow.
+This will give the manager full access to all of the {product_name} indexes, including audit and syslogs, to run their reports. In future versions of {product_name}, {ubiqube} will make this Kibana integration tighter within our management dashboard.
 
 image:kibana_dashboard.png[width=700px]
 
@@ -105,19 +113,22 @@ image:kibana_dashboard.png[width=700px]
 
 ==== Permission profile
 
-Create permission profiles to control user access rights and delegate action such as creating or deleting a managed entity to a manager.
+As an extension of the Role-Based Access Control (RBAC) in {product_name}, the admin user can now design Permission Profiles. These profiles can be then applied to other users, and provide a finer granularity around what exact actions those users can do. 
 
 image:permission_profile.png[width=700px]
 
 NOTE: version 2.3 permission support is limited to create and delete managed entities and the feature is disabled by default. To enable it, edit the docker-compose file and set FEATURE_PERMISSION_PROFILES to true for the container msa_ui
 
 
-==== Audit record
+==== User Audit Log (pre-RPA)
 
-Every {product_name} user actions are recorded in an audit log for later auditing and reporting.
+The new Audit Log records each action, or {product_name} REST API call, that a user makes after logging in to the dashboard. 
+
+That data is stored in a dedicated index in our big data engine (Elasticsearch). The {product_name} admin user can search the audit log for any user, including applying date range filters. 
+
+NOTE: in version 2.3, only write/delete actions are logged, but this coverage will be expanded in future releases.
 
 image:auditing_logs.png[width=700px]
-
 
 == CoreEngine
 

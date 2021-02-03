@@ -214,7 +214,7 @@ sudo iptables -D FORWARD -p tcp --dport {$simple_firewall.$object_id.dst_port} -
 ----
 
 ****
-IMPORTANT: The syntax `{$simple_firewall.$object_id.dst_port}` provides a way to access the Microservice variable values in the MSActivator configuration database. 
+IMPORTANT: The syntax `{$simple_firewall.$object_id.dst_port}` provides a way to access the Microservice variable values in the {product_name} configuration database. 
 
 The convention is as follow:
 ----

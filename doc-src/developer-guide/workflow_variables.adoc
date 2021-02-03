@@ -58,11 +58,45 @@ NOTE: not supported yet
 This data type will enforce data validation against IP address formats.
 
 ==== Composite
-NOTE: not supported yet
-
-The variable type composite provide ways to add control over the behaviour of the workflow user form.
+The variable type composite provide ways to add control over the behavior of the workflow user form.
 
 It can be used, for instance, to show/hide parts of the form based on the value of another component of the form.
+
+Let's take a simple example to illustrate the use of the composite type with a simple workflow for managing firewall policy.
+
+The workflow allows the user to create a firewall policy to block a source IP address and a destination port but the user may also need to select the protocol TCP, UDP or ICMP and in the case of ICMP, the destination port is not relevant. We need to build a workflow UI where the user will have to provide the source IP and destination port when the protocol is TC or UDP and only the source IP when the protocol is ICMP.
+
+In this example, the variable "dst_port" for the destination port should be typed as a composite because it's behavior when rendered as a user web form will depend on the other variable "protocol".
+
+.When the user choose TCP or UDP
+image:workflow_variable_composite_screen_example_1.png[width=500px]
+
+
+.When the user selects ICMP
+image:workflow_variable_composite_screen_example_2.png[width=500px]
+
+To implement this behavior, set the type of "dst_port" variable to "Composite".
+
+.dst_port type is "Composite"
+image:workflow_variable_composite_screen_example_3.png[width=500px]
+
+In the advanced parameter tab, first choose the "Selector Variable" and select the protocol (note that the list shows the display name, not the actual name of the variable)
+
+Then configure the "Behavior for the Composite". The selector is a boolean so you can only have 2 types of behavior, one for true and one for false.
+
+image:workflow_variable_composite_screen_example_4.png[width=300px]
+
+Each behavior can be configured by editing it with the pencil icon.
+
+In our case, if the selector is set to true (when the user selects ICMP), the variable "dst_port" should be hidden: uncheck the attribute "Visible" in the advanced parameters for composite.
+
+.Hide the destination port when ICMP is checked
+image:workflow_variable_composite_screen_example_5.png[width=500px]
+
+And when the selector is set to false, the variable "dst_port" should be visible and mandatory.
+
+.Show the destination port when ICMP is not checked
+image:workflow_variable_composite_screen_example_6.png[width=500px]
 
 ==== Link
 NOTE: not supported yet

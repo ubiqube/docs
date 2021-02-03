@@ -15,10 +15,8 @@ docker/docker-composeをマシンにインストールしてください。
 ----
 git clone https://github.com/ubiqube/quickstart.git
 cd quickstart
-docker login
 docker-compose up -d
 ----
-IMPORTANT: `docker login`にてユーザ情報を聞かれますので、ID"msa2trial"と、1で払い出したアクセストークンを使用して下さい。
 
 .step 4
 ブラウザからhttps://localhost/ にアクセスしてください。
