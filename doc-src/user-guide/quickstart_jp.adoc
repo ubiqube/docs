@@ -6,7 +6,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 [#prerequisites]
 == 前提条件
-インストール手順の中で link:https://docs.docker.com/docker-hub/access-tokens/[access token] 及び{product_name}のトライアルライセンスが必要となります。
+インストール手順の中で{product_name}のトライアルライセンスが必要となります。
 link:https://ubiqube.com/free-trial/[ubiqube.com] から、MSA2トライアル希望の旨をお知らせください。
 
 また、{product_name}を動作させるために、以下のアプリケーションのインストール／動作確認を実施してください。
@@ -85,8 +85,6 @@ quickstartをGitリポジトリからクローン、及びDockerHubから{produc
 2. `cd quickstart`
 3. `git checkout tags/{revnumber} -b {revnumber}`
 4. `docker-compose up -d`
-
-IMPORTANT: `docker login`にてユーザ情報を聞かれますので、前提条件にて払い出したログイン情報を入力してください。
 
 NOTE: トライアル環境のシステム構成について link:../admin-guide/architecture_overview{outfilesuffix}[英語資料]
 
