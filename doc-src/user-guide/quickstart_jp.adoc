@@ -1,8 +1,18 @@
 = クイックスタートガイド 
-:doctype: book
-:imagesdir: ./resources/
+:front-cover-image: image:quickstart-front-cover-jp.pdf[]
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:toc: top
+:toclevels: 3
 
+ifdef::html[]
+
+[.stripes-none,cols="1,10",frame=none,grid=none,options="noheader",width="50%"]
+|===
+| image:pdf_icon.png[width=32px] | link:../pdf/user-guide/quickstart_jp.pdf[download as PDF,window=_blank]
+|===
+
+endif::[]
 
 [#prerequisites]
 == 前提条件

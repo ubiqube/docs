@@ -8,7 +8,7 @@ Various fixes have been made to the product to ensure its continued ability to e
 
 The following feature improvements are included with this release:
 
-=== Custom Manager Dashboard
+=== Customizable dashboard
 
 By default the manager dashboard displays the most important data to help you keep an eye on the status of your infrastructure. As your infrastructure evolves, so will your priorities and you may need to focus on some specific parts of your system while still being able to see the big picture.
 
@@ -18,39 +18,45 @@ image:custom_manager_dashboard.png[width=700px]
 
 === BPM
 
-The {product_name} BPM designer and execution console come with a new look and feel as well as an extended set of new features.
+==== Integrated look and feel
+
+The styling of the BPM interface has been completely revamped. This new styling reflects the rest of the MSActivator interface, to give a consistent user experience. 
+
+The editing of BPM parameters is now consistent with the editing of Workflow parameters. New background faded colouring, “electric” gradient borders, and icons have been added to the BPM execution console to improve the user experience. 
+
+In addition, it is easy for the user to navigate between “Show Tasks” on previous tasks, or “Continue” on paused ones. A clipboard icon has been added to enable the user to copy task output to their clipboard, which is especially useful when you need to copy large blocks of task output.
+
+==== BPMN 2.0
 
 An extended support for BPMN 2.0 will allow you to model your most complex business processes.
 
 image:bpm.png[width=700px]
 
-==== Decision gateway
+===== Decision gateway
 
 Allow your BPM process to make smart decisions based on the result of executed workflow and control the overall flow of the business process execution.
 
 NOTE: if you are using a BPM created with {product_name}-2.2 that has some decision gateways, then you need to edit it, reset the gateway conditions and save before you can run it with {product_name}-2.3
 
-==== Parallel gateway
+===== Parallel gateway
 
 In a complex business process, very often activities can be carried out in parallel and one activity may depend on others. To address this, you can use a parallel gateway.
 
-==== User breakpoint
+===== User breakpoint
 
 Some activities may require a human action to be carried out, like verifying the current state of the infrastructure being updated. It is also possible that during the design phase of your BPM process you need to set some breakpoints in order to better understand how your workflows are behaving and to debug then.
 
 You can use the user breakpoint for that.
 
-==== Reusability and execution management
+==== Full BPM history
 
-BPM management is now similar to workflow and microservice management: design one and associate it to subtenants and run it from a subtenant.
-
-Each BPM execution creates a new BPM instance that you can manage separately.
-
-The full history of BPM executions is now retained, which is completely consistent with the Workflow history management.
+The full history of BPM executions is now retained, which is completely consistent with the Workflow history management in version 2.2.
 
 image:bpm_instance.png[width=700px]
 
 === Workflows
+
+==== Workflows scheduler
 
 Managers can now benefit from the scheduled execution of the workflow processes and fully automate the management of infrastructure. 
 
@@ -59,6 +65,8 @@ Scheduled Workflows allow a process execution to be scheduled to run at a certai
 The Workflow developer can decide whether to enable this feature or not, via the Workflow editor.
 
 image:workflow_scheduling.png[width=700px]
+
+==== Advanced settings
 
 The {product_name} workflow designer comes with a new set of variable types.
 
@@ -74,7 +82,7 @@ The microservice designer now provides a new set of variable type such as
 - Password: auto-renders as a password web form input field.
 - Link: auto-renders as a URL.
 
-=== DevOps
+=== Git integration
 
 Developers love Git, so UBiqube has enabled Git integration in the Developer Dashboard. 
 
@@ -90,16 +98,16 @@ You can create and manage alarms based on events collected from the network or c
 
 This will enable you to better manage risk and determine best courses of action, based on the data. 
 
-==== Monitoring Profile
+==== Custom monitoring profile
 
 The {product_name} provides a complete suite of assurance modules from KPI monitoring to alarm management and dashboards. Closed loop assurance is possible as every components of the {product_name} are fully integrated. With the monitoring profile you can do the following:
  
 - Configure and monitor your custom KPI with threshold crossing based alarms.
 - Design and display your own monitoring graphs and decide what you want your end users to see in their homepage dashboards.
+
 Configure alarm based on your KPI predefined thresholds and send email notification , SNMP traps or even execute workflow processes to automate remediation.
 
 image:monitoring_profile.png[width=700px]
-
 
 ==== Integrated Kibana dashboards
 
@@ -133,6 +141,22 @@ image:auditing_logs.png[width=700px]
 == CoreEngine
 
 No changes have been made to the core engine from previous versions of the product. This allows consistency from branches of OpenMSA (community version), found on GitHub: https://github.com/openmsa
+
+
+== New Libraries Available
+
+=== Adapters
+
+KubernetesGeneric link:https://github.com/openmsa/Adapters/tree/master/adapters/kubernetes_generic[here]
+
+- Method to parse content_type 'text/plain' for Pods logs added
+- GET/POST methods improved
+
+K8S_CLI link:https://github.com/openmsa/Adapters/tree/master/adapters/linux_k8_cli[here]
+
+- K8S_CLI model added (based on LINUX_GENERIC) to execute Kubectl commands for a corresponding Device type
+
+The full list of adapters included in 2.3 is available link:https://ubiqube.com/wp-content/docs/latest/user-guide/libraries_packages.html[here].
 
 == Upgrading
 

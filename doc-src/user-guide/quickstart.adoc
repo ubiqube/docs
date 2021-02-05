@@ -5,18 +5,17 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :toc: top
 :toclevels: 3
 
-//OK HTML 
 ifdef::html[]
 :includedir: doc-src/user-guide
 
 [.stripes-none,cols="1,10",frame=none,grid=none,options="noheader",width="50%"]
 |===
 | image:pdf_icon.png[width=32px] | link:../pdf/user-guide/quickstart.pdf[download as PDF,window=_blank]
+| image:pdf_icon.png[width=32px] | link:../pdf/user-guide/quickstart_jp.pdf[PDFをダウンロード,window=_blank]
 |===
 
 endif::[]
 
-// OK PDF
 ifdef::pdf[]
 :includedir: .
 endif::[]
