@@ -95,13 +95,17 @@ asciidoctorPdf {
       'pdf' : 'true',
       'format': 'pdf',
       'icons' : 'font',
+      'pdf-fontsdir' : "$rootDir/resources/fonts",
+      'pdf-stylesdir' : "$rootDir/resources/themes",
+      'pdf-style' : 'ubiqube-theme.yml',
       'page-background-image' : 'image:bg.jpg[fit=cover,pdfwidth=100%,position=top]',
       'notitle' : ''
   }
 
   sourceDir  file('doc-src')
   sources {
-    include 'user-guide/manager-guide-single.adoc', 'admin-guide/admin-guide-single.adoc', 'developer-guide/developer-guide-single.adoc', 'release-notes/release_notes.adoc', 'user-guide/quickstart.adoc'
+    include 'user-guide/manager-guide-single.adoc', 'admin-guide/admin-guide-single.adoc', 'developer-guide/developer-guide-single.adoc', 
+      'release-notes/release_notes.adoc', 'user-guide/quickstart.adoc', 'user-guide/quickstart_jp.adoc'
  }
   outputDir  file('build/pdf')
 
