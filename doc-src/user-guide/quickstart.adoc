@@ -113,7 +113,7 @@ Create the mini lab: clone the quickstart git repository from Github, download a
 
 NOTE: If you are already running the {product_name} and wish to upgrade it to a new version check the link:#upgrade[documentation below]
 
-NOTE: The architecture of the mini lab is detailed in this link:../admin-guide/architecture_overview{outfilesuffix}[documentation].
+NOTE: The architecture of the mini lab is detailed in the architecture overview documentation in the admin guide.
 
 [#step2]
 === Step 2: install the trial license 
@@ -135,7 +135,7 @@ At the end of the script execution, you need to restart the API container and th
 
 `docker-compose restart msa_api && docker-compose restart msa_sms`
 
-NOTE: more explanations on the script `install_libraries.sh` can be found link:#install_librairies[here].
+NOTE: more explanations on the script `install_libraries.sh` can be found link:#install_libraries[here].
 
 [#step4]
 === Step 4: provision the mini lab with tenants, managed entities, etc.
@@ -223,6 +223,8 @@ If your original version is 2.1, plz refer to upgrade script first provided with
 7. `docker-compose exec msa_dev /usr/bin/clean_old_topology_instances.sh`
 8. `docker exec -u root -w /home/install/scripts/ -it  msa_es bash -c './install.sh'`
 9. `docker exec -u root -w /home/install/ -it  msa_kibana bash -c 'php install_default_template_dash_and_visu.php'`
+10. `docker image prune -f`
+
 
 === Install a specific version
 
@@ -239,7 +241,7 @@ The releases and tags are available link:https://github.com/ubiqube/quickstart/r
 [#install_libraries]
 === install_libraries script
 
-The script `install_libraries.sh` is installed in the container link:../admin-guide/architecture_overview{outfilesuffix}#_msa_dev[msa_dev]
+The script `install_libraries.sh` is installed in the container msa_dev.
 
 This script is designed to populate the libraries for a fresh install or to update your libraries with the latest version from Github.
 
