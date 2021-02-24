@@ -146,7 +146,7 @@ Configure Elasticsearch settings and index mappings
 
 Install Kibana visualizations and dashboards
 
-`docker exec -u root -w /home/install/ -it  msa_kibana bash -c 'php install_default_template_dash_and_visu.php '`
+`docker exec -u root -w /home/install/ -it  msa_kibana bash -c 'php install_default_template_dash_and_visu.php'`
 
 [#step5]
 === Step 5: provision the mini lab with tenants, managed entities, etc.
