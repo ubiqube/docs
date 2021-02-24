@@ -122,6 +122,9 @@ By default, managers have a very restricted access to the data. They can only vi
 
 A permission profile is an aggregation of rights such as "create a device", "activate a device", "configure a device",... that are turned on or off depending on your user management policy. This profile is applied to a set of one or more users.
 
-you can create a permission profile as ncroot from the "Admin" section.
+You can create a permission profile as ncroot from the "Admin" section. Permission profiles are created in the scope of a tenant therefore you need to select a tenant to manage them.
 
 image:permission_profile.png[width=800px]
+
+// TODO: update in 2.4
+NOTE: implementation of permissions in version 2.3.0GA is a partial implementation to provide a preview of the UI but it is not functional yet and this is the reason why it’s deactivated by default. To activate the permission profile, you have to edit the docker-compose file and set FEATURE_PERMISSION_PROFILES to true.
