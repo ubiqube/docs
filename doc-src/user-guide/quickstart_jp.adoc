@@ -85,8 +85,8 @@ sudo tee -a /etc/sysctl.conf <<< "vm.max_map_count=262144"
 
 == インストール手順
 
-[#step1]
-=== Step 1: インストール
+[#step{counter:step}]
+=== Step {step}: インストール
 
 quickstartをGitリポジトリからクローン、及びDockerHubから{product_name}をダウンロード・実行します。 
 任意のディレクトリ上で、以下のコマンドを実行してください。
@@ -98,8 +98,8 @@ quickstartをGitリポジトリからクローン、及びDockerHubから{produc
 
 NOTE: トライアル環境のシステム構成について link:../admin-guide/architecture_overview{outfilesuffix}[英語資料]
 
-[#step2]
-=== Step 2: トライアルライセンスの適用 
+[#step{counter:step}]
+=== Step {step}: トライアルライセンスの適用 
 
 link:https://localhost/[window=_blank] を開き、ユーザ名 `ncroot` ／ パスワード `ubiqube` を使用して{product_name}にログインしてください。
 
@@ -110,8 +110,8 @@ NOTE: 動作している環境によって、ログインが可能になるま�
 
 NOTE: Dockerが動作している環境でブラウザを起動している場合はlocalhost、それ以外の場合はDockerが動作している環境のIPアドレスを指定してください。
 
-[#step3]
-=== Step 3: ライブラリのインポート(Microservice／Workflow／Device Adapter)
+[#step{counter:step}]
+=== Step {step}: ライブラリのインポート(Microservice／Workflow／Device Adapter)
 
 OpenMSAから各種ライブラリを起動している{product_name}にインポートします。
 
@@ -121,8 +121,19 @@ OpenMSAから各種ライブラリを起動している{product_name}にイン�
 
 `docker-compose restart msa_api && docker-compose restart msa_sms`
 
-[#step4]
-=== Step 4: サンプルデータの投入
+[#step{counter:step}]
+=== Step {step}: Elasticsearch及びKibanaの初期設定
+
+Elasticsearchのインデックスを生成します。
+
+`docker exec -u root -w /home/install/scripts/ -it msa_es bash -c './install.sh'`
+
+KibanaのダッシュボードとVisualizeツールをインストールします。
+
+`docker exec -u root -w /home/install/ -it msa_kibana bash -c 'php install_default_template_dash_and_visu.php'`
+
+[#step{counter:step}]
+=== Step {step}: サンプルデータの投入
 
 トライアル環境は、検証用に二つのLinuxコンテナ (linux_me / 172.20.0.101 and linux_me_2 / 172.20.0.102)が標準で付随します。
 
@@ -144,8 +155,8 @@ OpenMSAから各種ライブラリを起動している{product_name}にイン�
 $ docker-compose exec msa_dev /usr/bin/create_mini_lab.sh
 ```
 
-[#step5]
-=== Step 5: {product_name}の起動
+[#step{counter:step}]
+=== Step {step}: {product_name}の起動
 
 link:https://localhost/[window=_blank] にアクセスしてユーザ名 `ncroot` ／ パスワード `ubiqube` にてログインしてください。
 
