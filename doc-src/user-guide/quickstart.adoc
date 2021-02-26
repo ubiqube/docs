@@ -101,22 +101,21 @@ sudo tee -a /etc/sysctl.conf <<< "vm.max_map_count=262144"
 
 == Mini lab creation
 
-[#step1]
-=== Step 1: creation
+[#step{counter:step}]
+=== Step {step}: creation
 
 Create the mini lab: clone the quickstart git repository from Github, download and run the {product_name} from DockerHub. 
 
-1. `git clone https://github.com/ubiqube/quickstart.git`
+1. `git clone -b {revnumber} --depth 1 https://github.com/ubiqube/quickstart.git`
 2. `cd quickstart`
-3. `git checkout tags/{revnumber} -b {revnumber}`
-4. `docker-compose up -d`
+3. `docker-compose up -d`
 
 NOTE: If you are already running the {product_name} and wish to upgrade it to a new version check the link:#upgrade[documentation below]
 
 NOTE: The architecture of the mini lab is detailed in the architecture overview documentation in the admin guide.
 
-[#step2]
-=== Step 2: install the trial license 
+[#step{counter:step}]
+=== Step {step}: install the trial license 
 
 On link:https://ubiqube.com/free-trial/[ubiqube.com], fill the form to receive a trial license by email.
 
@@ -126,8 +125,8 @@ Browse to "Settings" in the left menu and upload the free trial license you rece
 
 NOTE: use localhost if you are using your PC as the docker host, otherwise use the IP address assigned to the docker host.
 
-[#step3]
-=== Step 3: the libraries (Microservices, Workflows and Adapters) from github.com/openmsa
+[#step{counter:step}]
+=== Step {step}: the libraries (Microservices, Workflows and Adapters) from github.com/openmsa
 
 `docker-compose exec msa_dev /usr/bin/install_libraries.sh all -y`
 
@@ -137,8 +136,8 @@ At the end of the script execution, you need to restart the API container and th
 
 NOTE: more explanations on the script `install_libraries.sh` can be found link:#install_libraries[here].
 
-[#step4]
-=== Step 4: configure Elasticsearch and Kibana
+[#step{counter:step}]
+=== Step {step}: configure Elasticsearch and Kibana
 
 Configure Elasticsearch settings and index mappings
 
@@ -148,8 +147,8 @@ Install Kibana visualizations and dashboards
 
 `docker exec -u root -w /home/install/ -it  msa_kibana bash -c 'php install_default_template_dash_and_visu.php'`
 
-[#step5]
-=== Step 5: provision the mini lab with tenants, managed entities, etc.
+[#step{counter:step}]
+=== Step {step}: provision the mini lab with tenants, managed entities, etc.
 
 The mini lab comes with 2 Linux container (linux_me / 172.20.0.101 and linux_me_2 / 172.20.0.102) for experimentation.
 
@@ -169,8 +168,8 @@ To create the mini lab environment, run the CLI command from where you have clon
 
 `docker-compose exec msa_dev /usr/bin/create_mini_lab.sh`
 
-[#step6]
-=== Step 6: start using the {product_name}
+[#step{counter:step}]
+=== Step {step}: start using the {product_name}
 
 Browse: link:https://localhost/[window=_blank] and connect with username `ncroot` and password `ubiqube`. 
 
@@ -208,12 +207,11 @@ Starting from it's version 2.2.0, the quickstart project provides a script `upgr
 
 Let's say that you are running the version {revnumber-prev}, to upgrade to the version {revnumber} you need to follow these steps:
 
-1. `cd quickstart`
-2. `git checkout master`
-3. `git pull`
-4. `git fetch --all --tags`
-5. `git checkout tags/{revnumber} -b {revnumber}`
-6. `./scripts/upgrade.sh` 
+1. `cd ..`
+2. `git clone -b {revnumber} --depth 1 https://github.com/ubiqube/quickstart.git`
+3. `cd quickstart`
+4. `docker-compose up -d`
+5. `./scripts/upgrade.sh` 
 
 NOTE: when running the upgrade script, it will ask you if you want your local libraries to be updated with the latest version from the community. If you answer 'y', the update will be done automatically. You can also do the update later manually on the container `msa_dev`.
 
@@ -225,13 +223,11 @@ When this happens, we update the docker images in the quickstart and simply move
 
 If you want to update your quickstart, because you have already checked out the release tag {revnumber} on a local git branch {revnumber}, you need first to delete this local branch and delete the local tag before you can update the quickstart and install the hot fixes.
 
-1. `git checkout master`
-2. `git pull`
-3. `git branch -d {revnumber}`
-4. `git tag -d {revnumber}`
-5. `git fetch --all --tags`
-6. `git checkout tags/{revnumber} -b {revnumber}`
-7. `docker-compose up -d`
+1. `cd ..`
+2. `git clone -b {revnumber} --depth 1 https://github.com/ubiqube/quickstart.git`
+3. `cd quickstart`
+4. `docker-compose up -d`
+5. `./scripts/upgrade.sh` 
 
 ==== Note for Windows user
 
@@ -259,7 +255,7 @@ To install a tagged version, you can checkout the tag and go to the install step
 
 For example, the CLI command below will checkout the quickstart for the release {revnumber}.
 
-`git checkout tags/{revnumber} -b {revnumber}`
+`git clone -b {revnumber} --depth 1 https://github.com/ubiqube/quickstart.git`
 
 The releases and tags are available link:https://github.com/ubiqube/quickstart/releases[here]
 
