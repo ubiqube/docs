@@ -3,6 +3,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 ifndef::imagesdir[:imagesdir: images]
 
 ifdef::html[]
+
 [.stripes-none,cols="1,10",frame=none,grid=none,options="noheader",width="50%"]
 |===
 | image:html_icon.png[width=32px]
@@ -11,6 +12,7 @@ ifdef::html[]
 | image:pdf_icon.png[width=32px]
 | link:../pdf/developer-guide/developer-guide-single.pdf[download as PDF,window=_blank]
 |===
+
 endif::[]
 
 The developer guide contains a set of documentation, tutorials and examples to help you get familiar with the {product_name} as a development platform.

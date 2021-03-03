@@ -16,6 +16,18 @@ ifdef::pdf[]
 :includedir: .
 endif::[]
 
+ifdef::html[]
+
+[.stripes-none,cols="1,10",frame=none,grid=none,options="noheader",width="50%"]
+|===
+| image:html_icon.png[width=32px]
+| link:index{outfilesuffix}[view as separated html page,window=_blank]
+
+| image:pdf_icon.png[width=32px]
+| link:../pdf/admin-guide/admin-guide-single.pdf[download as PDF,window=_blank]
+|===
+
+endif::[]
 
 :leveloffset: +1
 
