@@ -1,0 +1,49 @@
+= Version 2.4
+ifndef::imagesdir[:imagesdir: images]
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Various fixes have been made to the product to ensure its continued ability to empower users, ensure a smoother user experience and deliver the value that businesses need in today's environment while being ahead in terms of features, being evergreen and the agility of the {product_name} to grow.
+
+== New features
+
+The following feature improvements are included with this release:
+
+
+== CoreEngine
+
+No changes have been made to the core engine from previous versions of the product. This allows consistency from branches of OpenMSA (community version), found on GitHub: https://github.com/openmsa
+
+
+== New Libraries Available
+
+=== Adapters
+
+== Upgrading
+
+Instructions to upgrade available in the quickstart guide.
+
+=== Specific instruction for upgrading from {revnumber-prev} to {revnumber}
+
+Starting from version 2.2.0, the quickstart provides an upgrade script `upgrade.sh` for taking care of possible actions such as recreating some volume, executing some database specific updates,...
+
+Let's say that you are running {product_name} version {revnumber-prev}, to upgrade to the version {revnumber}, you need to follow these steps:
+
+1. `$ cd quickstart`
+2. `$ git checkout master`
+3. `$ git pull`
+4. `$ git checkout tags/{revnumber} -b {revnumber}`
+5. `$ ./scripts/upgrade.sh`
+
+== Specific technical fixes and feature details
+
+=== 2.4.0 GA
+
+==== Features
+
+==== Bug fixes
+
+=== 2.4.0 RC1
+
+==== Features
+
+==== Bug fixes
