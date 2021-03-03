@@ -1,9 +1,6 @@
 = Version 2.1
-:imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:doctype: book
-:toc: left
-:toclevels: 4 
+
 
 Various fixes have been made to the product to ensure its continued ability to empower users, ensure a smoother user experience and deliver the value that businesses need in today's environment while being ahead in terms of features, being evergreen and the agility of the {product_name} to grow.
 

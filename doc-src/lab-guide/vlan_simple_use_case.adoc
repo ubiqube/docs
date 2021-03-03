@@ -1,10 +1,6 @@
 = VLAN Simple Use Case
-:doctype: book
-:imagesdir: ./resources/
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:toc: left
-:toclevels: 4 
-:source-highlighter: pygments
 
 == Overview
 
@@ -20,7 +16,7 @@ Linux bridge perfectly fits this requirement.
 
 Let's do it in the next way: one broadcast domain - one bridge.
 
-image:images/vlan_simple_2.jpg[width=600px]
+image:vlan_simple_2.jpg[width=600px]
 
 == Sandbox environment
 
@@ -128,18 +124,18 @@ So, at this step we are good to go and should be ready to start managing the swi
 
 == Framework
 
-MSActivator is an Integrated Automation Platform (IAP) framework for creating user-friendly, easy, maintainable and scalable solutions...
+{product_name} is an Integrated Automation Platform (IAP) framework for creating user-friendly, easy, maintainable and scalable solutions...
 
 === Step 1: register the switch
 
-image:images/vlan_simple_3.png[width=1000px]
+image:vlan_simple_3.png[width=1000px]
 
 
 === Step 2: control the bridge
 
 Then we need to think of how to control the bridge utils - microservices will help us much:
 
-image:images/vlan_simple_4.png[width=1000px]
+image:vlan_simple_4.png[width=1000px]
 
 Here you can see representation of the next output
 
@@ -180,7 +176,7 @@ Here you can see representation of the next output
            valid_lft forever preferred_lft forever
 ----
 
-image:images/vlan_simple_5.png[width=1000px]
+image:vlan_simple_5.png[width=1000px]
 
 There are three interfaces which names starts with "vlan", so there is a naming convention I've chosen and I'm following, to retrieve and parse that data we just need to specify appropriate command and regexp - that is all!
 
@@ -188,25 +184,25 @@ According to CRUD/I model we can CREATE interface (bridge), DELETE or UPDATE, le
 
 === Step 3: CREATE
 
-image:images/vlan_simple_6.png[width=1000px]
+image:vlan_simple_6.png[width=1000px]
 
 === Step 4: DELETE
 
-image:images/vlan_simple_7.png[width=1000px]
+image:vlan_simple_7.png[width=1000px]
 
 === Step 5: UPDATE
 
-image:images/vlan_simple_8.png[width=1000px]
+image:vlan_simple_8.png[width=1000px]
 
 === Step 6: use the UI
 
 Finally we can see it works from UI.
 
-image:images/vlan_simple_9.png[width=1000px]
+image:vlan_simple_9.png[width=1000px]
 
 For example change VLAN 100 to DOWN state:
 
-image:images/vlan_simple_10.png[width=1000px]
+image:vlan_simple_10.png[width=1000px]
 
 === Step 6: Now we can control the processes
 
@@ -223,7 +219,7 @@ I suggest creating one more microservice, these feature should be decoupled in o
 
 That is how I want to see it:
 
-image:images/vlan_simple_11.png[width=1000px]
+image:vlan_simple_11.png[width=1000px]
 
 And that is how it actually looks:
 
@@ -242,13 +238,13 @@ vlan_default            8000.02420adede0a       no              eth0
 
 More complicated than first Microservice but still simple and much more flexible because it handles user input exceptions:
 
-image:images/vlan_simple_12.png[width=1000px]
+image:vlan_simple_12.png[width=1000px]
 
 All you need to do is just to list command as you are in CLI and replace certain values with variables
 
 ==== DELETE
 
-image:images/vlan_simple_13.png[width=1000px]
+image:vlan_simple_13.png[width=1000px]
     
 === UPDATE
 presumes several options:
@@ -256,8 +252,8 @@ presumes several options:
 - switch interface from one vlan to other: (untagged > untagged), (tagged > untagged), (tagged > untagged)
 - option (tagged > tagged) handles by DELETE (or/and) CREATE method, You create one more bridge and assign port to it.
 
-image:images/vlan_simple_14.png[width=1000px]
+image:vlan_simple_14.png[width=1000px]
     
 Finally here is an example from UI
 
-image:images/vlan_simple_15.png[width=1000px]
+image:vlan_simple_15.png[width=1000px]

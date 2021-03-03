@@ -1,20 +1,11 @@
 = Workflow Variables
-:doctype: book
-:imagesdir: ./resources/
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:toc: left
-:toclevels: 4 
-:source-highlighter: pygments
 
-//// 
-TODO 
-////
+Variables are used to hold the parameters to pass to a workflow process. For instance, the port and IP address to block in a firewall policy.
 
-Variables are usually used to hold the parameters to be passed to a workflow process. For instance, the port and IP address variables to block for a firewall policy. Variables can also be used to display user information that is not meant to be used for any actuall configuration.
-
-Setting variables is done from the section "Variables" on the workflow editor screen.
-
-image:images/workflow_console_variables.png[width=700px]
+.Workflow variable section
+image:workflow_console_variables.png[width=700px]
 
 All variables are referenced with the prefix `$params` which is automatically set in the variable editor screen and when a variable has to be referenced in one of the workflow functions, you need to use the syntax `{$params.your_variable}` (see below for more examples).
 
@@ -22,17 +13,19 @@ By default the type of a variable is String but other types are supported such a
 
 == Overview
 
-The variables are usually defined to hold the parameters to be passed to the workflow. For instance, the port and IP address variables to block for a firewall policy. Variables can also be used to display user information that is not meant to be used for configuring the managed entity.
+Variables are used to hold the parameters to pass to a workflow process. For instance, the port and IP address to block in a firewall policy.
 
-Setting different types for variables will affect the way the workflow end user form, for creating or updating it, will render.
+Variables can also be used to display user information that is not necessarily meant to be used for configuring the managed entity.
+
+Setting variables is done from the section "Variables" on the workflow editor screen.
+
+The type of a variable will affect the way the workflow end user form will be rendered.
 
 For instance, the type boolean will render the variable with true/false radio buttons.
 
 == Defaut settings
 
 When creating or editing a variable, there are some information that need to be provided in the "Default" section.
-
-image:images/workflow_variables_edit_1.png[workflow_variables_edit_1]
 
 === Variable
 
@@ -65,11 +58,45 @@ NOTE: not supported yet
 This data type will enforce data validation against IP address formats.
 
 ==== Composite
-NOTE: not supported yet
+The variable type composite provide ways to add control over the behavior of the workflow user form.
 
-The variable type composite provide the means to add control over the behaviour of the workflow user form.
+It can be used, for instance, to show/hide parts of the form based on the value of another component of the form.
 
-It can be used, for instance, to show/hide part of the form based on the value of another component of the form.
+Let's take a simple example to illustrate the use of the composite type with a simple workflow for managing firewall policy.
+
+The workflow allows the user to create a firewall policy to block a source IP address and a destination port but the user may also need to select the protocol TCP, UDP or ICMP and in the case of ICMP, the destination port is not relevant. We need to build a workflow UI where the user will have to provide the source IP and destination port when the protocol is TC or UDP and only the source IP when the protocol is ICMP.
+
+In this example, the variable "dst_port" for the destination port should be typed as a composite because it's behavior when rendered as a user web form will depend on the other variable "protocol".
+
+.When the user choose TCP or UDP
+image:workflow_variable_composite_screen_example_1.png[width=500px]
+
+
+.When the user selects ICMP
+image:workflow_variable_composite_screen_example_2.png[width=500px]
+
+To implement this behavior, set the type of "dst_port" variable to "Composite".
+
+.dst_port type is "Composite"
+image:workflow_variable_composite_screen_example_3.png[width=500px]
+
+In the advanced parameter tab, first choose the "Selector Variable" and select the protocol (note that the list shows the display name, not the actual name of the variable)
+
+Then configure the "Behavior for the Composite". The selector is a boolean so you can only have 2 types of behavior, one for true and one for false.
+
+image:workflow_variable_composite_screen_example_4.png[width=300px]
+
+Each behavior can be configured by editing it with the pencil icon.
+
+In our case, if the selector is set to true (when the user selects ICMP), the variable "dst_port" should be hidden: uncheck the attribute "Visible" in the advanced parameters for composite.
+
+.Hide the destination port when ICMP is checked
+image:workflow_variable_composite_screen_example_5.png[width=500px]
+
+And when the selector is set to false, the variable "dst_port" should be visible and mandatory.
+
+.Show the destination port when ICMP is not checked
+image:workflow_variable_composite_screen_example_6.png[width=500px]
 
 ==== Link
 NOTE: not supported yet
@@ -94,16 +121,16 @@ This type is used to maintain an incremental counter in within the instances of 
 
 ==== Device 
 
-This type is used to allow the user to select a managed entity and pass it's identifier to the implementation of the workflow.
+This type is used to allow the user to select a managed entity and pass its identifier to the implementation of the workflow.
 
-In the task implementation you need to list the variable with "Device" for the type
+In the task implementation you need to list the variables with "Device" for the type
 
 .PHP
 [source, php]
 ----
 function list_args()
 {
-  create_var_def('my_device', 'Device');
+  create_var_def('my_device');
 }
 ----
 
@@ -114,16 +141,16 @@ from msa_sdk.variables import Variables
 
 TaskVariables = Variables()
 
-TaskVariables.add('my_device', var_type = 'Device')
+TaskVariables.add('my_device')
 ----
 
 ===== List of managed entities
 
-A very common use of the type `Device` to automate configuration (or any other automated action) over a list of managed entities.
+A very common use of the type `Device` is for automating configuration (or any other automated action) over a list of managed entities.
 
 You can do that by creating a array variable with the type `Device` and loop through the array in the task.
 
-.Sample task to list managed entities
+.Sample task to list managed entities (Python)
 [source, python]
 ----
 from msa_sdk.variables import Variables
@@ -131,7 +158,7 @@ from msa_sdk.msa_api import MSA_API
 from msa_sdk import util
 
 dev_var = Variables()
-dev_var.add('me_list.0.id', var_type='Device')                    <1>
+dev_var.add('me_list.0.id')                                       <1>
 
 context = Variables.task_call(dev_var)
 process_id = context['SERVICEINSTANCEID']                         <2>
@@ -139,7 +166,7 @@ process_id = context['SERVICEINSTANCEID']                         <2>
 me_list = context['me_list']                                      <3>
 
 for me_id in me_list:                                             <4>
-    util.log_to_process_file(process_id, me_id)                 
+    util.log_to_process_file(process_id, me_id['id'])             <5>    
 
 ret = MSA_API.process_content('ENDED', 'Task OK', context, True)
 print(ret)
@@ -148,6 +175,25 @@ print(ret)
 <2> read the current process ID
 <3> read the list of managed entities selected by the user on the UI
 <4> loop through the list and print each managed entity ID in the process log file
+<5> print the managed entity identifier in the process log file
+
+.Sample code to list managed entities (PHP)
+[source, php]
+----
+function list_args()
+{
+  create_var_def('devices.0.id');
+}
+
+// read the ID of the selected managed entity  
+$devices = $context['devices'];
+
+foreach ($devices as $device) {
+  $device_id = $device['id'];
+
+  logToFile("update device $device_id");
+}
+----
 
 ==== Customer (Subtenant)
 
@@ -163,7 +209,7 @@ require_once '/opt/fmc_repository/Process/Reference/Common/common.php';
 
 function list_args()
 {
-  create_var_def('subtenant', 'Customer');    <1>
+  create_var_def('subtenant');                <1>
 }
 
 $subtenant = $context['subtenant'];           <2>
@@ -175,7 +221,7 @@ task_success('Task OK: '.$subtenant);         <3>
 <2> read the variable value from the context
 <3> print the value on the execution console
 
-image:images/workflow_console_variables_customer.png[width=700px]
+image:workflow_console_variables_customer.png[width=700px]
 
 ===== List of subtenant
 
@@ -191,7 +237,7 @@ require_once '/opt/fmc_repository/Process/Reference/Common/common.php';
 
 function list_args()
 {
-  create_var_def('subtenants.0.id', 'Customer');
+  create_var_def('subtenants.0.id');
 }
 
 $subtenants = $context['subtenants'];
@@ -206,9 +252,11 @@ task_success('Task OK: '.sizeof($subtenants )." subtenant selected");
 <1> loop through the list of subtenants
 <2> log the value in the process log file
 
+TIP: the code for iterating over an array of managed entities is very similar 
+
 ==== Microservice reference
 
-This type is one of the key to integrate workflows and microservices, it will allow you to use the data imported by the microservice from a managed entity in your automation code.
+This type is the key when integrating workflows and microservices, it will allow you to use the data imported by the microservice from a managed entity in your automation code.
 
 To use this type you need 2 variables:
 1. a variable with the type `Device` to select the managed entity to get the data from
@@ -218,7 +266,7 @@ When creating a variable typed `Microservice Reference` you need to select the `
 
 In the exmaple below, the variable `$params.user` is typed as `Microservice Reference`. In the "Advanced" tab, the field "Microservice Reference" references one or several microservice and the field "Device ID" references a managed entity.
 
-image:images/workflow_console_variables_ms_ref.png[width=700px]
+image:workflow_console_variables_ms_ref.png[width=700px]
 
 .Sample PHP task to create the UI to select a managed entity and select a microservice instance from this managed entity
 [source, PHP]
@@ -229,8 +277,8 @@ require_once '/opt/fmc_repository/Process/Reference/Common/common.php';
 
 function list_args()
 {
-  create_var_def('me', 'Device');
-  create_var_def('user', 'ObjectRef');
+  create_var_def('me');
+  create_var_def('user');
 }
 
 task_success('Task OK');
@@ -239,7 +287,7 @@ task_success('Task OK');
 
 It also possible to use an array to select multiple values from the microservice
 
-image:images/workflow_console_variables_multiple_ms_ref.png[width=400px]
+image:workflow_console_variables_multiple_ms_ref.png[width=400px]
 
 .Sample PHP task to select multiple values from the microservice instance
 [source, PHP]
@@ -250,8 +298,8 @@ require_once '/opt/fmc_repository/Process/Reference/Common/common.php';
 
 function list_args()
 {
-  create_var_def('me', 'Device');
-  create_var_def('users.0.user', 'ObjectRef');
+  create_var_def('me');
+  create_var_def('users.0.user');
 }
 
 task_success('Task OK');
@@ -262,7 +310,6 @@ task_success('Task OK');
 NOTE: not supported yet
 
 This type is useful for referencing a workflow from another one.
-
 
 === Display Name
 
@@ -296,5 +343,5 @@ When you are dealing with variable arrays, these options will let you control th
 
 To create a variable array, you need to follow a precise naming convention: `$params.<ARRAY NAME>.0.<ELEMENT NAME>`. The 0, is the separator that will allow the UI and the configuration engine that this variable is an array.
 
-.a variable array with 2 elements
-image:images/workflow_variables_array_1.png[width=700px]
+.Variable array with 2 elements
+image:workflow_variables_array_1.png[width=700px]

@@ -1,26 +1,27 @@
 = Versions
-:imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:doctype: book
+
+== Previous versions
 
 [cols=2*,options="header"]
 |===
 |Version | Link
 
-| 2.2.0 GA (latest) |  https://ubiqube.com/wp-content/docs/latest
+| 2.3.0 GA (latest) |  https://ubiqube.com/wp-content/docs/latest
+| 2.2.0 GA |  https://ubiqube.com/wp-content/docs/2.2.0GA
 | 2.1.0 GA |  https://ubiqube.com/wp-content/docs/2.1.0GA
 | 2.0.0 Alpha|  https://ubiqube.com/wp-content/docs/2.0.0
 | 2.0.1 Beta|  https://ubiqube.com/wp-content/docs/2.0.1
 | 17.7 |  link:https://ubiqube.com/wp-content/docs/17.x/user-guide[https://ubiqube.com/wp-content/docs/17.x]
 |===
 
-== What are the differences between the version 17.x and the {product_name-version} latest release?
+== Differences between version 17.x and the {product_name-version} latest release?
 
 === New features
 
 ==== Architecture
 
-{product_name} link:admin-guide/architecture_overview{outfilesuffix}[architecture] has be deeply reviewed from being made out of componenets running directly on dedicated VM and using multiple VM to handle HA to be cloud native, Docker container based, using Docker Swarm to handle high availability. 
+{product_name} link:https://ubiqube.com/wp-content/docs/latest/admin-guide/architecture_overview.html[architecture] has be deeply reviewed from being made out of componenets running directly on dedicated VM and using multiple VM to handle HA to be cloud native, Docker container based, using Docker Swarm to handle high availability. 
 
 ==== Product delivery
 
@@ -34,7 +35,7 @@ Each of these roles have a dedicated space, Manager or Developer space, providin
 
 ==== BPM
 
-{product_name} now provides the support for BPM link:../developer-guide/bpm_editor{outfilesuffix}[design] and link:../user-guide/bpm{outfilesuffix}[execution]
+{product_name} now provides the support for BPM link:https://ubiqube.com/wp-content/docs/latest/developer-guide/bpm_editor.html[design] and link:https://ubiqube.com/wp-content/docs/latest/user-guide/bpm.html[execution]
 
 The BPM engine is based on Camunda, the BPM design and execution UI is fully integrated in the {product_name}.
 
@@ -48,14 +49,14 @@ The list below describes the features that exist in the version 17.x and that ar
 |===
 |   Section                | Feature                                                                    | Short description                     | Status ({product_name-version})  | Link to previous doc
 |Managed entity     |                                                                            |                                       |           |  
-|                   | link:../user-guide/managed_entities{outfilesuffix}#asset_info[Asset]       | Asset and configuration history management                     | partially available  | link:https://ubiqube.com/wp-content/docs/17.x/user-guide/Managed_Devices_and_Entities/device-history.html[asset management]
-|                   | link:../user-guide/managed_entities{outfilesuffix}#monitoring[Monitoring]  | ICMP based monitoring information     | partially available   |  link:https://ubiqube.com/wp-content/docs/17.x/user-guide/Assurance/monitoring-profile.html[KPI monitoring]
-|                   | link:../user-guide/managed_entities{outfilesuffix}#microservice[Microservice]| Microservice based configuration    | partially available   | link:https://ubiqube.com/wp-content/docs/17.x/user-guide/Configuration/Microservices/microservices.html[microservices]
-|                   | link:../user-guide/assurance{outfilesuffix}#log_anal[Log analytics]        | Collect/index/search logs and events  | available   | link:https://ubiqube.com/wp-content/docs/17.x/user-guide/Assurance/log-analysis.html[log analysis]
+|                   | link:https://ubiqube.com/wp-content/docs/latest/user-guide/managed_entities.html#asset_info[Asset]       | Asset and configuration history management                     | partially available  | link:https://ubiqube.com/wp-content/docs/17.x/user-guide/Managed_Devices_and_Entities/device-history.html[asset management]
+|                   | link:https://ubiqube.com/wp-content/docs/latest/user-guide/managed_entities.html#monitoring[Monitoring]  | ICMP based monitoring information     | partially available   |  link:https://ubiqube.com/wp-content/docs/17.x/user-guide/Assurance/monitoring-profile.html[KPI monitoring]
+|                   | link:https://ubiqube.com/wp-content/docs/latest/user-guide/managed_entities.html#microservice[Microservice]| Microservice based configuration    | partially available   | link:https://ubiqube.com/wp-content/docs/17.x/user-guide/Configuration/Microservices/microservices.html[microservices]
+|                   | link:https://ubiqube.com/wp-content/docs/latest/user-guide/assurance.html#log_anal[Log analytics]        | Collect/index/search logs and events  | available   | link:https://ubiqube.com/wp-content/docs/17.x/user-guide/Assurance/log-analysis.html[log analysis]
 |                   | Template                                                                   | Template based configuration          | not available|   link:https://ubiqube.com/wp-content/docs/17.x/user-guide/Configuration/Configuration_Template/configuration-template.html[template]
 |                   | Dashboard and report                                                       | Build and display log based dashboard | not available  | link:https://ubiqube.com/wp-content/docs/17.x/user-guide/Assurance/dashboard.html[dashboard]
-|Microservices |  link:../user-guide/configuration_microservices{outfilesuffix}[microservices]|Manage the microservices | partially available| link:https://ubiqube.com/wp-content/docs/17.x/user-guide/Configuration/Microservices/microservices.html[microservices]
-|Deployment setting |  link:../user-guide/configuration_deployment_settings{outfilesuffix}[deployment settings]|defines the microservices to allocate to the managed entities|available| link:https://ubiqube.com/wp-content/docs/17.x/user-guide/Configuration/configuration-profile.html[configuration profile]
+|Microservices |  link:https://ubiqube.com/wp-content/docs/latest/user-guide/configuration_microservices.html[microservices]|Manage the microservices | partially available| link:https://ubiqube.com/wp-content/docs/17.x/user-guide/Configuration/Microservices/microservices.html[microservices]
+|Deployment setting |  link:https://ubiqube.com/wp-content/docs/latest/user-guide/configuration_deployment_settings.html[deployment settings]|defines the microservices to allocate to the managed entities|available| link:https://ubiqube.com/wp-content/docs/17.x/user-guide/Configuration/configuration-profile.html[configuration profile]
 
 |===
 
@@ -63,8 +64,8 @@ The list below describes the features that exist in the version 17.x and that ar
 [cols=5*,options="header"]
 |===
 |   Section                | Feature                                                                    | Short description                     | Status ({product_name-version})  | Link to previous doc
-|BPM |  link:../user-guide/bpm{outfilesuffix}[BPM]| Manage/Design/Execute BPM |  available | 
-|Workflow |  link:../automation_workflows{outfilesuffix}[workflow]|Manage/Design/Excute Workflows | partially available| link:https://ubiqube.com/wp-content/docs/17.x/user-guide/Automation/getting-started-developing-workflows.html[workflow]
+|BPM |  link:https://ubiqube.com/wp-content/docs/latest/user-guide/bpm.html[BPM]| Manage/Design/Execute BPM |  available | 
+|Workflow |  link:https://ubiqube.com/wp-content/docs/latest/automation_workflows.html[workflow]|Manage/Design/Excute Workflows | partially available| link:https://ubiqube.com/wp-content/docs/17.x/user-guide/Automation/getting-started-developing-workflows.html[workflow]
 
 |=== 
 
@@ -73,8 +74,8 @@ The list below describes the features that exist in the version 17.x and that ar
 [cols=5*,options="header"]
 |===
 |   Section                | Feature                                                                    | Short description                     | Status ({product_name-version})  | Link to previous doc
-|Log analytics |  link:../user-guide/assurance{outfilesuffix}[log analytics]| collect/index/search logs |  available | link:https://ubiqube.com/wp-content/docs/17.x/user-guide/Assurance/log-analysis.html[log analytics]
-|Alarms |  link:../user-guide/assurance{outfilesuffix}[alarm]| manage/view alarms |  partially available | link:https://ubiqube.com/wp-content/docs/17.x/user-guide/Assurance/alarm-management.html[alarm]
+|Log analytics |  link:https://ubiqube.com/wp-content/docs/latest/user-guide/assurance.html[log analytics]| collect/index/search logs |  available | link:https://ubiqube.com/wp-content/docs/17.x/user-guide/Assurance/log-analysis.html[log analytics]
+|Alarms |  link:https://ubiqube.com/wp-content/docs/latest/user-guide/assurance.html[alarm]| manage/view alarms |  partially available | link:https://ubiqube.com/wp-content/docs/17.x/user-guide/Assurance/alarm-management.html[alarm]
 |KPI monitoring |  monitoring profile | manage/view monitoring profile |  not available | link:https://ubiqube.com/wp-content/docs/17.x/user-guide/Assurance/monitoring-profile.html[monitoring profile]
 |KPI monitoring |  dashboard| manage/view monitoring profile |  not available | link:https://ubiqube.com/wp-content/docs/17.x/user-guide/Assurance/dashboard.html[dashboard]
 

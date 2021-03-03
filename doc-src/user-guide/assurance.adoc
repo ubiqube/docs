@@ -1,13 +1,139 @@
 = Assurance
-:doctype: book
-:imagesdir: ./resources/
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:toc: left
-:toclevels: 4 
+
+ifdef::html[] 
+image:msa_arch_assurance.png[width=300px]
+endif::[]
 
 The {product_name} provides an assurance module for collecting network events and managing alarms
 
 All the events sent by the managed or monitored entities are collected, indexed and analyzed centrally.
+
+== Monitoring profiles
+
+=== Overview
+
+You can configure and monitor your KPI with the *monitoring profiles*. 
+
+A monitoring profiles is a way to configure a set of SNMP based KPI, to configure threshold crossing based alarms and build graphs to display the KPI.
+
+A monitoring profile has to be associated to one or more managed entity(ies) and a managed entity can also be associated to several monitoring profile(s).
+
+.Select a graphical rendering for a managed entity
+image:assurance_mon_profile_overview_graph.png[width=800px]
+
+=== Create or edit a monitoring profile
+
+You can create a monitoring profile by browsing to the "Infrastructure" menu and selecting the tab "Monitoring Profiles" and clicking "+ Create Monitoring profile".
+
+A monitoring profile is made out of 2 parts: the SNMP polling and the graphical rendering. Although SNMP polling is mandatory to have the {product_name} poll for the KPI, the graphical rendering is optional.
+
+==== SNMP polling
+
+Click "+ Add Rule" to add a new KPI.
+
+.create a new KPI
+image:assurance_mon_profile_overview_add_rule.png[width=800px]
+
+.Name
+The name will be used internally to identify the KPI in the KPI database and in the UI to build the graphical rendering.
+
+.OID
+The MIB OID to read to get the value of the KPI. 
+
+.Type
+Select Gauge or Counter (see below for detail on this field).
+
+.Min/Max
+For gauge, the max value will be used to trim any KPI value to the value set as max.
+
+.Poll every
+Default is to poll for the KPI every minute but it possible to set a lower frequency for KPI that are less critical for instance.
+
+.Comparator, threshold and alert frequency
+Configure an alarm based on threshold crossing (for instance if the CPU goes over 80%). See below for more details
+
+===== Gauge or Counter
+
+The rrd graph rendering will be different for counter or for gauge.
+
+For a gauge the value of the record is the value on the graph.
+
+For a counter a value in the graph is calculated with the difference between two consecutive records divided by the period of time. In other words a rrd counter will convert the input into a rate. 
+
+For example, if you monitor network traffic on an interface you need to use counter because the MIB stores the total traffic that went through the interface and what you want to see in the graph is actually the traffic rate and see how it evolves in time
+
+.Traffic monitoring
+image:assurance_mon_profile_graph_linux_traffic.png[width=800px]
+
+If you monitor the CPU usage, or the memory usage, you need to select a gauge because the MIB stores the actual value of the KPI.
+
+.CPU usage on a linux server
+image:assurance_mon_profile_graph_linux_cpu.png[width=800px]
+
+
+.Memory usage on a linux server
+image:assurance_mon_profile_graph_linux_memory.png[width=800px]
+
+
+.MIB OID for monitoring CPU on Linux
+----
+cpu_load_1min : 1.3.6.1.4.1.2021.10.1.5.1 (Gauge)
+cpu_load_5min : 1.3.6.1.4.1.2021.10.1.5.2 (Gauge)
+cpu_load_15min : 1.3.6.1.4.1.2021.10.1.5.3 (Gauge)
+----
+
+.MIB OID for monitoring the memory on Linux
+----
+memAvailReal : .1.3.6.1.4.1.2021.4.6.0 (Gauge)
+memTotalFree : .1.3.6.1.4.1.2021.4.11.0 (Gauge)
+memShared : .1.3.6.1.4.1.2021.4.13.0 (Gauge)
+memBuffer : .1.3.6.1.4.1.2021.4.14.0 (Gauge)
+memCached : .1.3.6.1.4.1.2021.4.15.0 (Gauge)
+memTotalReal : .1.3.6.1.4.1.2021.4.5.0 (Gauge)
+----
+
+.MIB OID for monitoring the traffic on eth0 on Linux
+----
+traffic_in : 1.3.6.1.2.1.2.2.1.10.2 (Counter)
+traffic_out : 1.3.6.1.2.1.2.2.1.16.2 (Counter)
+----
+
+====== Threshold based alarm
+
+Is is possible to configure alarm based on KPI threshold crossing. 
+
+This is useful to monitor resources such as CPU or memory consumption. 
+When a KPI crosses a threshold, and alarm will be raised visible in the logs in the "Alarm" section.
+
+.Alert log for threshold crossing
+image:assurance_mon_profile_alarm.png[width=800px]
+
+When a monitoring threshold is crossed the log message will be similar to "supervision - Site UBI1195 snmp threshold 262-cpu_load_1min raised value 69 (> 10)" where you can see that the threshold 10 has been crossed by a greater value 69.
+
+This configuration is done at the SNMP polling rule in the monitoring profile by setting a comparator '>' or '<' and a threshold.
+
+==== Graphical rendering
+
+For each monitoring profile you can also create a graph to aggregate and display 1 or more KPI defined in the SNMP polling section.
+
+Since the KPI are going to be displayed in the same graph, you need to ensure that the data is consistent. Displaying CPU load and network traffic in the same graph is allowed but will not make any sense. In this case you need to have 2 monitoring profiles for each set of KPI.
+
+.Configure the graphical rendering for a set of KPI
+image:assurance_mon_profile_overview_rendering.png[width=800px]
+
+== SNMP trap monitoring
+
+The {product_name} can collect and index SNMP traps out of the box.
+
+To monitor a managed entity with SNMP traps you need to configure the managed entity with *Collect Syslog* and *Analyse Syslog* enabled.
+
+When the {product_name} collects a trap, it relies on the trap source IP address to identify the managed entity by it's management IP address. 
+
+Once a management entity is identified, the trap will be processed the same way as a syslog and will be indexed in Elasticsearch. It will then be listed in the logs screen in the "Alarms" section.
+
+image:assurance_traps_search.png[width=800px]
 
 == Log analytics
 
@@ -18,14 +144,37 @@ Once indexed, the logs are fully searchable from the user interface.
 
 The diagram below shows the syslog processing steps from the device to Elasticsearch. 
 
-image:images/assurance_log_analysis_event_flow.png[width=1000px]
+.Syslog event flow
+image:assurance_log_analysis_event_flow.png[width=800px]
 
 [#log_anal]
 === Search logs
 
-Event stored in ELasticsearch can searched from UI under the section "Alarms" > "Logs"
+The event stored in Elasticsearch can searched from UI in the section "Alarms" > "Logs"
 
-image:images/assurance_log_search.png[width=1000px]
+.Log analytics screen
+image:assurance_log_search.png[width=800px]
+
+[#dashboard]
+== Dashboard
+
+Dashboard will allow you to visualize the data store in Elasticsearch
+
+You can access Kibana on port 5601 (https://localhost:5601) and use Kibana to:
+
+- discover the data indexed and stored in Elasticsearch 
+- create your own dashboard templates
+- reuse or edit the dashboard included in the {product_name}
+
+=== Deploy an existing dashboard for a subtenant
+
+You can use the workflow "Deploy Dashboard" to deploy the dashboards packaged in the {product_name}.
+
+image:dashboard_wf_deployed.png[width=800px]
+
+Use the Kibana URL from the workflow instance to browse to the Kibana dashboard
+
+image:dashboard_kibana_deployed.png[width=800px]
 
 [#alarm]
 == Alarm management
@@ -39,25 +188,26 @@ The detection of events relies on rules configured at the super administrator le
 
 Rule management is available for the super administrator (ncroot). The rules are defined globally and can be modified by the SOC team. 
 
-The infrasctructure management team (IT/SOC/NOC) can modify the setting of the notifications on a per-event and/or per-subtenant basis. 
+The infrastructure management team (IT/SOC/NOC) can modify the setting of the notifications on a per-event and/or per-subtenant basis. 
 The rules are executed on a periodic basis (the period frequency can be configured) and alarms are generated whenever a rule matches.
 
 === Manage alarm rules
 Alarm Rule can be created from the Manage Alarms tab, as show in the below screen shot. 
-Alarm Name shoud be Unique across the SOC and it should not contain space. 
+Alarm Name should be Unique across the SOC and it should not contain space. 
 
-
-image:images/assurance_manage_alarm.png[width=1000p]
+.Alarm rule management screen
+image:assurance_manage_alarm.png[width=800px]
 
 === Create or edit an alarm 
 
 Alarm creation contains Four sections below
 
-image:images/assurance_manage_alarm_edit.png[width=1000p]
+.Edit an alarm
+image:assurance_manage_alarm_edit.png[width=800px]
 
 ==== Detail
 
-in this section we need to provide a name for the alarm
+Provide a name for the alarm
 
 ==== Conditions
 
@@ -73,26 +223,63 @@ If selected, the logs search for the alarm triggering will be considered only fo
 If selected, the logs search for the alarm triggering will be considered only for that Manage Entity
  
 .Severity levels
-If selected,  alarm wil be triggered for the logs with only those Severities
+If selected,  alarm wil be triggered for the logs with only those Severities.
 
 ==== Threshold 
 
-Define the number of events and the time period to consider for triggering one alarm 
+Define the number of events and the time period to consider for triggering one workflow. 
+
+With the default value 0 log within 0 minute, no workflow process execution will be triggered so you need to set it at least as 1 log within 1 minute.
 
 ==== Notification
 
-Select the link:tenants_and_users{outfilesuffix}[user roles] that will be notified by email when an alarm is raised.
+Select the user roles that will be notified by email when an alarm is raised.
+
+NOTE: make sure that you have set an email to your user
 
 ==== Actions
 
 Choose the workflow and the process to execute when an alarm is triggered.
 
-=== SMTP configuration
+=== Troubleshooting
 
-For alarms to be notified as email, we need a proper SMTP relay to be configured. 
+You can troubleshoot your alarm configuration by setting the log level of the alerting module to debug more and monitoring the logs.
 
-To update the configuration of your setup, use this link:../developer-guide/rest_api{outfilesuffix}#msa_configuration[REST API] to update the configuration variables `UBI_SMTP_IPADDR` and `UBI_MAIL_SMTP` with the IP address of your SMTP server.
+.Set debug for alerting logs
+[source,bash]
+----
+docker-compose exec msa_sms sed -i 's/$UBI_VSOC_DEBUG_LEVEL/15/' /opt/sms/templates/conf/sms_agregatord.conf
+----
 
-== KPI monitoring
+.Restart msa_sms to apply the configuration to the CoreEngine
+[source,bash]
+----
+docker-compose restart msa_sms
+----
 
-ICMP based network availability is available for each managed entity on the link:managed_entities{outfilesuffix}#overview["Overview"] screen. 
+.Monitor the alerting logs
+[source,bash]
+----
+docker-compose exec msa_sms tail -F /opt/sms/logs/sms_agregatord.log
+----
+
+=== Testing
+
+You can test the triggering of a process execution with the simple workflow "Security Event Detection" included in the mini-lab.
+
+This worklow will execute a process to display the raw log that cause the alarm.
+
+image:alarm_vnoc_detection.png[width=800px]
+
+To trigger an event you can, for instance, stop one of the Linux container which will raise a IPDOWN event.
+
+image:alarm_vnoc_event.png[width=800px]
+
+A new instance of the workflow should be created
+
+image:alarm_vnoc_workflow_instance.png[width=800px]
+
+
+=== Email alerting: SMTP configuration
+
+For alarms to be notified as email, we need the Docker host to be properly configured as a SMTP server or relay.

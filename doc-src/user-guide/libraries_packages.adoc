@@ -1,0 +1,391 @@
+= Mini lab package description
+ifndef::imagesdir[:imagesdir: images]
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+== Adapters
+
+.Adapters installed as part of the quickstart
+[cols=4*,options="header"]
+|===
+| Vendor
+| Model / OS
+| Description
+| github.com/openmsa
+
+| A10 Networks
+| Thunder® Convergent Firewall
+| link:https://www.a10networks.com/products/thunder-cfw/[Thunder® Convergent Firewall]
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/a10_thunder[a10_thunder]
+
+| ADVA
+| FSP 3000 Access Connect
+| link:https://www.adva.com/en/products/open-optical-transport/optical-access/accessconnect[FSP 3000 Access Connect]
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/adva_nc[adva_nc]
+
+| ADTRAN
+| 
+| link:https://portal.adtran.com/[ADTRAN]
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/adtran_generic[adtran_generic]
+
+| Amazon Web Service
+| EC2 / VPC
+| link:https://docs.aws.amazon.com/ec2/index.html?nc2=h_ql_doc_ec2[EC2: instance management]
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/aws_generic[aws_generic]
+
+| Atlassian
+| link:https://developer.atlassian.com/server/jira/platform/rest-apis/[JIRA REST API]
+| link:https://github.com/openmsa/Adapters/blob/master/adapters/rest_generic/README.md[README]
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/rest_generic[rest_generic]
+
+| Checkpoint
+| R80
+| link:https://www.checkpoint.com/products/next-generation-firewall/#[Next Generation Firewalls (NGFW)]
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/checkpoint_r80[checkpoint_r80]
+
+| Cisco
+| Catalyst IOS
+| link:https://www.cisco.com/c/en/us/support/switches/index.html[Catalyst Switches]
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/catalyst_ios[catalyst_ios]
+
+| Cisco
+| ASA
+| link:https://www.cisco.com/c/en/us/support/security/index.html[Cisco ASA series]
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/cisco_asa_generic[cisco_asa_generic]
+
+| Cisco
+| IOS
+| link:https://www.cisco.com/c/en/us/support/routers/index.html[Cisco ISR/ASR series]
+a| * link:https://github.com/openmsa/Adapters/tree/master/adapters/cisco_asr[cisco_asr]
+  * link:https://github.com/openmsa/Adapters/tree/master/adapters/cisco_isr[cisco_isr]
+
+| Cisco
+| Nexus 9000
+| link:https://www.cisco.com/c/en/us/products/switches/nexus-9000-series-switches/index.html[Cisco Nexus 9000 Series Switches]
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/cisco_nexus9000[cisco_nexus9000]
+
+| Cisco
+| Email Security Appliance
+| link:https://www.cisco.com/c/en/us/products/security/email-security/index.html[Cisco Email Security Appliance]
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/esa[esa]
+
+| Cisco
+| Web Security Appliance
+| link:https://www.cisco.com/c/en/us/products/security/web-security-appliance/index.html[Cisco Web Security Appliance]
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/wsa[wsa]
+
+| Citrix
+| ADC (formelly Netscaler)
+| link:https://www.citrix.com/products/citrix-adc/[Citrix ADC]
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/citrix_adc[citrix_adc]
+
+| Dell 
+| Server / BIOS management with REDFISH API
+| link:https://www.dell.com/support/kbdoc/fr-fr/000178045/redfish-api-with-dell-integrated-remote-access-controller?lang=en[Redfish API with Dell integrated Remote Access Controller]
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/dell_redfish[dell_redfish]
+
+| DTMF
+| RedFish API
+| link:https://www.dmtf.org/standards/redfish[DMTF Redfish®]
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/redfish_generic[redfish_generic]
+
+| Elastic.co
+| Elasticsearch
+| link:https://github.com/openmsa/Adapters/blob/master/adapters/rest_generic/README.md[README]
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/rest_generic[rest_generic]
+
+| ETSI-MANO
+| NFVO
+| 
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/nfvo_generic[nfvo_generic]
+
+| ETSI-MANO
+| VNFM
+| 
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/vnfm_generic[vnfm_generic]
+
+| F5
+| BIG-IP
+| link:https://www.f5.com/products/big-ip-services/iseries-appliance[F5 BIG-IP iSeries Platform]
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/f5_bigip[f5_bigip]
+
+| Flexiwan
+| link:https://flexiwan.com/[SDWAN]
+| link:https://github.com/openmsa/Adapters/blob/master/adapters/rest_generic/README.md[README]
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/rest_generic[rest_generic]
+
+| Fortinet
+| FortiGate NGFW
+| link:https://www.fortinet.com/products/next-generation-firewall[FortiGate Next-Generation Firewall (NGFW)]
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/fortigate[fortigate]
+
+| Fortinet
+| FortiWeb WAFW
+| link:https://www.fortinet.com/products/web-application-firewall/fortiweb[FortiWeb: Web Application Firewall and API Protection]
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/fortiweb[fortiweb]
+
+| Fujitsu
+| IPCOM
+| link:https://www.fujitsu.com/jp/products/network/security-bandwidth-control-load-balancer/ipcom/[FUJITSU Network IPCOM]
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/fujitsu_ipcom[fujitsu_ipcom]
+
+| Fujitsu
+| Virtuora NC
+| link:https://www.fujitsu.com/global/products/network/products/virtuora-nc/[FUJITSU Network Virtuora NC]
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/virtuora_nc[virtuora_nc]
+
+| Huawei 
+| AR2200 Series Routers
+| link:https://support.huawei.com/enterprise/en/routers/ar2200-pid-6078842[AR2200 Series Routers]
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/huawei_generic[huawei_generic]
+
+| Hewlett Packard Enterprise
+| HP 2530 Switch Series
+| link:https://support.hpe.com/hpesc/public/docDisplay?docId=emr_na-c03597248[HP 2530]
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/hp2530[hp2530]
+
+| Hewlett Packard Enterprise
+| Server / BIOS management with REDFISH API
+| link:https://www.hpe.com/us/en/servers/restful-api.html[Lights Out (iLO) server management]
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/hpe_redfish[hpe_redfish]
+
+| Intel 
+| Server / BIOS management with REDFISH API
+| link:https://www.intel.com/content/dam/www/public/us/en/documents/guides/rack-management-module-api-spec-v2-2.pdf[Redfish API with Dell integrated Remote Access Controller]
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/intel_redfish[intel_redfish]
+
+| Juniper
+| SRX Series Services Gateways (junOS)
+| link:https://www.juniper.net/us/en/products-services/security/srx-series/[SRX NG Firewall]
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/juniper_srx[juniper_srx]
+
+| Kubernetes - K8s
+| 
+| link:https://kubernetes.io/[kubernetes.io]
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/kubernetes_generic[kubernetes_generic]
+
+| Lanner
+| IPMI
+| link:http://www.lannerinc.com/phocadownload/user-manuals/iot-appliances/IPMI_manual_v1.0_20150619.pdf[IPMI manual]
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/lanner_ipmi[lanner_ipmi]
+
+| Linux
+|
+| Generic adapter based on remote (SSH) CLI command execution
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/linux_generic[linux_generic]
+
+| Microsoft Azure
+| Generic REST
+| link:https://github.com/openmsa/Adapters/blob/master/adapters/rest_generic/README.md[README]
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/rest_generic[rest_generic]
+
+| MikroTik
+| 
+| link:https://help.mikrotik.com/docs/display/ROS/Management+tools[MikroTik Management tools]
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/mikrotik_generic[mikrotik_generic]
+
+| NEC
+| IX, NFA
+a| * link:https://www.nec.com/en/global/prod/nw/pasolink/products/ipasolink-iX.html[iPASOLINK iX Advanced]
+* link:https://www.nec.com/en/global/prod/masterscope/networkflowanalyzer/index.html[Network Flow Analyzer]
+a| * link:https://github.com/openmsa/Adapters/tree/master/adapters/nec_ix[nec_ix]
+* link:https://github.com/openmsa/Adapters/tree/master/adapters/nec_nfa[nec_nfa]
+
+| Netbox
+| link:https://netbox.readthedocs.io/en/stable/rest-api/overview/[REST Generic]
+| link:https://github.com/openmsa/Adapters/blob/master/adapters/rest_generic/README.md[README]
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/rest_generic[rest_generic]
+
+| Netconf
+| Generic
+| link:https://en.wikipedia.org/wiki/NETCONF[NETCONF]
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/netconf_generic[netconf_generic]
+
+| Nokia
+|
+| link:https://www.nokia.com[Nokia]
+a| * link:https://github.com/openmsa/Adapters/tree/master/adapters/nokia_vsd[nokia_vsd]
+* link:https://github.com/openmsa/Adapters/tree/master/adapters/nokia_cloudband[nokia_cloudband]
+
+
+| OneAccess
+| Generic, Netconf
+| link:https://www.oneaccess-net.com/products/108/620[Virtual Network Function]
+a| * link:https://github.com/openmsa/Adapters/tree/master/adapters/oneaccess_netconf[oneaccess_netconf]
+* link:https://github.com/openmsa/Adapters/tree/master/adapters/oneaccess_lbb[oneaccess_lbb]
+
+| OpenStack
+|
+| link:https://docs.openstack.org/api-quick-start/index.html[OpenStack API Documentation]
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/openstack_keystone_v3[openstack_keystone_v3]
+
+| Oracle 
+| VM Manager
+| link:https://docs.oracle.com/cd/E11081_01/doc/doc.21/e10901/overview.htm[Oracle VM Manager]
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/ovm_manager[ovm]
+
+| PaloAlto
+| VA, Chassis/Vsys
+| link:https://docs.paloaltonetworks.com/pan-os.html[PAN‑OS®]
+a| * link:https://github.com/openmsa/Adapters/tree/master/adapters/paloalto_generic[paloalto_generic]
+ * link:https://github.com/openmsa/Adapters/tree/master/adapters/paloalto_chassis[paloalto_chassis]
+ * link:https://github.com/openmsa/Adapters/tree/master/adapters/paloalto_vsys[paloalto_vsys]
+
+| pfSense
+| Firewall
+| link:https://www.pfsense.org/products/[pfSense]
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/pfsense_fw[pfsense_fw]
+
+| Rancher
+|
+| link:https://rancher.com[rancher.com]
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/rancher_cmp[rancher_cmp]
+
+| Redhat Ansible
+|
+| link:https://docs.ansible.com/ansible/latest/user_guide/playbooks.html[Ansible Playbook]
+| link:https://github.com/openmsa/Microservices/tree/master/ANSIBLE[ANSIBLE]
+
+| REST API
+| Generic
+| link:https://github.com/openmsa/Adapters/blob/master/adapters/rest_generic/README.md[README]
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/rest_generic[rest_generic]
+
+| REST API
+| Netbox
+| link:https://netbox.readthedocs.io/en/stable/rest-api/overview/[Netbox API Overview]
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/rest_netbox[rest_netbox]
+
+| Stormshield
+| SNS
+| link:https://www.stormshield.com/fr/produits-et-services/produits/protection-des-reseaux/firmware-sns-4x/[SNS]
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/stormshield[stormshield]
+
+| Terraform
+| 
+| link:https://www.terraform.io/intro/index.html[Terraform]
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/terraform_generic[terraform_generic]
+
+| VeEX
+| RTU
+| link:https://www.veexinc.com/products/remote-test-unit-ethernet-ip-test-module-rtu-300-320[RTU-300/320]
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/veex_rtu[veex_rtu]
+
+| VMware
+| vSphere
+| link:https://code.vmware.com/web/sdk/6.7/vsphere-automation-rest[REST API]
+| link:https://github.com/openmsa/Adapters/tree/master/adapters/vmware_vsphere[vmware_vsphere]
+
+
+|===
+
+== Microservices
+
+.Microservices installed as part of the quickstart
+[cols=3*,options="header"]
+|===
+| Vendor
+| Description
+| github.com/openmsa
+
+| ADVA
+| link:https://www.adva.com/en/products/open-optical-transport/optical-access/accessconnect[FSP 3000 Access Connect]
+| link:https://github.com/openmsa/Microservices/tree/master/ADVA[ADVA]
+
+| Redhat Ansible
+| link:https://docs.ansible.com/ansible/latest/user_guide/playbooks.html[Ansible Playbook]
+| link:https://github.com/openmsa/Microservices/tree/master/ANSIBLE[ANSIBLE]
+
+| Amazon Web Service
+| link:https://docs.aws.amazon.com/ec2/index.html?nc2=h_ql_doc_ec2[Amazon Elastic Compute Cloud]
+| link:https://github.com/openmsa/Microservices/tree/master/AWS[AWS]
+
+| Checkpoint R80
+| link:https://www.checkpoint.com/products/next-generation-firewall/#[Next Generation Firewalls (NGFW)]
+| link:https://github.com/openmsa/Microservices/tree/master/CHECKPOINT[CHECKPOINT]
+
+| Cisco ASA, IOS, Catalyst
+| link:https://www.cisco.com/c/en/us/index.html[Firewall, router and switch management]
+| link:https://github.com/openmsa/Microservices/tree/master/CISCO[CISCO]
+
+| Citrix ADC
+| link:https://www.citrix.com/products/citrix-adc/[Citrix Application Delivery Controller]
+| link:https://github.com/openmsa/Microservices/tree/master/CITRIX[CITRIX]
+
+| ENEA
+| link:https://www.enea.com/products/nfv-virtualization-platforms/enea-nfv-access/[Enea NFV Access]
+| link:https://github.com/openmsa/Microservices/tree/master/REST/Generic/ENEA[ENEA]
+
+| FlexiWan
+| link:http://flexiwan.com[Open source SD-WAN]
+| link:https://github.com/openmsa/Microservices/tree/master/FLEXIWAN[FLEXIWAN]
+
+| Fortinet
+| link:http://fortinet.com[Fortigate and FortiWeb firewall]
+| link:https://github.com/openmsa/Microservices/tree/master/FORTINET[FORTINET]
+
+| Juniper JunOS
+| link:https://www.juniper.net/us/en/products-services/security/srx-series/[SRX NG Firewall]
+| link:https://github.com/openmsa/Microservices/tree/master/JUNIPER/junOS_generic[JunOS generic]
+
+| Linux Generic
+| 
+| link:https://github.com/openmsa/Microservices/tree/master/LINUX[LINUX]
+
+| Netbox
+| link:https://netbox.readthedocs.io/en/stable/[NetBox]
+| link:https://github.com/openmsa/Microservices/tree/master/NETBOX[NETBOX]
+
+| OpenStack
+| link:https://docs.openstack.org/api-quick-start/index.html[OpenStack API]
+| link:https://github.com/openmsa/Microservices/tree/master/OPENSTACK[OPENSTACK]
+
+| OneAccess
+| link:https://www.oneaccess-net.com/products/108/620[Virtual Network Function]
+| link:https://github.com/openmsa/Microservices/tree/master/ONEACCESS[ONEACCESS]
+
+| PaloAlto 
+| link:https://docs.paloaltonetworks.com/pan-os.html[PAN‑OS®]
+| link:https://github.com/openmsa/Microservices/tree/master/PALOALTO[PALOALTO]
+
+| pfSense 
+| link:https://www.pfsense.org/products/[pfSense firewall]
+| link:https://github.com/openmsa/Microservices/tree/master/PFSENSE[PFSENSE]
+
+| RedFish API 
+| link:https://www.dmtf.org/standards/redfish[DMTF Redfish®]
+| link:https://github.com/openmsa/Microservices/tree/master/REDFISHAPI[REDFISHAPI]
+
+| VMware vSphere vCenter
+| link:https://code.vmware.com/web/sdk/6.7/vsphere-automation-rest[vCenter REST API]
+| link:https://github.com/openmsa/Microservices/tree/master/VMWARE[VMWARE]
+
+
+|===
+
+== Workflows
+
+.Workflows installed as part of the quickstart
+[cols=3*,options="header"]
+|===
+| Name
+| Description
+| github.com/openmsa
+
+| BIOS Automation
+| Automate BIOS setting and image upgrade with RedFish API
+| link:https://github.com/openmsa/Workflows/tree/master/BIOS_Automation[BIOS_Automation]
+
+| Ansible
+| Enables the {product_name} to link:../lab-guide/ansible{outfilesuffix}[call an Ansible playbook]
+| link:https://github.com/openmsa/Workflows/tree/master/Ansible[Ansible]
+
+| Instance Management on Amazon Web Service
+| Enables the {product_name} to link:../lab-guide/demo_public_cloud_automation_aws{outfilesuffix}[Start a VM on AWS]
+| link:https://github.com/openmsa/Workflows/tree/master/Public_Cloud/AWS/Instance_Management[AWS Instance Management]
+
+| Topology Backend Workflow
+| Used by {product_name} to manage the link:managed_entities_topology{outfilesuffix}[topology]
+| link:https://github.com/openmsa/Workflows/tree/master/Public_Cloud/AWS/Instance_Management[Topology]
+
+|===
+

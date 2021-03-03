@@ -1,11 +1,5 @@
-= Opensource technologies used in {$product_name}
-:doctype: book
-:imagesdir: ./resources/
+= Open source technologies used in {product_name}
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:toc: left
-:toclevels: 4 
-:source-highlighter: pygments
-:icons: font
 
 [cols="a,a,a,a,a,a"]
 |=== 

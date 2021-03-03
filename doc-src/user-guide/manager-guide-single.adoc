@@ -1,0 +1,60 @@
+= MSActivator(TM) Manager Guide
+:front-cover-image: image:manager-front-cover.pdf[]
+:toc: left
+:toclevels: 3
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+ifndef::imagesdir[:imagesdir: images]
+
+//OK HTML 
+ifdef::html[]
+:includedir: doc-src/user-guide
+endif::[]
+
+// OK PDF
+ifdef::pdf[]
+:includedir: .
+endif::[]
+
+ifdef::html[]
+
+[.stripes-none,cols="1,10",frame=none,grid=none,options="noheader",width="50%"]
+|===
+| image:html_icon.png[width=32px]
+| link:index{outfilesuffix}[view as separated html page,window=_blank]
+
+| image:pdf_icon.png[width=32px]
+| link:../pdf/user-guide/manager-guide-single.pdf[download as PDF,window=_blank]
+|===
+
+endif::[]
+
+:leveloffset: +1
+
+The Installation and Configuration Guide will show you how to install, configure and activate the {product_name}.
+
+If you want to get started quickly, you can check the link:../user-guide/quickstart.adoc[quickstart,window=_blank] guide.
+
+include::{includedir}/key_concepts.adoc[]
+
+include::{includedir}/gui_overview.adoc[]
+
+include::{includedir}/tenants_and_users.adoc[]
+
+include::{includedir}/managed_entities.adoc[]
+
+include::{includedir}/assurance.adoc[]
+
+include::{includedir}/microservices.adoc[]
+
+include::{includedir}/configuration_deployment_settings.adoc[]
+
+include::{includedir}/managed_entities_topology.adoc[]
+
+include::{includedir}/automation_workflows.adoc[]
+
+include::{includedir}/automation_workflow_utilities.adoc[]
+
+include::{includedir}/bpm.adoc[]
+
+include::{includedir}/settings.adoc[]
+

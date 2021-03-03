@@ -1,16 +1,18 @@
 = VNF Orchestration on AWS
-:doctype: book
-:imagesdir: ./resources/
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:toc: left
-:toclevels: 4 
-:source-highlighter: pygments
 
 == Overview
 
 This documentation will drive you throught the process of installing and using a workflow for automating the deployment of a VNF on AWS public cloud infrastructure. 
 
 It's an example this is simple enough to be installed and used in a lab environment without too much configuration, but complex enough to show how the {product_name} can be used for such a thing as VNF orchaestration automation in a public cloud.
+
+ifeval::["{format}" == "html"]
+
+video::Y1OHTJwg4HI[youtube,width=600px,height=360] 
+
+endif::[]
 
 === About soure code
 
@@ -60,7 +62,7 @@ If this is not possible then here is the list of actions to be allowed to use th
 - StopInstances
 - CreateTags
 
-image:images/aws_iam_policy.png[width=700px]
+image:aws_iam_policy.png[width=800px]
 
 NOTE: if you extend the workflow or the microservices to provide a larger functional coverage, you may have to update the policy for accessing the AWS REST API.
 
@@ -68,11 +70,11 @@ NOTE: if you extend the workflow or the microservices to provide a larger functi
 
 Create a user and attach the policy to this user
 
-image:images/aws_iam_user.png[width=700px]
+image:aws_iam_user.png[width=800px]
 
 You will also need an access key for this user in order to make secure REST API call from the {$product_name}
 
-image:images/aws_iam_user_key.png[width=700px]
+image:aws_iam_user_key.png[width=800px]
 
 [#me_creation]
 == Create a managed entity for an AWS region
@@ -93,7 +95,7 @@ PING console.eu-west-2.amazonaws.com (52.94.48.109): 56 data bytes
 64 bytes from 52.94.48.109: icmp_seq=0 ttl=236 time=20.272 ms
 ----
 
-image:images/aws_me_creation_form.png[width=700px]
+image:aws_me_creation_form.png[width=800px]
 
 Create and activate the link:../user-guide/managed_entities{outfilesuffix}[managed entity]. The activation, implemented by the link:https://github.com/openmsa/Adapters/tree/2.2.0GA/adapters/aws_generic[AWS Generic adapter] will try to call some REST API during its process. A successful activation ensure that the information provided during the creation of the managed entity are correct and that the credentials are valid by calling 2 API: `DescribeInstances` and `DescribeVpcs`:
 
@@ -166,7 +168,7 @@ For that to work you have to create a new deployment setting with the microservi
 
 When you create the deployment setting, make sure that you set the link:../user-guide/configuration_deployment_settings{outfilesuffix}#external_ref[external reference]. For instance, you can set it to `FGT_FW`.
 
-image:images/aws_fortigate_ds_info.png[width=700px]
+image:aws_fortigate_ds_info.png[width=800px]
 
 Then attach the following microservices:
 
@@ -189,7 +191,7 @@ Then attach the following microservices:
 
 First you need execute the process `New Service` to select an AWS region where to create the AWS instance and to create a new workflow instance.
 
-image:images/aws_process_new_service.png[width:700px]
+image:aws_process_new_service.png[width:800px]
 
 ==== Launch Instance
 
@@ -198,19 +200,19 @@ Then, select the process `Launch Instance`. This will open a user form where you
 //// 
 TODO : update images when UI works 
 ////
-image:images/aws_process_launch_instance.png[width:700px]
+image:aws_process_launch_instance.png[width:800px]
 
 Some fields will require a value to be set:
 
 .Image ID: 
 This is the AMI ID for a Fortigate instance. The ID ami-0b1bed84cc40437e7 is for a FortiGate-VM64 6.0.6 in the region eu-west-2 (London). If you have created a managed entity for another region, you will have to find the correct AMI ID from the AWS marketplace
 
-image:images/aws_ec2_marketplace.png[width:700px]
+image:aws_ec2_marketplace.png[width:800px]
 
 .Instance Type:
 This is where you select the CPU/Memory/Storage combination for your instance. You can try with one of the type listed but you can also use another one as long as it's supported by the AMI and the region
 
-image:images/aws_ec2_instance_type.png[width:700px]
+image:aws_ec2_instance_type.png[width:800px]
 
 .Security Group and Subnet ID
 These 2 variables are typed as `Microservice Reference`, they will provide a list of values to choose from. These lists are populated by the corresponding microservices.
@@ -240,17 +242,17 @@ When all parameters are set, click `Run` to execute the process
 
 On the AWS EC2 console you can see the instance initializing.
 
-image:images/aws_process_instance_started.png[width=700px]
+image:aws_process_instance_started.png[width=800px]
 
 While on the workflow console you can see the process executing its task one after the other
 
 It takes around 5 minutes to finish
 
-image:images/aws_process_ended.png[width=700px]
+image:aws_process_ended.png[width=800px]
 
 On the AWS EC2 console you can see the instance ready to be used
 
-image:images/aws_process_instance_ready.png[width=700px]
+image:aws_process_instance_ready.png[width=800px]
 
 A new managed entity is now available in the subtenant that you selected. The name of the managed entity is set to the AWS instance id and it's management IP address is the one allocated by EC2.
 

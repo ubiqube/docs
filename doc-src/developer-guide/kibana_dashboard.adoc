@@ -1,0 +1,102 @@
+
+= Dashboard design
+ifndef::imagesdir[:imagesdir: images]
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+The {product_name} integrate both Elasticsearch and Kibana to provide log analysis and event visualization.
+
+== Overview
+
+To visualize the events stored in Elasticsearch, you can use some of the dashaboard that are packaged in the {product_name}, but you can also design your own dashboards.
+
+.event processing flow in elasticsearch and kibana
+image:elk_architecture.png[width=800px]
+
+[#dashboard]
+== Create a dashboard
+
+To create a dashboard, you can either reuse on of the existing visualization provided in the {product_name} or you can create your own.
+
+Let's create a simple visualization to show in a histogram the number of events collected and indexed in ubilogs-* in Elasticsearch.
+
+.Cerebro on http://MSA_IP:9000 showing ubilogs indexes
+image:elasticsearch_cerebro_view.png[width=800px]
+
+=== Create a visualization
+
+Open Kibana on http://MSA_IP:5601 and select "Visualize" on the left menu.
+
+.visualizations available
+image:kibana_home.png[width=800px]
+
+Click on "+ Create new visualization", select "Vertical Bar" and choose ubilogs-* as the source.
+
+In the configuration panel, select "X-Axis" as the bucket type and "Date Histogram" for the aggregation. The field for aggregation should be automatically set to "Date".
+
+Click on the button "Apply Change" on the top right of the panel. 
+
+.new visualization created
+image:kibana_new_visualization.png[width=800px]
+
+Save the visualization and browse to the dashboards
+
+.list of dashboards
+image:kibana_dashboards.png[width=800px]
+
+=== Create a dashboard
+
+Click on "+ Create new dashboard" to create a new dashboard and click "Add" to list the visualizations and select yours.
+
+.new visualization added
+image:kibana_dashboard_visualization_added.png[width=800px]
+
+On the same dashboard, add another predefined visualization named "timeFilter". This will add a simple time range selector widget to your dashboard.
+
+==== Set the subtenant filter
+
+The dashboard is meant to be deployed for a subtenant by the workflow "Deploy Dashboard", the workflow will inject the subtenant ID in the dashboard. For this to happen you have to add a filter "customer_id:0" to your dashboard.
+
+.dummy filter for the dashboard template
+image:kibana_dashboard_visualization_add_filter.png[width=800px]
+
+==== Save the dashboard
+
+.save the dashboard with "Store time with dashboard"
+image:kibana_dashboard_visualization_save.png[width=800px]
+
+==== Update the reference and name of the dashboard
+
+By default Kibana saves the dashboard with a UID to identify it but here is how to update your dashbaord and give it a human readable name that you can use in the deployment workflow.
+
+Step 1: export the dashboard
+
+From Kibana management, go to "Saved Objects" and select your dashboard, export is as an ndjson file. Leave the option "Include related object" off.
+
+Step 2: edit the ndjson file
+
+With your favorite text editor, edit the file and update the properties "title" and "id". Both properties should be set to the same value starting with "template_".
+
+.Example
+----
+"id":"template_my_dashboard"
+"title":"template_my_dashboard"
+----
+
+Step 3: import the dashboard
+
+Step 4: deploy the dashboard with the selected name
+
+On the {product_name} UI, select your subtenant, make sure the workflow "Deploy Dashboard" is attached and click "+ Create Dashboard".
+
+Set the template name to name you used in the ndjson file and provide a name of your choice for the Dashboard.
+
+.deploy the dashboard
+image:kibana_dashboard_deploy_from_template.png[width=800px]
+
+Execute the process and use the URL provided in the process execution status to open your custom dashboard.
+
+NOTE: you need to edit the URL to use the proper IP address of your {product_name}
+
+.dashboard deployed in Kibana
+image:kibana_dashboard_deployed_from_template.png[width=800px]
+

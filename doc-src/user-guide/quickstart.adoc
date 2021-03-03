@@ -1,71 +1,157 @@
 = Quickstart 
-:doctype: book
-:imagesdir: ./resources/
+:front-cover-image: image:quickstart-front-cover.pdf[]
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :toc: top
-:toclevels: 4 
+:toclevels: 3
+
+ifdef::html[]
+:includedir: doc-src/user-guide
+
+[.stripes-none,cols="1,10",frame=none,grid=none,options="noheader",width="50%"]
+|===
+| image:pdf_icon.png[width=32px] | link:../pdf/user-guide/quickstart.pdf[download as PDF,window=_blank]
+| image:pdf_icon.png[width=32px] | link:../pdf/user-guide/quickstart_jp.pdf[PDFをダウンロード,window=_blank]
+|===
+
+endif::[]
+
+ifdef::pdf[]
+:includedir: .
+endif::[]
 
 The quickstart covers how you can quickly get started using {product_name} by installing a mini lab.
+
+ifeval::["{format}" == "html"]
 
 == Video tutorial
 This video details the steps for installing and activating the mini lab.
 
 video::A7zT-AZf2cg[youtube,width=600px,height=360] 
 
+endif::[]
+
 [#prerequisites]
 == Prerequisites
 The following prerequisites are required for a successful use of {product_name}:
-//// 
-TODO specify that its for PC and add the specification CPU, RAM,...
-////
 
 . A recent version of Git. 
 . A working docker and docker-compose setup
 * link:https://docs.docker.com/install/[Docker]
 * link:https://docs.docker.com/compose/install/[Docker Compose]
 
-include::./doc-src/admin-guide/installation_setup_requirement.adoc[]
+== Setup requirements
 
-////
-.Github repository
-This guide is composed of a link:https://github.com/ubiqube/quickstart[git repository] which is mainly a set of Dockerfile and docker-compose.xml files to pull the {product_name} from link:https://hub.docker.com/[Dockerhub] 
-////
+=== Internet Resources
+ * Ensure you have access from HOST machine(s) to:
+ ** https://github.com
+ ** https://hub.docker.com
+
+=== Hardware Resources
+
+.on a PC (for lab experimentation)
+- minimum memory:6GB (8GB to be comfortable), 2CPU, 100GB
+
+NOTE: with less that 6GB of memory, the {product_name} may not function properly.
+
+.on a production environment 
+- minimum 16GB, 4CPU, 200GB
+
+=== Docker optional custom configuration
+
+The custom configuration below may not be needed depending on your host computer and you intended use of the {product_name}. If you are just running the product for evaluation purpose or training, don't worry too much about these at first.
+
+In a production environment, these custom configuration may be mandatory to allow your setup to support a higher workload.
+
+==== Docker for Linux (or Linux VM)
+
+----
+sudo sysctl -w vm.max_map_count=262144
+echo 'vm.max_map_count = 262144' > /etc/sysctl.d/50-msa.conf
+sudo sysctl -p /etc/sysctl.d/50-msa.conf
+----
+
+==== Docker for Mac
+
+From the command line, run:
+----
+screen ~/Library/Containers/com.docker.docker/Data/vms/0/tty
+----	
+Press enter and use`sysctl` to configure vm.max_map_count:
+----
+sysctl -w vm.max_map_count=262144
+----	
+To exit the screen session, type Ctrl a d.
+
+==== Docker for Windows
+
+----
+docker-machine create -d virtualbox  \
+	--virtualbox-cpu-count=2 \
+	--virtualbox-memory=8192 \
+	--virtualbox-disk-size=50000 \
+	default
+----
+
+In the docker VM, do as for Linux host above:
+----
+sudo sysctl -w vm.max_map_count=262144
+sudo tee -a /etc/sysctl.conf <<< "vm.max_map_count=262144"
+----
 
 == Mini lab creation
 
+[#step1]
 === Step 1: creation
 
-1. Check your Docker engine has access to DockerHub. You can, for instance, run `docker run hello-world` to test the access.
-2. `git clone https://github.com/ubiqube/quickstart.git` to clone the GitHub repository on you computer.
-3. `cd quickstart`
-4. `git checkout tags/{revnumber} -b {revnumber}`
-5. `docker login` (check the note below)
-6. `docker-compose up -d` to download and install the {product_name} containers and create the mini lab.
+Create the mini lab: clone the quickstart git repository from Github, download and run the {product_name} from DockerHub. 
 
-IMPORTANT: for `docker login`, use the Docker ID "msa2trial" and the link:https://docs.docker.com/docker-hub/access-tokens/[access token] provided by your main point of contact at UBiqube. 
+1. `git clone https://github.com/ubiqube/quickstart.git`
+2. `cd quickstart`
+3. `git checkout tags/{revnumber} -b {revnumber}`
+4. `docker-compose up -d`
 
 NOTE: If you are already running the {product_name} and wish to upgrade it to a new version check the link:#upgrade[documentation below]
 
-NOTE: The architecture of the mini lab is detailed in this link:../admin-guide/architecture_overview{outfilesuffix}[documentation].
+NOTE: The architecture of the mini lab is detailed in the architecture overview documentation in the admin guide.
 
 [#step2]
-=== Step 2: install the trial license and the libraries (Microservices, Workflows and Adapters) from github.com/openmsa
+=== Step 2: install the trial license 
 
-The free trial license is automatically installed during this step, the license is valid for 30 days and allows the creation of 5 link:../user-guide/managed_entities{outfilesuffix}[managed entities].
+On link:https://ubiqube.com/free-trial/[ubiqube.com], fill the form to receive a trial license by email.
 
-`docker-compose exec msa_dev /usr/bin/install_libraries.sh all`
+Open link:https://localhost/[window=_blank] and connect with username `ncroot` and password `ubiqube`.
+
+Browse to "Settings" in the left menu and upload the free trial license you received.
+
+NOTE: use localhost if you are using your PC as the docker host, otherwise use the IP address assigned to the docker host.
+
+[#step3]
+=== Step 3: the libraries (Microservices, Workflows and Adapters) from github.com/openmsa
+
+`docker-compose exec msa_dev /usr/bin/install_libraries.sh all -y`
 
 At the end of the script execution, you need to restart the API container and the CoreEngine container:
 
 `docker-compose restart msa_api && docker-compose restart msa_sms`
 
-NOTE: more explainations on the script `install_libraries.sh` can be found link:#install_librairies[here].
+NOTE: more explanations on the script `install_libraries.sh` can be found link:#install_libraries[here].
 
-NOTE: The detail of what is included in the mini lab is available here: link:quickstart_packages{outfilesuffix}[mini lab packages]. 
+[#step4]
+=== Step 4: configure Elasticsearch and Kibana
 
-=== Step 3: provision the mini lab with tenants, managed entities, etc.
+Configure Elasticsearch settings and index mappings
 
-The mini lab comes with a Linux container (linux_me / 172.20.0.101) for experimentation.
+`docker exec -u root -w /home/install/scripts/ -it  msa_es bash -c './install.sh'`
+
+Install Kibana visualizations and dashboards
+
+`docker exec -u root -w /home/install/ -it  msa_kibana bash -c 'php install_default_template_dash_and_visu.php'`
+
+[#step5]
+=== Step 5: provision the mini lab with tenants, managed entities, etc.
+
+The mini lab comes with 2 Linux container (linux_me / 172.20.0.101 and linux_me_2 / 172.20.0.102) for experimentation.
 
 Credentials for the Linux machine are:
 
@@ -76,53 +162,34 @@ In order to ease your discovery of {product_name}, we are providing a script tha
 
 - 1 tenant - BladeRunner
 - 1 subtenant - Tyrell Corporation
-- a managed entity to manage the Linux container - linux_me
-- some microservices and workflow to start configuring the managed entity - users, firewall, etc.
+- 2 managed entities to manage the Linux container - linux_me
+- some microservices and workflows to start configuring the managed entity - users, firewall, etc.
 
 To create the mini lab environment, run the CLI command from where you have cloned the quickstart Github project:
-```
-$ sudo docker-compose exec msa_dev /usr/bin/create_mini_lab.sh
-```
 
-=== Step 4 (optional): Setting up log aggregation for linux_me
-1. `docker-compose exec linux_me bash` issue this command from the host machine in order to connect to linux_me.
-2. `[root@linux_me /]# echo '*.* @msa_front' > /etc/rsyslog.d/mini_lab.conf` to create rsyslog configuration.
-3. `[root@linux_me /]# service rsyslog restart` restart the service.
+`docker-compose exec msa_dev /usr/bin/create_mini_lab.sh`
 
-Now you should start to see device logs for linux_me appearing in the alarm section of the {product_name} portal.
+[#step6]
+=== Step 6: start using the {product_name}
 
-=== Step 5: start using the {product_name}
-
-Browse: link:https://localhost/[] and connect with username `ncroot` and password `ubiqube`. 
+Browse: link:https://localhost/[window=_blank] and connect with username `ncroot` and password `ubiqube`. 
 
 == Mini lab detailed description
 === Use case 1: firewall orchestration on Linux
 
-This lab use case will show you in a simple way how you can use {product_name} to automate the configuration of iptables-based firewall policy on the Linux container included in the mini lab.
+This lab use case will show you in a simple way how you can use {product_name} to automate the configuration of iptables-based firewall policy on the Linux containers included in the mini lab.
 
-The development of this use case is detailled in this guide: link:../developer-guide/simple_firewall_policy_mngt{outfilesuffix}[Firewall Policy Automation]
+The development of this use case is detailed in this guide: Firewall Policy Automation
 
 You can use the guide to recreate the use case step by step or you may also directly run the use case with the workflow and microservices that are installed in the mini-lab.
 
 For that, you'll have to select the subtenant named "TYRELL CORPORATION," click on the link "Automation" on the left menu and select the tab "Workflows." The workflow to use is "Simple Firewall (Python)."
 
+ifeval::["{format}" == "html"]
+
 video::QRwv78yQWss[youtube,width=600px,height=360]
 
-== Going further with the mini lab
-After you have installed and activated the mini lab, here are some tutorials that will allow you to go further with {product_name}.
-
-.Tutorials
-These tutorials can be completely executed with the mini lab.
-
-- link:../developer-guide/workflow_getting_started_developing_python{outfilesuffix}[Helloworld Workflow for Python].
-- link:../developer-guide/workflow_getting_started_developing_php{outfilesuffix}[Helloworld Workflow for PHP].
-- link:../developer-guide/bpm_getting_started_developing{outfilesuffix}[Helloworld BPMP].
-- link:../developer-guide/microservices_getting_started_developing{outfilesuffix}[Getting Started with Microservices Design]: design a simple microservice to manage Linux users.
-- link:../lab-guide/simple_firewall_policy_mngt{outfilesuffix}[Firewall Policy Orchestration]: design micorservices and workflow to orchestrate firewall policy.
-
-.Demo and use cases
- - link:../lab-guide/demo_ansible{outfilesuffix}[Workflow: Ansible playbook runner]
- - link:../lab-guide/demo_public_cloud_automation_aws{outfilesuffix}[Workflow: VNF orchestration on AWS]
+endif::[]
 
 == Mini lab additional info
 
@@ -137,37 +204,51 @@ NOTE: In case you have updated the {product_name} with `docker-compose up -d` or
 
 === Upgrade version N to N+1
 
-Starting from it's version 2.2.0, the quickstart project provides an script `upgrade.sh` for taking care of possible upgrade actions such as recreating some volumes, executing some database specific updates, update the libraries,...
+Starting from it's version 2.2.0, the quickstart project provides a script `upgrade.sh` for taking care of possible upgrade actions such as recreate some volumes, execute some database specific updates, update the libraries,...
 
-Let's say that you are running version {revnumber-prev}, to upgrade to the version {revnumber}, you need to follow these steps:
+Let's say that you are running the version {revnumber-prev}, to upgrade to the version {revnumber} you need to follow these steps:
 
-1. `docker login` (in case you are not authenticated yet)
-2. `cd quickstart`
-3. `git checkout master`
-4. `git pull`
+1. `cd quickstart`
+2. `git checkout master`
+3. `git pull`
+4. `git fetch --all --tags`
+5. `git checkout tags/{revnumber} -b {revnumber}`
+6. `./scripts/upgrade.sh` 
+
+NOTE: when running the upgrade script, it will ask you if you want your local libraries to be updated with the latest version from the community. If you answer 'y', the update will be done automatically. You can also do the update later manually on the container `msa_dev`.
+
+==== Hot fixes: upgrade a version with an updated tag
+
+Sometime, not very often, but it can happen in the few days following a release, we release some hot fixes on the same version.
+
+When this happens, we update the docker images in the quickstart and simply move the release tags to the new git commit.
+
+If you want to update your quickstart, because you have already checked out the release tag {revnumber} on a local git branch {revnumber}, you need first to delete this local branch and delete the local tag before you can update the quickstart and install the hot fixes.
+
+1. `git checkout master`
+2. `git pull`
+3. `git branch -d {revnumber}`
+4. `git tag -d {revnumber}`
 5. `git fetch --all --tags`
 6. `git checkout tags/{revnumber} -b {revnumber}`
-7. `./scripts/upgrade.sh` 
-
-NOTE: when running the upgrade script, it will ask you if you want your local librairies to be updated with the latest version from the community. If you answer 'y', the update will be done automatically. You can also do the update later manually on the container `msa_dev`.
+7. `docker-compose up -d`
 
 ==== Note for Windows user
 
 If you are running docker natively on Windows, the script upgrade.sh may not work. In that case you need to execute manually the Docker CLI commands to upgrade your setup:
 
+If your original version is 2.1, plz refer to upgrade script first provided with 2.2.0 GA. In any cases, perform those commands
+
 1. `docker-compose down`
-2. `sms_php_vol=$(docker volume ls | awk '{print $2}' | grep msa_sms_php)`
-3. `docker volume rm $sms_php_vol`
-4. `sms_devices_vol=$(docker volume ls | awk '{print $2}' | grep msa_sms_devices)`
-5. `docker volume rm $sms_devices_vol`
-6. `dev_vol=$(docker volume ls | awk '{print $2}' | grep msa_dev)`
-7. `docker volume rm $dev_vol`
-8. `docker-compose up -d --build`
-9. `docker-compose exec msa_dev rm -rf /opt/fmc_repository/Process/Reference`
-10. `docker-compose exec msa_dev /usr/bin/install_libraries.sh all --no-lic`
-11. `docker-compose restart msa_api && docker-compose restart msa_sms`
-12. `msa_api=$(docker ps -q -f name=msa_api)`
-13: `docker exec -it -u root $msa_api crond`
+2. `docker-compose up -d --build`
+3. `docker-compose exec msa_dev /usr/bin/install_libraries.sh all`
+4. `docker-compose restart msa_api && docker-compose restart msa_sms`
+5. `docker exec -it -u root msa_api crond`
+6. `docker-compose exec msa_dev /usr/bin/migrate_bpmn.sh -r`
+7. `docker-compose exec msa_dev /usr/bin/clean_old_topology_instances.sh`
+8. `docker exec -u root -w /home/install/scripts/ -it  msa_es bash -c './install.sh'`
+9. `docker exec -u root -w /home/install/ -it  msa_kibana bash -c 'php install_default_template_dash_and_visu.php'`
+10. `docker image prune -f`
 
 
 === Install a specific version
@@ -185,26 +266,39 @@ The releases and tags are available link:https://github.com/ubiqube/quickstart/r
 [#install_libraries]
 === install_libraries script
 
-The script `install_libraries.sh` is installed in the container link:../admin-guide/architecture_overview{outfilesuffix}#_msa_dev[msa_dev]
+The script `install_libraries.sh` is installed in the container msa_dev.
 
 This script is designed to populate the libraries for a fresh install or to update your libraries with the latest version from Github.
 
+[source, shell]
 ----
 $ docker-compose exec msa_dev /usr/bin/install_libraries.sh --help
-usage: install_libraries.sh all|ms|wf|da [--no-lic] [-y]
+usage: install_libraries.sh all|ms|wf|da|py|mano|quickstart [--lic] [-y]
 
-this script installs some librairies available @github.com/openmsa
+this script installs some libraries available @github.com/openmsa
 
 Commands:
-all:          install everything: worflows, microservices and adapters
+all:          install everything: workflows, microservices and adapters
 ms:           install the microservices from https://github.com/openmsa/Microservices
-wf:           install the worflows from https://github.com/openmsa/Workflows
+wf:           install the workflows from https://github.com/openmsa/Workflows
 da:           install the adapters from https://github.com/openmsa/Adapters
+mano:         install/update the python-sdk from https://github.com/openmsa/etsi-mano
+py:           install/update the python-sdk from https://github.com/openmsa/python-sdk
+quickstart:   install/update the local quickstart from https://github.com/ubiqube/quickstart
+
 Options:
---no-lic:     skip license installation
+--lic:     force license installation
 -y:           answer yes for all questions
 ----
 
 In case of calling this script on an existing setup, it will take care of merging the code from the Github master branch into your local development branch. With the option `-y`, an automated merge will be attempted, without the option, the script will ask for user input.
 
 IMPORTANT: when running the script on an existing setup, use the option `--no-lic` to make sure that your current license is not overwritten by a new trial license. 
+
+ifeval::["{format}" == "html"]
+
+:leveloffset: +1
+
+include::{includedir}/libraries_packages.adoc[]
+
+endif::[]

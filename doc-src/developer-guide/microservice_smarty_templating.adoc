@@ -1,10 +1,6 @@
 = Microservice Templating with PHP Smarty
-:doctype: book
-:imagesdir: ./resources/
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:toc: left
-:toclevels: 4 
-:source-highlighter: pygments
 
 == Smarty templates
 
@@ -21,15 +17,13 @@ The parameters, coming from the web UI or the REST API are passed to the templat
 
 For ClI microservices, the parameters, extracted from the JSON payload will be used to generate the piece of configuration to apply to the managed entity (this is the role of the link:adapter_development{outfilesuffix}[adapter]).
 
-image:images/microservice_parameter_substitution_cli.png[]
+image:microservice_parameter_substitution_cli.png[]
 
 For XML/REST, the parameters are used to build the REST API call, either by updating the path and/or by updating the payload
 
-image:images/microservice_parameter_substitution_xml.png[]
-
+image:microservice_parameter_substitution_xml.png[]
 
 === Variables
-
 ==== From database
 
 For an object object_name, the instance instance_id can accessed with the syntax
@@ -208,12 +202,12 @@ Templates must be embedded into a <[CDATA[ ]]> tag to avoid most of the problems
 ----
 ==== Extra line break and space characters
 The templates reflects what is written within the <operation> and </operation> tags, that's why it is recommended to write
-image:images/smarty_recommended_line_break.png[]
+image:smarty_recommended_line_break.png[]
 When a Smarty command like {if} {foreach}, or also an ending tag like {/if} {/foreach}, is immediately followed by a line break, then this line break is REMOVED by Smarty. 
 This does NOT apply to variables.
 
 .Example
-image:images/smarty_line_break_special_case.png[]
+image:smarty_line_break_special_case.png[]
 
 In this case the
 ----
@@ -237,13 +231,13 @@ end mailbox
 ----
 Sometimes the line cannot be split, the solution is to either add a space character at the end of the line, if it remains correct for the configuration, or add an extra new line (one line left blank).
 
-image:images/smarty_extra_line_break.png[]
+image:smarty_extra_line_break.png[]
 
 ==== Syntax errors
 
 The Smarty syntax is very strict, for example an error in the template
 
-image:images/smarty_syntax_error.png[]
+image:smarty_syntax_error.png[]
 
 will return
 ----
@@ -325,3 +319,19 @@ no shutdown
 </command>
 ----
 
+==== Skip the parsing of the `{$ }` structure
+
+Normally, the `{$ }` structure is used in the microservices template to specify the variables to be parsed by the Smarty templating engine (ex: `{$parms.my_variable}`) but in some case, you might need this structure to be ignored by the parser because it is part of the actual configuration to build for the managed entity.
+
+This is where you need to use the keywords `ldelim` (left delimiter )and `rdelim` (right delimiter).
+
+For example consider the following pattern in the "Microservice Configuration" section of the REST based Microservice definitions:
+----
+"subUnit": "{$v_vni-0-0_WAN-1__unit}"
+----
+
+Here we want to use the '{' and '}' characters in their literal values and have to specify not to be parsed. We can do this by replacing '{' with '{ldelim}' and replacing '}' with '{rdelim}' and hence for the line mentioned above we have to change it as shown below:
+
+----
+"subUnit": "{ldelim}$v_vni-0-0_WAN-1__unit{rdelim}"
+----

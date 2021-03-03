@@ -1,0 +1,47 @@
+= MSActivator(TM) Administration Guide
+:front-cover-image: image:admin-front-cover.pdf[]
+:toc: left
+:toclevels: 3
+ifndef::imagesdir[:imagesdir: images]
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+//OK HTML 
+ifdef::html[]
+:includedir: doc-src/admin-guide
+endif::[]
+
+// OK PDF
+ifdef::pdf[]
+:includedir: .
+endif::[]
+
+ifdef::html[]
+
+[.stripes-none,cols="1,10",frame=none,grid=none,options="noheader",width="50%"]
+|===
+| image:html_icon.png[width=32px]
+| link:index{outfilesuffix}[view as separated html page,window=_blank]
+
+| image:pdf_icon.png[width=32px]
+| link:../pdf/admin-guide/admin-guide-single.pdf[download as PDF,window=_blank]
+|===
+
+endif::[]
+
+:leveloffset: +1
+
+The Installation and Configuration Guide will show you how to install, configure and activate the {product_name}.
+
+If you want to get started quickly, you can check the quickstart guide.
+
+include::{includedir}/architecture_overview.adoc[] 
+
+include::{includedir}/license_activation.adoc[]
+
+include::{includedir}/ha_installation.adoc[]
+
+include::{includedir}/support_and_troubleshooting.adoc[]
+
+include::{includedir}/opensource_technologies.adoc[]
+

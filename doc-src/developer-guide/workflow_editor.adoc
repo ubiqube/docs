@@ -1,24 +1,18 @@
 = Workflow Editor
-:doctype: book
-:imagesdir: ./resources/
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:toc: left
-:toclevels: 4 
-:source-highlighter: pygments
 
-//// 
-TODO 
-////
+image:msa_arch_wf_dev.png[width=400px] 
 
-The workflow editor is a web based UI tool for designing, developing, testing and releasing automation workflows.
+The *workflow editor* is a web based UI tool for designing, developing, testing and releasing automation workflows.
+
+== Overview
 
 With the workflow editor, you can create new workflows or edit existing workflows.
 
 This document explains how to use the editor to design workflows and implement them in PHP or in Python.
 
 The Workflow designer and execution engine are located in the architecture layer, between the BPM and the Microservice.
-
-image:images/workflow_overall_architecture.png[width=80%] 
 
 == Workflow overview
 
@@ -97,7 +91,7 @@ To create a new workflow, connect to the link:developer_portal{outfilesuffix}[de
 
 Provide the information related to the workflow:
 
-- Workflow Name: the name of the worklfow
+- Workflow Name: the name of the workflow
 - Description: a description of the workflow
 - Workflow Variable Name: default to service_id (see below for more detail about this field)
 - Workflow Language: PHP or PYTHON (this cannot be edited)
@@ -121,6 +115,15 @@ A workflow can have as many processes as needed. The processes provide the "publ
 To create a process, click on the "+" and provide a name and a type (CREATE, UPDATE or DELETE).
 
 NOTE: the other types listed in the UI are not supported yet.
+
+.A new process
+image:workflow_editor_new_process.png[width=700px]
+
+==== Process scheduling
+
+Scheduling of process execution can be authorize when defining a process by checking "Allow scheduling" on the process definition screen.
+
+When scheduling is allowed, the user execute the process either the usual way by clicking "Run" or use "Schedule" to configure the process execution scheduling.
 
 ==== Tasks
 
@@ -174,9 +177,19 @@ task_success('Task OK');   // or task_error('Task FAILED');                     
 [#logging]
 == Logging and troubleshooting
 
-You can add debugging information to help you with your developement and also provide useful information for troubleshooting task in production.
+You can add debugging information to help you with your development and also provide useful information for troubleshooting task in production.
 
-The log files are generated per workflow instance in the container `msa_api` under `/opt/jboss/wildfly/standalone/log/`. The log files are formated as `process-XX.log` where XX is the instance ID.
+The log files are generated per workflow instance in the container `msa_api` under `/opt/wildfly/logs/processLog/`. The log files are formatted as `process-XX.log` where XX is the workflow instance ID.
+
+.39 is the workflow instance ID
+image:workflow_instance_id.png[width=700px]
+
+You can monitor the logs of a process with the CLI command below
+
+.Monitor the process execution logs
+----
+docker-compose exec msa_api tail -F  /opt/wildfly/logs/processLog/process-XX.log
+----
 
 .Log a message in PHP
 [source, php]

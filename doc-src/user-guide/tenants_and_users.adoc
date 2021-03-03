@@ -1,18 +1,14 @@
 = Tenants and Users
-:doctype: book
-:imagesdir: ./resources/
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:toc: left
-:toclevels: 4 
 
+The {product_name} platform provides a multi-roles and multi-tenancy hierarchy that should accommodate all your specifics requirement.
 
-After installing, configuring and activating the {product_name}, you will start creating tenants and users.
-
-This guide will walk you through the initial process of connecting and creating tenants and users.
+== Overview
 
 Tenant and user management screens are available in the "Admin" section of the {product_name} UI.
 
-image:./images/administration_management.png[width=1000px]
+image:administration_management.png[width=800px]
 
 == Initial connection
 
@@ -24,11 +20,11 @@ This default password should be changed, especially if the {product_name} is mea
 
 The {product_name} has 2 levels of tenancy: tenant and subtenant. 
 
-These 2 levels will let you organise your managed entities based on your need will ensuring that access restriction based on the user role is fully respected.
+These 2 levels will let you organize your managed entities based on your need will ensuring that access restriction based on the user role is fully respected.
 
 4 user roles are available to make sure that you can assign the access and managing roles to your users based on their actual roles in your company.
 
-image:images/concepts_tenants_users.png[width=1000px]
+image:concepts_tenants_users.png[width=800px]
 
 == Tenancy management
 
@@ -44,7 +40,7 @@ Select the "Tenants" section in the "Admin" menu and click on the "+ Create Tena
 
 The "Tenant Prefix" is a three letters, unique identifier for the tenant. It will be combined with the subtenant or the managed database identifier to build a short, comprehensive, unique identifier that you can use to filter application logs when troubleshooting or when you need to communicate with the support team.
 
-image:./images/tenant_creation_form.png[Tenant Creation Form,width=1000px]
+image:tenant_creation_form.png[Tenant Creation Form,width=800px]
 
 === Subtenant
 
@@ -52,7 +48,7 @@ Select the "Subtenants" section in the "Admin" menu and click on the "+ Create S
 
 Carefully select the tenant where the subtenant will be created as moving a subtenant to another tenant is not possible without database update.
 
-image:./images/subtenant_creation_form.png[Subtenant Creation Form,width=1000px]
+image:subtenant_creation_form.png[Subtenant Creation Form,width=800px]
 
 
 //// 
@@ -95,21 +91,40 @@ Within their tenant, privileged managers have full access rights and can perform
 
 Managers are restricted to a single tenant and, within this tenant, to a subset of subtenants.
 
-By default, managers have restricted, read-only access to the subtenant.
+By default, the managers have restricted, read-only access to the subtenant.
 
-A manager may be used to provide selfcare access to the {product_name} portal.
+A manager may be used to provide self-care access to the {product_name} portal.
 
-////
-TODO
-=== Roles and rights management
+== Audit record
+
+The audit logs record every call to the {product_name} API, this includes user action on the UI and direct call to the REST API
+
+.Example
+----
+    John logged in.
+    John opened the Management dashboard.
+    John applied sub-tenant filter "Hoth".
+    John listed the workflows attached the to sub-tenant "Hoth".
+    John executed the workflow "Create ME" on the sub-tenant "Hoth".
+    ....
+    John logged out.
+---- 
+
+The audit logs are available for each user in the "Profile" menu, under "Audit Logs".
+
+image:audit_logs.png[width=800px]
+
+=== Roles and rights management : permission profiles
 
 The {product_name} provides a simple authorization mechanism based on 4 user roles, the privileged administrator, the administrator, the privileged manager, and the manager.
 
-By default, a manager has very restricted access to the data. They can only view the information of the customer and devices they are entitled to. In order to grant more rights to a manager, it is possible to use a delegation profile.
+By default, managers have a very restricted access to the data. They can only view the information of the subtenant and managed entities they are entitled to. In order to grant more rights to a manager, it is possible to use a permission profile.
 
-A delegation profile is an aggregation of rights such as "create a device", "activate a device", "configure a device",... that are turned on or off depending on your user management policy. This profile is applied to a set of one or more users.
+A permission profile is an aggregation of rights such as "create a device", "activate a device", "configure a device",... that are turned on or off depending on your user management policy. This profile is applied to a set of one or more users.
 
-NOTE: Delegation profile is a key feature for configuring and providing Selfcare management to an end-user. See Portal Overview for more details.
-////
+You can create a permission profile as ncroot from the "Admin" section. Permission profiles are created in the scope of a tenant therefore you need to select a tenant to manage them.
 
+image:permission_profile.png[width=800px]
 
+// TODO: update in 2.4
+NOTE: implementation of permissions in version 2.3.0GA is a partial implementation to provide a preview of the UI but it is not functional yet and this is the reason why it’s deactivated by default. To activate the permission profile, you have to edit the docker-compose file and set FEATURE_PERMISSION_PROFILES to true.

@@ -1,0 +1,116 @@
+= Import / Export Librairies
+ifndef::imagesdir[:imagesdir: images]
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+
+== Overview
+
+{product_name} provide the possibility to use link:https://git-scm.com/[git] version control system to handle the libraries (BPM, workflows and microservices) stored in the local librairies repositories under `/opt/fmc_repository` in the container msa_dev.
+
+== Local libraries repositories overview
+
+The libraries are stored in the location below
+
+- *BPM*: /opt/fmc_repository/Bpmn/bpmns
+- *Workflow*: /opt/fmc_repository/Process/workflows
+- *Microservice*: /opt/fmc_repository/CommandDefinition/microservices
+
+== Configuration
+
+By default the {product_name} doesn't have any git repository configured.
+
+To configure the git repositories, log into the *Developer* portal and click on "Settings" in the left menu. 
+
+Use the "IMPORT / EXPORT" form to configure the repositories. You can choose which type of libraries (BPM, workflow or microservice) you want to be managed by a remote git repository.
+
+.Git repository settings
+image:repo_setting.png[width=700px]
+
+=== Prerequisites
+
+The remote gite repository must exist and accessible with SSH, the default branch must be set to `master`
+
+=== Add a repository
+
+{product_name} supports one repository per type of libraries. Select the type of repository and provide the git remote URL (only SSH is supported), the git username and password and click "+Add".
+
+The {product_name} will clone the repository under one of the locations described above and set the status to green.
+
+== How it works
+
+The CLI commands extracts below are taken from the container msa_dev, under /opt/fmc_repository/CommandDefinition/microservices.
+
+TIP: To connect to the container msa_dev, use `docker-compose exec msa_dev bash` from where the docker-compose file is located.
+
+.initial state: no git repository configured
+[source, shell]
+----
+[root@msa_dev microservices]# ls -la
+total 4
+drwxr-xr-x 3 ncuser ncuser   18 Dec 15 11:59 .
+drwxr-xr-x 3 ncuser ncuser 4096 Dec 15 13:49 ..
+drwxr-xr-x 7 ncuser ncuser  135 Dec 15 15:17 .git
+
+[root@msa_dev microservices]# git status
+On branch master
+nothing to commit, working tree clean
+
+[root@msa_dev microservices]# git remote -v
+[root@msa_dev microservices]#
+----
+
+.new repository configured in settings 
+image:new_ms_repo_setting.png[width=700px]
+
+IMPORTANT: you need at least one file in the git repository before you can configure it in the UI. We recommend that you add an empty file like README.md. On github you have the option to do that automatically when you create a new repository
+
+.status of the git repository
+[source, shell]
+----
+[root@msa_dev microservices]# git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+
+[root@msa_dev microservices]# git remote -v
+origin	https://github.com/abr-ubiqube/my-microservice.git (fetch)
+origin	https://github.com/abr-ubiqube/my-microservice.git (push)
+----
+
+.create a new microservice (Integration -> Microservices)
+[source, shell]
+----
+[root@msa_dev microservices]# git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+
+[root@msa_dev microservices]# git lg
+* 750f29a - 15-12-2020 15:46:10 - Updating microservice on  - ncroot <jboss> (18 hours ago)
+* 7cc1d81 - 15-12-2020 15:43:39 - Updating microservice on  - ncroot <jboss> (18 hours ago)
+* e73a455 - 15-12-2020 15:41:10 - Updating microservice on  - ncroot <jboss> (18 hours ago)
+* 5290a81 - Initial commit with existing files <jboss> (18 hours ago)
+----
+
+Every updates on the libraries are committed and pushed to the remote upstream. 
+
+You can use git CLI commands to view the differences between 2 commits (`git diff`) and also to revert your changes (`git reset`) 
+
+== Git repository management rules
+
+.New git repository
+* Files already exists in local repo
+** No files exists upstream
+*** There won't be any conflict and git should be configured successfully.
+*** Local files should now be available in upstream.
+* Some files exists upstream
+** It will synchronize files with the remote. 
+*** If no conflict, then local files will be pushed upstream. Also, upstream files will be available locally.
+*** If there is a conflict, error message will be thrown and git will not be configured. And sync will not happen.
+* No files exists in the local repo
+** No files exists upstream
+*** No conflict, git should be configured successfully.PASSED
+** Some files exists upstream
+*** There will be no conflict, and upstream files will be available locally and git will be configured successfully.

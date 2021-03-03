@@ -1,23 +1,51 @@
 = BPM
-:doctype: book
-:imagesdir: ./resources/
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:toc: left
-:toclevels: 4 
+
+ifdef::html[]
+[.center]
+image:msa_arch_bpm_use.png[width=400px]
+endif::[]
+
+*BPM* (Business Process Management) allow the execution of complex business process by automating a flow of workflow execution.
+
+== Overview
 
 The integrated BPM engine can be accessed by clicking the "Automation" link in the left menu. 
 
-You need to select a customer to see the list of BPM available because BPM defintion are customer specific.
+You need to select a subtenant to see the list of BPM that can be executed for a specific subtenant. BPM definition and instances work in a similar way as for workflows: you first need to associate a BPM to a subtenant and then each execution of a BPM will create a new instance that can be managed.
 
-Select a BPM from the list and click on it name to open it.
+Use the "i" (information icon) to open a BPM instance and view it's detailed status.
 
-image:images/bpm_example.png[width=700px]
+A BM instance can be deleted with the "trash" icon.
 
-Click on "Execute BPM" to execute the BPM process. The BPM engine will start executing the BPM tasks one by one and the status of the current workflow process execution will be updated live in the "LATEST EXECUTIONRESULT" view while the detail of the process execution will be displayed.
+.BPM instance for a subtenant
+image:bpm_instances.png[width=800px]
 
-NOTE: We advise you to keep the BPM execution screen open until the end of the BPM process. If you close the screen, the process will still run in the background and you can track the execution of the workflows from the "Automation" > "Workflows" page but you won't be able to recover the BPM execution screen.
+Click on "+ Execute BPM" to execute the BPM process. The BPM engine will start executing the BPM tasks one by one and the status of the current workflow process execution will be updated live in the "LATEST EXECUTION RESULT" view while the detail of the process execution will be displayed.
 
-image:images/bpm_execution_tracking.png[width=700px]
+.BPM execution
+image:bpm_execution.png[width=800px]
 
-NOTE: click link:../developer-guide/bpm_editor{outfilesuffix}[here] if you are interested in learning about BPM design
+
+== Execution breakpoint
+
+With the execution breakpoints the execution of a BPM can be paused until the user manually resume the execution
+
+It can be used to execute complex BPM with several part and allow for manual validation of each intermediate steps.
+
+When a BPM execution is paused, the instance will be listed with an empty execution end date.
+
+.Resume a BPM execution
+image:bpm_user_breakpoint.png[width=800px]
+
+
+== Execution tracking
+
+The BPM engine will start executing the BPM tasks one by one and the status of the current workflow process execution will be updated live in the view "LATEST EXECUTION RESULT". 
+
+Click "Show Tasks" to see the detail of the process execution.
+
+.BPM execution tracking
+image:bpm_execution_tracking.png[width=800px]
 

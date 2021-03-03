@@ -1,6 +1,4 @@
 = OpenMSA Community Guide
-:doctype: book
-:imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 Welcome to the {openmsa_name} Community Guide!

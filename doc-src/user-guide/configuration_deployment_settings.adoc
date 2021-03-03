@@ -1,13 +1,10 @@
 = Deployment Settings
-:doctype: book
-:imagesdir: ./resources/
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:toc: left
-:toclevels: 4 
 
-Deployment Settings will allow you to build your configurations and apply them to your link:./managed_entities{outfilesuffix}[managed entities]. 
+Deployment Settings will allow you to build your configurations and apply them to your managed entities.
 
-Deployment Settings will also ease any change to your configurations: you can add/remove a template or a link:configuration_microservices{outfilesuffix}[microservice] and be assured that the change will be applied in a consistant way across all your managed entities.
+Deployment Settings will also ease any change to your configurations: you can add/remove a template or a microservice and be assured that the change will be applied in a consistent way across all your managed entities.
 
 When using a deployment setting, you can ensure that your managed entities, associated with the deployment setting, have the same list of microservices, thus are all similar with regard to their managed services.
 
@@ -17,19 +14,19 @@ You can view the deployment settings by clicking the "Integration" link on the l
 
 This page shows the list of deployment settings, sortable and searchable by name.
 
-image:images/deployment_settings_search.png[Deployment Settings Search,width=1000px]
+image:deployment_settings_search.png[Deployment Settings Search,width=700px]
 
 A Deployment setting acts as the intermediate layer between a set of managed entities and a set of microservices
 
 [ditaa]
 ....
-            +-----------------+n                                                                     
-            | Microservices   |------\    1                                                          
-            +-----------------+       -----+----------------------+ 1      n +------------------+    
-                                           | Deployment Settings  |----------| Managed Entities |    
-            +-----------------+       -----+----------------------+          +------------------+    
-            |    Templates    |------/     1                                                          
-            +-----------------+n                                                                                                    
+    +---------------+n                                                                     
+    | Microservices |------\1                                                          
+    +---------------+       +----------------------+ 1      n +------------------+    
+                            | Deployment Settings  |----------| Managed Entities |    
+    +---------------+       +----------------------+          +------------------+    
+    |    Templates  |------/1                                                          
+    +---------------+n                                                                                                    
 .... 
 
 === Create, update, delete
@@ -54,7 +51,7 @@ This will enforce consistency within you system.
 
 ==== Delete
 
-You can delete a deployment setting any time. When you delete a deployment setting, the microservices won't be available to the managed entity but any configuration previoulsy fetched from the maaged entity will still be stored in the database.
+You can delete a deployment setting any time. When you delete a deployment setting, the microservices won't be available to the managed entity but any configuration previously fetched from the managed entity will still be stored in the database.
 
 [#external_ref]
 ==== External reference
@@ -67,4 +64,4 @@ This is what external reference is made for. You can set it to your own value as
 
 == Access Control
 
-The scope of a deployment settings is the subteant. In order to view the existing deployment settings you need first to select a subtenant. Once selected as shown below, this enables the user to change those settings appropriately.
+The scope of a deployment settings is the subtenant. In order to view the existing deployment settings you need first to select a subtenant. Once selected as shown below, this enables the user to change those settings appropriately.

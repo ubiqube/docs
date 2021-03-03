@@ -1,0 +1,9 @@
+= Microservice Editor
+ifndef::imagesdir[:imagesdir: images]
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+image:msa_arch_ms_dev.png[width=400px]
+
+The *microservice editor* is a web based UI tool for designing, developing, testing and releasing microservices.
+
+

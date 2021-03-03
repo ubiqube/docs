@@ -1,46 +1,168 @@
 = クイックスタートガイド 
-:doctype: book
-:imagesdir: ./resources/
+:front-cover-image: image:quickstart-front-cover-jp.pdf[]
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:toc: top
+:toclevels: 3
+
+ifdef::html[]
+
+[.stripes-none,cols="1,10",frame=none,grid=none,options="noheader",width="50%"]
+|===
+| image:pdf_icon.png[width=32px] | link:../pdf/user-guide/quickstart_jp.pdf[download as PDF,window=_blank]
+|===
+
+endif::[]
+
+[#prerequisites]
+== 前提条件
+インストール手順の中で{product_name}のトライアルライセンスが必要となります。
+link:https://ubiqube.com/free-trial/[ubiqube.com] から、MSA2トライアル希望の旨をお知らせください。
+
+また、{product_name}を動作させるために、以下のアプリケーションのインストール／動作確認を実施してください。
+
+. Git
+. docker及びdocker-compose
+* link:https://docs.docker.com/install/[Docker]
+* link:https://docs.docker.com/compose/install/[Docker Compose]
+
+== 動作要件
+
+=== インターネットアクセス
+ * ホストマシンから以下への通信が可能であること。
+ ** https://github.com
+ ** https://hub.docker.com
+
+=== 推奨ハードウェア構成
+
+.個人利用（トライアル環境）
+- 4GB以上 (8GBを推奨), 2CPU, 100GB
+
+.商用利用
+- 16GB, 4CPU, 200GB
+
+=== Dockerの設定
+
+以下は、{product_name}を高負荷な実環境にて使用する際に必要となる設定です。
+{product_name}を評価、研修の目的で使用する場合、以下の設定は必須ではありません。
+
+==== Docker for Linux (仮想環境上のLinuxを含む)
+
+----
+sudo sysctl -w vm.max_map_count=262144
+echo 'vm.max_map_count = 262144' > /etc/sysctl.d/50-msa.conf
+sudo sysctl -p /etc/sysctl.d/50-msa.conf
+----
+
+==== Docker for Mac
+
+以下をコマンドラインから実行してください。
+----
+screen ~/Library/Containers/com.docker.docker/Data/vms/0/tty
+----
+Enterを押下して、`sysctl`からvm.max_map_countを設定してください。
+----
+sysctl -w vm.max_map_count=262144
+----
+Ctrl a dにて終了します。
+
+==== Docker for Windows
+
+----
+docker-machine create -d virtualbox  \
+	--virtualbox-cpu-count=2 \
+	--virtualbox-memory=8192 \
+	--virtualbox-disk-size=50000 \
+	default
+----
+
+Docker VMから以下を実行してください。
+----
+sudo sysctl -w vm.max_map_count=262144
+sudo tee -a /etc/sysctl.conf <<< "vm.max_map_count=262144"
+----
+
 
 == インストール手順
 
-.step 1
-UBiqube社員に、MSA2トライアル希望の旨を連絡願います。後述するイメージへのリポジトリへのlink:https://docs.docker.com/docker-hub/access-tokens/[access token]を払い出します。
+[#step{counter:step}]
+=== Step {step}: インストール
 
-.step 2
-docker/docker-composeをマシンにインストールしてください。
-
-.step 3
+quickstartをGitリポジトリからクローン、及びDockerHubから{product_name}をダウンロード・実行します。 
 任意のディレクトリ上で、以下のコマンドを実行してください。
-----
-git clone https://github.com/ubiqube/quickstart.git
-cd quickstart
-docker login
-docker-compose up -d
-----
-IMPORTANT: `docker login`にてユーザ情報を聞かれますので、ID"msa2trial"と、1で払い出したアクセストークンを使用して下さい。
 
-.step 4
-ブラウザからhttps://localhost/ にアクセスしてください。
+1. `git clone https://github.com/ubiqube/quickstart.git`
+2. `cd quickstart`
+3. `git checkout tags/{revnumber} -b {revnumber}`
+4. `docker-compose up -d`
 
-.step 5
-user:ncroot, password:ubiqubeで{product_name}にログインします。(数分待つ必要があります。)
+NOTE: トライアル環境のシステム構成について link:../admin-guide/architecture_overview{outfilesuffix}[英語資料]
 
-.step 6
-コンソールに戻って以下のコマンドを実行してください。
+[#step{counter:step}]
+=== Step {step}: トライアルライセンスの適用 
 
-サンプルデータを{product_name}に投入します。
+link:https://localhost/[window=_blank] を開き、ユーザ名 `ncroot` ／ パスワード `ubiqube` を使用して{product_name}にログインしてください。
+
+NOTE: 動作している環境によって、ログインが可能になるまで数分待つ必要があります。
+
+
+メインメニューの「設定」（Settings）から前提条件にて受領したライセンスを適用してください。
+
+NOTE: Dockerが動作している環境でブラウザを起動している場合はlocalhost、それ以外の場合はDockerが動作している環境のIPアドレスを指定してください。
+
+[#step{counter:step}]
+=== Step {step}: ライブラリのインポート(Microservice／Workflow／Device Adapter)
+
+OpenMSAから各種ライブラリを起動している{product_name}にインポートします。
+
+`docker-compose exec msa_dev /usr/bin/install_libraries.sh all`
+
+上記のスクリプト実行後に、APIコンテナ・CoreEngineコンテナの再起動を実施します。
+
+`docker-compose restart msa_api && docker-compose restart msa_sms`
+
+[#step{counter:step}]
+=== Step {step}: Elasticsearch及びKibanaの初期設定
+
+Elasticsearchのインデックスを生成します。
+
+`docker exec -u root -w /home/install/scripts/ -it msa_es bash -c './install.sh'`
+
+KibanaのダッシュボードとVisualizeツールをインストールします。
+
+`docker exec -u root -w /home/install/ -it msa_kibana bash -c 'php install_default_template_dash_and_visu.php'`
+
+[#step{counter:step}]
+=== Step {step}: サンプルデータの投入
+
+トライアル環境は、検証用に二つのLinuxコンテナ (linux_me / 172.20.0.101 and linux_me_2 / 172.20.0.102)が標準で付随します。
+
+各Linuxへのログインは以下を使用してください。
+
+ - username: `msa`
+ - password: `ubiqube`
+
+{product_name}のトライアルをより容易に感じていただくために、以下の情報をスクリプトにより自動生成します。
+
+- BladeRunner（テナント）
+- Tyrell Corporation（サブテナント）
+- linux_me（Managed Entity x2）
+- 使用可能なMicroservice、WorkflowのManaged Entityへの紐づけ
+
+以下のコマンドにてスクリプトを実行してください。
 
 ```
-docker-compose exec api /usr/bin/create_mini_lab.sh
+$ docker-compose exec msa_dev /usr/bin/create_mini_lab.sh
 ```
 
-NOTE: 実行中にhttpを使用した通信を行います。localhostに対してですが、社内proxyにブロックされた例もありますので、エラーが発生した際はエラー出力の共有とともにご連絡いただければ対処方法を検討いたします。
+[#step{counter:step}]
+=== Step {step}: {product_name}の起動
 
-NOTE: 再度ブラウザに戻り、MSAにログイン後、ダッシュボードに円グラフが二つ追加されていることが確認できればセットアップ完了です。
+link:https://localhost/[window=_blank] にアクセスしてユーザ名 `ncroot` ／ パスワード `ubiqube` にてログインしてください。
 
-NOTE: このステップにおいても、環境により、キャッシュクリア/ブラウザ/docker再起動が必要な場合があります。
+NOTE: 再度ブラウザに戻り、MSAにログイン後、ダッシュボードに円グラフが追加されていることが確認できればセットアップ完了です。
+
+NOTE: 環境により、キャッシュクリアやブラウザ/docker再起動が必要な場合があります。
 
 dockerを再起動する場合は以下の手順をお試しください。
 

@@ -1,28 +1,37 @@
 = Manager Guide
-:doctype: book
-:imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:toc: left
-:toclevels: 4 
-:source-highlighter: pygments
+ifndef::imagesdir[:imagesdir: images]
 
-The manager guide provides the documentation to help you understand the key concepts of the {product_name} and help you understand how to use the {product_name} in an operational environment. 
+ifdef::html[]
+
+[.stripes-none,cols="1,10",frame=none,grid=none,options="noheader",width="50%"]
+|===
+| image:html_icon.png[width=32px]
+| link:manager-guide-single{outfilesuffix}[view as single html page,window=_blank]
+
+| image:pdf_icon.png[width=32px]
+| link:../pdf/user-guide/manager-guide-single.pdf[download as PDF,window=_blank]
+|===
+
+endif::[]
+
+The  manager guide provides the documentation to help you understand the key concepts of the {product_name} and learn how to use the {product_name} in an operational environment. 
 
 == Getting started
 
 - link:quickstart{outfilesuffix}[Quickstart guide,window=_blank]
 - link:quickstart_jp{outfilesuffix}[Quickstart guide (Japanese),window=_blank]
-- link:quickstart_packages{outfilesuffix}[Quickstart mini lab packages,window=_blank]
+- link:libraries_packages{outfilesuffix}[Included libraries,window=_blank]
 
 == Overview
 
 - link:key_concepts{outfilesuffix}[Key concepts,window=_blank]
 - link:gui_overview{outfilesuffix}[GUI overview,window=_blank]
 
-== Infrasctucture
+== Infrastructure
 
 - link:managed_entities{outfilesuffix}[Managed entities,window=_blank]
-- link:microservicesmicroservices{outfilesuffix}[Microservices,window=_blank]
+- link:microservices{outfilesuffix}[Microservices,window=_blank]
 - link:configuration_deployment_settings{outfilesuffix}[Deployment settings,window=_blank]
 - link:managed_entities_topology{outfilesuffix}[Network topology,window=_blank]
 
@@ -37,11 +46,6 @@ The manager guide provides the documentation to help you understand the key conc
 
 - link:bpm{outfilesuffix}[BPM,window=_blank]
 
-=== Demo and use cases
-
- - link:../lab-guide/demo_ansible{outfilesuffix}[Workflow: Ansible playbook runner,window=_blank]
- - link:../lab-guide/demo_public_cloud_automation_aws{outfilesuffix}[Workflow: VNF orchestration on AWS,window=_blank]
-
 == Assurance
 
 - link:assurance{outfilesuffix}[Assurance,window=_blank]
@@ -53,14 +57,3 @@ The manager guide provides the documentation to help you understand the key conc
 == Settings
 
 - link:settings{outfilesuffix}[Settings,window=_blank]
-
-== Architecture
-- link:../admin-guide/architecture_overview{outfilesuffix}[Architecture,window=_blank]
-
-
-
-
-
-
-
-

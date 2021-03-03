@@ -1,20 +1,63 @@
 = Python SDK
-:doctype: book
-:imagesdir: ./resources/
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:toc: left
-:toclevels: 4 
-:source-highlighter: pygments
-
-
-// IMPORTANT: TODO
 
 The {product_name} provides a support for Python SDK dedicated to developing automation workflows. 
-This SDK provides a set of functions that can be used to call the link:rest_api{outfilesuffix}[{product_name} REST API] and automate action on the {product_name} such as create and activate managed entities, call microservice function, call processes from other workflows...
 
-The SDK API documentation is available online on your {product_name} instance at: https://<MSA IP address>/msa_sdk/
+== Overview
+
+This SDK provides a set of functions to call the {product_name} REST API and automate action on the {product_name} such as create and activate managed entities, call microservice functions, call processes from other workflows...
+
+The SDK API documentation is available online on your {product_name} instance at: link:https://localhost/msa_sdk[window=_blank]
+
+=== Contribution 
+
+The sources of the SDK is available on link:https://github.com/openmsa/python-sdk[Github].
 
 == Code samples
+
+=== Sample implementation of a SDK function.
+
+This code sample is an example of the implementation of a Python SDK function to create a new managed entity.
+
+[source, python]
+----
+class Device(MSA_API): 
+
+    self.api_path = "/device"
+
+    def create(self):
+        self.action = 'Create device'
+        self.path = '{}/v2/{}'.format(self.api_path, self.customer_id)      <1>
+
+        data = {"manufacturerId": self.manufacturer_id,
+                "modelId": self.model_id,
+                "managementAddress": self.management_address,
+                "reporting": self.reporting,
+                "useNat": self.use_nat,
+                "logEnabled": self.log_enabled,
+                "logMoreEnabled": self.log_more_enabled,
+                "managementInterface": self.management_interface,
+                "mailAlerting": self.mail_alerting,
+                "passwordAdmin": self.password_admin,
+                "externalReference": self.device_external,
+                "login": self.login,
+                "name": self.name,
+                "password": self.password,
+                "id": 0,
+                "snmpCommunity": self.snmp_community}
+        if self.management_port:
+            data["managementPort"] = self.management_port
+
+        self.call_post(data)                                                <2>
+        self.fail = not self.response.ok
+        if self.response.ok:
+            self.device_id = json.loads(self.content)['id']
+
+        return json.loads(self.content)
+----
+<1> the REST API to call
+<2> post the data to the REST API
 
 === Sample call of a function in a workflow task.
 
@@ -24,44 +67,142 @@ from msa_sdk.device import Device
 from msa_sdk.variables import Variables
 import json
 
-"""
-The Variables library controls how variables are passed between the tasks and the integrated automation engine. While the Device library is used to perform any {product_name} function to manage a device.
+dev_var = Variables()                           <1>
 
-In the first task, a device will be created. This is done by creating a Device object and calling its create() method. In order to create a new device object, a number of variables must be declared initially.
-
-This is done by creating a new variable object and then using its add() method to create the new variables from the input parameters. Once all the variables are created, they are submitted to the integrated automation engine using the task_call() method.
-"""
-
-dev_var = Variables()
-
-dev_var.add('customer_id', var_type='Integer')
+dev_var.add('customer_id')
 dev_var.add('managed_device_name')
-dev_var.add('manufacturer_id', var_type='Integer')
-dev_var.add('model_id', var_type='Integer')
-dev_var.add('device_ip_address', var_type='IP Address')
+dev_var.add('manufacturer_id')
+dev_var.add('model_id')
+dev_var.add('device_ip_address')
 dev_var.add('login')
-dev_var.add('password', var_type='Password')
-dev_var.add('password_admin', var_type='Password')
+dev_var.add('password')
+dev_var.add('password_admin')
 
 context = Variables.task_call(dev_var)
 
-"""
-Next, the new device object will be created by calling the Device constructor. The device can then be created in the {product_name} by calling its create() method.
-
-For future tasks, the device_id will be stored in context and the task will end with a 'Task OK' message. All the variables created in this task will be made available to the next task.
-"""
 new_device = Device(context['customer_id'], context['managed_device_name'], context['manufacturer_id'],context['model_id'], context['login'], context['password'], context['password_admin'],context['device_ip_address'])
-new_device.create()
-context['device_id'] = new_device.device_id
+
+new_device.create()                             <2>
+
+context['device_id'] = new_device.device_id     <3>
 
 print(new_device.process_content('ENDED', 'Task OK', context, False))
 ----
+<1> define the parameters to pass to the API
+<2> create the new managed entity
+<3> store the ID of the new managed entity in the workflow instance context
+
+
+== Microservice functions
+
+=== Call a microservice CREATE/UPDATE/DELETE function
+
+[source,python]
+----
+from msa_sdk.variables import Variables
+from msa_sdk.msa_api import MSA_API
+from msa_sdk.order import Order
+from msa_sdk.orchestration import Orchestration
+from msa_sdk import util
+import json
+
+me_id = context['me'][3:]                                   <1>
+
+micro_service_vars_array = {                                <2>
+                            "object_id": "12.1.1.1",
+                            "mask": "255.255.255.0",
+                            "gateway": "10.10.1.254"
+                           }
+object_id = "null"
+route = {"routing": {object_id: micro_service_vars_array}}  <3>
+try:
+  ms_order = Order(me_id)
+  ms_order.command_execute('CREATE', route)                 <4>
+except Exception as e:
+  ret = MSA_API.process_content('FAILED', f'CREATE ERROR: {str(e)}', context, True)
+  print(ret)
+----
+<1> Read the ID of the managed entity from the context, assuming the variable 'me' type is Device
+<2> Build the Microservice JSON params for the CREATE operation of the microservice.
+<3> The value of the key should match the Microservice file name (stripped of the .xml file extension)
+<4> Call the CREATE for simple_firewall MS for each device (use UPDATE or DELETE for the other operations)
+
+The funtion `+command_execute+` is defined in link:https://github.com/openmsa/python-sdk/blob/develop/msa_sdk/order.py[order.py]
+
+=== Call a microservice IMPORT function
+
+[source,python]
+----
+from msa_sdk.variables import Variables
+from msa_sdk.msa_api import MSA_API
+from msa_sdk.order import Order
+from msa_sdk.orchestration import Orchestration
+from msa_sdk import util
+import json
+
+try:
+  order = Order(me_id)                                      <1>
+  order.command_execute('IMPORT', {"routing":"0"})          <2>
+  order.command_objects_instances("routing")                <3>
+  ms_instances = json.loads(order.content)                  <4>
+
+except Exception as e:
+  ret = MSA_API.process_content('FAILED', f'IMPORT ERROR: {str(e)}', context, True)
+  print(ret)
+----
+<1> initialize an Order object
+<2> execute the IMPORT of a microservice defined in a file routing.xml
+<3> get the microservice instances
+<4> store the instance in a variable to further reuse
+
+== How to extend the SDK
+
+=== Create a custom library of scripts
+
+You can extend the SDK by adding your own scripts in the {product_name}. The scripts have to be added in the container `msa_dev`, under the directory `/opt/fmc_repository/Process/PythonReference/custom`
+
+In a workflow task, you can use the code below to import your custom scripts
+
+[source,python]
+----
+import custom.myfile
+----
+
+or 
+
+[source,python]
+----
+from custom.myfile import SOME_METHOD
+----
+
+NOTE: You can create a git repository under `/opt/fmc_repository/Process/PythonReference/custom` with `git init` and set a link:https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes[remote,window=_blank] to a remote repository to ease the management and versioning of your custom SDK library
+
+=== Install additional Python modules
+
+To install an additional Python package you need to log into the `msa_dev` container and execute
+
+[source,shell]
+----
+python3 -m pip install \
+  --install-option="--install-lib=/opt/fmc_repository/Process/PythonReference" PACKAGE <1>
+----
+<1> PACKAGE is the name of the Python package to install
+
+To list the packages that are installed
+
+[source,shell]
+----
+python3 -m pip list
+----
+
+== Miscellaneous
 
 === Output messages to the process execution UI
 
 When a task runs, it is often useful to be able to provide real time message update on the UI.
 
-image:images/workflow_process_exec_status_custom_msg.png[width=1000px]
+.Output message from a task to the user interface
+image:workflow_process_exec_status_custom_msg.png[width=1000px]
 
 The code sample below shows how to do it.
 
@@ -74,16 +215,21 @@ import time
 Orchestration = Orchestration(context['UBIQUBEID'])
 async_update_list = (context['PROCESSINSTANCEID'], 
                     context['TASKID'], 
-                    context['EXECNUMBER']) 	                                <1>
+                    context['EXECNUMBER'])                                  <1>
 
 	
 Orchestration.update_asynchronous_task_details(*async_update_list, 
                                                'going to sleep')            <2>
-time.sleep(2)			                                                    <3>     
+time.sleep(2)                                                               <3>     
 Orchestration.update_asynchronous_task_details(*async_update_list, 
-                                               'wake up')		            <4>
+                                               'wake up')                   <4>
 ----
 <1> creates an array with the information about current process and task
 <2> update the UI with a message
 <3> execute some code
 <4> update the UI with another message
+
+.Getting more Examples 
+****
+You will find many examples of Workflows in https://github.com/openmsa/Workflows
+****

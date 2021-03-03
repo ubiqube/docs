@@ -1,31 +1,33 @@
 = Developer Guide
-:doctype: book
-:imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:toc: left
-:toclevels: 4 
-:source-highlighter: pygments
+ifndef::imagesdir[:imagesdir: images]
 
-This documentation contains a set of documentation, tutorials and examples to help you get familiar with the {product_name} as a development platform.
+ifdef::html[]
 
-== Community 
-- link:../community-guide/index{outfilesuffix}[OpenMSA community guide,window=_blank]
-- link:devops_best_practices{outfilesuffix}[DevOps best practices,window=_blank]
+[.stripes-none,cols="1,10",frame=none,grid=none,options="noheader",width="50%"]
+|===
+| image:html_icon.png[width=32px]
+| link:developer-guide-single{outfilesuffix}[view as single html page,window=_blank]
+
+| image:pdf_icon.png[width=32px]
+| link:../pdf/developer-guide/developer-guide-single.pdf[download as PDF,window=_blank]
+|===
+
+endif::[]
+
+The developer guide contains a set of documentation, tutorials and examples to help you get familiar with the {product_name} as a development platform.
 
 == Developer Portal
 
 - link:developer_portal{outfilesuffix}[Developer portal,window=_blank]
-
-== Use Case 
-
-- link:../lab-guide/simple_firewall_policy_mngt{outfilesuffix}[Firewall policy orchestration,window=_blank]
 
 == BPM
 
 - link:bpm_getting_started_developing{outfilesuffix}[Getting started with BPM,window=_blank]
 - link:bpm_editor{outfilesuffix}[BPM Editor,window=_blank]
 
-== Workflows 
+== Workflows
+
 - link:workflow_getting_started_developing_php{outfilesuffix}[Getting started with workflow design (PHP),window=_blank]
 - link:workflow_getting_started_developing_python{outfilesuffix}[Getting started with workflow design (Python),window=_blank]
 - link:workflow_editor{outfilesuffix}[Workflow editor,window=_blank]
@@ -35,10 +37,6 @@ This documentation contains a set of documentation, tutorials and examples to he
 
 === References
 
-////
-TODO
-- link:microservice_auto-rendering_ui{outfilesuffix}[Microservice Auto Rendering UI,window=_blank]
-////
 - link:microservice_xml_editor{outfilesuffix}[XML microservice editor,window=_blank]
 - link:microservice_cli_editor{outfilesuffix}[CLI microservice editor,window=_blank]
 - link:microservice_variables{outfilesuffix}[Microservice variables,window=_blank]
@@ -47,9 +45,6 @@ TODO
 === Examples 
 
 - link:microservices_getting_started_developing{outfilesuffix}[Getting started with microservice design,window=_blank]
-////
-TODO: netconf yang : http://confluence.ubiqube.com/pages/viewpage.action?pageId=31555628
-//// 
 
 === API
 
@@ -57,19 +52,30 @@ TODO: netconf yang : http://confluence.ubiqube.com/pages/viewpage.action?pageId=
 - link:microservice_stack_management_api{outfilesuffix}[Microservice Order Stack management API,window=_blank]
 
 == Adapters
+
 - link:adapter_development{outfilesuffix}[Adapter development,window=_blank]
 
-
 == API & SDK
+
 - link:rest_api{outfilesuffix}[REST API,window=_blank]
 - link:workflow_python_sdk{outfilesuffix}[Python SDK for workflow development,window=_blank]
 - link:workflow_php_sdk{outfilesuffix}[PHP SDK for workflow development,window=_blank]
 
-////
-TODO
-== Vendor Use Cases
-- link:vendor_cisco_ios_itf_mngt{outfilesuffix}[Cisco IOS: interfaces management,window=_blank]
-- link:vendor_fortigate_security_mngt{outfilesuffix}[Fortinet Fortigate: managed security,window=_blank]
-- link:vendor_multivendor_firewall_policy_mngt{outfilesuffix}[Multi-vendor firewall policy update,window=_blank]
-////
+== Assurance
 
+- link:kibana_dashboard[Kibana dashboard customisation,window=_blank]
+
+== DevOps
+
+- link:local_repository_management{outfilesuffix}[Import / Export Librairies,window=_blank]
+- link:devops-best-practices{outfilesuffix}[DevOps best practices,window=_blank]
+
+ifeval::["{format}"" == "html"]
+== Community 
+
+- link:../community-guide/index{outfilesuffix}[OpenMSA community guide,window=_blank]
+
+== Use Case 
+
+- link:../lab-guide/simple_firewall_policy_mngt{outfilesuffix}[Firewall policy orchestration,window=_blank]
+endif::[]

@@ -1,29 +1,32 @@
 = Workflows
-:doctype: book
-:imagesdir: ./resources/
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:toc: left
-:toclevels: 4 
 
-Workflows allows the creation and management of complex processes.
+image:msa_arch_wf_use.png[width=400px]
+
+*Workflows* allows the creation and management of complex automated processes.
 
 == Overview
-This guide explains how to list workflows, select them and run them.
 
-A Workflow is composed of:
+This guide explains how to find, select and run workflows.
 
-- A collection of processes, where each process is composed of a set of executable tasks.
-- A list of variables that will be stored in the database and are holding the state of a workflow instance.
+A workflow is composed of:
+
+- A collection of processes, where each process is composed of a set of executable tasks implemented in Python or PHP.
+- A list of variables stored in the database and are holding the state of a workflow instance.
 - Some administrative information used to manage the service in the service console.
 
+[#workflow_selection]
 == Workflow selection
 
 In order to use a Workflow, it has first to be associated to a subtenant.
 To do so, you need to select a WF from the list and click on "Add to..."
 
-image:images/automation_wf_list_add_to_customer.png[Workflow Add to subtenant,width=1000px]
+.Workflows available in the library
+image:automation_wf_list_add_to_customer.png[Workflow Add to subtenant,width=800px]
 
 This will open a dialog popup where subtenant will able to select the subtenant to add/remote to/from a workflow
+
 [#use]
 == Workflow use
 
@@ -33,7 +36,8 @@ This will display the subtenant management dashboard for the workflows.
 
 This dashboard shows the overall status of process execution.
 
-image:images/automation_manager_dashboard.png[Workflow Manager Dashboard,width=1000px]
+.Workflow status dashboard
+image:automation_manager_dashboard.png[Workflow Manager Dashboard,width=800px]
 
 To use a workflow, you have select it from the list at the bottom of the screen. 
 This will open a screen with the list of the workflow instance and actions to create new instances, update or delete existing ones.
@@ -42,7 +46,8 @@ This will open a screen with the list of the workflow instance and actions to cr
 
 Use the action on the top right to create a new instance of the workflow, select the actions available on an instance to call the processes available for this workflow.
 
-image:images/automation_workflow_instance_list.png[Workflow Instance List,width=1000px]
+.Use "+ Create Firewall Service" to create a new instance of the workflow
+image:automation_workflow_instance_list.png[Workflow Instance List,width=800px]
 
 ==== Instance lifecycle
 
@@ -53,17 +58,37 @@ The form may not always require parameters (this would be the case of the defaul
 
 The example below shows a user form with some network related information, scroll down and click on "Run" to execute the instance creation process.
 
-image:images/automation_workflow_instance_create_form.png[Workflow Create Form,width=1000px]
+.Update the workflow instance by calling one of the update or delete processes
+image:automation_workflow_instance_create_form.png[Workflow Create Form,width=800px]
 
 Once an instance is created, you can execute any process available to either update the instance state and run some automated task or delete the process instance. 
 The process to delete an instance can also execute some automated tasks before removing the instance from the list.
 
 .Example
-A typical example of a workflow lifecycle is the one to mangage VNF on a cloud:
+A typical example of a workflow lifecycle is the one to manage VNF on a cloud:
 
 - CREATE process: the user provide the VNF specific parameters and the process execute to create the VNF on the cloud, create and activate the Managed Entity on the {product_name}.
 - UPDATE processes: the user can ask for scale up/down or configuration changes of the VNF
 - DELETE process: the VNF is removed as well as any related resources
+
+===== Process execution scheduling
+
+If a process has been configured to allow scheduling (see documentation about the workflow editor), it is possible to schedule the execution of a process.
+
+image:workflow_scheduling.png[width=800px]
+
+.Workflow scheduling
+[width=100%, cols=5*,options="header"]
+|===
+| Schedule | Execute Every | Pick at least one | Start date | End date
+| Once     | NA            | NA                | define when the process should execute | NA
+| Minute   | execution frequency | NA             | define the start date | define the end date
+| Hourly   | execution frequency | NA             | define the start date | define the end date
+| Daily   | execution frequency |  Select the week day(s) for execution           | define the start date | define the end date
+| Weekly   | execution frequency | NA           | define the start date | define the end date
+| Monthly   | execution frequency | Select the month(s) for execution          | define the start date | define the end date
+|===
+
 
 === Get information about workflow instance status
 
@@ -73,7 +98,7 @@ The list of workflow instances can be filtered by the status of the execution of
 - Running: list the instances that have a process running
 - Failed: list the instances that had a process execution failure
 - Warning: list the instances where the last process execution ended with a warning
-- Success: list the instances where the last process execution ended succesfully
+- Success: list the instances where the last process execution ended successfully
 
 The status of a process and how a process can end with one of the possible statuses is defined by the process, in the tasks.
 
@@ -81,14 +106,14 @@ For each instance, a toolbar is available when you hover your mouse over it.
 
 Each icon will give you some information about the instance:
 
-image:images/automation_workflow_instance_info.png[Instance Info,width=1000px]
+image:automation_workflow_instance_info.png[Instance Info,width=800px]
 
 - Details: lists the Workflow variable and their values. This is the state of the instance.
 - History: lists the processes that were executed. For each process you can get the user that triggered the execution, the start and end time, the status of the execution.
 
 The history will let you audit the process past executions and access all their the details.
 
-image:images/automation_workflow_instance_history.png[Instance History,width=1000px]
+image:automation_workflow_instance_history.png[Instance History,width=800px]
 
 
 ////
@@ -114,4 +139,4 @@ As a manager you will only be able to select the subtenant in your tenant.
 
 == Workflow design
 
-Workflow design is explained in the link:../developer-guide/index{outfilesuffix}[developer guide]
+Workflow design is explained in the developer guide.

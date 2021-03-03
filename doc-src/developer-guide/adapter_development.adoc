@@ -1,32 +1,36 @@
 = Adapter Development
-:doctype: book
-:imagesdir: ./resources/
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-:toc: left
-:toclevels: 4 
-:source-highlighter: pygments
+
+image:msa_arch_da_dev.png[width=400px]
+
+The *adapters* are the "drivers" that allow the main {product_name}'s engine to seamlessly communicate with the Managed Entities for configuration assurance, event collection, et cetera.
 
 == Overview
-The Adapters are the "drivers" that allow the main {product_name}'s engine to seamlessly communicate with the Managed Entities for configuration assurance, event collection, et cetera.
 
-The Adapters are designed per vendor because they need to address the specifics of each vendor especially when the Managed Entitie does not provide a REST management API.
+The adapters are designed per vendor because they need to address the specifics of each vendor especially when the Managed Entitie does not provide a REST management API.
 
 The {product_name} provides a library of device adaptors ready to use. 
+
 The libraries are implemented in PHP which makes extension and customization easy.
 
 
 == How to find, install, activate the adapters
-The Adapters are packaged in the {product_name}, in the "api" container (see link:../admin-guide/architecture_overview{outfilesuffix}[Architecture] for more details).
+The Adapters are packaged in the {product_name}, in the "msa_dev" container, under `/opt/devops/Openmsa_Adapters` which is a git repository configured to point to github.
 
-Many other Adapters are available on the https://github.com/openmsa/Adaptors[Adaptor Github repository,window=_blank]
+```
+$ sudo docker-compose exec msa_dev bash
+```
 
-The installation of an Adapter is covered in this documentation: link:https://github.com/openmsa/Adaptors/blob/master/doc/How_to_install_a_new_adapter.md[How to install an Adapter,window=_blank]
+Many other Adapters are available on the https://github.com/openmsa/Adapters[Adapters Github repository,window=_blank]
+
+The installation of an Adapter is covered in this documentation: link:https://github.com/openmsa/Adapters/blob/master/doc/Adaptor_installer.md[How to install an Adapter,window=_blank]
 
 [#rest_adapter]
 == REST Generic adapter
 The REST Generic adapter, available on link:https://github.com/openmsa/Adaptors/tree/master/adapters/rest_generic[Github,window=_blank] will allow you to integrate most vendors that exposes a REST management interface API.
 
-This adapter is included in the mini lab (see link:../user-guide/quickstart{outfilesuffix}[Quickstart] for more details)
+This adapter is included in the mini lab.
 
 I you need to create a new vendor based on the REST Generic adapter, you can follow this guide: link:how_to_add_a_new_vendor_with_rest_adaptor{outfilesuffix}[How to add a new REST based vendor]
 
@@ -47,7 +51,7 @@ This API exposes functions such as:
 === Custom commands
 It is possible to implement new custom commands that will be callable from the {product_name} API (verb JSACMD MY_COMMAND).
 
-=== Status Polling
+=== Status polling
 
 The {product_name}'s SecEngine daemon in charge of polling the device for availability is `polld`.
 
@@ -80,7 +84,7 @@ catch (Exception $e)
 return SMS_OK;
 ----
 
-=== Asset Management
+=== Asset management
 The {product_name}'s SecEngine can connect on a managed entity to fetch a set of predefined assets such as:
 
 . Firmware
@@ -94,7 +98,7 @@ The array is then passed to a specific callback in order to store the informatio
 ----
 sms_polld_set_asset_in_sd($sd_poll_elt, $asset);
 ----
-.Custom Asset Management
+.Custom asset management
 It is also possible to extract custom assets. 
 They will be stored in the database as a list of key values.
 
@@ -107,7 +111,7 @@ The asset script is device specific and is located in:
 /opt/sms/bin/polld/<model>_mgmt.php
 ----
 
-.Example on Fortigate
+.Example on fortigate
 Regexp:
 [source, php]
 ----
@@ -121,7 +125,7 @@ $get_system_status_asset_patterns = array(
 ----
 The regexp is executed against the result of the CLI : `get system status`.
 
-.Example on Cisco
+.Example on cisco
 Regexp:
 
 [source, php]
@@ -138,8 +142,9 @@ $show_ver_asset_patterns = array(
 
 The regexp is executed against the result of the CLI `show version`.
 
-=== Configuration Management
-==== Dialog with the Managed Entity
+=== Configuration management
+
+==== Dialog with the managed entity
 The following PHP scripts have to be created in the `/opt/sms/bin/php/<model>/` directory.
 
 This set of PHP scripts manages the dialog between the {produt_name} and the managed entity.
@@ -220,7 +225,7 @@ SshConnection  extends GenericConnection defined in `/opt/sms/bin/php/smsd/gener
 
 SshConnection  extends GenericConnection defined in `/opt/sms/bin/php/smsd/generic_connection.php`
 
-image:images/adapter_class_hierachy.png[]
+image:adapter_class_hierachy.png[]
 
 ==== The class Connection 
 
@@ -308,7 +313,7 @@ Implemented by `do_update_conf.php`
 
 Can be called directly by the {product_name}'s SecEngine API, it is an asynchronous process, its status can be monitored.
 
-=== Managed Entity activation (initial provisioning)
+=== Managed entity activation (initial provisioning)
 The {product_name} executes a set of steps to activate the device.
 
 The steps can be customized to do additional operations.
