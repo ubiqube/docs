@@ -166,7 +166,7 @@ $response = execute_command_and_verify_response ( $managed_entity_id, CMD_CREATE
 <3> The value of the key should match the Microservice file name (stripped of the .xml file extension)
 <4> Call the CREATE for simple_firewall MS for each device (use CMD_UPDATE or CMD_DELETE for the other operations)
 
-The funtion `+execute_command_and_verify_response+` is defined in link:https://github.com/openmsa/Workflows/blob/master/Reference/Common/Library/msa_common.php[msa_common.php]
+The function `+execute_command_and_verify_response+` is defined in link:https://github.com/openmsa/Workflows/blob/master/Reference/Common/Library/msa_common.php[msa_common.php]
 
 === Synchronize the managed entity configuration
 
