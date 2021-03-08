@@ -127,7 +127,7 @@ except Exception as e:
 <3> The value of the key should match the Microservice file name (stripped of the .xml file extension)
 <4> Call the CREATE for simple_firewall MS for each device (use UPDATE or DELETE for the other operations)
 
-The funtion `+command_execute+` is defined in link:https://github.com/openmsa/python-sdk/blob/develop/msa_sdk/order.py[order.py]
+The function `+command_execute+` is defined in link:https://github.com/openmsa/python-sdk/blob/develop/msa_sdk/order.py[order.py]
 
 === Call a microservice IMPORT function
 
