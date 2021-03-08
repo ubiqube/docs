@@ -2,7 +2,6 @@
 ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-== Overview
 
 This lab guide will show you how to create layer2-switches or a routers out of a bare Linux machine.
 

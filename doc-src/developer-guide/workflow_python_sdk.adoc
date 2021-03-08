@@ -155,6 +155,13 @@ except Exception as e:
 <3> get the microservice instances
 <4> store the instance in a variable to further reuse
 
+
+.Getting more Examples 
+****
+You will find many examples of Workflows in https://github.com/openmsa/Workflows
+****
+
+
 == How to extend the SDK
 
 === Create a custom library of scripts
@@ -206,7 +213,7 @@ image:workflow_process_exec_status_custom_msg.png[width=1000px]
 
 The code sample below shows how to do it.
 
-[source, php]
+[source, python]
 ----
 from msa_sdk.orchestration import Orchestration
 from msa_sdk.msa_api import MSA_API
@@ -229,7 +236,7 @@ Orchestration.update_asynchronous_task_details(*async_update_list,
 <3> execute some code
 <4> update the UI with another message
 
-.Getting more Examples 
+.Contributing 
 ****
-You will find many examples of Workflows in https://github.com/openmsa/Workflows
+Help us improve the SDK: fork https://github.com/openmsa/python-sdk and submit your changes with a Pull Request
 ****
