@@ -50,9 +50,13 @@ The following prerequisites are required for a successful use of {product_name}:
 === Hardware Resources
 
 .on a PC (for lab experimentation)
-- minimum memory:6GB (8GB to be comfortable), 2CPU, 100GB
+- minimum memory: 6GB (8GB to be comfortable), 2CPU, 100GB
 
-NOTE: with less that 6GB of memory, the {product_name} may not function properly.
+NOTE: with less that 6GB of memory, the {product_name} may not function properly: some container such as the API container may not be able to start causing issues when connecting to the UI.
+
+NOTE: if you are using Docker on MacOS, this link:https://docs.docker.com/docker-for-mac/[guide] will help you with this configuration.
+
+NOTE: if you are using Docker on Windows, this link:https://docs.docker.com/docker-for-windows/[guide] will help you with this configuration.
 
 .on a production environment 
 - minimum 16GB, 4CPU, 200GB
