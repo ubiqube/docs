@@ -46,4 +46,71 @@ Let's say that you are running {product_name} version {revnumber-prev}, to upgra
 
 ==== Features
 
+[MSA-9327] - [Admin] Enable permissions in the code
+[MSA-9221] - [AI] UI to create states
+[MSA-9222] - [AI] UI to create actions
+[MSA-9372] - [AI] Add list of states in developer view
+[MSA-9373] - [AI] Add list of actions in developer view
+[MSA-9508] - [AI] Add an advanced parameters window
+[MSA-9510] - [AI] Change for Created BPM screen
+[MSA-9746] - [AI] Create GUI to attach actions to the states
+[MSA-9705] - [Alarm] - Icon and Badge notification
+[MSA-7421] - [API] console.log and server.log in API are not rotated
+[MSA-8674] - [API] Upgrade Swagger Version
+[MSA-9580] - [API] Upgrade Swagger Version - Part 2
+[MSA-4181] - [Auth] Create REST API for "forgot password"
+[MSA-9638] - [BPM] Camunda DB Persistance
+[MSA-8350] - [Docker] Create msa-alarm container
+[MSA-8523] - [Docker] Adapt msa-alarm for docker container
+[MSA-8209] - [HA] Get rid of the link customer and secnode association - SecEngine
+[MSA-9468] - [Monitoring] Show Warning message on snmp name and poll frequency change on monitoring profile
+[MSA-9642] - [Portal] Change the message in the UI when the connection to the API is slow
+[MSA-9579] - [Workflow/Microservice] Hide create/edit/delete from Manager's view
+[MSA-9661] - [Workflow] API to list Scheduled Processes
+[MSA-9702] - [Workflow] Adapt text when deleting a WF
+
 ==== Bug fixes
+
+[MSA-9604] - [Admin] Generate New Password button doesn't work
+[MSA-8827] - [Admin] Managers can browse all the subtenants even if they are not attached to them !
+[MSA-8334] - [Admin] Administration : in the filter, the char "_" is managed as a wildcard
+[MSA-8735] - [Admin] Sub-tenant association is not working as expected for a Manager account
+[MSA-8051] - [API] hhmmss is cut off for last modified date in listCustomers
+[MSA-8895] - [API] - Bad Reference in swagger
+[MSA-7989] - [API/DB] Resultset leak in OperationDao / LookupDao
+[MSA-9520] - [Assurance] special characters in rawlog let elasticsearch return an error
+[MSA-9214] - [Assurance] the monitoring profile count is not refreshed properly
+[MSA-9585] - [BPM] Camunda DB Persistance
+[MSA-9470] - [BPM] Bad execution result order if user breakpoint define just after start event
+[MSA-8640] - [BPM] Possible to associate workflows which should not be accessible for a subtenant
+[MSA-9040] - [BPM] : BPM execution will fail if some item are deleted from the graph
+[MSA-9425] - [BPM] Start BPM may fail
+[MSA-9703] - [BPM] close button is hidden in BPM "Add to..." window
+[MSA-9730] - [BPM] Unable to execute BPM
+[MSA-8631] - [DB] Database statement not closed
+[MSA-9395] - [DevOps] UI is missing a button to trigger the update (git pull) of the local repository
+[MSA-9462] - [DevOps] deactivate a git repository removes the .git
+[MSA-9546] - [Logs] Search logs API doesn't consider user logged in to filter the logs
+[MSA-9577] - [Managed Entity/BPM] typo correction when deleting
+[MSA-9645] - [Manager Portal] edit workflow pencil is not hidden
+[MSA-9690] - [Managed Entity] Syslog dependencies
+[MSA-9075] - [Microservice] when grouping variable, the groups are not rendered in the console
+[MSA-7738] - [Microservice] Microservice without last modified date come first when sorting
+[MSA-9760] - [Microservice] Selecting Vendor and Model displays error "This must contain valid characters"
+[MSA-9391] - [Microservice] saving a MS changes the order of the XML element in definition file and meta file
+[MSA-9365] - [Monitoring] graph fail to load due to device external reference UBI154 not found in database
+[MSA-9473] - [Monitoring] Monitoring profile cannot be save
+[MSA-9681] - [Monitoring] Monitoring profile list displaying same number of profiles for all subtenants
+[MSA-9469] - [Monitoring] Avoid losing monitoring data history on snmp name change on profile
+[MSA-9649] - [Profile] ncroot password cannot be changed
+[MSA-9164] - [Security] Camunda api have public access with no password.
+[MSA-8444] - [Security/User] Password edition not possible when editing an admin user
+[MSA-9436] - [Workflow] in Process create/edit screen update "Allow schedule" to "Allow scheduling"
+[MSA-9611] - [Workflow] - Date picker icon for scheduling not visible in FF + set default start date
+[MSA-9612] - [Workflow] issues when using variables of type Microservice Reference
+[MSA-9644] - [Workflow] Composite variable are displayed in user form even if they are not listed in the Task
+[MSA-9652] - [Workflow] Composite does not work when its selector value is false or 0
+[MSA-8788] - [Workflow] some workflow variable types issues
+[MSA-9348] - [Workflow] Workflow attachment list should be filtered by tenant
+[MSA-8893] - [Workflow] Need to be able to empty trash to empty the workflow bin
+[MSA-9763] - [Workflow] Scheduling instances not cleaned when a subtenant is removed
