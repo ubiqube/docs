@@ -50,7 +50,7 @@ The following prerequisites are required for a successful use of {product_name}:
 === Hardware Resources
 
 .on a PC (for lab experimentation)
-- minimum memory: 6GB (8GB to be comfortable), 2CPU, 100GB
+- minimum memory to allocate to Docker: 6GB (8GB to be comfortable), 2CPU, 100GB
 
 NOTE: with less that 6GB of memory, the {product_name} may not function properly: some container such as the API container may not be able to start causing issues when connecting to the UI.
 
@@ -112,7 +112,7 @@ Create the mini lab: clone the quickstart git repository from Github, download a
 
 1. `git clone -b {revnumber} --depth 1 https://github.com/ubiqube/quickstart.git`
 2. `cd quickstart`
-3. `docker-compose up -d`
+3. `./script/install.sh`
 
 NOTE: If you are already running the {product_name} and wish to upgrade it to a new version check the link:#upgrade[documentation below]
 
@@ -128,28 +128,6 @@ Open link:https://localhost/[window=_blank] and connect with username `ncroot` a
 Browse to "Settings" in the left menu and upload the free trial license you received.
 
 NOTE: use localhost if you are using your PC as the docker host, otherwise use the IP address assigned to the docker host.
-
-[#step{counter:step}]
-=== Step {step}: the libraries (Microservices, Workflows and Adapters) from github.com/openmsa
-
-`docker-compose exec msa_dev /usr/bin/install_libraries.sh all -y`
-
-At the end of the script execution, you need to restart the API container and the CoreEngine container:
-
-`docker-compose restart msa_api && docker-compose restart msa_sms`
-
-NOTE: more explanations on the script `install_libraries.sh` can be found link:#install_libraries[here].
-
-[#step{counter:step}]
-=== Step {step}: configure Elasticsearch and Kibana
-
-Configure Elasticsearch settings and index mappings
-
-`docker exec -u root -w /home/install/scripts/ -it  msa_es bash -c './install.sh'`
-
-Install Kibana visualizations and dashboards
-
-`docker exec -u root -w /home/install/ -it  msa_kibana bash -c 'php install_default_template_dash_and_visu.php'`
 
 [#step{counter:step}]
 === Step {step}: provision the mini lab with tenants, managed entities, etc.
@@ -212,10 +190,10 @@ Starting from it's version 2.2.0, the quickstart project provides a script `upgr
 Let's say that you are running the version {revnumber-prev}, to upgrade to the version {revnumber} you need to follow these steps:
 
 1. `cd ..`
-2. `git clone -b {revnumber} --depth 1 https://github.com/ubiqube/quickstart.git`
-3. `cd quickstart`
-4. `docker-compose up -d`
-5. `./scripts/upgrade.sh` 
+2. `rm -rf quickstart`
+3. `git clone -b {revnumber} --depth 1 https://github.com/ubiqube/quickstart.git`
+4. `cd quickstart`
+5. `./scripts/install.sh` 
 
 NOTE: when running the upgrade script, it will ask you if you want your local libraries to be updated with the latest version from the community. If you answer 'y', the update will be done automatically. You can also do the update later manually on the container `msa_dev`.
 
@@ -225,13 +203,13 @@ Sometime, not very often, but it can happen in the few days following a release,
 
 When this happens, we update the docker images in the quickstart and simply move the release tags to the new git commit.
 
-If you want to update your quickstart, because you have already checked out the release tag {revnumber} on a local git branch {revnumber}, you need first to delete this local branch and delete the local tag before you can update the quickstart and install the hot fixes.
+If you want to update your local quickstart git repository, because you have already checked out the release tag {revnumber} on a local git branch {revnumber}, you need first to delete this local repository before you can update the quickstart and install the hot fixes.
 
 1. `cd ..`
-2. `git clone -b {revnumber} --depth 1 https://github.com/ubiqube/quickstart.git`
-3. `cd quickstart`
-4. `docker-compose up -d`
-5. `./scripts/upgrade.sh` 
+2. `rm -rf quickstart`
+3. `git clone -b {revnumber} --depth 1 https://github.com/ubiqube/quickstart.git`
+4. `cd quickstart`
+5. `./scripts/install.sh` 
 
 ==== Note for Windows user
 
