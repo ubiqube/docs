@@ -76,14 +76,14 @@ Let's say that you are running {product_name} version {revnumber-prev}, to upgra
 [MSA-8334] - [Admin] Administration : in the filter, the char "_" is managed as a wildcard
 [MSA-8735] - [Admin] Sub-tenant association is not working as expected for a Manager account
 [MSA-8051] - [API] hhmmss is cut off for last modified date in listCustomers
-[MSA-8895] - [API] - Bad Reference in swagger
+[MSA-8895] - [API] Bad Reference in swagger
 [MSA-7989] - [API/DB] Resultset leak in OperationDao / LookupDao
 [MSA-9520] - [Assurance] special characters in rawlog let elasticsearch return an error
 [MSA-9214] - [Assurance] the monitoring profile count is not refreshed properly
 [MSA-9585] - [BPM] Camunda DB Persistance
 [MSA-9470] - [BPM] Bad execution result order if user breakpoint define just after start event
 [MSA-8640] - [BPM] Possible to associate workflows which should not be accessible for a subtenant
-[MSA-9040] - [BPM] : BPM execution will fail if some item are deleted from the graph
+[MSA-9040] - [BPM] BPM execution will fail if some item are deleted from the graph
 [MSA-9425] - [BPM] Start BPM may fail
 [MSA-9703] - [BPM] close button is hidden in BPM "Add to..." window
 [MSA-9730] - [BPM] Unable to execute BPM
