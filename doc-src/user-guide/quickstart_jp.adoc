@@ -36,7 +36,7 @@ link:https://ubiqube.com/free-trial/[ubiqube.com] から、MSA2トライアル�
 === 推奨ハードウェア構成
 
 .個人利用（トライアル環境）
-- 4GB以上 (8GBを推奨), 2CPU, 100GB
+- 6GB以上 (8GBを推奨), 2CPU, 100GB
 
 .商用利用
 - 16GB, 4CPU, 200GB
@@ -82,7 +82,6 @@ sudo sysctl -w vm.max_map_count=262144
 sudo tee -a /etc/sysctl.conf <<< "vm.max_map_count=262144"
 ----
 
-
 == インストール手順
 
 [#step{counter:step}]
@@ -93,7 +92,7 @@ quickstartをGitリポジトリからクローン、及びDockerHubから{produc
 
 1. `git clone -b {revnumber} --depth 1 https://github.com/ubiqube/quickstart.git`
 2. `cd quickstart`
-3. `docker-compose up -d`
+3. `./script/install.sh`
 
 NOTE: トライアル環境のシステム構成について link:../admin-guide/architecture_overview{outfilesuffix}[英語資料]
 
@@ -108,28 +107,6 @@ NOTE: 動作している環境によって、ログインが可能になるま�
 メインメニューの「設定」（Settings）から前提条件にて受領したライセンスを適用してください。
 
 NOTE: Dockerが動作している環境でブラウザを起動している場合はlocalhost、それ以外の場合はDockerが動作している環境のIPアドレスを指定してください。
-
-[#step{counter:step}]
-=== Step {step}: ライブラリのインポート(Microservice／Workflow／Device Adapter)
-
-OpenMSAから各種ライブラリを起動している{product_name}にインポートします。
-
-`docker-compose exec msa_dev /usr/bin/install_libraries.sh all`
-
-上記のスクリプト実行後に、APIコンテナ・CoreEngineコンテナの再起動を実施します。
-
-`docker-compose restart msa_api && docker-compose restart msa_sms`
-
-[#step{counter:step}]
-=== Step {step}: Elasticsearch及びKibanaの初期設定
-
-Elasticsearchのインデックスを生成します。
-
-`docker exec -u root -w /home/install/scripts/ -it msa_es bash -c './install.sh'`
-
-KibanaのダッシュボードとVisualizeツールをインストールします。
-
-`docker exec -u root -w /home/install/ -it msa_kibana bash -c 'php install_default_template_dash_and_visu.php'`
 
 [#step{counter:step}]
 === Step {step}: サンプルデータの投入
@@ -150,9 +127,7 @@ KibanaのダッシュボードとVisualizeツールをインストールしま�
 
 以下のコマンドにてスクリプトを実行してください。
 
-```
-$ docker-compose exec msa_dev /usr/bin/create_mini_lab.sh
-```
+`$ docker-compose exec msa_dev /usr/bin/create_mini_lab.sh`
 
 [#step{counter:step}]
 === Step {step}: {product_name}の起動
