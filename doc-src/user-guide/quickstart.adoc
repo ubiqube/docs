@@ -50,7 +50,7 @@ The following prerequisites are required for a successful use of {product_name}:
 === Hardware Resources
 
 .on a PC (for lab experimentation)
-- minimum memory to allocate to Docker: 6GB (8GB to be comfortable), 2CPU, 100GB
+- minimum RAM memory to allocate to Docker: 6GB (8GB to be comfortable), 2 CPU, 50 GB of disk space.
 
 NOTE: with less that 6GB of memory, the {product_name} may not function properly: some container such as the API container may not be able to start causing issues when connecting to the UI.
 
