@@ -113,7 +113,7 @@ Create the mini lab: clone the quickstart git repository from Github, download a
 1. `git clone -b master --depth 1 https://github.com/ubiqube/quickstart.git`
 2. `cd quickstart`
 3. `git fetch --depth 1 origin refs/tags/{revnumber}:refs/tags/{revnumber}`
-4. `./script/install.sh`
+4. `./script/install.sh` or `./script/install_win.sh` for Windows users
 
 NOTE: If you are already running the {product_name} and wish to upgrade it to a new version check the link:#upgrade[documentation below]
 
