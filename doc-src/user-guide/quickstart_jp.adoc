@@ -36,7 +36,7 @@ link:https://ubiqube.com/free-trial/[ubiqube.com] から、MSA2トライアル�
 === 推奨ハードウェア構成
 
 .個人利用（トライアル環境）
-- 4GB以上 (8GBを推奨), 2CPU, 100GB
+- 6GB以上 (8GBを推奨), 2CPU, 100GB
 
 .商用利用
 - 16GB, 4CPU, 200GB
