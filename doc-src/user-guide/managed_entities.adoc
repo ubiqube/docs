@@ -118,15 +118,21 @@ The authentication is done at the adapter layer whenever it is required.
 [#me_conf_var]
 === Configuration variables
 
-In addition to the UI fields, it is also possible to create custom additional configuration variable to a managed entity. Configuration variables are offer a convenient way to extend the data model of the managed entity without any core product customization.
+In addition to the UI fields, it is also possible to create custom additional configuration variable to a managed entity. 
+Configuration variables offer a convenient way to extend the data model of the managed entity without any core product customization.
 
 A configuration variables is a key/value couple stored in the database, associated to a managed entity.
 
-Once a configuration variable is set on a managed entity, it is available to the microservices, the configuration templates and the device adapter but it can also simply be used to add additional administrative information to a managed entity.
+Once a configuration variable is set on a managed entity, it is available to the microservices and the device adapter but it can also simply be used to add additional administrative information to a managed entity.
+
+To create a configuration variable, click on the "Actions" menu on the top right of the managed entity screen and select "Create Variable".
 
 .Example 1: the REST generic adapter
-The link:https://github.com/openmsa/Adapters/tree/master/adapters/rest_generic[REST generic adapter] uses configuration variables to customize it's behavior and adapt itself to the various type of REST API (BASIC auth vs. Token auth, HTTP vs. HTTPS,...)
+The link:https://github.com/openmsa/Adapters/blob/master/adapters/rest_generic/README.md[REST generic adapter] uses configuration variables to customize its behavior and adapt itself to the various type of REST API (BASIC auth vs. Token auth, HTTP vs. HTTPS,...)
 
+image:me_conf_var_rest_generic.png[]
+
+.Example of reading a configuration variable in the REST generic adapter code.
 [source, PHP]
 ----
 $network = get_network_profile();       						<1>
@@ -153,7 +159,7 @@ To read or set these configuration variables, you can use the REST API `GET /var
 
 [#me_activation]
 == Managed entity activation
-A managed entity can be activated by pressing the "Activate" button the managed entity Detail screen.
+A managed entity can be activated by selecting "Activate" from the list of "Actions" at the top right of the managed entity screen.
 
 This will show a form that takes the variables such as management IP, username and password that will be used in the activation. 
 These fields may be pre-populated by the values given in the create form. 
@@ -202,7 +208,7 @@ Once associated to the managed entity, you can navigate to the managed entity ta
 
 On the left menu of the console, you can see the list of the microservices that are associated to the current managed entity with the deployment setting.
 
-=== Synchronisation with the managed entity
+=== Synchronization with the managed entity
 
 In order to import the configuration from the actual managed entity into the {product_name} configuration database, you need to click on the link "Synchronize with Managed Entity".
 
