@@ -14,7 +14,7 @@ video::Y1OHTJwg4HI[youtube,width=600px,height=360]
 
 endif::[]
 
-=== About soure code
+=== About source code
 
 The source code for the workflows and microservices referenced, is freely available in the OpenMSA github repository:
 
