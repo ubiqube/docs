@@ -4,7 +4,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == Overview
 
-This documentation will drive you throught the process of installing and using a workflow for automating the deployment of a VNF on AWS public cloud infrastructure. 
+This documentation will drive you through the process of installing and using a workflow for automating the deployment of a VNF on AWS public cloud infrastructure. 
 
 It's an example this is simple enough to be installed and used in a lab environment without too much configuration, but complex enough to show how the {product_name} can be used for such a thing as VNF orchaestration automation in a public cloud.
 
@@ -134,7 +134,7 @@ Add your managed entity to the deployment setting and verify that you can use th
 
 Use the action "Synchronize with Managed Entity" to import the AWS "config". On a new, blank AWS region, you should at least see the default VPC.
 
-NOTE: if the synchronisation seems to have no effect, you can try to activate the managed entity once more and run the synchronisation again.
+NOTE: if the synchronization seems to have no effect, you can try to activate the managed entity once more and run the synchronization again.
 
 == The VNF orchestration automation workflow.
 
@@ -156,7 +156,7 @@ This process will ask the user to select an AWS managed entity, this is the way 
 The execution of this process will trigger a microservice synchronization and will populate the workflow variables typed `Microservice Reference` with the actual values from the AWS region (ex: the list of subnets or security groups)
 
 .Launch Instance
-This process will ask the user to select data such as the AMI image ID, the subnet, the security group to use for the VM instanciation... then it will automatically launch the AWS instance, create and activate a new managed entity with a set of microservices.
+This process will ask the user to select data such as the AMI image ID, the subnet, the security group to use for the VM instantiation... then it will automatically launch the AWS instance, create and activate a new managed entity with a set of microservices.
 
 The result is a ready-to-use managed entity for firewall management with a Fortigate
 
