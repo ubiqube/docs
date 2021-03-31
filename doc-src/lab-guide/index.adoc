@@ -12,4 +12,4 @@ This documentation will point you to some of the tutorials and demos that are av
 == Demo
 
 - link:demo_ansible{outfilesuffix}[Ansible playbook runner,window=_blank]
-- link:demo_public_cloud_automation_aws{outfilesuffix}[VNF orchestration on AWS,window=_blank]
+- link:demo_public_cloud_automation_aws_generic{outfilesuffix}[VNF orchestration on AWS,window=_blank]
