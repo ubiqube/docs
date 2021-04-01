@@ -19,7 +19,7 @@ asciidoctor {
     'linkcss': true,
     'product_name': 'MSActivator(TM)',
     'allow-uri-read': '' ,
-    'revnumber': 'MSA-17.x'
+    'revnumber': 'MSA-17.8.0'
 
  
   sourceDir  file('doc-src')
