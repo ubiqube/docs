@@ -193,7 +193,7 @@ OK
 
 This will activate the DEBUG mode until the service is restarted.
 
-Execute `tstsms SETLOGLEVEL 0` to revert to the default log level.
+Execute `tstsms SETLOGLEVEL 255 0` to revert to the default log level.
 
 NOTE: this will only enable DEBUG mode for the configuration engine (smsd.log)
 
