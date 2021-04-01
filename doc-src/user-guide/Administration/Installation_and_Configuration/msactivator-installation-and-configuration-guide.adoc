@@ -1,4 +1,4 @@
-= Msactivator Installation And Configuration Guide
+= {product_name} Installation And Configuration Guide
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :imagesdir: ../../resources/
 :ext-relative: adoc
@@ -58,32 +58,25 @@ If an error occurs, perform the following:
 
 === Configuration
 
-Once the OVA is installed, start the VM. You should see the MSActivator
-services starting messages in the console. Make sure that the network
-setup of the VM, as well as the other parameters such as CPU, Disk,
-etc., are setup correctly. The MSActivator deploys with 50GB disk, but
-you may extend this to allow for more flexibility later on.
+Once the OVA is installed, start the VM. You should see the {product_name} services starting messages in the console. Make sure that the network setup of the VM, as well as the other parameters such as CPU, Disk, etc., are setup correctly. 
+The {product_name} deploys with 50GB disk, but you may extend this to allow for more flexibility later on.
 
-Connect as root to the MSActivator.
+Connect as root to the {product_name}.
 
-The following steps explain how to configure the network interface eth0
-in order to be able to use the online configuration tool:
+The following steps explain how to configure the network interface eth0 in order to be able to use the online configuration tool:
 
 Configure eth0 with an address from your network:
 
 link:[image:images/image2018-7-19_10-34-16.png[Image,height=36]]
 
-Try to access http://ip_configured:3577/config.xml (login:socconfig,
-password:b5ty9uvh4).
+Try to access http://ip_configured:3577/config.xml (login:socconfig, password:b5ty9uvh4).
 
 Once successful, follow the instructions for the online configuration
 tool below.
 
 === Online Configuration Tool
 
-This is the configuration method for the MSActivator freeware
-access: http://w.x.y.z:3577/config.xml(login:socconfig,
-password:b5ty9uvh4). Access is only available through eth0 (maintenance
+This is the configuration method for the {product_name}  access: http://w.x.y.z:3577/config.xml(login:socconfig, password:b5ty9uvh4). Access is only available through eth0 (maintenance
 interface).
 
 * eth0 is the interface dedicated to maintenance
@@ -117,30 +110,23 @@ link:[image:images/image2018-7-19_10-36-42.png[Image,width=800]]
 
 ===== Run the Configuration
 
-Choose the option to "apply configuration and reboot". The configuration
-will take 5-10 minutes, depending on the resources (CPU/Mem) allocated
-to the MSActivator.
+Choose the option to "apply configuration and reboot". The configuration will take 5-10 minutes, depending on the resources (CPU/Mem) allocated to the {product_name}.
 
-The configuration will start, and your browser will show this message
-until the configuration ends:
+The configuration will start, and your browser will show this message until the configuration ends:
 
 link:[image:images/config_apply.jpg[Image,width=800]]
 
-After a while, when the configuration is finished, a new message will be
-displayed, and the CentOS guest virtual machine will reboot.
+After a while, when the configuration is finished, a new message will be displayed, and the CentOS guest virtual machine will reboot.
 
 link:[image:images/config_dialog.jpg[Image,width=800]]
 
 You can now close this page on the web browser.
 
-Once the CentOS finished booting, MSActivator is available and ready to
-use.
+Once the CentOS finished booting, {product_name} is available and ready to use.
 
 ===== First login
 
-To check that your MSActivator server is up and running, connect to the
-IP address configured for eth1 of the CentOS guest virtual machine with
-a web browser.
+To check that your {product_name} server is up and running, connect to the IP address configured for eth1 of the CentOS guest virtual machine with a web browser.
 
 Example: http://192.168.13.203/
 
@@ -154,9 +140,8 @@ link:[image:images/UBI.jpg[Image,width=800]]
 
 Now, you can login as _ncroot_ with the default password__ ubiqube__
 
-This is the MSActivator interface that you will get at the beginning.
-Note that the list of devices is empty because no device has been
-created in MSActivator yet.
+This is the {product_name} interface that you will get at the beginning.
+Note that the list of devices is empty because no device has been created in {product_name} yet.
 
 link:[image:images/login.jpg[Image,width=800]]
 
@@ -166,24 +151,19 @@ This is the end of the installation procedure.
 
 === Install the License File
 
-You must be connected as a privileged administrator (ncroot) on the new
-portal to install the license.
+You must be connected as a privileged administrator (ncroot) on the new portal to install the license.
 
-As a privileged administrator, click on the MSActivator setting icon at
-the top of the screen.
+As a privileged administrator, click on the {product_name} setting icon at the top of the screen.
 
-This will access the system management UI where the license management
-is
+This will access the system management UI where the license management is
 
 link:[image:images/image2018-7-19_10-37-3.png[Image,width=800]]
 
 Click on "Upload" and select your file.
 
-Once uploaded, and before proceeding, the MSActivator will show you the
-certificate information (i.e. number of devices manageable and end of
-support time). Verify this information is correct before clicking apply.
-If this information is not correct, or you wish to change it, contact
-UBiqube support.
+Once uploaded, and before proceeding, the MSActivator will show you the certificate information (i.e. number of devices manageable and end of support time). 
+Verify this information is correct before clicking apply.
+If this information is not correct, or you wish to change it, contact UBiqube support.
 
 This is an example of the "apply" dialog box:
 
@@ -197,19 +177,13 @@ link:[image:images/image2018-7-19_10-37-33.png[Image]]
 
 === Problem with keyboard input to the command-line interface
 
-It is very likely that the keyboard layout of your host computer and the
-CentOS guest are different. As a result, special characters like # or $
-and others are difficult to find when typing into the CentOS
-command-line interface.
+It is very likely that the keyboard layout of your host computer and the CentOS guest are different. As a result, special characters like # or $ and others are difficult to find when typing into the CentOS command-line interface.
 
-In order to bypass this issue, you can connect to CentOS via SSH with
-the SSH client of your choice. Connect as root with $ubiqube as a
-password.
+In order to bypass this issue, you can connect to CentOS via SSH with the SSH client of your choice. Connect as root with $ubiqube as a password.
 
 Example with PuTTY under windows 10:
 
-First, launch PuTTY, keep all the settings at their default value, and
-just enter the CentOS guest IP address, and click "Open".
+First, launch PuTTY, keep all the settings at their default value, and just enter the CentOS guest IP address, and click "Open".
 
 link:[image:images/putty_1.jpg[Image,width=400]]
 
@@ -219,25 +193,19 @@ Enter _$ubiqube_ when prompted for the password
 
 link:[image:images/putty_ssh.jpg[Image,width=400]]
 
-Once connected via SSH, you can use all your usual keyboard keys to
-input characters.
+Once connected via SSH, you can use all your usual keyboard keys to input characters.
 
 === Case of Windows 10
 
-Windows 10 supports an integrated Hyper-V virtualization system. If this
-system is activated, some hypervisors like VirtualBox may be able to
-launch but not to run virtual machines.
+Windows 10 supports an integrated Hyper-V virtualization system. If this system is activated, some hypervisors like VirtualBox may be able to launch but not to run virtual machines.
 
-If you get an error message when trying to launch the MSActivator image,
-you need to de-activate the Hyper-V support.
+If you get an error message when trying to launch the MSActivator image, you need to de-activate the Hyper-V support.
 
 Example of error messages with VirtualBox:
 
 link:[image:images/Hyper-V_error_1.jpg[Image,width=800]]
 
-First, launch a command prompt as an Administrator by a right-click on
-the command prompt entry in the windows menu and selection of "Run as
-administrator".
+First, launch a command prompt as an Administrator by a right-click on the command prompt entry in the windows menu and selection of "Run as administrator".
 
 link:[image:images/Admin-command-prompt.jpg[Image,width=400]]
 
@@ -249,15 +217,10 @@ C:\windows\system32>dism.exe /Online /Disable-Feature:Microsoft-Hyper-V
 
 link:[image:images/Hyper-V-disable.jpg[Image,width=800]]
 
-Answer 'Y' and your Windows 10 host computer will restart. After
-restarting, Hyper-V support will be disabled and your Hypervisor will be
-able to run the .ova image of the MSActivator installation.
+Answer 'Y' and your Windows 10 host computer will restart. After restarting, Hyper-V support will be disabled and your Hypervisor will be able to run the .ova image of the MSActivator installation.
 
-Another error might appear when launching when running the MSActivator
-server image for the first time after removing the Hyper-V support from
-Windows 10:
+Another error might appear when launching when running the MSActivator server image for the first time after removing the Hyper-V support from Windows 10:
 
 link:[image:images/network_interface_change.jpg[Image,width=400]]
 
-In that case, just click on 'Change Network Settings' and the virtual
-machine will start.
+In that case, just click on 'Change Network Settings' and the virtual machine will start.

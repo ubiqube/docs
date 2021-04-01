@@ -49,6 +49,6 @@ These tutorials are made up of a set of short articles that explain the main fea
 == Administration Guides
 The MSActivator Installation and Configuration Guide will show you how to install, configure and activate the MSActivator.
 
-- link:Administration/user-administration{outfilesuffix}[Administration]
-- link:Administration/user-administration{outfilesuffix}[Administration]
+- link:Administration/Installation_and_Configuration/msactivator-installation-and-configuration-guide{outfilesuffix}[Platform Administration]
+- link:Administration/user-administration{outfilesuffix}[User Administration]
 
