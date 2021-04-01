@@ -2,9 +2,10 @@
 :imagesdir: ./resources/
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-Welcome to the MSActivator documentation.
+Welcome to the {product_name} documentation.
 
-This documentation contains both developer guides, to get you started developing applications for servers, and tutorials on how to build Microservices and Workflows on the MSActivator. These documents will also help address specific features and examples of Microservices and Workflows.
+This documentation contains both developer guides, to get you started developing applications for servers, and tutorials on how to build Microservices and Workflows on the MSActivator. 
+These documents will also help address specific features and examples of Microservices and Workflows.
 
 == Getting started with The MSActivator
 The link:Getting_Started/getting-started-with-the-msactivator{outfilesuffix}[Getting Started with the MSActivator] explains the main concept, as well as the first steps in managing services with the MSActivator.
@@ -47,8 +48,9 @@ These tutorials are made up of a set of short articles that explain the main fea
 
 
 == Administration Guides
-The MSActivator Installation and Configuration Guide will show you how to install, configure and activate the MSActivator.
+These guides will show you how to install, configure and activate the {product_name}.
 
-- link:Administration/Installation_and_Configuration/msactivator-installation-and-configuration-guide{outfilesuffix}[Platform Administration]
+- link:Administration/Installation_and_Configuration/msactivator-installation-and-configuration-guide{outfilesuffix}[{product_name} installation and configuration]
+- link:Administration/Installation_and_Configuration/d-msactivator-administration-guide{outfilesuffix}[Distributed {product_name} admin guide]
 - link:Administration/user-administration{outfilesuffix}[User Administration]
 
