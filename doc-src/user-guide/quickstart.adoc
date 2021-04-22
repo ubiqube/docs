@@ -212,8 +212,6 @@ If you want to update your local quickstart git repository, because you have alr
 
 ==== Note for Windows user
 
-If you are running docker natively on Windows, the script upgrade.sh may not work. In that case you need to execute manually the Docker CLI commands to upgrade your setup:
-
 If your original version is 2.1, plz refer to upgrade script first provided with 2.2.0 GA. In any cases, perform those commands
 
 1. `git clone -b master --depth 1 https://github.com/ubiqube/quickstart.git`
