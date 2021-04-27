@@ -230,7 +230,7 @@ If your original version is 2.1, plz refer to upgrade script first provided with
 3. `git fetch --depth 1 origin refs/tags/{revnumber}:refs/tags/{revnumber}`
 4. `./script/install_win.sh`
 
-NOTE : you may face an issue at the end of the script with a message "Wait Kibana to be ready". The time to fix this known issue, you can execute in another terminal docker-compose up -d to fix this problem.
+NOTE : you may face an issue at the end of the script with a message "Wait Kibana to be ready". This is a known issue, the workaround is to execute `docker-compose up -d` from another CLI.
 
 === Install a specific version
 
