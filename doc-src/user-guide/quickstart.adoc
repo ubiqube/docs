@@ -197,6 +197,17 @@ Let's say that you are running the version {revnumber-prev}, to upgrade to the v
 
 NOTE: when running the upgrade script, it will ask you if you want your local libraries to be updated with the latest version from the community. If you answer 'y', the update will be done automatically. You can also do the update later manually on the container `msa_dev`.
 
+[source, shell]
+----
+[root@msa2 quickstart]# ./scripts/install.sh --help
+usage: install.sh [--mini-lab|-m] [--force|-f] [--cleanup|-c] [--remove-orphans|-ro]
+this script installs and upgrades a MSA
+-m: mini lab creation. Create a demo platform around a Linux ME
+-f: force the upgrade without asking for user confirmation. Permit also to reapply the upgrade and to auto merge files from OpenMSA
+-c: cleanup unused images after upgrade to save disk space. This option clean all unused images, not only MSA quickstart ones
+-ro: remove containers for services not defined in the compose file. Use it if some containers use same network as MSA
+----
+
 ==== Hot fixes: upgrade a version with an updated tag
 
 Sometime, not very often, but it can happen in the few days following a release, we release some hot fixes on the same version.
@@ -218,6 +229,8 @@ If your original version is 2.1, plz refer to upgrade script first provided with
 2. `cd quickstart`
 3. `git fetch --depth 1 origin refs/tags/{revnumber}:refs/tags/{revnumber}`
 4. `./script/install_win.sh`
+
+NOTE : you may face an issue at the end of the script with a message "Wait Kibana to be ready". This is a known issue, the workaround is to execute `docker-compose up -d` from another CLI.
 
 === Install a specific version
 
