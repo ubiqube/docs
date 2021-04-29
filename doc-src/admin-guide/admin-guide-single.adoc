@@ -43,5 +43,7 @@ include::{includedir}/ha_installation.adoc[]
 
 include::{includedir}/support_and_troubleshooting.adoc[]
 
+ifdef::html[]
 include::{includedir}/opensource_technologies.adoc[]
+endif::[]
 

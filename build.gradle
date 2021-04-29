@@ -58,6 +58,7 @@ asciidoctor {
       include '**/*.mp4'
       include '**/*.css'
       include '**/*.html'
+      include '**/*.pdf'
     }
 
     into '.'
@@ -115,7 +116,8 @@ asciidoctorPdf {
       include '**/*.jpg'
       include '**/*.mp4'
       include '**/*.html'
-    }
+      include '**/*.pdf'
+  }
 
     into '.'
   }
