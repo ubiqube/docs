@@ -113,7 +113,7 @@ Create the mini lab: clone the quickstart git repository from Github, download a
 1. `git clone -b master --depth 1 https://github.com/ubiqube/quickstart.git`
 2. `cd quickstart`
 3. `git fetch --depth 1 origin refs/tags/{revnumber}:refs/tags/{revnumber}`
-4. `./script/install.sh` or `./script/install_win.sh` for Windows users
+4. `./scripts/install.sh` or `./scripts/install_win.sh` for Windows users
 
 NOTE: If you are already running the {product_name} and wish to upgrade it to a new version check the link:#upgrade[documentation below]
 
@@ -193,7 +193,7 @@ Let's say that you are running the version {revnumber-prev}, to upgrade to the v
 1. `git clone -b master --depth 1 https://github.com/ubiqube/quickstart.git`
 2. `cd quickstart`
 3. `git fetch --depth 1 origin refs/tags/{revnumber}:refs/tags/{revnumber}`
-4. `./script/install.sh`
+4. `./scripts/install.sh`
 
 NOTE: when running the upgrade script, it will ask you if you want your local libraries to be updated with the latest version from the community. If you answer 'y', the update will be done automatically. You can also do the update later manually on the container `msa_dev`.
 
@@ -219,7 +219,7 @@ If you want to update your local quickstart git repository, because you have alr
 1. `git clone -b master --depth 1 https://github.com/ubiqube/quickstart.git`
 2. `cd quickstart`
 3. `git fetch --depth 1 origin refs/tags/{revnumber}:refs/tags/{revnumber}`
-4. `./script/install.sh`
+4. `./scripts/install.sh`
 
 ==== Note for Windows user
 
@@ -228,7 +228,7 @@ If your original version is 2.1, plz refer to upgrade script first provided with
 1. `git clone -b master --depth 1 https://github.com/ubiqube/quickstart.git`
 2. `cd quickstart`
 3. `git fetch --depth 1 origin refs/tags/{revnumber}:refs/tags/{revnumber}`
-4. `./script/install_win.sh`
+4. `./scripts/install_win.sh`
 
 NOTE : you may face an issue at the end of the script with a message "Wait Kibana to be ready". This is a known issue, the workaround is to execute `docker-compose up -d` from another CLI.
 
