@@ -1,6 +1,4 @@
 = Open source technologies used in {product_name}
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-ifdef::html[]
 You can download the Open Source Technologies report link:images/OST-Report-{revnumber}.pdf[here].
-endif::[]

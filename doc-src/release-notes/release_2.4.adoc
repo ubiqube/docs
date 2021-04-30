@@ -40,105 +40,103 @@ Let's say that you are running {product_name} version {revnumber-prev}, to upgra
 
 ==== Features
 
- * MSA-8691 - [Backend] make sms-polld state less Implementation - SecEngine
- * MSA-9171 - [UI] Download WF and MS in zip format + bpm file
+ * MSA-9657 - [Admin] LDAP Configuration Vars in MSA VARS
+ * MSA-9777 - [Admin] Disable user creation in MSA locally when LDAP is enabled
+ * MSA-9799 - [Admin] Disable user creation in MSA locally when LDAP is enabled
+ * MSA-9877 - [Admin] Add attach permission for workflow
+ * MSA-9878 - [Admin] Hide Forgot password link
+ * MSA-9880 - [Adapter] Add categories to all DAs available on OpenMSA
  * MSA-9220 - [AI] UI to generate workflows
  * MSA-9225 - [AI] Select transitions
- * MSA-9364 - [Monitoring] monitoring graph data should be visible for shorter period of time
- * MSA-9523 - [Workflow] Visibility of WF operation: allow the user to expand the workflow parameter zone
- * MSA-9541 - [Dashboard] enhancement suggestions for manager dashboard customization
+ * MSA-9784 - [AI] Send ProcessType in Create Action API
  * MSA-9548 - [Alarm] Display Alarms for all the roles
- * MSA-9613 - [Workflow] List of Scheduled Workflows
+ * MSA-9708 - [Alarm] badge notification - update mechanism
+ * MSA-9803 - [API] API to generate Microservice Call Tasks
+ * MSA-9646 - [API] Model for list revision API in configuration backup
+ * MSA-9710 - [Assurance] Logs Tab on Infrastructure level
+ * MSA-9771 - [Assurance] Alarm API to update values into an Elasticsearch index log entry
+ * MSA-9781 - [Assurance] Logs should be available & filtered by all others users (not only for ncroot)
  * MSA-9614 - [BPM] View List of Scheduled BPM
  * MSA-9624 - [BPM] Terminate BPM
- * MSA-9634 - [Managed Entity] API for Download ME Config
- * MSA-9646 - [API] Model for list revision API in configuration backup
- * MSA-9657 - [LDAP] LDAP Configuration Vars in MSA VARS
- * MSA-9660 - [Monitoring] Data for last one hour in monitoring profile and device rrd data
- * MSA-9684 - [Workflow] Add Workflow displayName for History
- * MSA-9691 - [Dashboard] Dashboard Enhancement
- * MSA-9692 - [Managed Entity] Add filter to the ME status API
- * MSA-9708 - [Alarm] badge notification - update mechanism
- * MSA-9710 - [Logs] Logs Tab on Infrastructure level
  * MSA-9722 - [BPM] Update Process for the instance created by BPM
- * MSA-9732 - [Workflow] Add default value and values for Composite
+ * MSA-8691 - [CoreEngine] make sms-polld state less Implementation
+ * MSA-9792 - [CoreEngine] make smsd state less Implementation
+ * MSA-9793 - [CoreEngine] make sms-parserd state less Implementation
+ * MSA-9794 - [CoreEngine] make sms-syslogd state less Implementation
+ * MSA-9795 - [CoreEngine] make alarmd state less Implementation
+ * MSA-9796 - [CoreEngine] make sms-bud state less Implementation
+ * MSA-9798 - [CoreEngine] remove sms_sysstatd daemon from msa_sms
+ * MSA-9541 - [Dashboard] enhancement suggestions for manager dashboard customization
+ * MSA-9691 - [Dashboard] Dashboard Enhancement
+ * MSA-9692 - [Managed Entity] Add filter to the  Managed Entity status API
+ * MSA-9634 - [Managed Entity] API for Download  Managed Entity configuration
+ * MSA-9171 - [Microservice/Workflow] Download Workflow and Microservice in zip format + bpm file
+ * MSA-9364 - [Monitoring] monitoring graph data should be visible for shorter period of time
+ * MSA-9660 - [Monitoring] Data for last one hour in monitoring profile and device rrd data
  * MSA-9754 - [Security] Snyk Report - Highest issues in API
- * MSA-9766 - [YANG] Integrate PyYang in MSA 2.4 GA.
- * MSA-9767 - [YANG] WF to generate an MS XML file from Yang.
- * MSA-9771 - [Alarm/API] API to update values into an Elasticsearch index log entry
- * MSA-9777 - [LDAP] Disable user creation in MSA locally when LDAP is enabled
- * MSA-9779 - [API/WF/DB] Update WF context on DB after end of each task + if task fails
- * MSA-9781 - [Logs - UI] Logs should be available & filtered by all others users (not only for ncroot)
- * MSA-9784 - [AI] Send ProcessType in Create Action API
- * MSA-9792 - [Backend] make smsd state less Implementation - SecEngine
- * MSA-9793 - [Backend] make sms-parserd state less Implementation - SecEngine
- * MSA-9794 - [Backend] make sms-syslogd state less Implementation - SecEngine
- * MSA-9795 - [Backend] make alarmd state less Implementation - SecEngine
- * MSA-9796 - [Backend] make sms-bud state less Implementation - SecEngine
- * MSA-9798 - [Backend] remove sms_sysstatd daemon from msa_sms
- * MSA-9799 - [LDAP] UI: Disable user creation in MSA locally when LDAP is enabled
- * MSA-9803 - [API] API to generate MS Call Tasks
- * MSA-9804 - [WF] Modify WF creation to include MS call
  * MSA-9837 - [Security] Snyk Report: Highest issues in Linux Dev
- * MSA-9853 - [YANG] Generate MS from the YANG XML structure
- * MSA-9877 - [Admin] Add attach permission for workflow
- * MSA-9878 - [Login] Hide Forgot password link
- * MSA-9880 - [DA] Add categories to all DAs available on openmsa
  * MSA-9894 - [Security] Camunda generic API:  convert payload to file if form data flag is true
+ * MSA-9613 - [Workflow] List of Scheduled Workflows
+ * MSA-9523 - [Workflow] Visibility of Workflow operation: allow the user to expand the workflow parameter zone
+ * MSA-9684 - [Workflow] Add Workflow displayName for History
+ * MSA-9732 - [Workflow] Add default value and values for Composite
+ * MSA-9779 - [Workflow] Update Workflow context on DB after end of each task + if task fails
+ * MSA-9804 - [Workflow] Modify Workflow creation to include Microservice call
+ * MSA-9766 - [YANG] Integrate PyYang in MSA 2.4 GA.
+ * MSA-9767 - [YANG] Workflow to generate an Microservice XML file from Yang.
+ * MSA-9853 - [YANG] Generate Microservice from the YANG XML structure
 
 ==== Bug fixes
 
-
+ * MSA-9502 - [Adapter] TFTP does not work
+ * MSA-9519 - [Admin] audit data indexed in ES doesn't have a field "date" with proper type "date" in the mapping
+ * MSA-8857 - [Admin] when a subtenant is selected, the matching tenant should also be selected
+ * MSA-8411 - [Admin] Admin page / Tenants : count takes into account the hidden tenant
+ * MSA-9775 - [Admin] not possible to edit name/lastname/email for the user profile
+ * MSA-9736 - [Admin] Execute BPM permission should be hiding delete instance icon
+ * MSA-9268 - [API] dashboard Sort By does not work properly
+ * MSA-9826 - [API] Avoid unnecessary logs in wildfly
+ * MSA-9841 - [API] Raise error 401 when token expire (not 500)
+ * MSA-9077 - [API] BaseRole is mandatory to update a manager - /user/v1/manager/{managerId} 
  * MSA-6142 - [API] device/extended_attribute/get erroneous cast from string to Boolean
- * MSA-8411 - [MSA2] Admin page / Tenants : count takes into account the hidden tenant
- * MSA-8451 - [Workflow] a workflow can be executed by a subtenant even when not attached to him
- * MSA-8612 - [MSA2] swagger update PropertyReader
- * MSA-8641 - [MSA2] API to GET repository resource returns needless value
- * MSA-8786 - [MSA2] workflow variables : it is possible to run a WF even if mandatory field is empty
- * MSA-8857 - [UI] when a subtenant is selected, the matching tenant should also be selected
- * MSA-8870 - [MS] Import display PHP warnings in smsd.log
- * MSA-8891 - [Microservice] CLI editor doesn't persist the carriage returns
- * MSA-9001 - [WF] Some discrepancies may be seen in graphs
- * MSA-9051 - [Topology] service variables not listed
- * MSA-9066 - [Microservice/Workflow] Full list of ME in MS with type ME
- * MSA-9077 - [API] BaseRole is mandatory to update a manager - /user/v1/manager/{managerId}
- * MSA-9163 - [Security] Camunda dashboard is accessible with default password.
- * MSA-9268 - [API/Dashboard] Sort By does not work properly
- * MSA-9303 - [Workflow] issues in naming, due to special characters
- * MSA-9355 - [WF] Saving one WF affect modified date of others WFs
- * MSA-9367 - [microservices] issues with search, item counting and pagination
- * MSA-9368 - [UI] Create ME screen: enter a non-ip in name field shows and error but no useful error message
- * MSA-9380 - [Security] We can use auth token from any MSA and consume APIs hosted on a different instance of MSA
- * MSA-9382 - [Microservice] unable to save PA MS services.xml
- * MSA-9414 - [Monitoring Profile] in ME screen, have proper message when the profiles does not have graphs to render
- * MSA-9502 - [DA] TFTP does not work on MSAv2
- * MSA-9519 - [Auditing] audit data indexed in ES doesn't have a field "date" with proper type "date" in the mapping
- * MSA-9524 - [SDK] Fail status by using secengine_perform_verb_
- * MSA-9534 - [Workflow] using a custom “Variable for Workflow Instance Name” doens’t work any more if the variable is the default (= service_id)
- * MSA-9552 - [AuditLog] as ncroot, only ncroot root logs are visible by default
+ * MSA-8612 - [API] swagger update PropertyReader
+ * MSA-8641 - [API] API to GET repository resource returns needless value
+ * MSA-9552 - [Audit Log] as ncroot, only ncroot root logs are visible by default
+ * MSA-9818 - [Change Management] Configuration content from revision id API not working
+ * MSA-9581 - [Managed Entities] Delete not working in list view
+ * MSA-9368 - [Managed Entities] Create Managed Entity screen: enter a non-ip in name field shows and error but no useful error message
+ * MSA-9414 - [Monitoring Profile] in  Managed Entity screen, have proper message when the profiles does not have graphs to render
+ * MSA-9382 - [Microservice] unable to save PA Microservice services.xml
+ * MSA-9802 - [Microservice] xml/netconf based Microservice when saved using the GUI adds an invalid xpath for the array variable parsing section of the import method in the backend Microservice xml
+ * MSA-9870 - [Microservice] Backend Changes for Advance Variable Parameter
  * MSA-9560 - [Microservice] when a value > 999 is provided for an Integer variable, it's rendered with a dot
  * MSA-9570 - [Microservice/Workflow] Default value for Composite variables
- * MSA-9581 - [Manage Entities] Delete not working in list view
  * MSA-9584 - [Microservice] there is no format check for some variables
- * MSA-9683 - [Workflow] Add Workflow Display name for History
- * MSA-9687 - [MS] Nested microservices use case isn't working on MSAv2
- * MSA-9688 - [Workflow] Inconsistency in WF instance status
- * MSA-9736 - [Permissions] BPM Execute Permission should be hiding delete instance
- * MSA-9747 - [Import] Error message when create MS after deactivation of local repo
- * MSA-9757 - [Topology] when triggering WF from Topology : issue in UI
- * MSA-9761 - [Workflow] update process status after resume
- * MSA-9765 - [AI ML] Generated BPM cannot be saved and run
- * MSA-9774 - [Workflow] Deleting XML in SDK folder removes all SDK files
- * MSA-9775 - [Profile] not possible to edit name/lastname/email for the profile
- * MSA-9802 - [MS] xml/netconf based MS when saved using the GUI adds an invalid xpath for the array variable parsing section of the import method in the backend MS xml
- * MSA-9818 - [Change Mgt] Configuration content from revision id API not working
- * MSA-9826 - [API] Avoid unnecessary logs in wildfly
- * MSA-9838 - [Workflow] the WF UI renders the variable is a complete different way compared to 2.3
- * MSA-9841 - [API] Raise error 401 when token expire (not 500)
- * MSA-9854 - [GWAN RAB] when installing python-sdk some modules are missing
- * MSA-9855 - [Workflow] Process scheduled as once is not listed
- * MSA-9870 - [MS] Backend Changes for Advance Variable Parameter
+ * MSA-9687 - [Microservice] Nested microservices use case isn't working on MSAv2
+ * MSA-9066 - [Microservice/Workflow] Full list of  Managed Entity in Microservice with type  Managed Entity
+ * MSA-8870 - [Microservice] Import display PHP warnings in smsd.log
+ * MSA-8891 - [Microservice] CLI editor doesn't persist the carriage returns
+ * MSA-9367 - [Microservice] issues with search, item counting and pagination
+ * MSA-9747 - [Microservice] Error message when create Microservice after deactivation of local repo
+ * MSA-9854 - [SDK] when installing python-sdk some modules are missing
+ * MSA-9524 - [SDK] Fail status by using secengine_perform_verb_
+ * MSA-9163 - [Security] Camunda dashboard is accessible with default password.
+ * MSA-9380 - [Security] We can use auth token from any MSA and consume APIs hosted on a different instance of MSA
+ * MSA-9757 - [Topology] when triggering Workflow from Topology : issue in UI
  * MSA-9983 - [Topology] fix for icons colors
+ * MSA-9051 - [Topology] service variables not listed
+ * MSA-9688 - [Workflow] Inconsistency in Workflow instance status
+ * MSA-9761 - [Workflow] update process status after resume
+ * MSA-8451 - [Workflow] a workflow can be executed by a subtenant even when not attached to him
+ * MSA-8786 - [Workflow] workflow variables : it is possible to run a Workflow even if mandatory field is empty
+ * MSA-9001 - [Workflow] some discrepancies may be seen in graphs
+ * MSA-9303 - [Workflow] issues in naming, due to special characters
+ * MSA-9355 - [Workflow] Saving one Workflow affect modified date of others WFs
+ * MSA-9534 - [Workflow] using a custom “Variable for Workflow Instance Name” doesn't work any more if the variable is the default (= service_id)
+ * MSA-9683 - [Workflow] Add Workflow Display name for History
+ * MSA-9838 - [Workflow] the Workflow UI renders the variable is a complete different way compared to 2.3
+ * MSA-9855 - [Workflow] Process scheduled as once is not listed
+ * MSA-9774 - [Workflow] Deleting XML in SDK folder removes all SDK files
 
 
 === 2.4.0 RC1
@@ -161,12 +159,12 @@ Let's say that you are running {product_name} version {revnumber-prev}, to upgra
 * MSA-9638 - [BPM] Camunda DB Persistance
 * MSA-8350 - [Docker] Create msa-alarm container
 * MSA-8523 - [Docker] Adapt msa-alarm for docker container
-* MSA-8209 - [HA] Get rid of the link customer and secnode association - SecEngine
+* MSA-8209 - [HA] Get rid of the link customer and secnode association
 * MSA-9468 - [Monitoring] Show Warning message on snmp name and poll frequency change on monitoring profile
 * MSA-9642 - [Portal] Change the message in the UI when the connection to the API is slow
 * MSA-9579 - [Workflow/Microservice] Hide create/edit/delete from Manager's view
 * MSA-9661 - [Workflow] API to list Scheduled Processes
-* MSA-9702 - [Workflow] Adapt text when deleting a WF
+* MSA-9702 - [Workflow] Adapt text when deleting a Workflow
 
 ==== Bug fixes
 
@@ -196,7 +194,7 @@ Let's say that you are running {product_name} version {revnumber-prev}, to upgra
 * MSA-9075 - [Microservice] when grouping variable, the groups are not rendered in the console
 * MSA-7738 - [Microservice] Microservice without last modified date come first when sorting
 * MSA-9760 - [Microservice] Selecting Vendor and Model displays error "This must contain valid characters"
-* MSA-9391 - [Microservice] saving a MS changes the order of the XML element in definition file and meta file
+* MSA-9391 - [Microservice] saving a Microservice changes the order of the XML element in definition file and meta file
 * MSA-9365 - [Monitoring] graph fail to load due to device external reference UBI154 not found in database
 * MSA-9473 - [Monitoring] Monitoring profile cannot be save
 * MSA-9681 - [Monitoring] Monitoring profile list displaying same number of profiles for all subtenants
