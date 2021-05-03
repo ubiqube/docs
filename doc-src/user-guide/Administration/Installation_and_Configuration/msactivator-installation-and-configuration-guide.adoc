@@ -22,13 +22,13 @@ you need to edit the interface configuration file:
 
 ....
 [root@MSActivator]#cd /etc/sysconfig/network-scripts
-[root@MSActivator network-scripts]#vi ifcfg-eth0
+[root@MSActivator network-scripts]#vi ifcfg-ensxxx
 ....
 
 Remove the reference to UUID and HWADDR. The file should be as shown:
 
 ....
-DEVICE="eth0"
+DEVICE="ensxxx"
 BOOTPROTO="none"
 IPV6INIT="yes"
 IPV6_AUTOCONF="yes"
@@ -45,8 +45,8 @@ Do the same process with ifcfg-eth1
 Then activate interfaces:
 
 ....
-[root@MSActivator network-scripts]# ifup ifcfg-eth0
-[root@MSActivator network-scripts]# ifup ifcfg-eth1
+[root@MSActivator network-scripts]# ifup ifcfg-ens192
+[root@MSActivator network-scripts]# ifup ifcfg-ens224
 ....
 
 If an error occurs, perform the following:
@@ -79,8 +79,8 @@ tool below.
 This is the configuration method for the {product_name}  access: http://w.x.y.z:3577/config.xml(login:socconfig, password:b5ty9uvh4). Access is only available through eth0 (maintenance
 interface).
 
-* eth0 is the interface dedicated to maintenance
-* eth1 is the interface dedicated to device management
+* ens192/ensxxx is the interface dedicated to maintenance
+* ens224/ensxxx is the interface dedicated to device management
 
 Fill out the sections shown below as appropriate.
 
