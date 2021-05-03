@@ -17,7 +17,7 @@ The root password for the .ova is: $ubiqube.
 
 === Interface Configuration
 
-Sometimes interfaces eth0 and eth1 are not visible. If this is the case,
+Sometimes interfaces ens192/ensxxx and ens224/ensxxx are not visible. If this is the case,
 you need to edit the interface configuration file:
 
 ....
@@ -40,7 +40,7 @@ NETMASK=255.255.255.0
 GATEWAY=10.31.1.254
 ....
 
-Do the same process with ifcfg-eth1
+Do the same process with ifcfg-ens224/ensxxx
 
 Then activate interfaces:
 
