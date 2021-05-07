@@ -4,15 +4,127 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 Various fixes have been made to the product to ensure its continued ability to empower users, ensure a smoother user experience and deliver the value that businesses need in today's environment while being ahead in terms of features, being evergreen and the agility of the {product_name} to grow.
 
-== New features
+== New manager features
 
 The following feature improvements are included with this release:
+
+=== Manager Dashboard
+
+==== New Default Dashboard Layout
+
+To simplify the ops manager experience (UX), the dashboard layout has been revisited to provide more readability:
+
+ * The Infrastructure and Automation sections are clearly labeled.
+ * The Infrastructure and Automation sections now have a 50/50 split in terms of screen space, improving visibility.
+ * The Automation section now also displays BPM status (in 2.3 it was just Workflows).
+ * The red/amber/green "traffic lights" in the top-right corner have been removed, and replaced with the new bell alarm icon.
+
+image:2.4_default_dashboard.png[width=700px]
+
+==== Kibana Dashboard
+
+A new component “Kibana Dashboard” has been added to the custom manager dashboard options to let a manager select and add a Kibana dashboard in its dashboard.
+
+image:2.4_custom_dashboard_kibana.png[width=700px]
+
+=== Managed Entity
+
+==== Managed Entity History
+
+A new history tab has been added to the Managed Entity screen to provide a configuration change management feature.
+
+The configuration change management allows a manager to:
+
+* Track all configuration changes of your Managed Entities.
+* Visualize the configuration changes in a ‘diff’ screen and compare two versions of your Managed Entity configuration.
+* Backup and rollback the running configuration of the Managed Entity.
+* Download a configuration as a text file.
+
+image:2.4_config_history_diff_border.png[width=700px]
+
+
+==== Configuration Variables
+
+A manager now has the possibility to define configuration variables at the Managed Entity level. 
+
+These configuration variables can be used in the Microservices or the Adapters to provide some Managed Entity specific configuration.
+
+=== Alarm Management
+
+The Alarm Management is now accessible any time by clicking the badge icon on the top right of the screen. The icon shows the number of alarms that have been raised by the system but not acknowledged yet.
+
+The red/amber/green status bar has been removed from the top of the screen and will be progressively replaced by the new alarm badge.
+
+A new tab "Alarms” has been added to list all the alarms raised by the system. From this tab an ops manager is able to see the details of an alarm and acknowledge the alarm. 
+
+image:2.4_alarms_ack_border.png[width=700px]
+
+=== Workflow Execution Management
+
+==== Scheduler Management
+
+Workflow execution can be scheduled and ops managers now have the possibility to view the list of the Workflow processes scheduled for later execution.
+
+==== Failed Task Retry
+
+The Workflow execution engine allows the ops managers to retry the execution of a task that failed. These managers then have the possibility to edit the parameters of the process before executing the task again.
+
+image:2.4_WF_task_retry_border.png[width=700px]
+
+=== BPM Execution Management
+
+==== Scheduled Execution
+
+The execution of a BPM can be scheduled to run once at a predetermined date. The list of scheduled executions is available and any scheduled execution can be canceled
+Execution termination
+
+image:2.4_BPM_scheduling_border.png[width=700px]
+
+A running BPM can now be terminated any time. This is useful if an ops manager simply wants to cancel a running BPM that was started by mistake.
+
+==== Select a Workflow Instance from an Existing BPM Task
+
+Another new BPM enhancement is the ability to select an existing WF instance from a previous BPM task, and feed that forward into the next task. 
+
+This is extremely useful for BPM designers for chaining tasks together.
+
+image:2.4_BPM_use_existing_instance_border.png[width=700px]
+
+=== Topology 
+
+==== Managed Entities Categories
+
+On the topology, an ops manager can now add categories to the selected Managed Entities.
+
+Once a category is added, it automatically appears in the category filter.  
+
+This allows the user to group their Managed Entities into categories they define, and more importantly, display on their topology only the selected category.  
+
+This is very useful for displaying only those Managed Entities related to a specific application.
+
+image:2.4_topology_border.png[width=700px]
+
+=== Support for LDAP
+
+The MSActivator administrators have the ability to configure the MSActivator to use LDAP for authentication and authorization. 
+This allows leveraging an existing enterprise authentication system and lets the MSActivator user use their corporate credentials to login to the MSActivator.
+
+== New Developer Features
+
+=== Workflow
+
+From a Developer Experience (DX), in the Workflow editor in the Developer portal, a developer now has the option to generate a new task to call a Microservice.  
+
+Once you select the Microservice and the command to call, the MSActivator will automatically generate the Workflow code to call that Microservice.  
+
+This is a very powerful feature, especially for non-coders, benefiting from ease of use to be able to scale effectively.
+
+image:2.4_WF_task_gen_from_MS_border.png[width=700px]
 
 
 == CoreEngine
 
 No changes have been made to the core engine from previous versions of the product. This allows consistency from branches of OpenMSA (community version), found on GitHub: https://github.com/openmsa
-
 
 == New Libraries Available
 
@@ -22,17 +134,18 @@ No changes have been made to the core engine from previous versions of the produ
 
 Instructions to upgrade available in the quickstart guide.
 
-=== Specific instruction for upgrading from {revnumber-prev} to {revnumber}
+=== Specific instructions for upgrading from {revnumber-prev} to {revnumber}
 
 Starting from version 2.2.0, the quickstart provides an upgrade script `upgrade.sh` for taking care of possible actions such as recreating some volume, executing some database specific updates,...
 
 Let's say that you are running {product_name} version {revnumber-prev}, to upgrade to the version {revnumber}, you need to follow these steps:
 
-1. `$ cd quickstart`
-2. `$ git checkout master`
-3. `$ git pull`
-4. `$ git checkout tags/{revnumber} -b {revnumber}`
-5. `$ ./scripts/upgrade.sh`
+1. `cd quickstart`
+2. `git checkout master`
+3. `git fetch --unshallow`
+4. `git pull`
+5. `git checkout tags/{revnumber} -b {revnumber}`
+6. `./scripts/install.sh`
 
 == Specific technical fixes and feature details
 

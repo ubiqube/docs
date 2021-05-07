@@ -49,16 +49,23 @@ The following prerequisites are required for a successful use of {product_name}:
 
 === Hardware Resources
 
-.on a PC (for lab experimentation)
-- minimum RAM memory to allocate to Docker: 6GB (8GB to be comfortable), 2 CPU, 50 GB of disk space.
+==== on a PC (for lab experimentation)
 
-NOTE: with less that 6GB of memory, the {product_name} may not function properly: some container such as the API container may not be able to start causing issues when connecting to the UI.
+Minimum RAM memory to allocate to Docker: 
+
+- On a 8GB RAM PC: allocate 4GB, 2 CPU, 50 GB of disk space.
+- On a 16GB RAM PC: you can allocate 6-8GB, 2+ CPU, 50 GB of disk space.
+
+NOTE: with less that 4GB of memory, the {product_name} may not function properly: some container such as the API container may not be able to start causing issues when connecting to the UI.
+
+NOTE: allocating more CPU might be tempting but before you do that you need to make sure that your system has enough memory. For instance, if you allocate 4 CPU to Docker, you need to allocate at least 8GB of memory.
 
 NOTE: if you are using Docker on MacOS, this link:https://docs.docker.com/docker-for-mac/[guide] will help you with this configuration.
 
 NOTE: if you are using Docker on Windows, this link:https://docs.docker.com/docker-for-windows/[guide] will help you with this configuration.
 
-.on a production environment 
+==== on a production environment 
+
 - minimum 16GB, 4CPU, 200GB
 
 === Docker optional custom configuration
@@ -110,10 +117,10 @@ sudo tee -a /etc/sysctl.conf <<< "vm.max_map_count=262144"
 
 Create the mini lab: clone the quickstart git repository from Github, download and run the {product_name} from DockerHub. 
 
-1. `git clone -b master --depth 1 https://github.com/ubiqube/quickstart.git`
+1. `git clone -b {revnumber} --depth 1 https://github.com/ubiqube/quickstart.git`
 2. `cd quickstart`
-3. `git fetch --depth 1 origin refs/tags/{revnumber}:refs/tags/{revnumber}`
-4. `./scripts/install.sh` or `./scripts/install_win.sh` for Windows users
+3. `git checkout tags/{revnumber} -b {revnumber}`
+4. `./scripts/install.sh` (or `./scripts/install_win.sh` for Windows users)
 
 NOTE: If you are already running the {product_name} and wish to upgrade it to a new version check the link:#upgrade[documentation below]
 
@@ -178,9 +185,9 @@ endif::[]
 [#upgrade]
 === Fresh install or upgrade ?
 
-The quickstart repository is maintained on https://github.com/ubiqube/quickstart and the latest version is available on the branch master.
+The quickstart repository is maintained on https://github.com/ubiqube/quickstart, the latest version is tagged as `tags/{revnumber}`
 
-If you are upgrading your {product_name}, you can either do a clean install for the quickstart by removing your docker containers and the quickstart directory and go to step 2. above or you can update your quickstart with `cd quickstart` and checkout the latest version you want to upgrade to.
+If you are upgrading your {product_name}, the best and easiest option is to remove your Quickstart git repository and use `git clone` to get the new version.
 
 NOTE: In case you have updated the {product_name} with `docker-compose up -d` or `docker-compose pull`, you might experience cache issues (for instance, your changes may not be reflected on the UI). To solve that, you can clean your browser cache, or use a browser private session.
 
@@ -190,10 +197,10 @@ Starting from it's version 2.2.0, the quickstart project provides a script `upgr
 
 Let's say that you are running the version {revnumber-prev}, to upgrade to the version {revnumber} you need to follow these steps:
 
-1. `git clone -b master --depth 1 https://github.com/ubiqube/quickstart.git`
-2. `cd quickstart`
-3. `git fetch --depth 1 origin refs/tags/{revnumber}:refs/tags/{revnumber}`
-4. `./scripts/install.sh`
+1. `cd quickstart`
+2. `git fetch --depth 1 origin refs/{revnumber}:refs/tags/{revnumber}`
+4. `git checkout tags/{revnumber} -b {revnumber}`
+5. `./scripts/install.sh` (or `./scripts/install_win.sh` for Windows users)
 
 NOTE: when running the upgrade script, it will ask you if you want your local libraries to be updated with the latest version from the community. If you answer 'y', the update will be done automatically. You can also do the update later manually on the container `msa_dev`.
 
@@ -208,27 +215,14 @@ this script installs and upgrades a MSA
 -ro: remove containers for services not defined in the compose file. Use it if some containers use same network as MSA
 ----
 
-==== Hot fixes: upgrade a version with an updated tag
-
-Sometime, not very often, but it can happen in the few days following a release, we release some hot fixes on the same version.
-
-When this happens, we update the docker images in the quickstart and simply move the release tags to the new git commit.
-
-If you want to update your local quickstart git repository, because you have already checked out the release tag {revnumber} on a local git branch {revnumber}, you need first to delete this local repository before you can update the quickstart and install the hot fixes.
-
-1. `git clone -b master --depth 1 https://github.com/ubiqube/quickstart.git`
-2. `cd quickstart`
-3. `git fetch --depth 1 origin refs/tags/{revnumber}:refs/tags/{revnumber}`
-4. `./scripts/install.sh`
-
 ==== Note for Windows user
 
 If your original version is 2.1, plz refer to upgrade script first provided with 2.2.0 GA. In any cases, perform those commands
 
-1. `git clone -b master --depth 1 https://github.com/ubiqube/quickstart.git`
-2. `cd quickstart`
-3. `git fetch --depth 1 origin refs/tags/{revnumber}:refs/tags/{revnumber}`
-4. `./scripts/install_win.sh`
+1. `cd quickstart`
+2. `git fetch --depth 1 origin refs/{revnumber}:refs/tags/{revnumber}`
+4. `git checkout tags/{revnumber} -b {revnumber}`
+5. `./scripts/install_win.sh`
 
 NOTE : you may face an issue at the end of the script with a message "Wait Kibana to be ready". This is a known issue, the workaround is to execute `docker-compose up -d` from another CLI.
 

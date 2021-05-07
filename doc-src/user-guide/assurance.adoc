@@ -150,7 +150,7 @@ image:assurance_log_analysis_event_flow.png[width=800px]
 [#log_anal]
 === Search logs
 
-The event stored in Elasticsearch can searched from UI in the section "Alarms" > "Logs"
+To view and search the logs you can either access the global log and alarm view by clicking on the bell icon at the screen top right or by browsing to a specific managed entity and selecting the tab "Logs"
 
 .Log analytics screen
 image:assurance_log_search.png[width=800px]
@@ -186,14 +186,17 @@ Alarm management is designed to provide email notifications to customers or mana
 
 The detection of events relies on rules configured at the super administrator level. 
 
-Rule management is available for the super administrator (ncroot). The rules are defined globally and can be modified by the SOC team. 
+Rule management is available for the super administrator (ncroot). The rules are defined globally and can be modified by the operation team. 
 
-The infrastructure management team (IT/SOC/NOC) can modify the setting of the notifications on a per-event and/or per-subtenant basis. 
+The infrastructure management team can modify the setting of the notifications on a per-event and/or per-subtenant basis. 
 The rules are executed on a periodic basis (the period frequency can be configured) and alarms are generated whenever a rule matches.
 
 === Manage alarm rules
+
+The Alarm management screen is available by clicking on the bell icon on the top right of the screen.
+
 Alarm Rule can be created from the Manage Alarms tab, as show in the below screen shot. 
-Alarm Name should be Unique across the SOC and it should not contain space. 
+Alarm Name should be Unique across the {product_name} and it should not contain space. 
 
 .Alarm rule management screen
 image:assurance_manage_alarm.png[width=800px]
