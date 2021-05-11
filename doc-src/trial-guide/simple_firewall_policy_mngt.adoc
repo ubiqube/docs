@@ -203,9 +203,9 @@ As you can see, using a Microservice is as simple as filling a form with a set o
 
 You can lean more about Adapter and Microservice use and design in the online user manual:
 
-- link:https://ubiqube.com/wp-content/docs/latest/user-guide/manager-guide-single.html#_microservices_2[Microservice use]
-- link:https://ubiqube.com/wp-content/docs/latest/developer-guide/developer-guide-single.html#_microservice_editor[Microservice design]
-- link:https://ubiqube.com/wp-content/docs/latest/developer-guide/developer-guide-single.html#_adapter_developmentx[Adapter]
+- link:https://ubiqube.com/wp-content/docs/latest/user-guide/manager-guide-single.html#_microservices_2[Microservice use,window=_blank]
+- link:https://ubiqube.com/wp-content/docs/latest/developer-guide/developer-guide-single.html#_microservice_editor[Microservice design,window=_blank]
+- link:https://ubiqube.com/wp-content/docs/latest/developer-guide/developer-guide-single.html#_adapter_developmentx[Adapter,window=_blank]
 
 == Automation - Automate the policy configuration with a Workflow
 
@@ -282,6 +282,193 @@ In this section, you will go over the design of a Workflow process in Python. Yo
 Log out of the Manager screen at the left hand side using “Logout” and login as a Developer with your same credentials.
 
 image:dev_user_login.gif[width=800px]
+
+=== Workflow design
+
+==== Overview
+image:dev_wf_overview.gif[width=800px]
+
+==== Details
+
+The dashboard lists BPM, Workflows, Microservices available for this instance of MSActivator.
+
+image:dev_wf_overview_1.png[width=800px]
+
+Go to the menu at the top and select your user login name from “Subtenant”.
+
+
+Select “Automation” from the left-hand menu, and find the Workflows attached to your dedicated subtenant.
+
+
+Go to the “Workflows” tab and you will see your listed Workflows.
+
+image:dev_wf_overview_2.png[width=800px]
+
+Click on “Simple Firewall (Python)” and you will see two key functions:
+
+- Edit: denoted by a pencil icon
+- Execute: which one does by clicking on the “+ Create Firewall Service” button.
+
+image:dev_wf_overview_3.png[width=800px]
+
+Click on the (pencil icon) to edit the Workflow.
+
+===== Workflow structure overview
+
+Become familiar with Workflow structure and general information. More information can be found in our online link:https://ubiqube.com/wp-content/docs/latest/developer-guide/developer-guide-single.html#_workflow_editor[documentation,window=_blank].
+
+image:dev_wf_overview_4.png[width=800px]
+
+====== Variables
+
+In the section “Variables” you will find the list of variables for the Workflow.
+
+Each variable defines the parameter to pass to the executing process and is based on the definition (type, display name, ...) the MSActivator will automatically render the user form to enter these parameters.
+
+For instance “Add Filter Rule” has a task “add rule” with this code block (scroll down to see it):
+
+[source, python]
+----
+dev_var = Variables()
+dev_var.add("id")
+dev_var.add("icmp")
+dev_var.add("src_ip")
+dev_var.add("dst_port")
+----
+
+This will tell the UI to generate a form with these 4 parameters. Based on each variable definition, the form fields will render differently.
+
+For instance, the parameter "icmp" is defined as a boolean variable, thus it"ll render as a checkbox. We’ll have a closer look.
+
+====== Processes and Tasks
+
+Check the code and notice Microservice functions: a Workflow can have multiple processes and each process is composed of one or more tasks where the Python implementation is.
+
+To see this, within the same “Simple Firewall (Python)” Workflow, click on “Add Filter Rule” on the left-hand side of the screen and then click on “add rule” on the right-hand side. You should see something like this:
+
+image:dev_wf_overview_5.png[width=800px]
+
+Scroll down and find the code block that calls the Microservice "simple_firewall" (this will normally be line 24 in this example, but might slightly differ on your version). The code should look similar to this:
+
+[source, python]
+----
+  # build the Microservice JSON params for the CREATE
+  micro_service_vars_array = {"object_id": context["id"],
+                              "src_ip": context["src_ip"],
+                              "dst_port": context["dst_port"]
+                              }
+  object_id = context["id"]
+  simple_firewall = {"simple_firewall": {object_id: micro_service_vars_array}}
+
+
+  # call the CREATE for simple_firewall MS for each device
+  order = Order(device_db_id)
+  order.command_execute("CREATE", simple_firewall)
+----
+
+In this example we won’t edit the Microservice itself, but it gives you an idea of how MSActivator easily integrates various services into its engine to allow you to perform seamless automation.
+
+===== Workflow Editing
+
+Let's add a new process to the Workflow.
+
+The goal of this modification is to enable notification when a new security policy is configured.
+
+We are going to add a new Process that writes an event in the MSActivator log analytics engine.
+
+Later, we will chain the Workflow processes together with a BPM to automate the creation of the policy and write the event in the log analytics database.
+
+====== Create new process
+
+When still in the Simple Firewall (Python) Workflow, look under Information and Variables on the left hand side and you will see a "+" next to Processes.
+
+You can create a new process by clicking on the “+” icon in the left menu of the Workflow editor.
+
+If you see the “Write Event” process already listed then you can skip the next step. Otherwise follow these steps:
+
+Set a Process Name to “Write Event” and the Process Type to “UPDATE”. Then click on Save. That shows you how to create new processes within a Workflow.
+
+image:dev_wf_overview_6.png[width=800px]
+
+If you have created any additional processes you can delete them by clicking on the “Delete” icon at the top. Confirm your deletion. This shows how easy it is to manipulate processes for MSActivator.
+
+Now find the “Write Event” process in the left menu and add a new task by clicking the “+” sign in Tasks.  Name the task “Create Event”. You can leave the other areas as normal.
+
+image:dev_wf_overview_7.png[width=800px]
+
+If it asks to save then click on "Save", select the new task and copy and paste the code below into the task:
+
+[source, python]
+----
+from msa_sdk.variables import Variables
+from msa_sdk.msa_api import MSA_API
+from datetime import datetime
+import time
+import json
+import requests
+
+dev_var = Variables()
+context = Variables.task_call(dev_var)
+
+dateTimeObj = datetime.now()
+format = "%Y-%m-%dT%H:%M:%S+0000"
+current_time = dateTimeObj.strftime(format)
+format = "%Y-%m-%d"
+date = dateTimeObj.strftime(format)
+url = "http://msa_es:9200/ubilogs-"+date+"/_doc"
+severity = "5"
+subtenant_ref = context["UBIQUBEID"];
+subtenant_id = context["UBIQUBEID"][4:];
+
+message = "policy source IP: "+context["src_ip"]+" destination port "+context["dst_port"]+" applied"
+
+devices = context["devices"]
+
+for device in devices:  
+  # extract the database ID
+  device_id = device["id"]
+  device_db_id = device["id"][3:]
+
+  payload = {"rawlog": ""+message+"", "device_id": ""+device_id+"", "date": ""+current_time+"", "customer_ref": ""+subtenant_ref+"","customer_id": ""+subtenant_id+"", "severity": ""+severity+"", "type": "VNOC", "subtype": "Configuration"}
+
+  headers = {"content-type": "application/json"}
+  r = requests.post(url, json=payload, headers=headers)
+
+ret = MSA_API.process_content("ENDED", f"Post Result: {r}, url: {url}", context, True)
+print(ret)
+----
+
+Now after pasting into the “PYTHON:” area then click on “Save Task”.
+
+If you get an error, try this instead … click to “Delete Task”, then click the “+” to create a new task. 
+This time give it the name “Create New Event”. 
+Once you do so, you will find there is code generated, which then you copy the entire section above and replace the text in the “PYTHON:” box with the text above. Make sure you copy the whole thing. 
+Then click on “Save Task”.
+
+Then click on “Save Workflow” in the upper right hand corner, and let's run the first test.
+
+Select the process (will be a number) and from the “More Actions” drop-down list select “Write event” and click on Run to execute it.
+
+image:dev_wf_overview_8.png[width=800px]
+
+You should get a pop-up to say the “Write Event” executed properly. Click on the "x" to close that menu. Click on the “x” in the top-right corner to exit from that screen.
+
+Click on the bell icon on the top right of the screen and select the “Logs” tab.
+
+A new event should be visible at the top of the list. Various severities are listed to give you additional Assurance information while monitoring your digital ecosystem. Again, this is under a single pane of glass to bring simplicity to a complex infrastructure.
+
+image:dev_wf_overview_9.png[width=800px]
+
+=== Conclusion
+
+At this stage you are able to edit a Workflow and add some processes to enrich your infrastructure automation.
+
+
+The possibilities for evolution are endless due to the multi-layered integration of the MSActivator and the use of industry standard development frameworks such as Python.
+
+
+The next part of this tutorial will show you how to design a simple BPM to chain these Workflow processes into one single automation experience.
+
 
 
 

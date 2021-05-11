@@ -37,8 +37,8 @@ The following prerequisites are required for a successful use of {product_name}:
 
 . A recent version of Git. 
 . A working docker and docker-compose setup
-* link:https://docs.docker.com/install/[Docker]
-* link:https://docs.docker.com/compose/install/[Docker Compose]
+* link:https://docs.docker.com/install/[Docker,window=_blank]
+* link:https://docs.docker.com/compose/install/[Docker Compose,window=_blank]
 
 == Setup requirements
 
@@ -129,7 +129,7 @@ NOTE: The architecture of the mini lab is detailed in the architecture overview 
 [#step{counter:step}]
 === Step {step}: install the trial license 
 
-On link:https://ubiqube.com/free-trial/[ubiqube.com], fill the form to receive a trial license by email.
+On link:https://ubiqube.com/free-trial/[ubiqube.com,window=_blank], fill the form to receive a trial license by email.
 
 Open link:https://localhost/[window=_blank] and connect with username `ncroot` and password `ubiqube`.
 
