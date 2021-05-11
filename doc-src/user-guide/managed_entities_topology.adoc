@@ -1,4 +1,4 @@
-= Network Topology
+= Topology
 ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
@@ -22,7 +22,13 @@ On the topology view you can right-click on a managed entity icon and add catego
 
 This is useful to organize your infrastructure elements.
 
+ifdef::html,env-github,env-browser[]
 image:topology_category_anim.gif[width=800px]
+endif::[]
+
+ifdef::pdf[]
+image:topology_category.png[width=800px]
+endif::[]
 
 Use the "Filter By" action to filter your topology view and only display the elements you are interested in.
 
@@ -32,7 +38,14 @@ If you right-click anyway on the topology canvas, a contextual menu will pop-up 
 
 This is a useful shortcut when you need to run some automated processes based a visual display of your infrastructure.
 
+ifdef::html,env-github,env-browser[]
 image:topology_automation_anim.gif[width=800px]
+endif::[]
+
+ifdef::pdf[]
+image:topology_automation.png[width=800px]
+endif::[]
+
 
 == Topology types
 

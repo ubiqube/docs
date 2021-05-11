@@ -19,6 +19,114 @@ endif::[]
 This documentation will guide you through the implementation of a simple workflow to block a source IP and a destination port on a Linux based VNF
 
 == Overview
+Overview
+The goal of this tutorial is to give you, in about 30 minutes, an overview of the main features of the MSActivator as a development and integration platform but also as an operation platform for managing your infrastructure.
+
+In this tutorial, you will first go through the MSActivator Manager experience. You will see, with a simple use case how you can:
+
+* Onboard and monitor your Managed Entity (Managed Entity)
+** Managed Entities are the various devices, systems, etc. that are part of your digital ecosystem
+* Use Microservices (MS) to do some simple policy configuration on your Managed Entity
+* Use Workflow to automate the configuration.
+
+In the second part you will go through the MSActivator Developer Experience.
+
+You will be driven, step by step through simple examples of design Workflow and BPM (Business Process Management) to automate a simple use case of security policy and assurance orchestration 
+
+== Ops Manager Experience
+
+NOTE: it is best if you open these instructions in a separate window to follow through on MSActivator.
+
+For our purposes today, log into the Manager screen with your details. 
+Click Log In to start your automation journey.
+
+image:ops_user_login.gif[width=800px]
+
+You will see Tenant, Subtenant along the top of the screen which is the environment you will use.
+
+NOTE: with MSActivator installed on your system you would have administrator access to create as many tenants and subtenants as you need.
+
+=== Environment Overview
+Once connected to the Manager portal you have access to your own dedicated subtenant. 
+
+You have a dedicated Linux based Managed Entity that you can use for this tutorial. Please use the dropdown menu from “Subtenant” to select the subtenant that aligns with your login details (this should be your email address).
+
+image:ops_user_dashboard.png[width=800px]
 
 
-== Implementation
+In terms of your environment, here is an overview of MSActivator's components and where the Linux Managed Entity will be created to use in this scenario.
+
+image:msa_docker_env.png[width=800px]
+
+
+For this scenario you will be working with a Linux Managed Entity (Managed Entity) and automating the configuration of iptables-based firewall policy. You will be able to use Microservices and Workflows to create an abstraction layer on top of the Managed Entity.
+
+Browse to your Managed Entity by clicking on “Infrastructure” in the left menu.
+
+Click on the Managed Entity name in the list. This should read "linux_machine-[your logon]".
+
+image:ops_user_browse_to_me.gif[width=800px]
+
+This Managed Entity is implemented by a dedicated Linux based Docker container that you will be using for this demo scenario. 
+
+=== Assurance - Monitoring Profile
+In this section you will be creating a monitoring profile to monitor the CPU of your Managed Entity.
+
+Go back to the main screen. Click on Infrastructure again, then the “Monitoring Profiles” tab and click on the  “+ Create Monitoring Profile” blue button to the right of the tab.
+
+In the information section, use the value below:
+
+- Profile Name: CPU Load (you can also choose whichever name you want for Profile Name)
+- Leave Comment and External Reference blank.
+
+==== Polling rules
+
+Click on the “+Add Rule” blue button located beneath and use these values:
+
+- Name : cpu_load_1min
+- OID: 1.3.6.1.4.1.2021.10.1.5.1
+- Type: Gauge
+
+You can leave the other fields with the default values.
+
+==== Graphical rendering
+
+Next go to the Graphical Rendering menu on the left, click on "+Add Graph" with the values below:
+
+- Graph Name: CPU
+- Units: CPU load
+
+Click on the “+” icon located below to add a new data as follows:
+
+- Select the Date Name: cpu_load_1min
+- X Axis: 1 min
+- Choose a color from the color picker on the right
+
+==== Attach managed entities
+
+Click on the “Create Monitoring Profile” blue button in the upper right corner to save the profile. This will then put you back in the Infrastructure > Monitoring Profiles tab.
+
+From the Monitoring Profile tab, attach the Managed Entity to the profile by clicking on the icon as shown below.
+
+Attach the Managed Entity (linux_machine-[your logon]) by selecting the empty box next to your managed entity and then moving it to the column on the right by using the  ">" arrow.
+
+Now click on “Save” to save the profile.
+
+image:ops_user_create_mon_pfl.gif[width=800px]
+
+
+Monitoring starts after about one minute. 
+
+To see this, click on the name of your Managed Entity in the “Infrastructure” > “Managed Entity” tab, and you can select the new monitoring profile from the drop down list and see the graph you created with your data. 
+
+NOTE: if you see an error message that says, “The selected monitoring profile doesn't have any graphical rendering defined” then this means it is too early to see data. Check back in a few minutes.
+
+For example, select the "linux-machine-[your logon]" from Infrastructure > Managed Entity main screen, in the Overview area, go to Monitoring Profiles underneath and select "cpu_load_1min" and View Data for "Last hour".
+
+image:ops_user_view_me_graph.gif[width=800px]
+
+This demonstrates how you can monitor your infrastructure from a single pane of glass. 
+
+Now let's move onto integration.
+
+
