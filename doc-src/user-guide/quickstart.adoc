@@ -117,10 +117,10 @@ sudo tee -a /etc/sysctl.conf <<< "vm.max_map_count=262144"
 
 Create the mini lab: clone the quickstart git repository from Github, download and run the {product_name} from DockerHub. 
 
-1. `git clone -b {revnumber} --depth 1 https://github.com/ubiqube/quickstart.git`
-2. `cd quickstart`
-3. `git checkout tags/{revnumber} -b {revnumber}`
-4. `./scripts/install.sh` (or `./scripts/install_win.sh` for Windows users)
+. `git clone -b {revnumber} --depth 1 https://github.com/ubiqube/quickstart.git`
+. `cd quickstart`
+. `git checkout tags/{revnumber} -b {revnumber}`
+. `./scripts/install.sh` (or `./scripts/install_win.sh` for Windows users)
 
 NOTE: If you are already running the {product_name} and wish to upgrade it to a new version check the link:#upgrade[documentation below]
 
@@ -197,18 +197,19 @@ Starting from it's version 2.2.0, the quickstart project provides a script `upgr
 
 Let's say that you are running the version {revnumber-prev}, to upgrade to the version {revnumber} you need to follow these steps:
 
-1. `cd quickstart`
-2. `git fetch --depth 1 origin refs/{revnumber}:refs/tags/{revnumber}`
-3. `git checkout tags/{revnumber} -b {revnumber}`
-4. `./scripts/install.sh` (or `./scripts/install_win.sh` for Windows users)
+. `cd quickstart`
+. `git fetch --depth 1 origin refs/{revnumber}:refs/tags/{revnumber}`
+. `git checkout tags/{revnumber} -b {revnumber}`
+. `./scripts/install.sh` (or `./scripts/install_win.sh` for Windows users)
 
 NOTE: when running the upgrade script, it will ask you if you want your local libraries to be updated with the latest version from the community. If you answer 'y', the update will be done automatically. You can also do the update later manually on the container `msa_dev`.
 
 [source, shell]
 ----
-[root@msa2 quickstart]# ./scripts/install.sh --help
+# ./scripts/install.sh --help
 usage: install.sh [--mini-lab|-m] [--force|-f] [--cleanup|-c] [--remove-orphans|-ro]
-this script installs and upgrades a MSA
+this script installs and upgrades a {product_name}
+
 -m: mini lab creation. Create a demo platform around a Linux ME
 -f: force the upgrade without asking for user confirmation. Permit also to reapply the upgrade and to auto merge files from OpenMSA
 -c: cleanup unused images after upgrade to save disk space. This option clean all unused images, not only MSA quickstart ones
@@ -219,10 +220,10 @@ this script installs and upgrades a MSA
 
 If your original version is 2.1, plz refer to upgrade script first provided with 2.2.0 GA. In any cases, perform those commands
 
-1. `cd quickstart`
-2. `git fetch --depth 1 origin refs/{revnumber}:refs/tags/{revnumber}`
-3. `git checkout tags/{revnumber} -b {revnumber}`
-4. `./scripts/install_win.sh`
+. `cd quickstart`
+. `git fetch --depth 1 origin refs/{revnumber}:refs/tags/{revnumber}`
+. `git checkout tags/{revnumber} -b {revnumber}`
+. `./scripts/install_win.sh`
 
 NOTE : you may face an issue at the end of the script with a message "Wait Kibana to be ready". This is a known issue, the workaround is to execute `docker-compose up -d` from another CLI.
 
