@@ -1,0 +1,287 @@
+= Firewall Policy Orchestration
+:front-cover-image: image:trial-front-cover.pdf[]
+:toc: left
+:toclevels: 3
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+ifndef::imagesdir[:imagesdir: images]
+
+//OK HTML 
+ifdef::html[]
+:includedir: doc-src/trial-guide
+endif::[]
+
+// OK PDF
+ifdef::pdf[]
+:includedir: .
+endif::[]
+
+
+This documentation will guide you through the implementation of a simple workflow to block a source IP and a destination port on a Linux based VNF
+
+== Overview
+Overview
+The goal of this tutorial is to give you, in about 30 minutes, an overview of the main features of the MicroserviceActivator as a development and integration platform but also as an operation platform for managing your infrastructure.
+
+In this tutorial, you will first go through the MicroserviceActivator Manager experience. You will see, with a simple use case how you can:
+
+* Onboard and monitor your Managed Entity (Managed Entity)
+** Managed Entities are the various devices, systems, etc. that are part of your digital ecosystem
+* Use Microservices (Microservice) to do some simple policy configuration on your Managed Entity
+* Use Workflow to automate the configuration.
+
+In the second part you will go through the MicroserviceActivator Developer Experience.
+
+You will be driven, step by step through simple examples of design Workflow and BPM (Business Process Management) to automate a simple use case of security policy and assurance orchestration 
+
+== Ops Manager Experience
+
+NOTE: it is best if you open these instructions in a separate window to follow through on MicroserviceActivator.
+
+For our purposes today, log into the Manager screen with your details. 
+Click Log In to start your automation journey.
+
+image:ops_user_login.gif[width=800px]
+
+You will see Tenant, Subtenant along the top of the screen which is the environment you will use.
+
+NOTE: with MicroserviceActivator installed on your system you would have administrator access to create as many tenants and subtenants as you need.
+
+=== Environment Overview
+Once connected to the Manager portal you have access to your own dedicated subtenant. 
+
+You have a dedicated Linux based Managed Entity that you can use for this tutorial. Please use the dropdown menu from “Subtenant” to select the subtenant that aligns with your login details (this should be your email address).
+
+image:ops_user_dashboard.png[width=800px]
+
+
+In terms of your environment, here is an overview of MicroserviceActivator's components and where the Linux Managed Entity will be created to use in this scenario.
+
+image:msa_docker_env.png[width=800px]
+
+
+For this scenario you will be working with a Linux Managed Entity (Managed Entity) and automating the configuration of iptables-based firewall policy. You will be able to use Microservices and Workflows to create an abstraction layer on top of the Managed Entity.
+
+Browse to your Managed Entity by clicking on “Infrastructure” in the left menu.
+
+Click on the Managed Entity name in the list. This should read "linux_machine-[your logon]".
+
+image:ops_user_browse_to_me.gif[width=800px]
+
+This Managed Entity is implemented by a dedicated Linux based Docker container that you will be using for this demo scenario. 
+
+=== Assurance - Monitoring Profile
+In this section you will be creating a monitoring profile to monitor the CPU of your Managed Entity.
+
+image:ops_user_create_mon_pfl.gif[width=800px]
+
+Go back to the main screen. Click on Infrastructure again, then the “Monitoring Profiles” tab and click on the  “+ Create Monitoring Profile” blue button to the right of the tab.
+
+In the information section, use the value below:
+
+- Profile Name: CPU Load (you can also choose whichever name you want for Profile Name)
+- Leave Comment and External Reference blank.
+
+==== Polling rules
+
+Click on the “+Add Rule” blue button located beneath and use these values:
+
+- Name : cpu_load_1min
+- OID: 1.3.6.1.4.1.2021.10.1.5.1
+- Type: Gauge
+
+You can leave the other fields with the default values.
+
+==== Graphical rendering
+
+Next go to the Graphical Rendering menu on the left, click on "+Add Graph" with the values below:
+
+- Graph Name: CPU
+- Units: CPU load
+
+Click on the “+” icon located below to add a new data as follows:
+
+- Select the Date Name: cpu_load_1min
+- X Axis: 1 min
+- Choose a color from the color picker on the right
+
+==== Attach managed entities
+
+Click on the “Create Monitoring Profile” blue button in the upper right corner to save the profile. This will then put you back in the Infrastructure > Monitoring Profiles tab.
+
+From the Monitoring Profile tab, attach the Managed Entity to the profile by clicking on the icon as shown below.
+
+Attach the Managed Entity (linux_machine-[your logon]) by selecting the empty box next to your managed entity and then moving it to the column on the right by using the  ">" arrow.
+
+Now click on “Save” to save the profile.
+
+
+
+Monitoring starts after about one minute. 
+
+To see this, click on the name of your Managed Entity in the “Infrastructure” > “Managed Entity” tab, and you can select the new monitoring profile from the drop down list and see the graph you created with your data. 
+
+NOTE: if you see an error message that says, “The selected monitoring profile doesn't have any graphical rendering defined” then this means it is too early to see data. Check back in a few minutes.
+
+For example, select the "linux-machine-[your logon]" from Infrastructure > Managed Entity main screen, in the Overview area, go to Monitoring Profiles underneath and select "cpu_load_1min" and View Data for "Last hour".
+
+image:ops_user_view_me_graph.gif[width=800px]
+
+This demonstrates how you can monitor your infrastructure from a single pane of glass. 
+
+Now let's move onto integration.
+
+
+== Integration - Configure a Policy with Microservice
+
+=== Overview
+
+In this section, you will learn how to use a Microservice to configure a security policy on a Managed Entity.
+
+A Microservice is a simple object that implements some functions to create/read/update/delete and import a configuration on a Managed Entity.
+
+image:ops_user_configure_me.gif[width=800px]
+
+
+=== Details
+
+From the Managed Entity screen which can be found by clicking on Infrastructure > Managed Entities > click on your Managed Entity (as shown below) browse to the tab “Configure” and select the Microservice (Microservice) “Simple Firewall”.
+
+image:ops_ms_config_1.png[width=800px]
+
+Click “+ Add Row” to configure a new policy on your Linux Managed Entity.
+
+This policy will be configuring a rule to block traffic for a source IP address and a destination port.
+
+On the Linux container, the rule will be implemented by iptables command below at the backend:
+
+----
+sudo iptables -A INPUT -p tcp --dport <PORT TO BLOCK> -s <IP TO BLOCK> -j DROP
+sudo iptables -A FORWARD -p tcp --dport <PORT TO BLOCK> -s <IP TO BLOCK> -j DROP
+----
+
+We can do that much simpler. On the Add Row screen leave the ID the same and then fill in the form where Source IP is a valid IP address (e.g. 192.168.12.23) and a valid destination port (e.g. 443). 
+
+If you leave the Destination Port blank then saving the rule will not work according to the iptables command as shown above, so please choose a relevant port such as 443 in this example.
+
+Fill the form with an IP address and a destination port (example: 192.168.12.23 / 443) and click “Save”.
+
+image:ops_ms_config_2.png[width=800px]
+
+A new line is added to the list with your configuration.
+
+At this stage the configuration is not yet applied to the Linux Managed Entity, it is stacked in the MicroserviceActivator configuration database, ready to be applied.
+
+image:ops_ms_config_3.png[width=800px]
+
+
+To apply the configuration, click on “Apply Changes” and confirm the action with OK.
+
+Once finished, you can select the microserviceMicroservice “Simple Firewall”, a new line is visible which means that the configuration was successfully applied and the Linux actual configuration was correctly synchronized with the MicroserviceActivator configuration database.
+
+Let's add another row to the Managed EntityManaged Entity. Follow the same steps as above. 
+
+. Click on “+Add Row”.
+. Leave ID the same, then in Source IP type: 192.168.12.24 .
+. For Destination Port type: 443, then click “Save”.
+. Click on “Apply Changes”.
+
+Go to the “History” tab (right tab on the Managed Entity screen), select the 2 configuration versions and click on “Diff” to show the configuration changes that were applied. If this is your first configuration, then only 1 configuration will appear. 
+
+image:ops_ms_config_4.png[width=800px]
+
+
+You can add another policy and check that the configuration update is as expected.
+
+Normally you can also select a microservice instance from the Managed Entity “Configure” tab located within the Managed Entity and delete it or update it from the Managed Entity itselfManaged Entity, but this feature is deactivated in this hosted free trial version.
+
+NOTE: if you activate the Managed Entity that is already activated and green, then it will go red and back to green within a minute or so.
+
+=== Conclusion
+At this stage, you have been able to use a Microservice to configure a security policy on a Managed Entity.
+
+As you can see, using a Microservice is as simple as filling a form with a set of parameters and the MicroserviceActivator configuration engine takes care of building the configuration based on your vendor and applying the configuration with the proper Adapter.
+
+You can lean more about Adapter and Microservice use and design in the online user manual:
+
+- link:https://ubiqube.com/wp-content/docs/latest/user-guide/manager-guide-single.html#_microservices_2[Microservice use]
+- link:https://ubiqube.com/wp-content/docs/latest/developer-guide/developer-guide-single.html#_microservice_editor[Microservice design]
+- link:https://ubiqube.com/wp-content/docs/latest/developer-guide/developer-guide-single.html#_adapter_developmentx[Adapter]
+
+== Automation - Automate the policy configuration with a Workflow
+
+=== Overview
+
+In this section, you will learn how to use a Workflow to select a Managed Entity and execute a process to configure a security policy.
+
+The Workflow integrates seamlessly with the Microservice you have used in the previous section which means that any changes made to the configuration with the Workflow will be reflected in the Managed Entity “Configure” tab.
+
+image:ops_user_workflow_configure_me.gif[width=800px]
+
+
+=== Details
+To access the Workflow, from the Manager portal, browse to the “Automation” menu at the left and select the “Workflows” tab.
+
+image:ops_wf_config_1.png[width=800px]
+
+Click on “Simple Firewall (Python)” to select the Workflow to use.
+
+On this screen you can see the list of the workflow instances (currently this list is empty since no Process has been executed yet) and a button “+ Create Firewall Service” to execute a Workflow process and create a new Workflow instance.
+
+image:ops_wf_config_2.png[width=800px]
+
+Click on “+ Add”. Then click where it says "Unknown Device - null", select the Managed Entity by checking the box next to its name (should be named similar to linux-machine-[your logon] and click “RUN”.
+
+image:ops_wf_config_3.png[width=800px]
+
+The process “Create Firewall Service” executes and a new Workflow instance is created. Click on the "X" to close the pop-up. Click again on the "x" in the upper right to close that menu. You should see Simple Firewall (Python) as your Workflow. We now need to add filter rules.
+
+image:ops_wf_config_4.png[width=800px]
+
+For each instance, 2 processes are available:
+
+- “Add Filter Rule” to configure a policy on the Managed Entity
+- “Delete Service” to delete the Workflow instance.
+
+Click on “Add Filter Rule” and fill the form with these values:
+
+- Rule ID: 4
+- Source IP: 192.168.10.11
+- Destination Port: 161
+
+Click “Run” to execute the process. You will see another pop-up that should show a green add rule being created. Click on the "x" to close it. You can view the History tab to see the rules being added. Click the "x" to return to the Workflow.
+
+image:ops_wf_config_5.png[width=800px]
+
+
+The Workflow instance is updated and a message shows the iptable CLI command that was used to configure the policy.
+
+image:ops_wf_config_6.png[width=800px]
+
+Now, browse to your Managed Entity (remember that is under “Infrastructure” at the left, then “Managed Entities”) for the “linux_machine-[your logon]”. Click on the Managed Entity and in the tab “Configure”, click on “Synchronize with Managed Entity”.
+
+image:ops_wf_config_7.png[width=800px]
+
+Click on the Simple Firewall Microservice and check that the new policy rule was added to the list. You can see this under the Configure tab. You can also see in the History tab the new rule created and even run a DIFF on the last two rules to see the difference. 
+
+Everything at the backend with the Managed Entity is executed without having to logon to the system itself. 
+
+You see how easy that was?
+
+=== Conclusion
+
+At this stage you learned how to use Workflows to execute automated orchestration processes. 
+
+You could also see how Workflows and Microservices are interacting with each other.
+
+In the next part of the tutorial, you will learn the details of the integration between Workflows and Microservices. You will also learn how to edit a Workflow to add additional processes to it and enrich your automated processes.
+
+== Developer Experience
+
+In this section, you will go over the design of a Workflow process in Python. You will also go through the design of a BPM to chain the execution of the process and provide a complete, integrated infrastructure automation experience.
+
+Log out of the Manager screen at the left hand side using “Logout” and login as a Developer with your same credentials.
+
+image:dev_user_login.gif[width=800px]
+
+
+

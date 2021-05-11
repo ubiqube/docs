@@ -114,6 +114,11 @@ The audit logs are available for each user in the "Profile" menu, under "Audit L
 
 image:audit_logs.png[width=800px]
 
+Since audit record are stored in Elasticsearch, you can use Kibana to design a simple user activity dashboard and display it in your super admin dashboard
+
+image:audit_logs_kibana.png[width=800px]
+
+
 === Roles and rights management : permission profiles
 
 The {product_name} provides a simple authorization mechanism based on 4 user roles, the privileged administrator, the administrator, the privileged manager, and the manager.
@@ -126,5 +131,3 @@ You can create a permission profile as ncroot from the "Admin" section. Permissi
 
 image:permission_profile.png[width=800px]
 
-// TODO: update in 2.4
-NOTE: implementation of permissions in version 2.3.0GA is a partial implementation to provide a preview of the UI but it is not functional yet and this is the reason why it’s deactivated by default. To activate the permission profile, you have to edit the docker-compose file and set FEATURE_PERMISSION_PROFILES to true.

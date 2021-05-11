@@ -8,12 +8,14 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 |Version | Link
 
 | 2.4.0 GA (latest) |  https://ubiqube.com/wp-content/docs/latest
+| 2.3.1 (latest) |  https://ubiqube.com/wp-content/docs/2.3.1
 | 2.3.0 GA |  https://ubiqube.com/wp-content/docs/2.3.0GA
 | 2.2.0 GA |  https://ubiqube.com/wp-content/docs/2.2.0GA
 | 2.1.0 GA |  https://ubiqube.com/wp-content/docs/2.1.0GA
 | 2.0.0 Alpha|  https://ubiqube.com/wp-content/docs/2.0.0
 | 2.0.1 Beta|  https://ubiqube.com/wp-content/docs/2.0.1
-| 17.7 |  link:https://ubiqube.com/wp-content/docs/17.x/user-guide[https://ubiqube.com/wp-content/docs/17.x]
+| 17.8 |  link:https://ubiqube.com/wp-content/docs/17.8/user-guide[https://ubiqube.com/wp-content/docs/17.8]
+| 17.7 |  link:https://ubiqube.com/wp-content/docs/17.7/user-guide[https://ubiqube.com/wp-content/docs/17.7]
 |===
 
 == Differences between version 17.x and the {product_name-version} latest release ?

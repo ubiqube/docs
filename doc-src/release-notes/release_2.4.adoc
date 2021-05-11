@@ -4,15 +4,127 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 Various fixes have been made to the product to ensure its continued ability to empower users, ensure a smoother user experience and deliver the value that businesses need in today's environment while being ahead in terms of features, being evergreen and the agility of the {product_name} to grow.
 
-== New features
+== New manager features
 
 The following feature improvements are included with this release:
+
+=== Manager Dashboard
+
+==== New Default Dashboard Layout
+
+To simplify the ops manager experience (UX), the dashboard layout has been revisited to provide more readability:
+
+ * The Infrastructure and Automation sections are clearly labeled.
+ * The Infrastructure and Automation sections now have a 50/50 split in terms of screen space, improving visibility.
+ * The Automation section now also displays BPM status (in 2.3 it was just Workflows).
+ * The red/amber/green "traffic lights" in the top-right corner have been removed, and replaced with the new bell alarm icon.
+
+image:2.4_default_dashboard.png[width=700px]
+
+==== Kibana Dashboard
+
+A new component “Kibana Dashboard” has been added to the custom manager dashboard options to let a manager select and add a Kibana dashboard in its dashboard.
+
+image:2.4_custom_dashboard_kibana.png[width=700px]
+
+=== Managed Entity
+
+==== Managed Entity History
+
+A new history tab has been added to the Managed Entity screen to provide a configuration change management feature.
+
+The configuration change management allows a manager to:
+
+* Track all configuration changes of your Managed Entities.
+* Visualize the configuration changes in a ‘diff’ screen and compare two versions of your Managed Entity configuration.
+* Backup and rollback the running configuration of the Managed Entity.
+* Download a configuration as a text file.
+
+image:2.4_config_history_diff_border.png[width=700px]
+
+
+==== Configuration Variables
+
+A manager now has the possibility to define configuration variables at the Managed Entity level. 
+
+These configuration variables can be used in the Microservices or the Adapters to provide some Managed Entity specific configuration.
+
+=== Alarm Management
+
+The Alarm Management is now accessible any time by clicking the badge icon on the top right of the screen. The icon shows the number of alarms that have been raised by the system but not acknowledged yet.
+
+The red/amber/green status bar has been removed from the top of the screen and will be progressively replaced by the new alarm badge.
+
+A new tab "Alarms” has been added to list all the alarms raised by the system. From this tab an ops manager is able to see the details of an alarm and acknowledge the alarm. 
+
+image:2.4_alarms_ack_border.png[width=700px]
+
+=== Workflow Execution Management
+
+==== Scheduler Management
+
+Workflow execution can be scheduled and ops managers now have the possibility to view the list of the Workflow processes scheduled for later execution.
+
+==== Failed Task Retry
+
+The Workflow execution engine allows the ops managers to retry the execution of a task that failed. These managers then have the possibility to edit the parameters of the process before executing the task again.
+
+image:2.4_WF_task_retry_border.png[width=700px]
+
+=== BPM Execution Management
+
+==== Scheduled Execution
+
+The execution of a BPM can be scheduled to run once at a predetermined date. The list of scheduled executions is available and any scheduled execution can be canceled
+Execution termination
+
+image:2.4_BPM_scheduling_border.png[width=700px]
+
+A running BPM can now be terminated any time. This is useful if an ops manager simply wants to cancel a running BPM that was started by mistake.
+
+==== Select a Workflow Instance from an Existing BPM Task
+
+Another new BPM enhancement is the ability to select an existing WF instance from a previous BPM task, and feed that forward into the next task. 
+
+This is extremely useful for BPM designers for chaining tasks together.
+
+image:2.4_BPM_use_existing_instance_border.png[width=700px]
+
+=== Topology 
+
+==== Managed Entities Categories
+
+On the topology, an ops manager can now add categories to the selected Managed Entities.
+
+Once a category is added, it automatically appears in the category filter.  
+
+This allows the user to group their Managed Entities into categories they define, and more importantly, display on their topology only the selected category.  
+
+This is very useful for displaying only those Managed Entities related to a specific application.
+
+image:2.4_topology_border.png[width=700px]
+
+=== Support for LDAP
+
+The MSActivator administrators have the ability to configure the MSActivator to use LDAP for authentication and authorization. 
+This allows leveraging an existing enterprise authentication system and lets the MSActivator user use their corporate credentials to login to the MSActivator.
+
+== New Developer Features
+
+=== Workflow
+
+From a Developer Experience (DX), in the Workflow editor in the Developer portal, a developer now has the option to generate a new task to call a Microservice.  
+
+Once you select the Microservice and the command to call, the MSActivator will automatically generate the Workflow code to call that Microservice.  
+
+This is a very powerful feature, especially for non-coders, benefiting from ease of use to be able to scale effectively.
+
+image:2.4_WF_task_gen_from_MS_border.png[width=700px]
 
 
 == CoreEngine
 
 No changes have been made to the core engine from previous versions of the product. This allows consistency from branches of OpenMSA (community version), found on GitHub: https://github.com/openmsa
-
 
 == New Libraries Available
 
@@ -22,17 +134,18 @@ No changes have been made to the core engine from previous versions of the produ
 
 Instructions to upgrade available in the quickstart guide.
 
-=== Specific instruction for upgrading from {revnumber-prev} to {revnumber}
+=== Specific instructions for upgrading from {revnumber-prev} to {revnumber}
 
 Starting from version 2.2.0, the quickstart provides an upgrade script `upgrade.sh` for taking care of possible actions such as recreating some volume, executing some database specific updates,...
 
 Let's say that you are running {product_name} version {revnumber-prev}, to upgrade to the version {revnumber}, you need to follow these steps:
 
-1. `$ cd quickstart`
-2. `$ git checkout master`
-3. `$ git pull`
-4. `$ git checkout tags/{revnumber} -b {revnumber}`
-5. `$ ./scripts/upgrade.sh`
+1. `cd quickstart`
+2. `git checkout master`
+3. `git fetch --unshallow`
+4. `git pull`
+5. `git checkout tags/{revnumber} -b {revnumber}`
+6. `./scripts/install.sh`
 
 == Specific technical fixes and feature details
 
@@ -40,77 +153,174 @@ Let's say that you are running {product_name} version {revnumber-prev}, to upgra
 
 ==== Features
 
+ * MSA-9657 - [Admin] LDAP Configuration Vars in MSA VARS
+ * MSA-9777 - [Admin] Disable user creation in MSA locally when LDAP is enabled
+ * MSA-9799 - [Admin] Disable user creation in MSA locally when LDAP is enabled
+ * MSA-9877 - [Admin] Add attach permission for workflow
+ * MSA-9878 - [Admin] Hide Forgot password link
+ * MSA-9880 - [Adapter] Add categories to all DAs available on OpenMSA
+ * MSA-9220 - [AI] UI to generate workflows
+ * MSA-9225 - [AI] Select transitions
+ * MSA-9784 - [AI] Send ProcessType in Create Action API
+ * MSA-9548 - [Alarm] Display Alarms for all the roles
+ * MSA-9708 - [Alarm] badge notification - update mechanism
+ * MSA-9803 - [API] API to generate Microservice Call Tasks
+ * MSA-9646 - [API] Model for list revision API in configuration backup
+ * MSA-9710 - [Assurance] Logs Tab on Infrastructure level
+ * MSA-9771 - [Assurance] Alarm API to update values into an Elasticsearch index log entry
+ * MSA-9781 - [Assurance] Logs should be available & filtered by all others users (not only for ncroot)
+ * MSA-9614 - [BPM] View List of Scheduled BPM
+ * MSA-9624 - [BPM] Terminate BPM
+ * MSA-9722 - [BPM] Update Process for the instance created by BPM
+ * MSA-8691 - [CoreEngine] make sms-polld state less Implementation
+ * MSA-9792 - [CoreEngine] make smsd state less Implementation
+ * MSA-9793 - [CoreEngine] make sms-parserd state less Implementation
+ * MSA-9794 - [CoreEngine] make sms-syslogd state less Implementation
+ * MSA-9795 - [CoreEngine] make alarmd state less Implementation
+ * MSA-9796 - [CoreEngine] make sms-bud state less Implementation
+ * MSA-9798 - [CoreEngine] remove sms_sysstatd daemon from msa_sms
+ * MSA-9541 - [Dashboard] enhancement suggestions for manager dashboard customization
+ * MSA-9691 - [Dashboard] Dashboard Enhancement
+ * MSA-9692 - [Managed Entity] Add filter to the  Managed Entity status API
+ * MSA-9634 - [Managed Entity] API for Download  Managed Entity configuration
+ * MSA-9171 - [Microservice/Workflow] Download Workflow and Microservice in zip format + bpm file
+ * MSA-9364 - [Monitoring] monitoring graph data should be visible for shorter period of time
+ * MSA-9660 - [Monitoring] Data for last one hour in monitoring profile and device rrd data
+ * MSA-9754 - [Security] Snyk Report - Highest issues in API
+ * MSA-9837 - [Security] Snyk Report: Highest issues in Linux Dev
+ * MSA-9894 - [Security] Camunda generic API:  convert payload to file if form data flag is true
+ * MSA-9613 - [Workflow] List of Scheduled Workflows
+ * MSA-9523 - [Workflow] Visibility of Workflow operation: allow the user to expand the workflow parameter zone
+ * MSA-9684 - [Workflow] Add Workflow displayName for History
+ * MSA-9732 - [Workflow] Add default value and values for Composite
+ * MSA-9779 - [Workflow] Update Workflow context on DB after end of each task + if task fails
+ * MSA-9804 - [Workflow] Modify Workflow creation to include Microservice call
+ * MSA-9766 - [YANG] Integrate PyYang in MSA 2.4 GA.
+ * MSA-9767 - [YANG] Workflow to generate an Microservice XML file from Yang.
+ * MSA-9853 - [YANG] Generate Microservice from the YANG XML structure
+
 ==== Bug fixes
+
+ * MSA-9502 - [Adapter] TFTP does not work
+ * MSA-9519 - [Admin] audit data indexed in ES doesn't have a field "date" with proper type "date" in the mapping
+ * MSA-8857 - [Admin] when a subtenant is selected, the matching tenant should also be selected
+ * MSA-8411 - [Admin] Admin page / Tenants : count takes into account the hidden tenant
+ * MSA-9775 - [Admin] not possible to edit name/lastname/email for the user profile
+ * MSA-9736 - [Admin] Execute BPM permission should be hiding delete instance icon
+ * MSA-9268 - [API] dashboard Sort By does not work properly
+ * MSA-9826 - [API] Avoid unnecessary logs in wildfly
+ * MSA-9841 - [API] Raise error 401 when token expire (not 500)
+ * MSA-9077 - [API] BaseRole is mandatory to update a manager - /user/v1/manager/{managerId} 
+ * MSA-6142 - [API] device/extended_attribute/get erroneous cast from string to Boolean
+ * MSA-8612 - [API] swagger update PropertyReader
+ * MSA-8641 - [API] API to GET repository resource returns needless value
+ * MSA-9552 - [Audit Log] as ncroot, only ncroot root logs are visible by default
+ * MSA-9818 - [Change Management] Configuration content from revision id API not working
+ * MSA-9581 - [Managed Entities] Delete not working in list view
+ * MSA-9368 - [Managed Entities] Create Managed Entity screen: enter a non-ip in name field shows and error but no useful error message
+ * MSA-9414 - [Monitoring Profile] in  Managed Entity screen, have proper message when the profiles does not have graphs to render
+ * MSA-9382 - [Microservice] unable to save PA Microservice services.xml
+ * MSA-9802 - [Microservice] xml/netconf based Microservice when saved using the GUI adds an invalid xpath for the array variable parsing section of the import method in the backend Microservice xml
+ * MSA-9870 - [Microservice] Backend Changes for Advance Variable Parameter
+ * MSA-9560 - [Microservice] when a value > 999 is provided for an Integer variable, it's rendered with a dot
+ * MSA-9570 - [Microservice/Workflow] Default value for Composite variables
+ * MSA-9584 - [Microservice] there is no format check for some variables
+ * MSA-9687 - [Microservice] Nested microservices use case isn't working on MSAv2
+ * MSA-9066 - [Microservice/Workflow] Full list of  Managed Entity in Microservice with type  Managed Entity
+ * MSA-8870 - [Microservice] Import display PHP warnings in smsd.log
+ * MSA-8891 - [Microservice] CLI editor doesn't persist the carriage returns
+ * MSA-9367 - [Microservice] issues with search, item counting and pagination
+ * MSA-9747 - [Microservice] Error message when create Microservice after deactivation of local repo
+ * MSA-9854 - [SDK] when installing python-sdk some modules are missing
+ * MSA-9524 - [SDK] Fail status by using secengine_perform_verb_
+ * MSA-9163 - [Security] Camunda dashboard is accessible with default password.
+ * MSA-9380 - [Security] We can use auth token from any MSA and consume APIs hosted on a different instance of MSA
+ * MSA-9757 - [Topology] when triggering Workflow from Topology : issue in UI
+ * MSA-9983 - [Topology] fix for icons colors
+ * MSA-9051 - [Topology] service variables not listed
+ * MSA-9688 - [Workflow] Inconsistency in Workflow instance status
+ * MSA-9761 - [Workflow] update process status after resume
+ * MSA-8451 - [Workflow] a workflow can be executed by a subtenant even when not attached to him
+ * MSA-8786 - [Workflow] workflow variables : it is possible to run a Workflow even if mandatory field is empty
+ * MSA-9001 - [Workflow] some discrepancies may be seen in graphs
+ * MSA-9303 - [Workflow] issues in naming, due to special characters
+ * MSA-9355 - [Workflow] Saving one Workflow affect modified date of others WFs
+ * MSA-9534 - [Workflow] using a custom “Variable for Workflow Instance Name” doesn't work any more if the variable is the default (= service_id)
+ * MSA-9683 - [Workflow] Add Workflow Display name for History
+ * MSA-9838 - [Workflow] the Workflow UI renders the variable is a complete different way compared to 2.3
+ * MSA-9855 - [Workflow] Process scheduled as once is not listed
+ * MSA-9774 - [Workflow] Deleting XML in SDK folder removes all SDK files
+
 
 === 2.4.0 RC1
 
 ==== Features
 
-[MSA-9327] - [Admin] Enable permissions in the code
-[MSA-9221] - [AI] UI to create states
-[MSA-9222] - [AI] UI to create actions
-[MSA-9372] - [AI] Add list of states in developer view
-[MSA-9373] - [AI] Add list of actions in developer view
-[MSA-9508] - [AI] Add an advanced parameters window
-[MSA-9510] - [AI] Change for Created BPM screen
-[MSA-9746] - [AI] Create GUI to attach actions to the states
-[MSA-9705] - [Alarm] - Icon and Badge notification
-[MSA-7421] - [API] console.log and server.log in API are not rotated
-[MSA-8674] - [API] Upgrade Swagger Version
-[MSA-9580] - [API] Upgrade Swagger Version - Part 2
-[MSA-4181] - [Auth] Create REST API for "forgot password"
-[MSA-9638] - [BPM] Camunda DB Persistance
-[MSA-8350] - [Docker] Create msa-alarm container
-[MSA-8523] - [Docker] Adapt msa-alarm for docker container
-[MSA-8209] - [HA] Get rid of the link customer and secnode association - SecEngine
-[MSA-9468] - [Monitoring] Show Warning message on snmp name and poll frequency change on monitoring profile
-[MSA-9642] - [Portal] Change the message in the UI when the connection to the API is slow
-[MSA-9579] - [Workflow/Microservice] Hide create/edit/delete from Manager's view
-[MSA-9661] - [Workflow] API to list Scheduled Processes
-[MSA-9702] - [Workflow] Adapt text when deleting a WF
+* MSA-9327 - [Admin] Enable permissions in the code
+* MSA-9221 - [AI] UI to create states
+* MSA-9222 - [AI] UI to create actions
+* MSA-9372 - [AI] Add list of states in developer view
+* MSA-9373 - [AI] Add list of actions in developer view
+* MSA-9508 - [AI] Add an advanced parameters window
+* MSA-9510 - [AI] Change for Created BPM screen
+* MSA-9746 - [AI] Create GUI to attach actions to the states
+* MSA-9705 - [Alarm - Icon and Badge notification
+* MSA-7421 - [API] console.log and server.log in API are not rotated
+* MSA-8674 - [API] Upgrade Swagger Version
+* MSA-9580 - [API] Upgrade Swagger Version - Part 2
+* MSA-4181 - [Auth] Create REST API for "forgot password"
+* MSA-9638 - [BPM] Camunda DB Persistance
+* MSA-8350 - [Docker] Create msa-alarm container
+* MSA-8523 - [Docker] Adapt msa-alarm for docker container
+* MSA-8209 - [HA] Get rid of the link customer and secnode association
+* MSA-9468 - [Monitoring] Show Warning message on snmp name and poll frequency change on monitoring profile
+* MSA-9642 - [Portal] Change the message in the UI when the connection to the API is slow
+* MSA-9579 - [Workflow/Microservice] Hide create/edit/delete from Manager's view
+* MSA-9661 - [Workflow] API to list Scheduled Processes
+* MSA-9702 - [Workflow] Adapt text when deleting a Workflow
 
 ==== Bug fixes
 
-[MSA-9604] - [Admin] Generate New Password button doesn't work
-[MSA-8827] - [Admin] Managers can browse all the subtenants even if they are not attached to them !
-[MSA-8334] - [Admin] Administration : in the filter, the char "_" is managed as a wildcard
-[MSA-8735] - [Admin] Sub-tenant association is not working as expected for a Manager account
-[MSA-8051] - [API] hhmmss is cut off for last modified date in listCustomers
-[MSA-8895] - [API] Bad Reference in swagger
-[MSA-7989] - [API/DB] Resultset leak in OperationDao / LookupDao
-[MSA-9520] - [Assurance] special characters in rawlog let elasticsearch return an error
-[MSA-9214] - [Assurance] the monitoring profile count is not refreshed properly
-[MSA-9585] - [BPM] Camunda DB Persistance
-[MSA-9470] - [BPM] Bad execution result order if user breakpoint define just after start event
-[MSA-8640] - [BPM] Possible to associate workflows which should not be accessible for a subtenant
-[MSA-9040] - [BPM] BPM execution will fail if some item are deleted from the graph
-[MSA-9425] - [BPM] Start BPM may fail
-[MSA-9703] - [BPM] close button is hidden in BPM "Add to..." window
-[MSA-9730] - [BPM] Unable to execute BPM
-[MSA-8631] - [DB] Database statement not closed
-[MSA-9395] - [DevOps] UI is missing a button to trigger the update (git pull) of the local repository
-[MSA-9462] - [DevOps] deactivate a git repository removes the .git
-[MSA-9546] - [Logs] Search logs API doesn't consider user logged in to filter the logs
-[MSA-9577] - [Managed Entity/BPM] typo correction when deleting
-[MSA-9645] - [Manager Portal] edit workflow pencil is not hidden
-[MSA-9690] - [Managed Entity] Syslog dependencies
-[MSA-9075] - [Microservice] when grouping variable, the groups are not rendered in the console
-[MSA-7738] - [Microservice] Microservice without last modified date come first when sorting
-[MSA-9760] - [Microservice] Selecting Vendor and Model displays error "This must contain valid characters"
-[MSA-9391] - [Microservice] saving a MS changes the order of the XML element in definition file and meta file
-[MSA-9365] - [Monitoring] graph fail to load due to device external reference UBI154 not found in database
-[MSA-9473] - [Monitoring] Monitoring profile cannot be save
-[MSA-9681] - [Monitoring] Monitoring profile list displaying same number of profiles for all subtenants
-[MSA-9469] - [Monitoring] Avoid losing monitoring data history on snmp name change on profile
-[MSA-9649] - [Profile] ncroot password cannot be changed
-[MSA-9164] - [Security] Camunda api have public access with no password.
-[MSA-8444] - [Security/User] Password edition not possible when editing an admin user
-[MSA-9436] - [Workflow] in Process create/edit screen update "Allow schedule" to "Allow scheduling"
-[MSA-9611] - [Workflow] - Date picker icon for scheduling not visible in FF + set default start date
-[MSA-9612] - [Workflow] issues when using variables of type Microservice Reference
-[MSA-9644] - [Workflow] Composite variable are displayed in user form even if they are not listed in the Task
-[MSA-9652] - [Workflow] Composite does not work when its selector value is false or 0
-[MSA-8788] - [Workflow] some workflow variable types issues
-[MSA-9348] - [Workflow] Workflow attachment list should be filtered by tenant
-[MSA-8893] - [Workflow] Need to be able to empty trash to empty the workflow bin
-[MSA-9763] - [Workflow] Scheduling instances not cleaned when a subtenant is removed
+* MSA-9604 - [Admin] Generate New Password button doesn't work
+* MSA-8827 - [Admin] Managers can browse all the subtenants even if they are not attached to them !
+* MSA-8334 - [Admin] Administration : in the filter, the char _ (underscore) is managed as a wildcard
+* MSA-8735 - [Admin] Sub-tenant association is not working as expected for a Manager account
+* MSA-8051 - [API] hhmmss is cut off for last modified date in listCustomers
+* MSA-8895 - [API] Bad Reference in swagger
+* MSA-7989 - [API/DB] Resultset leak in OperationDao / LookupDao
+* MSA-9520 - [Assurance] special characters in rawlog let elasticsearch return an error
+* MSA-9214 - [Assurance] the monitoring profile count is not refreshed properly
+* MSA-9585 - [BPM] Camunda DB Persistance
+* MSA-9470 - [BPM] Bad execution result order if user breakpoint define just after start event
+* MSA-8640 - [BPM] Possible to associate workflows which should not be accessible for a subtenant
+* MSA-9040 - [BPM] BPM execution will fail if some item are deleted from the graph
+* MSA-9425 - [BPM] Start BPM may fail
+* MSA-9703 - [BPM] close button is hidden in BPM "Add to..." window
+* MSA-9730 - [BPM] Unable to execute BPM
+* MSA-8631 - [DB] Database statement not closed
+* MSA-9395 - [DevOps] UI is missing a button to trigger the update (git pull) of the local repository
+* MSA-9462 - [DevOps] deactivate a git repository removes the .git
+* MSA-9546 - [Logs] Search logs API doesn't consider user logged in to filter the logs
+* MSA-9577 - [Managed Entity/BPM] typo correction when deleting
+* MSA-9645 - [Manager Portal] edit workflow pencil is not hidden
+* MSA-9690 - [Managed Entity] Syslog dependencies
+* MSA-9075 - [Microservice] when grouping variable, the groups are not rendered in the console
+* MSA-7738 - [Microservice] Microservice without last modified date come first when sorting
+* MSA-9760 - [Microservice] Selecting Vendor and Model displays error "This must contain valid characters"
+* MSA-9391 - [Microservice] saving a Microservice changes the order of the XML element in definition file and meta file
+* MSA-9365 - [Monitoring] graph fail to load due to device external reference UBI154 not found in database
+* MSA-9473 - [Monitoring] Monitoring profile cannot be save
+* MSA-9681 - [Monitoring] Monitoring profile list displaying same number of profiles for all subtenants
+* MSA-9469 - [Monitoring] Avoid losing monitoring data history on snmp name change on profile
+* MSA-9649 - [Profile] ncroot password cannot be changed
+* MSA-9164 - [Security] Camunda api have public access with no password.
+* MSA-8444 - [Security/User] Password edition not possible when editing an admin user
+* MSA-9436 - [Workflow] in Process create/edit screen update "Allow schedule" to "Allow scheduling"
+* MSA-9611 - [Workflow - Date picker icon for scheduling not visible in FF + set default start date
+* MSA-9612 - [Workflow] issues when using variables of type Microservice Reference
+* MSA-9644 - [Workflow] Composite variable are displayed in user form even if they are not listed in the Task
+* MSA-9652 - [Workflow] Composite does not work when its selector value is false or 0
+* MSA-8788 - [Workflow] some workflow variable types issues
+* MSA-9348 - [Workflow] Workflow attachment list should be filtered by tenant
+* MSA-8893 - [Workflow] Need to be able to empty trash to empty the workflow bin
+* MSA-9763 - [Workflow] Scheduling instances not cleaned when a subtenant is removed

@@ -1,4 +1,4 @@
-= Network Topology
+= Topology
 ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
@@ -16,6 +16,37 @@ You can also zoom in and out and re-arrange the layout of the nodes by dragging 
 
 If you want to persist the layout, you can save the topology with the save button on the top right corner of the topology canvas.
 
+=== Managed Entity categories
+
+On the topology view you can right-click on a managed entity icon and add categories to the managed entity.
+
+This is useful to organize your infrastructure elements.
+
+ifdef::html,env-github,env-browser[]
+image:topology_category_anim.gif[width=800px]
+endif::[]
+
+ifdef::pdf[]
+image:topology_category.png[width=800px]
+endif::[]
+
+Use the "Filter By" action to filter your topology view and only display the elements you are interested in.
+
+=== Workflow and BPM launcher
+
+If you right-click anyway on the topology canvas, a contextual menu will pop-up and from there you have the possibility to trigger the execution of a workflow or a BPM.
+
+This is a useful shortcut when you need to run some automated processes based a visual display of your infrastructure.
+
+ifdef::html,env-github,env-browser[]
+image:topology_automation_anim.gif[width=800px]
+endif::[]
+
+ifdef::pdf[]
+image:topology_automation.png[width=800px]
+endif::[]
+
+
 == Topology types
 
 2 types are available to build and display the topology view:
@@ -27,7 +58,7 @@ If you want to persist the layout, you can save the topology with the save butto
 
 The L3 SNMP mode relies on SNMP request to the managed entities to build the topology graph.
 
-image:topology_example.png[width=1000px]
+image:topology_example.png[width=800px]
 
 ==== Prerequisites
 
@@ -92,7 +123,7 @@ The VLAN mode provides a layer 2 view of your infrastructure.
 
 To generate this view you need first to create a new instance of the topology workflow and select "VLAN" for the topology type. Once this is done you will see the layer 2 topology in the topology screen of the infrastructure.
 
-image:topology_example_vlan.png[width=1000px]
+image:topology_example_vlan.png[width=800px]
 
 ==== Prerequisites
 
@@ -185,7 +216,7 @@ Switched to a new branch 'my_topology'
 
 With the {$product_name}, edit the topology workflow, edit the variable view_type and, in the "Advanced" section add `my_topology` to the values for the drop-down list. 
 
-image:topology_custom_update_wf.png[width=1000px]
+image:topology_custom_update_wf.png[width=800px]
 
 Save the workflow and use `git status` to see your change
 
@@ -268,7 +299,7 @@ At that point the implementation will be specific to your use case.
 Whenever you create a new instance of the process, a dedicated log file is created in the API container, under `/opt/jboss/wildfly/standalone/log/process-<INSTANCE_ID>.log`. 
 The workflow instance ID (39 in the screenshot below) is the one displayed at the top left corner of each instance.
 
-image:topology_custom_exec_1.png[width=1000px]
+image:topology_custom_exec_1.png[width=800px]
 
 You can monitor the log for debugging purpose: `docker-compose exec msa_api  tail -F /opt/jboss/wildfly/standalone/log/process-39.log` (where 39 is the workflow instance ID
 
@@ -276,7 +307,7 @@ Use the custom functions `logToFile` and `debug_dump` to output your debugging i
 
 With the code provided in `Template.php` you will get topology similar to this, without any links.
 
-image:topology_custom_exec_2.png[width=1000px]
+image:topology_custom_exec_2.png[width=800px]
 
 
 
