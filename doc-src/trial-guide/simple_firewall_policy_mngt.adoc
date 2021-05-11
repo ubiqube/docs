@@ -1,7 +1,7 @@
 = Firewall Policy Orchestration
 :front-cover-image: image:trial-front-cover.pdf[]
 :toc: left
-:toclevels: 3
+:toclevels: 5
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 ifndef::imagesdir[:imagesdir: images]
 
@@ -459,7 +459,7 @@ A new event should be visible at the top of the list. Various severities are lis
 
 image:dev_wf_overview_9.png[width=800px]
 
-=== Conclusion
+==== Conclusion
 
 At this stage you are able to edit a Workflow and add some processes to enrich your infrastructure automation.
 
@@ -468,6 +468,132 @@ The possibilities for evolution are endless due to the multi-layered integration
 
 
 The next part of this tutorial will show you how to design a simple BPM to chain these Workflow processes into one single automation experience.
+
+
+=== BPM Design
+
+==== Introduction
+In this section, you will learn how to design a BPM to chain the Workflow process executions together.
+
+
+Your BPM will select a Managed Entity, ask you to enter a source IP address and destination port, configure this policy on the Managed Entity and write an event in the log analytics.
+
+==== Details
+
+Logout of the Developer portal (click on “Logout” on the left-hand side). Login to the Manager Portal with your credentials.
+
+
+Once again, select your “Subtenant” user from the drop-down menu at the top.
+
+
+Now select “Automation” from the left menu. (Make sure to select your user under Subtenant at the top to filter the correct BPM to test.)
+
+
+You should see a BPM named “Simple Security Orchestration”.
+
+image:dev_bpm_design_1.png[[width=800px]
+
+Click on the BPM name to select it.
+
+image:dev_bpm_design_2.png[[width=800px]
+
+Now click on the  (pencil icon) to edit the BPM.
+
+image:dev_bpm_design_3.png[[width=800px]
+
+You are going to update the BPM to select the Workflow processes to execute. 
+Notice how you can use your mouse or trackpad to manipulate the location of the BPM on your screen. 
+Just click near the BPM and drag your mouse or finger to move it up and down or left and right. 
+It is best to center this to begin.
+
+If you look at the BPM there is a circle representing the “Start Event” and another circle representing the “End Event”. 
+The boxes in between the circles with arrows connecting them are the tasks that will be executed in your automated BPM.
+
+===== Task Configuration
+
+====== First task
+
+Select the first task (this is the first box to the right of the “Start Event” circle) and in the dialog on the right, select the Workflow “Simple Firewall (Python)” and the Process “Create Firewall Service”.
+
+image:dev_bpm_design_4.png[[width=800px]
+
+Click on the “Edit” button and click "+Add" to add a Managed Entity. In the drop-down list that comes from clicking the name of the Managed Entity, select the “linux_machine-[your logon]” as before.
+
+image:dev_bpm_design_5.png[[width=800px]
+
+Click OK, the first task is configured.
+
+====== Second Task
+
+Click on the second task and select the same Workflow as for the first task.
+
+In the Process list, select “Add Filter Rule”.
+
+Use the radio button to select “New Instance” and in the drop down list select the Workflow used for the first BPM task.
+
+image:dev_bpm_design_6.png[[width=800px]
+
+Click to “Edit” the parameters and provide the values for the “Rule” ID, the “Source IP” and the “Destination port” in this example:
+
+- Rule ID: 5
+- Source IP: 192.168.99.99
+- Destination Port: 443
+
+image:dev_bpm_design_7.png[[width=800px]
+
+Click on “OK” to save. Don’t worry about the Workflow Selection menu still being listed as you can easily switch to the next box to hide it.
+
+====== Third Task
+
+Click on the third task (denoted by a box shape), select the same Workflow as previously and select the process “Write Event”.
+
+Make sure you select “New Instance” and in the drop down list select the Workflow used for the first BPM task.
+
+image:dev_bpm_design_8.png[[width=800px]
+
+Now click on “Save” at the top to save the BPM.
+
+
+====== BPM Execution
+
+While still in the “Automation” and “BPM List” menu, click on “+ Execute BPM” at the top right. This will show you the BPM you were just working on.
+
+image:dev_bpm_design_9.png[[width=800px]
+
+This time click on “Execute BPM” on the top right.
+
+It might take a bit of time for the execution to display the results, but a lot is happening in the backend, which we’ve made easy for you at the frontend, so don’t worry. It will end up being successful much quicker than if this were done manually. (Also, less prone to error.)
+
+If you receive any errors, make sure you followed the instructions closely and you waited a bit of time for the execution. 
+Sometimes it might say an event has started but you don’t see any update for a few seconds. 
+However within a short timeframe you should have “Latest Execution Result” listing “Success” for each of the series of Workflows that were automatically executed as shown below.
+
+image:dev_bpm_design_10.png[[width=800px]
+
+Click "x" to exit that screen, then return to the other screen (go back to “Automation” > “Workflows”).
+
+In the Workflow instance list, verify the new instance has been created and that the policy parameters are the ones you provided to the BPM.
+
+image:dev_bpm_design_11.png[[width=800px]
+
+On the Managed Entity configuration (that is under “Infrastructure” > “Managed Entities” > “linux_machine-[your logon]” > “Configure” tab > “Simple Firewall”), you should also see a new Microservice instance for this policy in the bottom row.
+
+image:dev_bpm_design_12.png[[width=800px]
+
+==== Conclusion
+You are now able to edit and execute a Workflow and design a simple BPM to chain your Workflow processes to build a fully automated tool for your infrastructure.
+
+
+This is just the beginning. Imagine how easy it will be to design automated workflows end to end for your digital landscape. MSActivator has Assurance integrated into its system to make your life easier. Scheduling, alarms, integration, automation, it's all there.
+
+
+However, to really learn more and find out about how to use MSActivator to solve your automation challenges, then schedule a call with our Presales team or talk to our engineers via our DevOps community. More information is at: link:https://ubiqube.com/[ubiqube.com,window=_blank].
+
+
+Either way, we"d love to hear from you. Let us help you to usher in what you require in infrastructure automation.
+
+
+Contact link:https://ubiqube.com/openmsa/#supportGroups[UBiqube,window=_blank] today.
 
 
 
