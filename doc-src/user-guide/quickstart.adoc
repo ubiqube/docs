@@ -197,6 +197,7 @@ Starting from it's version 2.2.0, the quickstart project provides a script `upgr
 
 Let's say that you are running the version {revnumber-prev}, to upgrade to the version {revnumber} you need to follow these steps:
 
+
 . `cd quickstart`
 . `git fetch --depth 1 origin refs/{revnumber}:refs/tags/{revnumber}`
 . `git checkout tags/{revnumber} -b {revnumber}`
