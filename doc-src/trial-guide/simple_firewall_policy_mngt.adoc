@@ -209,7 +209,7 @@ You can lean more about Adapter and Microservice use and design in the online us
 
 == Automation - Automate the policy configuration with a Workflow
 
-== Overview
+=== Overview
 
 In this section, you will learn how to use a Workflow to select a Managed Entity and execute a process to configure a security policy.
 
@@ -218,24 +218,24 @@ The Workflow integrates seamlessly with the Microservice you have used in the pr
 image:ops_user_workflow_configure_me.gif[width=800px]
 
 
-== Details
+=== Details
 To access the Workflow, from the Manager portal, browse to the “Automation” menu at the left and select the “Workflows” tab.
 
-
+image:ops_wf_config_1.png[width=800px]
 
 Click on “Simple Firewall (Python)” to select the Workflow to use.
 
 On this screen you can see the list of the workflow instances (currently this list is empty since no Process has been executed yet) and a button “+ Create Firewall Service” to execute a Workflow process and create a new Workflow instance.
 
-
+image:ops_wf_config_2.png[width=800px]
 
 Click on “+ Add”. Then click where it says "Unknown Device - null", select the Managed Entity by checking the box next to its name (should be named similar to linux-machine-[your logon] and click “RUN”.
 
-
+image:ops_wf_config_3.png[width=800px]
 
 The process “Create Firewall Service” executes and a new Workflow instance is created. Click on the "X" to close the pop-up. Click again on the "x" in the upper right to close that menu. You should see Simple Firewall (Python) as your Workflow. We now need to add filter rules.
 
-
+image:ops_wf_config_4.png[width=800px]
 
 For each instance, 2 processes are available:
 
@@ -250,19 +250,22 @@ Click on “Add Filter Rule” and fill the form with these values:
 
 Click “Run” to execute the process. You will see another pop-up that should show a green add rule being created. Click on the "x" to close it. You can view the History tab to see the rules being added. Click the "x" to return to the Workflow.
 
+image:ops_wf_config_5.png[width=800px]
 
 
 The Workflow instance is updated and a message shows the iptable CLI command that was used to configure the policy.
 
-
+image:ops_wf_config_6.png[width=800px]
 
 Now, browse to your Managed Entity (remember that is under “Infrastructure” at the left, then “Managed Entities”) for the “linux_machine-[your logon]”. Click on the Managed Entity and in the tab “Configure”, click on “Synchronize with Managed Entity”.
 
-
+image:ops_wf_config_7.png[width=800px]
 
 Click on the Simple Firewall Microservice and check that the new policy rule was added to the list. You can see this under the Configure tab. You can also see in the History tab the new rule created and even run a DIFF on the last two rules to see the difference. 
 
-Everything at the backend with the Managed Entity is executed without having to logon to the system itself. You see how easy that was?
+Everything at the backend with the Managed Entity is executed without having to logon to the system itself. 
+
+You see how easy that was?
 
 === Conclusion
 
@@ -271,4 +274,14 @@ At this stage you learned how to use Workflows to execute automated orchestratio
 You could also see how Workflows and Microservices are interacting with each other.
 
 In the next part of the tutorial, you will learn the details of the integration between Workflows and Microservices. You will also learn how to edit a Workflow to add additional processes to it and enrich your automated processes.
+
+== Developer Experience
+
+In this section, you will go over the design of a Workflow process in Python. You will also go through the design of a BPM to chain the execution of the process and provide a complete, integrated infrastructure automation experience.
+
+Log out of the Manager screen at the left hand side using “Logout” and login as a Developer with your same credentials.
+
+image:dev_user_login.gif[width=800px]
+
+
 
