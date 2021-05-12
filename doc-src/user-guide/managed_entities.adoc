@@ -2,8 +2,6 @@
 ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-
-
 image:msa_arch_da_use.png[width=400px]
 
 *Managed Entities* are the logical representation of any element of an infrastructure such as network devices, security devices, VNF, VIM,...
@@ -105,7 +103,7 @@ The management port is set to 22 by default and is used as is by most CLI comman
 .SNMP monitoring
 Set the SNMP community configured on the actual managed entity. 
 
-Optionaly set the monitoring port if it is not the default one (161)
+Optionally set the monitoring port if it is not the default one (161)
 
 .Log analytics
 Check to collect syslogs and optionally analyse the syslogs. The syslogs will be parsed and stored in the Elasctisearch cluster.
@@ -181,7 +179,6 @@ image:me_sysuptime_graph.png[width=800px]
 The ingress and egress traffic of the management interface may be automatically collected provided that you have configured the management interface name in the managed entity configuration form.
 
 image:me_traffic_graph.png[width=800px]
-
 
 == Logs
 

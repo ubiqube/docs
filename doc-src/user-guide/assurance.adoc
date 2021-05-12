@@ -250,7 +250,9 @@ As soon as an event is detected to be an alarm, a notification badge will appear
 
 You have the possibility to edit an alarm, add a comment and acknowledge the alarm. 
 
+ifdef::html,env-github,env-browser[]
 image:alarm_ack.gif[width=800px]
+endif::[]
 
 === Testing
 

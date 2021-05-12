@@ -17,7 +17,9 @@ A workflow is composed of:
 - A list of variables stored in the database and are holding the state of a workflow instance.
 - Some administrative information used to manage the service in the service console.
 
+ifdef::html,env-github,env-browser[]
 image:wf_execution_example.gif[width=800px]
+endif::[]
 
 
 [#workflow_selection]
@@ -81,7 +83,9 @@ If a process has been configured to allow scheduling (see documentation about th
 
 A workflow scheduling can be deleted any time from the list of scheduled processes in the Workflow tab "Scheduled Processes"
 
+ifdef::html,env-github,env-browser[]
 image:wf_scheduling_example.gif[width=800px]
+endif::[]
 
 .Workflow scheduling
 [width=100%, cols=5*,options="header"]
@@ -101,7 +105,9 @@ During the execution of a process, if a task fails to execute, you have the poss
 
 You can edit the process parameters before executing the process again.
 
+ifdef::html,env-github,env-browser[]
 image:workflow_retry_task.gif[width=800px]
+endif::[]
 
 === Get information about workflow instance status
 

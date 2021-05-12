@@ -2,7 +2,7 @@
 ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-ifdef::html[]
+ifdef::html,env-github,env-browser[]
 [.center]
 image:msa_arch_bpm_use.png[width=400px]
 endif::[]
@@ -19,7 +19,9 @@ Use the "i" (information icon) to open a BPM instance and view it's detailed sta
 
 A BPM instance can be deleted with the "trash" icon.
 
+ifdef::html,env-github,env-browser[]
 image:bpm_execution.gif[width=800px]
+endif::[]
 
 == Execution management
 
@@ -47,12 +49,15 @@ image:bpm_user_breakpoint.png[width=800px]
 
 The execution of a BPM can be cancelled any time by clicking on the "Terminate BPM" button at the top right of a BPM execution screen.
 
+ifdef::html,env-github,env-browser[]
 image:bpm_termination.gif[width=800px]
+endif::[]
 
 === Scheduling
 
 The execution of a BPM can be scheduled to run once at a predetermined date. 
 The list of scheduled executions is available and any scheduled execution can be canceled
 
+ifdef::html,env-github,env-browser[]
 image:bpm_scheduling.gif[width=800px]
-
+endif::[]
