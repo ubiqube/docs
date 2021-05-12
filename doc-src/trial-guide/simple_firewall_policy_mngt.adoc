@@ -78,7 +78,7 @@ Go back to the main screen. Click on Infrastructure again, then the “Monitorin
 
 In the information section, use the value below:
 
-- Profile Name: CPU Load (you can also choose whichever name you want for Profile Name)
+- Profile Name: "CPU Load" (you can also choose whichever name you want for Profile Name)
 - Leave Comment and External Reference blank.
 
 ==== Polling rules
@@ -93,7 +93,7 @@ You can leave the other fields with the default values.
 
 ==== Graphical rendering
 
-Next go to the Graphical Rendering menu on the left, click on "+Add Graph" with the values below:
+Next go to the "Graphical Rendering" menu on the left, click on "+Add Graph" with the values below:
 
 - Graph Name: CPU
 - Units: CPU load
@@ -114,15 +114,13 @@ Attach the Managed Entity (linux_machine-[your logon]) by selecting the empty bo
 
 Now click on “Save” to save the profile.
 
-
-
 Monitoring starts after about one minute. 
 
-To see this, click on the name of your Managed Entity in the “Infrastructure” > “Managed Entity” tab, and you can select the new monitoring profile from the drop down list and see the graph you created with your data. 
+To see this, click on the name of your Managed Entity by going to the “Managed Entities” tab (if you’ve left “Monitoring Profiles” and are back at the main screen, then click on “Infrastructure” and “Managed Entities” will be the first tab), . Once again this will be the same name as above “linux_machine-[your logon]"".
 
-NOTE: if you see an error message that says, “The selected monitoring profile doesn't have any graphical rendering defined” then this means it is too early to see data. Check back in a few minutes.
+You can select the new monitoring profile from the drop down list and see the graph you created with your data. If you see an error message that says, “The selected monitoring profile doesn't have any graphical rendering defined” then this means it is too early to see data. Check back in a few minutes.
 
-For example, select the "linux-machine-[your logon]" from Infrastructure > Managed Entity main screen, in the Overview area, go to Monitoring Profiles underneath and select "cpu_load_1min" and View Data for "Last hour".
+Once inside the the Managed Entities "linux-machine-[your logon]", in the “Overview” area, go to “Monitoring Profiles”  underneath and select "CPU Load" and View Data for "Last hour".
 
 image:ops_user_view_me_graph.gif[width=800px]
 
@@ -144,7 +142,7 @@ image:ops_user_configure_me.gif[width=800px]
 
 === Details
 
-From the Managed Entity screen which can be found by clicking on Infrastructure > Managed Entities > click on your Managed Entity (as shown below) browse to the tab “Configure” and select the Microservice (Microservice) “Simple Firewall”.
+From the "Managed Entities" screen which can be found by clicking on "Infrastructure" > "Managed Entities", click on your Managed Entity (as shown below) browse to the tab “Configure” and select the Microservice (Microservice) “Simple Firewall”.
 
 image:ops_ms_config_1.png[width=800px]
 
@@ -161,7 +159,7 @@ sudo iptables -A FORWARD -p tcp --dport <PORT TO BLOCK> -s <IP TO BLOCK> -j DROP
 
 We can do that much simpler. On the Add Row screen leave the ID the same and then fill in the form where Source IP is a valid IP address (e.g. 192.168.12.23) and a valid destination port (e.g. 443). 
 
-If you leave the Destination Port blank then saving the rule will not work according to the iptables command as shown above, so please choose a relevant port such as 443 in this example.
+If you leave the Destination Port blank then saving the rule will imply the entire IP address is blocked according to the iptables command.
 
 Fill the form with an IP address and a destination port (example: 192.168.12.23 / 443) and click “Save”.
 
@@ -192,9 +190,9 @@ image:ops_ms_config_4.png[width=800px]
 
 You can add another policy and check that the configuration update is as expected.
 
-Normally you can also select a microservice instance from the Managed Entity “Configure” tab located within the Managed Entity and delete it or update it from the Managed Entity itselfManaged Entity, but this feature is deactivated in this hosted free trial version.
+Normally you can also select a microservice instance from the Managed Entity “Configure” tab located within the Managed Entity and delete it or update it from the Managed Entity itself, but this feature is deactivated in this hosted free trial version.
 
-NOTE: if you activate the Managed Entity that is already activated and green, then it will go red and back to green within a minute or so.
+NOTE: if you activate the Managed Entity that is already activated and green, then it will go red and back to green within a minute or so. This is normal behavior.
 
 === Conclusion
 At this stage, you have been able to use a Microservice to configure a security policy on a Managed Entity.
@@ -229,7 +227,7 @@ On this screen you can see the list of the workflow instances (currently this li
 
 image:ops_wf_config_2.png[width=800px]
 
-Click on “+ Add”. Then click where it says "Unknown Device - null", select the Managed Entity by checking the box next to its name (should be named similar to linux-machine-[your logon] and click “RUN”.
+Click on “+ Add”. Then click where it says "Unknown Device - null" (which reflects that no ME has been selected already), and select the Managed Entity by checking the box next to its name (should be named similar to linux-machine-[your logon] and click “RUN”.
 
 image:ops_wf_config_3.png[width=800px]
 
@@ -261,7 +259,7 @@ Now, browse to your Managed Entity (remember that is under “Infrastructure” 
 
 image:ops_wf_config_7.png[width=800px]
 
-Click on the Simple Firewall Microservice and check that the new policy rule was added to the list. You can see this under the Configure tab. You can also see in the History tab the new rule created and even run a DIFF on the last two rules to see the difference. 
+Click on the "Simple Firewall" Microservice and check that the new policy rule was added to the list. You can see this under the Configure tab. You can also see in the History tab the new rule created and even run a DIFF on the last two rules to see the difference. 
 
 Everything at the backend with the Managed Entity is executed without having to logon to the system itself. 
 
@@ -388,13 +386,17 @@ You can create a new process by clicking on the “+” icon in the left menu of
 
 If you see the “Write Event” process already listed then you can skip the next step. Otherwise follow these steps:
 
-Set a Process Name to “Write Event” and the Process Type to “UPDATE”. Then click on Save. That shows you how to create new processes within a Workflow.
+Set a Process Name to “Write Event” and the Process Type to “UPDATE”. 
+Then click on "Save". 
+That shows you how to create new processes within a Workflow.
 
 image:dev_wf_overview_6.png[width=800px]
 
-If you have created any additional processes you can delete them by clicking on the “Delete” icon at the top. Confirm your deletion. This shows how easy it is to manipulate processes for MSActivator.
+If you have created any additional processes you can delete them by clicking on the “Delete” icon at the top. Confirm your deletion. 
+This shows how easy it is to manipulate processes for MSActivator.
 
-Now find the “Write Event” process in the left menu and add a new task by clicking the “+” sign in Tasks.  Name the task “Create Event”. You can leave the other areas as normal.
+Now find the “Write Event” process in the left menu and add a new task by clicking the “+” sign in Tasks.  
+Name the task “Create Event”. You can leave the other areas as normal.
 
 image:dev_wf_overview_7.png[width=800px]
 
@@ -442,14 +444,12 @@ print(ret)
 
 Now after pasting into the “PYTHON:” area then click on “Save Task”.
 
-If you get an error, try this instead … click to “Delete Task”, then click the “+” to create a new task. 
-This time give it the name “Create New Event”. 
 Once you do so, you will find there is code generated, which then you copy the entire section above and replace the text in the “PYTHON:” box with the text above. Make sure you copy the whole thing. 
 Then click on “Save Task”.
 
 Then click on “Save Workflow” in the upper right hand corner, and let's run the first test.
 
-Select the process (will be a number) and from the “More Actions” drop-down list select “Write event” and click on Run to execute it.
+Select the process (indicated be a number) and from the “More Actions” drop-down list select “Write event” and click on Run to execute it.
 
 image:dev_wf_overview_8.png[width=800px]
 
@@ -494,15 +494,15 @@ Now select “Automation” from the left menu. (Make sure to select your user u
 
 You should see a BPM named “Simple Security Orchestration”.
 
-image:dev_bpm_design_1.png[[width=800px]
+image:dev_bpm_design_1.png[width=800px]
 
 Click on the BPM name to select it.
 
-image:dev_bpm_design_2.png[[width=800px]
+image:dev_bpm_design_2.png[width=800px]
 
 Now click on the  (pencil icon) to edit the BPM.
 
-image:dev_bpm_design_3.png[[width=800px]
+image:dev_bpm_design_3.png[width=800px]
 
 You are going to update the BPM to select the Workflow processes to execute. 
 Notice how you can use your mouse or trackpad to manipulate the location of the BPM on your screen. 
@@ -518,11 +518,11 @@ The boxes in between the circles with arrows connecting them are the tasks that 
 
 Select the first task (this is the first box to the right of the “Start Event” circle) and in the dialog on the right, select the Workflow “Simple Firewall (Python)” and the Process “Create Firewall Service”.
 
-image:dev_bpm_design_4.png[[width=800px]
+image:dev_bpm_design_4.png[width=800px]
 
 Click on the “Edit” button and click "+Add" to add a Managed Entity. In the drop-down list that comes from clicking the name of the Managed Entity, select the “linux_machine-[your logon]” as before.
 
-image:dev_bpm_design_5.png[[width=800px]
+image:dev_bpm_design_5.png[width=800px]
 
 Click OK, the first task is configured.
 
@@ -534,7 +534,7 @@ In the Process list, select “Add Filter Rule”.
 
 Use the radio button to select “New Instance” and in the drop down list select the Workflow used for the first BPM task.
 
-image:dev_bpm_design_6.png[[width=800px]
+image:dev_bpm_design_6.png[width=800px]
 
 Click to “Edit” the parameters and provide the values for the “Rule” ID, the “Source IP” and the “Destination port” in this example:
 
@@ -542,9 +542,9 @@ Click to “Edit” the parameters and provide the values for the “Rule” ID,
 - Source IP: 192.168.99.99
 - Destination Port: 443
 
-image:dev_bpm_design_7.png[[width=800px]
+image:dev_bpm_design_7.png[width=800px]
 
-Click on “OK” to save. Don’t worry about the Workflow Selection menu still being listed as you can easily switch to the next box to hide it.
+Although the “WORKFLOW SELECTION” pop-up is still listed, the first task is configured. This means you can move onto the second task.
 
 ====== Third Task
 
@@ -552,7 +552,7 @@ Click on the third task (denoted by a box shape), select the same Workflow as pr
 
 Make sure you select “New Instance” and in the drop down list select the Workflow used for the first BPM task.
 
-image:dev_bpm_design_8.png[[width=800px]
+image:dev_bpm_design_8.png[width=800px]
 
 Now click on “Save” at the top to save the BPM.
 
@@ -561,27 +561,27 @@ Now click on “Save” at the top to save the BPM.
 
 While still in the “Automation” and “BPM List” menu, click on “+ Execute BPM” at the top right. This will show you the BPM you were just working on.
 
-image:dev_bpm_design_9.png[[width=800px]
+image:dev_bpm_design_9.png[width=800px]
 
 This time click on “Execute BPM” on the top right.
 
-It might take a bit of time for the execution to display the results, but a lot is happening in the backend, which we’ve made easy for you at the frontend, so don’t worry. It will end up being successful much quicker than if this were done manually. (Also, less prone to error.)
+It might take a few seconds for the execution to display the results, but a lot is happening in the backend, which we’ve made easy for you at the frontend, so don’t worry. It will end up being successful much quicker than if this were done manually. (Also, less prone to error.)
 
 If you receive any errors, make sure you followed the instructions closely and you waited a bit of time for the execution. 
 Sometimes it might say an event has started but you don’t see any update for a few seconds. 
 However within a short timeframe you should have “Latest Execution Result” listing “Success” for each of the series of Workflows that were automatically executed as shown below.
 
-image:dev_bpm_design_10.png[[width=800px]
+image:dev_bpm_design_10.png[width=800px]
 
 Click "x" to exit that screen, then return to the other screen (go back to “Automation” > “Workflows”).
 
 In the Workflow instance list, verify the new instance has been created and that the policy parameters are the ones you provided to the BPM.
 
-image:dev_bpm_design_11.png[[width=800px]
+image:dev_bpm_design_11.png[width=800px]
 
 On the Managed Entity configuration (that is under “Infrastructure” > “Managed Entities” > “linux_machine-[your logon]” > “Configure” tab > “Simple Firewall”), you should also see a new Microservice instance for this policy in the bottom row.
 
-image:dev_bpm_design_12.png[[width=800px]
+image:dev_bpm_design_12.png[width=800px]
 
 ==== Conclusion
 You are now able to edit and execute a Workflow and design a simple BPM to chain your Workflow processes to build a fully automated tool for your infrastructure.
