@@ -378,6 +378,8 @@ We are going to add a new Process that writes an event in the MSActivator log an
 
 Later, we will chain the Workflow processes together with a BPM to automate the creation of the policy and write the event in the log analytics database.
 
+image:dev_wf_design.gif[width=800px]
+
 ====== Create new process
 
 When still in the Simple Firewall (Python) Workflow, look under Information and Variables on the left hand side and you will see a "+" next to Processes.
@@ -475,8 +477,9 @@ The next part of this tutorial will show you how to design a simple BPM to chain
 ==== Introduction
 In this section, you will learn how to design a BPM to chain the Workflow process executions together.
 
-
 Your BPM will select a Managed Entity, ask you to enter a source IP address and destination port, configure this policy on the Managed Entity and write an event in the log analytics.
+
+image:dev_bpm_design.gif[width=800px]
 
 ==== Details
 
