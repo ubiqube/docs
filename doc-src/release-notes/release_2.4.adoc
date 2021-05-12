@@ -75,8 +75,8 @@ image:2.4_WF_task_retry_border.png[width=700px]
 
 ==== Scheduled Execution
 
-The execution of a BPM can be scheduled to run once at a predetermined date. The list of scheduled executions is available and any scheduled execution can be canceled
-Execution termination
+The execution of a BPM can be scheduled to run once at a predetermined date. 
+The list of scheduled executions is available and any scheduled execution can be canceled
 
 image:2.4_BPM_scheduling_border.png[width=700px]
 

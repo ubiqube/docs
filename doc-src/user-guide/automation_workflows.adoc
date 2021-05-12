@@ -6,6 +6,7 @@ image:msa_arch_wf_use.png[width=400px]
 
 *Workflows* allows the creation and management of complex automated processes.
 
+
 == Overview
 
 This guide explains how to find, select and run workflows.
@@ -15,6 +16,9 @@ A workflow is composed of:
 - A collection of processes, where each process is composed of a set of executable tasks implemented in Python or PHP.
 - A list of variables stored in the database and are holding the state of a workflow instance.
 - Some administrative information used to manage the service in the service console.
+
+image:wf_execution_example.gif[width=800px]
+
 
 [#workflow_selection]
 == Workflow selection
@@ -75,7 +79,9 @@ A typical example of a workflow lifecycle is the one to manage VNF on a cloud:
 
 If a process has been configured to allow scheduling (see documentation about the workflow editor), it is possible to schedule the execution of a process.
 
-image:workflow_scheduling.png[width=800px]
+A workflow scheduling can be deleted any time from the list of scheduled processes in the Workflow tab "Scheduled Processes"
+
+image:wf_scheduling_example.gif[width=800px]
 
 .Workflow scheduling
 [width=100%, cols=5*,options="header"]
@@ -89,6 +95,13 @@ image:workflow_scheduling.png[width=800px]
 | Monthly   | execution frequency | Select the month(s) for execution          | define the start date | define the end date
 |===
 
+===== Retry a failed task
+
+During the execution of a process, if a task fails to execute, you have the possibility to retry the execution of the process from the step where the task failed.
+
+You can edit the process parameters before executing the process again.
+
+image:workflow_retry_task.gif[width=800px]
 
 === Get information about workflow instance status
 

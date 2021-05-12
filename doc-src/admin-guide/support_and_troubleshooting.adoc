@@ -252,22 +252,34 @@ docker-compose exec msa_sms tail -F /opt/sms/logs/sms_syslogd.log
 ----
 
 
-.Set debug for alerting logs
-[source,bash]
-----
-docker-compose exec msa_sms sed -i 's/$UBI_VSOC_DEBUG_LEVEL/15/' /opt/sms/templates/conf/sms_agregatord.conf
-----
 
-.Monitor the alerting logs
-[source,bash]
-----
-docker-compose exec msa_sms tail -F /opt/sms/logs/sms_agregatord.log
-----
-
-IMPORTANT: for monitoring, syslogs, alerting, parser, enabling the DEBUG logs may result in a huge volumes of logs so you need to use this carefuly. To revert the configuration use the CLI cmd above with 1 instead of 15.
+IMPORTANT: for monitoring, syslogs, parser, enabling the DEBUG logs may result in a huge volumes of logs so you need to use this carefuly. To revert the configuration use the CLI cmd above with 1 instead of 15.
 
 .Restart msa_sms to apply the configuration to the CoreEngine
 [source,bash]
 ----
 docker-compose restart msa_sms
+----
+
+==== How do I enable debug logs on the Alarm module ?
+
+The Alarm module logs are available on the msa_alarm container in the directory `/opt/alarm/logs`.
+
+.Set debug for alarm logs
+[source,bash]
+----
+docker-compose exec msa_alarm sed -i 's/$UBI_VSOC_DEBUG_LEVEL/15/' /opt/alarm/templates/conf/sms_alarmd.conf
+----
+
+
+.Restart msa_alarm to apply the configuration to the Alarm module
+[source,bash]
+----
+docker-compose restart msa_alarm
+----
+
+.Monitor the alarm logs
+[source,bash]
+----
+docker-compose exec msa_alarm tail -F /opt/alarm/logs/sms_alarmd.log
 ----

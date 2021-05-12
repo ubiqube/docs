@@ -177,7 +177,7 @@ Use the Kibana URL from the workflow instance to browse to the Kibana dashboard
 image:dashboard_kibana_deployed.png[width=800px]
 
 [#alarm]
-== Alarm management
+== Alarm
 
 === Overview
 
@@ -244,33 +244,19 @@ NOTE: make sure that you have set an email to your user
 
 Choose the workflow and the process to execute when an alarm is triggered.
 
-=== Troubleshooting
+=== Alarm acknowledgement
 
-You can troubleshoot your alarm configuration by setting the log level of the alerting module to debug more and monitoring the logs.
+As soon as an event is detected to be an alarm, a notification badge will appear at the top right of the screen showing the number of new alarm that require an user action (acknowledgement)
 
-.Set debug for alerting logs
-[source,bash]
-----
-docker-compose exec msa_sms sed -i 's/$UBI_VSOC_DEBUG_LEVEL/15/' /opt/sms/templates/conf/sms_agregatord.conf
-----
+You have the possibility to edit an alarm, add a comment and acknowledge the alarm. 
 
-.Restart msa_sms to apply the configuration to the CoreEngine
-[source,bash]
-----
-docker-compose restart msa_sms
-----
-
-.Monitor the alerting logs
-[source,bash]
-----
-docker-compose exec msa_sms tail -F /opt/sms/logs/sms_agregatord.log
-----
+image:alarm_ack.gif[width=800px]
 
 === Testing
 
 You can test the triggering of a process execution with the simple workflow "Security Event Detection" included in the mini-lab.
 
-This worklow will execute a process to display the raw log that cause the alarm.
+This workflow will execute a process to display the raw log that cause the alarm.
 
 image:alarm_vnoc_detection.png[width=800px]
 
