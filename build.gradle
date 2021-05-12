@@ -59,6 +59,7 @@ asciidoctor {
       include '**/*.css'
       include '**/*.html'
       include '**/*.pdf'
+      include '**/*.gif'
     }
 
     into '.'
@@ -105,7 +106,7 @@ asciidoctorPdf {
 
   sourceDir  file('doc-src')
   sources {
-    include 'trial-guide/simple_firewall_policy_mngt.adoc', 'user-guide/manager-guide-single.adoc', 'admin-guide/admin-guide-single.adoc', 'developer-guide/developer-guide-single.adoc', 
+    include 'user-guide/manager-guide-single.adoc', 'admin-guide/admin-guide-single.adoc', 'developer-guide/developer-guide-single.adoc', 
       'release-notes/release_notes.adoc', 'user-guide/quickstart.adoc', 'user-guide/quickstart_jp.adoc'
  }
   outputDir  file('build/pdf')
