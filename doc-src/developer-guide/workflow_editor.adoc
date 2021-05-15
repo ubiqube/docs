@@ -14,7 +14,10 @@ This document explains how to use the editor to design workflows and implement t
 
 The Workflow designer and execution engine are located in the architecture layer, between the BPM and the Microservice.
 
+
+ifdef::html,env-github,env-browser[]
 image:workflow_design.gif[width=800px]
+endif::[]
 
 == Workflow overview
 
@@ -206,7 +209,15 @@ When you create a task you have the possibility to create a simple task pre-code
 
 If you select the second option, you'll have the possibility to select a Microservice and one for it's function to generate a task with all the code to execute this microservice auto-generated.
 
+ifdef::html,env-github,env-browser[]
 image:workflow_create_ms_task.gif[width=800px]
+endif::[]
+
+ifdef::pdf[]
+image:workflow_create_ms_task.png[width=800px]
+endif::[]
+
+workflow_create_ms_task.png
 
 [#logging]
 == Logging and troubleshooting

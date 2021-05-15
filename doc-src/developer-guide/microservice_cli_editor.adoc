@@ -6,7 +6,7 @@ You can use the the microservice editor UI to create or update a microservice.
 
 To create or edit a microservice you can go to the "Integration" section and select the Microservice tab
 
-image:configurations_ms_search.png[width=1000px]
+image:configurations_ms_search.png[width=800px]
 
 == Getting started
 
@@ -16,7 +16,7 @@ If you want to directly get stated with a simple exmaple that can run on the min
 
 The microservice console is composed of a vertical menu on the left and a main screen
 
-image:microservice_console_information.png[width=1000px] 
+image:microservice_console_information.png[width=800px] 
 
 Microservices are vendor specific, the implementations of the functions to create, update, delete or import a managed entity configuration will depend on the managed entity, the type of remote management interface, the format of the configuration, how it is structured,...
 
@@ -43,7 +43,7 @@ Once created, you can search for your microservice in the list and attach it to 
 NOTE: The easiest way to design a microservice is to use a managed entity dedicated to testing and follow in a code-test-fix development cycle.
 This documentation uses the Linux Managed Entity provided by the link:../user-guide/quickstart{outfilesuffix}[mini-lab].
 
-image:deployment_setting_linux_mngt.png[width=1000px]
+image:deployment_setting_linux_mngt.png[width=800px]
 
 == Variables
 
@@ -51,7 +51,7 @@ Variable are usually defined to hold the parameters to be passed to the microser
 
 Setting variables is done from the section "Variables" on the microservice editor screen.
 
-image:microservice_console_variables.png[width=1000px]
+image:microservice_console_variables.png[width=800px]
 
 When you create a new microservice, the variable object_id, which is mandatory, will be set and cannot be deleted. It can be edited to set it's type and other advanced properties.
 
@@ -89,7 +89,7 @@ As you can see the parameters are prefixed with `$params.` and this is the reaso
 
 The implementation of the Update will be similar and will of course depend on the CLI syntax.
 
-image:microservice_console_cli_create.png[width=1000px]
+image:microservice_console_cli_create.png[width=800px]
 
 ==== Delete
 The deletion of the iptables INPUT and FORWARD rules is executed with the CLI command below:
@@ -121,7 +121,7 @@ In our case:
 ==== Example 
 simple_firewall.xml => simple_firewall
 
-image:microservice_console_cli_delete.png[width=1000px]
+image:microservice_console_cli_delete.png[width=800px]
 
 === The function Import
 The role of the Import command is to import the current device configuration into the {product_name} database.
@@ -148,7 +148,7 @@ Make sure that you can add and delete a policy rule, that it's reflected on the 
 
 You can also add some iptables rules manually on the Linux CLI and run a configuration synchronisation to make sure that your manual changes are properly imported.
 
-image:microservice_console_create_instance.png[width=1000px]
+image:microservice_console_create_instance.png[width=800px]
 
 == Import function: tips and examples
 
