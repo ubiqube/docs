@@ -253,7 +253,7 @@ docker-compose exec msa_sms tail -F /opt/sms/logs/sms_syslogd.log
 
 
 
-IMPORTANT: for monitoring, syslogs, parser, enabling the DEBUG logs may result in a huge volumes of logs so you need to use this carefuly. To revert the configuration use the CLI cmd above with 1 instead of 15.
+IMPORTANT: for monitoring, syslogs, parser, enabling the DEBUG logs may result in a huge volumes of logs so you need to use this carefully. To revert the configuration use the CLI cmd above with 1 instead of 15.
 
 .Restart msa_sms to apply the configuration to the CoreEngine
 [source,bash]

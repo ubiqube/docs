@@ -294,9 +294,7 @@ image:dev_wf_overview_1.png[width=800px]
 
 Go to the menu at the top and select your user login name from “Subtenant”.
 
-
 Select “Automation” from the left-hand menu, and find the Workflows attached to your dedicated subtenant.
-
 
 Go to the “Workflows” tab and you will see your listed Workflows.
 
@@ -438,26 +436,33 @@ for device in devices:
   headers = {"content-type": "application/json"}
   r = requests.post(url, json=payload, headers=headers)
 
-ret = MSA_API.process_content("ENDED", f"Post Result: {r}, url: {url}", context, True)
+ret = MSA_API.process_content("ENDED", f"{message}", context, True)
 print(ret)
 ----
 
 Now after pasting into the “PYTHON:” area then click on “Save Task”.
 
-Once you do so, you will find there is code generated, which then you copy the entire section above and replace the text in the “PYTHON:” box with the text above. Make sure you copy the whole thing. 
+Once you do so, you will find there is code generated, which then you copy the entire section above and replace the text in the “PYTHON:” box with the text above. 
+Make sure you copy the whole thing. 
 Then click on “Save Task”.
 
 Then click on “Save Workflow” in the upper right hand corner, and let's run the first test.
 
-Select the process (indicated be a number) and from the “More Actions” drop-down list select “Write event” and click on Run to execute it.
+Select the process (indicated be a number) and from the “More Actions” drop-down list select “Write event” and click on "Run" to execute it.
 
 image:dev_wf_overview_8.png[width=800px]
 
-You should get a pop-up to say the “Write Event” executed properly. Click on the "x" to close that menu. Click on the “x” in the top-right corner to exit from that screen.
+You should get a pop-up to say that the process “Write Event” executed properly. 
+Click on the "x" to close that pop-up. 
+Click on the “x” in the top-right corner to exit from that screen.
+
+image:dev_wf_overview_10.png[width=800px]
 
 Click on the bell icon on the top right of the screen and select the “Logs” tab.
 
-A new event should be visible at the top of the list. Various severities are listed to give you additional Assurance information while monitoring your digital ecosystem. Again, this is under a single pane of glass to bring simplicity to a complex infrastructure.
+A new event should be visible at the top of the list. 
+Various severities are listed to give you additional Assurance information while monitoring your digital ecosystem. 
+Again, this is under a single pane of glass to bring simplicity to a complex infrastructure.
 
 image:dev_wf_overview_9.png[width=800px]
 
@@ -465,12 +470,9 @@ image:dev_wf_overview_9.png[width=800px]
 
 At this stage you are able to edit a Workflow and add some processes to enrich your infrastructure automation.
 
-
 The possibilities for evolution are endless due to the multi-layered integration of the MSActivator and the use of industry standard development frameworks such as Python.
 
-
 The next part of this tutorial will show you how to design a simple BPM to chain these Workflow processes into one single automation experience.
-
 
 === BPM Design
 
@@ -483,14 +485,12 @@ image:dev_bpm_design.gif[width=800px]
 
 ==== Details
 
-Logout of the Developer portal (click on “Logout” on the left-hand side). Login to the Manager Portal with your credentials.
-
+Logout of the Developer portal (click on “Logout” on the left-hand side). 
+Login to the Manager Portal with your credentials.
 
 Once again, select your “Subtenant” user from the drop-down menu at the top.
 
-
-Now select “Automation” from the left menu. (Make sure to select your user under Subtenant at the top to filter the correct BPM to test.)
-
+Now select “Automation” from the left menu.
 
 You should see a BPM named “Simple Security Orchestration”.
 
@@ -526,6 +526,9 @@ image:dev_bpm_design_5.png[width=800px]
 
 Click OK, the first task is configured.
 
+NOTE: although the “WORKFLOW SELECTION” pop-up is still listed, the first task is configured. This means you can move onto the second task.
+
+
 ====== Second Task
 
 Click on the second task and select the same Workflow as for the first task.
@@ -544,7 +547,6 @@ Click to “Edit” the parameters and provide the values for the “Rule” ID,
 
 image:dev_bpm_design_7.png[width=800px]
 
-Although the “WORKFLOW SELECTION” pop-up is still listed, the first task is configured. This means you can move onto the second task.
 
 ====== Third Task
 
@@ -552,9 +554,11 @@ Click on the third task (denoted by a box shape), select the same Workflow as pr
 
 Make sure you select “New Instance” and in the drop down list select the Workflow used for the first BPM task.
 
-image:dev_bpm_design_8.png[width=800px]
+image:dev_bpm_design_14.png[width=800px]
 
 Now click on “Save” at the top to save the BPM.
+
+image:dev_bpm_design_8.png[width=800px]
 
 
 ====== BPM Execution
@@ -573,7 +577,12 @@ However within a short timeframe you should have “Latest Execution Result” l
 
 image:dev_bpm_design_10.png[width=800px]
 
-Click "x" to exit that screen, then return to the other screen (go back to “Automation” > “Workflows”).
+Click "x" to exit that screen. A new BPM instance is listed.
+
+image:dev_bpm_design_13.png[width=800px]
+
+
+Return to the Workflows screen (go back to “Automation” > “Workflows”).
 
 In the Workflow instance list, verify the new instance has been created and that the policy parameters are the ones you provided to the BPM.
 
@@ -582,6 +591,11 @@ image:dev_bpm_design_11.png[width=800px]
 On the Managed Entity configuration (that is under “Infrastructure” > “Managed Entities” > “linux_machine-[your logon]” > “Configure” tab > “Simple Firewall”), you should also see a new Microservice instance for this policy in the bottom row.
 
 image:dev_bpm_design_12.png[width=800px]
+
+On the "Logs" tabs of the same Managed Entity, you can also verify that the event was recorded.
+
+image:dev_wf_overview_9.png[width=800px]
+
 
 ==== Conclusion
 You are now able to edit and execute a Workflow and design a simple BPM to chain your Workflow processes to build a fully automated tool for your infrastructure.

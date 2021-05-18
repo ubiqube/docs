@@ -160,7 +160,7 @@ image:assurance_log_search.png[width=800px]
 
 Dashboard will allow you to visualize the data store in Elasticsearch
 
-You can access Kibana on port 5601 (https://localhost:5601) and use Kibana to:
+You can access Kibana on port 5601 (https://localhost:5601/kibana) and use Kibana to:
 
 - discover the data indexed and stored in Elasticsearch 
 - create your own dashboard templates
