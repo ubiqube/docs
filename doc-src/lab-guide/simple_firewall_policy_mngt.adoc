@@ -273,7 +273,7 @@ You need 4 variables to map with the simple_firewall microservice:
 - id: for the firewall rule ID - type: Integer
 - src_ip: for the source IP to block - type: String
 - dst_port: for the destination port to block - type: Integer
-- device: to allow the user to select the managed entity to configure - type: Device
+- device.0.id: to allow the user to select a list of managed entity to configure - type: Device
 
 image:simple_firewall_wf_variables.png[width=600px]
 
