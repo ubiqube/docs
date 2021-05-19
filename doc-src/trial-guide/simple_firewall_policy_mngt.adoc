@@ -133,7 +133,7 @@ image:ops_user_configure_me.gif[width=800px]
 
 === Details
 
-From the "Managed Entities" screen which can be found by clicking on "Infrastructure" > "Managed Entities", click on your Managed Entity (as shown below) browse to the tab “Configure” and select the Microservice (MS) “Simple Firewall”.
+From the "Managed Entities" screen which can be found by clicking on "Infrastructure" > "Managed Entities", click on your Managed Entity (as shown below) browse to the tab “Configure” and select the Microservice “Simple Firewall”.
 
 image:ops_ms_config_1.png[width=800px]
 
@@ -344,7 +344,7 @@ Scroll down and find the code block that calls the Microservice "simple_firewall
   simple_firewall = {"simple_firewall": {object_id: micro_service_vars_array}}
 
 
-  # call the CREATE for simple_firewall MS for each device
+  # call the CREATE for simple_firewall Microservice for each device
   order = Order(device_db_id)
   order.command_execute("CREATE", simple_firewall)
 ----
