@@ -205,19 +205,24 @@ print(ret)			<4>
 
 ===== Microservice to Task code generation
 
-When you create a task you have the possibility to create a simple task pre-coded with on of the template above but you can also choose to create a task from a Microservice call.
-
-If you select the second option, you'll have the possibility to select a Microservice and one for it's function to generate a task with all the code to execute this microservice auto-generated.
-
 ifdef::html,env-github,env-browser[]
 image:workflow_create_ms_task.gif[width=800px]
 endif::[]
 
-ifdef::pdf[]
-image:workflow_create_ms_task.png[width=800px]
-endif::[]
 
-workflow_create_ms_task.png
+When you create a task you have the possibility to create a simple task pre-coded with on of the template above but you can also choose to create a task from a Microservice call.
+
+If you select the second option, you'll have the possibility to select a Microservice and one for it's function to generate a task with all the code to execute this microservice auto-generated.
+
+image:workflow_create_ms_task.png[width=800px]
+
+The code of the task is automatically generated.
+
+image:workflow_create_ms_task_code.png[width=800px]
+
+IMPORTANT: You will have to add manually the variables listed at the beginning of the new task code to the Workflow.
+
+image:workflow_create_ms_task_variables.png[width=800px]
 
 [#logging]
 == Logging and troubleshooting
