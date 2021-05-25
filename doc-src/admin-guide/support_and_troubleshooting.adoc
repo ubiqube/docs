@@ -50,17 +50,32 @@ IMPORTANT: you need to create the director `/mnt/NASVolume/msa_front` manually f
 
 ==== Install the {product_name} behind a proxy
 
-Often the {product_name} has to be installed on a host that sits behind a proxy. This requires some specific configuration on the host, on docker and also on the {product_name} containers themselves:
+Often the {product_name} has to be installed on a host that sits behind a proxy. 
+This requires some specific configuration on the host, on docker and also on the {product_name} containers themselves:
 
-Proxy setting on the host OS where the proxy needs to be specified and used. This is needed to download all the necessary docker packages as well as docker-compose on the machine. Those settings are different depending on the OS that might be used. 
+Proxy setting on the host OS where the proxy needs to be specified and used. This is needed to download all the necessary docker packages as well as docker-compose on the machine. 
+Those settings are different depending on the OS that might be used. 
 
-Once installed, docker does not inherit the proxy settings from the host machine. Proxy settings need to be specified in  dockers configuration file  to download the necessary {product_name} images.
+Once installed, docker does not inherit the proxy settings from the host machine. 
+Proxy settings need to be specified in  dockers configuration file  to download the necessary {product_name} images.
 
-However, along with that the "no proxy" option should be specified for the internal container to containers communication. Falling to do so will result in  all the traffic routed  the proxy.
+However, along with that, the "no proxy" option should be specified for the internal container to containers communication. 
+Falling to do so will result in  all the traffic routed  the proxy.
 
-.Set the no proxy option on the containers
+The easiest way to do that is to edit the file docker-compose.yml and add the following to the service `msa_dev`:
+
 ----
-export no_proxy=''172.20.0.0/24"
+environment:
+    http_proxy: "<PROXY URL>"
+    https_proxy: "<PROXY URL>"
+    no_proxy: "localhost,127.0.0.1,linux_me_2,linux_me,msa_cerebro,camunda,msa_alarm,msa_db,msa_sms,quickstart_msa_ai_ml_1,msa_ui,msa_dev,msa_bud,msa_kibana,msa_es,msa_front,msa_api"
+----
+
+If your proxy also rewrites the SSL certificates you will face errors such as `fatal: unable to access 'https://github.com/openmsa/Workflows.git/': Peer's Certificate issuer is not recognized.` when installing the {product_name}. 
+To solve this you also need to add the following to the `msa_dev` environment.
+
+----
+    GIT_SSL_NO_VERIFY: "true"
 ----
 
 link:https://docs.docker.com/network/proxy/[Docker Documentation | Configure Docker to use a proxy server]
