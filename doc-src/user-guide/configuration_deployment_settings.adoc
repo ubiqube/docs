@@ -21,11 +21,11 @@ A Deployment setting acts as the intermediate layer between a set of managed ent
 [ditaa]
 ....
     +---------------+n                                                                     
-    | Microservices |------\1                                                          
+    | Microservices |------\n                                                          
     +---------------+       +----------------------+ 1      n +------------------+    
                             | Deployment Settings  |----------| Managed Entities |    
     +---------------+       +----------------------+          +------------------+    
-    |    Templates  |------/1                                                          
+    |    Templates  |------/n                                                          
     +---------------+n                                                                                                    
 .... 
 
