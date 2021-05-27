@@ -49,7 +49,7 @@ Ensure you have access from HOST machine(s) to:
  ** https://github.com
  ** https://hub.docker.com
 
-=== Install the {product_name} behind a proxy
+==== Install the {product_name} behind a proxy
 
 Often the {product_name} has to be installed on a host that sits behind a proxy. 
 This requires some specific configuration on the host, on docker and also on the {product_name} containers themselves:
@@ -63,7 +63,7 @@ Proxy settings need to be specified in  dockers configuration file  to download 
 However, along with that, the "no proxy" option should be specified for the internal container to containers communication. 
 Falling to do so will result in  all the traffic routed  the proxy.
 
-The easiest way to do that is to edit the file docker-compose.yml and add the following to the service `msa_dev`:
+The easiest way to do that is to edit the file docker-compose.yml and add the following to the services `msa_dev`, `msa_api` and `msa_sms`:
 
 ----
 environment:
@@ -73,7 +73,7 @@ environment:
 ----
 
 If your proxy also rewrites the SSL certificates you will face errors such as `fatal: unable to access 'https://github.com/openmsa/Workflows.git/': Peer's Certificate issuer is not recognized.` when installing the {product_name}. 
-To solve this you also need to add the following to the msa_dev environment.
+To solve this you also need to add the following to the `msa_dev` and `msa_api` environment.
 
 ----
     GIT_SSL_NO_VERIFY: "true"
@@ -229,11 +229,11 @@ Starting from it's version 2.2.0, the quickstart project provides a script `upgr
 
 Let's say that you are running the version {revnumber-prev}, to upgrade to the version {revnumber} you need to follow these steps:
 
-
 . `cd quickstart`
-. `git fetch --depth 1 origin refs/{revnumber}:refs/tags/{revnumber}`
+. `git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"`
+. `git fetch origin`
 . `git checkout tags/{revnumber} -b {revnumber}`
-. `./scripts/install.sh` (or `./scripts/install_win.sh` for Windows users)
+. `./scripts/install.sh`
 
 NOTE: when running the upgrade script, it will ask you if you want your local libraries to be updated with the latest version from the community. If you answer 'y', the update will be done automatically. You can also do the update later manually on the container `msa_dev`.
 
@@ -254,7 +254,8 @@ this script installs and upgrades a {product_name}
 If your original version is 2.1, plz refer to upgrade script first provided with 2.2.0 GA. In any cases, perform those commands
 
 . `cd quickstart`
-. `git fetch --depth 1 origin refs/{revnumber}:refs/tags/{revnumber}`
+. `git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"`
+. `git fetch origin`
 . `git checkout tags/{revnumber} -b {revnumber}`
 . `./scripts/install_win.sh`
 
