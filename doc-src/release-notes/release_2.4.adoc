@@ -149,9 +149,27 @@ Let's say that you are running {product_name} version {revnumber-prev}, to upgra
 
 == Specific technical fixes and feature details
 
-=== 2.4.0 GA
+=== 2.4.1 Patch
 
 ==== Features
+
+* MSA-10059 - [Assurance] Reduce the log-aggregation-period from 60 to 10 seconds in the config
+* MSA-10010 - [Quickstart] Auto Deployment of default dashboard & display
+* MSA-9522 - [Workflow] Visibility of WF operation (replace tooltip with fixed popup for task messages)
+* MSA-10007 - [Workflow] Delete scheduled Workflow
+
+==== Bug fixes
+
+* MSA-9868 - [Admin] Lock subtenant list in banner for manager with unique subtenant
+* MSA-10012 - [API] GET /user/login fails with error 500 when the user doesn't exist
+* MSA-10082 - [API] Authentication Failure error code is 500 instead of 401
+* MSA-10002 - [Managed Entities] tabs offset issue
+* MSA-9990 - [Workflow] When selecting a setting file, the box for displaying the file name is narrow and the entire file name is not displayed
+* MSA-9991 - [Workflow] In the list display of "More Actions", the process name cannot be displayed after a certain length
+* MSA-9996 - [Workflow] inconsistency between selected scheduling date and displayed date in Scheduled Process
+* MSA-10005 - [Workflow] GET and SET Scheduling WF based on Timezone
+
+=== 2.4.0 GA
 
  * MSA-9657 - [Admin] LDAP Configuration Vars in MSA VARS
  * MSA-9777 - [Admin] Disable user creation in MSA locally when LDAP is enabled
