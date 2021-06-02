@@ -19,7 +19,7 @@ endif::[]
 This documentation will guide you through the implementation of a simple workflow to block a source IP and a destination port on a Linux based VNF
 
 == Overview
-The goal of this tutorial is to give you, in about 30 minutes, an overview of the main features of the MSActivator as a development and integration platform but also as an operation platform for managing your infrastructure.
+The goal of this tutorial is to give you, in about an hour, an overview of the main features of the MSActivator as a development and integration platform but also as an operation platform for managing your infrastructure.
 
 In this tutorial, you will first go through the MSActivator Manager experience. You will see, with a simple use case how you can:
 

@@ -6,4 +6,151 @@ image:msa_arch_ms_dev.png[width=400px]
 
 The *microservice editor* is a web based UI tool for designing, developing, testing and releasing microservices.
 
+== Microservice editor overview
 
+From the developer portal, click on "Create Microservice" to create the microservice.
+
+image:microservice_create_ms.png[width=800px]
+
+The microservice console is composed of a vertical menu on the left and a main screen
+
+image:microservice_console_information.png[width=800px] 
+
+Microservices are vendor specific, the implementations of the functions to create, update, delete or import a managed entity configuration will depend on the managed entity, the type of remote management interface, the format of the configuration, how it is structured,...
+
+It is important to select the correct vendor/model information because this will be used by the deployment settings to filter the microservice that are eligible for selection.
+
+It is also important to select the proper configuration type:
+
+- cli: for managed entities such as Linux, Cisco IOS, Fortigate,...
+- xml: for managed entities with a REST management API (both XML and JSON API are supported)
+- netconf: for managed entities that support Netconf as the management API
+
+The editor UI will adjust based on the configuration type.
+
+WARNING: this setting cannot be changed when editing a microservice.
+
+NOTE: it is not recommended to change the filename of a microservice after its creation.
+
+Once created, you can search for your microservice in the list and attach it to a deployment setting, you can also edit it or delete it.
+
+NOTE: The easiest way to design a microservice is to use a managed entity dedicated to testing and follow in a code-test-fix development cycle.
+This documentation uses the Linux Managed Entity provided by the mini-lab.
+
+== Variables
+
+Variable are usually defined to hold the parameters to be passed to the microservice. For instance, the port and IP to block for a firewall policy. Variables can also be used to display user information that is not meant to be used for configuring the managed entity.
+
+Setting variables is done from the section "Variables" on the microservice editor screen.
+
+image:microservice_console_variables.png[width=800px]
+
+When you create a new microservice, the variable object_id, which is mandatory, will be set and cannot be deleted. It can be edited to set it's type and other advanced properties.
+
+All variables are referenced with the prefix `$param` which is automatically set in the variable editor screen and when a variable has to be referenced in one of the microservice function, you need to use the syntax `{$param.your_variable}` (see below for more examples)
+
+By default the type of a variable is String but other types are supported such as Integer, Boolean, Password, IpAddress, ObjectRef,...
+
+=== Usage of the {$object_id} variable
+
+The `{$object_id}` is a reserved variable used to reference objects into the database and used as variable name in Smarty in the template resolution.
+
+When the parameters are passed to the engine you give:
+
+----
+{"interface":{"Interface-Service-engine0/0":{"ip_address":"1.2.3.4"}}}
+----
+
+The variables values are:
+
+----
+{$object_id} => "Interface-Service-engine0/0"
+{$params.ip_address} => "1.2.3.4"
+----
+
+== Functions
+
+From the left menu of the microservice editor there is a list of functions to implement. 
+While none of the functions are mandatory, at least one of 'Create', 'Update', 'Delete' or 'Import' has to be implemented in oder to have a microservice that can actually do something.
+
+In order to provide a full lifecycle management of a service on a managed entity, the 4 functions above have to be implemented.
+
+The function 'Read', 'List' are optional and while it's possible to implement them, you'll have to rely on the REST API to execute them.
+
+The function 'Constraint' allow the implementation of custom constraints to be verified before the managed entity is actually configured.
+
+=== Create
+
+The Create function takes care of configuring a new service in the managed entity. For example, a new static route if the managed entity is a router.
+
+This functions is implemented either in PHP Smarty template language for CLI microservice (see "Microservice Template with PHP Smarty" for more details) or as a REST API call for XML microservice.
+
+When this function is implemented, a button "+ Add Row" will appear in the tab "Configure" of the managed entity that uses this microservice.
+
+
+=== Update
+
+The Update function takes care of updating an existing service in the managed entity.
+
+=== Delete
+
+The Delete function takes care of deleting an existing service in the managed entity. 
+
+=== Import
+
+The role of the Import function is to import the actual configuration of the managed entity into the {product_name} database.
+
+The implementation of the Import is either based on a set of link:https://en.wikipedia.org/wiki/Regular_expression[regular expressions] or a set of link:https://en.wikipedia.org/wiki/XPath[XPath] expressions that build a parser that will extract the values of the variables.
+
+The Import is made of 3 parts:
+
+- the command to run on the device for CLI command based device or the REST API to call.
+- the configuration parser, implemented with a set of regular expressions or XPath expressions. Only the Microservice identifier extractor is mandatory.
+- a set of optional post import operations implemented in Smarty language (https://www.smarty.net/).
+
+=== Constraint
+
+In most cases, the constraint definition is straight forward when defining a microservice variable. 
+Based on the type of the variable, the UI will check if the provided value is consistent with the type. 
+For example if the type is "IP Address", the format of the value should be an IP address.
+
+In some cases, though, the constraint is more complex and may depend on a combination of several conditions that can involve multiple variables.
+
+For example, the 5 variables `params.av`, `params.webfilter`, `params.spamfilter`, `params.ips`, and `params.scanport` have the following dependencies:
+
+- If `params.av` is set then `params.scanport` must be set 
+- If `params.webfilter` is set then `params.scanport` must be set 
+- If `params.spamfilter` is set then `params.scanport` must be set 
+- If `params.ips` is set then `params.scanport` is not mandatory
+
+To make things simpler, it is possible to add a custom constraint evaluation to the object definition.
+
+The custom constraint is implemented as a smarty template:
+
+----
+{if !empty($params.av) 
+	OR !empty($params.webfilter) 
+	OR !empty($params.spamfilter)}
+	{if empty($params.scanport)}
+	Scan Port must be set
+	{/if}
+{/if}
+----
+
+image:microservice_console_constraint.png[width=800px]
+
+=== Execution flow
+
+The diagram below shows the flow of execution when one of the Create, Update or Delete function is executed by the REST API (directly or from the UI)
+
+image:microservice_execution_flow.png[width=800px]
+
+. A command (CREATE here) is send via web service.
+. The microservice name is used to retrieve the associated XML definition file associated to the managed entity.
+. The command name is used to find the <command> section in the XML definition file.
+. The variables {$object_id} and {$params} are created to parse the template of the XML definition file.
+. Variables from the database are also created to parse the template of the XML definition file.
+. The template generates device commands used to perform the requested command on the object.
+. The device commands generated are returned to the web service call.
+. Optionally the device commands generated are applied to the managed entity.
+. Optionally the object extracted from the web service call is stored in the database. 

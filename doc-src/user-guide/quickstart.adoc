@@ -69,7 +69,7 @@ The easiest way to do that is to edit the file docker-compose.yml and add the fo
 environment:
     http_proxy: "<PROXY URL>"
     https_proxy: "<PROXY URL>"
-    no_proxy: "localhost,127.0.0.1,linux_me_2,linux_me,msa_cerebro,camunda,msa_alarm,msa_db,msa_sms,quickstart_msa_ai_ml_1,msa_ui,msa_dev,msa_bud,msa_kibana,msa_es,msa_front,msa_api"
+    no_proxy: "localhost,127.0.0.1,linux_me_2,linux_me,msa_cerebro,camunda,msa_alarm,db,msa_sms,quickstart_msa_ai_ml_1,msa_ui,msa_dev,msa_bud,msa_kibana,msa_es,msa_front,msa_api"
 ----
 
 If your proxy also rewrites the SSL certificates you will face errors such as `fatal: unable to access 'https://github.com/openmsa/Workflows.git/': Peer's Certificate issuer is not recognized.` when installing the {product_name}. 
