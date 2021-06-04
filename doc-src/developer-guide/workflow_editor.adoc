@@ -1,6 +1,11 @@
 = Workflow Editor
+ifdef::env-github,env-browser[]
+:toc: left
+:toclevels: 3
+endif::[]
 ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
 
 image:msa_arch_wf_dev.png[width=400px] 
 
@@ -13,7 +18,6 @@ With the workflow editor, you can create new workflows or edit existing workflow
 This document explains how to use the editor to design workflows and implement them in PHP or in Python.
 
 The Workflow designer and execution engine are located in the architecture layer, between the BPM and the Microservice.
-
 
 ifdef::html,env-github,env-browser[]
 image:workflow_design.gif[width=800px]

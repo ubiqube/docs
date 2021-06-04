@@ -70,7 +70,7 @@ These steps are the usual steps designing and developping Microservices.
 
 Create a new microservice `simple_firewall` 
 
-image:simple_firewall_new_ms.png[width=600px]
+image:simple_firewall_new_ms.png[width=800px]
 
 NOTE: You can refer to the documentation on link:microservice_editor{outfilesuffix}[microservice editor] to learn how to create a new link:../user-guide/microservices{outfilesuffix}[microservice].
 
@@ -88,11 +88,11 @@ sudo iptables -A INPUT -p tcp --dport {$params.dst_port} -s {$params.src_ip} -j 
 sudo iptables -A FORWARD -p tcp --dport {$params.dst_port} -s {$params.src_ip}  -j DROP
 ----
 
-image:simple_firewall_ms_create_func.png[width=600px]
+image:simple_firewall_ms_create_func.png[width=800px]
 
 You need to create the 2 variables `dst_port` and `src_ip` as well as `object_id` which is a mandatory variable.
 
-image:simple_firewall_ms_variables.png[width=600px]
+image:simple_firewall_ms_variables.png[width=800px]
 
 
 At this point the microservice is ready for a first test. 
@@ -100,7 +100,7 @@ Use a link:../user-guide/configuration_deployment_settings{outfilesuffix}[deploy
 
 Save and close, select managed entity and click on the tab "configure", select the microservice simple_firewall and click on "+ Add Row"
 
-image:simple_firewall_test_ms.png[width=600px]
+image:simple_firewall_test_ms.png[width=800px]
 
 Please make sure linux_me is activated, otherwise "Activate" it.
 Then click "Apply Changes".
@@ -169,7 +169,7 @@ The regular expression below will extract the object_id, the src_ip and the dst_
 (?<object_id>\d+)\s+DROP\s+tcp\s+--\s+(?<src_ip>([0-9]{1,3}\.){3}[0-9]{1,3})[^:]+:(?<dst_port>\d+)
 ----
 
-image:simple_firewall_ms_import_func.png[width=600px]
+image:simple_firewall_ms_import_func.png[width=800px]
 
 ==== Test and check the Linux vFW via the command line interface
 
@@ -193,7 +193,7 @@ DROP       tcp  --  192.168.67.98        0.0.0.0/0           tcp dpt:2345
 
 And use "Synchronize with Managed Entity" to import the new rule in the configuration database.
 
-image:simple_firewall_ms_import_new_rule.png[width=600px]
+image:simple_firewall_ms_import_new_rule.png[width=800px]
 
 ==== Implement the DELETE command
 
@@ -262,7 +262,7 @@ The workflow will be a very simple workflow with 3 processes, implemented in pyt
 
 ==== Create a new workflow
 
-image:simple_firewall_new_wf.png[width=600px]
+image:simple_firewall_new_wf.png[width=800px]
 
 IMPORTANT: set the workflow language to *python* and set *service_id* as the workflow variable name.
 
@@ -273,18 +273,18 @@ You need 4 variables to map with the simple_firewall microservice:
 - id: for the firewall rule ID - type: Integer
 - src_ip: for the source IP to block - type: String
 - dst_port: for the destination port to block - type: Integer
-- device.0.id: to allow the user to select a list of managed entity to configure - type: Device
+- devices.0.id: to allow the user to select a list of managed entity to configure - type: Managed Entity
 
-image:simple_firewall_wf_variables.png[width=600px]
+image:simple_firewall_wf_variables.png[width=800px]
 
 NOTE: the type Device is a special type that will let the user select a managed entity from the process execution screen
 
 ==== Implement the processes
 Create the processes and for each processes add a task.
 
-Make sure that each process type is correcty set as detailed above.
+Make sure that each process type is correctly set as detailed above.
 
-The source code below can be direclty copied in the tasks.
+The source code below can be directly copied in the tasks.
 
 ===== process Create Firewall Service
 
@@ -312,6 +312,12 @@ print(ret)
 ===== process Add Filter Rule
 [source, python]
 ----
+import json
+from msa_sdk.variables import Variables
+from msa_sdk.msa_api import MSA_API
+from msa_sdk.order import Order
+from msa_sdk import util
+
 # List all the parameters required by the task
 dev_var = Variables()                                                       <1>
 dev_var.add('id', var_type='Integer')
@@ -344,18 +350,6 @@ for device in devices:
 
   # check if the response is OK
   if order.response.ok:
-    if 'rules' in context.keys():
-      num = len(context['rules'])
-    else:
-      context['rules'] = {}
-      num = 0
-
-    context['rules'][num] = {}                      <8>
-    context['rules'][num]['delete'] = False
-    context['rules'][num]['id'] = context['id']
-    context['rules'][num]['src_ip'] = context['src_ip']
-    context['rules'][num]['dst_port'] = context['dst_port']
-
     ret = MSA_API.process_content('ENDED',
                                   f'STATUS: {content["status"]}, \
                                   MESSAGE: {content["message"]}',
@@ -367,7 +361,6 @@ for device in devices:
                                   context, True)
 
 print(ret)
-
 ----
 
 <1> list all the parameters required by the task
@@ -377,7 +370,6 @@ print(ret)
 <5> call the CREATE for simple_firewall MS for each device
 <6> call the microservice CREATE with the parameters. Make sure to transform the dictionary to JSON
 <7> get the response and process it
-<8> add any new rule in a dedicated dictionary in the context
 
 ===== process Delete Service
 

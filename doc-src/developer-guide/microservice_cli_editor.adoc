@@ -87,7 +87,7 @@ The Microservice is ready to be tested.
 
 Make sure that you can add and delete a policy rule, that it's reflected on the Linux firewall, and that the parameters are also properly synchronised after a call to Create or Delete.
 
-You can also add some iptables rules manually on the Linux CLI and run a configuration synchronisation to make sure that your manual changes are properly imported.
+You can also add some iptables rules manually on the Linux CLI and run a configuration synchronization to make sure that your manual changes are properly imported.
 
 image:microservice_console_create_instance.png[width=800px]
 

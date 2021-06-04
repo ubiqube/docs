@@ -256,55 +256,66 @@ TIP: the code for iterating over an array of managed entities is very similar
 
 ==== Microservice reference
 
-This type is the key when integrating workflows and microservices, it will allow you to use the data imported by the microservice from a managed entity in your automation code.
+This type is key when integrating workflows and microservices.
+
+It allows you to import and use the microservice instance data from a managed entity in your automation code.
+
+ifdef::html,env-github,env-browser[]
+image:workflow_variable_microservice_reference.gif[width=800px]
+endif::[]
 
 To use this type you need 2 variables:
-1. a variable with the type `Device` to select the managed entity to get the data from
-2. a variable with the type `Microservice Reference` to select the microservice that will pull the data
+
+. a variable with the type `Managed Entity` to select the managed entity to get the data from
+. a variable with the type `Microservice Reference` to select the microservice that will pull the data
 
 When creating a variable typed `Microservice Reference` you need to select the `Device` variable and the microservice.
 
-In the exmaple below, the variable `$params.user` is typed as `Microservice Reference`. In the "Advanced" tab, the field "Microservice Reference" references one or several microservice and the field "Device ID" references a managed entity.
+In the example below, the variable `$params.interface` is typed as `Microservice Reference`. 
+In the "Advanced" tab, the field "Microservice Reference" references one or several microservice and the field "Device ID" references a managed entity.
 
 image:workflow_console_variables_ms_ref.png[width=800px]
 
-.Sample PHP task to create the UI to select a managed entity and select a microservice instance from this managed entity
-[source, PHP]
+.Sample Python task to create the UI to select a managed entity and select a microservice instance from this managed entity
+[source, Python]
 ----
-<?php
+from msa_sdk.variables import Variables
+from msa_sdk.msa_api import MSA_API
 
-require_once '/opt/fmc_repository/Process/Reference/Common/common.php';
+dev_var = Variables()
+dev_var.add('managed_entity', var_type='Device') <1>
+dev_var.add('interface.0.name', var_type='OBMFRef') <2>
 
-function list_args()
-{
-  create_var_def('me');
-  create_var_def('user');
-}
+context = Variables.task_call(dev_var)
 
-task_success('Task OK');
-?>
+ret = MSA_API.process_content('ENDED', 'Task OK', context, True)
+
+print(ret)
 ----
+<1> for backward compatibility reason use "Device" when the variable type is "Managed Entity" 
+<2> for backward compatibility reason use "OBMFRef" when the variable type is "Microservice Reference" 
 
 It also possible to use an array to select multiple values from the microservice
 
 image:workflow_console_variables_multiple_ms_ref.png[width=800px]
 
 .Sample PHP task to select multiple values from the microservice instance
-[source, PHP]
+[source, Python]
 ----
-<?php
+from msa_sdk.variables import Variables
+from msa_sdk.msa_api import MSA_API
 
-require_once '/opt/fmc_repository/Process/Reference/Common/common.php';
+dev_var = Variables()
+dev_var.add('managed_entity', var_type='Device') 
+dev_var.add('interface.0.name', var_type='OBMFRef') <1>
 
-function list_args()
-{
-  create_var_def('me');
-  create_var_def('users.0.user');
-}
+context = Variables.task_call(dev_var)
 
-task_success('Task OK');
-?>
+ret = MSA_API.process_content('ENDED', 'Task OK', context, True)
+
+print(ret)
 ----
+<1> Use a variable array to allow multiple value selection
 
 ==== Service reference (workflow reference)
 NOTE: not supported yet
