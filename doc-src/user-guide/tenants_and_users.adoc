@@ -28,7 +28,12 @@ image:concepts_tenants_users.png[width=800px]
 
 == Tenancy management
 
-The {product_name} is designed to provide multi-tenancy. A tenant is a virtual private space that can be managed as an isolated environment.
+The {product_name} is designed to provide multi-tenancy. 
+A tenant is a virtual private space that can be managed as an isolated environment.
+
+ifdef::html,env-github,env-browser[]
+image:tenancy_creation.gif[width=800px]
+endif::[]
 
 There are two levels of tenancy, tenant and subtenant, the latter being nested in the first one.
 
@@ -49,14 +54,6 @@ Select the "Subtenants" section in the "Admin" menu and click on the "+ Create S
 Carefully select the tenant where the subtenant will be created as moving a subtenant to another tenant is not possible without database update.
 
 image:subtenant_creation_form.png[Subtenant Creation Form,width=800px]
-
-
-//// 
-TODO : update
-In the "Contacts" form, the email is a mandatory field. 
-
-This email will be used to send alarms. Alarm management is explained in the Alarm Management guide.
-////
 
 Save the customer form and navigate to the new subtenant tenant (click on the subtenant name in the customer list).
 

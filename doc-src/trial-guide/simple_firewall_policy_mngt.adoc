@@ -32,6 +32,12 @@ In the second part you will go through the MSActivator Developer Experience.
 
 You will be taken, step by step through simple examples of design for Workflow and BPM (Business Process Management) to automate a simple use case of security policy and assurance orchestration. 
 
+=== Environment
+
+This tutorial was designed to be executed on our link:https://trial.ubiqube.com[hosted trial environnement].
+
+To login to the portal, use the email and the password you provided when your registered to the trial on link:ubiqube.com[].
+
 == Ops Manager Experience
 
 NOTE: it is best if you open these instructions in a separate window to follow through on MSActivator.
@@ -120,9 +126,9 @@ This demonstrates how you can monitor your infrastructure from a single pane of 
 Now let's move onto infrastructure.
 
 
-== Infrastructure - Configure a Policy with Microservice
+=== Infrastructure - Configure a Policy with Microservice
 
-=== Overview
+==== Overview
 
 In this section, you will learn how to use a Microservice to configure a security policy on a Managed Entity.
 
@@ -131,7 +137,7 @@ A Microservice is a simple object that implements some functions to create/read/
 image:ops_user_configure_me.gif[width=800px]
 
 
-=== Details
+==== Details
 
 From the "Managed Entities" screen which can be found by clicking on "Infrastructure" > "Managed Entities", click on your Managed Entity (as shown below) browse to the tab “Configure” and select the Microservice “Simple Firewall”.
 
@@ -183,7 +189,7 @@ You can add another policy and check that the configuration update is as expecte
 
 NOTE: if you activate the Managed Entity that is already activated and green, then it will go red and back to green within a minute or so. This is normal behavior.
 
-=== Conclusion
+==== Conclusion
 At this stage, you have been able to use a Microservice to configure a security policy on a Managed Entity.
 
 As you can see, using a Microservice is as simple as filling a form with a set of parameters and the MSActivator configuration engine takes care of building the configuration based on your vendor and applying the configuration with the proper Adapter.
@@ -194,9 +200,9 @@ You can lean more about Adapter and Microservice use and design in the online us
 - link:https://ubiqube.com/wp-content/docs/latest/developer-guide/developer-guide-single.html#_microservice_editor[Microservice design,window=_blank]
 - link:https://ubiqube.com/wp-content/docs/latest/developer-guide/developer-guide-single.html#_adapter_developmentx[Adapter,window=_blank]
 
-== Automation - Automate the policy configuration with a Workflow
+=== Automation - Automate the policy configuration with a Workflow
 
-=== Overview
+==== Overview
 
 In this section, you will learn how to use a Workflow to select a Managed Entity and execute a process to configure a security policy.
 
@@ -205,7 +211,7 @@ The Workflow integrates seamlessly with the Microservice you have used in the pr
 image:ops_user_workflow_configure_me.gif[width=800px]
 
 
-=== Details
+==== Details
 To access the Workflow, from the Manager portal, browse to the “Automation” menu at the left and select the “Workflows” tab.
 
 image:ops_wf_config_1.png[width=800px]
@@ -252,7 +258,7 @@ Everything at the backend with the Managed Entity is executed without having to 
 
 You see how easy that was?
 
-=== Conclusion
+==== Conclusion
 
 At this stage you learned how to use Workflows to execute automated orchestration processes. 
 

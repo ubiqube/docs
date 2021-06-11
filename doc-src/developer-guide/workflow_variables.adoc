@@ -269,7 +269,9 @@ To use this type you need 2 variables:
 . a variable with the type `Managed Entity` to select the managed entity to get the data from
 . a variable with the type `Microservice Reference` to select the microservice that will pull the data
 
-When creating a variable typed `Microservice Reference` you need to select the `Device` variable and the microservice.
+When creating a variable typed `Microservice Reference` you need to select the `Managed Entity` variable to use and the microservice that will act as the data source.
+
+IMPORTANT: the microservice must be attached to the managed entity with a deployment setting in order for the microservice reference to work.
 
 In the example below, the variable `$params.interface` is typed as `Microservice Reference`. 
 In the "Advanced" tab, the field "Microservice Reference" references one or several microservice and the field "Device ID" references a managed entity.

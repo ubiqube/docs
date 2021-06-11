@@ -14,7 +14,11 @@ The detail on the SecEngine API command is very important because it is directly
 == API description
 
 === Add an order to the Stack
-curl -u ncroot:ncroot_pwd -XPUT http://MSA_IP/ubi-api-rest/orderstack/command/{deviceId}/{commandName} -d {objectParameters}
+
+[source]
+----
+curl --location -s -k -H "Authorization: Bearer TOKEN“ -XPUT http://MSA_IP/ubi-api-rest/orderstack/command/{deviceId}/{commandName} -d {objectParameters}
+----
 
 .Description
 Adds a command in the stack and returns the ID of the order in the stack.
@@ -41,9 +45,10 @@ Adds a command in the stack and returns the ID of the order in the stack.
 Write into database (redsms.sd_crud_object).
 
 === Generate the configuration from the stack
+
 [source]
 ----
-curl -u ncroot:ncroot_pwd -XGET http://MSA_IP/ubi-api-rest/orderstack/configuration/{deviceId}
+curl --location -s -k -H "Authorization: Bearer TOKEN“ -XGET http://MSA_IP/ubi-api-rest/orderstack/configuration/{deviceId}
 ----
 
 .Description
@@ -58,17 +63,19 @@ loop on commands in the stack
 end loop
 
 The SMS verb is equivalent to the following CLI command command:
+
 [source]
 ----
 sms -e JSCALLCOMMAND -i 'deviceId commandName 0' -c 'objectParameters'
 ----
-.Note
-In the CLI command above the parameter 0 is used along with commands such as CREATE, UPDATE or DELETE and generate configuration without access to the database or the device
+
+NOTE: with the CLI command above the parameter 0 is used along with commands such as CREATE, UPDATE or DELETE and generate configuration without access to the database or the device
 
 === Generates the configuration and store the configuration from the stack
+
 [source]
 ----
-curl -u ncroot:ncroot_pwd -XPUT http://MSA_IP/ubi-api-rest/orderstack/configuration/{deviceId}
+curl --location -s -k -H "Authorization: Bearer TOKEN“ -XPUT http://MSA_IP/ubi-api-rest/orderstack/configuration/{deviceId}
 ----
 
 .Description
@@ -87,8 +94,7 @@ end loop
 
 The SMS verb is equivalent to the following command: `sms -e JSCALLCOMMAND -i 'deviceId commandName 1' -c 'objectParameters'`
 
-.Note
-In the CLI command above the parameter 1 is used along with commands such as CREATE, UPDATE or DELETE and generate the configuration and stores the configuration items in the database.
+NOTE: In the CLI command above the parameter 1 is used along with commands such as CREATE, UPDATE or DELETE and generate the configuration and stores the configuration items in the database.
 
 The device configuration is not impacted.
 
@@ -96,7 +102,7 @@ The device configuration is not impacted.
 
 [source]
 ----
-curl -u ncroot:ncroot_pwd -XPOST http://MSA_IP/ubi-api-rest/orderstack/execute/{deviceId}
+curl --location -s -k -H "Authorization: Bearer TOKEN“ -XPOST http://MSA_IP/ubi-api-rest/orderstack/execute/{deviceId}
 ----
 
 .Description
@@ -116,14 +122,14 @@ end loop
 
 The SMS verb is equivalent to the following command: sms -e JSCALLCOMMAND -i 'deviceId commandName 2' -c 'objectParameters'
 
-.Note
-In the CLI command above the parameter 2 is used along with commands such as CREATE, UPDATE or DELETE which will generate the configuration, store the configuration items in the database and apply the configuration to the device.
+
+NOTE: with the CLI command above, the parameter 2 is used along with commands such as CREATE, UPDATE or DELETE which will generate the configuration, store the configuration items in the database and apply the configuration to the device.
 
 === List the orders in the stack
 
 [source]
 ----
-curl -u ncroot:ncroot_pwd -XGET http://MSA_IP/ubi-api-rest/orderstack/{deviceId}
+curl --location -s -k -H "Authorization: Bearer TOKEN“ -XGET http://MSA_IP/ubi-api-rest/orderstack/{deviceId}
 ----
 
 .Description
@@ -139,7 +145,7 @@ Read from the database (table redsms.sd_crud_object).
 
 [source]
 ----
-curl -u  ncroot:ncroot_pwd -XGET http://MSA_IP/ubi-api-rest/orderstack/command/{deviceId}/{commandId}
+curl --location -s -k -H "Authorization: Bearer TOKEN“ -XGET http://MSA_IP/ubi-api-rest/orderstack/command/{deviceId}/{commandId}
 ----
 .Description
 Gets the detail of a stack command based on its identifier in the stack.
@@ -155,7 +161,7 @@ Read in database (redsms.sd_crud_object).
 
 [source]
 ----
-curl -u ncroot:ncroot_pwd -XDELETE http://MSA_IP/ubi-api-rest/orderstack/{deviceId}
+curl --location -s -k -H "Authorization: Bearer TOKEN“ -XDELETE http://MSA_IP/ubi-api-rest/orderstack/{deviceId}
 ----
 
 .Description
@@ -171,7 +177,7 @@ Remove in database (redsms.sd_crud_object)
 
 [source]
 ----
-curl -u  ncroot:ncroot_pwd -XDELETE http://MSA_IP/ubi-api-rest/orderstack/command/{deviceId}/{commandId}
+curl --location -s -k -H "Authorization: Bearer TOKEN“ -XDELETE http://MSA_IP/ubi-api-rest/orderstack/command/{deviceId}/{commandId}
 ----
 .Description
 Deletes a command from the stack based on the command ID.
@@ -187,7 +193,7 @@ Remove in database (redsms.sd_crud_object).
 
 [source]
 ----
-curl -u ncroot:ncroot_pwd -XPUT http://MSA_IP/ubi-api-rest/device/push_configuration/{deviceId} -d {configuration}
+curl --location -s -k -H "Authorization: Bearer TOKEN“ -XPUT http://MSA_IP/ubi-api-rest/device/push_configuration/{deviceId} -d {configuration}
 ----
 
 .Description
@@ -212,7 +218,7 @@ Applies the configuration to the device.
 
 [source]
 ----
-curl -u ncroot:ncroot_pwd  -X GET http://MSA_IP/ubi-api-rest/device/push_configuration/status/{deviceId}
+curl --location -s -k -H "Authorization: Bearer TOKEN“  -X GET http://MSA_IP/ubi-api-rest/device/push_configuration/status/{deviceId}
 ----
 
 .Description
