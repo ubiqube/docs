@@ -1,0 +1,58 @@
+= Security Configuration for HA Setup
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+Before installing MSA there are some host configurations that are needed.
+
+== Install and configure Audit
+* Mount `/var/lib/docker` as a separete partition
+* Install audit
+** `# yum install audit`
+* Edit (or create if does not exist) `/etc/audit/rules.d/audit.rules` add lines:
+```
+-w /usr/bin/dockerd -k docker
+-w /usr/bin/docker -k docker
+-w /var/lib/docker -k docker
+-w /etc/docker -k docker
+-w /usr/lib/systemd/system/docker.socket -k docker
+-w /usr/lib/systemd/system/docker.service -k docker
+-w /etc/docker/daemon.json -k docker
+-w /etc/default/docker -k docker
+
+# restart audit service
+# service auditd restart
+```
+NOTE: Auditing can generate large log files. You should ensure that these are rotated and archived periodically. A separate partition should also be created for audit logs to avoid filling up any other critical partition.
+
+== Configure docker daemon
+=== Standalone mode
+* Edit (or create if does not exist) /etc/docker/daemon.json and add
+```
+{"icc": false, "userns-remap": "default", "log-driver": "syslog",  "live-restore": true, "userland-proxy": false}
+```
+
+=== Swarm mode
+* Edit (or create if does not exist) /etc/docker/daemon.json and add
+```
+{"icc": false, "userns-remap": "default", "log-driver": "syslog", "userland-proxy": false}
+```
+
+=== Configure sysctl
+* Add "user.max_user_namespaces=15000" to /etc/sysctl.conf and reload (`# sysctl -p`)
+
+=== Reload services
+* `# sysctl -p`
+* `# systemctl restart docker`
+
+== Swarm manager should run in auto-lock mode
+* When creating a swarm run: `# docker swarm init --autolock`
+* if swarm already exist: `# docker swarm update --autolock`
+
+== Encrypted overlay network
+* Before starting swarm:
+```
+ # docker network rm ingress
+    WARNING! Before removing the routing-mesh network, make sure all the nodes in your swarm run the same docker engine version. Otherwise, removal may not be effective and functionality of newly create ingress networks will be impaired.
+    Are you sure you want to continue? [y/N] y
+    ingress
+
+ # docker network create --ingress --driver overlay --opt encrypted ingress
+```

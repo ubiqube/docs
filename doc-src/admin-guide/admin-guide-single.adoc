@@ -41,6 +41,8 @@ include::{includedir}/license_activation.adoc[]
 
 include::{includedir}/ha_installation.adoc[]
 
+include::{includedir}/security_configuration.adoc[]
+
 include::{includedir}/support_and_troubleshooting.adoc[]
 
 include::{includedir}/ldap.adoc[]
@@ -48,4 +50,3 @@ include::{includedir}/ldap.adoc[]
 ifdef::html[]
 include::{includedir}/opensource_technologies.adoc[]
 endif::[]
-
