@@ -1,0 +1,7 @@
+
+:footer-style: none
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+
+video::A7zT-AZf2cg[youtube,width=800px,height=480] 

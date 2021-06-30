@@ -92,6 +92,31 @@ By default, the managers have restricted, read-only access to the subtenant.
 
 A manager may be used to provide self-care access to the {product_name} portal.
 
+== Roles and rights management : permission profiles
+
+The {product_name} provides a simple authorization mechanism based on 4 user roles, the privileged administrator, the administrator, the privileged manager, and the manager.
+
+By default, managers have a very restricted access to the data. 
+They can only view the information of the subtenant and managed entities they are entitled to. In order to grant more rights to a manager, it is possible to use a permission profile.
+
+A permission profile is an aggregation of rights such as "create a device", "activate a device", "configure a device",... that are turned on or off depending on your user management policy. 
+This profile is applied to a set of one or more users.
+
+You can create a permission profile as ncroot from the "Admin" section. 
+Permission profiles are created in the scope of a tenant therefore you need to select a tenant to manage them.
+
+image:permission_profile_create.png[width=800px]
+
+On the tab "Permissions" select the specific permission that you want to give to your managers
+
+Permissions are organized by categories that reflect the {product_name} functional architecture.
+
+image:permission_profile_permissions.png[width=800px]
+
+Assign the permissions to managers on the tab "Associated Managers"
+
+
+
 == Audit record
 
 The audit logs record every call to the {product_name} API, this includes user action on the UI and direct call to the REST API
@@ -116,15 +141,5 @@ Since audit record are stored in Elasticsearch, you can use Kibana to design a s
 image:audit_logs_kibana.png[width=800px]
 
 
-=== Roles and rights management : permission profiles
 
-The {product_name} provides a simple authorization mechanism based on 4 user roles, the privileged administrator, the administrator, the privileged manager, and the manager.
-
-By default, managers have a very restricted access to the data. They can only view the information of the subtenant and managed entities they are entitled to. In order to grant more rights to a manager, it is possible to use a permission profile.
-
-A permission profile is an aggregation of rights such as "create a device", "activate a device", "configure a device",... that are turned on or off depending on your user management policy. This profile is applied to a set of one or more users.
-
-You can create a permission profile as ncroot from the "Admin" section. Permission profiles are created in the scope of a tenant therefore you need to select a tenant to manage them.
-
-image:permission_profile.png[width=800px]
 

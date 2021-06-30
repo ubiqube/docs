@@ -1,0 +1,605 @@
+= Quickstart Trial Guide
+:front-cover-image: image:trial-front-cover.pdf[]
+:toc: left
+:toclevels: 5
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+ifndef::imagesdir[:imagesdir: images]
+
+//OK HTML 
+ifdef::html[]
+:includedir: doc-src/trial-guide
+endif::[]
+
+// OK PDF
+ifdef::pdf[]
+:includedir: .
+endif::[]
+
+
+This documentation will guide you through the implementation of a simple workflow to block a source IP and a destination port on a Linux based VNF
+
+== Overview
+The goal of this tutorial is to give you, in about an hour, an overview of the main features of the MSActivator as a development and integration platform but also as an operation platform for managing your infrastructure.
+
+In this tutorial, you will first go through the MSActivator Manager experience. You will see, with a simple use case how you can:
+
+* Onboard and monitor your Managed Entity (Managed Entity)
+** Managed Entities are the various devices, systems, etc. that are part of your digital ecosystem
+* Use Microservices (Microservice) to do some simple policy configuration on your Managed Entity
+* Use Workflow to automate the configuration.
+
+In the second part you will go through the MSActivator Developer Experience.
+
+You will be taken, step by step through simple examples of design for Workflow and BPM (Business Process Management) to automate a simple use case of security policy and assurance orchestration. 
+
+=== Environment
+
+This tutorial was designed to be executed on our link:https://trial.ubiqube.com[hosted trial environnement].
+
+To login to the portal, use the email and the password you provided when your registered to the trial on link:ubiqube.com[].
+
+== Ops Manager Experience
+
+NOTE: it is best if you open these instructions in a separate window to follow through on MSActivator.
+
+For our purposes today, log into the Manager screen with your details. 
+Click Log In to start your automation journey.
+
+image:ops_user_login.gif[width=800px]
+
+You will see Tenant, Subtenant along the top of the screen which is the environment you will use.
+
+=== Environment Overview
+Once connected to the Manager portal you have access to your own dedicated subtenant. 
+
+You have a dedicated Linux based Managed Entity that you can use for this tutorial. Please use the dropdown menu from “Subtenant” to select the subtenant that aligns with your login details (this should be your email address).
+
+image:ops_user_dashboard.png[width=800px]
+
+For this scenario you will be working with a Linux Managed Entity (Managed Entity) and automating the configuration of iptables-based firewall policy. You will be able to use Microservices and Workflows to create an abstraction layer on top of the Managed Entity.
+
+Browse to your Managed Entity by clicking on “Infrastructure” in the left menu.
+
+Click on the Managed Entity name in the list. This should read "linux_machine-[your logon]".
+
+image:ops_user_browse_to_me.gif[width=800px]
+
+This Managed Entity is implemented by a dedicated Linux based Docker container that you will be using for this demo scenario. 
+
+=== Assurance - Monitoring Profile
+In this section you will be creating a monitoring profile to monitor the CPU of your Managed Entity.
+
+image:ops_user_create_mon_pfl.gif[width=800px]
+
+Go back to the main screen. Click on Infrastructure again, then the “Monitoring Profiles” tab and click on the  “+Create Monitoring Profile” blue button to the right of the tab.
+
+In the rule fields, use the value below:
+
+- Profile Name: "CPU Load" (you can also choose whichever name you want for Profile Name)
+- Leave Comment and External Reference blank.
+
+==== Polling rules
+
+Click on the “+Add Rule” blue button located beneath and use these values:
+
+- Name : cpu_load_1min
+- OID: 1.3.6.1.4.1.2021.10.1.5.1
+- Type: Gauge
+
+You can leave the other fields with the default values.
+
+==== Graphical rendering
+
+Next go to the "Graphical Rendering" menu on the left, click on "+Add Graph" with the values below:
+
+- Graph Name: CPU
+- Units: CPU load
+
+Click on the “+” icon located below to add new data as follows:
+
+- Select the Date Name: cpu_load_1min
+- X Axis: 1 min
+- Choose a color from the color picker on the right
+
+==== Attach managed entities
+
+Click on the “Create Monitoring Profile” blue button in the upper right corner to save the profile. This will then put you back in the Infrastructure > Monitoring Profiles tab.
+
+From the Monitoring Profile tab, attach the Managed Entity to the profile by clicking on the icon as shown below.
+
+Attach the Managed Entity (linux_machine-[your logon]) by selecting the empty box next to your Managed Entity and then moving it to the column on the right by using the  ">" arrow.
+
+Now click on “Save” to save the profile.
+
+Monitoring starts after about one minute. 
+
+To see this, click on the name of your Managed Entity by going to the “Managed Entities” tab (if you’ve left “Monitoring Profiles” and are back at the main screen, then click on “Infrastructure” and “Managed Entities” will be the first tab). Once again this will be the same name as above “linux_machine-[your logon]".
+
+You can select the new monitoring profile from the drop down list and see the graph you created with your data. If you see an error message that says, “The selected monitoring profile doesn't have any graphical rendering defined” then this means it is too early to see data. Check back in a few minutes.
+
+Once inside the the Managed Entities "linux-machine-[your logon]", in the “Overview” area, go to “Monitoring Profiles”  underneath and select "CPU Load" and View Data for "Last hour".
+
+image:ops_user_view_me_graph.gif[width=800px]
+
+This demonstrates how you can monitor your infrastructure from a single pane of glass. 
+
+Now let's move onto infrastructure.
+
+
+=== Infrastructure - Configure a Policy with Microservice
+
+==== Overview
+
+In this section, you will learn how to use a Microservice to configure a security policy on a Managed Entity.
+
+A Microservice is a simple object that implements some functions to create/read/update/delete and import a configuration on a Managed Entity.
+
+image:ops_user_configure_me.gif[width=800px]
+
+
+==== Details
+
+From the "Managed Entities" screen which can be found by clicking on "Infrastructure" > "Managed Entities", click on your Managed Entity (as shown below) browse to the tab “Configure” and select the Microservice “Simple Firewall”.
+
+image:ops_ms_config_1.png[width=800px]
+
+Click “+Add Row” to configure a new policy on your Linux Managed Entity.
+
+This policy will be configuring a rule to block traffic for a source IP address and a destination port.
+
+On the Linux container, the rule will be implemented by iptables command below at the backend:
+
+----
+sudo iptables -A INPUT -p tcp --dport <PORT TO BLOCK> -s <IP TO BLOCK> -j DROP
+sudo iptables -A FORWARD -p tcp --dport <PORT TO BLOCK> -s <IP TO BLOCK> -j DROP
+----
+
+We can do that much simpler. On the Add Row screen leave the ID the same and then fill in the form where Source IP is a valid IP address (e.g. 192.168.12.23) and a valid destination port (e.g. 443). 
+
+If you leave the Destination Port blank then saving the rule will imply the entire IP address is blocked according to the iptables command.
+
+Fill the form with an IP address and a destination port (example: 192.168.12.23 / 443) and click “Save”.
+
+image:ops_ms_config_2.png[width=800px]
+
+A new line is added to the list with your configuration.
+
+At this stage the configuration is not yet applied to the Linux Managed Entity, it is stacked in the MSActivator configuration database, ready to be applied.
+
+image:ops_ms_config_3.png[width=800px]
+
+
+To apply the configuration, click on “Apply Changes” and confirm the action with "OK".
+
+Once finished, you can select the microserviceMicroservice “Simple Firewall”, a new line is visible which means that the configuration was successfully applied and the Linux actual configuration was correctly synchronized with the MSActivator configuration database.
+
+Let's add another row to the Managed Entity. Follow the same steps as above. 
+
+. Click on “+Add Row”.
+. Leave ID the same, then in Source IP type: 192.168.12.24 .
+. For Destination Port type: 443, then click “Save”.
+. Click on “Apply Changes”.
+
+Go to the “History” tab (right tab on the Managed Entity screen), select the 2 configuration versions and click on “Diff” to show the configuration changes that were applied. If this is your first configuration, then only 1 configuration will appear. 
+
+image:ops_ms_config_4.png[width=800px]
+
+
+You can add another policy and check that the configuration update is as expected.
+
+NOTE: if you activate the Managed Entity that is already activated and green, then it will go red and back to green within a minute or so. This is normal behavior.
+
+==== Conclusion
+At this stage, you have been able to use a Microservice to configure a security policy on a Managed Entity.
+
+As you can see, using a Microservice is as simple as filling a form with a set of parameters and the MSActivator configuration engine takes care of building the configuration based on your vendor and applying the configuration with the proper Adapter.
+
+You can lean more about Adapter and Microservice use and design in the online user manual:
+
+- link:https://ubiqube.com/wp-content/docs/latest/user-guide/manager-guide-single.html#_microservices_2[Microservice use,window=_blank]
+- link:https://ubiqube.com/wp-content/docs/latest/developer-guide/developer-guide-single.html#_microservice_editor[Microservice design,window=_blank]
+- link:https://ubiqube.com/wp-content/docs/latest/developer-guide/developer-guide-single.html#_adapter_developmentx[Adapter,window=_blank]
+
+=== Automation - Automate the policy configuration with a Workflow
+
+==== Overview
+
+In this section, you will learn how to use a Workflow to select a Managed Entity and execute a process to configure a security policy.
+
+The Workflow integrates seamlessly with the Microservice you have used in the previous section which means that any changes made to the configuration with the Workflow will be reflected in the Managed Entity “Configure” tab.
+
+image:ops_user_workflow_configure_me.gif[width=800px]
+
+
+==== Details
+To access the Workflow, from the Manager portal, browse to the “Automation” menu at the left and select the “Workflows” tab.
+
+image:ops_wf_config_1.png[width=800px]
+
+Click on “Simple Firewall (Python)” to select the Workflow to use.
+
+On this screen you can see the list of the workflow instances (currently this list is empty since no Process has been executed yet) and a button “+Create Firewall Service” to execute a Workflow process and create a new Workflow instance.
+
+image:ops_wf_config_2.png[width=800px]
+
+Click on “+ Add”. Then click where it says "Unknown Device - null" (which reflects that no ME has been selected already), and select the Managed Entity by checking the box next to its name (should be named similar to linux-machine-[your logon] and click “RUN”.
+
+image:ops_wf_config_3.png[width=800px]
+
+The process “Create Firewall Service” executes and a new Workflow instance is created. Click on the "X" to close the pop-up. Click again on the "x" in the upper right to close that menu. You should see Simple Firewall (Python) as your Workflow. We now need to add filter rules.
+
+image:ops_wf_config_4.png[width=800px]
+
+For each instance, 2 processes are available:
+
+- “Add Filter Rule” to configure a policy on the Managed Entity
+- “Delete Service” to delete the Workflow instance.
+
+Click on “Add Filter Rule” and fill the form with these values:
+
+- Rule ID: 4
+- Source IP: 192.168.10.11
+- Destination Port: 161
+
+Click “Run” to execute the process. You will see another pop-up that should show a green add rule being created. Click on the "x" to close it. You can view the History tab to see the rules being added. Click the "x" to return to the Workflow.
+
+image:ops_wf_config_5.png[width=800px]
+
+
+The Workflow instance is updated and a message shows the iptable CLI command that was used to configure the policy.
+
+image:ops_wf_config_6.png[width=800px]
+
+Now, browse to your Managed Entity (remember that is under “Infrastructure” at the left, then “Managed Entities”) for the “linux_machine-[your logon]”. Click on the Managed Entity and in the tab “Configure”, click on “Synchronize with Managed Entity”.
+
+image:ops_wf_config_7.png[width=800px]
+
+Everything at the backend with the Managed Entity is executed without having to logon to the system itself. 
+
+You see how easy that was?
+
+==== Conclusion
+
+At this stage you learned how to use Workflows to execute automated orchestration processes. 
+
+You could also see how Workflows and Microservices are interacting with each other.
+
+In the next part of the tutorial, you will learn the details of the integration between Workflows and Microservices. You will also learn how to edit a Workflow to add additional processes to it and enrich your automated processes.
+
+== Developer Experience
+
+In this section, you will go over the design of a Workflow process in Python. You will also go through the design of a BPM to chain the execution of the process and provide a complete, integrated infrastructure automation experience.
+
+Log out of the Manager screen at the left hand side using “Logout” and login as a Developer with your same credentials.
+
+image:dev_user_login.gif[width=800px]
+
+=== Workflow design
+
+==== Overview
+image:dev_wf_overview.gif[width=800px]
+
+==== Details
+
+The dashboard lists BPM, Workflows, Microservices available for this instance of MSActivator.
+
+image:dev_wf_overview_1.png[width=800px]
+
+Go to the menu at the top and select your user login name from “Subtenant”.
+
+Select “Automation” from the left hand menu, and find the Workflows attached to your dedicated subtenant.
+
+Go to the “Workflows” tab and you will see your listed Workflows.
+
+image:dev_wf_overview_2.png[width=800px]
+
+Click on “Simple Firewall (Python)” and you will see two key functions:
+
+- Edit: denoted by a pencil icon
+- Execute: which one does by clicking on the “+Create Firewall Service” button.
+
+image:dev_wf_overview_3.png[width=800px]
+
+Click on the (pencil icon) to edit the Workflow.
+
+===== Workflow structure overview
+
+Become familiar with Workflow structure and general information. More information can be found in our online link:https://ubiqube.com/wp-content/docs/latest/developer-guide/developer-guide-single.html#_workflow_editor[documentation,window=_blank].
+
+image:dev_wf_overview_4.png[width=800px]
+
+====== Variables
+
+In the section “Variables” you will find the list of variables for the Workflow.
+
+Each variable defines the parameter to pass to the executing process and it is based on the definition (type, display name, ...) the MSActivator will automatically render the user form to enter these parameters.
+
+For instance “Add Filter Rule” has a task “add rule” with this code block (scroll down to see it):
+
+[source, python]
+----
+dev_var = Variables()
+dev_var.add("id")
+dev_var.add("icmp")
+dev_var.add("src_ip")
+dev_var.add("dst_port")
+----
+
+This will tell the UI to generate a form with these 4 parameters. Based on each variable definition, the form fields will render differently.
+
+For instance, the parameter "icmp" is defined as a boolean variable, thus it'll render as a checkbox. We’ll have a closer look.
+
+====== Processes and Tasks
+
+Check the code and notice Microservice functions: a Workflow can have multiple processes and each process is composed of one or more tasks where the Python implementation is.
+
+To see this, within the same “Simple Firewall (Python)” Workflow, click on “Add Filter Rule” on the left hand side of the screen and then click on “add rule” on the right hand side. You should see something like this:
+
+image:dev_wf_overview_5.png[width=800px]
+
+Scroll down and find the code block that calls the Microservice "simple_firewall" (this will normally be line 24 in this example, but might slightly differ on your version). The code should look similar to this:
+
+[source, python]
+----
+  # build the Microservice JSON params for the CREATE
+  micro_service_vars_array = {"object_id": context["id"],
+                              "src_ip": context["src_ip"],
+                              "dst_port": context["dst_port"]
+                              }
+  object_id = context["id"]
+  simple_firewall = {"simple_firewall": {object_id: micro_service_vars_array}}
+
+
+  # call the CREATE for simple_firewall Microservice for each device
+  order = Order(device_db_id)
+  order.command_execute("CREATE", simple_firewall)
+----
+
+In this example we won’t edit the Microservice itself, but it gives you an idea of how MSActivator easily integrates various services into its engine to allow you to perform seamless automation.
+
+===== Workflow Editing
+
+Let's add a new process to the Workflow.
+
+The goal of this modification is to enable notification when a new security policy is configured.
+
+We are going to add a new Process that writes an event in the MSActivator log analytics engine.
+
+Later, we will chain the Workflow processes together with a BPM to automate the creation of the policy and write the event in the log analytics database.
+
+image:dev_wf_design.gif[width=800px]
+
+====== Create new process
+
+When still in the Simple Firewall (Python) Workflow, look under Information and Variables on the left hand side and you will see a "+" next to Processes.
+
+You can create a new process by clicking on the “+” icon in the left menu of the Workflow editor.
+
+Follow these steps:
+
+Set a Process Name to “Write Event” and the Process Type to “UPDATE”. 
+Then click on "Save". 
+
+That shows you how to create new processes within a Workflow.
+
+image:dev_wf_overview_6.png[width=800px]
+
+NOTE: If you have created any additional processes you can delete them by clicking on the “Delete” icon at the top. Confirm your deletion. 
+This shows how easy it is to manipulate processes for MSActivator.
+
+Now find the “Write Event” process in the left menu and add a new task by clicking the “+” sign in Tasks.  
+Name the task “Create Event”. You can leave the other areas as normal.
+
+image:dev_wf_overview_7.png[width=800px]
+
+If it asks to save then click on "Save" and select the new task which is called "Create Event".
+
+The task is predefined with some Python code samples. You need to remove the code and replace it with new code.
+
+Copy and paste the code below into the task:
+
+[source, python]
+----
+from msa_sdk.variables import Variables
+from msa_sdk.msa_api import MSA_API
+from datetime import datetime
+import time
+import json
+import requests
+
+dev_var = Variables()
+context = Variables.task_call(dev_var)
+
+dateTimeObj = datetime.now()
+format = "%Y-%m-%dT%H:%M:%S+0000"
+current_time = dateTimeObj.strftime(format)
+format = "%Y-%m-%d"
+date = dateTimeObj.strftime(format)
+url = "http://msa_es:9200/ubilogs-"+date+"/_doc"
+severity = "5"
+subtenant_ref = context["UBIQUBEID"];
+subtenant_id = context["UBIQUBEID"][4:];
+
+message = "policy source IP: "+context["src_ip"]+" destination port "+context["dst_port"]+" applied"
+
+devices = context["devices"]
+
+for device in devices:  
+  # extract the database ID
+  device_id = device["id"]
+  device_db_id = device["id"][3:]
+
+  payload = {"rawlog": ""+message+"", "device_id": ""+device_id+"", "date": ""+current_time+"", "customer_ref": ""+subtenant_ref+"","customer_id": ""+subtenant_id+"", "severity": ""+severity+"", "type": "VNOC", "subtype": "Configuration"}
+
+  headers = {"content-type": "application/json"}
+  r = requests.post(url, json=payload, headers=headers)
+
+ret = MSA_API.process_content("ENDED", f"{message}", context, True)
+print(ret)
+----
+
+Now after pasting into the “PYTHON:” area then click on “Save Task”.
+
+Then click on “Save Workflow” in the upper right hand corner, and let's run the first test.
+
+Select the process (indicated be a number) and from the “More Actions” drop-down list select “Write event” and click on "Run" to execute it.
+
+image:dev_wf_overview_8.png[width=800px]
+
+You should get a pop-up to say that the process “Write Event” executed properly. 
+Click on the "x" to close that pop-up. 
+Click on the “x” in the top-right corner to exit from that screen.
+
+image:dev_wf_overview_10.png[width=800px]
+
+Click on the bell icon on the top right of the screen and select the “Logs” tab.
+
+A new event should be visible at the top of the list. 
+Various severities are listed to give you additional Assurance information while monitoring your digital ecosystem. 
+Again, this is under a single pane of glass to bring simplicity to a complex infrastructure.
+
+image:dev_wf_overview_9.png[width=800px]
+
+==== Conclusion
+
+At this stage you are able to edit a Workflow and add some processes to enrich your infrastructure automation.
+
+The possibilities for evolution are endless due to the multi-layered integration of the MSActivator and the use of industry standard development frameworks such as Python.
+
+The next part of this tutorial will show you how to design a simple BPM to chain these Workflow processes into one single automation experience.
+
+=== BPM Design
+
+==== Introduction
+In this section, you will learn how to design a BPM to chain the Workflow process executions together.
+
+Your BPM will select a Managed Entity, ask you to enter a source IP address and destination port, configure this policy on the Managed Entity and write an event in the log analytics.
+
+image:dev_bpm_design.gif[width=800px]
+
+==== Details
+
+Logout of the Developer portal (click on “Logout” on the left hand side). 
+Login to the Manager Portal with your credentials.
+
+Once again, select your “Subtenant” user from the drop-down menu at the top.
+
+Now select “Automation” from the left menu. (Make sure to select your user under Subtenant at the top to filter the correct BPM to test.) 
+
+You should see a BPM named “Simple Security Orchestration”.
+
+image:dev_bpm_design_1.png[width=800px]
+
+Click on the BPM name to select it.
+
+image:dev_bpm_design_2.png[width=800px]
+
+Now click on the  (pencil icon) to edit the BPM.
+
+image:dev_bpm_design_3.png[width=800px]
+
+You are going to update the BPM to select the Workflow processes to execute. 
+Notice how you can use your mouse or trackpad to manipulate the location of the BPM on your screen. 
+Just click near the BPM and drag your mouse or finger to move it up and down or left and right. 
+It is best to center this to begin.
+
+If you look at the BPM there is a circle representing the “Start Event” and another circle representing the “End Event”. 
+The boxes in between the circles with arrows connecting them are the tasks that will be executed in your automated BPM.
+
+===== Task Configuration
+
+====== First task
+
+Select the first task (this is the first box to the right of the “Start Event” circle) and in the dialog on the right, select the Workflow “Simple Firewall (Python)” and the Process “Create Firewall Service”.
+
+image:dev_bpm_design_4.png[width=800px]
+
+Click on the “Edit” button and click "+Add" to add a Managed Entity. In the drop-down list that comes from clicking the name of the Managed Entity, select the “linux_machine-[your logon]” as before.
+
+image:dev_bpm_design_5.png[width=800px]
+
+Although the “WORKFLOW SELECTION” pop-up is still listed, the first task is configured.
+
+This means you can move onto the second task.
+
+
+====== Second Task
+
+Click on the second task and select the same Workflow as for the first task.
+
+In the Process list, select “Add Filter Rule”.
+
+Use the radio button to select “New Instance” and in the drop-down list select the Workflow used for the first BPM task. (For “Workflow to Create Instance” this should be “Create Firewall Service (Simple Firewall)” or similar.)
+
+image:dev_bpm_design_6.png[width=800px]
+
+Click to “Edit” the parameters and provide the values for the “Rule” ID, the “Source IP” and the “Destination port” in this example:
+
+- Rule ID: 5
+- Source IP: 192.168.99.99
+- Destination Port: 443
+
+image:dev_bpm_design_7.png[width=800px]
+
+Click on “OK” to save. Don’t worry about the Workflow Selection menu still being listed as you can easily switch to the next box to hide it.
+
+====== Third Task
+
+Click on the third task (denoted by a box shape), select the same Workflow as previously and select the process “Write Event”.
+
+Make sure you select “New Instance” and in the drop down list select the Workflow used for the first BPM task.
+
+image:dev_bpm_design_14.png[width=800px]
+
+Now click on “Save” at the top to save the BPM.
+
+image:dev_bpm_design_8.png[width=800px]
+
+
+====== BPM Execution
+
+While still in the “Automation” and “BPM List” menu, click on “+Execute BPM” at the top right. This will show you the BPM you were just working on.
+
+image:dev_bpm_design_9.png[width=800px]
+
+This time click on “Execute BPM” on the top right.
+
+It might take a few seconds for the execution to display the results, but a lot is happening in the backend, which we’ve made easy for you at the frontend, so don’t worry. It will end up being successful much quicker than if this were done manually. (Also, less prone to error.)
+
+image:dev_bpm_design_10.png[width=800px]
+
+Click "x" to exit that screen, then return to the other screen (go back to “Automation” > “Workflows”).
+
+image:dev_bpm_design_13.png[width=800px]
+
+In the Workflow instance list, verify the new instance has been created and that the policy parameters are the ones you provided to the BPM.
+
+image:dev_bpm_design_11.png[width=800px]
+
+On the Managed Entity configuration (that is under “Infrastructure” > “Managed Entities” > “linux_machine-[your logon]” > “Configure” tab > “Simple Firewall”), you should also see a new Microservice instance for this policy in the bottom row.
+
+image:dev_bpm_design_12.png[width=800px]
+
+On the "Logs" tabs of the same Managed Entity, you can also verify that the event was recorded.
+
+image:dev_wf_overview_9.png[width=800px]
+
+
+==== Conclusion
+You are now able to edit and execute a Workflow and design a simple BPM to chain your Workflow processes to build a fully automated tool for your infrastructure.
+
+
+This is just the beginning. Imagine how easy it will be to design automated workflows end to end for your digital landscape. MSActivator has Assurance integrated into its system to make your life easier. Scheduling, alarms, integration, automation, it's all there.
+
+
+However, to really learn more and find out about how to use MSActivator to solve your automation challenges, then schedule a call with our Presales team or talk to our engineers via our link:https://ubiqube.com/openmsa/[DevOps community,window=_blank]. More information is at: link:https://ubiqube.com/[ubiqube.com,window=_blank].
+
+
+Either way, we'd love to hear from you. Let us help you to usher in what you require in infrastructure automation.
+
+
+Contact link:https://ubiqube.com/openmsa/#supportGroups[UBiqube,window=_blank] today.
+
+
+
+
