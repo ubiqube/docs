@@ -127,7 +127,7 @@ except Exception as e:
 <3> The value of the key should match the Microservice file name (stripped of the .xml file extension)
 <4> Call the CREATE for simple_firewall MS for each device (use UPDATE or DELETE for the other operations)
 
-The funtion `+command_execute+` is defined in link:https://github.com/openmsa/python-sdk/blob/develop/msa_sdk/order.py[order.py]
+The function `+command_execute+` is defined in link:https://github.com/openmsa/python-sdk/blob/develop/msa_sdk/order.py[order.py]
 
 === Call a microservice IMPORT function
 
@@ -154,6 +154,13 @@ except Exception as e:
 <2> execute the IMPORT of a microservice defined in a file routing.xml
 <3> get the microservice instances
 <4> store the instance in a variable to further reuse
+
+
+.Getting more Examples 
+****
+You will find many examples of Workflows in https://github.com/openmsa/Workflows
+****
+
 
 == How to extend the SDK
 
@@ -206,7 +213,7 @@ image:workflow_process_exec_status_custom_msg.png[width=1000px]
 
 The code sample below shows how to do it.
 
-[source, php]
+[source, python]
 ----
 from msa_sdk.orchestration import Orchestration
 from msa_sdk.msa_api import MSA_API
@@ -229,7 +236,7 @@ Orchestration.update_asynchronous_task_details(*async_update_list,
 <3> execute some code
 <4> update the UI with another message
 
-.Getting more Examples 
+.Contributing 
 ****
-You will find many examples of Workflows in https://github.com/openmsa/Workflows
+Help us improve the SDK: fork https://github.com/openmsa/python-sdk and submit your changes with a Pull Request
 ****

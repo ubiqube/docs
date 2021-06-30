@@ -52,6 +52,32 @@ To access the console, select the managed entity and browse to the tab "Configur
 .Microservice console
 image:microservice_console.png[width=800px]
 
+=== Calling the Microservice functions
+
+==== Import
+
+Click on "Synchronize With Managed Entity" to call the Import functions of the Microservices associated to the Managed Entity
+
+==== Create
+
+Select a Microservice on the left menu. If the Create function of the Microservice is implemented, you can use the button "+ Add Row".
+
+Use the form to provide the values to use and click "Save" to record the value in the execution OpenStack
+
+==== Update and Delete
+
+Select a Microservice on the left menu and select a Microservice instance to update or delete. 
+A button "Edit" or "Remove" will be displayed if the Update or the Delete function is implemented for the Microservice.
+
+==== Execute the Microservice
+
+You can stack multiple Create, Update and Delete orders for multiple Microservices. 
+Once you are finished, you can either discard the changes or apply the changes.
+
+If you discard the changes, the current order stack will be erased.
+
+If you apply the changes, the configuration engine will go through the stack and apply the changes one by one on the Managed Entity.
+
 == Microservice design
 
 Microservice design is documented in the developer guide.

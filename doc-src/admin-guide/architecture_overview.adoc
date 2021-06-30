@@ -18,7 +18,7 @@ The {product_name} is an Integrated Automation Platform, which consists of sever
 
 [#containers_description]
 === Containers description
-image:container_list.png[width=500px]
+image:container_list.png[width=800px]
 
 ==== msa_front
 Runs NGINX and act as the front end to route the requests to the internal containers.
@@ -50,11 +50,16 @@ This container will also poll the device for assurance KPI and collect/analyse t
 
 ==== msa_bud 
 
-Takes care of cross table data synchronisation and consistency in the database
+Takes care of cross table data synchronization and consistency in the database
+
+==== msa_alarm
+
+Takes care of event detection to create alarm and execute workflow or send email notifications
+
 
 ==== msa_dev
 
-A linux based container used for storing the assets shared accross containers such as microservices, workflows, adapters code,...
+A linux based container used for storing the assets shared across containers such as microservices, workflows, adapters code,...
 
 This is the container you need to use for your own devOps related work such as installing a new adapter, pulling or pushing code to a git repository, installing some new workflow or microservices from a git repository,...
 
@@ -72,7 +77,7 @@ Runs the PostgreSQL database when the {product_name} administrative data and con
 
 === Networking and connectivity
 
-image:non_ha_containers.png[width=500px]
+image:non_ha_containers.png[width=800px]
 
 === Volumes and data
 

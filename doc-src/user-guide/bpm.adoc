@@ -2,12 +2,12 @@
 ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-ifdef::html[]
+ifdef::html,env-github,env-browser[]
 [.center]
 image:msa_arch_bpm_use.png[width=400px]
 endif::[]
 
-*BPM* (Business Process Management) allow the execution of complex business process by automating a flow of workflow execution.
+*BPM* (Business Process Management) allow the execution of complex business processes by automating a flow of workflow execution.
 
 == Overview
 
@@ -17,18 +17,24 @@ You need to select a subtenant to see the list of BPM that can be executed for a
 
 Use the "i" (information icon) to open a BPM instance and view it's detailed status.
 
-A BM instance can be deleted with the "trash" icon.
+A BPM instance can be deleted with the "trash" icon.
 
-.BPM instance for a subtenant
-image:bpm_instances.png[width=800px]
+ifdef::html,env-github,env-browser[]
+image:bpm_execution.gif[width=800px]
+endif::[]
 
-Click on "+ Execute BPM" to execute the BPM process. The BPM engine will start executing the BPM tasks one by one and the status of the current workflow process execution will be updated live in the "LATEST EXECUTION RESULT" view while the detail of the process execution will be displayed.
+== Execution management
 
-.BPM execution
-image:bpm_execution.png[width=800px]
+=== Tracking
 
+The BPM engine will start executing the BPM tasks one by one and the status of the current workflow process execution will be updated live in the view "LATEST EXECUTION RESULT". 
 
-== Execution breakpoint
+Click "Show Tasks" to see the detail of the process execution.
+
+.BPM execution tracking
+image:bpm_execution_tracking.png[width=800px]
+
+=== Pause and resume
 
 With the execution breakpoints the execution of a BPM can be paused until the user manually resume the execution
 
@@ -39,13 +45,19 @@ When a BPM execution is paused, the instance will be listed with an empty execut
 .Resume a BPM execution
 image:bpm_user_breakpoint.png[width=800px]
 
+=== Terminating 
 
-== Execution tracking
+The execution of a BPM can be cancelled any time by clicking on the "Terminate BPM" button at the top right of a BPM execution screen.
 
-The BPM engine will start executing the BPM tasks one by one and the status of the current workflow process execution will be updated live in the view "LATEST EXECUTION RESULT". 
+ifdef::html,env-github,env-browser[]
+image:bpm_termination.gif[width=800px]
+endif::[]
 
-Click "Show Tasks" to see the detail of the process execution.
+=== Scheduling
 
-.BPM execution tracking
-image:bpm_execution_tracking.png[width=800px]
+The execution of a BPM can be scheduled to run once at a predetermined date. 
+The list of scheduled executions is available and any scheduled execution can be canceled
 
+ifdef::html,env-github,env-browser[]
+image:bpm_scheduling.gif[width=800px]
+endif::[]

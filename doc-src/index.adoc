@@ -5,11 +5,11 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 [cols="3*"] 
 |===
 
-a| link:user-guide/index{outfilesuffix}[Manager Guide,window=_blank] link:pdf/user-guide/manager-guide-single.pdf[(pdf),window=_blank] 
+a| link:user-guide/manager-guide-single{outfilesuffix}[Manager Guide,window=_blank] link:pdf/user-guide/manager-guide-single.pdf[(pdf),window=_blank] 
 
-a| link:developer-guide/index{outfilesuffix}[Developer Guide,window=_blank] link:pdf/developer-guide/developer-guide-single.pdf[(pdf),window=_blank]
+a| link:developer-guide/developer-guide-single{outfilesuffix}[Developer Guide,window=_blank] link:pdf/developer-guide/developer-guide-single.pdf[(pdf),window=_blank]
 
-a| link:admin-guide/index{outfilesuffix}[Admin Guide,window=_blank]link:pdf/admin-guide/admin-guide-single.pdf[(pdf),window=_blank]
+a| link:admin-guide/admin-guide-single{outfilesuffix}[Admin Guide,window=_blank]link:pdf/admin-guide/admin-guide-single.pdf[(pdf),window=_blank]
 
 a| link:release-notes/release_notes{outfilesuffix}[Release Notes,window=_blank]link:pdf/release-notes/release_notes.pdf[(pdf),window=_blank]
 

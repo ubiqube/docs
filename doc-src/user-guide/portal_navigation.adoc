@@ -1,0 +1,22 @@
+= Navigation with MSActivator
+:front-cover-image: image:navigation-front-cover.pdf[]
+ifndef::imagesdir[:imagesdir: images]
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+ifdef::pdf[]
+:includedir: .
+endif::[]
+
+== Login page
+
+image:nav_login_page.png[width=800px]
+
+== Manager dashboard
+
+image:nav_manager_dashboard.png[width=800px]
+
+=== Developer dashboard
+
+image:nav_developer_dashboard.png[width=800px]
+

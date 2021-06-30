@@ -116,7 +116,7 @@ For the full list of available commands, see the {product_name} API guide on you
 }
 ----
 
-=== Call IMPORT from a microservice 
+=== Call microservice functions
 *HTTP Request:* `+/ubi-api-rest/ordercommand/execute/{device_id}/{command_name}+`
 
 *Method:* `+POST+`

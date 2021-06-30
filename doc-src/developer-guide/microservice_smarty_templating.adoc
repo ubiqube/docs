@@ -1,4 +1,4 @@
-= Microservice Templating with PHP Smarty
+= Microservice Template with PHP Smarty
 ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 

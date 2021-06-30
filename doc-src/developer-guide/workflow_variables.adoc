@@ -5,7 +5,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 Variables are used to hold the parameters to pass to a workflow process. For instance, the port and IP address to block in a firewall policy.
 
 .Workflow variable section
-image:workflow_console_variables.png[width=700px]
+image:workflow_console_variables.png[width=800px]
 
 All variables are referenced with the prefix `$params` which is automatically set in the variable editor screen and when a variable has to be referenced in one of the workflow functions, you need to use the syntax `{$params.your_variable}` (see below for more examples).
 
@@ -23,7 +23,7 @@ The type of a variable will affect the way the workflow end user form will be re
 
 For instance, the type boolean will render the variable with true/false radio buttons.
 
-== Defaut settings
+== Default settings
 
 When creating or editing a variable, there are some information that need to be provided in the "Default" section.
 
@@ -69,16 +69,16 @@ The workflow allows the user to create a firewall policy to block a source IP ad
 In this example, the variable "dst_port" for the destination port should be typed as a composite because it's behavior when rendered as a user web form will depend on the other variable "protocol".
 
 .When the user choose TCP or UDP
-image:workflow_variable_composite_screen_example_1.png[width=500px]
+image:workflow_variable_composite_screen_example_1.png[width=800px]
 
 
 .When the user selects ICMP
-image:workflow_variable_composite_screen_example_2.png[width=500px]
+image:workflow_variable_composite_screen_example_2.png[width=800px]
 
 To implement this behavior, set the type of "dst_port" variable to "Composite".
 
 .dst_port type is "Composite"
-image:workflow_variable_composite_screen_example_3.png[width=500px]
+image:workflow_variable_composite_screen_example_3.png[width=800px]
 
 In the advanced parameter tab, first choose the "Selector Variable" and select the protocol (note that the list shows the display name, not the actual name of the variable)
 
@@ -91,12 +91,12 @@ Each behavior can be configured by editing it with the pencil icon.
 In our case, if the selector is set to true (when the user selects ICMP), the variable "dst_port" should be hidden: uncheck the attribute "Visible" in the advanced parameters for composite.
 
 .Hide the destination port when ICMP is checked
-image:workflow_variable_composite_screen_example_5.png[width=500px]
+image:workflow_variable_composite_screen_example_5.png[width=800px]
 
 And when the selector is set to false, the variable "dst_port" should be visible and mandatory.
 
 .Show the destination port when ICMP is not checked
-image:workflow_variable_composite_screen_example_6.png[width=500px]
+image:workflow_variable_composite_screen_example_6.png[width=800px]
 
 ==== Link
 NOTE: not supported yet
@@ -221,7 +221,7 @@ task_success('Task OK: '.$subtenant);         <3>
 <2> read the variable value from the context
 <3> print the value on the execution console
 
-image:workflow_console_variables_customer.png[width=700px]
+image:workflow_console_variables_customer.png[width=800px]
 
 ===== List of subtenant
 
@@ -256,55 +256,68 @@ TIP: the code for iterating over an array of managed entities is very similar
 
 ==== Microservice reference
 
-This type is the key when integrating workflows and microservices, it will allow you to use the data imported by the microservice from a managed entity in your automation code.
+This type is key when integrating workflows and microservices.
+
+It allows you to import and use the microservice instance data from a managed entity in your automation code.
+
+ifdef::html,env-github,env-browser[]
+image:workflow_variable_microservice_reference.gif[width=800px]
+endif::[]
 
 To use this type you need 2 variables:
-1. a variable with the type `Device` to select the managed entity to get the data from
-2. a variable with the type `Microservice Reference` to select the microservice that will pull the data
 
-When creating a variable typed `Microservice Reference` you need to select the `Device` variable and the microservice.
+. a variable with the type `Managed Entity` to select the managed entity to get the data from
+. a variable with the type `Microservice Reference` to select the microservice that will pull the data
 
-In the exmaple below, the variable `$params.user` is typed as `Microservice Reference`. In the "Advanced" tab, the field "Microservice Reference" references one or several microservice and the field "Device ID" references a managed entity.
+When creating a variable typed `Microservice Reference` you need to select the `Managed Entity` variable to use and the microservice that will act as the data source.
 
-image:workflow_console_variables_ms_ref.png[width=700px]
+IMPORTANT: the microservice must be attached to the managed entity with a deployment setting in order for the microservice reference to work.
 
-.Sample PHP task to create the UI to select a managed entity and select a microservice instance from this managed entity
-[source, PHP]
+In the example below, the variable `$params.interface` is typed as `Microservice Reference`. 
+In the "Advanced" tab, the field "Microservice Reference" references one or several microservice and the field "Device ID" references a managed entity.
+
+image:workflow_console_variables_ms_ref.png[width=800px]
+
+.Sample Python task to create the UI to select a managed entity and select a microservice instance from this managed entity
+[source, Python]
 ----
-<?php
+from msa_sdk.variables import Variables
+from msa_sdk.msa_api import MSA_API
 
-require_once '/opt/fmc_repository/Process/Reference/Common/common.php';
+dev_var = Variables()
+dev_var.add('managed_entity', var_type='Device') <1>
+dev_var.add('interface.0.name', var_type='OBMFRef') <2>
 
-function list_args()
-{
-  create_var_def('me');
-  create_var_def('user');
-}
+context = Variables.task_call(dev_var)
 
-task_success('Task OK');
-?>
+ret = MSA_API.process_content('ENDED', 'Task OK', context, True)
+
+print(ret)
 ----
+<1> for backward compatibility reason use "Device" when the variable type is "Managed Entity" 
+<2> for backward compatibility reason use "OBMFRef" when the variable type is "Microservice Reference" 
 
 It also possible to use an array to select multiple values from the microservice
 
-image:workflow_console_variables_multiple_ms_ref.png[width=400px]
+image:workflow_console_variables_multiple_ms_ref.png[width=800px]
 
 .Sample PHP task to select multiple values from the microservice instance
-[source, PHP]
+[source, Python]
 ----
-<?php
+from msa_sdk.variables import Variables
+from msa_sdk.msa_api import MSA_API
 
-require_once '/opt/fmc_repository/Process/Reference/Common/common.php';
+dev_var = Variables()
+dev_var.add('managed_entity', var_type='Device') 
+dev_var.add('interface.0.name', var_type='OBMFRef') <1>
 
-function list_args()
-{
-  create_var_def('me');
-  create_var_def('users.0.user');
-}
+context = Variables.task_call(dev_var)
 
-task_success('Task OK');
-?>
+ret = MSA_API.process_content('ENDED', 'Task OK', context, True)
+
+print(ret)
 ----
+<1> Use a variable array to allow multiple value selection
 
 ==== Service reference (workflow reference)
 NOTE: not supported yet
@@ -344,4 +357,4 @@ When you are dealing with variable arrays, these options will let you control th
 To create a variable array, you need to follow a precise naming convention: `$params.<ARRAY NAME>.0.<ELEMENT NAME>`. The 0, is the separator that will allow the UI and the configuration engine that this variable is an array.
 
 .Variable array with 2 elements
-image:workflow_variables_array_1.png[width=700px]
+image:workflow_variables_array_1.png[width=800px]

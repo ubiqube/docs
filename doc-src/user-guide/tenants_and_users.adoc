@@ -28,7 +28,12 @@ image:concepts_tenants_users.png[width=800px]
 
 == Tenancy management
 
-The {product_name} is designed to provide multi-tenancy. A tenant is a virtual private space that can be managed as an isolated environment.
+The {product_name} is designed to provide multi-tenancy. 
+A tenant is a virtual private space that can be managed as an isolated environment.
+
+ifdef::html,env-github,env-browser[]
+image:tenancy_creation.gif[width=800px]
+endif::[]
 
 There are two levels of tenancy, tenant and subtenant, the latter being nested in the first one.
 
@@ -49,14 +54,6 @@ Select the "Subtenants" section in the "Admin" menu and click on the "+ Create S
 Carefully select the tenant where the subtenant will be created as moving a subtenant to another tenant is not possible without database update.
 
 image:subtenant_creation_form.png[Subtenant Creation Form,width=800px]
-
-
-//// 
-TODO : update
-In the "Contacts" form, the email is a mandatory field. 
-
-This email will be used to send alarms. Alarm management is explained in the Alarm Management guide.
-////
 
 Save the customer form and navigate to the new subtenant tenant (click on the subtenant name in the customer list).
 
@@ -95,6 +92,31 @@ By default, the managers have restricted, read-only access to the subtenant.
 
 A manager may be used to provide self-care access to the {product_name} portal.
 
+== Roles and rights management : permission profiles
+
+The {product_name} provides a simple authorization mechanism based on 4 user roles, the privileged administrator, the administrator, the privileged manager, and the manager.
+
+By default, managers have a very restricted access to the data. 
+They can only view the information of the subtenant and managed entities they are entitled to. In order to grant more rights to a manager, it is possible to use a permission profile.
+
+A permission profile is an aggregation of rights such as "create a device", "activate a device", "configure a device",... that are turned on or off depending on your user management policy. 
+This profile is applied to a set of one or more users.
+
+You can create a permission profile as ncroot from the "Admin" section. 
+Permission profiles are created in the scope of a tenant therefore you need to select a tenant to manage them.
+
+image:permission_profile_create.png[width=800px]
+
+On the tab "Permissions" select the specific permission that you want to give to your managers
+
+Permissions are organized by categories that reflect the {product_name} functional architecture.
+
+image:permission_profile_permissions.png[width=800px]
+
+Assign the permissions to managers on the tab "Associated Managers"
+
+
+
 == Audit record
 
 The audit logs record every call to the {product_name} API, this includes user action on the UI and direct call to the REST API
@@ -114,17 +136,10 @@ The audit logs are available for each user in the "Profile" menu, under "Audit L
 
 image:audit_logs.png[width=800px]
 
-=== Roles and rights management : permission profiles
+Since audit record are stored in Elasticsearch, you can use Kibana to design a simple user activity dashboard and display it in your super admin dashboard
 
-The {product_name} provides a simple authorization mechanism based on 4 user roles, the privileged administrator, the administrator, the privileged manager, and the manager.
+image:audit_logs_kibana.png[width=800px]
 
-By default, managers have a very restricted access to the data. They can only view the information of the subtenant and managed entities they are entitled to. In order to grant more rights to a manager, it is possible to use a permission profile.
 
-A permission profile is an aggregation of rights such as "create a device", "activate a device", "configure a device",... that are turned on or off depending on your user management policy. This profile is applied to a set of one or more users.
 
-You can create a permission profile as ncroot from the "Admin" section. Permission profiles are created in the scope of a tenant therefore you need to select a tenant to manage them.
 
-image:permission_profile.png[width=800px]
-
-// TODO: update in 2.4
-NOTE: implementation of permissions in version 2.3.0GA is a partial implementation to provide a preview of the UI but it is not functional yet and this is the reason why it’s deactivated by default. To activate the permission profile, you have to edit the docker-compose file and set FEATURE_PERMISSION_PROFILES to true.

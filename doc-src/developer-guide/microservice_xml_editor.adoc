@@ -39,15 +39,15 @@ POST /api/tenancy/tenants/
 
 In case you need to pass in a JSON payload with the parameters, the microservice Create will look like this.
 
-image:microservice_console_xml_create_1.png[width=700px]
+image:microservice_console_xml_create_1.png[width=800px]
 
 ==== Delete
 
-image:microservice_console_xml_delete.png[width=700px]
+image:microservice_console_xml_delete.png[width=800px]
 
 ==== Import
 
-image:microservice_console_xml_import.png[width=700px]
+image:microservice_console_xml_import.png[width=800px]
 
 
 The main difference between the CLI and REST (Json/XML) Microservice definition is the implementation of the functions Create/Update/...

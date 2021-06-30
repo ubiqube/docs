@@ -176,6 +176,13 @@ Let's say that you are running {product_name} version {revnumber-prev}, to upgra
 
 == Specific technical fixes and feature details
 
+
+=== 2.3.1 Patch
+
+==== Bug fixes
+
+* MSA-9836 - [Microservice] Ranked microservices import use case fails on MSA 2
+
 === 2.3.0 GA
 
 ==== Features

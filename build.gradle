@@ -1,7 +1,7 @@
 plugins {
-    id 'org.asciidoctor.jvm.convert' version '3.2.0'
-    id 'org.asciidoctor.jvm.gems' version '3.2.0'
-    id 'org.asciidoctor.jvm.pdf' version '3.2.0'	
+    id 'org.asciidoctor.jvm.convert' version '3.3.2'
+    id 'org.asciidoctor.jvm.gems' version '3.3.2'
+    id 'org.asciidoctor.jvm.pdf' version '3.3.2'	
 }
 apply plugin: 'java'
 
@@ -13,13 +13,13 @@ repositories {
 asciidoctorj {
     modules {
        diagram.use() 
-       diagram.version '2.0.5' 
+       diagram.version '2.1.0' 
     }
 }
 
 dependencies {
-  asciidoctorGems 'rubygems:rouge:3.15.0'
-  asciidoctorGems 'rubygems:asciidoctor-diagram:2.0.5'
+  asciidoctorGems 'rubygems:rouge:3.26.0'
+  asciidoctorGems 'rubygems:asciidoctor-diagram:2.1.0'
 }
 
 asciidoctor.doFirst {
@@ -29,7 +29,7 @@ asciidoctor.doFirst {
 
 asciidoctor {    
 
-    version = '2.0.12'
+  version = '2.0.12'
 
   options doctype: 'book'
 
@@ -38,10 +38,10 @@ asciidoctor {
     'linkcss': true,
     'ubiqube': 'UBiqube',
     'product_name': 'MSActivator(TM)',
-    'product_name-version': 'MSActivator-2.3.0 GA',
+    'product_name-version': 'MSActivator-2.4.1',
     'openmsa_name': 'OpenMSA(TM)',
-    'revnumber': 'MSA-2.3.0',
-    'revnumber-prev': 'MSA-2.2.0',
+    'revnumber': 'MSA-2.4.1',
+    'revnumber-prev': 'MSA-2.4.0',
     'allow-uri-read': '',
     'sectlinks': true,
     'html': 'true',
@@ -58,6 +58,8 @@ asciidoctor {
       include '**/*.mp4'
       include '**/*.css'
       include '**/*.html'
+      include '**/*.pdf'
+      include '**/*.gif'
     }
 
     into '.'
@@ -73,7 +75,7 @@ asciidoctorPdf {
   asciidoctorj {
 
     modules {
-        pdf.version '1.5.3'
+        pdf.version '1.5.4'
     }
     requires 'rouge'
 
@@ -86,10 +88,10 @@ asciidoctorPdf {
       'linkcss' : true,
       'ubiqube': 'UBiqube',
       'product_name' : 'MSActivator(TM)',
-      'product_name-version' : 'MSActivator-2.3.0 GA',
+      'product_name-version' : 'MSActivator-2.4.1',
       'openmsa_name' : 'OpenMSA(TM)',
-      'revnumber' : 'MSA-2.3.0',
-      'revnumber-prev' : 'MSA-2.2.0',
+      'revnumber' : 'MSA-2.4.1',
+      'revnumber-prev' : 'MSA-2.4.0',
       'allow-uri-read' : '',
       'sectlinks' : true,
       'pdf' : 'true',
@@ -115,7 +117,8 @@ asciidoctorPdf {
       include '**/*.jpg'
       include '**/*.mp4'
       include '**/*.html'
-    }
+      include '**/*.pdf'
+  }
 
     into '.'
   }

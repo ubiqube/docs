@@ -13,7 +13,7 @@ The structural elements of BPMN allow the viewer to be able to easily differenti
 
 The {product_name} provides the support for executable BPM Processes. 
 
-With the BPM design console, you can design your BPM and connect the BPM elements to link:../user-guide/automation_workflows{outfilesuffix}[Workflows].
+With the BPM design console, you can design your BPM and connect the BPM elements to Workflows.
 
 The {product_name} provides a partial support of the link:https://www.omg.org/spec/BPMN/2.0/[BPMN 2.0 specification,window=_blank] and you will be able to use Event and Activities.
 
@@ -38,7 +38,7 @@ The BPM below is made of 1 start event, 5 integration task and an end event.
 
 Each integration task calls a workflow from the workflows that are associated to the current customer.
 
-image:bpm_example.png[]
+image:bpm_example.png[width=800px]
 
 
 == Create or Edit a BPM
@@ -66,7 +66,7 @@ As stated above, the BPM tasks can only call Workflow process with the type CREA
 Before creating the BPM, you need to add a new process to the Helloworld workflow and make sure its type is CREATE. 
 This process can have a single task and you can reuse the PHP code from the Helloworld tutorial.
 
-image:workflow_helloworld_add_create_process_for_bpm.png[]  
+image:workflow_helloworld_add_create_process_for_bpm.png[width=800px]
 
 Once this is done, go to the "BPM" section under "Automation" and click on "+ Create BPM".
 
@@ -75,15 +75,15 @@ Add a Task Activity and an End Event.
 Click on the task, select the Helloworld workflow, then from the list of process, select the new CREATE process.
 Provide a value for the parameter name and save the BPM
 
-image:bpm_helloworld_design.png[]
+image:bpm_helloworld_design.png[width=800px]
 
 To test your BPM, click on it's name from the list of BPM and click on "Execute BPM".
 
-image:bpm_helloworld_execute.png[]
+image:bpm_helloworld_execute.png[width=800px]
 
 You can check that the workflow process was executed and the message is visible in the processes execution status.
 
-image:bpm_helloworld_execute_process.png[]
+image:bpm_helloworld_execute_process.png[width=800px]
 
 
 

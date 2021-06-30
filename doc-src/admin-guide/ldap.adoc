@@ -1,0 +1,205 @@
+= LDAP
+:doctype: book 
+ifndef::imagesdir[:imagesdir: images]
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+This document describes the LDAP Integration in {product_name}.  
+
+
+ 
+== Overview
+
+. When LDAP is enabled,  user Creation  in {product_name} is disabled. 
+. When provided credentials authenticated successfully by LDAP server, and there is no corresponding user in {product_name}, it  will be created automatically at the time of login.   
+For creating the user all the necessary LDAP attribute provided in the configuration should be available and should have valid values, if it is not the case, the user creation will fail, login will not be successful. 
+. When creating admin,  LDAP attribute provided for UBI_LDAP_ATTRIBUTE_MSA_TENANT value can have one or more tenant prefix separated by comma.  
+When creating Manager,  this attribute should have only one tenant.
+This attribute should be co-related with attribute for UBI_LDAP_ATTRIBUTE_MSA_ROLE.
+. It is recommended to delete all the existing internal users if exist,  when enabling LDAP, because as there will be chances of username duplication. which will create some discrepancies
+. Disabling LDAP once Enabled is not recommended, in this case, the users from LDAP are still valid to login.
+. ncroot - super admin login authentication will always be internal {product_name} DB Authentication.
+
+== Settings
+
+LDAP Authentication is enabled in {product_name} by configuring  {product_name} variables.
+
+Description of how each variable can be obtained:
+
+----
+GET https://localhost/ubi-api-rest/system-admin/v1/product_name}_vars_definition
+ 
+   {
+        "name": "UBI_LDAP_ADMIN_DN",
+        "type": "String",
+        "regex": ".*|^$",
+        "mandatory": false,
+        "defaultValue": "",
+        "group": "jentreprise,authentication",
+        "description": "ldap admin domain name",
+        "help": ""
+    },
+    {
+        "name": "UBI_LDAP_ADMIN_PASSWORD",
+        "type": "String",
+        "regex": ".*|^$",
+        "mandatory": false,
+        "defaultValue": "",
+        "group": "jentreprise,authentication",
+        "description": "ldap admin password",
+        "help": ""
+    },
+    {
+        "name": "UBI_LDAP_ATTRIBUTE_MSA_PERMISSION",
+        "type": "String",
+        "regex": ".*|^$",
+        "mandatory": false,
+        "defaultValue": "",
+        "group": "jentreprise,authentication",
+        "description": "ldap attribute name for {product_name} permission",
+        "help": "this attribute value in ldap should be id which represents permission profile Id of {product_name}, based on this value, the particular permission profile will be attached to created restricted manager, this value will be ignored when creating privilege manager"
+    },
+    {
+        "name": "UBI_LDAP_ATTRIBUTE_MSA_ROLE",
+        "type": "String",
+        "regex": ".*|^$",
+        "mandatory": false,
+        "defaultValue": "",
+        "group": "jentreprise,authentication",
+        "description": "ldap attribute name for {product_name} role",
+        "help": "this attribute value in ldap should be 3 or 4, based on this attribute value privilege manager or manager will be created in MSA"
+    },
+    {
+        "name": "UBI_LDAP_ATTRIBUTE_MSA_SUB_TENANTS",
+        "type": "String",
+        "regex": ".*|^$",
+        "mandatory": false,
+        "defaultValue": "",
+        "group": "jentreprise,authentication",
+        "description": "ldap attribute name for {product_name} sub tenants",
+        "help": "this attribute value in ldap should be \",\" separated id which represents sub tenant ids of {product_name}. based on this value, these list of subtenant will be attached to created restricted manager, this value will be ignored when creating privilege manager"
+    },
+    {
+        "name": "UBI_LDAP_ATTRIBUTE_MSA_TENANT",
+        "type": "String",
+        "regex": ".*|^$",
+        "mandatory": false,
+        "defaultValue": "",
+        "group": "jentreprise,authentication",
+        "description": "ldap attribute name for {product_name} tenant",
+        "help": "based on this attribute value in ldap, managers will be created under that tenant"
+    },
+    {
+        "name": "UBI_LDAP_ATTRIBUTE_USER_NAME",
+        "type": "String",
+        "regex": ".*|^$",
+        "mandatory": false,
+        "defaultValue": "",
+        "group": "jentreprise,authentication",
+        "description": "ldap attribute for user name",
+        "help": "this attribute value in ldap will used as a manager name in the manager creation"
+    },
+    {
+        "name": "UBI_LDAP_ATTRIBUTE_USER_SEARCH",
+        "type": "String",
+        "regex": ".*|^$",
+        "mandatory": false,
+        "defaultValue": "",
+        "group": "jentreprise,authentication",
+        "description": "ldap unique attribute name for user search",
+        "help": "this attribute will be used for user search in ldap"
+    },
+    {
+        "name": "UBI_LDAP_ENABLE",
+        "type": "Integer",
+        "regex": "^[0-1]{1}$",
+        "mandatory": false,
+        "defaultValue": "0",
+        "group": "jentreprise,authentication",
+        "description": "enable or disable ldap authentication",
+        "help": "value should be either 0 or 1 for disable or enable, ldap is disabled by default"
+    },
+    {
+        "name": "UBI_LDAP_SERVER",
+        "type": "String",
+        "regex": ".*|^$",
+        "mandatory": false,
+        "defaultValue": "",
+        "group": "jentreprise,authentication",
+        "description": "ldap server ip or hostname",
+        "help": ""
+    },
+    {
+        "name": "UBI_LDAP_USER_OU",
+        "type": "String",
+        "regex": ".*|^$",
+        "mandatory": false,
+        "defaultValue": "",
+        "group": "jentreprise,authentication",
+        "description": "ldap organisation-unit name for users",
+        "help": ""
+    }
+----
+
+Value of each vars that can be set by below api:
+
+----
+POST https://localhost/ubi-api-rest/system-admin/v1/msa_vars
+ 
+[
+  {
+    "name": "UBI_LDAP_ENABLE",
+    "comment": "enable ldap authentication",
+    "value": "1"
+  },
+  {
+    "name": "UBI_LDAP_SERVER",
+    "comment": "enable ldap authentication",
+    "value": "ldap-host"
+  },
+  {
+    "name": "UBI_LDAP_ADMIN_DN",
+    "comment": "enable ldap authentication",
+    "value": "cn=admin,dc=example,dc=org"
+  },
+  {
+    "name": "UBI_LDAP_ADMIN_PASSWORD",
+    "comment": "enable ldap authentication",
+    "value": "admin"
+  },
+  {
+    "name": "UBI_LDAP_USER_OU",
+    "comment": "enable ldap authentication",
+    "value": "ou=Users,dc=example,dc=org"
+  },
+  {
+    "name": "UBI_LDAP_ATTRIBUTE_USER_SEARCH",
+    "comment": "enable ldap authentication",
+    "value": "cn"
+  },
+  {
+    "name": "UBI_LDAP_ATTRIBUTE_USER_NAME",
+    "comment": "enable ldap authentication",
+    "value": "username"
+  },
+  {
+    "name": "UBI_LDAP_ATTRIBUTE_MSA_ROLE",
+    "comment": "enable ldap authentication",
+    "value": "employeeType"
+  },
+  {
+    "name": "UBI_LDAP_ATTRIBUTE_MSA_TENANT",
+    "comment": "enable ldap authentication",
+    "value": "title"
+  },
+  {
+    "name": "UBI_LDAP_ATTRIBUTE_MSA_SUB_TENANTS",
+    "comment": "enable ldap authentication",
+    "value": "initials"
+  },
+  {
+    "name": "UBI_LDAP_ATTRIBUTE_MSA_PERMISSION",
+    "comment": "enable ldap authentication",
+    "value": "departmentNumber"
+  }
+]
+----

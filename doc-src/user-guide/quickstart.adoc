@@ -37,24 +37,67 @@ The following prerequisites are required for a successful use of {product_name}:
 
 . A recent version of Git. 
 . A working docker and docker-compose setup
-* link:https://docs.docker.com/install/[Docker]
-* link:https://docs.docker.com/compose/install/[Docker Compose]
+* link:https://docs.docker.com/install/[Docker,window=_blank]
+* link:https://docs.docker.com/compose/install/[Docker Compose,window=_blank]
 
 == Setup requirements
 
 === Internet Resources
- * Ensure you have access from HOST machine(s) to:
+ 
+Ensure you have access from HOST machine(s) to:
+ 
  ** https://github.com
  ** https://hub.docker.com
 
+==== Install the {product_name} behind a proxy
+
+Often the {product_name} has to be installed on a host that sits behind a proxy. 
+This requires some specific configuration on the host, on docker and also on the {product_name} containers themselves:
+
+Proxy setting on the host OS where the proxy needs to be specified and used. This is needed to download all the necessary docker packages as well as docker-compose on the machine. 
+Those settings are different depending on the OS that might be used. 
+
+Once installed, docker does not inherit the proxy settings from the host machine. 
+Proxy settings need to be specified in  dockers configuration file  to download the necessary {product_name} images.
+
+However, along with that, the "no proxy" option should be specified for the internal container to containers communication. 
+Falling to do so will result in  all the traffic routed  the proxy.
+
+The easiest way to do that is to edit the file docker-compose.yml and add the following to the services `msa_dev`, `msa_api` and `msa_sms`:
+
+----
+environment:
+    http_proxy: "<PROXY URL>"
+    https_proxy: "<PROXY URL>"
+    no_proxy: "localhost,127.0.0.1,linux_me_2,linux_me,msa_cerebro,camunda,msa_alarm,db,msa_sms,quickstart_msa_ai_ml_1,msa_ui,msa_dev,msa_bud,msa_kibana,msa_es,msa_front,msa_api"
+----
+
+If your proxy also rewrites the SSL certificates you will face errors such as `fatal: unable to access 'https://github.com/openmsa/Workflows.git/': Peer's Certificate issuer is not recognized.` when installing the {product_name}. 
+To solve this you also need to add the following to the `msa_dev` and `msa_api` environment.
+
+----
+    GIT_SSL_NO_VERIFY: "true"
+----
+
 === Hardware Resources
 
-.on a PC (for lab experimentation)
-- minimum memory:6GB (8GB to be comfortable), 2CPU, 100GB
+==== on a PC (for lab experimentation)
 
-NOTE: with less that 6GB of memory, the {product_name} may not function properly.
+Minimum RAM memory to allocate to Docker: 
 
-.on a production environment 
+- On a 8GB RAM PC: allocate 4GB, 2 CPU, 50 GB of disk space.
+- On a 16GB RAM PC: you can allocate 6-8GB, 2+ CPU, 50 GB of disk space.
+
+NOTE: with less that 4GB of memory, the {product_name} may not function properly: some container such as the API container may not be able to start causing issues when connecting to the UI.
+
+NOTE: allocating more CPU might be tempting but before you do that you need to make sure that your system has enough memory. For instance, if you allocate 4 CPU to Docker, you need to allocate at least 8GB of memory.
+
+NOTE: if you are using Docker on MacOS, this link:https://docs.docker.com/docker-for-mac/[guide] will help you with this configuration.
+
+NOTE: if you are using Docker on Windows, this link:https://docs.docker.com/docker-for-windows/[guide] will help you with this configuration.
+
+==== on a production environment 
+
 - minimum 16GB, 4CPU, 200GB
 
 === Docker optional custom configuration
@@ -101,24 +144,24 @@ sudo tee -a /etc/sysctl.conf <<< "vm.max_map_count=262144"
 
 == Mini lab creation
 
-[#step1]
-=== Step 1: creation
+[#step{counter:step}]
+=== Step {step}: creation
 
 Create the mini lab: clone the quickstart git repository from Github, download and run the {product_name} from DockerHub. 
 
-1. `git clone https://github.com/ubiqube/quickstart.git`
-2. `cd quickstart`
-3. `git checkout tags/{revnumber} -b {revnumber}`
-4. `docker-compose up -d`
+. `git clone -b {revnumber} --depth 1 https://github.com/ubiqube/quickstart.git`
+. `cd quickstart`
+. `git checkout tags/{revnumber} -b {revnumber}`
+. `./scripts/install.sh` (or `./scripts/install_win.sh` for Windows users)
 
 NOTE: If you are already running the {product_name} and wish to upgrade it to a new version check the link:#upgrade[documentation below]
 
 NOTE: The architecture of the mini lab is detailed in the architecture overview documentation in the admin guide.
 
-[#step2]
-=== Step 2: install the trial license 
+[#step{counter:step}]
+=== Step {step}: install the trial license 
 
-On link:https://ubiqube.com/free-trial/[ubiqube.com], fill the form to receive a trial license by email.
+On link:https://ubiqube.com/free-trial/[ubiqube.com,window=_blank], fill the form to receive a trial license by email.
 
 Open link:https://localhost/[window=_blank] and connect with username `ncroot` and password `ubiqube`.
 
@@ -126,30 +169,8 @@ Browse to "Settings" in the left menu and upload the free trial license you rece
 
 NOTE: use localhost if you are using your PC as the docker host, otherwise use the IP address assigned to the docker host.
 
-[#step3]
-=== Step 3: the libraries (Microservices, Workflows and Adapters) from github.com/openmsa
-
-`docker-compose exec msa_dev /usr/bin/install_libraries.sh all -y`
-
-At the end of the script execution, you need to restart the API container and the CoreEngine container:
-
-`docker-compose restart msa_api && docker-compose restart msa_sms`
-
-NOTE: more explanations on the script `install_libraries.sh` can be found link:#install_libraries[here].
-
-[#step4]
-=== Step 4: configure Elasticsearch and Kibana
-
-Configure Elasticsearch settings and index mappings
-
-`docker exec -u root -w /home/install/scripts/ -it  msa_es bash -c './install.sh'`
-
-Install Kibana visualizations and dashboards
-
-`docker exec -u root -w /home/install/ -it  msa_kibana bash -c 'php install_default_template_dash_and_visu.php'`
-
-[#step5]
-=== Step 5: provision the mini lab with tenants, managed entities, etc.
+[#step{counter:step}]
+=== Step {step}: provision the mini lab with tenants, managed entities, etc.
 
 The mini lab comes with 2 Linux container (linux_me / 172.20.0.101 and linux_me_2 / 172.20.0.102) for experimentation.
 
@@ -169,8 +190,8 @@ To create the mini lab environment, run the CLI command from where you have clon
 
 `docker-compose exec msa_dev /usr/bin/create_mini_lab.sh`
 
-[#step6]
-=== Step 6: start using the {product_name}
+[#step{counter:step}]
+=== Step {step}: start using the {product_name}
 
 Browse: link:https://localhost/[window=_blank] and connect with username `ncroot` and password `ubiqube`. 
 
@@ -196,9 +217,9 @@ endif::[]
 [#upgrade]
 === Fresh install or upgrade ?
 
-The quickstart repository is maintained on https://github.com/ubiqube/quickstart and the latest version is available on the branch master.
+The quickstart repository is maintained on https://github.com/ubiqube/quickstart, the latest version is tagged as `tags/{revnumber}`
 
-If you are upgrading your {product_name}, you can either do a clean install for the quickstart by removing your docker containers and the quickstart directory and go to step 2. above or you can update your quickstart with `cd quickstart` and checkout the latest version you want to upgrade to.
+If you are upgrading your {product_name}, the best and easiest option is to remove your Quickstart git repository and use `git clone` to get the new version.
 
 NOTE: In case you have updated the {product_name} with `docker-compose up -d` or `docker-compose pull`, you might experience cache issues (for instance, your changes may not be reflected on the UI). To solve that, you can clean your browser cache, or use a browser private session.
 
@@ -208,48 +229,37 @@ Starting from it's version 2.2.0, the quickstart project provides a script `upgr
 
 Let's say that you are running the version {revnumber-prev}, to upgrade to the version {revnumber} you need to follow these steps:
 
-1. `cd quickstart`
-2. `git checkout master`
-3. `git pull`
-4. `git fetch --all --tags`
-5. `git checkout tags/{revnumber} -b {revnumber}`
-6. `./scripts/upgrade.sh` 
+. `cd quickstart`
+. `git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"`
+. `git fetch origin`
+. `git checkout tags/{revnumber} -b {revnumber}`
+. `./scripts/install.sh`
 
 NOTE: when running the upgrade script, it will ask you if you want your local libraries to be updated with the latest version from the community. If you answer 'y', the update will be done automatically. You can also do the update later manually on the container `msa_dev`.
 
-==== Hot fixes: upgrade a version with an updated tag
+[source, shell]
+----
+# ./scripts/install.sh --help
+usage: install.sh [--mini-lab|-m] [--force|-f] [--cleanup|-c] [--remove-orphans|-ro]
+this script installs and upgrades a {product_name}
 
-Sometime, not very often, but it can happen in the few days following a release, we release some hot fixes on the same version.
-
-When this happens, we update the docker images in the quickstart and simply move the release tags to the new git commit.
-
-If you want to update your quickstart, because you have already checked out the release tag {revnumber} on a local git branch {revnumber}, you need first to delete this local branch and delete the local tag before you can update the quickstart and install the hot fixes.
-
-1. `git checkout master`
-2. `git pull`
-3. `git branch -d {revnumber}`
-4. `git tag -d {revnumber}`
-5. `git fetch --all --tags`
-6. `git checkout tags/{revnumber} -b {revnumber}`
-7. `docker-compose up -d`
+-m: mini lab creation. Create a demo platform around a Linux ME
+-f: force the upgrade without asking for user confirmation. Permit also to reapply the upgrade and to auto merge files from OpenMSA
+-c: cleanup unused images after upgrade to save disk space. This option clean all unused images, not only MSA quickstart ones
+-ro: remove containers for services not defined in the compose file. Use it if some containers use same network as MSA
+----
 
 ==== Note for Windows user
 
-If you are running docker natively on Windows, the script upgrade.sh may not work. In that case you need to execute manually the Docker CLI commands to upgrade your setup:
-
 If your original version is 2.1, plz refer to upgrade script first provided with 2.2.0 GA. In any cases, perform those commands
 
-1. `docker-compose down`
-2. `docker-compose up -d --build`
-3. `docker-compose exec msa_dev /usr/bin/install_libraries.sh all`
-4. `docker-compose restart msa_api && docker-compose restart msa_sms`
-5. `docker exec -it -u root msa_api crond`
-6. `docker-compose exec msa_dev /usr/bin/migrate_bpmn.sh -r`
-7. `docker-compose exec msa_dev /usr/bin/clean_old_topology_instances.sh`
-8. `docker exec -u root -w /home/install/scripts/ -it  msa_es bash -c './install.sh'`
-9. `docker exec -u root -w /home/install/ -it  msa_kibana bash -c 'php install_default_template_dash_and_visu.php'`
-10. `docker image prune -f`
+. `cd quickstart`
+. `git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"`
+. `git fetch origin`
+. `git checkout tags/{revnumber} -b {revnumber}`
+. `./scripts/install_win.sh`
 
+NOTE : you may face an issue at the end of the script with a message "Wait Kibana to be ready". This is a known issue, the workaround is to execute `docker-compose up -d` from another CLI.
 
 === Install a specific version
 
@@ -259,7 +269,7 @@ To install a tagged version, you can checkout the tag and go to the install step
 
 For example, the CLI command below will checkout the quickstart for the release {revnumber}.
 
-`git checkout tags/{revnumber} -b {revnumber}`
+`git clone -b {revnumber} --depth 1 https://github.com/ubiqube/quickstart.git`
 
 The releases and tags are available link:https://github.com/ubiqube/quickstart/releases[here]
 

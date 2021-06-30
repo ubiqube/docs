@@ -1,6 +1,11 @@
 = Workflow Editor
+ifdef::env-github,env-browser[]
+:toc: left
+:toclevels: 3
+endif::[]
 ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
 
 image:msa_arch_wf_dev.png[width=400px] 
 
@@ -13,6 +18,10 @@ With the workflow editor, you can create new workflows or edit existing workflow
 This document explains how to use the editor to design workflows and implement them in PHP or in Python.
 
 The Workflow designer and execution engine are located in the architecture layer, between the BPM and the Microservice.
+
+ifdef::html,env-github,env-browser[]
+image:workflow_design.gif[width=800px]
+endif::[]
 
 == Workflow overview
 
@@ -117,7 +126,7 @@ To create a process, click on the "+" and provide a name and a type (CREATE, UPD
 NOTE: the other types listed in the UI are not supported yet.
 
 .A new process
-image:workflow_editor_new_process.png[width=700px]
+image:workflow_editor_new_process.png[width=800px]
 
 ==== Process scheduling
 
@@ -167,12 +176,57 @@ task_success('Task OK');   // or task_error('Task FAILED');                     
 ?>
 ----
 
-<1> include the link:workflow_php_sdk{outfilesuffix}[php SDK libraries].
+<1> include the php SDK libraries.
 <2> function to list all the parameters required by the task and that should also be rendered as user input field.
 <3> function to check whether all the mandatory parameters are present in user input.
-<4> code example: assign a variable with a modified value from another variable.
-<5> code example: task execution status will depend on the value of a variable
+<4> assign a variable with a modified value from another variable.
+<5> task execution status will depend on the value of a variable
 <6> end of the task.
+
+===== Python template
+
+[source,python]
+----
+from msa_sdk.variables import Variables		<1>
+from msa_sdk.msa_api import MSA_API
+
+
+dev_var = Variables()
+dev_var.add('var_name', var_type='String')			<2>
+dev_var.add('var_name2', var_type='Integer')
+
+
+context = Variables.task_call(dev_var)
+context['var_name2'] = int(context['var_name2']) + 1   <3>
+
+ret = MSA_API.process_content('ENDED', 'Task OK', context, True)
+print(ret)			<4>
+----
+<1> include the php SDK libraries.
+<2> list all the parameters required by the task and that should also be rendered as user input field.
+<3> update the current context with another value read from the context.
+<4> end of the task.
+
+===== Microservice to Task code generation
+
+ifdef::html,env-github,env-browser[]
+image:workflow_create_ms_task.gif[width=800px]
+endif::[]
+
+
+When you create a task you have the possibility to create a simple task pre-coded with on of the template above but you can also choose to create a task from a Microservice call.
+
+If you select the second option, you'll have the possibility to select a Microservice and one for it's function to generate a task with all the code to execute this microservice auto-generated.
+
+image:workflow_create_ms_task.png[width=800px]
+
+The code of the task is automatically generated.
+
+image:workflow_create_ms_task_code.png[width=800px]
+
+IMPORTANT: You will have to add manually the variables listed at the beginning of the new task code to the Workflow.
+
+image:workflow_create_ms_task_variables.png[width=800px]
 
 [#logging]
 == Logging and troubleshooting
@@ -182,7 +236,7 @@ You can add debugging information to help you with your development and also pro
 The log files are generated per workflow instance in the container `msa_api` under `/opt/wildfly/logs/processLog/`. The log files are formatted as `process-XX.log` where XX is the workflow instance ID.
 
 .39 is the workflow instance ID
-image:workflow_instance_id.png[width=700px]
+image:workflow_instance_id.png[width=800px]
 
 You can monitor the logs of a process with the CLI command below
 

@@ -45,4 +45,8 @@ include::{includedir}/security_configuration.adoc[]
 
 include::{includedir}/support_and_troubleshooting.adoc[]
 
+include::{includedir}/ldap.adoc[]
+
+ifdef::html[]
 include::{includedir}/opensource_technologies.adoc[]
+endif::[]

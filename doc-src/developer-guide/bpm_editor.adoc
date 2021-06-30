@@ -12,6 +12,10 @@ The {product_name} provides a web based user interface editor for designing BPM 
 
 BPM are sitting at the top of the automation layer and the editor will allow you to create BPM in a codeless way.
 
+ifdef::html,env-github,env-browser[]
+image:bpm_design.gif[width=800px]
+endif::[]
+
 == BPM design
 
 To create a new BPM from the developer portal, click on "+ Create" from the swimlane "BPM Library." 
@@ -123,6 +127,10 @@ Select an executable task to see the list of workflows (based on the sub-tenant 
 
 .Configure a BPM task with workflow and processes
 image:bpm_edit.png[width=800px]
+
+If the process you select in a BPM task is a "UPDATE" process (see Workflow design for more details), you'll have the possibility to select either an existing Workflow instance or use a new instance created by one of the previous BPM task.
+
+This is extremely useful for BPM designers for chaining tasks together.
 
 === Execution flow control
 

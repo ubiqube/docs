@@ -15,24 +15,23 @@ ifdef::pdf[]
 :includedir: .
 endif::[]
 
-
-
 == Latest release 
+
 The latest {product_name} release is {revnumber}. 
 
 The convention works as follows: x.y.z (all representing numbers) and
 
-x = major release (major upgrade of product), 
-
-y = minor release (features, changes)
-
-z = bug or security fixes
+- x = major release (major upgrade of product)
+- y = minor release (features, changes)
+- z = bug or security fixes
 
 == Fixes
 
 Various fixes have been made to the product to ensure its continued ability to empower users, ensure a smoother user experience and deliver the value that businesses need in today's environment while being ahead in terms of features, being evergreen and the agility of the {product_name} to grow.
 
 === Specific technical fixes
+
+include::{includedir}/release_2.4.adoc[version 2.4]
 
 include::{includedir}/release_2.3.adoc[version 2.3]
 
