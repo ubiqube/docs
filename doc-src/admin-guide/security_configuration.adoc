@@ -1,4 +1,4 @@
-= Security Configuration for HA Setup
+= Security Configuration
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 Before installing MSA there are some host configurations that are needed.
 
