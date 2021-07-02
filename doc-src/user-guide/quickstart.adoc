@@ -303,8 +303,6 @@ Options:
 
 In case of calling this script on an existing setup, it will take care of merging the code from the Github master branch into your local development branch. With the option `-y`, an automated merge will be attempted, without the option, the script will ask for user input.
 
-IMPORTANT: when running the script on an existing setup, use the option `--no-lic` to make sure that your current license is not overwritten by a new trial license. 
-
 ifeval::["{format}" == "html"]
 
 :leveloffset: +1
