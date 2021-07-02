@@ -1,18 +1,27 @@
 plugins {
-    id 'org.asciidoctor.jvm.convert' version '3.1.0'
-    id 'org.asciidoctor.jvm.gems' version '3.1.0'
-    id 'org.asciidoctor.jvm.pdf' version '3.1.0'	
+    id 'org.asciidoctor.jvm.convert' version '3.3.2'
+    id 'org.asciidoctor.jvm.gems' version '3.3.2'
+    id 'org.asciidoctor.jvm.pdf' version '3.3.2'	
 }
 
 repositories {
     jcenter()
+    ruby.gems()
 }
 
 asciidoctor.doFirst {
     delete file('build/docs')
 }
 
+asciidoctor.doFirst {
+    delete file('build/html')
+    delete file('build/pdf')
+}
+
 asciidoctor {
+
+  version = '2.0.12'
+  options doctype: 'book'
 
   attributes \
   	'source-highlighter' : 'rouge',
