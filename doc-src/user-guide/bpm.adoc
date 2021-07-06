@@ -55,9 +55,25 @@ endif::[]
 
 === Scheduling
 
-The execution of a BPM can be scheduled to run once at a predetermined date. 
+The execution of a BPM can be scheduled to run once at a predetermined date or in a recurring way for a predefined duration. 
 The list of scheduled executions is available and any scheduled execution can be canceled
 
 ifdef::html,env-github,env-browser[]
 image:bpm_scheduling.gif[width=800px]
 endif::[]
+
+ifndef::html,env-github,env-browser[]
+image:bpm_scheduling.png[width=800px]
+endif::[]
+
+.BPM scheduling
+[width=100%, cols=5*,options="header"]
+|===
+| Schedule | Execute Every | Pick at least one | Start date | End date
+| Once     | NA            | NA                | define when the process should execute | NA
+| Minute   | execution frequency | NA             | define the start date | define the end date
+| Hourly   | execution frequency | NA             | define the start date | define the end date
+| Daily   | execution frequency |  Select the week day(s) for execution           | define the start date | define the end date
+| Weekly   | execution frequency | NA           | define the start date | define the end date
+| Monthly   | execution frequency | Select the month(s) for execution          | define the start date | define the end date
+|===

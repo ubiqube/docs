@@ -1,0 +1,158 @@
+= Version 2.5
+ifndef::imagesdir[:imagesdir: images]
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Various fixes have been made to the product to ensure its continued ability to empower users, ensure a smoother user experience and deliver the value that businesses need in today's environment while being ahead in terms of features, being evergreen and the agility of the {product_name} to grow.
+
+== New manager features
+
+The following feature improvements are included with this release:
+
+=== Workflow Execution Management
+
+==== Execution Logs
+
+=== Workflow Execution Management
+
+==== Workflow Console Log
+
+We have added a new log tab to the process execution console.
+
+As the workflow process is running, the user can click on that "Logs" tab to see the log entries for this execution live (with a delay of a few seconds).
+
+image:2.5_WF_exec_console_logs.png[width=700px]
+
+== New Developer Features
+
+The following feature improvements are included with this release:
+
+=== Workflow
+
+==== Whitespace Highlighting
+
+The Workflow code editor now highlights whitespace, such as spaces, tabs, and line returns.  
+
+This is particularly important for Python users, as that language is whitespace sensitive.
+
+image:2.5_WF_whitespace_highlight.png[width=700px]
+
+==== Code Panel Maximization
+
+We have added this new button on the top right of the code editor to maximize the size of the code panel in the Workflow editor, to give developers more screen space to see their code.
+
+image:2.5_WF_code_panel_max.png[width=700px]
+
+==== Keyboard Shortcuts
+
+There are a list of keyboard shortcuts that our Workflow code editor supports.  
+
+We have now started to document these in a new panel, which is accessible via a new "i" icon in the editor itself.
+
+image:2.5_WF_editor_shortcuts.png[width=700px]
+
+==== Code Completion
+
+A common feature in code editors is code completion, where the code editor is smart enough to guess what object or function you might want to access next, and automatically suggest those to you.
+
+Our code editor is able to do this now as it is aware of our proprietary SDK classes and methods.
+
+image:2.5_WF_code_completion.png[width=700px]
+
+== CoreEngine
+
+No changes have been made to the core engine from previous versions of the product. This allows consistency from branches of OpenMSA (community version), found on GitHub: https://github.com/openmsa
+
+== New Libraries Available
+
+=== Adapters
+
+== Upgrading
+
+Instructions to upgrade available in the quickstart guide.
+
+=== Specific instructions for upgrading from {revnumber-prev} to {revnumber}
+
+Starting from version 2.2.0, the quickstart provides an upgrade script `upgrade.sh` for taking care of possible actions such as recreating some volume, executing some database specific updates,...
+
+Let's say that you are running {product_name} version {revnumber-prev}, to upgrade to the version {revnumber}, you need to follow these steps:
+
+1. `cd quickstart`
+2. `git checkout master`
+3. `git fetch --unshallow`
+4. `git pull`
+5. `git checkout tags/{revnumber} -b {revnumber}`
+6. `./scripts/install.sh`
+
+== Specific technical fixes and feature details
+
+=== 2.5.0 GA
+
+==== Features
+
+==== Bug fixes
+
+=== 2.5.0 RC1
+
+==== Bug fixes
+
+* MSA-9540 - [Admin] when login with a 1 subtenant manager, the subtenant is not selected automatically
+* MSA-8798 - [Alarm] When an Alarm is edited, A new one is created instead.
+* MSA-9203 - [Alarm] Managed Entity list must be based on subtenant you select
+* MSA-9951 - [Alarm] Add control + default value for thresholds, avoid high usage of CPU for alarm
+** MSA-9927 - [API] Don't crash server when a DA is not loadable.
+* MSA-9899 - [API] Create a /auth/renew endpoint
+* MSA-8894 - [API] Ensure syncBatchUpdate method is called after the DB transaction is completed
+* MSA-9856 - [BPM] Execute BPM for the same deployment
+* MSA-9812 - [Change Management] disable conf.error conf.applied in back revisions
+* MSA-10090 - [CoreEngine] lsncsite return strange data
+* MSA-9972 - [Dashboard] display issue on recent workflow listing when actor is deleted
+* MSA-9839 - [Dashboard] bad management of overlong file names (for BPM, workflow, Microservice) in Dashboard view
+* MSA-8738 - [RBAC] An Admin user should be able to access "Admin" menu to manage Managers and privileged managers!
+* MSA-9415 - [Monitoring Profile] When building graph, data source already selected should not be listed when adding another data
+* MSA-9902 - [Microservice] Microservice name and instance ordering is not working
+* MSA-7869 - [Microservice/Workflow] : it is possible to create a variable with empty required field
+* MSA-9576 - [Microservice] No display name for composite variable
+* MSA-10016 - [Microservice] Microservice name and instance ordering is not working
+* MSA-9952 - [Perf] updateHostnamesTask in syslogd generate peak of CPU
+* MSA-9953 - [Perf] SNMP Timeout on managed entity deletion in polld generate peak of CPU
+* MSA-7895 - [Portal] Microservice, workflow, Managed Entity, Monitoring Profile: issue when changing displayed rows per page
+* MSA-6963 - [Portal] Sorting by name doesn't sort it truly but by case
+* MSA-10180 - [Portal] after an upgrade from 2.4 to 2.5, custom certificate in msa_front are not readable anymore
+* MSA-9956 - [SDK] Order command_execute() does not return the sms ERROR details
+* MSA-9725 - [Workflow] Process context not properly initialized when launched from BPM
+* MSA-9851 - [Workflow] Click on + icon to create Process: the message displayed as "Unable to save workflow"
+* MSA-9855 - [Workflow] Process scheduled as once is not listed
+* MSA-6993 - [Workflow] New Attached workflow does not show refreshed instances count
+
+==== Features
+
+* MSA-3904 - [MSAv2.x] Login screen : Forgot password
+* MSA-8150 - [Assurance] Log List date filtering
+* MSA-8825 - [MSA2] Alarms: enhancements in presentation
+* MSA-9297 - [Profile] Custom Period in Monitoring graphs
+* MSA-9441 - [BPM] Read-only popup with attached subtenants
+* MSA-9525 - [Dashboard] enable kibana map in MSA dashboard - Backend part
+* MSA-9745 - [Dashboard] Scroll Fix
+* MSA-9758 - [BPM] BPM should be able to run loops
+* MSA-9831 - [Workflow] Reduce the loading time for service instances
+* MSA-9832] - Pagination for process instance list API
+* MSA-9843 - [Portal] [UI/API] Add a developer flag to control managers account who can access the dev portal
+* MSA-9849 - [Repository] Update API to take misc parameters
+* MSA-9857 - [BPM] Extend branching option for Decision Gateway
+* MSA-9858 - [BPM] Store context value into camunda variables
+* MSA-9860 - [Managed Entity] Enrich the response for list history
+* MSA-9861 - [Managed Entity] Enrich History List
+* MSA-9863 - [Workflow] API to Update and Delete scheduled workflow
+* MSA-9879 - [Workflow] API to Delete scheduled workflow
+* MSA-9891 - [Security] Auto Logout
+* MSA-9896 - [API]return category in list manufacturers api
+* MSA-9906 - [Security] DBS Report - Docker Swarm configuration - Item 7.4
+* MSA-9917 - [Backend] Sec Engine Verbs to be enhanced to take MSA user login
+* MSA-9932 - [Security] Snyk Report - Issues in SMS
+* MSA-9933 - [Security] Snyk Report - Issues in BUD
+* MSA-9934 - [Security] Snyk Report - Issues in ALARM
+* MSA-9936 - [Security] Snyk Report - Issues in ES
+* MSA-9969 - [YANG] enhance generate Microservice from the YANG XML structure workflow
+* MSA-10013 - [Alarm/API] - update get Alarm API to permit search and filtering
+* MSA-10014 - [Alarm/API] - Alarm API to acknowledge multiple alarms once
+
