@@ -63,9 +63,9 @@ The {product_name} deploys with 50GB disk, but you may extend this to allow for 
 
 Connect as root to the {product_name}.
 
-The following steps explain how to configure the network interface eth0 in order to be able to use the online configuration tool:
+The following steps explain how to configure the network interface ensxx in order to be able to use the online configuration tool:
 
-Configure eth0 with an address from your network:
+Configure ensxxx with an address from your network:
 
 link:[image:images/image2018-7-19_10-34-16.png[Image,height=36]]
 
@@ -76,7 +76,7 @@ tool below.
 
 === Online Configuration Tool
 
-This is the configuration method for the {product_name}  access: http://w.x.y.z:3577/config.xml(login:socconfig, password:b5ty9uvh4). Access is only available through eth0 (maintenance
+This is the configuration method for the {product_name}  access: http://w.x.y.z:3577/config.xml(login:socconfig, password:b5ty9uvh4). Access is only available through ensxxx (maintenance
 interface).
 
 * ens192/ensxxx is the interface dedicated to maintenance
@@ -126,7 +126,7 @@ Once the CentOS finished booting, {product_name} is available and ready to use.
 
 ===== First login
 
-To check that your {product_name} server is up and running, connect to the IP address configured for eth1 of the CentOS guest virtual machine with a web browser.
+To check that your {product_name} server is up and running, connect to the IP address configured for ensxxx of the CentOS guest virtual machine with a web browser.
 
 Example: http://192.168.13.203/
 
