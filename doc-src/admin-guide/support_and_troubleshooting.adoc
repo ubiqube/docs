@@ -44,6 +44,21 @@ IMPORTANT: you need to create the director `/mnt/NASVolume/msa_front` manually f
 3. force recreate front to refresh certificates container: `docker service update --force FRONT_SERVICE_NAME`
 4. browse to https://localhost (you may have to clean your cache)
 
+=== How to support TFTP for managed entity operations
+
+If a managed entity use TFTP protocol during backend operation, like a restore, an MSA variable must be set with the IP of the {product_name}. Then msa_sms container must be restarted
+
+----
+POST https://localhost/ubi-api-rest/system-admin/v1/msa_vars
+[
+{ "name": "UBI_SYS_EQUIPMENTS_IP", "comment": "", "value": "<MSA_IP>" }
+]
+----
+----
+docker-compose restart msa_sms (standalone)
+docker service update --force ha_msa_sms (HA)
+----
+
 == Troubleshooting
 
 === Containers / Docker Engine
