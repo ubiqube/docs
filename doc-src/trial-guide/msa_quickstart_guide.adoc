@@ -16,10 +16,19 @@ ifdef::pdf[]
 endif::[]
 
 
-This documentation will guide you through the implementation of a simple workflow to block a source IP and a destination port on a Linux based VNF
+
+Get up to speed on Smart Automation with MSActivator.
+
+video::on8pjF1GEe8[youtube,width=900px,height=540] 
+
+
+This documentation is a step by step demo scenario will guide you through the implementation of a simple workflow to block a source IP and a destination port on a Linux based container.
+
 
 == Overview
 The goal of this tutorial is to give you, in about an hour, an overview of the main features of the MSActivator as a development and integration platform but also as an operation platform for managing your infrastructure.
+
+Use your trial credentials to login to link:https://trial.ubique.com[trial.ubiqube.com] and follow the instructions below.
 
 In this tutorial, you will first go through the MSActivator Manager experience. You will see, with a simple use case how you can:
 
