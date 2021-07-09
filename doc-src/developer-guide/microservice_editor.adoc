@@ -108,6 +108,7 @@ The Import is made of 3 parts:
 - the configuration parser, implemented with a set of regular expressions or XPath expressions. Only the Microservice identifier extractor is mandatory.
 - a set of optional post import operations implemented in Smarty language (https://www.smarty.net/).
 
+////
 === Constraint
 
 In most cases, the constraint definition is straight forward when defining a microservice variable. 
@@ -138,7 +139,7 @@ The custom constraint is implemented as a smarty template:
 ----
 
 image:microservice_console_constraint.png[width=800px]
-
+//// 
 === Execution flow
 
 The diagram below shows the flow of execution when one of the Create, Update or Delete function is executed by the REST API (directly or from the UI)
