@@ -17,7 +17,7 @@ endif::[]
 
 
 
-Get up to speed on Smart Automation with MSActivator.
+Get up to speed on Smart Automation with {product_name}.
 
 video::on8pjF1GEe8[youtube,width=900px,height=540] 
 
