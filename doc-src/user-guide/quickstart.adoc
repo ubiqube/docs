@@ -161,7 +161,7 @@ NOTE: The architecture of the mini lab is detailed in the architecture overview 
 [#step{counter:step}]
 === Step {step}: install the trial license 
 
-On link:https://ubiqube.com/free-trial/[ubiqube.com,window=_blank], fill the form to receive a trial license by email.
+On link:https://ubiqube.com/licensed-trial/[ubiqube.com,window=_blank], fill the form to receive a trial license by email.
 
 Open link:https://localhost/[window=_blank] and connect with username `ncroot` and password `ubiqube`.
 
