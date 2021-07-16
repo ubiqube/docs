@@ -5,7 +5,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == Overview
 
-{product_name} provide the possibility to use link:https://git-scm.com/[git] version control system to handle the libraries (BPM, workflows and microservices) stored in the local librairies repositories under `/opt/fmc_repository` in the container msa_dev.
+{product_name} provide the possibility to use link:https://git-scm.com/[git] version control system to handle the libraries (BPM, workflows and microservices) stored in the local libraries repositories under `/opt/fmc_repository` in the container msa_dev.
 
 == Local libraries repositories overview
 
@@ -24,7 +24,7 @@ To configure the git repositories, log into the *Developer* portal and click on 
 Use the "IMPORT / EXPORT" form to configure the repositories. You can choose which type of libraries (BPM, workflow or microservice) you want to be managed by a remote git repository.
 
 .Git repository settings
-image:repo_setting.png[width=700px]
+image:repo_setting.png[width=800px]
 
 === Prerequisites
 
@@ -60,7 +60,7 @@ nothing to commit, working tree clean
 ----
 
 .new repository configured in settings 
-image:new_ms_repo_setting.png[width=700px]
+image:new_ms_repo_setting.png[width=800px]
 
 IMPORTANT: you need at least one file in the git repository before you can configure it in the UI. We recommend that you add an empty file like README.md. On github you have the option to do that automatically when you create a new repository
 
