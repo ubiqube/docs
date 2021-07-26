@@ -17,7 +17,7 @@ endif::[]
 [#prerequisites]
 == 前提条件
 インストール手順の中で{product_name}のトライアルライセンスが必要となります。
-link:https://ubiqube.com/free-trial/[ubiqube.com] から、MSA2トライアル希望の旨をお知らせください。
+link:https://ubiqube.com/licensed-trial/[ubiqube.com] から、MSA2トライアル希望の旨をお知らせください。
 
 また、{product_name}を動作させるために、以下のアプリケーションのインストール／動作確認を実施してください。
 
