@@ -55,8 +55,8 @@ Only available when creating a managed entity, you can't change this value once 
 
 ==== Basic information
 
-.Select the vendor and model for the managed entity.
-This will select the adapter the {product_name} Core Engine will use for configuring and monitoring the managed entity
+.Select the category, the vendor and model for the managed entity.
+This will select the adapter the {product_name} CoreEngine will use for configuring and monitoring the managed entity
 
 .Select the nature of the managed entity
 The nature of the managed entity is an additional information that will help you organize your infrastructure into physical devices and virtual (private or public) ones

@@ -26,7 +26,7 @@ For instance, the type boolean will render the variable with true/false radio bu
 
 When creating or editing a variable, there are some information that need to be provided in the "Default" section.
 
-image:microservice_variables_edit_1.png[width=800px]
+image:microservice_variables_edit_1.png[width=400px]
 
 === Variable
 
@@ -134,7 +134,7 @@ Depending on the selected type, some advanced parameters may be differ.
 [#group_variables]
 === Group Variables
 
-image:microservice_variables_group_4.png[width=800px]
+image:microservice_variables_group_4.png[width=400px]
 
 
 You can group the variables in the microservice console by setting a section header name. The UI will gather the columns under a common header

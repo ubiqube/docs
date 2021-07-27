@@ -103,7 +103,7 @@ logToFile(debug_dump($response['wo_newparams'], "RESPONSE\n"));                 
 <3> Call the SDK function
 <4> Get the JSON response as an array
 <5> If the call to the function failed, echo the response and exit the task
-<6> If the call was succesful continue the task execution
+<6> If the call was successful continue the task execution
 
 === Output messages to the process execution UI
 
