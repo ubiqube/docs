@@ -2,15 +2,13 @@
 ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-Various fixes have been made to the product to ensure its continued ability to empower users, ensure a smoother user experience and deliver the value that businesses need in today's environment while being ahead in terms of features, being evergreen and the agility of the {product_name} to grow.
+With this latest release, every aspect of MSActivator has been designed to maximize developer productivity. 
+
+Together, intelligent coding assistance and ergonomic design make development not only productive but also enjoyable.
 
 == New manager features
 
 The following feature improvements are included with this release:
-
-=== Workflow Execution Management
-
-==== Execution Logs
 
 === Workflow Execution Management
 
@@ -26,7 +24,41 @@ image:2.5_WF_exec_console_logs.png[width=700px]
 
 The following feature improvements are included with this release:
 
+=== BPM
+
+==== Decision Gateway Extension
+
+The conditions of a definition gateway can now depend either on the result status of the execution of a workflow or on the value of a workflow variable.
+
+image:2.5_BPM_decision_gateway.png[width=700px]
+
+==== Workflow Parameter Control
+
+When designing or executing a BPM, you can now control how the workflow parameters are passed to the executed process.
+
+You have 3 possible options: "Saved", "Latest" and "Pass" in the workflow parameter section of a BPM workflow container definition.
+
+- Saved: will allow you to define the parameter values and these values will be passed to the workflow process execution.
+- Latest: will use the values stored in the workflow instance context. 
+- Pass: will allow you to use the values from another workflow referenced by the BPM.
+
+image:2.5_BPM_WF_parameters_options.png[width=700px]
+
 === Workflow
+
+==== Task Execution Tester
+
+When developing a workflow, you can now execute a single task without having to execute the whole process. 
+
+image:2.5_WF_task_tester.png[width=700px]
+
+==== Code Completion
+
+A common feature in code editors is auto code completion, where the code editor is smart enough to guess what object or function you might want to access next, and automatically suggest those to you.
+
+Our code editor is able to do this now as it is aware of our proprietary SDK classes and methods.
+
+image:2.5_WF_code_completion.png[width=700px]
 
 ==== Whitespace Highlighting
 
@@ -49,14 +81,6 @@ There are a list of keyboard shortcuts that our Workflow code editor supports.
 We have now started to document these in a new panel, which is accessible via a new "i" icon in the editor itself.
 
 image:2.5_WF_editor_shortcuts.png[width=700px]
-
-==== Code Completion
-
-A common feature in code editors is code completion, where the code editor is smart enough to guess what object or function you might want to access next, and automatically suggest those to you.
-
-Our code editor is able to do this now as it is aware of our proprietary SDK classes and methods.
-
-image:2.5_WF_code_completion.png[width=700px]
 
 == CoreEngine
 

@@ -224,7 +224,7 @@ The code of the task is automatically generated.
 
 image:workflow_create_ms_task_code.png[width=800px]
 
-IMPORTANT: You will have to add manually the variables listed at the beginning of the new task code to the Workflow.
+The variables related to the microservice are added.
 
 image:workflow_create_ms_task_variables.png[width=800px]
 
@@ -238,7 +238,11 @@ The log files are generated per workflow instance in the container `msa_api` und
 .39 is the workflow instance ID
 image:workflow_instance_id.png[width=800px]
 
-You can monitor the logs of a process with the CLI command below
+You can monitor the logs of a process by opening the logs tab in the process execution view.
+
+image:workflow_process_exec_logs.png[width=800px]
+
+You can also monitor the logs of a process with the CLI command below
 
 .Monitor the process execution logs
 ----

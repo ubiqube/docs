@@ -9,7 +9,7 @@ image:workflow_console_variables.png[width=800px]
 
 All variables are referenced with the prefix `$params` which is automatically set in the variable editor screen and when a variable has to be referenced in one of the workflow functions, you need to use the syntax `{$params.your_variable}` (see below for more examples).
 
-By default the type of a variable is String but other types are supported such as Integer, Boolean, Password, IpAddress, ObjectRef,...
+By default the type of a variable is String but other types are supported such as Integer, Boolean, Password, IpAddress, Microservice Reference,...
 
 == Overview
 
@@ -195,7 +195,7 @@ foreach ($devices as $device) {
 }
 ----
 
-==== Customer (Subtenant)
+==== Subtenant
 
 This type will allow the user to select a subtenant and use the subtenant ID from the workflow instance context in the task.
 
@@ -285,8 +285,8 @@ from msa_sdk.variables import Variables
 from msa_sdk.msa_api import MSA_API
 
 dev_var = Variables()
-dev_var.add('managed_entity', var_type='Device') <1>
-dev_var.add('interface.0.name', var_type='OBMFRef') <2>
+dev_var.add('managed_entity')
+dev_var.add('interface.0.name')
 
 context = Variables.task_call(dev_var)
 
@@ -294,8 +294,6 @@ ret = MSA_API.process_content('ENDED', 'Task OK', context, True)
 
 print(ret)
 ----
-<1> for backward compatibility reason use "Device" when the variable type is "Managed Entity" 
-<2> for backward compatibility reason use "OBMFRef" when the variable type is "Microservice Reference" 
 
 It also possible to use an array to select multiple values from the microservice
 
@@ -319,8 +317,7 @@ print(ret)
 ----
 <1> Use a variable array to allow multiple value selection
 
-==== Service reference (workflow reference)
-NOTE: not supported yet
+==== Workflow reference
 
 This type is useful for referencing a workflow from another one.
 
