@@ -19,7 +19,7 @@ asciidoctorj {
 
 dependencies {
   asciidoctorGems 'rubygems:rouge:3.26.0'
-  asciidoctorGems 'rubygems:asciidoctor-diagram:2.1.0'
+  asciidoctorGems 'rubygems:asciidoctor-diagram:2.2.1'
 }
 
 asciidoctor.doFirst {
@@ -29,7 +29,7 @@ asciidoctor.doFirst {
 
 asciidoctor {    
 
-  version = '2.0.16'
+  version = '2.0.17'
 
   options doctype: 'book'
 
@@ -77,7 +77,7 @@ asciidoctorPdf {
   asciidoctorj {
 
     modules {
-        pdf.version '1.6.0'
+        pdf.version '1.6.2'
     }
     requires 'rouge'
 
