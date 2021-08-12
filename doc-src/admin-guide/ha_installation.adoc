@@ -128,6 +128,7 @@ MSA High Availability is built upon Docker Engine Swarm mode, and requires:
  *** msa_front
  *** msa_repository
  *** msa_svn
+ *** msa_api_ml_db
  *** rrd_repository with inside sub folders monitor, ping and snmp
  
  
