@@ -2,13 +2,53 @@
 ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-With this latest release, every aspect of MSActivator has been designed to maximize developer productivity. 
+With this latest release, every aspect of MSActivator has been designed to maximize developer productivity. Together, intelligent coding assistance and ergonomic
+design make development not only productive but also enjoyable.
 
-Together, intelligent coding assistance and ergonomic design make development not only productive but also enjoyable.
+Advance code and BPM generation enable the user to auto-generate Workflow code based on any existing Microservice, then automatically extract Workflow
+variables from that Microservice, and finally have that Workflow automatically included in our new Intent-based Automation feature, which is powered by AI.
 
-== New manager features
+Put simply, we have reduced the amount of manual coding required for a developer in all steps of the design process, in some cases to zero.
 
-The following feature improvements are included with this release:
+In addition, we continue to make the development experience easier by including a Log tab on the Workflow view to see the debug messages for that Workflow,
+and we have included a “Try Task” feature on the Workflow editor to enable developers to execute a single task for testing purposes.
+
+For managers, we have enhanced the Topology context menu and added in new views for editing the configuration of MSActivator itself online.
+
+== New Manager Features
+
+This release note will cover the following details regarding MSActivator 2.5:
+
+== Two Categories of Automation
+
+There are now two categories of Automation on the main navigation menu,
+Input-based and Intent-based.
+
+=== Input-based
+
+In this screen, the user will find the Workflows and BPMs as in previous
+versions of MSActivator. If you are familiar with previous versions, nothing
+major has changed here.
+
+=== Intent-based
+
+In this screen, the user will find the new AI-powered interface for generating
+BPMs automatically, based upon the user choosing their desired final state
+from the final states available. Note to use this feature properly, the developer
+user needs to define the States and Actions of the model via the
+“Intent-based” section of the Developer dashboard, see further details below
+in the “Intent-based Automation” section.
+
+
+=== MSActivator Configuration View
+
+While logged in as the super-user, the user can now change MSActivator
+settings, namely those settings for the MSActivator instance itself, in the new
+“MSA Variables” section found on the “Settings” screen.
+
+
+---> changed until here <---
+
 
 === Workflow Execution Management
 
