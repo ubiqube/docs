@@ -17,17 +17,15 @@ For managers, we have enhanced the Topology context menu and added in new views 
 
 == New Manager Features
 
-This release note will cover the following details regarding MSActivator 2.5:
-
-== Two Categories of Automation
+=== Two Categories of Automation
 
 There are now two categories of Automation on the main navigation menu, Input-based and Intent-based.
 
-=== Input-based
+==== Input-based
 
 In this screen, the user will find the Workflows and BPMs as in previous versions of MSActivator. If you are familiar with previous versions, nothing major has changed here.
 
-=== Intent-based
+==== Intent-based
 
 In this screen, the user will find the new AI-powered interface for generating BPMs automatically, based upon the user choosing their desired final state
 from the final states available. Note to use this feature properly, the developer user needs to define the States and Actions of the model via the “Intent-based” section of the Developer dashboard, see further details below in the “Intent-based Automation” section.
@@ -37,7 +35,7 @@ from the final states available. Note to use this feature properly, the develope
 While logged in as the super-user, the user can now change MSActivator settings, namely those settings for the MSActivator instance itself, in the new “MSA Variables” section found on the “Settings” screen.
 
 If any additional steps are required for any of those global settings, for example container restarts, those steps will be provided in the same screen
-the user uses to edit the values:
+the user uses to edit the values.
 
 There is also a “Local” tab, in which you can find optional settings for the MSActivator UI. It is fine to leave these with the default settings, however,
 MSActivator super-users now have the ability to tweak these settings if required.
