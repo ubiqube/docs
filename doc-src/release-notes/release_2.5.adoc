@@ -21,48 +21,48 @@ This release note will cover the following details regarding MSActivator 2.5:
 
 == Two Categories of Automation
 
-There are now two categories of Automation on the main navigation menu,
-Input-based and Intent-based.
+There are now two categories of Automation on the main navigation menu, Input-based and Intent-based.
 
 === Input-based
 
-In this screen, the user will find the Workflows and BPMs as in previous
-versions of MSActivator. If you are familiar with previous versions, nothing
-major has changed here.
+In this screen, the user will find the Workflows and BPMs as in previous versions of MSActivator. If you are familiar with previous versions, nothing major has changed here.
 
 === Intent-based
 
-In this screen, the user will find the new AI-powered interface for generating
-BPMs automatically, based upon the user choosing their desired final state
-from the final states available. Note to use this feature properly, the developer
-user needs to define the States and Actions of the model via the
-“Intent-based” section of the Developer dashboard, see further details below
-in the “Intent-based Automation” section.
-
+In this screen, the user will find the new AI-powered interface for generating BPMs automatically, based upon the user choosing their desired final state
+from the final states available. Note to use this feature properly, the developer user needs to define the States and Actions of the model via the “Intent-based” section of the Developer dashboard, see further details below in the “Intent-based Automation” section.
 
 === MSActivator Configuration View
 
-While logged in as the super-user, the user can now change MSActivator
-settings, namely those settings for the MSActivator instance itself, in the new
-“MSA Variables” section found on the “Settings” screen.
+While logged in as the super-user, the user can now change MSActivator settings, namely those settings for the MSActivator instance itself, in the new “MSA Variables” section found on the “Settings” screen.
 
+If any additional steps are required for any of those global settings, for example container restarts, those steps will be provided in the same screen
+the user uses to edit the values:
 
----> changed until here <---
+There is also a “Local” tab, in which you can find optional settings for the MSActivator UI. It is fine to leave these with the default settings, however,
+MSActivator super-users now have the ability to tweak these settings if required.
 
+=== Topology Context Menu Enhancements
 
-=== Workflow Execution Management
+The right-click context menu on the Topology screen has now been enhanced, to include a number of new options for Managed Entities such as:
 
-==== Workflow Console Log
+- Activate / Activate without connection
+- Edit / Delete / Details
 
-We have added a new log tab to the process execution console.
+In addition, now when you trigger a Workflow or BPM by right-clicking on a Managed Entity in the Topology, note the internal ID of the Managed Entity
+clicked upon is now passed to the Workflow or BPM invoked.
 
-As the workflow process is running, the user can click on that "Logs" tab to see the log entries for this execution live (with a delay of a few seconds).
+=== New Default Kibana Dashboard
 
-image:2.5_WF_exec_console_logs.png[width=700px]
+Using MSActivator, any dashboard configured in your Kibana deployment can be integrated and displayed on the Management screen. By default, we
+include the following traffic_overview dashboard for you to display as an example Kibana integration that works out of the box.
+
+=== Workflow Execution Console Logs
+
+We have added a new log tab to the process execution console. As the workflow process is running, the user can click on that "Logs" tab to see
+the log entries for this execution live.
 
 == New Developer Features
-
-The following feature improvements are included with this release:
 
 === BPM
 
@@ -84,11 +84,19 @@ You have 3 possible options: "Saved", "Latest" and "Pass" in the workflow parame
 
 image:2.5_BPM_WF_parameters_options.png[width=700px]
 
+==== BPM Looping
+
+MSActivator now supports looping flows in the BPM, which is a fix from the previous release.
+
+=== Forgot Password
+
+On the login screen, a “Forgot password” feature has been added, which enables the user to recover their MSActivator account in the event of a forgotten password. Once clicked, the user will be prompted to enter their email address, and a recovery email will be sent to that inbox.
+
 === Workflow
 
 ==== Task Execution Tester
 
-When developing a workflow, you can now execute a single task without having to execute the whole process. 
+When developing a workflow, you can now execute a single task without having to execute the whole process.
 
 image:2.5_WF_task_tester.png[width=700px]
 
@@ -121,6 +129,25 @@ There are a list of keyboard shortcuts that our Workflow code editor supports.
 We have now started to document these in a new panel, which is accessible via a new "i" icon in the editor itself.
 
 image:2.5_WF_editor_shortcuts.png[width=700px]
+
+=== Intent-based Automation
+
+As the developer, the user can now auto-generate BPMs to interact with their environment, based upon an AI algorithmic model. The model is a combination
+of States, and Actions that are mapped to those States. In the Developer view, the user can design these States and Actions to build up that model. Once populated, any user can then auto-generate BPMs by simply choosing their Initial state (the current state of their environment) and their Final state (the desired final state, i.e. their intent). Once those options are selected, the system will generate a BPM via the “Generate BPM” button for the user to review, that will contain the required Workflows to handle the state transitions.
+
+
+The BPM generated will then simply become part of the BPM library for the MSActivator instance, and anyone can edit or execute that BPM in the usual ways.
+
+== Additional Changes
+
+Our internal integration engine will now check the JSON passed to it by Workflows or from other sources, therefore it is important to pass clean parameters to the Microservices you are invoking. If you have an existing Workflow in MSActivator 2.4 that fails to work first time in 2.5 after upgrade, please firstly check to
+ensure that the JSON parameters being passed by your Workflow to any Microservices underneath is valid.
+For invalid calls, you will now see responses like these:
+
+- Bad parameters on command: Bad format of JSON parameters, should be an array
+- Bad parameters on command: Missing the mandatory variable in JSON parameters
+
+If you see those, you need to check and correct your Workflow code.
 
 == CoreEngine
 
