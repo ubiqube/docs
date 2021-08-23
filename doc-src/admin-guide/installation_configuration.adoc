@@ -8,13 +8,13 @@ The installation and configuration guide will show you how to install, configure
 
 For installing a standalone setup, you can check the link:https://ubiqube.com/wp-content/docs/latest/user-guide/quickstart.html[quickstart,window=_blank] guide.
 
-For installing an HA setup, you can check the link:https://ubiqube.com/wp-content/docs/latest/admin-guide/ha_installation.html[high availability installation] guide.
+For installing an HA setup, you can check the link:https://ubiqube.com/wp-content/docs/latest/admin-guide/ha_installation.html[high availability installation,window=_blank] guide.
 
 == Configuration
 
-=== Global Settings
-
 Once installed, the {product_name} settings can be updated.
+
+=== Global Settings
 
 While logged in as the super-user (ncroot), the user can now change MSActivator settings, namely those settings for the MSActivator instance itself, in the new “MSA Variables” section found on the “Settings” screen.
 
