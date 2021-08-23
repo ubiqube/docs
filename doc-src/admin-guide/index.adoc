@@ -19,6 +19,7 @@ The installation and configuration guide will show you how to install, configure
 
 
 * link:architecture_overview{outfilesuffix}[Architecture,window=_blank]
+* link:installation_configuration{outfilesuffix}[Installation and Configuration,window=_blank]
 * link:license_activation{outfilesuffix}[License activation,window=_blank]
 * link:ha_installation{outfilesuffix}[High Availability installation guide,window=_blank]
 * link:support_and_troubleshooting{outfilesuffix}[Support and troubleshooting,window=_blank]
