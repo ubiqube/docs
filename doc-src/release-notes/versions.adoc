@@ -7,15 +7,12 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 |===
 |Version | Link
 
-| 2.5.0 (latest) |  https://ubiqube.com/wp-content/docs/latest
+| 2.5.0 (latest) |  https://ubiqube.com/wp-content/docs/2.5.0
 | 2.4.1 |  https://ubiqube.com/wp-content/docs/2.4.1
-| 2.4.0 GA  |  https://ubiqube.com/wp-content/docs/2.4.0GA
+| 2.4.0 GA  |  https://ubiqube.com/wp-content/docs/2.4.0
 | 2.3.1 |  https://ubiqube.com/wp-content/docs/2.3.1
-| 2.3.0 GA |  https://ubiqube.com/wp-content/docs/2.3.0GA
-| 2.2.0 GA |  https://ubiqube.com/wp-content/docs/2.2.0GA
-| 2.1.0 GA |  https://ubiqube.com/wp-content/docs/2.1.0GA
-| 2.0.0 Alpha|  https://ubiqube.com/wp-content/docs/2.0.0
-| 2.0.1 Beta|  https://ubiqube.com/wp-content/docs/2.0.1
+| 2.3.0 GA |  https://ubiqube.com/wp-content/docs/2.3.0
+| 2.2.0 GA |  https://ubiqube.com/wp-content/docs/2.2.0
 | 17.8 |  link:https://ubiqube.com/wp-content/docs/17.8/user-guide[https://ubiqube.com/wp-content/docs/17.8]
 | 17.7 |  link:https://ubiqube.com/wp-content/docs/17.7/user-guide[https://ubiqube.com/wp-content/docs/17.7]
 |===
