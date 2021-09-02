@@ -19,7 +19,9 @@ For managers, we have enhanced the Topology context menu and added in new views 
 
 === Two Categories of Automation
 
-There are now two categories of Automation on the main navigation menu, Input-based and Intent-based.
+There are now two categories of Automation on the main navigation menu, *Input-based* and *Intent-based*.
+
+By default, Intent-based is deactivated. To enable it, edit your docker-compose.yml file and set `FEATURE_AI_ML` to true.
 
 ==== Input-based
 
@@ -37,8 +39,13 @@ While logged in as the super-user, the user can now change MSActivator settings,
 If any additional steps are required for any of those global settings, for example container restarts, those steps will be provided in the same screen
 the user uses to edit the values.
 
+image:2.5_global_settings.png[width=700px]
+
 There is also a “Local” tab, in which you can find optional settings for the MSActivator UI. It is fine to leave these with the default settings, however,
 MSActivator super-users now have the ability to tweak these settings if required.
+
+image:2.5_local_settings.png[width=700px]
+
 
 === Topology Context Menu Enhancements
 
@@ -173,6 +180,15 @@ Let's say that you are running {product_name} version {revnumber-prev}, to upgra
 6. `./scripts/install.sh`
 
 == Specific technical fixes and feature details
+
+=== 2.5.1 Patch
+
+==== Features
+
+
+==== Bug fixes
+
+
 
 === 2.5.0 GA
 
