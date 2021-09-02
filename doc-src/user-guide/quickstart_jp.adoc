@@ -92,8 +92,7 @@ quickstartをGitリポジトリからクローン、及びDockerHubから{produc
 
 1. `git clone -b master --depth 1 https://github.com/ubiqube/quickstart.git`
 2. `cd quickstart`
-3. `git fetch --depth 1 origin refs/tags/{revnumber}:refs/tags/{revnumber}`
-4. `./script/install.sh`
+3. `./script/install.sh`
 
 NOTE: トライアル環境のシステム構成について link:../admin-guide/architecture_overview{outfilesuffix}[英語資料]
 
