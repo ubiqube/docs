@@ -176,19 +176,15 @@ Let's say that you are running {product_name} version {revnumber-prev}, to upgra
 2. `git checkout master`
 3. `git fetch --unshallow`
 4. `git pull`
-5. `git checkout tags/{revnumber} -b {revnumber}`
-6. `./scripts/install.sh`
+5. `./scripts/install.sh`
 
 == Specific technical fixes and feature details
 
 === 2.5.1 Patch
 
-==== Features
-
-
 ==== Bug fixes
 
-
+* MSA-10380 - [Workflow] Some array values disappear in the context after editing manually the array in one Workflow task
 
 === 2.5.0 GA
 
