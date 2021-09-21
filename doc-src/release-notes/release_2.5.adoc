@@ -178,6 +178,10 @@ Let's say that you are running {product_name} version {revnumber-prev}, to upgra
 4. `git pull`
 5. `./scripts/install.sh`
 
+=== only from 2.4.x or earlier
+
+1. `docker-compose exec msa_front /bin/sh -c 'chown -R nginx:nginx /etc/ssl'`
+
 == Specific technical fixes and feature details
 
 === 2.5.1 Patch
