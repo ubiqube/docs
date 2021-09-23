@@ -184,6 +184,13 @@ Let's say that you are running {product_name} version {revnumber-prev}, to upgra
 
 == Specific technical fixes and feature details
 
+=== 2.5.2 Patch
+
+==== Bug fixes
+
+* MSA-10241 - [Microservice] The Microservice of {product_name} v2 with the same content as {product_name} v17 cannot get the same values as {product_name} v17
+* MSA-10405 - [Workflow] We want {product_name} to display the added HTML page on Workflow results
+
 === 2.5.1 Patch
 
 ==== Bug fixes
