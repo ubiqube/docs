@@ -1,0 +1,375 @@
+= Version 2.5
+ifndef::imagesdir[:imagesdir: images]
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+With this latest release, every aspect of MSActivator has been designed to maximize developer productivity. Together, intelligent coding assistance and ergonomic
+design make development not only productive but also enjoyable.
+
+Advance code and BPM generation enable the user to auto-generate Workflow code based on any existing Microservice, then automatically extract Workflow
+variables from that Microservice, and finally have that Workflow automatically included in our new Intent-based Automation feature, which is powered by AI.
+
+Put simply, we have reduced the amount of manual coding required for a developer in all steps of the design process, in some cases to zero.
+
+In addition, we continue to make the development experience easier by including a Log tab on the Workflow view to see the debug messages for that Workflow,
+and we have included a “Try Task” feature on the Workflow editor to enable developers to execute a single task for testing purposes.
+
+For managers, we have enhanced the Topology context menu and added in new views for editing the configuration of MSActivator itself online.
+
+== New Manager Features
+
+=== Two Categories of Automation
+
+There are now two categories of Automation on the main navigation menu, *Input-based* and *Intent-based*.
+
+By default, Intent-based is deactivated. To enable it, edit your docker-compose.yml file and set `FEATURE_AI_ML` to true.
+
+==== Input-based
+
+In this screen, the user will find the Workflows and BPMs as in previous versions of MSActivator. If you are familiar with previous versions, nothing major has changed here.
+
+==== Intent-based
+
+In this screen, the user will find the new AI-powered interface for generating BPMs automatically, based upon the user choosing their desired final state
+from the final states available. Note to use this feature properly, the developer user needs to define the States and Actions of the model via the “Intent-based” section of the Developer dashboard, see further details below in the “Intent-based Automation” section.
+
+=== MSActivator Configuration View
+
+While logged in as the super-user, the user can now change MSActivator settings, namely those settings for the MSActivator instance itself, in the new “MSA Variables” section found on the “Settings” screen.
+
+If any additional steps are required for any of those global settings, for example container restarts, those steps will be provided in the same screen
+the user uses to edit the values.
+
+image:2.5_global_settings.png[width=700px]
+
+There is also a “Local” tab, in which you can find optional settings for the MSActivator UI. It is fine to leave these with the default settings, however,
+MSActivator super-users now have the ability to tweak these settings if required.
+
+image:2.5_local_settings.png[width=700px]
+
+
+=== Topology Context Menu Enhancements
+
+The right-click context menu on the Topology screen has now been enhanced, to include a number of new options for Managed Entities such as:
+
+- Activate / Activate without connection
+- Edit / Delete / Details
+
+In addition, now when you trigger a Workflow or BPM by right-clicking on a Managed Entity in the Topology, note the internal ID of the Managed Entity
+clicked upon is now passed to the Workflow or BPM invoked.
+
+=== New Default Kibana Dashboard
+
+Using MSActivator, any dashboard configured in your Kibana deployment can be integrated and displayed on the Management screen. By default, we
+include the following traffic_overview dashboard for you to display as an example Kibana integration that works out of the box.
+
+=== Workflow Execution Console Logs
+
+We have added a new log tab to the process execution console. As the workflow process is running, the user can click on that "Logs" tab to see
+the log entries for this execution live.
+
+== New Developer Features
+
+=== BPM
+
+==== Decision Gateway Extension
+
+The conditions of a definition gateway can now depend either on the result status of the execution of a workflow or on the value of a workflow variable.
+
+image:2.5_BPM_decision_gateway.png[width=700px]
+
+==== Workflow Parameter Control
+
+When designing or executing a BPM, you can now control how the workflow parameters are passed to the executed process.
+
+You have 3 possible options: "Saved", "Latest" and "Pass" in the workflow parameter section of a BPM workflow container definition.
+
+- Saved: will allow you to define the parameter values and these values will be passed to the workflow process execution.
+- Latest: will use the values stored in the workflow instance context. 
+- Pass: will allow you to use the values from another workflow referenced by the BPM.
+
+image:2.5_BPM_WF_parameters_options.png[width=700px]
+
+==== BPM Looping
+
+MSActivator now supports looping flows in the BPM, which is a fix from the previous release.
+
+=== Forgot Password
+
+On the login screen, a “Forgot password” feature has been added, which enables the user to recover their MSActivator account in the event of a forgotten password. Once clicked, the user will be prompted to enter their email address, and a recovery email will be sent to that inbox.
+
+=== Workflow
+
+==== Task Execution Tester
+
+When developing a workflow, you can now execute a single task without having to execute the whole process.
+
+image:2.5_WF_task_tester.png[width=700px]
+
+==== Code Completion
+
+A common feature in code editors is auto code completion, where the code editor is smart enough to guess what object or function you might want to access next, and automatically suggest those to you.
+
+Our code editor is able to do this now as it is aware of our proprietary SDK classes and methods.
+
+image:2.5_WF_code_completion.png[width=700px]
+
+==== Whitespace Highlighting
+
+The Workflow code editor now highlights whitespace, such as spaces, tabs, and line returns.  
+
+This is particularly important for Python users, as that language is whitespace sensitive.
+
+image:2.5_WF_whitespace_highlight.png[width=700px]
+
+==== Code Panel Maximization
+
+We have added this new button on the top right of the code editor to maximize the size of the code panel in the Workflow editor, to give developers more screen space to see their code.
+
+image:2.5_WF_code_panel_max.png[width=700px]
+
+==== Keyboard Shortcuts
+
+There are a list of keyboard shortcuts that our Workflow code editor supports.  
+
+We have now started to document these in a new panel, which is accessible via a new "i" icon in the editor itself.
+
+image:2.5_WF_editor_shortcuts.png[width=700px]
+
+=== Intent-based Automation
+
+As the developer, the user can now auto-generate BPMs to interact with their environment, based upon an AI algorithmic model. The model is a combination
+of States, and Actions that are mapped to those States. In the Developer view, the user can design these States and Actions to build up that model. Once populated, any user can then auto-generate BPMs by simply choosing their Initial state (the current state of their environment) and their Final state (the desired final state, i.e. their intent). Once those options are selected, the system will generate a BPM via the “Generate BPM” button for the user to review, that will contain the required Workflows to handle the state transitions.
+
+
+The BPM generated will then simply become part of the BPM library for the MSActivator instance, and anyone can edit or execute that BPM in the usual ways.
+
+== Additional Changes
+
+Our internal integration engine will now check the JSON passed to it by Workflows or from other sources, therefore it is important to pass clean parameters to the Microservices you are invoking. If you have an existing Workflow in MSActivator 2.4 that fails to work first time in 2.5 after upgrade, please firstly check to
+ensure that the JSON parameters being passed by your Workflow to any Microservices underneath is valid.
+For invalid calls, you will now see responses like these:
+
+- Bad parameters on command: Bad format of JSON parameters, should be an array
+- Bad parameters on command: Missing the mandatory variable in JSON parameters
+
+If you see those, you need to check and correct your Workflow code.
+
+== CoreEngine
+
+No changes have been made to the core engine from previous versions of the product. This allows consistency from branches of OpenMSA (community version), found on GitHub: https://github.com/openmsa
+
+== New Libraries Available
+
+=== Adapters
+
+== Upgrading
+
+Instructions to upgrade available in the quickstart guide.
+
+=== Specific instructions for upgrading from {revnumber-prev} to {revnumber}
+
+Starting from version 2.2.0, the quickstart provides an upgrade script `upgrade.sh` for taking care of possible actions such as recreating some volume, executing some database specific updates,...
+
+Let's say that you are running {product_name} version {revnumber-prev}, to upgrade to the version {revnumber}, you need to follow these steps:
+
+1. `cd quickstart`
+2. `git checkout master`
+3. `git fetch --unshallow`
+4. `git pull`
+5. `./scripts/install.sh`
+
+=== only from 2.4.x or earlier
+
+1. `docker-compose exec msa_front /bin/sh -c 'chown -R nginx:nginx /etc/ssl'`
+
+== Specific technical fixes and feature details
+
+=== 2.5.2 Patch
+
+==== Bug fixes
+
+* MSA-10241 - [Microservice] The Microservice of {product_name} v2 with the same content as {product_name} v17 cannot get the same values as {product_name} v17
+* MSA-10405 - [Workflow] We want {product_name} to display the added HTML page on Workflow results
+
+=== 2.5.1 Patch
+
+==== Bug fixes
+
+* MSA-10380 - [Workflow] Some array values disappear in the context after editing manually the array in one Workflow task
+
+=== 2.5.0 GA
+
+==== Features
+
+* MSA-9918 - [Admin] Country list
+* MSA-10094 - [Admin] MSA configuration variables read based on Roles Allowed
+* MSA-10160 - [AI/ML] Pre-load State and Actions in Quick Start
+* MSA-9506 - [AI/ML] User can specify their intent only and generate the workflow
+* MSA-9907 - [AI/ML] Access inside the Automation Menu
+* MSA-10210 - [AI/ML] API to delete States and Actions
+* MSA-10211 - [AI/ML] UI to delete States and Actions in AI/ML
+* MSA-9709 - [Alarm] better display of ack/non-ack alarms
+* MSA-8987 - [Alarm] Permit to select any Workflow, even not attached to subtenant, in alarm action
+* MSA-10088 - [Alarm] Search and Filtering
+* MSA-9488 - [Assurance] upgrade ES to latest for compatibility with Filebeat, XPack and Security (aka SIEM)
+//* MSA-10232 - [BPM] Hide camunda logo
+* MSA-9743 - [BPM] Create set a simplify APIs for BPM
+* MSA-9872 - [BPM] Set BPM executor - UI
+* MSA-9973 - [BPM] Edit/Delete scheduled BPM
+* MSA-9976 - [BPM] Show attached subtenants
+* MSA-9978 - [BPM] Add Terminated status
+* MSA-9979 - [BPM] Investigate to adapt BPM with multi tenancy
+* MSA-9759 - [Dashboard] Enrich configurable parts
+* MSA-10042 - [Dashboard] BPM on top of component with same details as Workflow
+* MSA-10043 - [Dashboard] Provide new generic and relevant Kibana dashboard by default
+* MSA-10133 - [Dashboard] Contact link on Developers Dashboard
+* MSA-10182 - [Git] Github token authentication
+* MSA-9974 - [Managed Entity] More Actions for Topology
+* MSA-9975 - [Managed Entity] Pass device_id from Topology to Workflow/BPM
+* MSA-9977 - [Managed Entity] Poll sms status for Push/Pull History
+* MSA-10028 - [Managed Entity] Show Category for Device Adapter to filter
+* MSA-8673 - [Microservice] set import rank for the Microservice definitions
+* MSA-9707 - [Microservice] Microservice load must be more permissive to missing DA or bad meta files
+* MSA-10178 - [Microservice] API to synchronize only one or more Microservice
+* MSA-10093 - [Microservice] Hide READ, LIST & CONSTRAINT
+* MSA-9926 - [Permission] Managers can view/modify/delete/execute/attach only Workflows to the subtenant the user belongs to.
+* MSA-10188 - [Permission] Provide Workflow access permission in APIs
+* MSA-10189 - [Permission] Enable and Disable RBAC on Workflows based on MSA Var
+* MSA-10130 - [Portal] Community link on footer on login page
+* MSA-10132 - [Portal] integrate chatbot with React
+* MSA-9935 - [Security] Snyk Report - Issues in Kibana
+* MSA-9937 - [Security] Snyk Report - Issues in Camunda
+* MSA-10025 - [Security] Snyk Report - Issues in Cerebro
+* MSA-10026 - [Security] Upgrade Cerebro from 0.9.2 to 0.9.4
+* MSA-9848 - [Workflow] Reduce the loading time for service instances
+* MSA-9862 - [Workflow] Edit scheduled Workflow
+* MSA-9900 - [Workflow] Enhance Ansible Integration (php -> python)
+* MSA-9924 - [Workflow] Managers can attach only workflows that he and she has created
+* MSA-10045 - [Workflow] API to get Process log
+* MSA-10046 - [Workflow] Show logs on Live Workflow Console
+* MSA-10069 - [Workflow] convert Pydoc to json
+* MSA-10080 - [Workflow] Add information object in Workflow instance API
+* MSA-10110 - [Workflow] Sorting on getServiceInstanceDetails
+* MSA-10119 - [Workflow] API to return owner and subtenants attached to given workflows
+* MSA-10121 - [Workflow] List the WFs based on the access allowed for Manager
+* MSA-10159 - [Workflow] Sorting Workflow Instances
+* MSA-10193 - [Workflow] Run Test Task Improvements
+* MSA-10204 - [Workflow] Run Test Task Improvements
+
+==== Bug fixes
+
+* MSA-9807 - [Admin] it is not possible to update the Subtenant name
+* MSA-8447 - [Admin] Not able to see admin menu when logged in as an admin/manager
+* MSA-10063 - [Alarm] Alarm should be raised without notifications set in the rule
+* MSA-10086 - [Alarm] list and update alarm rules API, sort by lastModified date not available
+* MSA-10191 - [API] Operation is trimmed in MicroserviceObjectDefinition
+* MSA-10089 - [Assurance] Log List date filtering - Managed Entities list reloading while changing date
+* MSA-9553 - [Audit Log] AuditLog tab for Managers
+* MSA-10106 - [Backend] ChangeMgt/SVN not working after activation of MSA var UBI_SYSLOG_SSL
+* MSA-7728 - [Code Editor] risk of accidental leave when editing Microservice or Workflow
+* MSA-9893 - [HA] Syslog a not redirected from front to sms containers
+* MSA-9817 - [Managed Entities] Mandatory credentials + permit activation with others ones
+* MSA-7351 - [Managed Entities/Workflows/Deployment settings]: search is done only on current page
+* MSA-10087 - [Managed Entities] Build linux Managed Entities on Centos 7.x
+* MSA-10125 - [Managed Entities/Workflows/Deployment Settings] search is done only on current page
+* MSA-8193 - [Microservice] types IP (v4 and v6) and mask are missing validation is required in UI
+* MSA-8755 - [Microservice] Microservice variables extractor adds mregexp
+* MSA-9764 - [Microservice] Not possible to access Deployment Setting from Microservice tab
+* MSA-10163 - [Microservice] Microservice can be permanently broken when executing a Microservice function (Create or Update) with irrelevant parameters
+* MSA-10208 - [Microservice] multiple stacked orders are not properly applied (missing CR)
+* MSA-10217 - [Microservice] composite variable : values not displayed on edition
+* MSA-10219 - [Microservice] changing the type of a Microservice (CLI/XML/Netconf) when editing the Microservice breaks it
+* MSA-10231 - [Microservice] configure screen are broken
+* MSA-9909 - [Permission] creation of permission profile when tenant is selected in banner causes error
+* MSA-10041 - [Portal] Replace all the  labels "Device" on the UI with "Managed Entity".
+* MSA-10134 - [Portal] Search in the Audit Logs not working as expected.
+* MSA-10153 - [Repository] Clean all references of Workflow, Microservice & BPM when a git repo is updated/removed
+* MSA-10185 - [Repository] Meta file is created for all xml files
+* MSA-10154 - [Repository] Remove entities files when subtenant, profile or Managed Entities is deleted
+* MSA-9616 - [Security] Arbitrary file upload via library/git-configure
+* MSA-9949 - [Security] Possible to browse other Kibana dashboards if one not found
+* MSA-9984 - [Security] Unauthenticated user can connect on Kibana dashboard
+* MSA-10067 - [Security] Anonymous connection on Cerebro can lead to a TOKEN leak
+* MSA-10018 - [SDK] Add exit after calling MSA_API.process_content
+* MSA-10103 - [Settings] lots of variable are not relevant
+* MSA-10104 - [Settings] some (most?) variables require container restart. As a user, how do I know which container and do I have to do that with the CLI
+* MSA-8889 - [Topology] 500 in Topology Tab after deleting Managed Entities
+* MSA-9992 - [Upgrade] Kibana fails to restart during upgrade for windows setup
+* MSA-9533 - [Workflow] not possible to save a Variable and Process in the first time
+* MSA-9586 - [Workflow] causes parameter multiplication
+* MSA-9810 - [Workflow] How to Send Mail from MSA2 Workflow
+* MSA-9997 - [Workflow] Editing/Deleting a scheduling is not possible
+* MSA-10023 - [Workflow] for variable typed as Device, the list to select the Managed Entities shows "Unknown Device - null" when no Managed Entities is selected yet
+* MSA-10078 - [Workflow] when creating a Workflow variable named object_id, further deletion of the variable is impossible
+* MSA-10109 - [Workflow] The comment for the python code auto-generated for the microservices
+* MSA-10136 - [Workflow] variable type "Microservice Reference": the search field for Microservice Reference in advanced tab is not reliable
+* MSA-10147 - [Workflow] auto generate Workflow task from Microservice does not work for the DELETE
+* MSA-10148 - [Workflow] misaligned data in workflow alternate instance view
+* MSA-10150 - [Workflow] Workflow instances are not displayed
+* MSA-10176 - [Workflow] API to extract vars from task not working as expected
+
+
+=== 2.5.0 RC1
+
+==== Features
+
+* MSA-3904 - [Portal] Login screen : Forgot password
+* MSA-8150 - [Assurance] Log List date filtering
+* MSA-8825 - [Alarm] enhancements in presentation
+* MSA-9297 - [Profile] Custom Period in Monitoring graphs
+* MSA-9441 - [BPM] Read-only popup with attached subtenants
+* MSA-9525 - [Dashboard] enable Kibana map in MSA dashboard - Backend part
+* MSA-9745 - [Dashboard] Scroll Fix
+* MSA-9758 - [BPM] BPM should be able to run loops
+* MSA-9831 - [Workflow] Reduce the loading time for service instances
+* MSA-9832 - [API] Pagination for process instance list API
+* MSA-9843 - [Portal] [UI/API] Add a developer flag to control managers account who can access the dev portal
+* MSA-9849 - [Repository] Update API to take misc parameters
+* MSA-9857 - [BPM] Extend branching option for Decision Gateway
+* MSA-9858 - [BPM] Store context value into camunda variables
+* MSA-9860 - [Managed Entity] Enrich the response for list history
+* MSA-9861 - [Managed Entity] Enrich History List
+* MSA-9863 - [Workflow] API to Update and Delete scheduled workflow
+* MSA-9879 - [Workflow] API to Delete scheduled workflow
+* MSA-9891 - [Security] Auto Logout
+* MSA-9896 - [API]return category in list manufacturers api
+* MSA-9906 - [Security] DBS Report - Docker Swarm configuration - Item 7.4
+* MSA-9917 - [Backend] Sec Engine Verbs to be enhanced to take MSA user login
+* MSA-9932 - [Security] Snyk Report - Issues in SMS
+* MSA-9933 - [Security] Snyk Report - Issues in BUD
+* MSA-9934 - [Security] Snyk Report - Issues in ALARM
+* MSA-9936 - [Security] Snyk Report - Issues in ES
+* MSA-9969 - [YANG] enhance generate Microservice from the YANG XML structure workflow
+* MSA-10013 - [Alarm/API] update get Alarm API to permit search and filtering
+* MSA-10014 - [Alarm/API] Alarm API to acknowledge multiple alarms once
+
+==== Bug fixes
+
+* MSA-9540 - [Admin] when login with a 1 subtenant manager, the subtenant is not selected automatically
+* MSA-8798 - [Alarm] When an Alarm is edited, A new one is created instead.
+* MSA-9203 - [Alarm] Managed Entity list must be based on subtenant you select
+* MSA-9951 - [Alarm] Add control + default value for thresholds, avoid high usage of CPU for alarm
+* MSA-9927 - [API] Don't crash server when a DA is not loadable.
+* MSA-9899 - [API] Create a /auth/renew endpoint
+* MSA-8894 - [API] Ensure syncBatchUpdate method is called after the DB transaction is completed
+* MSA-9856 - [BPM] Execute BPM for the same deployment
+* MSA-9812 - [Change Management] disable conf.error conf.applied in back revisions
+* MSA-10090 - [CoreEngine] lsncsite return strange data
+* MSA-9972 - [Dashboard] display issue on recent workflow listing when actor is deleted
+* MSA-9839 - [Dashboard] bad management of overlong file names (for BPM, workflow, Microservice) in Dashboard view
+* MSA-8738 - [RBAC] An Admin user should be able to access "Admin" menu to manage Managers and privileged managers!
+* MSA-9415 - [Monitoring Profile] When building graph, data source already selected should not be listed when adding another data
+* MSA-9902 - [Microservice] Microservice name and instance ordering is not working
+* MSA-7869 - [Microservice/Workflow] : it is possible to create a variable with empty required field
+* MSA-9576 - [Microservice] No display name for composite variable
+* MSA-10016 - [Microservice] Microservice name and instance ordering is not working
+* MSA-9952 - [Perf] updateHostnamesTask in syslogd generate peak of CPU
+* MSA-9953 - [Perf] SNMP Timeout on managed entity deletion in polld generate peak of CPU
+* MSA-7895 - [Portal] Microservice, workflow, Managed Entity, Monitoring Profile: issue when changing displayed rows per page
+* MSA-6963 - [Portal] Sorting by name doesn't sort it truly but by case
+* MSA-10180 - [Portal] after an upgrade from 2.4 to 2.5, custom certificate in msa_front are not readable anymore
+* MSA-9956 - [SDK] Order command_execute() does not return the sms ERROR details
+* MSA-9725 - [Workflow] Process context not properly initialized when launched from BPM
+* MSA-9851 - [Workflow] Click on + icon to create Process: the message displayed as "Unable to save workflow"
+* MSA-9855 - [Workflow] Process scheduled as once is not listed
+* MSA-6993 - [Workflow] New Attached workflow does not show refreshed instances count

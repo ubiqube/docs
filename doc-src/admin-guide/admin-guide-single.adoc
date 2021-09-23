@@ -37,6 +37,8 @@ If you want to get started quickly, you can check the quickstart guide.
 
 include::{includedir}/architecture_overview.adoc[] 
 
+include::{includedir}/installation_configuration.adoc[] 
+
 include::{includedir}/license_activation.adoc[]
 
 include::{includedir}/ha_installation.adoc[]

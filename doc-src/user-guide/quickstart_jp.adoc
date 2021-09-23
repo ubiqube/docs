@@ -17,7 +17,7 @@ endif::[]
 [#prerequisites]
 == 前提条件
 インストール手順の中で{product_name}のトライアルライセンスが必要となります。
-link:https://ubiqube.com/free-trial/[ubiqube.com] から、MSA2トライアル希望の旨をお知らせください。
+link:https://ubiqube.com/licensed-trial/[ubiqube.com] から、MSA2トライアル希望の旨をお知らせください。
 
 また、{product_name}を動作させるために、以下のアプリケーションのインストール／動作確認を実施してください。
 
@@ -92,8 +92,7 @@ quickstartをGitリポジトリからクローン、及びDockerHubから{produc
 
 1. `git clone -b master --depth 1 https://github.com/ubiqube/quickstart.git`
 2. `cd quickstart`
-3. `git fetch --depth 1 origin refs/tags/{revnumber}:refs/tags/{revnumber}`
-4. `./script/install.sh`
+3. `./script/install.sh`
 
 NOTE: トライアル環境のシステム構成について link:../admin-guide/architecture_overview{outfilesuffix}[英語資料]
 

@@ -77,6 +77,18 @@ A typical example of a workflow lifecycle is the one to manage VNF on a cloud:
 - UPDATE processes: the user can ask for scale up/down or configuration changes of the VNF
 - DELETE process: the VNF is removed as well as any related resources
 
+===== Process execution logs
+
+During the execution of a process you can view it's execution logs in the "Logs" tab of the process execution screen.
+
+ifdef::html,env-github,env-browser[]
+image:workflow_exec_console_logs.gif[width=800px]
+endif::[]
+
+ifndef::html,env-github,env-browser[]
+image:workflow_exec_console_logs.png[width=800px]
+endif::[]
+
 ===== Process execution scheduling
 
 If a process has been configured to allow scheduling (see documentation about the workflow editor), it is possible to schedule the execution of a process.

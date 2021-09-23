@@ -82,25 +82,34 @@ The sequence flow whose condition evaluates to ‘true’ is selected for contin
 .XOR decision gateway
 image:bpm_decision_gateway.png[width=800px]
 
-To configure the gateway, you need to select the outbound link from the gateway, choose the inbound task and configure the condition to trasition to the next BPM task.
+To configure the gateway, you need to select the outbound link from the gateway, choose the inbound task and configure the condition to transition to the next BPM task.
+
+
+==== Configure a decision gateway
+
+To configure a decision gateway, you need to configure each of its outbound links and select one of the outbound link to be the default flow.
 
 .Configure a decision gateway
 image:bpm_gateway_config.png[width=800px]
 
-==== Operator
-
-Select `is` or `is not` as the logical operator
-
-==== Status
-
-Select one of `Failed`, `Warning` or `Success` which are related to the link:workflow_editor{outfilesuffix}#lifecycle[3 possible statuses of a process that finished it's execution].
-
-==== Default flow
+===== Default flow
 
 Click on the decision gateway ans select the default flow of the process when there is not suitable condition based on the result of the inbound task.
 
 .Configure the default flow
 image:bpm_gateway_default_flow.png[width=800px]
+
+===== Workflow
+
+For each outbound link, select the inbound workflow that will be used as the condition source for the link.
+
+===== Field
+
+Select the field to use to test the condition. Field can be "Variable" or "Result Status".
+
+With "Variable", you can choose one of the workflow variable and test its value for the decision. 
+
+With "Result Status", the decision will depend on the execution status of the workflow.
 
 == Design a BPM process
 

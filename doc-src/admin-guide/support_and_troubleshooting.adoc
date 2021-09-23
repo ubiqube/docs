@@ -44,6 +44,21 @@ IMPORTANT: you need to create the director `/mnt/NASVolume/msa_front` manually f
 3. force recreate front to refresh certificates container: `docker service update --force FRONT_SERVICE_NAME`
 4. browse to https://localhost (you may have to clean your cache)
 
+=== How to support TFTP for managed entity operations
+
+If a managed entity use TFTP protocol during backend operation, like a restore, an MSA variable must be set with the IP of the {product_name}. Then msa_sms container must be restarted
+
+----
+POST https://localhost/ubi-api-rest/system-admin/v1/msa_vars
+[
+{ "name": "UBI_SYS_EQUIPMENTS_IP", "comment": "", "value": "<MSA_IP>" }
+]
+----
+----
+docker-compose restart msa_sms (standalone)
+docker service update --force ha_msa_sms (HA)
+----
+
 == Troubleshooting
 
 === Containers / Docker Engine
@@ -216,84 +231,49 @@ NOTE: this will only enable DEBUG mode for the configuration engine (smsd.log)
 
 The CoreEngine is in charge of configuration but also monitoring, syslog collecting, syslog parsing, alerting,...
 
-The debug mode can also be enabled permanently for the various modules of the CoreEngine. This configuration will remain until the docker image is updated.
+The debug mode can also be enabled permanently for the various modules of the CoreEngine.
 
-.Set debug for configuration logs
-[source,bash]
+To enable the CoreEngine logs to debug mode, you need to set the global setting `UBI_VSOC_DEBUG_LEVEL` to 15 (default value is 0) 
+
+image:setting_coreengine_debug_level.png[width=800px]
+
+Restart the containers by using the action needed to reflect this setting.
+
 ----
-docker-compose exec msa_sms sed -i 's/$UBI_VSOC_DEBUG_LEVEL/15/' /opt/sms/templates/conf/smsd.conf
+docker container restart $(docker ps -q -f name=msa_alarm); $(docker ps -q -f name=msa_bud); $(docker ps -q -f name=msa_sms)
 ----
 
-.Monitor the configuration logs
+
+===== Monitor the configuration logs
 [source,bash]
 ----
 docker-compose exec msa_sms tail -F /opt/sms/logs/smsd.log
 ----
 
-.Set debug for SNMP monitoring logs
-[source,bash]
-----
-docker-compose exec msa_sms sed -i 's/$UBI_VSOC_DEBUG_LEVEL/15/' /opt/sms/templates/conf/sms_polld.conf
-----
-
-.Monitor the SNMP monitoring logs
+===== Monitor the SNMP monitoring logs
 [source,bash]
 ----
 docker-compose exec msa_sms tail -F /opt/sms/logs/sms_polld.log
 ----
 
-.Set debug for syslog parser logs
-[source,bash]
-----
-docker-compose exec msa_sms sed -i 's/$UBI_VSOC_DEBUG_LEVEL/15/' /opt/sms/templates/conf/sms_parserd.conf
-----
-
-.Monitor the syslog parser logs
+===== Monitor the syslog parser logs
 [source,bash]
 ----
 docker-compose exec msa_sms tail -F /opt/sms/logs/sms_parserd.log
 ----
 
-.Set debug for syslog collecting logs
-[source,bash]
-----
-docker-compose exec msa_sms sed -i 's/$UBI_VSOC_DEBUG_LEVEL/15/' /opt/sms/templates/conf/sms_syslogd.conf
-----
-
-.Monitor the syslog collecting logs
+===== Monitor the syslog collecting logs
 [source,bash]
 ----
 docker-compose exec msa_sms tail -F /opt/sms/logs/sms_syslogd.log
 ----
 
-
-
 IMPORTANT: for monitoring, syslogs, parser, enabling the DEBUG logs may result in a huge volumes of logs so you need to use this carefully. To revert the configuration use the CLI cmd above with 1 instead of 15.
 
-.Restart msa_sms to apply the configuration to the CoreEngine
-[source,bash]
-----
-docker-compose restart msa_sms
-----
-
-==== How do I enable debug logs on the Alarm module ?
+===== Monitor the alarm logs
 
 The Alarm module logs are available on the msa_alarm container in the directory `/opt/alarm/logs`.
 
-.Set debug for alarm logs
-[source,bash]
-----
-docker-compose exec msa_alarm sed -i 's/$UBI_VSOC_DEBUG_LEVEL/15/' /opt/alarm/templates/conf/sms_alarmd.conf
-----
-
-
-.Restart msa_alarm to apply the configuration to the Alarm module
-[source,bash]
-----
-docker-compose restart msa_alarm
-----
-
-.Monitor the alarm logs
 [source,bash]
 ----
 docker-compose exec msa_alarm tail -F /opt/alarm/logs/sms_alarmd.log

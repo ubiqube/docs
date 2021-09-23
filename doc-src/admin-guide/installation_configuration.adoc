@@ -1,0 +1,32 @@
+= Installation and Configuration
+ifndef::imagesdir[:imagesdir: images]
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+The installation and configuration guide will show you how to install, configure and activate the {product_name}.
+
+== Installation
+
+For installing a standalone setup, you can check the link:https://ubiqube.com/wp-content/docs/latest/user-guide/quickstart.html[quickstart,window=_blank] guide.
+
+For installing an HA setup, you can check the link:https://ubiqube.com/wp-content/docs/latest/admin-guide/ha_installation.html[high availability installation,window=_blank] guide.
+
+== Configuration
+
+Once installed, the {product_name} settings can be updated.
+
+=== Global Settings
+
+While logged in as the super-user (ncroot), the user can now change MSActivator settings, namely those settings for the MSActivator instance itself, in the new “MSA Variables” section found on the “Settings” screen.
+
+image:settings.png[width=800px]
+
+If any additional steps are required for any of those global settings, for example container restarts, those steps will be provided in the same screen the user uses to edit the values.
+
+image:settings_global.png[width=800px]
+
+=== Local Settings
+
+There is also a “Local” tab, in which you can find optional settings for the MSActivator UI. 
+It is fine to leave these with the default settings, however, MSActivator super-users now have the ability to tweak these settings if required.
+
+image:settings_local.png[width=800px]

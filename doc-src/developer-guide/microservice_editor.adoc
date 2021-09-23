@@ -6,7 +6,9 @@ image:msa_arch_ms_dev.png[width=400px]
 
 The *microservice editor* is a web based UI tool for designing, developing, testing and releasing microservices.
 
-== Microservice editor overview
+== Microservice editor
+
+=== Overview
 
 From the developer portal, click on "Create Microservice" to create the microservice.
 
@@ -16,9 +18,16 @@ The microservice console is composed of a vertical menu on the left and a main s
 
 image:microservice_console_information.png[width=800px] 
 
+=== Information
+
 Microservices are vendor specific, the implementations of the functions to create, update, delete or import a managed entity configuration will depend on the managed entity, the type of remote management interface, the format of the configuration, how it is structured,...
 
-It is important to select the correct vendor/model information because this will be used by the deployment settings to filter the microservice that are eligible for selection.
+==== Vendor and model
+
+Select the correct vendor/model information.
+This will be used by the deployment settings to filter the microservice that are eligible for selection.
+
+==== Configuration Type
 
 It is also important to select the proper configuration type:
 
@@ -26,18 +35,21 @@ It is also important to select the proper configuration type:
 - xml: for managed entities with a REST management API (both XML and JSON API are supported)
 - netconf: for managed entities that support Netconf as the management API
 
-The editor UI will adjust based on the configuration type.
+The editor UI will adjust based on the configuration type and this setting cannot be changed once the microservice is created.
 
-WARNING: this setting cannot be changed when editing a microservice.
+==== Import rank
 
-NOTE: it is not recommended to change the filename of a microservice after its creation.
+The import rank is needed to control in which order the execution of the import functions of your microservices will be executed when you click on "Synchronize with Managed Entity" from the managed entity tab "configure".
+
+Setting correct import rank is important when you have dependencies between your microservices. 
+Microservice dependencies are created by leveraging the variable type "Microservice Reference" (see documentation about microservice variables).
 
 Once created, you can search for your microservice in the list and attach it to a deployment setting, you can also edit it or delete it.
 
 NOTE: The easiest way to design a microservice is to use a managed entity dedicated to testing and follow in a code-test-fix development cycle.
-This documentation uses the Linux Managed Entity provided by the mini-lab.
+This documentation uses the Linux Managed Entity provided by the mini lab.
 
-== Variables
+=== Variables
 
 Variable are usually defined to hold the parameters to be passed to the microservice. For instance, the port and IP to block for a firewall policy. Variables can also be used to display user information that is not meant to be used for configuring the managed entity.
 
@@ -51,7 +63,7 @@ All variables are referenced with the prefix `$param` which is automatically set
 
 By default the type of a variable is String but other types are supported such as Integer, Boolean, Password, IpAddress, ObjectRef,...
 
-=== Usage of the {$object_id} variable
+==== Usage of the {$object_id} variable
 
 The `{$object_id}` is a reserved variable used to reference objects into the database and used as variable name in Smarty in the template resolution.
 
@@ -68,7 +80,7 @@ The variables values are:
 {$params.ip_address} => "1.2.3.4"
 ----
 
-== Functions
+=== Functions
 
 From the left menu of the microservice editor there is a list of functions to implement. 
 While none of the functions are mandatory, at least one of 'Create', 'Update', 'Delete' or 'Import' has to be implemented in oder to have a microservice that can actually do something.
@@ -79,7 +91,7 @@ The function 'Read', 'List' are optional and while it's possible to implement th
 
 The function 'Constraint' allow the implementation of custom constraints to be verified before the managed entity is actually configured.
 
-=== Create
+==== Create
 
 The Create function takes care of configuring a new service in the managed entity. For example, a new static route if the managed entity is a router.
 
@@ -88,15 +100,15 @@ This functions is implemented either in PHP Smarty template language for CLI mic
 When this function is implemented, a button "+ Add Row" will appear in the tab "Configure" of the managed entity that uses this microservice.
 
 
-=== Update
+==== Update
 
 The Update function takes care of updating an existing service in the managed entity.
 
-=== Delete
+==== Delete
 
 The Delete function takes care of deleting an existing service in the managed entity. 
 
-=== Import
+==== Import
 
 The role of the Import function is to import the actual configuration of the managed entity into the {product_name} database.
 
@@ -108,6 +120,7 @@ The Import is made of 3 parts:
 - the configuration parser, implemented with a set of regular expressions or XPath expressions. Only the Microservice identifier extractor is mandatory.
 - a set of optional post import operations implemented in Smarty language (https://www.smarty.net/).
 
+////
 === Constraint
 
 In most cases, the constraint definition is straight forward when defining a microservice variable. 
@@ -138,8 +151,8 @@ The custom constraint is implemented as a smarty template:
 ----
 
 image:microservice_console_constraint.png[width=800px]
-
-=== Execution flow
+//// 
+==== Execution flow
 
 The diagram below shows the flow of execution when one of the Create, Update or Delete function is executed by the REST API (directly or from the UI)
 

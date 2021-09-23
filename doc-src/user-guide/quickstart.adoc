@@ -5,7 +5,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :toc: top
 :toclevels: 3
 
-ifdef::html[]
+ifdef::html,env-github,env-browser[]
 :includedir: doc-src/user-guide
 
 [.stripes-none,cols="1,10",frame=none,grid=none,options="noheader",width="50%"]
@@ -20,7 +20,9 @@ ifdef::pdf[]
 :includedir: .
 endif::[]
 
-The quickstart covers how you can quickly get started using {product_name} by installing a mini lab.
+This documentation covers how you can quickly get started using {product_name} by installing a Docker based mini lab and start testing the product.
+
+Alternatively, if you want to test {product_name} without having to go though the installation process, you can register for a free access to our link:https://ubiqube.com/start-your-trial/[hosted trial setup]
 
 ifeval::["{format}" == "html"]
 
@@ -149,9 +151,8 @@ sudo tee -a /etc/sysctl.conf <<< "vm.max_map_count=262144"
 
 Create the mini lab: clone the quickstart git repository from Github, download and run the {product_name} from DockerHub. 
 
-. `git clone -b {revnumber} --depth 1 https://github.com/ubiqube/quickstart.git`
+. `git clone --depth 1 https://github.com/ubiqube/quickstart.git`
 . `cd quickstart`
-. `git checkout tags/{revnumber} -b {revnumber}`
 . `./scripts/install.sh` (or `./scripts/install_win.sh` for Windows users)
 
 NOTE: If you are already running the {product_name} and wish to upgrade it to a new version check the link:#upgrade[documentation below]
@@ -230,9 +231,9 @@ Starting from it's version 2.2.0, the quickstart project provides a script `upgr
 Let's say that you are running the version {revnumber-prev}, to upgrade to the version {revnumber} you need to follow these steps:
 
 . `cd quickstart`
-. `git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"`
-. `git fetch origin`
-. `git checkout tags/{revnumber} -b {revnumber}`
+. `git config remote.origin.fetch "+refs/heads/\*:refs/remotes/origin/*"`
+. `git checkout master`
+. `git pull`
 . `./scripts/install.sh`
 
 NOTE: when running the upgrade script, it will ask you if you want your local libraries to be updated with the latest version from the community. If you answer 'y', the update will be done automatically. You can also do the update later manually on the container `msa_dev`.
@@ -254,9 +255,9 @@ this script installs and upgrades a {product_name}
 If your original version is 2.1, plz refer to upgrade script first provided with 2.2.0 GA. In any cases, perform those commands
 
 . `cd quickstart`
-. `git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"`
-. `git fetch origin`
-. `git checkout tags/{revnumber} -b {revnumber}`
+. `git config remote.origin.fetch "+refs/heads/\*:refs/remotes/origin/*"`
+. `git checkout master`
+. `git pull`
 . `./scripts/install_win.sh`
 
 NOTE : you may face an issue at the end of the script with a message "Wait Kibana to be ready". This is a known issue, the workaround is to execute `docker-compose up -d` from another CLI.
@@ -302,8 +303,6 @@ Options:
 ----
 
 In case of calling this script on an existing setup, it will take care of merging the code from the Github master branch into your local development branch. With the option `-y`, an automated merge will be attempted, without the option, the script will ask for user input.
-
-IMPORTANT: when running the script on an existing setup, use the option `--no-lic` to make sure that your current license is not overwritten by a new trial license. 
 
 ifeval::["{format}" == "html"]
 
