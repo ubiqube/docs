@@ -151,7 +151,7 @@ sudo tee -a /etc/sysctl.conf <<< "vm.max_map_count=262144"
 
 Create the mini lab: clone the quickstart git repository from Github, download and run the {product_name} from DockerHub. 
 
-. `git clone --depth 1 https://github.com/ubiqube/quickstart.git`
+. `git clone https://github.com/ubiqube/quickstart.git`
 . `cd quickstart`
 . `./scripts/install.sh` (or `./scripts/install_win.sh` for Windows users)
 
@@ -270,7 +270,7 @@ To install a tagged version, you can checkout the tag and go to the install step
 
 For example, the CLI command below will checkout the quickstart for the release {revnumber}.
 
-`git clone -b {revnumber} --depth 1 https://github.com/ubiqube/quickstart.git`
+`git clone -b {revnumber} https://github.com/ubiqube/quickstart.git`
 
 The releases and tags are available link:https://github.com/ubiqube/quickstart/releases[here]
 
