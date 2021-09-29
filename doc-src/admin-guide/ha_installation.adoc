@@ -127,40 +127,39 @@ Mount point on all VMs is `/mnt/NASVolume`. Those directories must be created ma
 On Linux, you can use this bash command to create the directories
 
 ----
- sudo mkdir -p /mnt/NASVolume/msa_bulkfiles  \
-	/mnt/NASVolume/msa_db  \
-	/mnt/NASVolume/msa_es  \
-	/mnt/NASVolume/msa_entities  \
-	/mnt/NASVolume/msa_ai_ml_db  \
-	/mnt/NASVolume/msa_dev  \
-	/mnt/NASVolume/msa_repository  \
-	/mnt/NASVolume/rrd_repository  \
-	/mnt/NASVolume/msa_api_logs  \
-	/mnt/NASVolume/msa_svn  \
-	/mnt/NASVolume/msa_sms_logs  \
-	/mnt/NASVolume/msa_sms_logs/ping  \
-	/mnt/NASVolume/msa_sms_logs/monitor  \
-	/mnt/NASVolume/msa_sms_logs/snmp 
+sudo mkdir -p /mnt/NASVolume/msa_bulkfiles  \
+/mnt/NASVolume/msa_db  \
+/mnt/NASVolume/msa_es  \
+/mnt/NASVolume/msa_entities  \
+/mnt/NASVolume/msa_ai_ml_db  \
+/mnt/NASVolume/msa_dev  \
+/mnt/NASVolume/msa_repository  \
+/mnt/NASVolume/rrd_repository  \
+/mnt/NASVolume/msa_api_logs  \
+/mnt/NASVolume/msa_svn  \
+/mnt/NASVolume/msa_sms_logs  \
+/mnt/NASVolume/msa_sms_logs/ping  \
+/mnt/NASVolume/msa_sms_logs/monitor  \
+/mnt/NASVolume/msa_sms_logs/snmp 
 ----
 
 Set owner to the PostgreSQL service
 ----
-chown 70 /mnt/NASVolume/msa_db                      <1>
+chown 70 /mnt/NASVolume/msa_db
 ----
-<1> user ID for user PostgreSQL
 
 Set owner the other services
 ----
-chown 1000.1000 /mnt/NASVolume/msa_bulkfiles  \     <1>
-/mnt/NASVolume/msa_dev  \
-/mnt/NASVolume/msa_es  \
-/mnt/NASVolume/msa_entities  \
-/mnt/NASVolume/msa_ai_ml_db  \
-/mnt/NASVolume/msa_repository  \
-/mnt/NASVolume/rrd_repository  \
-/mnt/NASVolume/msa_bulkfiles  \
-/mnt/NASVolume/msa_api_logs  \
-/mnt/NASVolume/msa_svn  \
+chown 1000.1000 /mnt/NASVolume/msa_bulkfiles \
+/mnt/NASVolume/msa_dev \
+/mnt/NASVolume/msa_es \
+/mnt/NASVolume/msa_entities \
+/mnt/NASVolume/msa_ai_ml_db \
+/mnt/NASVolume/msa_repository \
+/mnt/NASVolume/rrd_repository \
+/mnt/NASVolume/msa_bulkfiles \
+/mnt/NASVolume/msa_api_logs \
+/mnt/NASVolume/msa_svn \
 /mnt/NASVolume/msa_sms_logs
 ----
 <1> user and group ID for ncuser
