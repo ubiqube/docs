@@ -13,7 +13,7 @@ repositories {
 asciidoctorj {
     modules {
        diagram.use() 
-       diagram.version '2.1.0' 
+       diagram.version '2.2.1' 
     }
 }
 
@@ -29,7 +29,7 @@ asciidoctor.doFirst {
 
 asciidoctor {    
 
-  version = '2.0.15'
+  version = '2.0.16'
 
   options doctype: 'book'
 
@@ -38,11 +38,11 @@ asciidoctor {
     'linkcss': true,
     'ubiqube': 'UBiqube',
     'product_name': 'MSActivator(TM)',
-    'product_name-version': 'MSActivator-2.5.0',
+    'product_name-version': 'MSActivator-2.6.0',
     'openmsa_name': 'OpenMSA(TM)',
-    'revnumber': 'MSA-2.5.1',
-    'versionnumber': '2.5.1',
-    'revnumber-prev': 'MSA-2.5.0',
+    'revnumber': 'MSA-2.6.0',
+    'versionnumber': '2.5.2',
+    'revnumber-prev': 'MSA-2.5.2',
     'allow-uri-read': '',
     'sectlinks': true,
     'html': 'true',
@@ -76,7 +76,7 @@ asciidoctorPdf {
   asciidoctorj {
 
     modules {
-        pdf.version '1.5.4'
+        pdf.version '1.6.0'
     }
     requires 'rouge'
 
@@ -89,11 +89,11 @@ asciidoctorPdf {
       'linkcss' : true,
       'ubiqube': 'UBiqube',
       'product_name' : 'MSActivator(TM)',
-      'product_name-version' : 'MSActivator-2.5.1',
+      'product_name-version' : 'MSActivator-2.6.0',
       'openmsa_name' : 'OpenMSA(TM)',
-      'revnumber' : 'MSA-2.5.1',
-      'versionnumber': '2.5.1',
-      'revnumber-prev' : 'MSA-2.5.0',
+      'revnumber' : 'MSA-2.6.0',
+      'versionnumber': '2.6.0',
+      'revnumber-prev' : 'MSA-2.5.2',
       'allow-uri-read' : '',
       'sectlinks' : true,
       'pdf' : 'true',
