@@ -109,11 +109,12 @@ The custom configuration below may not be needed depending on your host computer
 In a production environment, these custom configuration may be mandatory to allow your setup to support a higher workload.
 
 ==== Docker for Linux (or Linux VM)
-
+execute as root
 ----
-sudo sysctl -w vm.max_map_count=262144
+sysctl -w vm.max_map_count=262144
+touch /etc/sysctl.d/50-msa.conf
 echo 'vm.max_map_count = 262144' > /etc/sysctl.d/50-msa.conf
-sudo sysctl -p /etc/sysctl.d/50-msa.conf
+sysctl -p /etc/sysctl.d/50-msa.conf
 ----
 
 ==== Docker for Mac
