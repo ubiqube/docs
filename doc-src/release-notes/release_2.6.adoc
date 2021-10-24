@@ -2,33 +2,79 @@
 ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-With this latest release, every aspect of MSActivator has been designed to maximize developer productivity. Together, intelligent coding assistance and ergonomic
-design make development not only productive but also enjoyable.
+This release is mainly a feature enhancement and bug fix release. 
 
-Advance code and BPM generation enable the user to auto-generate Workflow code based on any existing Microservice, then automatically extract Workflow
-variables from that Microservice, and finally have that Workflow automatically included in our new Intent-based Automation feature, which is powered by AI.
+This includes a few changes related to the architecture such as adding a new container dedicated to the monitoring of the managed entities, upgrading Kibana to a more recent version or replacing Wildfly by Spring Boot for the REST API.
 
-Put simply, we have reduced the amount of manual coding required for a developer in all steps of the design process, in some cases to zero.
+Alarm performances are now better with a very short delay between collecting the logs and triggering the alarm action.
 
-In addition, we continue to make the development experience easier by including a Log tab on the Workflow view to see the debug messages for that Workflow,
-and we have included a “Try Task” feature on the Workflow editor to enable developers to execute a single task for testing purposes.
+This release also includes some manager and developer functionality enhancements such as a live filtering for the Kibana dashboard, a new variable type for the Microservices or additional functions in the Python SDK for developing Workflows.
 
-For managers, we have enhanced the Topology context menu and added in new views for editing the configuration of MSActivator itself online.
+== Manager Features
 
-== New Manager Features
+=== BPM 
+
+Quite a few improvement were done for the BPM execution and edition.
+
+It is now possible to rename a BPM that was already saved. 
+
+When editing or before executing a BPM, it is possible to select 3 
 
 
-=== nnn
+=== Alarm Performance : reduce aggregation time
+
+=== Dashboard - Live filtering
 
 
-== New Developer Features
+=== Download Monitoring Graphs
 
-=== fff
+For each managed entity, it is now possible to download each monitoring graph as an PNG image file.
 
-==== ffff
-== Additional Changes
+== Developer Features
 
-kkk
+=== Workflow Python SDK Update
+
+A few new functions have been added to the Workflow SDK for Python developer
+
+The new module ConfBackup provides a set of functions useful backing up and restoring the configuration of a managed entity.
+
+The module Device has also been updated with a new function `run_jsa_command_device` to execute adapter commands.
+
+=== Microservice : Type Unique Value
+
+Make sure that for each instance of a microservice associated to a managed entity, a variable typed as "Unique Value" can only be assigned with a value that has not been used yet.
+
+== Admin and Settings
+
+=== License Expiration Information
+
+When a license is about to expire, the super admin user ncroot will get notified in the web portal and will also receive an email. 
+This notification will happen when the expiration date is in less that 7 days than the current date.
+
+image:2.6_license_status.png[]
+
+=== Enhanced Help Global Setting
+
+{product_name} variable in the global setting have been reviewed to make sure that each variable description is as clear as possible. 
+
+=== Exit Upgrade Script in Case of Encountered Merge Issues
+
+The product upgrade script now stops when a merge conflict is detected during the installation or upgrade of the libraries. 
+The user will then be able to manually resolve the conflict by connecting to the msa_dev container and use git commands.
+
+Once all conflicts are resolved, the script can be executed again.
+
+== Architecture
+
+Several parts of the {product_name} have been upgraded to enhance the performances as well as the flexibility of the product.
+
+The API container now runs Spring Boot, replacing Wildfly. 
+This provides a simpler, lighter and more efficient container.
+
+The Kibana container has been upgraded from version 7.2 to version 7.13.
+
+A new monitoring container, msa_monitoring, has been added. 
+This container is dedicated to KPI monitoring features that were included in the msa_sms container in the previous versions.
 
 == CoreEngine
 
@@ -63,83 +109,83 @@ Let's say that you are running {product_name} version {revnumber-prev}, to upgra
 === 2.6.0 GA
 
 ==== Features
-* MSA-8629 - [WF] Replace the read of /opt/configurator/vars.ubiqube.net.ctx in workflows
-* MSA-8999 - [Users] Manager must be informed of license expiration
+* MSA-10507 - [Adapter] Linux Generic implement support for "Do execute command"
+* MSA-8999 - [Admin] Manager must be informed of license expiration
 * MSA-9514 - [AI/ML] Description of States and Actions in Tooltip
-* MSA-9797 - [Docker] Move sms_polld in a separate container
-* MSA-9910 - [Alarms] remove error warning when name format is corrected
-* MSA-9911 - [Dashboard] enhancement suggestions for manager dashboard customization
-* MSA-10091 - [Kibana Dashboard] Dashboard Live Filtering mechanism
-* MSA-10128 - [Infrastructure Discovery] New WFs
-* MSA-10173 - [Python_SDK] Create 'Backup Configuration' in the Device library
-* MSA-10249 - [Microservice] Add Index type variable
-* MSA-10256 - [Portal] Review Description and Help of MSA Vars
-* MSA-10262 - [Python SDK] Create method to 'Do execute command by managed entity id'
-* MSA-10263 - [Python SDK] Create method to 'Sends jsa command to a device'
-* MSA-10349 - [Managed Entity] Download Monitoring graphs as image files
-* MSA-10355 - [Managed Entity] API to get an Interface
-* MSA-10363 - [Workflow] Show user friendly running time
-* MSA-10371 - [Workflow] Control Visibility for Task in Repository for Manager
-* MSA-10374 - [ALARM] Test short cyclic run of check_alert without any delay in getting logs
-* MSA-10398 - [Upgrade] Block upgrade script to block if there are merge issue on library installation
-* MSA-10406 - [Workflow] Review mandatory parameters for schedule API
+* MSA-9910 - [Alarm] remove error warning when name format is corrected
+* MSA-10374 - [Alarm] Test short cyclic run of check_alert without any delay in getting logs
+* MSA-9797 - [Architecture] Move sms_polld in a separate container
+* MSA-10436 - [BPM] Store subtenant in the camunda engine
+* MSA-10494 - [BPM] Take input parameters on BPM execute API
 * MSA-10410 - [BPM] displayName should be returned by repository file GET endpoint
 * MSA-10411 - [BPM] Possibility to rename BPM
+* MSA-10449 - [BPM] Show (friendly) user instance name
+* MSA-9911 - [Dashboard] enhancement suggestions for manager dashboard customization
+* MSA-10091 - [Dashboard] Dashboard Live Filtering mechanism
+* MSA-10128 - [Infrastructure Discovery] New Workflow
+* MSA-10453 - [Kibana] Update from Kibana v7.2 to 7.13
+* MSA-10349 - [Managed Entity] Download Monitoring graphs as image files
+* MSA-10355 - [Managed Entity] API to get an Interface
 * MSA-10430 - [Managed Entity] Return total subtenant count in device v1
 * MSA-10431 - [Managed Entity] Show correct total subtenant count on Dashboard
-* MSA-10436 - [BPM] Store subtenant in the camunda engine
-* MSA-10437 - [Settings] Save as global settings
+* MSA-10249 - [Microservice] Add Index type variable
 * MSA-10441 - [Microservice] Save Constraint only when there is existing tag
-* MSA-10449 - [BPM] Show (friendly) user instance name
-* MSA-10453 - [Kibana] Update from Kibana v7.2 to 7.13
-* MSA-10494 - [BPM] Take input parameters on BPM execute API
-* MSA-10507 - [Adapter] Linux Generic implement support for "Do execute command"
+* MSA-10256 - [Portal] Review Description and Help of MSA Vars
+* MSA-10173 - [Python SDK] Create 'Backup Configuration' in the Device library
+* MSA-10262 - [Python SDK] Create method to 'Do execute command by managed entity id'
+* MSA-10263 - [Python SDK] Create method to 'Sends jsa command to a device'
+* MSA-10437 - [Settings] Save as global settings
+* MSA-10398 - [Upgrade] Block upgrade script to block if there are merge issue on library installation
+* MSA-10406 - [Workflow] Review mandatory parameters for schedule API
+* MSA-8629 - [Workflow] Replace the read of /opt/configurator/vars.ubiqube.net.ctx in workflows
+* MSA-10363 - [Workflow] Show user friendly running time
+* MSA-10371 - [Workflow] Control Visibility for Task in Repository for Manager
 
 ==== Bug fixes
-* MSA-6464 - [Alarm] Alert emails body lines more than 40 chars disturb the mail
-* MSA-8588 - [SECURITY] Directory traversal in /repository/v1/repository-content
-* MSA-8590 - [SECURITY] Directory traversal in /repository/files
-* MSA-8591 - [SECURITY] Directory traversal in /repository/v1/properties-file
-* MSA-8592 - [SECURITY] Directory traversal in /ubi-api-rest/repository/v1/file-content
-* MSA-8593 - [SECURITY] Arbitrary file creation thru irectory traversal in /repository/v1/file
-* MSA-9331 - [Topology] display times out if the topo WF takes to much time to execute
-* MSA-9485 - [WF] the total number of workflows is not consitent
-* MSA-9497 - [Assurance] attaching Monitoring profile to ME is not consistent with other attachement UX
-* MSA-9559 - [Microservice] in user form, the input field display names are not fully visible when a value in entered
-* MSA-9582 - [MS/WF] In some cases composite variable cannot use a free value as selector value
-* MSA-9608 - [Logs] Displayed raw logs are incomplete
-* MSA-9744 - [Assurance] default traffic graph shoulnd not be displayed if there is no management interface configured for the ME
-* MSA-9815 - [Backend] Use only one interface name in database for the management interface name
-* MSA-9915 - [Workflows] in attachment dialog window, search filter is too much permissive (use special characters)
-* MSA-9919 - [Python SDK] OSError: Could not find a suitable TLS CA certificate bundle, invalid path
-* MSA-9987 - [BPM] execution time display is inconsitent for BPM and executed WF
-* MSA-9995 - [Managed Entity] action buttons in History tab have inconsitent naming/tooltips
-* MSA-10044 - [Dashboard] In ME component, filter by status not working when subtenant selected in banner
-* MSA-10149 - The refreshment of the operation screen is too slow after executing each process in workflow.
-* MSA-10152 - [SMS] remove the Import which is triggered as part of the CRUD commands and always ends in error
-* MSA-10166 - Traffic analysis in Standard graph profile showing high peaks data on Custom portal
-* MSA-10180 - [Portal] after an upgrade from 2.4 to 2.5, custom certificate in msa_front are not readable anymore
-* MSA-10258 - [UI]Bad regexp to validate a few configuration variables
 * MSA-10334 - [Admin] the date is not updated when Permission is updated
-* MSA-10340 - [License]Manager must be informed of license expiration
-* MSA-10341 - [BPM] adapt end date in case of scheduling more than once
-* MSA-10348 - [Workflow] Restrict execution of more than one process of service instance at same time
+* MSA-6464 - [Alarm] Alert emails body lines more than 40 chars disturb the mail
+* MSA-10443 - [Alarm] Workflow are triggered long time after an alarm is raised - Timestamp not cleaned
+* MSA-10376 - [Alarms] Remove not used parameters in search logs and search alarms
+* MSA-10447 - [API] in MSA V2.5 or later, bad answers for device/ping
+* MSA-10461 - [Assurance] Syslogs are no more parsed and so not stored in ES
+* MSA-9497 - [Assurance] attaching Monitoring profile to Managed Entity is not consistent with other attachment UX
+* MSA-9744 - [Assurance] default traffic graph should not be displayed if there is no management interface configured for the Managed Entity
+* MSA-9608 - [Assurance] Displayed raw logs are incomplete
+* MSA-10166 - [Assurance] Traffic analysis in Standard graph profile showing high peaks data on Custom portal
 * MSA-10362 - [Assurance] wrong message "The selected monitoring profile doesn't have any graphical rendering defined" when a profile is selected to display the graph
+* MSA-10444 - [Backend] Configuration variables not read properly by msa_sms, msa_bud, msa_alarm, msa_monitoring
+* MSA-10486 - [Backend] Errors updating RRD files due to more than one polling thread per Managed Entity
+* MSA-10495 - [BPM] API that gets status of BPM is not working
+* MSA-10341 - [BPM] adapt end date in case of scheduling more than once
+* MSA-9987 - [BPM] execution time display is inconsistent for BPM and executed Workflow
+* MSA-10415 - [CoreEngine] When UBI_SMS_TINY_SYSLOGS is set to 1 the script /opt/sms/etc/stop.sh is stuck
+* MSA-10044 - [Dashboard] in Managed Entity component, filter by status not working when subtenant selected in banner
+* MSA-9815 - [Database] Use only one interface name in database for the management interface name
+* MSA-10340 - [License] Manager must be informed of license expiration
+* MSA-9995 - [Managed Entity] action buttons in History tab have inconsistent naming/tooltips
+* MSA-10457 - [Microservice] type microservice reference doesn't filter the list of MS based on vendor/model
+* MSA-10152 - [Microservice] remove the Import which is triggered as part of the CRUD commands and always ends in error
+* MSA-9559 - [Microservice] in user form, the input field display names are not fully visible when a value in entered
 * MSA-10364 - [Microservice] Filter Deployment Settings by Subtenant
 * MSA-10365 - [Microservice] Filter Deployment Settings by Subtenant
-* MSA-10376 - [Alarms] Remove not used parameters in search logs and search alarms
-* MSA-10414 - [Security] New vulnerabilities detected in 2.6 RC1
-* MSA-10415 - When UBI_SMS_TINY_SYSLOGS is set to 1 the script /opt/sms/etc/stop.sh is stuck
-* MSA-10418 - [Microservice] missing field label when a variable is read-only
-* MSA-10419 - [WF] WF failed because of "message": "Bad parameters on command: Missing the mandatory variable", even if the variable i not mandatory
 * MSA-10423 - [Microservice] Missing the mandatory variable 'array.0.element' in JSON parameters - Bad parameters on command
-* MSA-10426 - [WF] reused task error at execution
+* MSA-10418 - [Microservice] missing field label when a variable is read-only
+* MSA-9582 - [Microservice/Workflow] In some cases composite variable cannot use a free value as selector value
+* MSA-10180 - [Portal] after an upgrade from 2.4 to 2.5, custom certificate in msa_front are not readable anymore
+* MSA-9919 - [Python SDK] OSError: Could not find a suitable TLS CA certificate bundle, invalid path
+* MSA-10414 - [Security] New vulnerabilities detected in 2.6 RC1
+* MSA-8588 - [Security] Directory traversal in /repository/v1/repository-content
+* MSA-8590 - [Security] Directory traversal in /repository/files
+* MSA-8591 - [Security] Directory traversal in /repository/v1/properties-file
+* MSA-8592 - [Security] Directory traversal in /ubi-api-rest/repository/v1/file-content
+* MSA-8593 - [Security] Arbitrary file creation thru directory traversal in /repository/v1/file
+* MSA-9331 - [Topology] display times out if the topology Workflow takes to much time to execute
+* MSA-10149 - [UI] The refreshment of the operation screen is too slow after executing each process in workflow.
+* MSA-10258 - [UI] Bad regexp to validate a few configuration variables
+* MSA-10348 - [Workflow] Restrict execution of more than one process of service instance at same time
+* MSA-10419 - [Workflow] Workflow failed because of "message": "Bad parameters on command: Missing the mandatory variable", even if the variable i not mandatory
+* MSA-10426 - [Workflow] reused task error at execution
 * MSA-10433 - [workflows] workflow count when filter is used : display not correct
-* MSA-10443 - [Alarm] WF are triggered long time after an alarm is raised - Timestamp not cleaned
-* MSA-10444 - [Backend] Configuration variables not read properly by msa_sms, msa_bud, msa_alarm, msa_monitoring
-* MSA-10447 - [API] in MSA V2.5 or later, bad answers for device/ping
-* MSA-10452 - [WF] running process (with no schedule ) appears in scheduled tab instead of instances tab
-* MSA-10457 - [Microservice] type microservice reference doesn't filter the list of MS based on vendor/model
-* MSA-10461 - [Assurance] Syslogs are no more parsed and so not stored in ES
-* MSA-10486 - [Backend] Errors updating RRD files due to more than one polling thread per ME
-* MSA-10495 - [BPM] API that gets status of BPM is not working
+* MSA-10452 - [Workflow] running process (with no schedule ) appears in scheduled tab instead of instances tab
+* MSA-9485 - [Workflow] the total number of workflows is not consistent
+* MSA-9915 - [Workflows] in attachment dialog window, search filter is too much permissive (use special characters)
