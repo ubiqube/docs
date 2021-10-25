@@ -14,17 +14,19 @@ This release also includes some manager and developer functionality enhancements
 
 === BPM 
 
-Quite a few improvement were done for the BPM execution and edition.
+Changing the display name of a BPM is now possible as well as providing a custom identifier for the BPM instance. 
 
-It is now possible to rename a BPM that was already saved. 
+=== Alarm Performance
 
-When editing or before executing a BPM, it is possible to select 3 
+Improved performance allowed to reduce the alarm aggregation time reducing the delay between the collection of the event by the CoreEngine and the detection of an alarm.
 
+=== Manager Dashboard and Kibana Dashboard
 
-=== Alarm Performance : reduce aggregation time
+A live filtering mechanism has been added to the manager dashboard when a Kibana dashboard has to be displayed. 
+This mechanism makes sure that the data displayed by the Kibana dashboard is filtered based on the selected subtenant.
 
-=== Dashboard - Live filtering
-
+In addition, when using "Save as Global Setting" the super administrator user can configure a custom manager dashboard that will be visible by all other users.
+Any other user with enough privileges can over overwrite the global setting of the dashboard and create its own custom dashboard.
 
 === Download Monitoring Graphs
 
