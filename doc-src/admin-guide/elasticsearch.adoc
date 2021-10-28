@@ -1,0 +1,27 @@
+= Elasticsearch and Kibana
+:doctype: book 
+ifndef::imagesdir[:imagesdir: images]
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+== Overview
+
+The {product_name} uses Elasticsearch and Kibana to provide data indexing and searching as well as the dashboards that can be customized and exposed with a custom manager dashboard.
+
+== Log Retention Policy
+
+Log retention policy allows to configure and manage the lifecycle of the indexes in Elasticsearch.
+
+There are 3 main types of indexes such as the ones used for the syslogs (`ubilogs-\*`), the alarms (`ubialarms-*`) or the audit logs (`ubiaudit-*`). 
+For each type, the data is stored in a daily index.
+A new index is created every days.
+
+A log retention policy can be configured for each type and a specific policy may be assigned for each index.
+
+For example, you may want to keep the syslogs indexed and online (searchable with the {product_name} UI) for 3 months, but the alarms should be kept for a longer period of time like 1 year.
+
+You can learn how to configure the retention policies by reading the link:https://www.elastic.co/guide/en/elasticsearch/reference/current/index-lifecycle-management.html[Elasticsearch ILM,window=_blank] documentation.
+
+The ILM configuration is done with the Kibana UI (http://localhost/kibana), in the Stack Management section, under Index Lifecycle Policies
+
+image:elasticsearch_ilm_1.png[]
+

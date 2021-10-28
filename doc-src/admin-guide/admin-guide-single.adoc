@@ -49,6 +49,9 @@ include::{includedir}/support_and_troubleshooting.adoc[]
 
 include::{includedir}/ldap.adoc[]
 
+include::{includedir}/elasticsearch.adoc[]
+
+
 ifdef::html[]
 include::{includedir}/opensource_technologies.adoc[]
 endif::[]
