@@ -48,14 +48,17 @@ This container is in charge of getting the microservice request for configuratio
 
 This container will also poll the device for assurance KPI and collect/analyse the syslogs sent by the managed entities.
 
-==== msa_bud 
+==== msa_monitoring
 
-Takes care of cross table data synchronization and consistency in the database
+In charge of monitoring the managed entities either based on default KPI (ICMP and/or SNMP) or on custom monitoring profile as well as executing the asset management scripts provided by the adapters.
 
 ==== msa_alarm
 
 Takes care of event detection to create alarm and execute workflow or send email notifications
 
+==== msa_bud 
+
+Takes care of cross table data synchronization and consistency in the database
 
 ==== msa_dev
 
@@ -77,7 +80,71 @@ Runs the PostgreSQL database when the {product_name} administrative data and con
 
 === Networking and connectivity
 
-image:non_ha_containers.png[width=800px]
+==== Incoming traffic
+
+By default the whole network traffic coming from external systems goes through the `msa_front` container, this includes proxying the TCP/443 and TCP/80 traffic access to:
+
+- `/`: Manager and Developer portal running on container `msa_ui`
+- `/ubi-api-rest`: REST API running in container `msa_api`
+- `/ubi-ai-ml-rest`: AI/ML REST API running in container `msa_ai_ml`
+- `/kibana`:  Kibana running in container `msa_kibana`
+
+
+`/swagger` REST API Swagger documentation and `/msa_sdk` Workflow Python SDK documentation are both in `msa_front` container 
+
+It also includes the network traffic coming from the managed entities:
+
+- syslog coming from managed entities on port udp/514
+- SNMP traps coming from managed entities or a third party OSS element on port udp/162
+- TFTP request coming from managed entities or a third party OSS element on port udp/69
+
+==== Ingress traffic
+
+Ingress traffic is mainly composed by traffic coming from the end user browser accessing the web portal or by external third party system calling the REST API.
+Ingress traffic also includes traffic coming from managed entities sending syslogs or SNMP traps.
+
+===== Web portal use
+
+When an user browser accesses the web UI, all requests coming from the browser will be redirected to the REST API container (`/ubi-api-rest`).
+
+- BPM executions are proxied by the container msa_api to the `camunda` container.
+- Log and alarm search queries are proxied by the container msa_api to the `msa_es` container.
+- Actions related to the managed entities are proxied by the container msa_api to the `msa_sms` or `msa_monitoring` containers.
+
+image:web_portal_use.png[]
+
+
+===== Entity management
+
+Entity management includes the activation, microservice configuration and import, monitoring syslog collection and alarm triggering.
+
+image:managed_entity_conn.png[]
+
+====== Activation and configuration 
+
+Activation (aka initial provisioning) usually includes a verification of the connectivity between the `msa_sms` container and the managed entity. 
+Depending on the vendor and model, the protocol used for the connection usually varies between SSH, Telnet or HTTP/HTTPS (this distinction is done at the adapter layer). 
+
+The configuration based on microservices is usually based on the same protocol as the initial connection.
+
+The actions related to configuring the managed entities or pull its configurations are handled by the process `smsd` running in the `msa_sms` container
+
+====== Monitoring 
+
+KPI monitoring is based on ICMP for the availability as well as SNMP (UDP/161) requests for the other KPI (traffic, CPU, memory,...).
+
+The monitoring process is `sms_polld`, running in `msa_monitoring` container.
+
+====== Events
+
+Syslog are collected on the port 514 exposed by `msa_front` container and forwarded to the container `msa_sms`. 
+In `msa_sms`, the syslogs are processed by 2 processes: `msa_syslogd` and `msa_parserd`.
+
+====== Alarms
+
+The alarm definition stored in the database are used by the process `sms_alarmd` in `msa_alarm` container.
+This process identifies the logs that should trigger an alarm it will create a new alarm in a dedicated Elasticsearch index in `msa_es` container.
+Based on the alarm definition, the process will send an email to the end user and/or execute a workflow by call a REST API in `msa_api` container.
 
 === Volumes and data
 
