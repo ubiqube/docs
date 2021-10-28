@@ -18,7 +18,7 @@ Changing the display name of a BPM is now possible as well as providing a custom
 
 === Alarm Performance
 
-Improved performance allowed to reduce the alarm aggregation time reducing the delay between the collection of the event by the CoreEngine and the detection of an alarm.
+Improved performances allow to reduce the alarm aggregation time, reducing the delay between the collection of the event by the CoreEngine and the detection of an alarm.
 
 === Manager Dashboard and Kibana Dashboard
 
@@ -36,15 +36,15 @@ For each managed entity, it is now possible to download each monitoring graph as
 
 === Workflow Python SDK Update
 
-A few new functions have been added to the Workflow SDK for Python developer
+A few new functions have been added to the Workflow SDK for Python developer.
 
 The new module ConfBackup provides a set of functions useful backing up and restoring the configuration of a managed entity.
 
 The module Device has also been updated with a new function `run_jsa_command_device` to execute adapter commands.
 
-=== Microservice : Type Unique Value
+=== Microservice Variable Type "Unique Value"
 
-Make sure that for each instance of a microservice associated to a managed entity, a variable typed as "Unique Value" can only be assigned with a value that has not been used yet.
+To make sure that, for each instance of a microservice associated to a managed entity, a variable typed as "Unique Value" can only be assigned with a value that has not been used yet.
 
 == Admin and Settings
 
@@ -59,9 +59,9 @@ image:2.6_license_status.png[]
 
 {product_name} variable in the global setting have been reviewed to make sure that each variable description is as clear as possible. 
 
-=== Exit Upgrade Script in Case of Encountered Merge Issues
+=== Upgrade Script
 
-The product upgrade script now stops when a merge conflict is detected during the installation or upgrade of the libraries. 
+The product upgrade script now stops and exits when a merge conflict is detected during the installation or upgrade of the libraries. 
 The user will then be able to manually resolve the conflict by connecting to the msa_dev container and use git commands.
 
 Once all conflicts are resolved, the script can be executed again.
