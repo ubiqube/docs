@@ -2,35 +2,43 @@
 ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-This release is mainly a feature enhancement and bug fix release. 
+The focus of the 2.6.0 release of {product_name} is on backend improvements, quality fixes, and performance increases.
 
-This includes a few changes related to the architecture such as adding a new container dedicated to the monitoring of the managed entities, upgrading Kibana to a more recent version or replacing Wildfly by Spring Boot for the REST API.
+This includes a few changes related to the architecture such as adding a new container dedicated to the monitoring of the managed entities, upgrading Kibana to a more recent version, and replacing Wildfly with Spring Boot for the REST API.
 
-Alarm performances are now better with a very short delay between collecting the logs and triggering the alarm action.
+Alarm performance has been improved with a much shorter delay between collecting the logs and triggering the alarm action.
 
-This release also includes some manager and developer functionality enhancements such as a live filtering for the Kibana dashboard, a new variable type for the Microservices or additional functions in the Python SDK for developing Workflows.
+This release also includes some manager and developer functionality enhancements such as a live filtering for the Kibana dashboard, a new variable type for the Microservices, and additional functions in the Python SDK for developing Workflows.
+
+We hope you enjoy this release, and encourage you to upgrade to avail of all of the improvements listed below.
 
 == Manager Features
 
 === BPM 
 
-Changing the display name of a BPM is now possible as well as providing a custom identifier for the BPM instance. 
+The user can now change the display name of any of their BPMs, which will make it much easier for them to identify their BPMs in the BPM list.  To change the name of a BPM, use the BPM editor.
 
 === Alarm Performance
 
-Improved performances allow to reduce the alarm aggregation time, reducing the delay between the collection of the event by the CoreEngine and the detection of an alarm.
+Improved alarm performance allows the user to reduce the alarm aggregation time, therefore reducing the delay between the collection of the event by the CoreEngine and the triggering of an alarm.
+
+By default, the aggregation time is set to 10 seconds, but this can now be reduced as low as 2 seconds via the following new setting on the "Settings -> MSA Variables" section of the portal:
+
+Change UBI_SMS_CHECK_ALERT_PERIOD to 2 (or another higher value)
+
+You will then need to restart the msa_alarm container(s) for this configuration change to take affect:
+
+docker container restart $(docker ps -q -f name=msa_alarm)
 
 === Manager Dashboard and Kibana Dashboard
 
-A live filtering mechanism has been added to the manager dashboard when a Kibana dashboard has to be displayed. 
-This mechanism makes sure that the data displayed by the Kibana dashboard is filtered based on the selected subtenant.
+A live filtering mechanism has been added to the manager dashboard when a Kibana dashboard is being displayed. This mechanism makes sure that the data displayed by the Kibana dashboard is filtered based on the selected subtenant.  This is very convenient in a multi-tenant deployment.
 
-In addition, when using "Save as Global Setting" the super administrator user can configure a custom manager dashboard that will be visible by all other users.
-Any other user with enough privileges can over overwrite the global setting of the dashboard and create its own custom dashboard.
+In addition, when using "Save as Global Setting" the super administrator user can configure a custom manager dashboard that will be visible by all other users.  Any other user with enough privileges can then overwrite the global setting of the dashboard and create their own custom dashboard.
 
 === Download Monitoring Graphs
 
-For each managed entity, it is now possible to download each monitoring graph as an PNG image file.
+For each managed entity, it is now possible to download each monitoring graph as an PNG image file.  You will now see a download icon beside each graph: clicking on that will download an image file for the current graph.
 
 == Developer Features
 
@@ -42,27 +50,27 @@ The new module ConfBackup provides a set of functions useful backing up and rest
 
 The module Device has also been updated with a new function `run_jsa_command_device` to execute adapter commands.
 
+Please check the updated SDK documentation contained with the release for the API details on those new modules.
+
 === Microservice Variable Type "Unique Value"
 
-To make sure that, for each instance of a microservice associated to a managed entity, a variable typed as "Unique Value" can only be assigned with a value that has not been used yet.
+The "Unique Value" type has been added to make sure that, for each instance of a microservice associated to a managed entity, a value can only be assigned that has not been used already.
 
 == Admin and Settings
 
 === License Expiration Information
 
-When a license is about to expire, the super admin user ncroot will get notified in the web portal and will also receive an email. 
-This notification will happen when the expiration date is in less that 7 days than the current date.
+When a license is about to expire, the super admin user ncroot will get notified in the web portal and will also receive an email. This notification will happen when the expiration date is in less that 7 days than the current date.
 
 image:2.6_license_status.png[]
 
 === Enhanced Help Global Setting
 
-{product_name} variable in the global setting have been reviewed to make sure that each variable description is as clear as possible. 
+{product_name} variables in the global "Settings" section have been reviewed to make sure that each variable description is as clear as possible, including any additional steps that may be required for each variable to take affect.
 
 === Upgrade Script
 
-The product upgrade script now stops and exits when a merge conflict is detected during the installation or upgrade of the libraries. 
-The user will then be able to manually resolve the conflict by connecting to the msa_dev container and use git commands.
+The product upgrade script now stops and exits when a merge conflict is detected during the installation or upgrade of the libraries. The user will then be able to manually resolve the conflict by connecting to the msa_dev container and use git commands.
 
 Once all conflicts are resolved, the script can be executed again.
 
@@ -70,13 +78,9 @@ Once all conflicts are resolved, the script can be executed again.
 
 Several parts of the {product_name} have been upgraded to enhance the performances as well as the flexibility of the product.
 
-The API container now runs Spring Boot, replacing Wildfly. 
-This provides a simpler, lighter and more efficient container.
-
-The Kibana container has been upgraded from version 7.2 to version 7.13.
-
-A new monitoring container, msa_monitoring, has been added. 
-This container is dedicated to KPI monitoring features that were included in the msa_sms container in the previous versions.
+- The API container now runs Spring Boot, replacing Wildfly. This provides a simpler, lighter and more efficient container.
+- The Kibana container has been upgraded from version 7.2 to version 7.13.
+- A new monitoring container, msa_monitoring, has been added. This container is dedicated to KPI monitoring features that were included in the msa_sms container in the previous versions.
 
 == CoreEngine
 
