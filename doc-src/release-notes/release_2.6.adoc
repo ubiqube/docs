@@ -191,3 +191,9 @@ Let's say that you are running {product_name} version {revnumber-prev}, to upgra
 * MSA-10452 - [Workflow] running process (with no schedule ) appears in scheduled tab instead of instances tab
 * MSA-9485 - [Workflow] the total number of workflows is not consistent
 * MSA-9915 - [Workflows] in attachment dialog window, search filter is too much permissive (use special characters)
+* MSA-10555 - [Microservice] CLI MS with similar IMPORT parser with arrays have same display in UI but completely differents parser sections
+* MSA-10556 - [Microservice] microservice editor: "add array variable extractor set" action disappears after saving the microservice
+* MSA-10562 - [Microservice] CLI Microservice array parser not supported when source data has multiple nested elements
+* MSA-10563 - [Microservice] multiple identifier extractor is not supported
+* MSA-10577 - [API] inconsistent naming in swagger between /swagger/#/Device/getManagedInterface and /device/v1/getDeviceField/{deviceId}
+* MSA-10580 - [Kibana] Task manager index issue during migration to 2.6
