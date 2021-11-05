@@ -149,6 +149,7 @@ Let's say that you are running {product_name} version {revnumber-prev}, to upgra
 * MSA-10443 - [Alarm] Workflow are triggered long time after an alarm is raised - Timestamp not cleaned
 * MSA-10376 - [Alarms] Remove not used parameters in search logs and search alarms
 * MSA-10447 - [API] in MSA V2.5 or later, bad answers for device/ping
+* MSA-10577 - [API] inconsistent naming in swagger between /swagger/#/Device/getManagedInterface and /device/v1/getDeviceField/{deviceId}
 * MSA-10461 - [Assurance] Syslogs are no more parsed and so not stored in ES
 * MSA-9497 - [Assurance] attaching Monitoring profile to Managed Entity is not consistent with other attachment UX
 * MSA-9744 - [Assurance] default traffic graph should not be displayed if there is no management interface configured for the Managed Entity
@@ -163,6 +164,7 @@ Let's say that you are running {product_name} version {revnumber-prev}, to upgra
 * MSA-10415 - [CoreEngine] When UBI_SMS_TINY_SYSLOGS is set to 1 the script /opt/sms/etc/stop.sh is stuck
 * MSA-10044 - [Dashboard] in Managed Entity component, filter by status not working when subtenant selected in banner
 * MSA-9815 - [Database] Use only one interface name in database for the management interface name
+* MSA-10580 - [Kibana] Task manager index issue during migration to 2.6
 * MSA-10340 - [License] Manager must be informed of license expiration
 * MSA-9995 - [Managed Entity] action buttons in History tab have inconsistent naming/tooltips
 * MSA-10457 - [Microservice] type microservice reference doesn't filter the list of MS based on vendor/model
@@ -172,6 +174,10 @@ Let's say that you are running {product_name} version {revnumber-prev}, to upgra
 * MSA-10365 - [Microservice] Filter Deployment Settings by Subtenant
 * MSA-10423 - [Microservice] Missing the mandatory variable 'array.0.element' in JSON parameters - Bad parameters on command
 * MSA-10418 - [Microservice] missing field label when a variable is read-only
+* MSA-10555 - [Microservice] CLI MS with similar IMPORT parser with arrays have same display in UI but completely differents parser sections
+* MSA-10556 - [Microservice] microservice editor: "add array variable extractor set" action disappears after saving the microservice
+* MSA-10562 - [Microservice] CLI Microservice array parser not supported when source data has multiple nested elements
+* MSA-10563 - [Microservice] multiple identifier extractor is not supported
 * MSA-9582 - [Microservice/Workflow] In some cases composite variable cannot use a free value as selector value
 * MSA-10180 - [Portal] after an upgrade from 2.4 to 2.5, custom certificate in msa_front are not readable anymore
 * MSA-9919 - [Python SDK] OSError: Could not find a suitable TLS CA certificate bundle, invalid path
@@ -191,9 +197,3 @@ Let's say that you are running {product_name} version {revnumber-prev}, to upgra
 * MSA-10452 - [Workflow] running process (with no schedule ) appears in scheduled tab instead of instances tab
 * MSA-9485 - [Workflow] the total number of workflows is not consistent
 * MSA-9915 - [Workflows] in attachment dialog window, search filter is too much permissive (use special characters)
-* MSA-10555 - [Microservice] CLI MS with similar IMPORT parser with arrays have same display in UI but completely differents parser sections
-* MSA-10556 - [Microservice] microservice editor: "add array variable extractor set" action disappears after saving the microservice
-* MSA-10562 - [Microservice] CLI Microservice array parser not supported when source data has multiple nested elements
-* MSA-10563 - [Microservice] multiple identifier extractor is not supported
-* MSA-10577 - [API] inconsistent naming in swagger between /swagger/#/Device/getManagedInterface and /device/v1/getDeviceField/{deviceId}
-* MSA-10580 - [Kibana] Task manager index issue during migration to 2.6
