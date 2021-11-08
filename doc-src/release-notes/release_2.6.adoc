@@ -12,6 +12,16 @@ This release also includes some manager and developer functionality enhancements
 
 We hope you enjoy this release, and encourage you to upgrade to avail of all of the improvements listed below.
 
+ifdef::html[]
+
+[.stripes-none,cols="1,10",frame=none,grid=none,options="noheader",width="50%"]
+|===
+| image:pdf_icon.png[width=32px]
+| link:./images/MSActivator_Release_Notes_2.6.pdf[download as PDF,window=_blank]
+|===
+
+endif::[]
+
 == Manager Features
 
 === BPM 
@@ -26,7 +36,7 @@ By default, the aggregation time is set to 10 seconds, but this can now be reduc
 
 Change UBI_SMS_CHECK_ALERT_PERIOD to 2 (or another higher value)
 
-You will then need to restart the msa_alarm container(s) for this configuration change to take affect:
+You will then need to restart the msa_alarm container(s) for this configuration change to take effect:
 
 docker container restart $(docker ps -q -f name=msa_alarm)
 
@@ -66,7 +76,7 @@ image:2.6_license_status.png[]
 
 === Enhanced Help Global Setting
 
-{product_name} variables in the global "Settings" section have been reviewed to make sure that each variable description is as clear as possible, including any additional steps that may be required for each variable to take affect.
+{product_name} variables in the global "Settings" section have been reviewed to make sure that each variable description is as clear as possible, including any additional steps that may be required for each variable to take effect.
 
 === Upgrade Script
 
