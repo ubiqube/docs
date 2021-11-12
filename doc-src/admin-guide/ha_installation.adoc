@@ -262,6 +262,12 @@ docker service update --force devmsaha_msa_api
 docker service update --force devmsaha_msa_sms
 ----
 
+=== Fix swarm route
+
+In order to fix routes on swarm, after installation, upgrades or restart:
+
+`$ ./scripts/swarm-fix-all-nodes.sh`
+
 == Backup
 === How to backup the swarm environment:
 
