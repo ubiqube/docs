@@ -138,7 +138,7 @@ Let's say that you are running {product_name} version {revnumber-prev}, to upgra
  * MSA-10567 - [Adapter] asset events are not indexed in ES
  * MSA-10613 - [API] unable to delete MS / possible NPE when deleting a Managed Entity
  * MSA-10779 - [Managed Entity] duplicating a ME to a different vendor/model is not working
- * MSA-10698 - [Microservice] call to READ with sms fails with resolve_template_internal: template var:_READ_d41d8cd98f00b204e9800998ecf8427e empty or not found
+ * MSA-10698 - [Microservice] call to READ with sms fails with resolve_template_internal: template var:\_READ_d41d8cd98f00b204e9800998ecf8427e empty or not found
  * MSA-10631 - [Microservice] missing space (or separator) when variable name is too long
  * MSA-10713 - [Microservice] API creates <operation> instead of <output> for READ/LIST xml
  * MSA-10726 - [Microservice] Vertical border + breaking alignment with table headers
