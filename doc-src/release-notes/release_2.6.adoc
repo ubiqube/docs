@@ -122,6 +122,98 @@ Let's say that you are running {product_name} version {revnumber-prev}, to upgra
 
 == Specific technical fixes and feature details
 
+=== 2.6.2 Patch
+
+==== Features
+
+ * MSA-10710 - [Adapter] Add restore conf to the new Adapter for Cisco IOS XR routers
+ * MSA-10682 - [Microservice]new APIs to synchronize objects asynchronously
+ * MSA-10687 - [Microservice] UI/API update XML Microservice parser to support multiple XPath of Microservice
+ * MSA-10692 - [Microservice] READ/LIST feature with editor and result viewer
+ * MSA-10721 - [Microservice] Sorting for Microservice instances
+ * MSA-10752 - [Microservice] PHP Smarty upgrade version 3.1.30 to 3.1.40
+
+==== Bug fixes
+
+ * MSA-10567 - [Adapter] asset events are not indexed in ES
+ * MSA-10613 - [API] unable to delete MS / possible NPE when deleting a Managed Entity
+ * MSA-10779 - [Managed Entity] duplicating a ME to a different vendor/model is not working
+ * MSA-10698 - [Microservice] call to READ with sms fails with resolve_template_internal: template var:_READ_d41d8cd98f00b204e9800998ecf8427e empty or not found
+ * MSA-10631 - [Microservice] missing space (or separator) when variable name is too long
+ * MSA-10713 - [Microservice] API creates <operation> instead of <output> for READ/LIST xml
+ * MSA-10726 - [Microservice] Vertical border + breaking alignment with table headers
+ * MSA-10839 - [Microservice] Microservices associated to DS are always listed in alphabetical order
+ * MSA-10729 - [Microservice] indented post-import causes space being removed from foreach
+ * MSA-10840 - [Microservice] Smarty function "sortby" is using a deprecated PHP function "split"
+ * MSA-10835 - [Workflow] Service Instance not displayed when Service Display Name is not default service_id
+ * MSA-10782 - [Security] Log4j patch
+
+=== 2.6.1 Patch
+
+==== Features
+
+
+* MSA-10264 - [Settings] Review Description and Help of MSA Vars
+* MSA-10265 - [Python SDK] Create methods to manage repository
+* MSA-10323 - [Framework] Ensure HEALTHCHECK instructions have been added to alarm Container
+* MSA-10370 - [General] Light/Dark mode switch
+* MSA-10406 - [Workflow] Review mandatory parameters for schedule API
+* MSA-10411 - [BPM] Possibility to rename BPM
+* MSA-10471 - [Microservice] API for File type variable
+* MSA-10484 - [Adapters] Build a new DA for Cisco routers that run IOS XR firmware version
+* MSA-10493 - [Framework] Light version of quickstart
+* MSA-10509 - [Security] Update node to current LTS
+* MSA-10510 - [Security] Update React
+* MSA-10511 - [Managed Entity] Create new ME based on existing ME
+* MSA-10512 - [Permission Profile] Review permissions
+* MSA-10523 - [Workflow] Filter with category
+* MSA-10524 - [BPM]Display Activity_xxx in the UI
+* MSA-10584 - [Microservice] Set pagination and filtering for MS Console
+* MSA-10585 - [General] Replace some components to Light mode adapted
+* MSA-10619 - [Microservice] user should be able to resize the microservice console view
+* MSA-10638 - [Microservice] Pagination for Microservice instances
+* MSA-10639 - [Microservice] Filtering Microservice instances
+* MSA-10651 - [Microservice] Add bigger row per page
+* MSA-10680 - [Microservice] CoreEngine update XML Microservice parser to support multiple XPath of Microservice
+
+
+==== Bug fixes
+
+
+* MSA-10333 - [Admin* the administrator count is not updated
+* MSA-9814 - [Assurance] Type of default graph is static
+* MSA-10549 - [Assurance] Don't add * to query_string of alert, it prevents query of sentences with separators
+* MSA-10479 - [Dashboard] correct WF view, when a subtenant is selected
+* MSA-10377 - [Git] Keep token when editing / pulling repository
+* MSA-8335 - [Managed entities] changing rows per page count resets the search filter
+* MSA-10472 - [Microservice] Cannot create MS with the same name
+* MSA-10463 - [Settings] Update regexp + test case for some msa vars
+* MSA-10403 - [Topology] Topology unable to load with hundred of MEs
+* MSA-10478 - [Topology] refresh causes loss of topology
+* MSA-10266 - [Workflow] MS list for MS Ref variable has delays after typing
+* MSA-10491 - [Microservice/Workflow] overlaps issue during variable creation
+* MSA-10497 - [BPM] APIs dont work when subtenant's external reference is not in <TENANT_PREFIX>A<SUBTENANT_ID> format
+* MSA-10501 - [Microservice] attach Microservice to Deployment Setting doesn't work
+* MSA-10514 - [Workflow/BPM] Cannot detach from Subtenant level
+* MSA-10515 - [Microservice] How to select Device Adapter is not consistent
+* MSA-10521 - [Dashboard] When trying to set Dashboard with "Dashboard Settings", workflows of other subtenant/tenant is listed
+* MSA-10522 - [API] BPM create API : shedule is generating an instance also in GUI instance tab
+* MSA-10558 - [Managed Entities] Cisco enable password field is not is the correct form area when creating/editing ME
+* MSA-10559 - [Managed Entities] During activation, the provision stages don't show the error message if one of the step fails
+* MSA-10576 - [License] loading a licence with an expired expiration date shows an error like “certificate expired on 20211020000000GMT+00:00”
+* MSA-10578 - [Upgrade] If merge conflict detected in upgrade, only way is to rerun with force option
+* MSA-10579 - [Workflow] Module description is incorrect for Conf Backup / Customer
+* MSA-10587 - [BPM] Show errors from API on create
+* MSA-10617 - [Microservice] data in config UI is not properly aligned with table headers
+* MSA-10632 - [Microservice] in IMPORT parser, order between 1 level array and 2 level array can cause parser issue
+* MSA-10636 - [Microservice] use of Multiple Microservice Identifier Extractor not working
+* MSA-10637 - [Microservice] use of mregexp inside an array is not working
+* MSA-10642 - [Monitoring] Graph fail to load due to device external reference at ME level
+* MSA-10646 - [Microservice] display name of a variable is not completely visible in edit screen
+* MSA-10647 - [Microservice] microservice instance editor closes for any change happening in a field
+
+
+
 === 2.6.0 GA
 
 ==== Features
