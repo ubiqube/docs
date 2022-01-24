@@ -7,16 +7,17 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 |===
 |Version | Link
 
-| 2.5.2 (latest) |  https://ubiqube.com/wp-content/docs/2.5.2
-| 2.5.1  |  https://ubiqube.com/wp-content/docs/2.5.1
-| 2.5.0 GA |  https://ubiqube.com/wp-content/docs/2.5.0
-| 2.4.1 |  https://ubiqube.com/wp-content/docs/2.4.1
+| 2.6.0 GA  |  https://ubiqube.com/wp-content/docs/2.6.0
+| 2.5.2     |  https://ubiqube.com/wp-content/docs/2.5.2
+| 2.5.1     |  https://ubiqube.com/wp-content/docs/2.5.1
+| 2.5.0     |  https://ubiqube.com/wp-content/docs/2.5.0
+| 2.4.1     |  https://ubiqube.com/wp-content/docs/2.4.1
 | 2.4.0 GA  |  https://ubiqube.com/wp-content/docs/2.4.0
-| 2.3.1 |  https://ubiqube.com/wp-content/docs/2.3.1
-| 2.3.0 GA |  https://ubiqube.com/wp-content/docs/2.3.0
-| 2.2.0 GA |  https://ubiqube.com/wp-content/docs/2.2.0
-| 17.8 |  link:https://ubiqube.com/wp-content/docs/17.8/user-guide[https://ubiqube.com/wp-content/docs/17.8]
-| 17.7 |  link:https://ubiqube.com/wp-content/docs/17.7/user-guide[https://ubiqube.com/wp-content/docs/17.7]
+| 2.3.1     |  https://ubiqube.com/wp-content/docs/2.3.1
+| 2.3.0 GA  |  https://ubiqube.com/wp-content/docs/2.3.0
+| 2.2.0 GA  |  https://ubiqube.com/wp-content/docs/2.2.0
+| 17.8      |  link:https://ubiqube.com/wp-content/docs/17.8/user-guide[https://ubiqube.com/wp-content/docs/17.8]
+| 17.7      |  link:https://ubiqube.com/wp-content/docs/17.7/user-guide[https://ubiqube.com/wp-content/docs/17.7]
 |===
 
 == Differences between version 17.x and the {product_name-version} latest release ?

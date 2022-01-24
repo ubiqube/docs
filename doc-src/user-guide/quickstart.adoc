@@ -109,11 +109,12 @@ The custom configuration below may not be needed depending on your host computer
 In a production environment, these custom configuration may be mandatory to allow your setup to support a higher workload.
 
 ==== Docker for Linux (or Linux VM)
-
+execute as root
 ----
-sudo sysctl -w vm.max_map_count=262144
+sysctl -w vm.max_map_count=262144
+touch /etc/sysctl.d/50-msa.conf
 echo 'vm.max_map_count = 262144' > /etc/sysctl.d/50-msa.conf
-sudo sysctl -p /etc/sysctl.d/50-msa.conf
+sysctl -p /etc/sysctl.d/50-msa.conf
 ----
 
 ==== Docker for Mac
@@ -162,7 +163,7 @@ NOTE: The architecture of the mini lab is detailed in the architecture overview 
 [#step{counter:step}]
 === Step {step}: install the trial license 
 
-On link:https://ubiqube.com/free-trial/[ubiqube.com,window=_blank], fill the form to receive a trial license by email.
+On link:https://ubiqube.com/quickstart-installation/[ubiqube.com/quickstart-installation,window=_blank], fill the form to receive a trial license by email.
 
 Open link:https://localhost/[window=_blank] and connect with username `ncroot` and password `ubiqube`.
 
@@ -270,7 +271,7 @@ To install a tagged version, you can checkout the tag and go to the install step
 
 For example, the CLI command below will checkout the quickstart for the release {revnumber}.
 
-`git clone -b {revnumber} --depth 1 https://github.com/ubiqube/quickstart.git`
+`git clone -b {revnumber} https://github.com/ubiqube/quickstart.git`
 
 The releases and tags are available link:https://github.com/ubiqube/quickstart/releases[here]
 
