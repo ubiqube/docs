@@ -212,8 +212,6 @@ Let's say that you are running {product_name} version {revnumber-prev}, to upgra
 * MSA-10646 - [Microservice] display name of a variable is not completely visible in edit screen
 * MSA-10647 - [Microservice] microservice instance editor closes for any change happening in a field
 
-
-
 === 2.6.0 GA
 
 ==== Features
