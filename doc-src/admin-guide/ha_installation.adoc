@@ -133,6 +133,10 @@ sudo mkdir -p /mnt/NASVolume/msa_bulkfiles  \
 /mnt/NASVolume/msa_entities  \
 /mnt/NASVolume/msa_ai_ml_db  \
 /mnt/NASVolume/msa_dev  \
+/mnt/NASVolume/mano_db  \
+/mnt/NASVolume/mano_vnf  \
+/mnt/NASVolume/mano_nfvo  \
+/mnt/NASVolume/msa_dev  \
 /mnt/NASVolume/msa_repository  \
 /mnt/NASVolume/rrd_repository  \
 /mnt/NASVolume/msa_api_logs  \
