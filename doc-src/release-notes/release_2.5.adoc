@@ -172,13 +172,15 @@ Starting from version 2.2.0, the quickstart provides an upgrade script `upgrade.
 
 Let's say that you are running {product_name} version {revnumber-prev}, to upgrade to the version {revnumber}, you need to follow these steps:
 
-1. `cd quickstart`
-2. `git checkout master`
-3. `git fetch --unshallow`
-4. `git pull`
-5. `./scripts/install.sh`
+. `cd quickstart`
+. `git config remote.origin.fetch "+refs/heads/\*:refs/remotes/origin/*"` 
+. `git checkout master`
+. `git fetch --unshallow`
+. `git pull`
+. `./scripts/install.sh`
 
-=== only from 2.4.x or earlier
+
+==== Only from 2.4.x or earlier
 
 1. `docker-compose exec msa_front /bin/sh -c 'chown -R nginx:nginx /etc/ssl'`
 
