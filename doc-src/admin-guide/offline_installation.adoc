@@ -1,0 +1,74 @@
+
+= Offline Installation Guide
+ifndef::imagesdir[:imagesdir: images]
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+This guide explains how to install the {$product_name} in an environment that doesn't have access to internet.
+
+== Overview
+
+The standard installation of the {$product_name} requires an internet access to 
+
+- clone the Quickstart repository from Github
+- pull the Docker images from DockerHub
+- clone the libraries (Workflows, Microservices, Adapters) from Github
+
+In some cases, you may have to install the {$product_name} in an offline environnement which means that you can't rely on the access to Github or DockerHub.
+
+In order to workaround this, there are a few steps that you have to follow to install the {$product_name}.
+
+== Quickstart installation
+
+The Quickstart is a project that {$company_name} maintains on Github.
+
+You will have to install the Quickstart in you local environment by downloading the Github repository, copying it to the offline host (the VM that will run the {$product_name}) and unzipping it.
+
+== Libraries installation
+
+From what I understood, you are already able to install the MSA in the environment without any Internet connection. 
+
+I assume that you used docker save/load to dump the MSA Docker images to tarballs and load them into your lab
+
+ 
+
+Then you still have to install the libraries into your MSA.
+
+By default, the libraries are installed by this script which clones the Github repositories for Adapters, Microservices, Workflow and Python SDK. It also installs the ETSI MANO libraries and the Quickstart repository.
+
+ 
+
+The git clone which is done here could be replaced by manually copying a tarball of the github repositories and unziping the file in the correct path in the container msa_dev.
+
+ 
+
+To get the zip file, you can go the Github repo you want to install (for example https://github.com/openmsa/Adapters) and use "Download Zip"
+
+ 
+
+image.png
+
+ 
+
+For the adapter, you can upload this zip file to msa_dev container and unzip it under /opt/devops
+
+ 
+
+This part of the installation script should give you all the path where to unzip your zipped files (everything is in the container msa_dev)
+
+ 
+
+Adapters => /opt/devops/OpenMSA_Adapters
+
+Microservices => /opt/fmc_repository/OpenMSA_MS
+
+Workflows => /opt/fmc_repository/OpenMSA_WF
+
+Py SDK => /tmp/python_sdk
+
+ 
+
+For the Py SDK, you'll have to execute this in msa_dev
+
+ 
+
+For the other files, make sure that you change the Linux user to ncuser (don't forget the hidden files .meta_*)
