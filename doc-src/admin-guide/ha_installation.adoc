@@ -2,7 +2,7 @@
 ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-The {product_name} provides support for high avalability, based on "Docker Engine Swarm" mode.
+The {product_name} provides support for high availability, based on "Docker Engine Swarm" mode.
 
 ifeval::["{format}"" == "html"]
 video::AtC4KmQim_A[youtube,width=600px,height=360] 
@@ -10,7 +10,7 @@ endif::[]
 
 == Overview
 
-The {product_name} provides support for high avalability, based on "Docker Engine Swarm" mode.
+The {product_name} provides support for high availability, based on "Docker Engine Swarm" mode.
 
 image:ha_containers.png[overall architecture,width=700px]
 
