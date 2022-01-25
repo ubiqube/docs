@@ -1,1 +1,6 @@
+= Offline Installation and Configuration
+ifndef::imagesdir[:imagesdir: images]
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+The offline installation and configuration guide will show you how to install, configure and activate the {product_name}.
 
