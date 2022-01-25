@@ -190,7 +190,7 @@ In order to ease your discovery of {product_name}, we are providing a script tha
 
 To create the mini lab environment, run the CLI command from where you have cloned the quickstart Github project:
 
-`docker-compose exec msa_dev /usr/bin/create_mini_lab.sh`
+`docker-compose exec msa-dev /usr/bin/create_mini_lab.sh`
 
 [#step{counter:step}]
 === Step {step}: start using the {product_name}
