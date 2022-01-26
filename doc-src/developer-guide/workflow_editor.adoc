@@ -246,7 +246,7 @@ You can also monitor the logs of a process with the CLI command below
 
 .Monitor the process execution logs
 ----
-docker-compose exec msa_api tail -F  /opt/wildfly/logs/processLog/process-XX.log
+docker-compose exec msa-api tail -F  /opt/wildfly/logs/processLog/process-XX.log
 ----
 
 .Log a message in PHP

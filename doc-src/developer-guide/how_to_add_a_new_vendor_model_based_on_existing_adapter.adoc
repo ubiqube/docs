@@ -8,7 +8,7 @@ The REST Generic adapter will let you quickly integrate a new managed entity wit
 
 Doing so will allow you to filter the microservice and deployment setting based on the vendor name and model name. 
 
-This will ease the organisation of your integration files.
+This will ease the organization of your integration files.
 
 == How to do it
 
@@ -16,9 +16,9 @@ Let's assume that you want to add  vendorA / modelX to the list of supported ven
 
 You will need an access to the {product_name} CLI of the msa_dev container.
 
-```
-$ sudo docker-compose exec msa_dev bash
-```
+----
+sudo docker-compose exec msa-dev bash
+----
 
 === Create the new model in the Adapters github repository
 
@@ -28,18 +28,18 @@ We are going to create the new model in this local repository. Using a git repos
 
 Go to the repository
 
-```
-# cd /opt/devops/OpenMSA_Adapters/
-```
+----
+cd /opt/devops/OpenMSA_Adapters/
+----
 
 Go to the adapter definition directory and create a new folder for your new vendor model. 
-By convention the folder name should be defined as <vendor name>_<model name>
+By convention the folder name should be defined as <vendor name>\_<model name>
 
-```
-# cd adapters
-# mkdir -p vendorA_modelX/conf
-# cd vendorA_modelX/conf
-```
+----
+cd adapters
+mkdir -p vendorA_modelX/conf
+cd vendorA_modelX/conf
+----
 
 You need to create 2 configuration files to define this new model:
 
@@ -76,17 +76,17 @@ path        rest_generic            <3>
 
 === Update file owner
 
-```
+----
 chown -R ncuser.ncuser /opt/devops/OpenMSA_Adapters/adapters/vendorA_modelX
-```
+----
 
 === Install and activate the new vendor
 
 Execute the CLI commands below
 
 ----
-# cd /opt/devops/OpenMSA_Adapters/bin
-# ./da_installer install /opt/devops/OpenMSA_Adapters/adapters/vendorA_modelX
+cd /opt/devops/OpenMSA_Adapters/bin
+./da_installer install /opt/devops/OpenMSA_Adapters/adapters/vendorA_modelX
 ----
 
 Output:
@@ -103,7 +103,7 @@ Exit the docker container msa_dev and restart the API container and the CoreEngi
 
 ----
 $ sudo docker-compose restart msa_api
-$ sudo docker-compose exec msa_sms /etc/init.d/ubi-sms restart
+$ sudo docker-compose exec msa-sms /etc/init.d/ubi-sms restart
 ----
 
 === Verify your new vendor is available
@@ -119,7 +119,7 @@ During the activation, you can monitor the logs of smsd module from the Core Eng
 Login to the CoreEngine container  
 
 ----
-$docker-compose exec msa_sms bash
+$docker-compose exec msa-sms bash
 ----
 
 Set the configuration log level to DEBUG

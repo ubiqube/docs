@@ -232,7 +232,7 @@ Starting from it's version 2.2.0, the quickstart project provides a script `upgr
 Let's say that you are running the version {revnumber-prev}, to upgrade to the version {revnumber} you need to follow these steps:
 
 . `cd quickstart`
-. `git config remote.origin.fetch "+refs/heads/\*:refs/remotes/origin/*"`
+. `git config remote.origin.fetch "+refs/heads/\*:refs/remotes/origin/\*"`
 . `git checkout master`
 . `git pull`
 . `./scripts/install.sh`
@@ -256,7 +256,7 @@ this script installs and upgrades a {product_name}
 If your original version is 2.1, plz refer to upgrade script first provided with 2.2.0 GA. In any cases, perform those commands
 
 . `cd quickstart`
-. `git config remote.origin.fetch "+refs/heads/\*:refs/remotes/origin/*"`
+. `git config remote.origin.fetch "+refs/heads/\*:refs/remotes/origin/\*"`
 . `git checkout master`
 . `git pull`
 . `./scripts/install_win.sh`
@@ -284,7 +284,7 @@ This script is designed to populate the libraries for a fresh install or to upda
 
 [source, shell]
 ----
-$ docker-compose exec msa_dev /usr/bin/install_libraries.sh --help
+$ docker-compose exec msa-dev /usr/bin/install_libraries.sh --help
 usage: install_libraries.sh all|ms|wf|da|py|mano|quickstart [--lic] [-y]
 
 this script installs some libraries available @github.com/openmsa

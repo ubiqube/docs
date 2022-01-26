@@ -196,7 +196,7 @@ Under /opt/fmc_repository/Process, there is a symlink to the git repo: `Topology
 
 [source, shell]
 ----
-$ docker-compose exec msa_dev bash
+$ docker-compose exec msa-dev bash
 [root@36f98599746a /]# cd /opt/fmc_repository/OpenMSA_WF/
 [root@36f98599746a OpenMSA_WF]# git remote -v
 origin	https://github.com/openmsa/Workflows.git (fetch)
@@ -301,7 +301,7 @@ The workflow instance ID (39 in the screenshot below) is the one displayed at th
 
 image:topology_custom_exec_1.png[width=800px]
 
-You can monitor the log for debugging purpose: `docker-compose exec msa_api  tail -F /opt/jboss/wildfly/standalone/log/process-39.log` (where 39 is the workflow instance ID
+You can monitor the log for debugging purpose: `docker-compose exec msa-api  tail -F /opt/jboss/wildfly/standalone/log/process-39.log` (where 39 is the workflow instance ID
 
 Use the custom functions `logToFile` and `debug_dump` to output your debugging information in the log file.
 

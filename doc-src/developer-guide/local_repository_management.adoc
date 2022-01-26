@@ -40,7 +40,7 @@ The {product_name} will clone the repository under one of the locations describe
 
 The CLI commands extracts below are taken from the container msa_dev, under /opt/fmc_repository/CommandDefinition/microservices.
 
-TIP: To connect to the container msa_dev, use `docker-compose exec msa_dev bash` from where the docker-compose file is located.
+TIP: To connect to the container msa_dev, use `docker-compose exec msa-dev bash` from where the docker-compose file is located.
 
 .initial state: no git repository configured
 [source, shell]

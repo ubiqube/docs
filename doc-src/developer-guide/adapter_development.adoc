@@ -19,7 +19,7 @@ The libraries are implemented in PHP which makes extension and customization eas
 The Adapters are packaged in the {product_name}, in the "msa_dev" container, under `/opt/devops/Openmsa_Adapters` which is a git repository configured to point to github.
 
 ```
-$ sudo docker-compose exec msa_dev bash
+$ sudo docker-compose exec msa-dev bash
 ```
 
 Many other Adapters are available on the https://github.com/openmsa/Adapters[Adapters Github repository,window=_blank]
@@ -32,7 +32,7 @@ The REST Generic adapter, available on link:https://github.com/openmsa/Adaptors/
 
 This adapter is included in the mini lab.
 
-I you need to create a new vendor based on the REST Generic adapter, you can follow this guide: link:how_to_add_a_new_vendor_with_rest_adaptor{outfilesuffix}[How to add a new REST based vendor]
+If you need to create a new vendor based on the REST Generic adapter, you can follow this guide: link:how_to_add_a_new_vendor_with_rest_adaptor{outfilesuffix}[How to add a new REST based vendor]
 
 == Adapter SDK
 
