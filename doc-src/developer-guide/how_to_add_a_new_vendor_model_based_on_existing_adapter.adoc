@@ -1,10 +1,17 @@
-= How to create a new vendor based on the REST Generic existing adapter
+= How to create a new vendor based on an existing adapter
 ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == Overview
 
-The REST Generic adapter will let you quickly integrate a new managed entity with a REST based management API but you may want to also have the vendor name and entity model both appear in the list of supported vendor instead of REST/Generic.
+Some adapters were designed to be generic in order to have little dependencies with a specific vendor.
+
+This is the case for the REST and the Linux adapters.
+
+- The REST Generic adapter will let you quickly integrate a new managed entity with a REST based management API 
+- The Linux Generic can be used for any Linux distribution or vendor model based on Linux
+
+but you may want to also have the vendor name and entity model both appear in the list of supported vendor instead of REST/Generic or Linux/Generic.
 
 Doing so will allow you to filter the microservice and deployment setting based on the vendor name and model name. 
 
@@ -19,6 +26,8 @@ You will need an access to the {product_name} CLI of the msa_dev container.
 ----
 sudo docker-compose exec msa-dev bash
 ----
+
+NOTE: use `msa_dev` for {product_name} version 2.6 or older.
 
 === Create the new model in the Adapters github repository
 
@@ -43,8 +52,8 @@ cd vendorA_modelX/conf
 
 You need to create 2 configuration files to define this new model:
 
-- device.properties : define the adapter properties for UI display (msa_ui)
-- sms_router.conf : define the adapter config for the Core Engine (msa_sms)
+- device.properties : define the adapter properties for UI display (msa-ui)
+- sms_router.conf : define the adapter config for the Core Engine (msa-sms)
 
 NOTE: In the github repository you will find lot of link:https://github.com/openmsa/Adapters/blob/master/doc/[doc] and example about these files 
 
@@ -72,7 +81,7 @@ path        rest_generic            <3>
 ----
 <1> any comment you find useful.
 <2> format: <manufacturer.id>:<model.id>.
-<3> the path to an existing adapter code (example: rest_generic).
+<3> the path to an existing adapter code (example: rest_generic or linux_generics).
 
 === Update file owner
 
@@ -82,28 +91,11 @@ chown -R ncuser.ncuser /opt/devops/OpenMSA_Adapters/adapters/vendorA_modelX
 
 === Install and activate the new vendor
 
-Execute the CLI commands below
+Exit the docker container msa-dev and restart the API container and the CoreEngine service
 
 ----
-cd /opt/devops/OpenMSA_Adapters/bin
-./da_installer install /opt/devops/OpenMSA_Adapters/adapters/vendorA_modelX
-----
-
-Output:
-
-----
-update manufacturers_properties config for vendor VendorA [18082020].
->> update  /opt/ubi-jentreprise/generated/conf/device/custom/manufacturers.properties with 18082020,"VendorA",1
-update models_properties config for vendor VendorA [18082020], model ModelX [18082020].
->> update  /opt/ubi-jentreprise/generated/conf/device/custom/models.properties with 18082020,18082020,"ModelX","H",0,0,1,0,0,1,0,1,0,1,0,U,0,0
-update core_engine config for vendor VendorA [18082020], model ModelX [18082020], path vendorA_modelX.
-----
-
-Exit the docker container msa_dev and restart the API container and the CoreEngine service
-
-----
-$ sudo docker-compose restart msa_api
-$ sudo docker-compose exec msa-sms /etc/init.d/ubi-sms restart
+$ sudo docker-compose restart msa-api
+$ sudo docker-compose restart msa-sms
 ----
 
 === Verify your new vendor is available
@@ -114,7 +106,7 @@ image:adapter_new_vendorA_modelX.png[width=1000px]
 
 First, verify that you can create a new managed entity and try to activate it.
 
-During the activation, you can monitor the logs of smsd module from the Core Engine and check that the adapter code being used is the one from rest_generic (or any other you may have set in sms_router.conf above)
+During the activation, you can monitor the logs of smsd daemon from the Core Engine and check that the adapter code being used is the one from rest_generic (or any other you may have set in sms_router.conf above)
 
 Login to the CoreEngine container  
 
