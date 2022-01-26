@@ -24,10 +24,8 @@ Let's assume that you want to add  vendorA / modelX to the list of supported ven
 You will need an access to the {product_name} CLI of the msa_dev container.
 
 ----
-sudo docker-compose exec msa-dev bash
+sudo docker-compose exec msa_dev bash
 ----
-
-NOTE: use `msa_dev` for {product_name} version 2.6 or older.
 
 === Create the new model in the Adapters github repository
 
@@ -52,8 +50,8 @@ cd vendorA_modelX/conf
 
 You need to create 2 configuration files to define this new model:
 
-- device.properties : define the adapter properties for UI display (msa-ui)
-- sms_router.conf : define the adapter config for the Core Engine (msa-sms)
+- device.properties : define the adapter properties for UI display (msa_ui)
+- sms_router.conf : define the adapter config for the Core Engine (msa_sms)
 
 NOTE: In the github repository you will find lot of link:https://github.com/openmsa/Adapters/blob/master/doc/[doc] and example about these files 
 
@@ -91,11 +89,11 @@ chown -R ncuser.ncuser /opt/devops/OpenMSA_Adapters/adapters/vendorA_modelX
 
 === Install and activate the new vendor
 
-Exit the docker container msa-dev and restart the API container and the CoreEngine service
+Exit the docker container msa_dev and restart the API container and the CoreEngine service
 
 ----
-$ sudo docker-compose restart msa-api
-$ sudo docker-compose restart msa-sms
+$ sudo docker-compose restart msa_api
+$ sudo docker-compose restart msa_sms
 ----
 
 === Verify your new vendor is available
@@ -111,7 +109,7 @@ During the activation, you can monitor the logs of smsd daemon from the Core Eng
 Login to the CoreEngine container  
 
 ----
-$docker-compose exec msa-sms bash
+$docker-compose exec msa_sms bash
 ----
 
 Set the configuration log level to DEBUG
