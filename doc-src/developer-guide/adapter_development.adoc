@@ -53,7 +53,7 @@ It is possible to implement new custom commands that will be callable from the {
 
 === Status polling
 
-The {product_name}'s SecEngine daemon in charge of polling the device for availability is `polld`.
+The {product_name} CoreEngine daemon in charge of polling the device for availability is `polld`.
 
 ----
 Logs: /opt/sms/logs/sms_polld.log
@@ -85,7 +85,7 @@ return SMS_OK;
 ----
 
 === Asset management
-The {product_name}'s SecEngine can connect on a managed entity to fetch a set of predefined assets such as:
+The {product_name} CoreEngine can connect on a managed entity to fetch a set of predefined assets such as:
 
 . Firmware
 . Memory
@@ -251,7 +251,7 @@ public function sendexpectone($origin, $cmd, $prompt='lire dans sdctx', $delay =
 Example (in Fortinet adaptor)
 [source, php]
 ----
-$buffer = sendexpectone(__FILE__ . ':' . __LINE__, $this, 'get system status', '#');
+$buffer = sendexpectone(__FILE__ . ':' . __LINE__, $this, 'get system status', '\#');
 ----
 
 ==== The class GenericConnection 
@@ -311,7 +311,7 @@ Base operation for implementing:
 
 Implemented by `do_update_conf.php`
 
-Can be called directly by the {product_name}'s SecEngine API, it is an asynchronous process, its status can be monitored.
+Can be called directly by the {product_name} CoreEngine API, it is an asynchronous process, its status can be monitored.
 
 === Managed entity activation (initial provisioning)
 The {product_name} executes a set of steps to activate the device.
@@ -363,8 +363,8 @@ It is necessary to provide a unified GUI to build the import but with devices th
 
 NOTE: for REST based managed entities, the IMPORT is usually generic since the response is formatted in XML or JSON (cf. link:https://github.com/openmsa/Adaptors/tree/master/adapters/rest_generic[rest_generic])
 
-== The {product_name}'s SecEngine API
-As well as named verbs, these commands can be used to interact directly with the {product_name}'s SecEngine from the CLI.
+== The {product_name} CoreEngine API
+As well as named verbs, these commands can be used to interact directly with the {product_name} CoreEngine from the CLI.
 
 The can also be executed with a REST API:
 
@@ -422,7 +422,7 @@ tstsms JSGETSDCONF UBI132
 This will retrieve the running configuration of the device and use the implementation of `do_get_running_conf.php`.
 
 === Operation status feedback
-During operations done by the {product_name}'s SecEngine, especially the asynchronous ones, the status of the ongoing operation can be set for the user by the PHP scripts. How to update the status depends on the operation.
+During operations done by the {product_name} CoreEngine, especially the asynchronous ones, the status of the ongoing operation can be set for the user by the PHP scripts. How to update the status depends on the operation.
 
 .Initial Provisioning
 Set provisioning status for a provisioning stage.
