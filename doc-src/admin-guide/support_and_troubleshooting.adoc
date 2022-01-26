@@ -167,7 +167,7 @@ Report any error from the logs:
 
 [source]
 ----
-docker-compose exec msa_api tail -F  /opt/jboss/wildfly/standalone/log/server.log
+docker-compose exec msa-api tail -F  /opt/jboss/wildfly/standalone/log/server.log
 ----
 
 If the API server is not responding or if you can't login after a few minutes, run the command below to restart the API server and monitor the logs:
@@ -190,13 +190,13 @@ The above steps should resolve common reasons why the {product_name} is not func
 ==== CoreEngine nor starting or restart fails
 If the CoreEngine doesn't (re)start properly, for instance when running
 ----
-docker-compose exec msa_sms restart
+docker-compose exec msa-sms restart
 ----
 
 you can check the CoreEngine configuration logs:
 
 ----
-docker-compose exec msa_sms cat /opt/sms/logs/configure.log
+docker-compose exec msa-sms cat /opt/sms/logs/configure.log
 ----
 
 ==== How do I enable debug logs on the CoreEngine ?
@@ -207,7 +207,7 @@ If you are designing a Microservice or simply operating the {product_name}, you 
 Run the CLI command below to tail the logs
 [source]
 ----
-$ sudo docker-compose exec msa_sms tail -F /opt/sms/logs/smsd.log
+$ sudo docker-compose exec msa-sms tail -F /opt/sms/logs/smsd.log
 ----  
 
 By default, DEBUG logs are not enabled.
@@ -215,7 +215,7 @@ By default, DEBUG logs are not enabled.
 To enable the DEBUG mode, you need to connect to the container 'api' and execute the CLI command `tstsms SETLOGLEVEL 255 255`
 [source]
 ----
-$ sudo docker-compose exec msa_sms bash  
+$ sudo docker-compose exec msa-sms bash  
 [root@msa /]# tstsms SETLOGLEVEL 255 255
 OK
 [root@msa /]# 
@@ -247,25 +247,25 @@ docker container restart $(docker ps -q -f name=msa_alarm); $(docker ps -q -f na
 ===== Monitor the configuration logs
 [source,bash]
 ----
-docker-compose exec msa_sms tail -F /opt/sms/logs/smsd.log
+docker-compose exec msa-sms tail -F /opt/sms/logs/smsd.log
 ----
 
 ===== Monitor the SNMP monitoring logs
 [source,bash]
 ----
-docker-compose exec msa_sms tail -F /opt/sms/logs/sms_polld.log
+docker-compose exec msa-sms tail -F /opt/sms/logs/sms_polld.log
 ----
 
 ===== Monitor the syslog parser logs
 [source,bash]
 ----
-docker-compose exec msa_sms tail -F /opt/sms/logs/sms_parserd.log
+docker-compose exec msa-sms tail -F /opt/sms/logs/sms_parserd.log
 ----
 
 ===== Monitor the syslog collecting logs
 [source,bash]
 ----
-docker-compose exec msa_sms tail -F /opt/sms/logs/sms_syslogd.log
+docker-compose exec msa-sms tail -F /opt/sms/logs/sms_syslogd.log
 ----
 
 IMPORTANT: for monitoring, syslogs, parser, enabling the DEBUG logs may result in a huge volumes of logs so you need to use this carefully. To revert the configuration use the CLI cmd above with 1 instead of 15.
@@ -276,5 +276,5 @@ The Alarm module logs are available on the msa_alarm container in the directory 
 
 [source,bash]
 ----
-docker-compose exec msa_alarm tail -F /opt/alarm/logs/sms_alarmd.log
+docker-compose exec msa-alarm tail -F /opt/alarm/logs/sms_alarmd.log
 ----
