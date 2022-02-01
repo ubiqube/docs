@@ -136,6 +136,7 @@ sudo mkdir -p /mnt/NASVolume/msa_bulkfiles  \
 /mnt/NASVolume/msa_repository  \
 /mnt/NASVolume/rrd_repository  \
 /mnt/NASVolume/msa_api_logs  \
+/mnt/NASVolume/msa_api_keystore \
 /mnt/NASVolume/msa_svn  \
 /mnt/NASVolume/msa_sms_logs  \
 /mnt/NASVolume/msa_sms_logs/ping  \
@@ -159,6 +160,7 @@ chown 1000.1000 /mnt/NASVolume/msa_bulkfiles \
 /mnt/NASVolume/rrd_repository \
 /mnt/NASVolume/msa_bulkfiles \
 /mnt/NASVolume/msa_api_logs \
+/mnt/NASVolume/msa_api_keystore \
 /mnt/NASVolume/msa_svn \
 /mnt/NASVolume/msa_sms_logs
 ----
