@@ -16,7 +16,6 @@ For creating the user all the necessary LDAP attribute provided in the configura
 When creating Manager,  this attribute should have only one tenant.
 This attribute should be co-related with attribute for UBI_LDAP_ATTRIBUTE_MSA_ROLE.
 . It is recommended to delete all the existing internal users if exist,  when enabling LDAP, because as there will be chances of username duplication. which will create some discrepancies
-. Disabling LDAP once Enabled is not recommended, in this case, the users from LDAP are still valid to login.
 . ncroot - super admin login authentication will always be internal {product_name} DB Authentication.
 
 == Settings
@@ -179,7 +178,7 @@ POST https://localhost/ubi-api-rest/system-admin/v1/msa_vars
   {
     "name": "UBI_LDAP_ATTRIBUTE_USER_NAME",
     "comment": "enable ldap authentication",
-    "value": "username"
+    "value": "uid"
   },
   {
     "name": "UBI_LDAP_ATTRIBUTE_MSA_ROLE",
