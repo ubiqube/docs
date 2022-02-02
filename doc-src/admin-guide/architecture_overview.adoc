@@ -163,6 +163,9 @@ volumes:
   msa_api_logs:     <7>
   msa_sms_logs:     <8>
   msa_bud_logs:     <9>
+  mano_db:          <10>
+  mano_nfvo:        <11>
+  mano_vnf:         <12>
 ----
 <1> volume shared by the containers `msa_api` and `msa_dev` to store the adapter configuration for the UI
 <2> database volume used by the container `db`
@@ -173,3 +176,6 @@ volumes:
 <7> volume for storing API and workflow process logs
 <8> volume for storing CoreEngine logs
 <9> volume for storing Batchupdated daemon logs
+<10> volume for mano database
+<11> volume to persist nfvo files
+<12> volume to persist vnf viles

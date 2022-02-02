@@ -19,7 +19,7 @@ asciidoctorj {
 
 dependencies {
   asciidoctorGems 'rubygems:rouge:3.26.0'
-  asciidoctorGems 'rubygems:asciidoctor-diagram:2.1.0'
+  asciidoctorGems 'rubygems:asciidoctor-diagram:2.2.1'
 }
 
 asciidoctor.doFirst {
