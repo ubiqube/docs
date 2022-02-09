@@ -1,0 +1,89 @@
+= Version 2.6
+ifndef::imagesdir[:imagesdir: images]
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+
+ifdef::html[]
+
+[.stripes-none,cols="1,10",frame=none,grid=none,options="noheader",width="50%"]
+|===
+| image:pdf_icon.png[width=32px]
+| link:./images/MSActivator_Release_Notes_2.6.pdf[download as PDF,window=_blank]
+|===
+
+endif::[]
+
+== Manager Features
+
+== Developer Features
+
+== Admin and Settings
+
+== CoreEngine
+
+No changes have been made to the core engine from previous versions of the product. This allows consistency from branches of OpenMSA (community version), found on GitHub: https://github.com/openmsa
+
+== New Libraries Available
+
+=== Adapters
+
+== Upgrading
+
+Instructions to upgrade available in the quickstart guide.
+
+=== Specific instructions for upgrading from {revnumber-prev} to {revnumber}
+
+Starting from version 2.2.0, the quickstart provides an upgrade script `upgrade.sh` for taking care of possible actions such as recreating some volume, executing some database specific updates,...
+
+Let's say that you are running {product_name} version {revnumber-prev}, to upgrade to the version {revnumber}, you need to follow these steps:
+
+1. `cd quickstart`
+2. `git checkout master`
+3. `git fetch --unshallow`
+4. `git pull`
+5. `./scripts/install.sh`
+
+=== only from 2.4.x or earlier
+
+1. `docker-compose exec msa_front /bin/sh -c 'chown -R nginx:nginx /etc/ssl'`
+
+== Specific technical fixes and feature details
+
+=== 2.7.0 GA
+
+==== Features
+
+* MSA-10615 - [Release] automate tag update in quickstart YML when we release
+* MSA-10663 - [Security] Node JS upgrade
+
+==== Bug fixes
+
+* MSA-10552 - [Admin] tenant deletion using API not removing association of WF with subtenant (now non-existing)
+* MSA-10567 - [Adapter] asset events are not indexed in Elasticsearch
+* MSA-10659 - [API] connection leak due to MS pagination (MSA-10638)
+* MSA-10571 - [Backend] implement restart of API container if exited
+* MSA-10177 - [Dashboard] instance Link from History
+* MSA-9893 - [HA] Syslogs are not redirected from front to CoreEngine (msa-sms) containers
+* MSA-10519 - [HA] HA-migration failed on (Restore Device Interface settings for first uni)
+* MSA-10599 - [Managed Entity] total count is not filtered
+* MSA-10616 - [Managed Entity] wrong value of total number of Managed Entity after filtering by Tenant
+* MSA-10627 - [Managed Entity] create Managed Entity screen throws error when you switching between sections
+* MSA-10641 - [Managed Entity] filtering Adapter does not work with particular term
+* MSA-10661 - [Managed Entity] ellipsis Variable value
+* MSA-10662 - [Microservice] get repositories with List of String and store it in XML
+* MSA-10679 - [Microservice] variables for created Microservice are always displayed as "Readonly variables"
+* MSA-10727 - [Microservice] missing "add array variable extractor set" within an array after saving the Microservice
+* MSA-10854 - [Microservice] UI - Bad JSON during create of a new instance of Microservice
+* MSA-10855 - [Microservice] unable to edit Import in MS created with XML type
+* MSA-10865 - [Microservice] bad JSON during delete of an instance of Microservice
+* MSA-10992 - [Microservice] unauthorized Microservice reference
+* MSA-10703 - [Permissions] intent based : issues with "create" right
+* MSA-10700 - [Python SDK] msa_sdk doc is showing wrong class variable for task execution status
+* MSA-10926 - [Quickstart] conflict during upgrade if another stack is deployed on HA
+* MSA-10561 - [Security] new vulnerabilities detected in 2.6 GA
+* MSA-10782 - [Security] Log4j patch
+* MSA-10199 - [UI] orchestration parameters are not full context.
+* MSA-10458 - [Workflow] return subtenant and service id for history
+* MSA-10490 - [Workflow] select Box shows empty default value but the value is actually set
+* MSA-10508 - [Workflow] reusing existing task causes issues when the task is deleted
+* MSA-10664 - [Workflow] disable deleting Task when it's linked to the other tasks
