@@ -5,18 +5,16 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 This document describes the LDAP Integration in {product_name}.  
 
-
- 
 == Overview
 
-. When LDAP is enabled,  user Creation  in {product_name} is disabled. 
+. When LDAP is enabled,  user creation  in {product_name} is disabled. 
 . When provided credentials authenticated successfully by LDAP server, and there is no corresponding user in {product_name}, it  will be created automatically at the time of login.   
 For creating the user all the necessary LDAP attribute provided in the configuration should be available and should have valid values, if it is not the case, the user creation will fail, login will not be successful. 
 . When creating admin,  LDAP attribute provided for UBI_LDAP_ATTRIBUTE_MSA_TENANT value can have one or more tenant prefix separated by comma.  
 When creating Manager,  this attribute should have only one tenant.
 This attribute should be co-related with attribute for UBI_LDAP_ATTRIBUTE_MSA_ROLE.
 . It is recommended to delete all the existing internal users if exist,  when enabling LDAP, because as there will be chances of username duplication. which will create some discrepancies
-. ncroot - super admin login authentication will always be internal {product_name} DB Authentication.
+. ncroot - super admin login authentication will always be a internal {product_name} DB Authentication.
 
 == Settings
 

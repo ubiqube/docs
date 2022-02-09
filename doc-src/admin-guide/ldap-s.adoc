@@ -3,12 +3,12 @@
 ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-This document describes the procedure to follow in MSA to have secure ldap communication with LDAP server. 
+This document describes the procedure to follow in {product_name} to have secure ldap communication with LDAP server. 
 
 == Changes to do on Client Side(API Container)
 
 
-1) Update these variables in the MSA configuration
+1) Update these variables in the {product_name} configuration
 ----
 POST https://localhost/ubi-api-rest/system-admin/v1/msa_vars
   
