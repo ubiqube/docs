@@ -20,17 +20,17 @@ The {product_name} is an Integrated Automation Platform, which consists of sever
 === Containers description
 image:container_list.png[width=800px]
 
-==== msa_front
+==== msa-front
 Runs NGINX and act as the front end to route the requests to the internal containers.
 
 The NGINX server is configured with a self-signed SSL certificate to allow HTTPS connection. 
 When you access the UI for the first time after the installation of the product, your browser will problably show a warning message and you will have to accept this certificate to access the web UI.
 
-==== msa_ui 
+==== msa-ui 
 
 Runs the {product_name} web based interface. On a local setup you can connect to the UI with https://localhost. 
 
-==== msa_api
+==== msa-api
 
 Runs the REST API on a Wildfly based container.
 
@@ -40,7 +40,7 @@ msa_api also runs all the business logic such as the scheduling of the workflow 
 
 This container is also taking care of the token based authentication
 
-==== msa_sms
+==== msa-sms
 
 Runs the CoreEngine for configuration and assurance of the managed entities.
 
@@ -48,19 +48,19 @@ This container is in charge of getting the microservice request for configuratio
 
 This container will also poll the device for assurance KPI and collect/analyse the syslogs sent by the managed entities.
 
-==== msa_monitoring
+==== msa-monitoring
 
 In charge of monitoring the managed entities either based on default KPI (ICMP and/or SNMP) or on custom monitoring profile as well as executing the asset management scripts provided by the adapters.
 
-==== msa_alarm
+==== msa-alarm
 
 Takes care of event detection to create alarm and execute workflow or send email notifications
 
-==== msa_bud 
+==== msa-bud 
 
 Takes care of cross table data synchronization and consistency in the database
 
-==== msa_dev
+==== msa-dev
 
 A linux based container used for storing the assets shared across containers such as microservices, workflows, adapters code,...
 
@@ -70,7 +70,7 @@ This is the container you need to use for your own devOps related work such as i
 
 Runs the  BPM engine
 
-==== msa_es and msa_cerebro
+==== msa-es and msa-cerebro
 
 Run the Elasticsearh container and Cerebro which is a web based management tool for Elasticsearch.
 
