@@ -70,6 +70,10 @@ This is the container you need to use for your own devOps related work such as i
 
 Runs the  BPM engine
 
+==== msa-ai-ml
+
+Run the AI engine
+
 ==== msa-es and msa-cerebro
 
 Run the Elasticsearh container and Cerebro which is a web based management tool for Elasticsearch.
