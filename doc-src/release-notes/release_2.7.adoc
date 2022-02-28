@@ -1,23 +1,64 @@
-= Version 2.6
+= Version 2.7
 ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 
-ifdef::html[]
+The focus of the 2.7.0 release of {product_name} is on enhancements to our MANO support, improved security, and new libraries for inventory management.
 
-[.stripes-none,cols="1,10",frame=none,grid=none,options="noheader",width="50%"]
-|===
-| image:pdf_icon.png[width=32px]
-| link:./images/MSActivator_Release_Notes_2.6.pdf[download as PDF,window=_blank]
-|===
+In addition to these enhancements, we have made a number of quality fixes and user experience improvements, please see below the details.
 
-endif::[]
+We hope you enjoy this release, and encourage you to upgrade to avail of all of the improvements listed below.
 
-== Manager Features
+== LDAP Secured
 
-== Developer Features
+-  already integrated with LDAP for user auth, but now with version 2.7 we have added support for LDAP Secured (LDAPS), specifically we tested against the OpenLDAP provider but other providers should also work fine.
 
-== Admin and Settings
+== MANO backend support
+
+We have made a number of improvements to the MANO support in  -  for version 2.7, including the following enhancements:
+
+- Migrating our MANO database to PostgreSQL for improved storage performance.
+- Integration of our MANO module into our overall HA architecture in  - , to enable MANO support to scale with the rest of MSAactivator in HA deployments.
+- Implementation of the Network Service (NS) instance scale-out and scale-in operations.
+- Implementation of the enhance NS LCM workflow to address scale-out and scale-in of NS instance.
+- Implementation of the enhance NS LCM workflow to address automatic scaling of NS instance.
+- Implementation of the enhance NS LCM workflow to create the VNF LCM service instance of each VNF instance part of the NS.
+- Implementation of the enhance VNF LCM workflow to address automatic scaling of VNF instance.
+- Implementation of the enhance VNF LCM workflow to implement Software upgrade for VNFs.
+
+== Category for topology
+
+In the Topology view of {product_name}, the user can now assign arbitrary categories to their managed entities, and then filter the list of managed entities displayed on the Topology based on the selected, user-defined, category. 
+This gives the end user a lot of flexibility in determining how their topologies are displayed.
+
+New text area for WF variable
+
+We have added a new larger text area to the workflow console, to enable the workflow designer to display larger bodies of text in the console more comfortably, including the ability to display the content of a text file in that new text area.
+
+== Security - Log4J fix
+
+Due to the recent widely-publicized security vulnerabilities in the Log4J library, we have reviewed all of our usage of Log4J in {product_name} 2.7 and upgraded those dependencies to the latest version of Log4J.
+
+== OST upgrades
+
+In addition to the Log4J upgrades mentioned previously we have also made a number of open source library upgrades including:
+
+- Added support for SNMPv3 to our SMS service.
+- Upgraded ODBC versions used on SMS to postgresql12-odbc and unixODBC-2.3.9.
+- Added zip and unzip to SMS to support the integration of Cisco FTD.
+
+== Resource Inventory Management
+
+In {product_name} 2.7, we have added microservices and workflows for managing resources inventory, which give the capability for the user to create and control the use of any type of resources for any use case.
+
+Available microservices and workflows concern 5 items :
+
+- IP Pool Management
+- VLAN Pool Management
+- vPC (virtual port channel) Pool Management
+- VNI (VxLAN Identifier) Pool Management
+- ASN (Autonomous Systems Numbers) Pool Management
+
 
 == CoreEngine
 
