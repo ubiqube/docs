@@ -128,3 +128,23 @@ Let's say that you are running {product_name} version {revnumber-prev}, to upgra
 * MSA-10490 - [Workflow] select Box shows empty default value but the value is actually set
 * MSA-10508 - [Workflow] reusing existing task causes issues when the task is deleted
 * MSA-10664 - [Workflow] disable deleting Task when it's linked to the other tasks
+
+=== 2.7.1 Patch
+
+==== Features
+
+* MSA-9811 - [SDK] Update msa_sdk_doc using actions for changes on python sdk
+* MSA-11031 - [Free Trial] user registration not working (v2.4.1)
+
+==== Bug fixes
+
+* MSA-6681 - [Alarm Management] check alert issue for automatic operation triggering
+* MSA-10850 - [Alarm] Only one alarm is created if several events are managed at the same time by check_alert
+* MSA-11012 - [Assurance] Support for SNMP v3 for SNMP based monitoring in MSA2.X
+* MSA-11024 - [HA] /opt/sms/logs directory is shared by all sms/alarm containers and the log files are overwritten
+* MSA-10712 - [Log Analytic] Logs details not available on small window
+* MSA-10843 - [Microservice] Smarty function "sortby" is using a deprecated PHP function "create_function"
+* MSA-10711 - [Repository] Not possible to remove an MS because still attached...to a ghost subtenant/DS
+* MSA-11002 - [UX] WF user form layout not balanced when using array of variables with multiple keys
+* MSA-11029 - [Workflow] perfomance issue when loading several instances with large context
+* MSA-11033 - [Workflow][UI] perfomance issue when loading several instances with large context
