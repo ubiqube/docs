@@ -162,6 +162,9 @@ Use the smarty function 'sortby_typed' to sort arrays by key.
 <1> sort by the key 'acl_seq_number' and convert the key values to integer
 
 ==== Variable assignment
+
+===== Local variable
+
 Under certain circumstances it is necessary to use a local temporary variable to generate the output.
 ----
 {assign}
@@ -186,6 +189,20 @@ end mailbox
 {/foreach}
 !
 ----
+
+===== Microservice variable
+
+It is also possible to assign a value to a microservice variable. 
+
+This is only possible in the post-import section.
+
+----
+{if isset($params.syslogd_server_ip) && $params.syslogd_server_ip != ""}
+      {assign_object_variable var="_syslogd_server_ip" value="{$params.syslogd_server_ip}"}  <1>
+{/if}
+----
+<1> assign the value of $params.syslogd_server_ip to $params._syslogd_server_ip
+
 === Common problems
 
 The templates are extracted from the XML definition files, and evaluated with Smarty. Some behavior must be known prior to developing templates.
