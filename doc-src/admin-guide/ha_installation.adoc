@@ -235,13 +235,13 @@ NOTE: To disable the swarm mode `$ sudo docker swarm leave --force`
 
 === Starting MSA from the "Docker Swarm Manager" machine
 
-The quickstart project provides a link:https://github.com/ubiqube/quickstart/blob/master/docker-compose.simple.ha.yml[sample docker compose] file to help you getting started with {product_name} on Docker Swarm
+The quickstart project provides a link:https://github.com/ubiqube/quickstart/blob/master/docker-compose.ha.yml[sample docker compose] file to help you getting started with {product_name} on Docker Swarm
 
 
 1. `$ sudo docker node ls` to check if all nodes are connected and active. 
 2. `$ git clone https://github.com/ubiqube/quickstart.git` clone git repository.
 3. `$ cd ./quickstart/` to change directory.
-4. `$ sudo docker stack deploy --with-registry-auth -c docker-compose.simple.ha.yml msa` to run installation.
+4. `$ sudo docker stack deploy --with-registry-auth -c docker-compose.ha.yml msa` to run installation.
 5. Verify:
 ```
 $ sudo docker stack services msa
