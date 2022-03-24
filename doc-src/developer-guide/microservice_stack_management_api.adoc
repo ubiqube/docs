@@ -7,9 +7,11 @@ This documentation describes the order stack management API.
 
 This REST API is also used internally by the {product_name} portal.
 
-Each API is described below with the REST call, a textual description, the parameters and a section 'detail'. The 'detail' section provides some insight into the inner workings of the API. For instance, what is the database table impacted or what SecEngine API command is being used.
+Each API is described below with the REST call, a textual description, the parameters and a section 'detail'. 
+The 'detail' section provides some insight into the inner workings of the API. 
+For instance, what is the database table impacted or what CoreEngine API command is being used.
 
-The detail on the SecEngine API command is very important because it is directly related to the adaptor implementation for a specific vendor.
+The detail on the CoreEngine API command is very important because it is directly related to the adaptor implementation for a specific vendor.
 
 == API description
 

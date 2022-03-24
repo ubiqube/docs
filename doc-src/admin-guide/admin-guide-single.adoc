@@ -51,6 +51,8 @@ include::{includedir}/support_and_troubleshooting.adoc[]
 
 include::{includedir}/ldap.adoc[]
 
+include::{includedir}/ldap-s.adoc[]
+
 include::{includedir}/elasticsearch.adoc[]
 
 

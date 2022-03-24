@@ -1,0 +1,57 @@
+= LDAP-S
+:doctype: book 
+ifndef::imagesdir[:imagesdir: images]
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+This document describes the procedure to follow in {product_name} to have secure ldap communication with LDAP server. 
+
+== Changes to do on Client Side(API Container)
+
+
+1) Update these variables in the {product_name} configuration
+----
+POST https://localhost/ubi-api-rest/system-admin/v1/msa_vars
+  
+[
+  {
+    "name": "UBI_LDAP_ENABLE",
+    "comment": "enable ldap authentication",
+    "value": "1"
+  },
+  {
+    "name": "UBI_LDAPS_ENABLE",
+    "comment": "enable ldap authentication",
+    "value": "1"
+  },
+  {
+    "name": "UBI_LDAP_SERVER",
+    "comment": "enable ldap authentication",
+    "value": "ldap.ubiqube.com"
+  }
+]
+----
+Note : UBI_LDAP_SERVER should be the fqdn used to generate the server certificate
+
+2) Copy the CA certificate from ldap server  to  /etc/pki/jentreprise/  directory in api container
+
+3) Import the CA certificate to jvm keystore
+----
+keytool -importcert -alias startssl -keystore /etc/pki/jentreprise/cacerts -storepass XXXXXX -storetype pkcs12 -noprompt -file /etc/pki/jentreprise/ca.cert.pem
+----
+
+4) Update /etc/hosts file in API container
+
+update with
+
+ldap_ip ldap.ubiqube.com
+
+in order to avoid loosing the host entry on every restart or upgrade of the image, we can add this below extra_host in docker compose that add the entry in hosts file.
+----
+extra_hosts:
+    - "ldap.ubiqube.com:172.18.0.5"
+----
+
+5) Restart the API Container
+----
+sudo docker-compose restart msa_api
+----

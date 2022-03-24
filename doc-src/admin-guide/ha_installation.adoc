@@ -134,12 +134,13 @@ sudo mkdir -p /mnt/NASVolume/msa_bulkfiles  \
 /mnt/NASVolume/msa_ai_ml_db  \
 /mnt/NASVolume/msa_dev  \
 /mnt/NASVolume/mano_db  \
-/mnt/NASVolume/mano_vnf  \
+/mnt/NASVolume/mano_vnfm  \
 /mnt/NASVolume/mano_nfvo  \
 /mnt/NASVolume/msa_dev  \
 /mnt/NASVolume/msa_repository  \
 /mnt/NASVolume/rrd_repository  \
 /mnt/NASVolume/msa_api_logs  \
+/mnt/NASVolume/msa_api_keystore \
 /mnt/NASVolume/msa_svn  \
 /mnt/NASVolume/msa_sms_logs  \
 /mnt/NASVolume/msa_sms_logs/ping  \
@@ -150,6 +151,7 @@ sudo mkdir -p /mnt/NASVolume/msa_bulkfiles  \
 Set owner to the PostgreSQL service
 ----
 chown 70 /mnt/NASVolume/msa_db
+chown 70 /mnt/NASVolume/mano_db
 ----
 
 Set owner the other services
@@ -160,9 +162,13 @@ chown 1000.1000 /mnt/NASVolume/msa_bulkfiles \
 /mnt/NASVolume/msa_entities \
 /mnt/NASVolume/msa_ai_ml_db \
 /mnt/NASVolume/msa_repository \
+/mnt/NASVolume/mano_db  \
+/mnt/NASVolume/mano_vnfm  \
+/mnt/NASVolume/mano_nfvo  \
 /mnt/NASVolume/rrd_repository \
 /mnt/NASVolume/msa_bulkfiles \
 /mnt/NASVolume/msa_api_logs \
+/mnt/NASVolume/msa_api_keystore \
 /mnt/NASVolume/msa_svn \
 /mnt/NASVolume/msa_sms_logs
 ----
@@ -229,13 +235,13 @@ NOTE: To disable the swarm mode `$ sudo docker swarm leave --force`
 
 === Starting MSA from the "Docker Swarm Manager" machine
 
-The quickstart project provides a link:https://github.com/ubiqube/quickstart/blob/master/docker-compose.simple.ha.yml[sample docker compose] file to help you getting started with {product_name} on Docker Swarm
+The quickstart project provides a link:https://github.com/ubiqube/quickstart/blob/master/docker-compose.ha.yml[sample docker compose] file to help you getting started with {product_name} on Docker Swarm
 
 
 1. `$ sudo docker node ls` to check if all nodes are connected and active. 
 2. `$ git clone https://github.com/ubiqube/quickstart.git` clone git repository.
 3. `$ cd ./quickstart/` to change directory.
-4. `$ sudo docker stack deploy --with-registry-auth -c docker-compose.simple.ha.yml msa` to run installation.
+4. `$ sudo docker stack deploy --with-registry-auth -c docker-compose.ha.yml msa` to run installation.
 5. Verify:
 ```
 $ sudo docker stack services msa

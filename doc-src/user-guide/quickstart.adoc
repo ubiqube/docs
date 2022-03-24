@@ -65,13 +65,13 @@ Proxy settings need to be specified in  dockers configuration file  to download 
 However, along with that, the "no proxy" option should be specified for the internal container to containers communication. 
 Falling to do so will result in  all the traffic routed  the proxy.
 
-The easiest way to do that is to edit the file docker-compose.yml and add the following to the services `msa_dev`, `msa_api` and `msa_sms`:
+The easiest way to do that is to edit the file docker-compose.yml and add the following to the services `msa-dev`, `msa-api` and `msa-sms`:
 
 ----
 environment:
     http_proxy: "<PROXY URL>"
     https_proxy: "<PROXY URL>"
-    no_proxy: "localhost,127.0.0.1,linux_me_2,linux_me,msa_cerebro,camunda,msa_alarm,db,msa_sms,quickstart_msa_ai_ml_1,msa_ui,msa_dev,msa_bud,msa_kibana,msa_es,msa_front,msa_api"
+    no_proxy: "localhost,127.0.0.1,linux_me_2,linux_me,msa-cerebro,camunda,msa-alarm,db,msa-sms,msa-ai-ml,msa-ui,msa-dev,msa-bud,msa-kibana,msa-es,msa-front,msa-api"
 ----
 
 If your proxy also rewrites the SSL certificates you will face errors such as `fatal: unable to access 'https://github.com/openmsa/Workflows.git/': Peer's Certificate issuer is not recognized.` when installing the {product_name}. 
@@ -190,7 +190,7 @@ In order to ease your discovery of {product_name}, we are providing a script tha
 
 To create the mini lab environment, run the CLI command from where you have cloned the quickstart Github project:
 
-`docker-compose exec msa_dev /usr/bin/create_mini_lab.sh`
+`docker-compose exec msa-dev /usr/bin/create_mini_lab.sh`
 
 [#step{counter:step}]
 === Step {step}: start using the {product_name}
@@ -249,6 +249,7 @@ this script installs and upgrades a {product_name}
 -f: force the upgrade without asking for user confirmation. Permit also to reapply the upgrade and to auto merge files from OpenMSA
 -c: cleanup unused images after upgrade to save disk space. This option clean all unused images, not only MSA quickstart ones
 -ro: remove containers for services not defined in the compose file. Use it if some containers use same network as MSA
+-mano : apply mano containers
 ----
 
 ==== Note for Windows user

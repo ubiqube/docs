@@ -26,3 +26,4 @@ The installation and configuration guide will show you how to install, configure
 * link:support_and_troubleshooting{outfilesuffix}[Support and troubleshooting,window=_blank]
 * link:opensource_technologies{outfilesuffix}[Open Source technologies,window=_blank]
 * link:ldap{outfilesuffix}[LDAP,window=_blank]
+* link:ldap-s{outfilesuffix}[Secured LDAP,window=_blank]

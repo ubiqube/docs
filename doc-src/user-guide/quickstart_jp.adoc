@@ -90,7 +90,7 @@ sudo tee -a /etc/sysctl.conf <<< "vm.max_map_count=262144"
 quickstartをGitリポジトリからクローン、及びDockerHubから{product_name}をダウンロード・実行します。 
 任意のディレクトリ上で、以下のコマンドを実行してください。
 
-1. `git clone -b master --depth 1 https://github.com/ubiqube/quickstart.git`
+1. `git clone https://github.com/ubiqube/quickstart.git`
 2. `cd quickstart`
 3. `./script/install.sh`
 
@@ -127,7 +127,7 @@ NOTE: Dockerが動作している環境でブラウザを起動している場�
 
 以下のコマンドにてスクリプトを実行してください。
 
-`$ docker-compose exec msa_dev /usr/bin/create_mini_lab.sh`
+`$ docker-compose exec msa-dev /usr/bin/create_mini_lab.sh`
 
 [#step{counter:step}]
 === Step {step}: {product_name}の起動

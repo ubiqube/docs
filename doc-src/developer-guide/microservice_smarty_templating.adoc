@@ -144,10 +144,27 @@ The syntax for {foreach} is much easier than {section}, but as a trade off it ca
 telephony-service
 {foreach from=$params.tftp_load item=tftp}
  load {$tftp.phone_type} {$tftp.firmware_file_name}
+
 {/foreach}
 ----
 
+===== Sorting 
+
+Use the smarty function 'sortby_typed' to sort arrays by key.
+
+'sortby_typed' take a list of comma separated keys with a type (int or string) for each one.
+
+----
+{foreach $params.access_list|@sortby_typed:"acl_seq_number:int" as $acl}    <1>
+    {$acl.acl_seq_number} {$acl.acl_rule} {$acl.acl_protocol} {$acl.acl_src} 
+{/foreach}
+----
+<1> sort by the key 'acl_seq_number' and convert the key values to integer
+
 ==== Variable assignment
+
+===== Local variable
+
 Under certain circumstances it is necessary to use a local temporary variable to generate the output.
 ----
 {assign}
@@ -172,6 +189,20 @@ end mailbox
 {/foreach}
 !
 ----
+
+===== Microservice variable
+
+It is also possible to assign a value to a microservice variable. 
+
+This is only possible in the post-import section.
+
+----
+{if isset($params.syslogd_server_ip) && $params.syslogd_server_ip != ""}
+      {assign_object_variable var="_syslogd_server_ip" value="{$params.syslogd_server_ip}"}  <1>
+{/if}
+----
+<1> assign the value of $params.syslogd_server_ip to $params._syslogd_server_ip
+
 === Common problems
 
 The templates are extracted from the XML definition files, and evaluated with Smarty. Some behavior must be known prior to developing templates.
