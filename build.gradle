@@ -6,7 +6,7 @@ plugins {
 apply plugin: 'java'
 
 repositories {
-    jcenter()
+    mavenCentral()
     ruby.gems()
 }
 
@@ -69,7 +69,6 @@ asciidoctor {
 }
 
 asciidoctorPdf {
-  dependsOn asciidoctorGemsPrepare
 
   baseDirFollowsSourceFile()
   outputs.upToDateWhen { false }
