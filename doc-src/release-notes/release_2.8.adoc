@@ -3,9 +3,9 @@ ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 
-The focus of the 2.7.0 release of {product_name} is BLA BLA
+The focus of the 2.8.0 release of {product_name} is mainly about improving the performances and reliability. 
 
-
+The Microservice console has also been improved to provide a better user experience by allowing bulk changes of the microservice instances as well as additional design features. Advanced parameters have also been improved for a better support of the variables.
 
 
 == CoreEngine
