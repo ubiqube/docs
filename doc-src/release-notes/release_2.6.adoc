@@ -72,7 +72,7 @@ The "Unique Value" type has been added to make sure that, for each instance of a
 
 When a license is about to expire, the super admin user ncroot will get notified in the web portal and will also receive an email. This notification will happen when the expiration date is in less that 7 days than the current date.
 
-image:2.6_license_status.png[]
+image:2.6_license_status.png[width=700px]
 
 === Enhanced Help Global Setting
 
@@ -95,10 +95,6 @@ Several parts of the {product_name} have been upgraded to enhance the performanc
 == CoreEngine
 
 No changes have been made to the core engine from previous versions of the product. This allows consistency from branches of OpenMSA (community version), found on GitHub: https://github.com/openmsa
-
-== New Libraries Available
-
-=== Adapters
 
 == Upgrading
 

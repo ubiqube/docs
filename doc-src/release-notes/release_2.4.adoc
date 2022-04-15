@@ -126,10 +126,6 @@ image:2.4_WF_task_gen_from_MS_border.png[width=700px]
 
 No changes have been made to the core engine from previous versions of the product. This allows consistency from branches of OpenMSA (community version), found on GitHub: https://github.com/openmsa
 
-== New Libraries Available
-
-=== Adapters
-
 == Upgrading
 
 Instructions to upgrade available in the quickstart guide.
