@@ -74,6 +74,8 @@ A button "Edit" or "Remove" will be displayed if the UPDATE or the DELETE functi
 Select a Microservice on the left menu and select a Microservice instance to read. 
 A button "Read" will be displayed if the READ function is implemented for the Microservice.
 
+image:microservice_read.png[width=800px]
+
 The read should be implemented by a Smarty template to generate a text file based on the microservice variable read in the database.
 
 NOTE: read more about this in the developer guide.

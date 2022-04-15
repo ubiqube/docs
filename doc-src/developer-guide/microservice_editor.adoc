@@ -99,7 +99,6 @@ This functions is implemented either in PHP Smarty template language for CLI mic
 
 When this function is implemented, a button "+ Add Row" will appear in the tab "Configure" of the managed entity that uses this microservice.
 
-
 ==== Update
 
 The Update function takes care of updating an existing service in the managed entity.
@@ -120,7 +119,7 @@ The Import is made of 3 parts:
 - the configuration parser, implemented with a set of regular expressions or XPath expressions. Only the Microservice identifier extractor is mandatory.
 - a set of optional post import operations implemented in Smarty language (https://www.smarty.net/).
 
-////
+
 === Constraint
 
 In most cases, the constraint definition is straight forward when defining a microservice variable. 
@@ -151,8 +150,8 @@ The custom constraint is implemented as a smarty template:
 ----
 
 image:microservice_console_constraint.png[width=800px]
-//// 
-==== Execution flow
+
+==== Create, Update or Delete Execution flow
 
 The diagram below shows the flow of execution when one of the Create, Update or Delete function is executed by the REST API (directly or from the UI)
 
