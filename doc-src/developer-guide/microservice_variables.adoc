@@ -99,11 +99,45 @@ NOTE: not supported yet
 
 Reference an other microservice from a microservice and use the referenced microservice variable value. 
 
-By default the value used from the referenced is the object_id.
+By default the value used from the referenced microservice is the object_id.
 
 The referenced microservice should be configured in the "Advanced" section:
 
-- "Microservice Reference": enter the name of the microservice to reference. The form field will provide the list of possible microservice to choose from based on the the input value. It is possible to select more that one microservice in order to import values from different part of the configuration imported by the referenced microservice.
+"Microservice Reference" field: enter the name of the microservice to reference. The form field will provide the list of possible microservice to choose from based on the the input value. It is possible to select more that one microservice in order to import values from different part of the configuration imported by the referenced microservice.
+
+===== Filtering with remote and local variables
+
+You can optionnaly controle the values that matches between the local microservice and the remote one (the one which is referenced).
+
+This works as filtering: it searches the value for local variable and shows the rows which match to the remote.
+
+This is useful if the values to be selected from the referenced microservices have to match the local variables.
+
+Example:
+
+As an example, let's consider 2 microservices, the first one to configure addresses and the second one to configure group of addresses. The group of addresses will be referencing the addresses.
+
+An address is composed of an IP and a mask and is associated to an interface. A group of addresses will be composed to multiple addresses but the group of address is also associated to an interface.
+
+In this use case, when a group of address is associated to an interface, each addresses selected must be associated to the same interface.
+
+In the screenshot below we can see that "grp1" is associated to interface "port1" and "grp2" is associated to "port2"
+
+image:microservice_ref_var_1.png[width=800px]
+
+The address group microservice variable "Member" is typed as a "Microservice Reference" that points to the address microservice:
+
+image:microservice_ref_var_2.png[width=800px]
+
+In this case, when creating an address group instance, the values available for the variable "$params.members.0.member" will be filtered so that the only one available are the ones with a match between the local variable value and the remote variable value.
+
+If "port1" is selected for the "Associated Interface" then only "addr_port1" will be listed
+
+image:microservice_ref_var_3.png[width=800px]
+
+If not filtering is used (by default):
+
+image:microservice_ref_var_4.png[width=800px]
 
 === Display Name
 
