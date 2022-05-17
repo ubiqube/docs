@@ -129,6 +129,60 @@ except Exception as e:
 
 The function `+command_execute+` is defined in link:https://github.com/openmsa/python-sdk/blob/develop/msa_sdk/order.py[order.py]
 
+=== Call a microservice CREATE on multiple managed entities
+
+[source,python]
+----
+from msa_sdk.variables import Variables
+from msa_sdk.msa_api import MSA_API
+from msa_sdk.order import Order
+from msa_sdk import util
+
+dev_var = Variables()
+dev_var.add('object_id')
+dev_var.add('service')
+dev_var.add('src_ip')
+dev_var.add('src_itf')
+dev_var.add('dst_ip')
+dev_var.add('dst_itf')
+dev_var.add('firewalls.0.id')     <1>
+dev_var = Variables()
+
+context = Variables.task_call(dev_var)
+
+object_id = context['object_id']
+
+micro_service_vars_array = {"object_id": context['object_id'],
+                        	"src_ip": context['src_ip'],
+                        	"src_mask": '255.255.255.255',
+                        	"dst_ip": context['dst_ip'],
+                        	"dst_mask": '255.255.255.255',
+                        	"src_itf": context['src_itf'],
+                        	"dst_itf": context['dst_itf'],
+                        	"action": 'deny',
+                        	"service": context['service']
+                        	}
+
+simple_firewall = {"simple_firewall": {object_id: micro_service_vars_array}}
+
+firewalls = context['firewalls']
+for firewall in firewalls:
+  devicelongid = firewall['id'][-3:]
+  try:
+    order = Order(devicelongid)
+    order.command_execute('CREATE', simple_firewall)
+  except Exception as e:
+    ret = MSA_API.process_content('FAILED', f'CREATE ERROR: {str(e)}', context, True)
+    print(ret)
+
+ret = MSA_API.process_content('ENDED',
+                          	f'IPTABLES RULE INITIALIZED',
+                          	context, True)
+
+print(ret)
+----
+<1> use a variable array typed as a Managed Entity 
+
 === Call a microservice IMPORT function
 
 [source,python]
