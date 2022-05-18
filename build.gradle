@@ -6,7 +6,7 @@ plugins {
 apply plugin: 'java'
 
 repositories {
-    jcenter()
+    mavenCentral()
     ruby.gems()
 }
 
@@ -39,11 +39,11 @@ asciidoctor {
     'ubiqube': 'UBiqube',
     'company_name': 'UBiqube',
     'product_name': 'MSActivator(TM)',
-    'product_name-version': 'MSActivator-2.7.1',
+    'product_name-version': 'MSActivator-2.8.0',
     'openmsa_name': 'OpenMSA(TM)',
-    'revnumber': 'MSA-2.7.1',
-    'versionnumber': '2.7.1',
-    'revnumber-prev': 'MSA-2.7.0',
+    'revnumber': 'MSA-2.8.0',
+    'versionnumber': '2.8.0',
+    'revnumber-prev': 'MSA-2.7.1',
     'allow-uri-read': '',
     'sectlinks': true,
     'html': 'true',
@@ -69,7 +69,6 @@ asciidoctor {
 }
 
 asciidoctorPdf {
-  dependsOn asciidoctorGemsPrepare
 
   baseDirFollowsSourceFile()
   outputs.upToDateWhen { false }
@@ -91,11 +90,11 @@ asciidoctorPdf {
       'ubiqube': 'UBiqube',
       'company_name': 'UBiqube',
       'product_name' : 'MSActivator(TM)',
-      'product_name-version' : 'MSActivator-2.7.1',
+      'product_name-version' : 'MSActivator-2.8.0',
       'openmsa_name' : 'OpenMSA(TM)',
-      'revnumber' : 'MSA-2.7.1',
-      'versionnumber': '2.7.1',
-      'revnumber-prev' : 'MSA-2.7.0',
+      'revnumber' : 'MSA-2.8.0',
+      'versionnumber': '2.8.0',
+      'revnumber-prev' : 'MSA-2.7.1',
       'allow-uri-read' : '',
       'sectlinks' : true,
       'pdf' : 'true',

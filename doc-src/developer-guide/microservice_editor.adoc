@@ -99,6 +99,24 @@ This functions is implemented either in PHP Smarty template language for CLI mic
 
 When this function is implemented, a button "+ Add Row" will appear in the tab "Configure" of the managed entity that uses this microservice.
 
+===== Example
+
+This example is a Samrty template that will take the parameters entered in the user form and generate a configuration.
+
+----
+config router static
+edit {$params.object_id}
+set dst {$params.ip_dest} {$params.mask}
+set gateway {$params.gw}
+set device {$params.interface}
+{if empty($params.comment)}
+unset comment
+{else}
+set comment "{$params.comment}"
+{/if}
+next
+end
+----
 
 ==== Update
 
@@ -107,6 +125,16 @@ The Update function takes care of updating an existing service in the managed en
 ==== Delete
 
 The Delete function takes care of deleting an existing service in the managed entity. 
+
+===== Example
+
+This example generate a conf based on the instance parameters as store in the database.
+
+----
+config router static
+delete "{$routing.$object_id.object_id}"
+end
+----
 
 ==== Import
 
@@ -120,7 +148,43 @@ The Import is made of 3 parts:
 - the configuration parser, implemented with a set of regular expressions or XPath expressions. Only the Microservice identifier extractor is mandatory.
 - a set of optional post import operations implemented in Smarty language (https://www.smarty.net/).
 
-////
+==== Read
+
+The Read function can be implemented to allow the user or the API to generate a text file based on a Smarty template and the microservice instance variables store in the database.
+
+===== Example
+
+This example generate a text based on a template and the microservice instance variables values as stored in the database
+
+----
+config router static
+edit {$routing.$object_id.object_id}
+set dst {$routing.$object_id.ip_dest} {$params.mask}
+set gateway {$routing.$object_id.gw}
+set device {$routing.$object_id.interface}
+{if empty($routing.$object_id.comment)} 
+unset comment
+{else}
+set comment "{$routing.$object_id.comment}"
+{/if}
+next
+end
+----
+
+image:microservice_read.png[width=800px]
+
+Another template could be:
+
+----
+ object_id : "{$routing.$object_id.object_id}"
+ ip_dest : "{$routing.$object_id.ip_dest} "
+ mask : "{$params.mask}"
+ gateway : "{$routing.$object_id.gw}"
+ interface : "{$routing.$object_id.interface}"
+----
+
+image:microservice_read2.png[width=800px]
+
 === Constraint
 
 In most cases, the constraint definition is straight forward when defining a microservice variable. 
@@ -131,10 +195,10 @@ In some cases, though, the constraint is more complex and may depend on a combin
 
 For example, the 5 variables `params.av`, `params.webfilter`, `params.spamfilter`, `params.ips`, and `params.scanport` have the following dependencies:
 
-- If `params.av` is set then `params.scanport` must be set 
-- If `params.webfilter` is set then `params.scanport` must be set 
-- If `params.spamfilter` is set then `params.scanport` must be set 
-- If `params.ips` is set then `params.scanport` is not mandatory
+- if `params.av` is set then `params.scanport` must be set 
+- if `params.webfilter` is set then `params.scanport` must be set 
+- if `params.spamfilter` is set then `params.scanport` must be set 
+- if `params.ips` is set then `params.scanport` is not mandatory
 
 To make things simpler, it is possible to add a custom constraint evaluation to the object definition.
 
@@ -151,8 +215,8 @@ The custom constraint is implemented as a smarty template:
 ----
 
 image:microservice_console_constraint.png[width=800px]
-//// 
-==== Execution flow
+
+==== Create, Update or Delete Execution flow
 
 The diagram below shows the flow of execution when one of the Create, Update or Delete function is executed by the REST API (directly or from the UI)
 

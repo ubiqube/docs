@@ -1,0 +1,146 @@
+= Version 2.8
+ifndef::imagesdir[:imagesdir: images]
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+
+The focus of the 2.8.0 release of {product_name} is mainly about improving the performances and reliability. 
+
+The Microservice console has also been improved to provide a better user experience by allowing bulk changes of the microservice instances as well as additional design features. Advanced parameters have also been improved for a better support of the variables.
+
+== Microservices
+
+=== Duplicate an instance
+
+Now you can select a instance of a microservice and duplicate it, you will see the same screen as "Add Row", but the difference is that the values are pre-filled.
+
+=== Read: generate a custom preview of your configuration
+
+You can now implement the "Read" function of a microservice with a Smarty PHP template and use the new "Read" button to generate a preview of the microservice instance as stored in the database.
+
+image:2.8_microservice_read.png[width=700px]
+
+This can be useful to generate a preview of the configuration to push to the managed entity. 
+
+Just like the other microservice functions such as Create, Update and Delete, the Read is implemented as a template. This gives you the possibility to generate any format like simple key/value, JSON, XML,...
+
+=== Bulk operation
+
+Microservice bulk operations allow you create/update and delete several instance of a microservice. 
+
+image:2.8_microservice_bulk_operation.png[width=700px]
+
+With "Primary Composite Key", the new variable advanced parameter, you can bulk create microservice and specify unique values for the variables.
+
+=== Split view
+
+Use the microservice console horizontal split view to display and work on the instances of 2 microservices.
+
+image:2.8_microservice_split_view.png[width=700px]
+
+== Portal theme
+
+In the local settings, choose the dark or the new light theme.
+
+image:2.8_ui_theme.png[width=700px]
+
+== CoreEngine
+
+No changes have been made to the core engine from previous versions of the product. This allows consistency from branches of {openmsa_name} (community version), found on GitHub: https://github.com/openmsa
+
+== New Libraries Available
+
+=== Adapters
+
+link:https://github.com/openmsa/Adapters/tree/master/adapters/inventory_management[Application/Inventory/Management,window=_blank]: leverage the design and use of microservices locally managing data to the {product_name} database without the of a real device.
+
+link:https://github.com/openmsa/Adapters/blob/master/adapters/cisco_ios_xr[Network/Cisco/IOS-XR]: design microservice and manage the latest version of Cisco IOS-XR.
+
+== Upgrading
+
+Instructions to upgrade available in the quickstart guide.
+
+=== Specific instructions for upgrading from {revnumber-prev} to {revnumber}
+
+The quickstart provides an upgrade script `upgrade.sh` for taking care of possible actions such as recreating some volume, executing some database specific updates,...
+
+In order to upgrade to the latest version, you need to follow these steps:
+
+1. `cd quickstart`
+2. `git checkout master`
+3. `git pull`
+4. `./scripts/install.sh`
+
+== Specific technical fixes and feature details
+
+=== 2.8.1 Patch
+
+==== Features
+
+* MSA-10788 - [Adapter] Adapter for Resource Pool Inventory Management
+* MSA-11202 - [Adapter] Cisco NX via REST API (RESTCONF part)
+* MSA-11256 - [API] Support Lazy Loading for service instance from UI
+* MSA-11219 - [Backend] Increase memory limit of embeded PHP
+* MSA-11255 - [UI]Lazy Loading for Service Instances
+* MSA-10684 - [Microservice] new CoreEngine Verbs to synchronize objects asynchronously
+* MSA-10692 - [Microservice] READ feature with editor and result viewer
+* MSA-11184 - [Microservice] Set a default width for IP address variables
+* MSA-11210 - [Microservice] Need to prevent to create Microservice without object_id
+* MSA-11050 - [Workflow] Cisco NX via REST API (NX-API part)
+
+==== Bug fixes
+
+* MSA-11035 - [Adapter] REST API delete operation bug & success response processing problem
+* MSA-11027 - [API] BPM API Schedule is not working as expected
+* MSA-11421 - [Backend] Unsafe repository issue detected with Git
+* MSA-11105 - [CoreEngine] sms restart doesn't unlock the locked devices
+* MSA-11025 - [HA] The application log directories ares shared by many containers and the log files are overwritten
+* MSA-11157 - [HA] After enabling LDAP, and restart sms/alarm service, logs not received
+* MSA-10874 - [UI] HTTP response status "304" received from front container should not be considered a network issue
+* MSA-11140 - [UI]Composite Variable cannot be hidden if variable type is Password in the task
+* MSA-10683 - [Microservice / Workflows] it is possible to save duplicated variable
+* MSA-10776 - [Microservice] composite var: page redirect to the first page when try to add a behaviour without selecting a Selector
+* MSA-10842 - [Microservice] Composite variable type isn't working for array
+* MSA-11032 - [Microservice] XML Xpath library doesn't support namespaced attributes
+* MSA-11060 - [Microservice] UI freaks out during save if a duplicated variable exist
+* MSA-11095 - [Microservice] function sortby_typed: PHP Warning: uasort() expects parameter 1 to be array, null given
+* MSA-11229 - [Microservices] filters on microservices and MS objects sometimes not working well
+* MSA-11275 - [Microservice] Design automation Bulk update is incorrect
+* MSA-11276 - [Microservice] API/UI change in the way the microservice console displays the values that are stored in the DB
+* MSA-11303 - [Microservice] hide search query when searching for a column
+* MSA-10784 - [Workflow] Screen process Instance status icon freeze issue
+* MSA-11033 - [Workflow][UI] perfomance issue when loading several instances with large context
+* MSA-11099 - [Workflow] a boolean is considered as a string
+* MSA-11136 - [Workflow] Workflow stucks when the size of file increase.
+* MSA-11246 - [Workflow] performance issue when loading the workflow report
+
+=== 2.8.0 GA
+
+==== Features
+
+* MSA-11107 - [DB] Replace PostgreSQL standalone for PostgreSQL cluster
+* MSA-10831 - [CoreEngine] MIB Translation, MIB compiler
+* MSA-10832 - [CoreEngine] MIB Translation,Translation rules creation Workflow
+* MSA-10833 - [CoreEngine] MIB Translation, syslogd configuration generator
+* MSA-10834 - [CoreEngine] MIB Translation, Modify sms_syslogd daemon code
+* MSA-11123 - [Logs] - Elasticsearch with double indexing
+* MSA-10097 - [Microservice] Microservices instance order isn't correct in MSA UI after an "apply configuration" if the Microservice ordering is recalculated during the post import
+* MSA-10707 - [Microservice/Workflow] Enable more advanced parameters
+* MSA-10862 - [Microservice] Data Retention Versatility 2 Bulk operation on Microservice console
+* MSA-10888 - [Microservice] Search and Filter Microservice Object per column
+* MSA-11139 - [Microservice] Microservice Identifier Extractor regex optimisation
+* MSA-10755 - [Workflow] Filter with category 2
+
+==== Bug fixes
+
+* MSA-11104 - [Adapter] connection to IOS XR fails if there is a banner after login to device
+* MSA-11083 - [Adapter] Cisco XR adapter: when conf commit fails is not showing the error details in smsd.log
+* MSA-10828 - [DB] table redone.contact not cleaned
+* MSA-10570 - [Managed Entity] Api does not return the right total number of subtenants in the device
+* MSA-10643 - [Microservice] use of type Microservice Reference for a Composite is not working
+* MSA-10844 - [Microservice] Constraint buffer isn't returned in the UI
+* MSA-11113 - [Microservice] 504 Gateway Timeout on loading large Microservice instance list
+* MSA-11035 - [REST API Adaptor] - delete operation bug & success response processing problem
+* MSA-11013 - [UI] Microservice _order variable should be taking into account on MSA UI side to order properly the Microservice instances
+* MSA-11098 - [Workflow] performance issue when selecting details or History or trying to call an update process
+* MSA-10481 - [Workflow] Executing Workflow process with only Workflow file(.xml) name throwing NPE instead of proper error message
+

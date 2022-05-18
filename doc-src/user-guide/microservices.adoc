@@ -28,12 +28,12 @@ Scripting is not mandatory but simple programming functions, such as conditional
 
 The list  microservices available can be viewed by clicking on the "Infrastructure" link from the left menu.
 
-.List the microservices available
+.list the microservices available
 image:configurations_me_list_admin.png[width=800px]
 
 From this page you can search for a named microservice by using the search field with the magnifier icon.
 
-.Search for microservices in the library
+.search for microservices in the library
 image:configurations_ms_search.png[width=800px]
 
 From this page you can create or edit microservices - which is part of microservice design (cf. section below).
@@ -67,7 +67,18 @@ Use the form to provide the values to use and click "Save" to record the value i
 ==== Update and Delete
 
 Select a Microservice on the left menu and select a Microservice instance to update or delete. 
-A button "Edit" or "Remove" will be displayed if the Update or the Delete function is implemented for the Microservice.
+A button "Edit" or "Remove" will be displayed if the UPDATE or the DELETE function is implemented for the Microservice.
+
+==== Read
+
+Select a Microservice on the left menu and select a Microservice instance to read. 
+A button "Read" will be displayed if the READ function is implemented for the Microservice.
+
+image:microservice_read.png[width=800px]
+
+The read should be implemented by a Smarty template to generate a text file based on the microservice variable read in the database.
+
+NOTE: read more about this in the developer guide.
 
 ==== Execute the Microservice
 
@@ -77,6 +88,54 @@ Once you are finished, you can either discard the changes or apply the changes.
 If you discard the changes, the current order stack will be erased.
 
 If you apply the changes, the configuration engine will go through the stack and apply the changes one by one on the Managed Entity.
+
+=== Bulk Operations
+
+With version 2.8.0, it is possible to execute bulk operations on the microservices. 
+
+Bulk operations allow you to select multiple instance to delete or update or create multiple instances.
+
+Microservice bulk operation usually requires that some variables are configured to allow "Primary Composite Key". This is done by setting the parameter "Primary Composite Key" to true in the advanced parameter tab of the variable.
+
+==== Primary Composite Key
+
+In order to allow to bulk update a variable, the "Primary Composite Key" should be enabled for the variable.
+
+image:microservice_prim_comp_key.png[width=800px]
+
+When "Primary Composite Key" is enabled, you can assign multiple values to the variable field when creating or updating a microservice by clicking on the button "Edit Keys".
+
+image:microservice_com_key_bulk_update.png[width=800px]
+
+NOTE: a composite key variable can only be edited by clicking on "Edit Keys" as the form input field is not editable in the parent screen.
+
+==== Bulk creation
+
+Select a microservice in the managed entity tab "Configure".  
+
+The microservice should have its Create function implemented with the "+ Add Row" button visible.
+
+Click on "+ Add Row", by default the user form allows to create one instance. 
+You can create more instances by changing the number of rows to add. 
+This will show the button "Edit Keys".
+
+image:microservice_com_key_bulk_create.png[width=800px]
+
+Click on OK and save the form parameter.
+
+image:microservice_com_key_bulk_create_before_change_applied.png[width=800px]
+
+You can create multiple instances for several microservice and once you are done, click on "Apply Changes" to trigger the configuration on the CoreEngine.
+
+==== Bulk update
+
+You can select multiple microservice instances and click on the edit button to change the parameters of these instance.
+
+IMPORTANT: bulk edition can only be done on variables that are not set as primary composite key.
+
+==== Bulk delete
+
+Similarily as the update you can select multiple instances and delete them by using the "Remove" button.
 
 == Microservice design
 

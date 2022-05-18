@@ -101,7 +101,7 @@ The following is a list of recognized qualifiers, which must be separated from s
 | is [not] odd by    | | $a is not odd by $b	 | [not] an odd grouping	 | ($a / $b) % 2 != 0 
 |===
 
-.Example
+.example
 [source,xml]
 ----
 telephony-service
@@ -124,6 +124,7 @@ telephony-service
 ----
 {foreach},{foreachelse}
 ----
+
 {foreach} is used to loop over an associative array as well a numerically-indexed array, unlike {section} which is for looping over numerically-indexed arrays only. 
 
 The syntax for {foreach} is much easier than {section}, but as a trade off it can only be used for a single array. Every {foreach} tag must be paired with a closing {/foreach} tag.
@@ -139,7 +140,7 @@ The syntax for {foreach} is much easier than {section}, but as a trade off it ca
 - The from attribute, usually an array of values, determines the number of times {foreach} will loop.
 - {foreachelse} is executed when there are no values in the from variable.
 
-.Example
+[source,php]
 ----
 telephony-service
 {foreach from=$params.tftp_load item=tftp}
@@ -154,6 +155,7 @@ Use the smarty function 'sortby_typed' to sort arrays by key.
 
 'sortby_typed' take a list of comma separated keys with a type (int or string) for each one.
 
+[source,php]
 ----
 {foreach $params.access_list|@sortby_typed:"acl_seq_number:int" as $acl}    <1>
     {$acl.acl_seq_number} {$acl.acl_rule} {$acl.acl_protocol} {$acl.acl_src} 
@@ -177,7 +179,7 @@ Under certain circumstances it is necessary to use a local temporary variable to
 |value			|string		|Yes		|n/a		|The value being assigned
 |===
 
-.Example
+[source,php]
 ----
 !
 {assign var='sdid' value=$SD->SDID}
@@ -196,6 +198,7 @@ It is also possible to assign a value to a microservice variable.
 
 This is only possible in the post-import section.
 
+[source,php]
 ----
 {if isset($params.syslogd_server_ip) && $params.syslogd_server_ip != ""}
       {assign_object_variable var="_syslogd_server_ip" value="{$params.syslogd_server_ip}"}  <1>
@@ -213,7 +216,6 @@ Templates within XML definition files must not contain characters like < or >. Y
 ----
 Bad format for local file due to XML parsing error.
 ----
-.Example
 [source,xml]
 ----
 <command name="CREATE">
@@ -237,7 +239,7 @@ image:smarty_recommended_line_break.png[]
 When a Smarty command like {if} {foreach}, or also an ending tag like {/if} {/foreach}, is immediately followed by a line break, then this line break is REMOVED by Smarty. 
 This does NOT apply to variables.
 
-.Example
+.example
 image:smarty_line_break_special_case.png[]
 
 In this case the
