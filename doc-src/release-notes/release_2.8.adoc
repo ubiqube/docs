@@ -72,6 +72,47 @@ In order to upgrade to the latest version, you need to follow these steps:
 
 == Specific technical fixes and feature details
 
+=== 2.8.1 Patch
+
+==== Features
+
+* MSA-10788 - [Adapter] Adapter for Resource Pool Inventory Management
+* MSA-11202 - [Adapter] Cisco NX via REST API (RESTCONF part)
+* MSA-11256 - [API] Support Lazy Loading for service instance from UI
+* MSA-11219 - [Backend] Increase memory limit of embeded PHP
+* MSA-11255 - [UI]Lazy Loading for Service Instances
+* MSA-10684 - [Microservice] new CoreEngine Verbs to synchronize objects asynchronously
+* MSA-10692 - [Microservice] READ feature with editor and result viewer
+* MSA-11184 - [Microservice] Set a default width for IP address variables
+* MSA-11210 - [Microservice] Need to prevent to create Microservice without object_id
+* MSA-11050 - [Workflow] Cisco NX via REST API (NX-API part)
+
+==== Bug fixes
+
+* MSA-11035 - [Adapter] REST API delete operation bug & success response processing problem
+* MSA-11027 - [API] BPM API Schedule is not working as expected
+* MSA-11421 - [Backend] Unsafe repository issue detected with Git
+* MSA-11105 - [CoreEngine] sms restart doesn't unlock the locked devices
+* MSA-11025 - [HA] The application log directories ares shared by many containers and the log files are overwritten
+* MSA-11157 - [HA] After enabling LDAP, and restart sms/alarm service, logs not received
+* MSA-10874 - [UI] HTTP response status "304" received from front container should not be considered a network issue
+* MSA-11140 - [UI]Composite Variable cannot be hidden if variable type is Password in the task
+* MSA-10683 - [Microservice / Workflows] it is possible to save duplicated variable
+* MSA-10776 - [Microservice] composite var: page redirect to the first page when try to add a behaviour without selecting a Selector
+* MSA-10842 - [Microservice] Composite variable type isn't working for array
+* MSA-11032 - [Microservice] XML Xpath library doesn't support namespaced attributes
+* MSA-11060 - [Microservice] UI freaks out during save if a duplicated variable exist
+* MSA-11095 - [Microservice] function sortby_typed: PHP Warning: uasort() expects parameter 1 to be array, null given
+* MSA-11229 - [Microservices] filters on microservices and MS objects sometimes not working well
+* MSA-11275 - [Microservice] Design automation Bulk update is incorrect
+* MSA-11276 - [Microservice] API/UI change in the way the microservice console displays the values that are stored in the DB
+* MSA-11303 - [Microservice] hide search query when searching for a column
+* MSA-10784 - [Workflow] Screen process Instance status icon freeze issue
+* MSA-11033 - [Workflow][UI] perfomance issue when loading several instances with large context
+* MSA-11099 - [Workflow] a boolean is considered as a string
+* MSA-11136 - [Workflow] Workflow stucks when the size of file increase.
+* MSA-11246 - [Workflow] performance issue when loading the workflow report
+
 === 2.8.0 GA
 
 ==== Features
@@ -97,8 +138,8 @@ In order to upgrade to the latest version, you need to follow these steps:
 * MSA-10570 - [Managed Entity] Api does not return the right total number of subtenants in the device
 * MSA-10643 - [Microservice] use of type Microservice Reference for a Composite is not working
 * MSA-10844 - [Microservice] Constraint buffer isn't returned in the UI
-* MSA-11113 - [Microservice] 504 Gateway Timeout on loading large MS instance list
+* MSA-11113 - [Microservice] 504 Gateway Timeout on loading large Microservice instance list
 * MSA-11035 - [REST API Adaptor] - delete operation bug & success response processing problem
-* MSA-11013 - [UI] Microservice _order variable should be taking into account on MSA UI side to order properly the MS instances
+* MSA-11013 - [UI] Microservice _order variable should be taking into account on MSA UI side to order properly the Microservice instances
 * MSA-11098 - [Workflow] performance issue when selecting details or History or trying to call an update process
-* MSA-10481 - [Workflow] Executing WF process with only WF file(.xml) name throwing NPE instead of proper error message
+* MSA-10481 - [Workflow] Executing Workflow process with only Workflow file(.xml) name throwing NPE instead of proper error message
