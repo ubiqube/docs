@@ -1,8 +1,11 @@
 = {product_name} Guide
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+ifndef::imagesdir[:imagesdir: images]
 
 This documentation will point you to some of the tutorials and demos that are available for you to get familiar with {product_name}
 
-== Tutorials
+== Overview
 
-== Demo
+== Getting started
+
+image:login_page.png[width:700px]
