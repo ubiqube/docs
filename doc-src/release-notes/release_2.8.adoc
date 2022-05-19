@@ -143,4 +143,3 @@ In order to upgrade to the latest version, you need to follow these steps:
 * MSA-11013 - [UI] Microservice _order variable should be taking into account on MSA UI side to order properly the Microservice instances
 * MSA-11098 - [Workflow] performance issue when selecting details or History or trying to call an update process
 * MSA-10481 - [Workflow] Executing Workflow process with only Workflow file(.xml) name throwing NPE instead of proper error message
-

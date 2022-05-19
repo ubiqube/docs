@@ -1,0 +1,8 @@
+= {product_name} Guide
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+This documentation will point you to some of the tutorials and demos that are available for you to get familiar with {product_name}
+
+== Tutorials
+
+== Demo

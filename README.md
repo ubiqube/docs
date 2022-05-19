@@ -18,14 +18,15 @@ Building the doc
 ----------------
 
 Clone the repository
-Chekout the branch you need to use and build the doc with the CLI command below
+Checkout the branch you need to use and build the doc with the CLI command below
 
 	docker build -t ubi.docs .
 	
 if you have gradle you can also execute
 	
-	gradle asciidoc
-	gradle asciidoc_pdf
+	gradle asciidoc_msa_html
+	gradle asciidoc_msa_pdf
+	gradle -b build_ccla.gradle asciidoc_ccla_html
 
 The doc is generated in build/docs/
 

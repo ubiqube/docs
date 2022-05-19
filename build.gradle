@@ -67,6 +67,7 @@ asciidoctor {
     into '.'
   }
 }
+task asciidoc_msa_html(dependsOn: asciidoctor)
 
 asciidoctorPdf {
 
@@ -107,12 +108,12 @@ asciidoctorPdf {
       'notitle' : ''
   }
 
-  sourceDir  file('doc-src')
+  sourceDir file('doc-src')
   sources {
     include 'user-guide/manager-guide-single.adoc', 'admin-guide/admin-guide-single.adoc', 'developer-guide/developer-guide-single.adoc', 
       'release-notes/release_notes.adoc', 'user-guide/quickstart.adoc', 'user-guide/quickstart_jp.adoc'
  }
-  outputDir  file('build/pdf')
+  outputDir file('build/pdf')
 
   resources {
     from('doc-src') {
@@ -125,8 +126,5 @@ asciidoctorPdf {
 
     into '.'
   }
-
 }
-
-// alias
-task asciidoc_pdf(dependsOn: asciidoctorPdf)
+task asciidoc_msa_pdf(dependsOn: asciidoctorPdf)
