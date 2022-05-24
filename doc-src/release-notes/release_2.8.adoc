@@ -37,6 +37,14 @@ Use the microservice console horizontal split view to display and work on the in
 
 image:2.8_microservice_split_view.png[width=700px]
 
+=== Workflow
+
+==== New variable type "Code"
+
+A new variable type "Code" is now available and will be rendered as a text field. Syntax highlighting can be configured as advanced variable parameter.
+
+image:2.8_workflow_var_type_code.png[width=700px]
+
 == Portal theme
 
 In the local settings, choose the dark or the new light theme.
