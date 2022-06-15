@@ -274,7 +274,7 @@ For the full list of available commands, see the {product_name} API guide on you
 
 
 [#msa_configuration]
-=== {product_name} configuration
+=== Configuration
 
 *HTTP Request:* `+/system-admin/v1/msa_vars+`
 
@@ -294,7 +294,7 @@ For the full list of available commands, see the {product_name} API guide on you
 ----
 
 
-=== {product_name} workflow
+=== Workflow
 
 *HTTP Request:* `+orchestration/service/execute/{ubiqubeId}+`
 
