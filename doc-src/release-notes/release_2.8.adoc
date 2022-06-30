@@ -31,11 +31,27 @@ image:2.8_microservice_bulk_operation.png[width=700px]
 
 With "Primary Composite Key", the new variable advanced parameter, you can bulk create microservice and specify unique values for the variables.
 
+NOTE: microservice bulk operation can be turned on/off by changing the feature flag FEATURE_MICROSERVICE_BULK_OPERATION in the docker-compose YAML file.
+
 === Split view
 
 Use the microservice console horizontal split view to display and work on the instances of 2 microservices.
 
 image:2.8_microservice_split_view.png[width=700px]
+
+== xBAC
+
+=== Fine control the microservice and managed entity visibility 
+
+The permission profile has been enhanced to allow a more precise control on the visibility of the microservice and the managed.
+
+It is possible to set some permission filtering tags for both managed entities and/or microservices.
+
+image:2.8_me_ms_tag_permission_profile.png[width=700px]
+
+These tags will be used to control the user visibility.
+
+image:2.8_me_ms_tag_managed_entity.png[width=700px]
 
 == Portal theme
 
@@ -50,6 +66,8 @@ No changes have been made to the core engine from previous versions of the produ
 == New Libraries Available
 
 === Adapters
+
+link:https://github.com/openmsa/Adapters/tree/master/adapters/arista_eos[Network/Arista/EOS]: design microservice and manage the latest version of Arista IOS.
 
 link:https://github.com/openmsa/Adapters/tree/master/adapters/inventory_management[Application/Inventory/Management,window=_blank]: leverage the design and use of microservices locally managing data to the {product_name} database without the of a real device.
 
@@ -72,7 +90,7 @@ In order to upgrade to the latest version, you need to follow these steps:
 
 == Specific technical fixes and feature details
 
-=== 2.8.2 Patch
+=== 2.8.2
 
 ==== Features
 * MSA-11449 - [Adapter] Basic Support of Arista (without backup/rollback)
@@ -113,7 +131,7 @@ In order to upgrade to the latest version, you need to follow these steps:
 * MSA-11349 - [UI] "Keep on Import" param in advanced conf not working
 * MSA-11299 - [Workflow] Python SDK: error when the API is responding with an empty string, and when the function tries to use a json.loads
 
-=== 2.8.1 Patch
+=== 2.8.1
 
 ==== Features
 
