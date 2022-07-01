@@ -31,7 +31,7 @@ image:2.8_microservice_bulk_operation.png[width=700px]
 
 With "Primary Composite Key", the new variable advanced parameter, you can bulk create microservice and specify unique values for the variables.
 
-NOTE: microservice bulk operation can be turned on/off by changing the feature flag FEATURE_MICROSERVICE_BULK_OPERATION in the docker-compose YAML file.
+NOTE: microservice bulk operation can be turned on/off (default is off) by changing the feature flag FEATURE_MICROSERVICE_BULK_OPERATION in the docker-compose YAML file.
 
 === Split view
 
@@ -52,6 +52,9 @@ image:2.8_me_ms_tag_permission_profile.png[width=700px]
 These tags will be used to control the user visibility.
 
 image:2.8_me_ms_tag_managed_entity.png[width=700px]
+
+NOTE: label based microservice and managed entity control turned on/off (default is off) by changing the feature flag FEATURE_PERMISSION_PROFILE_LABELS in the docker-compose YAML file.
+
 
 == Portal theme
 
