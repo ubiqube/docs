@@ -150,13 +150,13 @@ sudo mkdir -p /mnt/NASVolume/msa_bulkfiles  \
 
 Set owner to the PostgreSQL service
 ----
-chown 70 /mnt/NASVolume/msa_db
-chown 70 /mnt/NASVolume/mano_db
+sudo chown 70 /mnt/NASVolume/msa_db
+sudo chown 70 /mnt/NASVolume/mano_db
 ----
 
 Set owner the other services
 ----
-chown 1000.1000 /mnt/NASVolume/msa_bulkfiles \
+sudo chown 1000.1000 /mnt/NASVolume/msa_bulkfiles \
 /mnt/NASVolume/msa_dev \
 /mnt/NASVolume/msa_es \
 /mnt/NASVolume/msa_entities \
