@@ -103,6 +103,7 @@ When this function is implemented, a button "+ Add Row" will appear in the tab "
 
 This example is a Samrty template that will take the parameters entered in the user form and generate a configuration.
 
+[source,php]
 ----
 config router static
 edit {$params.object_id}
@@ -130,6 +131,7 @@ The Delete function takes care of deleting an existing service in the managed en
 
 This example generate a conf based on the instance parameters as store in the database.
 
+[source,smarty]
 ----
 config router static
 delete "{$routing.$object_id.object_id}"
@@ -145,8 +147,44 @@ The implementation of the Import is either based on a set of link:https://en.wik
 The Import is made of 3 parts:
 
 - the command to run on the device for CLI command based device or the REST API to call.
-- the configuration parser, implemented with a set of regular expressions or XPath expressions. Only the Microservice identifier extractor is mandatory.
+- the configuration parser, implemented with a set of regular expressions or XPath expressions. Only the microservice identifier extractor is mandatory.
 - a set of optional post import operations implemented in Smarty language (https://www.smarty.net/).
+
+
+===== Post-import
+
+This example shows how to use the post import section of a microservice in order to fulfill one of it's variable with data coming from other microservice instances already imported in {product_name} database.
+
+This example is based on Fortigate configuration example, more precisely on the web filtering configuration sub-part.
+
+This first relies on the ability to define an import rank in the microservice definition. 
+In our example the microservice Web_Filter(.xml) will need the instances of the microservice URL_Filter(.xml) to be imported first in order to have relevant information. 
+So Web_Filter microservice as an import rand higher than URL_Filter, so that during the import import/synchronize process, URL_Filter microservice will be imported first in {product_name} database so they can be read during the post import of Web_Filter microservice in order to enrich the instance with detailed values/info.
+
+image:microservice_post-import_ex1.jpeg[width=800px]
+
+Instead of displaying/proposing to enter meaningless numbers as identifier of URL filtering rules, the post import , the Web filtering microservice will display the URL filter details gathered during the post import. In order to read the MS instance, the syntax is simply based on the microservice definition file name.
+
+In the below Web_Filter post import example, by using the foreach loop on the variable $URL_Filter, we can seek {product_name}  microservice database  instance.
+
+[source,php]
+----
+{foreach $URL_Filter as $filter}
+	{if isset($params.filter_id) && $params.filter_id == $filter.object_id}
+		{assign_object_variable var="filter_id" value=$filter.object_id}
+ 		{assign_object_variable var="filter_name" value=$filter.filter_name}
+		{if !empty($filter.urls)}
+		  {foreach $filter.urls as  $index => $url}
+			  {assign_object_variable var="urlfilter.{$index}.url_id" value=$url.url_id}
+			  {assign_object_variable var="urlfilter.{$index}.url" value=$url.url}
+			  {assign_object_variable var="urlfilter.{$index}.action" value=$url.action}
+			  {assign_object_variable var="urlfilter.{$index}.type" value=$url.type}
+    		  {/foreach}
+		{/if}
+		{break}
+	{/if}
+{/foreach}
+----
 
 ==== Read
 
@@ -156,6 +194,7 @@ The Read function can be implemented to allow the user or the API to generate a 
 
 This example generate a text based on a template and the microservice instance variables values as stored in the database
 
+[source,php]
 ----
 config router static
 edit {$routing.$object_id.object_id}

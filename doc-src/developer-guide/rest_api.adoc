@@ -16,17 +16,97 @@ When making requests to {product_name} using the REST API, you will need:
 
 Using curl, you may save the authentication information as a HTTP header to allow subsequent requests to be accepted automatically.
 
+.authentication request
 ----
-curl -H 'Content-Type: application/json' -XPOST http://<MSA IP or FQDN>/ubi-api-rest/auth/token -d '{"username":"username", "password":"user password"}'
+curl -H 'Content-Type: application/json' -XPOST -k https://<MSA IP or FQDN>/ubi-api-rest/auth/token -d '{"username":"username", "password":"user password"}'
 ----
 
+.authentication response
+[source,json]
 ----
-curl -H 'Accept: application/json' -H "Authorization: Bearer <TOKEN>" -XGET 'http://<MSA IP or FQDN>/ubi-api-rest/user/customer-by-manager-id/1
+{
+	"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuY3Jvb3QiLCJpYXQiOjE2NTUxOTQ3MzMsImx2bCI6IjEiLCJleHAiOjE2NTUxOTgzMzN9.kVl5XuqbSnGI59k0dlHmhB9xmPsixS3X24yQ4oWD-S9GgcBWw7X-DAb_S5oqwd0h3R64i_Custn8GeFt34Yzow",  <1>
+	"message": "authenticated",
+	"authenticated": "true",
+	"userDetails": {
+		"id": 1,
+		"baseRole": {
+			"id": 1,
+			"name": "Super Administrateur"
+		},
+		"externalReference": "NCLG1",
+		"login": "ncroot",
+		"operator": {
+			"id": 1,
+			"abonnes": [],
+			"baseUrl": null,
+			"isPartner": false,
+			"name": "UBIqube",
+			"prefix": "NCL",
+			"address": {
+				"city": "",
+				"country": "",
+				"fax": "",
+				"mail": "",
+				"phone": "",
+				"streetName1": "",
+				"streetName2": "",
+				"streetName3": "",
+				"zipCode": ""
+			},
+			"customersCount": 0,
+			"adminsCount": 0,
+			"managersCount": 0,
+			"externalReference": ""
+		},
+		"acteurId": 1,
+		"address": {
+			"city": "",
+			"country": "",
+			"fax": null,
+			"mail": "ncroot@msactivator.com",
+			"phone": "",
+			"streetName1": "",
+			"streetName2": "",
+			"streetName3": "",
+			"zipCode": ""
+		},
+		"delegationProfileId": 0,
+		"userType": 2,
+		"delegations": null,
+		"delegationsPerCustomer": {},
+		"netceloId": {
+			"ubiID": "NCLG1",
+			"thePrefix": "NCL",
+			"id": 1,
+			"customerPrefix": "NCL"
+		},
+		"isExternalAuth": false,
+		"activationKey": "",
+		"ccla": false,
+		"isActive": true,
+		"passwordUpdateDate": "",
+		"attachedCustomerIds": null,
+		"firstname": "",
+		"attachedOperatorIds": null,
+		"manageAllUsers": true,
+		"name": "ncroot",
+		"sort": "NAME",
+		"ldapAuthentication": false,
+		"delegationProfilePerCustomer": {}
+	}
+}
+----
+<1> auth TOKEN
+
+Use the token from the auth response in the Authorization Bearer header to call the {product_name} REST API.
+
+----
+curl -H 'Accept: application/json' -H "Authorization: Bearer TOKEN" -XGET 'http://<MSA IP or FQDN>/ubi-api-rest/user/customer-by-manager-id/1
 ----
 
 == Format
 {product_name} API uses the JSON format.
-
 
 == Example API commands
 For the full list of available commands, see the {product_name} API guide on your {product_name} instance: http://<MSA IP or FQDN>/swagger
@@ -194,7 +274,7 @@ For the full list of available commands, see the {product_name} API guide on you
 
 
 [#msa_configuration]
-=== {product_name} configuration
+=== Configuration
 
 *HTTP Request:* `+/system-admin/v1/msa_vars+`
 
@@ -214,3 +294,54 @@ For the full list of available commands, see the {product_name} API guide on you
 ----
 
 
+=== Workflow
+
+*HTTP Request:* `+orchestration/service/execute/{ubiqubeId}+`
+
+*Method:* `+POST+`
+[cols=3*,options="header"]
+|===
+| Parameter Name
+| Type
+| Description
+
+| ubiqubeId
+| String
+| Id of the subtenant. A combination of the tenant prefix and the subtenant database ID. Example UBI123.
+
+| serviceName
+| String
+| Relative path of the workflow
+
+| processName
+| String
+| Relative path of the process
+
+|===
+
+*Body:*
+
+the payload JSON contains the parameter to pass to the process thus depends on the variables of the workflow
+[source, json]
+----
+[
+  {
+    "name": "string",
+    "lastUpdate": "string",
+    "comment": "string",
+    "value": "string"
+  }
+]
+----
+
+==== Example: call the process "Create Instance" of the worklflow "Helloworld"
+
+This workflow is part of the MSActivator mini-lab and maintained in a link:https://github.com/openmsa/Workflows/tree/master/Tutorials/Helloworld[github repository].
+
+----
+POST 
+
+/ubi-api-rest/orchestration/service/execute/BLRA7?serviceName=Process/Tutorials/Helloworld/Helloworld&processName=Process/Helloworld/Process_create_instance
+
+{"name":"jack"}
+----

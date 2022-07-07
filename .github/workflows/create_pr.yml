@@ -1,0 +1,37 @@
+name: Update CCLAP documentation on msa-docker
+
+on:
+   push:
+     branches:
+       - master
+     paths:
+       - 'ccla-src/cloudclapp-guide/*.adoc'
+  
+env:
+  GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
+
+jobs:
+  pull-request:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build new doc
+        run: |
+          docker build -t ubi.docs .
+          CONT_ID=$(docker create ubi.docs)
+          docker cp "${CONT_ID}:/home/gradle/build" .
+
+      - name: Create pull request
+        uses: paygoc6/action-pull-request-another-repo@v1.0.5
+        env:
+          API_TOKEN_GITHUB: ${{ env.GITHUB_TOKEN }}
+        with:
+          source_folder: 'build/html/cloudclapp-guide/*'
+          destination_repo: 'ubiqube/msa-docker'
+          destination_folder: 'front/ccla_doc'
+          destination_base_branch: 'master'
+          destination_head_branch: 'update_ccla_doc'
+          user_email: 'efe@ubiqube.com'
+          user_name: 'efe'

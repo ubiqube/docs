@@ -55,6 +55,13 @@ image:2.8_me_ms_tag_managed_entity.png[width=700px]
 
 NOTE: label based microservice and managed entity control turned on/off (default is off) by changing the feature flag FEATURE_PERMISSION_PROFILE_LABELS in the docker-compose YAML file.
 
+=== Workflow
+
+==== New variable type "Code"
+
+A new variable type "Code" is now available and will be rendered as a text field. Syntax highlighting can be configured as advanced variable parameter.
+
+image:2.8_workflow_var_type_code.png[width=700px]
 
 == Portal theme
 

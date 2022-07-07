@@ -215,6 +215,78 @@ except Exception as e:
 You will find many examples of Workflows in https://github.com/openmsa/Workflows
 ****
 
+== How to create you libraries of functions
+
+When developing a workflow you will probably have de define some functions that will be used in multiple tasks.
+
+In order to avoid code duplication and ease the maintenance of your workflow one option is to create a `common` folder at the same level as your other task folder and create a python file `common.py` where the shared functions will be defined.
+
+----
+my_workflow
+  |- my_workflow.xml
+  |- common
+    |- common.py
+  |- process_1
+    |- task1.py
+----
+
+`common.py` will contain the python code and can also import the Python SDK as well as other Python modules
+
+[source,python]
+----
+from msa_sdk.variables import Variables
+from msa_sdk.msa_api import MSA_API
+from msa_sdk import util
+from msa_sdk.order import Order
+from datetime import datetime
+import time
+import json
+import typing
+import copy
+import requests
+import ipaddress
+import re
+import pandas as Pandas
+
+dev_var = Variables()
+context = Variables.task_call(dev_var)
+
+# Function: to convert 
+def printTable(myDict):             <1>
+  df = Pandas.DataFrame.from_records(myDict)
+  return df.to_string()
+----
+<1> a function that can be used in a task
+
+In the task implementation you need to add the following lines to import this common library
+
+[source,python]
+----
+import os
+import os.path
+import sys
+from pathlib import Path
+from msa_sdk.variables import Variables
+from msa_sdk.msa_api import MSA_API
+currentdir = os.path.dirname(os.path.realpath(__file__))      <1>
+parentdir = os.path.dirname(currentdir)
+sys.path.append(parentdir)
+from common.common import *
+
+dev_var = Variables()
+context = Variables.task_call(dev_var)
+
+if data:
+  result = printTable(data)                                   <2>
+  context['result'] = result
+
+ret = MSA_API.process_content('ENDED', 'DONE', context, True)
+
+print(ret)
+----
+<1> include the path of `common` in the modules
+<2> call the method defined in the common library
+
 
 == How to extend the SDK
 

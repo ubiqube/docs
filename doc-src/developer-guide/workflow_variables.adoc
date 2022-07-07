@@ -47,10 +47,14 @@ This data type accepts a value of true or false, the UI will render it as a chec
 
 This data type represents a numerical value, the UI will render it as an input field restricted to integer.
 
+==== Code
+
+This type allows to render a variable as a textfield with the possibility to select a code language (default is simple text) for syntax highlighting
+
 ==== Password
 NOTE: not supported yet
 
-This data type represents a multicharacter value that is hidden from plain sight (i.e. the value is represented as asterisks instead of clear text). 
+This data type represents a multi-character value that is hidden from plain sight (i.e. the value is represented as asterisks instead of clear text). 
 
 ==== IPv4 address and mask, IPv6 mask
 NOTE: not supported yet
