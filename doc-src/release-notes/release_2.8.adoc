@@ -31,11 +31,29 @@ image:2.8_microservice_bulk_operation.png[width=700px]
 
 With "Primary Composite Key", the new variable advanced parameter, you can bulk create microservice and specify unique values for the variables.
 
+NOTE: microservice bulk operation can be turned on/off (default is off) by changing the feature flag FEATURE_MICROSERVICE_BULK_OPERATION in the docker-compose YAML file.
+
 === Split view
 
 Use the microservice console horizontal split view to display and work on the instances of 2 microservices.
 
 image:2.8_microservice_split_view.png[width=700px]
+
+== xBAC
+
+=== Fine control the microservice and managed entity visibility 
+
+The permission profile has been enhanced to allow a more precise control on the visibility of the microservice and the managed.
+
+It is possible to set some permission filtering tags for both managed entities and/or microservices.
+
+image:2.8_me_ms_tag_permission_profile.png[width=700px]
+
+These tags will be used to control the user visibility.
+
+image:2.8_me_ms_tag_managed_entity.png[width=700px]
+
+NOTE: label based microservice and managed entity control turned on/off (default is off) by changing the feature flag FEATURE_PERMISSION_PROFILE_LABELS in the docker-compose YAML file.
 
 === Workflow
 
@@ -59,6 +77,8 @@ No changes have been made to the core engine from previous versions of the produ
 
 === Adapters
 
+link:https://github.com/openmsa/Adapters/tree/master/adapters/arista_eos[Network/Arista/EOS]: design microservice and manage the latest version of Arista IOS.
+
 link:https://github.com/openmsa/Adapters/tree/master/adapters/inventory_management[Application/Inventory/Management,window=_blank]: leverage the design and use of microservices locally managing data to the {product_name} database without the of a real device.
 
 link:https://github.com/openmsa/Adapters/blob/master/adapters/cisco_ios_xr[Network/Cisco/IOS-XR]: design microservice and manage the latest version of Cisco IOS-XR.
@@ -80,19 +100,60 @@ In order to upgrade to the latest version, you need to follow these steps:
 
 == Specific technical fixes and feature details
 
-=== 2.8.1 Patch
+=== 2.8.2
+
+==== Features
+* MSA-11449 - [Adapter] Basic Support of Arista (without backup/rollback)
+* MSA-11466 - [API] API to list labels for Admins and Privilege Manager
+* MSA-11489 - [API / Python SDK] add API and method to delete the microservice instances of a managed entity
+* MSA-11382 - [Doc] Install Asciidoc in the UI container
+* MSA-11434 - [Doc] Generate Asciidoc PR when doc is updated
+* MSA-11441 - [CoreEngine] Integrate the selected JSON Parser solution
+* MSA-11458 - [Feature] Feature flag for microservice and managed entity filter by labels
+* MSA-11590 - [HA] update fix-swarm-route script in quickstart to also support SNMP (port 162)
+* MSA-11457 - [Managed Entity] API to add labels to managed entity
+* MSA-11465 - [Managed Entity] API to get label for managed entity
+* MSA-10684 - [Microservice] new CoreEngine Verbs to synchronize objects asynchronously
+* MSA-11352 - [UI] Add Labels to the Managed Entity
+* MSA-11353 - [UI] Add Labels to the Microservices
+* MSA-11354 - [UI] Manage label in Permission Profile
+* MSA-11251 - [xBAC] Restrict users access to a subset of microservices
+* MSA-11252 - [xBAC] Restrict managers access to a subset of Managed Entities
+
+==== Bug fixes
+* MSA-11375 - [API] the process exec logs are logged in DEBUG level
+* MSA-11418 - [API] Container msa_api unhealthy, file system full
+* MSA-11086 - [CoreEngine] sms_polld crash as soon as we are making several requests in a short period of timeframe
+* MSA-11503 - [CoreEngine] smarty modifier sortby_typed doesn't support IP sorting
+* MSA-11421 - [DevOps] Unsafe repository issue detected with Git
+* MSA-11536 - [HA] swarm does not support: driver_opts: encrypted; devices section either
+* MSA-11134 - [Microservice] "Keep on Import" param in advanced conf not working
+* MSA-11142 - [Microservice] visibility is not controlled by composite advanced parameter
+* MSA-11211 - [Microservice] Design automation: filtering in Japanese is not supported
+* MSA-11215 - [Microservice] Design automation: Composite Primary Key is auto-numbered
+* MSA-11216 - [Microservice] Design automation: bulk deletion is incorrect
+* MSA-11309 - [Microservice] when using bulk operation with composite key the conf generated in SMS_RETURN_BUF is concatenated multiple time
+* MSA-11404 - [Microservice] Design automation: the Duplicate function is incorrect.
+* MSA-11435 - [Microservice] array update is not working when calling the MS update
+* MSA-11520 - [Microservice] array variable with type "Microservice Reference" is not displayed on GUI after MS instance creation
+* MSA-11569 - [Microservice] Bulk items removal in Inventory DATABASE MS
+* MSA-11574 - [Microservice] No more able to create a Microservice instance with object_id as 0
+* MSA-11349 - [UI] "Keep on Import" param in advanced conf not working
+* MSA-11299 - [Workflow] Python SDK: error when the API is responding with an empty string, and when the function tries to use a json.loads
+
+=== 2.8.1
 
 ==== Features
 
 * MSA-10788 - [Adapter] Adapter for Resource Pool Inventory Management
 * MSA-11202 - [Adapter] Cisco NX via REST API (RESTCONF part)
 * MSA-11256 - [API] Support Lazy Loading for service instance from UI
-* MSA-11219 - [Backend] Increase memory limit of embeded PHP
-* MSA-11255 - [UI]Lazy Loading for Service Instances
+* MSA-11219 - [Backend] Increase memory limit of embedded PHP
 * MSA-10684 - [Microservice] new CoreEngine Verbs to synchronize objects asynchronously
 * MSA-10692 - [Microservice] READ feature with editor and result viewer
 * MSA-11184 - [Microservice] Set a default width for IP address variables
 * MSA-11210 - [Microservice] Need to prevent to create Microservice without object_id
+* MSA-11255 - [UI]Lazy Loading for Service Instances
 * MSA-11050 - [Workflow] Cisco NX via REST API (NX-API part)
 
 ==== Bug fixes
@@ -106,19 +167,19 @@ In order to upgrade to the latest version, you need to follow these steps:
 * MSA-10874 - [UI] HTTP response status "304" received from front container should not be considered a network issue
 * MSA-11140 - [UI]Composite Variable cannot be hidden if variable type is Password in the task
 * MSA-10683 - [Microservice / Workflows] it is possible to save duplicated variable
-* MSA-10776 - [Microservice] composite var: page redirect to the first page when try to add a behaviour without selecting a Selector
+* MSA-10776 - [Microservice] composite var: page redirect to the first page when try to add a behavior without selecting a Selector
 * MSA-10842 - [Microservice] Composite variable type isn't working for array
-* MSA-11032 - [Microservice] XML Xpath library doesn't support namespaced attributes
+* MSA-11032 - [Microservice] XML XPath library doesn't support name space attributes
 * MSA-11060 - [Microservice] UI freaks out during save if a duplicated variable exist
 * MSA-11095 - [Microservice] function sortby_typed: PHP Warning: uasort() expects parameter 1 to be array, null given
-* MSA-11229 - [Microservices] filters on microservices and MS objects sometimes not working well
+* MSA-11229 - [Microservice] filters on microservices and MS objects sometimes not working well
 * MSA-11275 - [Microservice] Design automation Bulk update is incorrect
 * MSA-11276 - [Microservice] API/UI change in the way the microservice console displays the values that are stored in the DB
 * MSA-11303 - [Microservice] hide search query when searching for a column
 * MSA-10784 - [Workflow] Screen process Instance status icon freeze issue
-* MSA-11033 - [Workflow][UI] perfomance issue when loading several instances with large context
+* MSA-11033 - [Workflow][UI] performance issue when loading several instances with large context
 * MSA-11099 - [Workflow] a boolean is considered as a string
-* MSA-11136 - [Workflow] Workflow stucks when the size of file increase.
+* MSA-11136 - [Workflow] Workflow is stuck when the size of file increase.
 * MSA-11246 - [Workflow] performance issue when loading the workflow report
 
 === 2.8.0 GA
