@@ -82,10 +82,6 @@ include::{includedir}/microservice_stack_management_api.adoc[]
 
 include::{includedir}/adapter_development.adoc[]
 
-:leveloffset: +1
-
-include::{includedir}/how_to_add_a_new_vendor_model_based_on_existing_adapter.adoc[]
-
 :leveloffset: -1
 
 include::{includedir}/local_repository_management.adoc[]

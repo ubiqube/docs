@@ -54,7 +54,6 @@ The developer guide contains a set of documentation, tutorials and examples to h
 == Adapters
 
 - link:adapter_development{outfilesuffix}[Adapter development,window=_blank]
-- link:how_to_add_a_new_vendor_model_based_on_existing_adapter{outfilesuffix}[Extend an adapter,window=_blank]
 
 == API & SDK
 
