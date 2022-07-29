@@ -16,7 +16,7 @@ This documentation will point you to some of the tutorials and demos that are av
 === Governance
 [#users]
 ==== Users
-image:screen_governance_users.png[alt=Edit Permission, width=500px]
+image:screen_governance_users.png[alt=Governance Menu, width=500px]
 
 ===== Invite Users
 ===== Delete Account
@@ -34,6 +34,10 @@ If you uncheck an action, corresponding button or screen item will be hidden for
 NOTE: This feature is available for Administrator for each Organisation
 
 Here is what you can control
+
+- Category: The menu on the left
+- Sub Category: The checkbox that groups
+- Action: The indented checkboxes
 |===
 |Category | Sub Category | Action | Detail
 | Environments| General| Create|
@@ -56,7 +60,12 @@ Here is what you can control
 
 === Administration
 ==== Give Users a Permission
-From link:#governance[Governance] menu - link:#users[Users] tab - link:#edit_permission[Edit Permission] button, you can choose permitted actions for each users under your organisation.
+- From link:#governance[Governance] menu - link:#users[Users] tab - link:#edit_permission[Edit Permission] button, you can choose permitted actions for each users under your organisation.
+
+image:screen_edit_permission.png[alt=Edit Permission, width=500px]
+
+
+- After that, when the user logs in, they can/cannot see the corresponding action items.
 
 .Screen for User without Create Environment Permission
 image:usermanual_permission_1.png[alt=User Permission, width=500px]
