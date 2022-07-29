@@ -23,6 +23,7 @@ image:screen_governance_users.png[alt=Edit Permission, width=500px]
 [#edit_permission]
 ===== Edit Permission
 By clicking Lock icon, you can see the Edit Permission Screen
+
 image:screen_edit_permission.png[alt=Edit Permission, width=500px]
 
 On this screen, you can edit permitted actions for each users.
