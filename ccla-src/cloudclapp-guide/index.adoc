@@ -1,7 +1,76 @@
 = {product_name} Guide
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:toc: top
+:toclevels: 4
 
 This documentation will point you to some of the tutorials and demos that are available for you to get familiar with {product_name}.
+
+== Screen Descriptions
+=== Dashboard
+=== Applications
+=== Environments
+=== Deployments
+=== Insights
+[#governance]
+=== Governance
+[#users]
+==== Users
+image:screen_governance_users.png[alt=Governance Menu, width=500px]
+
+===== Invite Users
+===== Delete Account
+[#edit_permission]
+===== Edit Permission
+By clicking Lock icon, you can see the Edit Permission Screen
+
+image:screen_edit_permission.png[alt=Edit Permission, width=500px]
+
+On this screen, you can edit permitted actions for each users.
+Select menu, check actions you want to allow users and click "Save" button.
+
+If you uncheck an action, corresponding button or screen item will be hidden for the users.
+
+NOTE: This feature is available for Administrator for each Organisation
+
+Here is what you can control
+
+- Category: The menu on the left
+- Sub Category: The checkbox that groups
+- Action: The indented checkboxes
+|===
+|Category | Sub Category | Action | Detail
+| Environments| General| Create|
+| Environments| General| Tear Down|
+| Environments| General| Delete|
+| Deployments| General| Create|
+| Deployments| General| Action| Pause, Restart, etc...
+| Applications| DockerHub| View|
+| Applications| Virtual Machine| View|
+| Insights| Cost| View|
+| Governance| Audit Logs| View|
+|===
+
+==== Audit Log
+
+
+
+
+== User Manual
+
+=== Administration
+==== Give Users a Permission
+- From link:#governance[Governance] menu - link:#users[Users] tab - link:#edit_permission[Edit Permission] button, you can choose permitted actions for each users under your organisation.
+
+image:screen_edit_permission.png[alt=Edit Permission, width=500px]
+
+
+- After that, when the user logs in, they can/cannot see the corresponding action items.
+
+.Screen for User without Create Environment Permission
+image:usermanual_permission_1.png[alt=User Permission, width=500px]
+
+
 
 == Tutorials
 
