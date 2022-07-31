@@ -8,6 +8,25 @@ This documentation will point you to some of the tutorials and demos that are av
 
 == Screen Descriptions
 === Dashboard
+==== Organisation Summary
+==== Quick Deployment
+===== Add Connection
+===== Add Environment
+===== Add Deployment
+===== Confirmation Step
+image:screen_dashboard_quickdeployment_confirm_step.png[alt=Confirmation Step, width=500px]
+On this screen, you can see what you are going to deploy to which Environment.
+
+You also can see the estimation based on what you choose as Environment and Deployment.
+
+WARNING: Estimation feature is available for EKS and AKS Environment at the moment.
+
+====== Estimated by
+You can change the granularity of Estimation.
+The options are "Hourly", "Monthly" and Annual
+
+
+==== Environment List
 === Applications
 === Environments
 === Deployments
