@@ -11,6 +11,17 @@ This documentation will point you to some of the tutorials and demos that are av
 === Applications
 === Environments
 === Deployments
+==== Dashboard
+===== Applications
+====== View Details
+====== App Access
+image:screen_deployment_applications_web_access.png[alt=App Access, width=500px]
+When deployed Application provides UI via http, you can see "App Access" button.
+It opens a new tab to show the App Access based on configured IP Address and Port.
+
+NOTE: The link is available only an Application that runs on port ends with "80".
+
+
 === Insights
 [#governance]
 === Governance
