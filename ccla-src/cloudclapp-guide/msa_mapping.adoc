@@ -10,16 +10,25 @@ The tab here gives you this mapping
 |Organization
 |Tenant
 
-|Environment
-|Subtenant + Managed Entities
-
-|Deployment / Application
-|WF instance
-
 |Admin
 |Administrator
 
 |User
 |Manager
+
+|Environment
+|Subtenant + Managed Entities + Workflow instance per Cloud type
+
+|Hybrid Environment
+|Subtenant + Multiple Managed Entities + Multiple Workflow instance per Cloud type
+
+|Deployment / Application
+|Workflow instance per Cloud type
+
+|An Image Scan
+|Workflow instance of Process/cloudclapp-wf/Scan_a_App_Container_
+
+|An Web App Scan
+|Workflow instance of Process/cloudclapp-wf/Scan_a_WebApp
 
 |===
