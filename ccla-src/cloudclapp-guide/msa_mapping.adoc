@@ -16,9 +16,6 @@ The tab here gives you this mapping
 |Deployment / Application
 |WF instance
 
-|Deployment / Application
-|WF instance
-
 |Admin
 |Administrator
 
