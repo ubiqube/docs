@@ -12,6 +12,31 @@ This documentation will point you to some of the tutorials and demos that are av
 === Environments
 === Deployments
 === Insights
+==== Cost
+Cost menu will have two seperate tabs; one to see the overall cost for each cloud provider, another to get specific cost details for particular Environments/Deployments.
+
+===== Costs / Cloud Provider
+
+For each organization, cost data for the last 12 month will be available in the form of a bar chart. You can change the granularity of the data from Monthly to Daily if needed.
+
+image:screen_insights_cost_data_tab.png[alt=Governance Menu, width=500px]
+image:screen_insights_cost_data_daily_tab.png[alt=Governance Menu, width=500px]
+
+Filters can also be used to see any particular range of dates within this period.
+
+image:screen_insights_cost_data_filter_tab.png[alt=Governance Menu, width=500px]
+
+===== Costs / Tags
+Environments/Deployments will be described in the form of Tags with explicit name in the UI. By selecting the tags, you can see the corresponding cost of the Environments/Deployments.
+
+If needed you can change the granularity of the data from Monthly to Daily.
+
+image:screen_insights_cost_tags_data_tab.png[alt=Governance Menu, width=500px]
+
+You can also view of the data in the form of Bar chart, Line chart & Area chart.
+
+image:screen_insights_cost_tags_data_bar_chart_tab.png[alt=Governance Menu, width=500px]
+image:screen_insights_cost_tags_data_area_chart_tab.png[alt=Governance Menu, width=500px]
 [#governance]
 === Governance
 [#users]
