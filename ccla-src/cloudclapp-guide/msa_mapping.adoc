@@ -1,1 +1,28 @@
 = MSA mapping
+
+Cloudclapp entities have a direct mapping to MSActivator
+The tab here gives you this mapping
+
+[cols="1,1"]
+|===
+|Cloudclapp|MSActivator
+
+|Organization
+|Tenant
+
+|Environment
+|Subtenant + Managed Entities
+
+|Deployment / Application
+|WF instance
+
+|Deployment / Application
+|WF instance
+
+|Admin
+|Administrator
+
+|User
+|Manager
+
+|===
