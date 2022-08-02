@@ -20,7 +20,7 @@ The tab here gives you this mapping
 |Subtenant + Managed Entities + Workflow instance per Cloud type
 
 |Hybrid Environment
-|Subtenant + Multiple Managed Entities + Multiple Workflow instance per Cloud type
+|Subtenant + Multiple Managed Entities + Multiple Workflow instances per Cloud type
 
 |Deployment / Application
 |Workflow instance per Cloud type
