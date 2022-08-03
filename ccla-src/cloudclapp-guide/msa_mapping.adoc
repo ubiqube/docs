@@ -32,3 +32,27 @@ The tab here gives you this mapping
 |Workflow instance of Process/cloudclapp-wf/Scan_a_WebApp
 
 |===
+
+Example of workflow used for Environement and Application deployment
+
+[ENV] Provision an EKS cluster (AWS), fresh environment
+[cols="1,1"]
+|===
+|Task name|Details
+
+|Create TF Workspace
+|Create terraform workspace, accessible from Developement container : /opt/fmc_repository/Datafiles/CCLA/Terraform/Infrastructures/Workspaces/
+
+|Set TF variables values
+|Collect all values from environement settings like the region, provider account, tags and convert them as Teraform variables
+
+|Initialize TF Workspace
+|Execute terraform init in order to prepare the creation
+
+|Provision EKS cluster
+|Execute terraform plan & apply to finaly create the cluster on the cloud provider
+
+|Create EKS Cluster Managed Entity
+|Create a Managed entity (MSA) for this cluster to be threated as a device which can be monitored
+
+|===
