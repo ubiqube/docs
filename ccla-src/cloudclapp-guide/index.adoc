@@ -30,6 +30,17 @@ The options are "Hourly", "Monthly" and Annual
 === Applications
 === Environments
 === Deployments
+==== Dashboard
+===== Applications
+====== View Details
+====== App Access
+image:screen_deployment_applications_web_access.png[alt=App Access, width=500px]
+When deployed Application provides UI via http, you can see "App Access" button.
+It opens a new tab to show the App Access based on configured IP Address and Port.
+
+NOTE: The link is available only an Application that runs on port ends with "80".
+
+
 === Insights
 ==== Cost
 Cost menu will have two seperate tabs; one to see the overall cost for each cloud provider, another to get specific cost details for particular Environments/Deployments.
