@@ -24,7 +24,7 @@ jobs:
           docker cp "${CONT_ID}:/home/gradle/build" .
 
       - name: Create pull request
-        uses: paygoc6/action-pull-request-another-repo@v1.0.5
+        uses: hiro-ubiqube/action-pull-request-another-repo@master
         env:
           API_TOKEN_GITHUB: ${{ env.GITHUB_TOKEN }}
         with:
