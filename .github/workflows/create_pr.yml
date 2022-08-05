@@ -28,9 +28,9 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ env.GITHUB_TOKEN }}
         with:
-          source_folder: 'build/html/cloudclapp-guide/*'
+          source_folders: 'build/html/cloudclapp-guide/*'
           destination_repo: 'ubiqube/msa-docker'
-          destination_folder: 'front/ccla_doc'
+          destination_folders: 'front/ccla_doc'
           destination_base_branch: 'master'
           destination_head_branch: 'update_ccla_doc'
           user_email: 'efe@ubiqube.com'
