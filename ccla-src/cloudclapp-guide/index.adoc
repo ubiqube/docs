@@ -8,6 +8,16 @@ This documentation will point you to some of the tutorials and demos that are av
 
 == Screen Descriptions
 === Dashboard
+image:screen_insights_cost_data_tab.png[alt=Dashboard Menu, width=500px]
+
+When the application first loaded, you will be greated with the main Dashboard view.
+
+image:screen_dashboard_edit_dialog.png[alt=Dashboard Menu, width=250px]
+
+By clicking on the edit icon on the right-top corner, you can access the edit dashboard dialog. Once the option is selected & saved, that option will be the default dashboard view for that particular user.
+
+image:screen_dashboard_cost_view.png[alt=Dashboard Menu, width=500px]
+
 ==== Organisation Summary
 ==== Quick Deployment
 ===== Add Connection
@@ -49,24 +59,24 @@ Cost menu will have two seperate tabs; one to see the overall cost for each clou
 
 For each organization, cost data for the last 12 month will be available in the form of a bar chart. You can change the granularity of the data from Monthly to Daily if needed.
 
-image:screen_insights_cost_data_tab.png[alt=Governance Menu, width=500px]
-image:screen_insights_cost_data_daily_tab.png[alt=Governance Menu, width=500px]
+image:screen_insights_cost_data_tab.png[alt=Insights Menu, width=500px]
+image:screen_insights_cost_data_daily_tab.png[alt=Insights Menu, width=500px]
 
 Filters can also be used to see any particular range of dates within this period.
 
-image:screen_insights_cost_data_filter_tab.png[alt=Governance Menu, width=500px]
+image:screen_insights_cost_data_filter_tab.png[alt=Insights Menu, width=500px]
 
 ===== Costs / Tags
 Environments/Deployments will be described in the form of Tags with explicit name in the UI. By selecting the tags, you can see the corresponding cost of the Environments/Deployments.
 
 If needed you can change the granularity of the data from Monthly to Daily.
 
-image:screen_insights_cost_tags_data_tab.png[alt=Governance Menu, width=500px]
+image:screen_insights_cost_tags_data_tab.png[alt=Insights Menu, width=500px]
 
 You can also view of the data in the form of Bar chart, Line chart & Area chart.
 
-image:screen_insights_cost_tags_data_bar_chart_tab.png[alt=Governance Menu, width=500px]
-image:screen_insights_cost_tags_data_area_chart_tab.png[alt=Governance Menu, width=500px]
+image:screen_insights_cost_tags_data_bar_chart_tab.png[alt=Insights Menu, width=500px]
+image:screen_insights_cost_tags_data_area_chart_tab.png[alt=Insights Menu, width=500px]
 [#governance]
 === Governance
 [#users]
@@ -105,6 +115,13 @@ Here is what you can control
 | Insights| Cost| View|
 | Governance| Audit Logs| View|
 |===
+
+[#tags]
+==== Tags
+
+image:screen_governance_tag_view.png[alt=Governance Menu, width=500px]
+
+Tags tab will have a list of all the tags that are avaliable to the user. You can manage the tags by creating new ones, edit & delete the existing tags.
 
 ==== Audit Log
 
