@@ -7,6 +7,16 @@ The focus of the 2.8.0 release of {product_name} is mainly about improving the p
 
 The Microservice console has also been improved to provide a better user experience by allowing bulk changes of the microservice instances as well as additional design features. Advanced parameters have also been improved for a better support of the variables.
 
+== Repository
+
+The {product_name} repository contains the definition files for the workflows, microservices, BPM and various datafiles.
+Until version 2.8.3, these files could only be accessed either by the API or manually by connecting to the msa-dev container and using the CLI. 
+These files are store under /opt/fmc_repository/
+
+With version 2.8.3, you can use the UI to upload, delete, unzip and edit files in the DataFiles part of the repository. This feature is available for both developers and managers.
+
+image:2.8_repository.png[width=700px]
+
 == Microservices
 
 === Duplicate an instance
@@ -135,7 +145,7 @@ In order to upgrade to the latest version, you need to follow these steps:
 * MSA-11513 - [DB] Memory allocation issue on PSQL - Orchestration request to improve
 * MSA-11602 - [Managed Entity] Synchronize with ME with isAsync always returns an error
 * MSA-11808 - [Managed Entity] API to synchronize with ME with async flag does not IMPORT objects
-* MSA-11214 - [Microservice] Design automation:Wrong sort control
+* MSA-11214 - [Microservice] Design automation: wrong sort control
 * MSA-11641 - [Microservice] Async Apply Changes
 * MSA-11768 - [Microservice] Asynchronous call for synchronizing with device
 * MSA-11591 - [Microservice] Nested array variables of Microservice
