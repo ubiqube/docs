@@ -65,6 +65,8 @@ image:2.8_microservice_split_view.png[width=700px]
 
 The source IP address of any {product_name} API call, including from the UI, is now listed in the audit logs available in the user profile.
 
+image:2.8_auditlog_src_ip.png[width=700px]
+
 === Fine control the microservice and managed entity visibility 
 
 The permission profile has been enhanced to allow a more precise control on the visibility of the microservice and the managed.
