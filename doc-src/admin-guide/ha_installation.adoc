@@ -145,7 +145,9 @@ sudo mkdir -p /mnt/NASVolume/msa_bulkfiles  \
 /mnt/NASVolume/msa_sms_logs  \
 /mnt/NASVolume/msa_sms_logs/ping  \
 /mnt/NASVolume/msa_sms_logs/monitor  \
-/mnt/NASVolume/msa_sms_logs/snmp 
+/mnt/NASVolume/msa_sms_logs/snmp \
+/mnt/NASVolume/msa_front_conf
+
 ----
 
 Set owner to the PostgreSQL service
@@ -170,7 +172,8 @@ sudo chown 1000.1000 /mnt/NASVolume/msa_bulkfiles \
 /mnt/NASVolume/msa_api_logs \
 /mnt/NASVolume/msa_api_keystore \
 /mnt/NASVolume/msa_svn \
-/mnt/NASVolume/msa_sms_logs
+/mnt/NASVolume/msa_sms_logs \
+/mnt/NASVolume/msa_front_conf
 ----
 
 === Docker
@@ -346,7 +349,7 @@ Change the docker-compose file alter the "replicas" number and run `docker stack
 [#configure_firewall]
 == Firewall configuration
 
-Firewalld is the default firewall application on CentOS 7, but on a new CentOS 7 server, it is disabled out of the box. So let’s enable it and add the network ports necessary for Docker Swarm to function.
+Firewalld is the default firewall application on CentOS 7, but on a new CentOS 7 server, it is disabled out of the box. So let's enable it and add the network ports necessary for Docker Swarm to function.
 
 NOTE:  use `yum install firewalld` to Firewalld if it's not installed yet.
 
@@ -372,7 +375,7 @@ firewall-cmd --add-port=7946/udp --permanent
 firewall-cmd --add-port=4789/udp --permanent
 ----
 
-NOTE: Note: If you make a mistake and need to remove an entry, type: `firewall-cmd --remove-port=port-number/tcp —-permanent`. 
+NOTE: Note: If you make a mistake and need to remove an entry, type: `firewall-cmd --remove-port=port-number/tcp -permanent`. 
 
 Afterwards, reload the firewall:
 
@@ -401,9 +404,9 @@ Restart Docker.
 
 === Ouside network access
 
-If you’ll be testing applications on the cluster that require outside network access, be sure to open the necessary ports. 
+If you'll be testing applications on the cluster that require outside network access, be sure to open the necessary ports. 
 
-For example, if you’ll be testing a Web application that requires access on port 80, add a rule that grants access to that port using the following command on all the nodes (managers and workers) in the cluster:
+For example, if you'll be testing a Web application that requires access on port 80, add a rule that grants access to that port using the following command on all the nodes (managers and workers) in the cluster:
 
 `firewall-cmd --add-port=80/tcp --permanent`
 
