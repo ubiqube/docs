@@ -127,13 +127,62 @@ image:assurance_mon_profile_overview_rendering.png[width=800px]
 
 The {product_name} can collect and index SNMP traps out of the box.
 
-To monitor a managed entity with SNMP traps you need to configure the managed entity with *Collect Syslog* and *Analyse Syslog* enabled.
+To monitor a managed entity with SNMP traps you need to configure the managed entity with *Collect Syslog* and *Analyze Syslog* enabled.
 
 When the {product_name} collects a trap, it relies on the trap source IP address to identify the managed entity by it's management IP address. 
 
 Once a management entity is identified, the trap will be processed the same way as a syslog and will be indexed in Elasticsearch. It will then be listed in the logs screen in the "Alarms" section.
 
 image:assurance_traps_search.png[width=800px]
+
+=== SNMP v2/v3
+
+By default the {product_name} will be using SNMP v2.
+
+With {product_name} v2.8.3 SNMP v3 is also supported. In order to use SNMP v3 to monitor a managed entity you need to configure SNMP v3 parameters with a microservice named "snmpv3".
+
+This microservice is available on link:https://github.com/openmsa/Microservices/tree/master/ASSURANCE[github/openmsa] for a few vendor but as a developer you can easily add your own microservice if your target vendor is not available.
+
+Because not every vendor is supported (yet), the easiest way to monitor with SNMP v3 is to create a managed entity with the vendor "Monitoring / Monitoring / Generic" when creating the managed entity.
+
+image:assurance_mon_generic_me.png[width=800px]
+
+You also need to enable "SNMP Monitoring", use the SNMP v3 user for the community field.
+
+Once created and activated, you can create a deployment setting and use is to associate the managed entity and the microservice "snmpv3".
+
+The next step is to edit the microservice in the tab "Configure" of the managed entity and add a row by clicking on "+ Add Row".
+
+image:assurance_mon_generic_ms_create.png[width=800px]
+
+The parameter values should match the SNMPv3 configuration that was set in your actual device.
+
+For instance on a Linux Centos7:
+
+----
+[centos@ip-172-31-0-52 ~]$  snmpwalk -v3 -u ubiqube -l authNoPriv -a MD5 -A Ubiqube2021 localhost
+SNMPv2-MIB::sysDescr.0 = STRING: Linux ip-172-31-0-52.eu-west-2.compute.internal 3.10.0-957.12.2.el7.x86_64 #1 SMP Tue May 14 21:24:32 UTC 2019 x86_64
+SNMPv2-MIB::sysObjectID.0 = OID: NET-SNMP-MIB::netSnmpAgentOIDs.10
+DISMAN-EVENT-MIB::sysUpTimeInstance = Timeticks: (116126) 0:19:21.26
+SNMPv2-MIB::sysContact.0 = STRING: root@localhost
+SNMPv2-MIB::sysName.0 = STRING: ip-172-31-0-52.eu-west-2.compute.internal
+SNMPv2-MIB::sysLocation.0 = STRING: Unknown
+SNMPv2-MIB::sysORLastChange.0 = Timeticks: (8) 0:00:00.08
+SNMPv2-MIB::sysORID.1 = OID: SNMP-MPD-MIB::snmpMPDCompliance
+SNMPv2-MIB::sysORID.2 = OID: SNMP-USER-BASED-SM-MIB::usmMIBCompliance
+SNMPv2-MIB::sysORID.3 = OID: SNMP-FRAMEWORK-MIB::snmpFrameworkMIBCompliance
+SNMPv2-MIB::sysORID.4 = OID: SNMPv2-MIB::snmpMIB
+----
+
+The microservice instance should be similar to:
+
+image:assurance_mon_generic_ms_snmpv3_instance.png[width=800px]
+
+To verify that SNMP v3 monitoring is working properly you can check that the sysuptime graph is showing some graph. 
+
+You can also monitor specific KPI based on the OID of your vendor.
+
+image:assurance_mon_generic_ms_snmpv3_graph.png[width=800px]
 
 == Log analytics
 

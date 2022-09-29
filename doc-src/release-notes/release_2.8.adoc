@@ -7,7 +7,27 @@ The focus of the 2.8.0 release of {product_name} is mainly about improving the p
 
 The Microservice console has also been improved to provide a better user experience by allowing bulk changes of the microservice instances as well as additional design features. Advanced parameters have also been improved for a better support of the variables.
 
+== Assurance
+
+=== SNMPv3
+
+KPI monitoring with SNMPv3 is now supported with  {product_name} version 2.8.3. More detail are available in the manager guide, assurance section.
+
+== Repository
+
+The {product_name} repository contains the definition files for the workflows, microservices, BPM and various datafiles.
+Until version 2.8.3, these files could only be accessed either by the API or manually by connecting to the msa-dev container and using the CLI. 
+These files are store under /opt/fmc_repository/
+
+With version 2.8.3, you can use the UI to upload, delete, unzip and edit files in the DataFiles part of the repository. This feature is available for both developers and managers.
+
+image:2.8_repository.png[width=700px]
+
 == Microservices
+
+=== Support for JSON
+
+The introduction of the direct support of JSON when designing and executing the microservice synchronization is a major feature as it will ease the development of new microservice without having to rely on XPath to write the parsers for the JSON response coming from the vendor management REST API.
 
 === Duplicate an instance
 
@@ -39,7 +59,13 @@ Use the microservice console horizontal split view to display and work on the in
 
 image:2.8_microservice_split_view.png[width=700px]
 
-== xBAC
+== xBAC and admin
+
+=== Audit logs source IP
+
+The source IP address of any {product_name} API call, including from the UI, is now listed in the audit logs available in the user profile.
+
+image:2.8_auditlog_src_ip.png[width=700px]
 
 === Fine control the microservice and managed entity visibility 
 
@@ -85,7 +111,7 @@ link:https://github.com/openmsa/Adapters/blob/master/adapters/cisco_ios_xr[Netwo
 
 == Upgrading
 
-Instructions to upgrade available in the quickstart guide.
+Instructions to upgrade available in the quickstart UIde.
 
 === Specific instructions for upgrading from {revnumber-prev} to {revnumber}
 
@@ -100,6 +126,54 @@ In order to upgrade to the latest version, you need to follow these steps:
 
 == Specific technical fixes and feature details
 
+=== 2.8.3
+
+==== Features
+* MSA-11084 - [Alarm] SNMP trap forwarding for all the alarms that do not have snmpv3 support
+* MSA-10986 - [API] Audit trail logs to include source IP filter as well
+* MSA-11806 - [API] API for MANO VNF Validation
+* MSA-11812 - [API] API to zip a folder
+* MSA-11539 - [CoreEngine] Implement the JSON parser in SMS
+* MSA-11639 - [CoreEngine] allow both TCP and UDP syslogs to be collected
+* MSA-11325 - [HA] New option in install script to execute only swarm fix routes
+* MSA-10829 - [Microservice] Asynchronous call for synchronizing with device
+* MSA-10670 - [Microservice/Workflow] Enable File type variable
+* MSA-11683 - [Microservice/Workflow] Control visibility for Repository and File type variable
+* MSA-11748 - [Repository] Give correct meta info based on actor
+* MSA-11437 - [UI - MS] Allow payload in microservice import method
+* MSA-11439 - [UI] Align the UI with JSON parsing in microservice Console
+* MSA-11565 - [UI] Add some configurable fields in the alarms and logs to be able to show in the columns of alarm/log view
+* MSA-11661 - [UI] Audit trail logs to include source IP filter as well
+* MSA-11715 - [UI] Update product logos
+* MSA-11773 - [UI] Topology Variable to enabled/disable auto reload
+* MSA-10980 - [UI] View to upload files into fmc_repository
+* MSA-11799 - [UI] MANO: Show NSD/VNFFD validation
+* MSA-11443 - [Workflow] API to Stop(Kill) the running process
+* MSA-11566 - [Workflow] Hide Pause button on the last Task
+* MSA-11690 - [Workflow] Add total task count in process instance
+* MSA-11728 - [Workflow] Maximum button for variable type "Code"
+* MSA-11778 - [Workflow/API] Microservice Reference variable with value filtering
+
+==== Bug fixes
+
+* MSA-11417 - [Alarms] acknowledgement information sometimes lost on UI
+* MSA-11738 - [API] Cannot save Topology View.
+* MSA-11513 - [DB] Memory allocation issue on PSQL - Orchestration request to improve
+* MSA-11602 - [Managed Entity] Synchronize with ME with isAsync always returns an error
+* MSA-11808 - [Managed Entity] API to synchronize with ME with async flag does not IMPORT objects
+* MSA-11214 - [Microservice] Design automation: wrong sort control
+* MSA-11641 - [Microservice] Async Apply Changes
+* MSA-11768 - [Microservice] Asynchronous call for synchronizing with device
+* MSA-11591 - [Microservice] Nested array variables of Microservice
+* MSA-11627 - [RBAC] BPM/WF that cannot be edited in Automation can be edited from Dashboard
+* MSA-11823 - [RBAC] Permission profil managed entity failed with FEATURE_PERMISSION_PROFILE_LABELS=true parameter
+* MSA-11781 - [Topology] Create Topology when there are no instances
+* MSA-10880 - [UI] Need to have a proper message when user is trying to login whereas all the containers are not up
+* MSA-11568 - [UI] Microservice Import UI align
+* MSA-11380 - [Workflow] Delete process should delete instance only when process is successful
+* MSA-11723 - [Workflow] Enable all extended parameters for Composite behaviour
+* MSA-11724 - [Workflow] Enable all advanced parameters for Composite
+* MSA-11774 - [Workflow] Loading Task File drop-down list background has an issue
 === 2.8.2
 
 ==== Features
@@ -135,7 +209,7 @@ In order to upgrade to the latest version, you need to follow these steps:
 * MSA-11309 - [Microservice] when using bulk operation with composite key the conf generated in SMS_RETURN_BUF is concatenated multiple time
 * MSA-11404 - [Microservice] Design automation: the Duplicate function is incorrect.
 * MSA-11435 - [Microservice] array update is not working when calling the MS update
-* MSA-11520 - [Microservice] array variable with type "Microservice Reference" is not displayed on GUI after MS instance creation
+* MSA-11520 - [Microservice] array variable with type "Microservice Reference" is not displayed on UI after MS instance creation
 * MSA-11569 - [Microservice] Bulk items removal in Inventory DATABASE MS
 * MSA-11574 - [Microservice] No more able to create a Microservice instance with object_id as 0
 * MSA-11349 - [UI] "Keep on Import" param in advanced conf not working
@@ -191,7 +265,7 @@ In order to upgrade to the latest version, you need to follow these steps:
 * MSA-10832 - [CoreEngine] MIB Translation,Translation rules creation Workflow
 * MSA-10833 - [CoreEngine] MIB Translation, syslogd configuration generator
 * MSA-10834 - [CoreEngine] MIB Translation, Modify sms_syslogd daemon code
-* MSA-11123 - [Logs] - Elasticsearch with double indexing
+* MSA-11123 - [Logs - Elasticsearch with double indexing
 * MSA-10097 - [Microservice] Microservices instance order isn't correct in MSA UI after an "apply configuration" if the Microservice ordering is recalculated during the post import
 * MSA-10707 - [Microservice/Workflow] Enable more advanced parameters
 * MSA-10862 - [Microservice] Data Retention Versatility 2 Bulk operation on Microservice console
@@ -208,7 +282,7 @@ In order to upgrade to the latest version, you need to follow these steps:
 * MSA-10643 - [Microservice] use of type Microservice Reference for a Composite is not working
 * MSA-10844 - [Microservice] Constraint buffer isn't returned in the UI
 * MSA-11113 - [Microservice] 504 Gateway Timeout on loading large Microservice instance list
-* MSA-11035 - [REST API Adaptor] - delete operation bug & success response processing problem
+* MSA-11035 - [REST API Adaptor - delete operation bug & success response processing problem
 * MSA-11013 - [UI] Microservice _order variable should be taking into account on MSA UI side to order properly the Microservice instances
 * MSA-11098 - [Workflow] performance issue when selecting details or History or trying to call an update process
 * MSA-10481 - [Workflow] Executing Workflow process with only Workflow file(.xml) name throwing NPE instead of proper error message

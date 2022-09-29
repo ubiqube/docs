@@ -1,0 +1,15 @@
+= Repository
+ifndef::imagesdir[:imagesdir: images]
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+The {product_name} repository contains the definition files for the workflows, microservices, BPM and various datafiles.
+Until version 2.8.3, these files could only be accessed either by the API or manually by connecting to the msa-dev container and using the CLI. 
+These files are store under /opt/fmc_repository/
+
+With version 2.8.3, you can use the UI to upload, delete, unzip and edit files in the DataFiles part of the repository. This feature is available for both developers and managers.
+
+image:repository.png[width=800px]
+
+== File upload
+
+File will be uploaded based on the selected subtenant, therefore you need to select a subtenant in order to activate the upload button.
