@@ -31,7 +31,7 @@ When you click on a cloud vendor, it opens another dialog box where you can see 
 
 image:screen_dashboard_manage_cloud_vendor.png[alt=Dashboard Menu, width=500px]
 
-The top right corner of the dialog will have a helper button which will take you to a seperate window; where you can retrieve cloud credentials.
+The top right corner of the dialog will have a helper button which will take you to a separate window; where you can retrieve cloud credentials.
 
 ==== Organisation Summary
 ==== Quick Deployment
@@ -54,6 +54,24 @@ The options are "Hourly", "Monthly" and Annual
 ==== Environment List
 === Applications
 === Environments
+==== Dashboard
+[#create_environment]
+===== Create New Environment
+==== Deployments
+[#monitoring]
+==== Monitoring
+image:screen_monitoring.png[alt=App Access, width=500px]
+
+You can see a third party monitoring tool on this tab.
+For example, for Kubernetes based environments like EKS, AKS or GKE, you can see Grafana on the screen.
+You can choose if you want to deploy the tool along with Environment creation.
+
+===== Open Monitoring Tool
+You can open third party monitoring tools on the other tab.
+For example, for Kubernetes based environments you can select Prometheus, Grafana and Alertmanager.
+
+==== Environment Config
+==== Logs
 === Deployments
 ==== Dashboard
 ===== Applications
@@ -157,6 +175,23 @@ image:screen_edit_permission.png[alt=Edit Permission, width=500px]
 .Screen for User without Create Environment Permission
 image:usermanual_permission_1.png[alt=User Permission, width=500px]
 
+
+=== Monitoring
+==== Monitor Environments
+- When you link:#create_environment[Create Environment], some services let you choose and pre-deploy a third party monitoring tool along with Environment itself.
+
+.Screen to create an Environment
+image:screen_environment_deploy_grafana.png[]
+
+If you want to see the screen on Monitoring tab directly, you need to deploy it under https.
+
+NOTE: For now, https deployment is enabled only for EKS service.
+
+NOTE: To use https on AWS, make sure your user has a permit to use ACM service.
+
+- Once it is deployed, you can see the tool on  link:#monitoring[Monitoring] tab.
+
+NOTE: If the ssl is self signed, you need to open it in the other tab once and comeback to Cloudclapp to see them.
 
 
 == Tutorials
