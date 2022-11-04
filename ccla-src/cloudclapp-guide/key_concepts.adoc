@@ -1,1 +1,10 @@
 = Key Concepts
+
+== Blueprints
+
+
+
+=== Usage ===
+
+
+image:elasticsearch_ilm_1.png[]
