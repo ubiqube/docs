@@ -2,10 +2,21 @@
 
 == Blueprints
 
-Blueprints enable users to design infrastructure, platforms, and application services by composing and connecting cloud resources. It can be seen as a package or a  template permitting to deploy quickly an environment with predefined applications
+Blueprints enable users to design infrastructure, platforms, and application services by composing and connecting cloud resources. It can be seen as a package or a  template permitting to deploy quickly an environment with predefined applications. It permits also to replicate any infrastructure to multiple platforms.
 
 === Catalog View ===
 
-When you access 
+One of the ways to start quickly on CloudClapp is to chose from the templates'catalog the blueprint you want.
+There is 2 types of blueprints :
+
+* Blueprints from the OpenMSA library : https://github.com/openmsa/Blueprints
+* Blueprints created by users of the platform
+
+Example of blueprints :
+
+* Wordpress on Azure
+* Load balancer on AWS
+* MSActivator on any providers
+
 
 image:elasticsearch_ilm_1.png[]
