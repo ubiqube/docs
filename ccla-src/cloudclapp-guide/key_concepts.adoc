@@ -9,8 +9,8 @@ Blueprints enable users to design infrastructure, platforms, and application ser
 One of the ways to start quickly on CloudClapp is to chose from the templates'catalog the blueprint you want.
 There is 2 types of blueprints :
 
-* Blueprints from the OpenMSA library : https://github.com/openmsa/Blueprints
-* Blueprints created by users of the platform
+* Blueprints from the OpenMSA library : https://github.com/openmsa/Blueprints, visible in all organizations
+* Blueprints created by users of the platform, visible only in the organization where they have been created
 
 Example of blueprints :
 
