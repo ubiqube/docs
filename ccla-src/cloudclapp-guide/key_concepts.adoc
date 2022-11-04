@@ -18,9 +18,6 @@ Example of blueprints :
 * Load balancer on AWS
 * MSActivator on any providers
 
-
-image:elasticsearch_ilm_1.png[]
-
 === Content ===
 
 A Blueprint is a combinaison of two main files 
