@@ -2,9 +2,10 @@
 
 == Blueprints
 
+Blueprints enable users to design infrastructure, platforms, and application services by composing and connecting cloud resources. It can be seen as a package or a  template permitting to deploy quickly an environment with predefined applications
 
+=== Catalog View ===
 
-=== Usage ===
-
+When you access 
 
 image:elasticsearch_ilm_1.png[]
