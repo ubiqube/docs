@@ -41,5 +41,16 @@ This area is composed of the following components :
 * The options bar : all graphical options to select components nodes, space tool and the connectors
 * The component setting panel : after selecting any component (infrastrcture, resources or application) the panel permit to configure it
 
+=== Component Library ===
+==== Infrastructure ====
+* Provider : select on which cloud provider the design will be applied (AWS,AZURE and GOOGLE)
+* Region : select on which region resources will be created. Per providers, the list is fetched
+* App deployment : select 1 or multiple application to be deployed on this design (See Application Deployer)
+
+==== Resources ====
+* K8 Cluster : represents a Kubernetes cluster.
+** If associated to AWS provider, this cluster represents EKS service
+** If associated to AZURE provider, this cluster represents AKS service
+** If associated to GOOGLE provider, this cluster represent GKE service
 
 == Application Deployer ==
