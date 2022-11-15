@@ -32,4 +32,14 @@ A Blueprint is a combinaison of two main files
 
 == Environment Builder ==
 
+Using from a blueprint or from scratch, the environment builder permits to design your cloud architectures
+In the environment home page, you can access the environment builder by clicking on Design tab
+This area is composed of the following components :
+
+* The top bar : permit to save the design as a new blueprint
+* The components library
+* The options bar : all graphical options to select components nodes, space tool and the connectors
+* The component setting panel : after selecting any component (infrastrcture, resources or application) the panel permit to configure it
+
+
 == Application Deployer ==
