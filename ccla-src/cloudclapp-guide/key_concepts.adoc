@@ -17,12 +17,6 @@ Example of blueprints :
 * Load balancer on AWS
 * MSActivator on any providers
 
-Some filters in this screen permit to search blueprint :
-
-* a
-* b
-* c
-
 === Content ===
 
 A Blueprint is a combinaison of two main files 
