@@ -126,21 +126,131 @@ In order to upgrade to the latest version, you need to follow these steps:
 
 == Specific technical fixes and feature details
 
+=== 2.8.4
+
+==== Bug fixes
+
+* MSA-11856 - [Adapter] Juniper Contrail Adapter Bug fixes
+* MSA-11596 - [API] Managed entities status API called on dashboard to show the wheel about devices status and numbers returns wrong results.
+* MSA-11810 - [API] Bad return for empty list of entities with parents
+* MSA-12000 - [API] Already imported Microservicesinstance are no more removed from database if next import is empty
+* MSA-11988 - [Alarms] Error fetching Logs: "Please reload the page"
+* MSA-12055 - [Alarms] Rawlog field not shown in Kibana lens
+* MSA-12058 - [Alarms] missing permission to view alarm events
+* MSA-12032 - [Alarms] alarm not visible for manager associated to 2 subtenants
+* MSA-11958 - [Assurance] swarm-fix-all-nodes.sh not working the TM prod
+* MSA-12113 - [Assurance] SNMPv2 Traps not completely recovered
+* MSA-12088 - [CoreEngine] Syslogd stop to process logs properly (logServe log task deadlock)
+* MSA-11085 - [CoreEngine] MSA receiving SNMP traps from the devices/entities lacks SNMPV3 support, even v2 is not working.
+* MSA-11705 - [CoreEngine] Syslog Parsing for Cisco ESA
+* MSA-11704 - [CoreEngine] Syslog Parsing for Cisco WSA
+* MSA-12036 - [CoreEngine] Monitoring depends on sms container for load_log
+* MSA-12105 - [CoreEngine] Bad initialization of configuration variables in sms_syslogd for SNMPv3
+* MSA-12022 - [Dashboard] Workflows not working: IpAddress and Hash variables are mandatory but not visible
+* MSA-12066 - [Dashboard] Not possible to deploy a Kibana dashboard
+* MSA-12020 - [Logs] In managed entity view in Logs tab we cannot go to next pages of logs
+* MSA-11832 - [Managed Entities] Variables and Deployment Settings are not copied when duplicate
+* MSA-12109 - [Managed Entities] duplicated instances with multiple import ranks Microservicesdepending of each other
+* MSA-11311 - [Microservice] UI to display Read result doesn't keep the original format defined by the smarty template when the template generates a JSON
+* MSA-11490 - [Microservice] type Code not fully supported as composite
+* MSA-11571 - [Microservice] Cannot reference Microservice records attached to digital twin from Workflows
+* MSA-11655 - [Microservice] Microservice instance array variables aren't handle properly in case of multiple XPATH
+* MSA-11662 - [Microservice] type Code not fully supported as composite
+* MSA-11908 - [Microservice] Keep Microservice object order in Microservice ref API
+* MSA-11947 - [Microservice] error in sync status display
+* MSA-12100 - [Microservice] Import rank are not correctly ordered
+* MSA-12101 - [Microservice] Unable to load Microservice object: NPE in API console
+* MSA-12168 - [Microservice] failing to save when edited
+* MSA-11821 - [Microservice]Incorrect bulk registration of tables with IP addresses
+* MSA-11949 - [Microservice] NPE thrown on Microservicesref API when Microservicesinstance display variable empty or null
+* MSA-12006 - [Microservice] Vanishing data about values displayed via Composite
+* MSA-12010 - [Microservice] - Microservices instance edit - multiple selection - variable marked as non visible still shown with blank values
+* MSA-12081 - [Logs] view broken because of malformed date format in Elasticsearch - Cisco ASA IOS
+* MSA-12087 - [Logs] Empty line in load batch, cause many file rejection.
+* MSA-12090 - [Repository] file are not uploaded in the correct destination folder
+* MSA-12157 - [Repository] File size error while uploading file in repository
+* MSA-11891 - [Settings] Changing managed entity configure pagination breaks managed entity list
+* MSA-12017 - [Syslogs] Column names have typo or wrong name
+* MSA-12106 - [Workflows] Array variable declared as composite marked as non visible still displayed
+* MSA-12007 - [Workflows] Array variable marked as non visible still displayed
+
+
+
+==== Features
+
+* MSA-11588 - [Adapter] Arista EOS rollback support
+* MSA-11712 - [Adapter] CISCO NX API rollback support
+* MSA-11703 - [Adapter] Cisco NX - Copy running config startup config
+* MSA-11699 - [Adapter] Cisco IOS - Endpoint initial provisioning process - Secure Certificate Installation
+* MSA-11997 - [Adapter] add a new generic syslog parser compatible with RFC3164
+* MSA-11840 - [Alarms] Show Alarms definition for admins and privileged managers and alarms for Managers
+* MSA-11563 - [Alarms] Alarms need to be visible for admins and privileged managers including managing of alarms definitions
+* MSA-11564 - [Alarms] Add alarm name column in the alarm view to be able to filter only certain alarms
+* MSA-11827 - [Alarms] Add name and description in alarm list screen
+* MSA-11831 - [Alarms] Store column settings in redux store
+* MSA-10609 - [Assurance] Optimize Alarm DB call with 2 second interval
+* MSA-11826 - [Assurance] logs screen - show device name
+* MSA-11780 - [Audit Log] Source IP partial match
+* MSA-11558 - [CoreEngine] Enhance SNMP V3 based monitoring (polling) to use config variables
+* MSA-11669 - [CoreEngine] Allow to import a Microservice only one time (to improve performance)
+* MSA-11985 - [CoreEngine] add useful libs in docker image: tcpdump,...
+* MSA-11794 - [CoreEngine] Add alarm name, managed entity name column in the alarm view to be able to filter only certain alarms - Check Alert
+* MSA-11992 - [Dashboard] Export Kibana Dashboard as PDF
+* MSA-12065 - [ELK] Upgrade ELK stack to 7.14.2
+* MSA-12009 - [Kibana] Environment variable to skip Kibana login
+* MSA-11123 - [Logs] Elasticsearch with double indexing
+* MSA-11959 - [MANO] exclude MANO DB from cross DC database sync
+* MSA-10685 - [Microservice] UI synchronize calls to be made asynchronously
+* MSA-11830 - [HA] Cross DC failover
+* MSA-11839 - [Logs] Make alarm name and ME name searchable in Alarms
+* MSA-11892 - [Logs] ME name include in the syslogs
+* MSA-11818 - [Managed entities] make external reference editable
+* MSA-11894 - [Managed entities] Maintenance mode for managed entities
+* MSA-11990 - [Managed entities] create a VNOC notification when Maintenance mode is turned on/off
+* MSA-12005 - [UI/MS] - Option to not change object_id value in Update Method
+* MSA-11886 - [Repository] Upload files based on passed path
+* MSA-11884 - [UI] Create a button to open microservice console on workflow console
+* MSA-11814 - [UI] Multiple dashboard on manager board
+* MSA-11924 - [UI] Upload files to the current directory
+* MSA-11925 - [UI] Extension filtering for Repository validation
+* MSA-11964 - [UI] Permit ME creation with FQDN in addition of @IP
+* MSA-11936 - [UI] Enhancements to Multiple dashboard on manager board
+* MSA-11993 - [UI] add UI feature to enable/disable BPM
+* MSA-11975 - [Topology] topology Workflows is not supporting SNMPv3
+* MSA-11761 - [Workflow] Auto Fill value to variable when Microservices Reference is Selected
+* MSA-11779 - [Workflow] Microservices Reference variable with value filtering
+* MSA-11682 - [Workflows] UI to Stop(Kill) the running process
+* MSA-11935 - [Workflows] UI enhancements to stop(Kill) the running process
+* MSA-11948 - [Workflow/Microserivce] New advanced parameter to validate value with regex
+
 === 2.8.3
 
 ==== Features
+
 * MSA-11084 - [Alarm] SNMP trap forwarding for all the alarms that do not have snmpv3 support
+* MSA-11417 - [Alarms] acknowledgement information sometimes lost on UI
 * MSA-10986 - [API] Audit trail logs to include source IP filter as well
 * MSA-11806 - [API] API for MANO VNF Validation
 * MSA-11812 - [API] API to zip a folder
+* MSA-11738 - [API] Cannot save Topology view
 * MSA-11539 - [CoreEngine] Implement the JSON parser in SMS
 * MSA-11639 - [CoreEngine] allow both TCP and UDP syslogs to be collected
+* MSA-11513 - [DB] Memory allocation issue on PSQL - Orchestration request to improve
 * MSA-11325 - [HA] New option in install script to execute only swarm fix routes
+* MSA-11602 - [Managed Entity] Synchronize with ME with isAsync always returns an error
+* MSA-11808 - [Managed Entity] API to synchronize with ME with async flag does not IMPORT objects
+* MSA-11214 - [Microservice] Design automation: wrong sort control
+* MSA-11641 - [Microservice] Async Apply Changes
+* MSA-11768 - [Microservice] Asynchronous call for synchronizing with device
+* MSA-11591 - [Microservice] Nested array variables of Microservice
+* MSA-11437 - [Microservice] Allow payload in microservice import method
 * MSA-10829 - [Microservice] Asynchronous call for synchronizing with device
 * MSA-10670 - [Microservice/Workflow] Enable File type variable
 * MSA-11683 - [Microservice/Workflow] Control visibility for Repository and File type variable
 * MSA-11748 - [Repository] Give correct meta info based on actor
-* MSA-11437 - [UI - MS] Allow payload in microservice import method
+* MSA-11627 - [RBAC] BPM/Workflows that cannot be edited in Automation can be edited from Dashboard
+* MSA-11823 - [RBAC] Permission profile managed entity failed with FEATURE_PERMISSION_PROFILE_LABELS=true parameter
+* MSA-11781 - [Topology] Create Topology when there are no instances
 * MSA-11439 - [UI] Align the UI with JSON parsing in microservice Console
 * MSA-11565 - [UI] Add some configurable fields in the alarms and logs to be able to show in the columns of alarm/log view
 * MSA-11661 - [UI] Audit trail logs to include source IP filter as well
@@ -148,32 +258,18 @@ In order to upgrade to the latest version, you need to follow these steps:
 * MSA-11773 - [UI] Topology Variable to enabled/disable auto reload
 * MSA-10980 - [UI] View to upload files into fmc_repository
 * MSA-11799 - [UI] MANO: Show NSD/VNFFD validation
+* MSA-10880 - [UI] Need to have a proper message when user is trying to login whereas all the containers are not up
+* MSA-11568 - [UI] Microservice Import UI align
+* MSA-11380 - [Workflow] Delete process should delete instance only when process is successful
+* MSA-11723 - [Workflow] Enable all extended parameters for Composite behavior
+* MSA-11724 - [Workflow] Enable all advanced parameters for Composite
+* MSA-11774 - [Workflow] Loading Task File drop-down list background has an issue
 * MSA-11443 - [Workflow] API to Stop(Kill) the running process
 * MSA-11566 - [Workflow] Hide Pause button on the last Task
 * MSA-11690 - [Workflow] Add total task count in process instance
 * MSA-11728 - [Workflow] Maximum button for variable type "Code"
 * MSA-11778 - [Workflow/API] Microservice Reference variable with value filtering
 
-==== Bug fixes
-
-* MSA-11417 - [Alarms] acknowledgement information sometimes lost on UI
-* MSA-11738 - [API] Cannot save Topology View.
-* MSA-11513 - [DB] Memory allocation issue on PSQL - Orchestration request to improve
-* MSA-11602 - [Managed Entity] Synchronize with ME with isAsync always returns an error
-* MSA-11808 - [Managed Entity] API to synchronize with ME with async flag does not IMPORT objects
-* MSA-11214 - [Microservice] Design automation: wrong sort control
-* MSA-11641 - [Microservice] Async Apply Changes
-* MSA-11768 - [Microservice] Asynchronous call for synchronizing with device
-* MSA-11591 - [Microservice] Nested array variables of Microservice
-* MSA-11627 - [RBAC] BPM/WF that cannot be edited in Automation can be edited from Dashboard
-* MSA-11823 - [RBAC] Permission profil managed entity failed with FEATURE_PERMISSION_PROFILE_LABELS=true parameter
-* MSA-11781 - [Topology] Create Topology when there are no instances
-* MSA-10880 - [UI] Need to have a proper message when user is trying to login whereas all the containers are not up
-* MSA-11568 - [UI] Microservice Import UI align
-* MSA-11380 - [Workflow] Delete process should delete instance only when process is successful
-* MSA-11723 - [Workflow] Enable all extended parameters for Composite behaviour
-* MSA-11724 - [Workflow] Enable all advanced parameters for Composite
-* MSA-11774 - [Workflow] Loading Task File drop-down list background has an issue
 === 2.8.2
 
 ==== Features
@@ -208,8 +304,8 @@ In order to upgrade to the latest version, you need to follow these steps:
 * MSA-11216 - [Microservice] Design automation: bulk deletion is incorrect
 * MSA-11309 - [Microservice] when using bulk operation with composite key the conf generated in SMS_RETURN_BUF is concatenated multiple time
 * MSA-11404 - [Microservice] Design automation: the Duplicate function is incorrect.
-* MSA-11435 - [Microservice] array update is not working when calling the MS update
-* MSA-11520 - [Microservice] array variable with type "Microservice Reference" is not displayed on UI after MS instance creation
+* MSA-11435 - [Microservice] array update is not working when calling the Microservices update
+* MSA-11520 - [Microservice] array variable with type "Microservice Reference" is not displayed on UI after Microservices instance creation
 * MSA-11569 - [Microservice] Bulk items removal in Inventory DATABASE MS
 * MSA-11574 - [Microservice] No more able to create a Microservice instance with object_id as 0
 * MSA-11349 - [UI] "Keep on Import" param in advanced conf not working
@@ -246,7 +342,7 @@ In order to upgrade to the latest version, you need to follow these steps:
 * MSA-11032 - [Microservice] XML XPath library doesn't support name space attributes
 * MSA-11060 - [Microservice] UI freaks out during save if a duplicated variable exist
 * MSA-11095 - [Microservice] function sortby_typed: PHP Warning: uasort() expects parameter 1 to be array, null given
-* MSA-11229 - [Microservice] filters on microservices and MS objects sometimes not working well
+* MSA-11229 - [Microservice] filters on microservices and Microservicesobjects sometimes not working well
 * MSA-11275 - [Microservice] Design automation Bulk update is incorrect
 * MSA-11276 - [Microservice] API/UI change in the way the microservice console displays the values that are stored in the DB
 * MSA-11303 - [Microservice] hide search query when searching for a column
