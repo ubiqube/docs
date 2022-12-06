@@ -9,9 +9,16 @@ The Microservice console has also been improved to provide a better user experie
 
 == Assurance
 
+=== Download PDF Kibana dashboard
+
+Kibana dashboard visible in the manager portal dashboard can be previewed and downloaded as a PFD file.
+
+image:2.8_dashboard_pdf.png[width=700px]
+
 === SNMPv3
 
 KPI monitoring with SNMPv3 is now supported with  {product_name} version 2.8.3. More detail are available in the manager guide, assurance section.
+
 
 == Repository
 
@@ -128,54 +135,6 @@ In order to upgrade to the latest version, you need to follow these steps:
 
 === 2.8.4
 
-==== Bug fixes
-
-* MSA-11856 - [Adapter] Juniper Contrail Adapter Bug fixes
-* MSA-11596 - [API] Managed entities status API called on dashboard to show the wheel about devices status and numbers returns wrong results.
-* MSA-11810 - [API] Bad return for empty list of entities with parents
-* MSA-12000 - [API] Already imported Microservicesinstance are no more removed from database if next import is empty
-* MSA-11988 - [Alarms] Error fetching Logs: "Please reload the page"
-* MSA-12055 - [Alarms] Rawlog field not shown in Kibana lens
-* MSA-12058 - [Alarms] missing permission to view alarm events
-* MSA-12032 - [Alarms] alarm not visible for manager associated to 2 subtenants
-* MSA-11958 - [Assurance] swarm-fix-all-nodes.sh not working the TM prod
-* MSA-12113 - [Assurance] SNMPv2 Traps not completely recovered
-* MSA-12088 - [CoreEngine] Syslogd stop to process logs properly (logServe log task deadlock)
-* MSA-11085 - [CoreEngine] MSA receiving SNMP traps from the devices/entities lacks SNMPV3 support, even v2 is not working.
-* MSA-11705 - [CoreEngine] Syslog Parsing for Cisco ESA
-* MSA-11704 - [CoreEngine] Syslog Parsing for Cisco WSA
-* MSA-12036 - [CoreEngine] Monitoring depends on sms container for load_log
-* MSA-12105 - [CoreEngine] Bad initialization of configuration variables in sms_syslogd for SNMPv3
-* MSA-12022 - [Dashboard] Workflows not working: IpAddress and Hash variables are mandatory but not visible
-* MSA-12066 - [Dashboard] Not possible to deploy a Kibana dashboard
-* MSA-12020 - [Logs] In managed entity view in Logs tab we cannot go to next pages of logs
-* MSA-11832 - [Managed Entities] Variables and Deployment Settings are not copied when duplicate
-* MSA-12109 - [Managed Entities] duplicated instances with multiple import ranks Microservicesdepending of each other
-* MSA-11311 - [Microservice] UI to display Read result doesn't keep the original format defined by the smarty template when the template generates a JSON
-* MSA-11490 - [Microservice] type Code not fully supported as composite
-* MSA-11571 - [Microservice] Cannot reference Microservice records attached to digital twin from Workflows
-* MSA-11655 - [Microservice] Microservice instance array variables aren't handle properly in case of multiple XPATH
-* MSA-11662 - [Microservice] type Code not fully supported as composite
-* MSA-11908 - [Microservice] Keep Microservice object order in Microservice ref API
-* MSA-11947 - [Microservice] error in sync status display
-* MSA-12100 - [Microservice] Import rank are not correctly ordered
-* MSA-12101 - [Microservice] Unable to load Microservice object: NPE in API console
-* MSA-12168 - [Microservice] failing to save when edited
-* MSA-11821 - [Microservice]Incorrect bulk registration of tables with IP addresses
-* MSA-11949 - [Microservice] NPE thrown on Microservicesref API when Microservicesinstance display variable empty or null
-* MSA-12006 - [Microservice] Vanishing data about values displayed via Composite
-* MSA-12010 - [Microservice] - Microservices instance edit - multiple selection - variable marked as non visible still shown with blank values
-* MSA-12081 - [Logs] view broken because of malformed date format in Elasticsearch - Cisco ASA IOS
-* MSA-12087 - [Logs] Empty line in load batch, cause many file rejection.
-* MSA-12090 - [Repository] file are not uploaded in the correct destination folder
-* MSA-12157 - [Repository] File size error while uploading file in repository
-* MSA-11891 - [Settings] Changing managed entity configure pagination breaks managed entity list
-* MSA-12017 - [Syslogs] Column names have typo or wrong name
-* MSA-12106 - [Workflows] Array variable declared as composite marked as non visible still displayed
-* MSA-12007 - [Workflows] Array variable marked as non visible still displayed
-
-
-
 ==== Features
 
 * MSA-11588 - [Adapter] Arista EOS rollback support
@@ -222,6 +181,52 @@ In order to upgrade to the latest version, you need to follow these steps:
 * MSA-11682 - [Workflows] UI to Stop(Kill) the running process
 * MSA-11935 - [Workflows] UI enhancements to stop(Kill) the running process
 * MSA-11948 - [Workflow/Microserivce] New advanced parameter to validate value with regex
+
+==== Bug fixes
+
+* MSA-11856 - [Adapter] Juniper Contrail Adapter Bug fixes
+* MSA-11596 - [API] Managed entities status API called on dashboard to show the wheel about devices status and numbers returns wrong results.
+* MSA-11810 - [API] Bad return for empty list of entities with parents
+* MSA-12000 - [API] Already imported Microservicesinstance are no more removed from database if next import is empty
+* MSA-11988 - [Alarms] Error fetching Logs: "Please reload the page"
+* MSA-12055 - [Alarms] Rawlog field not shown in Kibana lens
+* MSA-12058 - [Alarms] missing permission to view alarm events
+* MSA-12032 - [Alarms] alarm not visible for manager associated to 2 subtenants
+* MSA-11958 - [Assurance] swarm-fix-all-nodes.sh not working the TM prod
+* MSA-12113 - [Assurance] SNMPv2 Traps not completely recovered
+* MSA-12088 - [CoreEngine] Syslogd stop to process logs properly (logServe log task deadlock)
+* MSA-11085 - [CoreEngine] MSA receiving SNMP traps from the devices/entities lacks SNMPV3 support, even v2 is not working.
+* MSA-11705 - [CoreEngine] Syslog Parsing for Cisco ESA
+* MSA-11704 - [CoreEngine] Syslog Parsing for Cisco WSA
+* MSA-12036 - [CoreEngine] Monitoring depends on sms container for load_log
+* MSA-12105 - [CoreEngine] Bad initialization of configuration variables in sms_syslogd for SNMPv3
+* MSA-12022 - [Dashboard] Workflows not working: IpAddress and Hash variables are mandatory but not visible
+* MSA-12066 - [Dashboard] Not possible to deploy a Kibana dashboard
+* MSA-12020 - [Logs] In managed entity view in Logs tab we cannot go to next pages of logs
+* MSA-11832 - [Managed Entities] Variables and Deployment Settings are not copied when duplicate
+* MSA-12109 - [Managed Entities] duplicated instances with multiple import ranks Microservicesdepending of each other
+* MSA-11311 - [Microservice] UI to display Read result doesn't keep the original format defined by the smarty template when the template generates a JSON
+* MSA-11490 - [Microservice] type Code not fully supported as composite
+* MSA-11571 - [Microservice] Cannot reference Microservice records attached to digital twin from Workflows
+* MSA-11655 - [Microservice] Microservice instance array variables aren't handle properly in case of multiple XPATH
+* MSA-11662 - [Microservice] type Code not fully supported as composite
+* MSA-11908 - [Microservice] Keep Microservice object order in Microservice ref API
+* MSA-11947 - [Microservice] error in sync status display
+* MSA-12100 - [Microservice] Import rank are not correctly ordered
+* MSA-12101 - [Microservice] Unable to load Microservice object: NPE in API console
+* MSA-12168 - [Microservice] failing to save when edited
+* MSA-11821 - [Microservice]Incorrect bulk registration of tables with IP addresses
+* MSA-11949 - [Microservice] NPE thrown on Microservicesref API when Microservicesinstance display variable empty or null
+* MSA-12006 - [Microservice] Vanishing data about values displayed via Composite
+* MSA-12010 - [Microservice] - Microservices instance edit - multiple selection - variable marked as non visible still shown with blank values
+* MSA-12081 - [Logs] view broken because of malformed date format in Elasticsearch - Cisco ASA IOS
+* MSA-12087 - [Logs] Empty line in load batch, cause many file rejection.
+* MSA-12090 - [Repository] file are not uploaded in the correct destination folder
+* MSA-12157 - [Repository] File size error while uploading file in repository
+* MSA-11891 - [Settings] Changing managed entity configure pagination breaks managed entity list
+* MSA-12017 - [Syslogs] Column names have typo or wrong name
+* MSA-12106 - [Workflows] Array variable declared as composite marked as non visible still displayed
+* MSA-12007 - [Workflows] Array variable marked as non visible still displayed
 
 === 2.8.3
 
