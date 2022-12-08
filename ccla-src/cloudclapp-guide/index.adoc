@@ -73,6 +73,22 @@ For example, for Kubernetes based environments you can select Prometheus, Grafan
 ==== Environment Config
 ==== Logs
 === Deployments
+
+==== Deploy Environment with Blueprint
+
+image:screen_blueprint_menu.png[alt=Blueprints Menu, width=500px]
+
+On this screen, all available Blueprints can be seen listed. On click of "Use As A New Environment" button in blueprint, new environment will be created.
+
+On the environment thus created, 'Design' tab in Environment menu can be used to Edit and Save the Design. 
+
+Once done, environment deployment can be triggered by clicking on 'Deploy' button.
+
+image:screen_environment_menu.png[alt=Environment Menu, width=500px]
+
+
+
+
 ==== Dashboard
 ===== Applications
 ====== View Details
@@ -174,6 +190,7 @@ image:screen_edit_permission.png[alt=Edit Permission, width=500px]
 
 .Screen for User without Create Environment Permission
 image:usermanual_permission_1.png[alt=User Permission, width=500px]
+
 
 
 === Monitoring
