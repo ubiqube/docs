@@ -61,10 +61,10 @@ image:screen_design.png[alt=App Access, width=500px]
 You will see a designer tool on this tab to create deployment. You can create a blueprint of design also. You will see that created blueprint on blueprints sections once you create that successfully.
 
 ===== Designer Tool
-This is playground where you can design your environment/deployment using services/options from link:#custom_palette[Custom Palette]. Once you select any of infra or resource you will see modal on right side to provide configuration/parameters values. Once you done with design then you can save as a blueprint and then you can deploy that design.
+This is playground where you can design your environment/deployment using services/options from link:#palette[Palette]. Once you select any of infra or resource you will see modal on right side to provide configuration/parameters values. Once you done with design then you can save as a blueprint and then you can deploy that design.
 
-[#custom_palette]
-===== Custom Palette
+[#palette]
+===== Palette
 On left side you have palette where you can select Provider, Region, App deployment and K8 cluster. You can drag and drop that selection on designer. More on App deployment option where you can select public/private Docker Image such as Nginx, Wordpress, Mysql then you can attach those apps to K8 cluster.
 
 [#create_environment]
