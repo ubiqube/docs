@@ -52,6 +52,12 @@ The options are "Hourly", "Monthly" and Annual
 
 
 ==== Environment List
+==== Blueprints
+
+image:screen_blueprint_menu.png[alt=Blueprints Menu, width=500px]
+
+On this screen, all available Blueprints can be seen listed. You can create a new environment by clicking on any Blueprint.
+
 === Applications
 === Environments
 ==== Dashboard
@@ -80,7 +86,9 @@ image:screen_blueprint_menu.png[alt=Blueprints Menu, width=500px]
 
 On this screen, all available Blueprints can be seen listed. On click of "Use As A New Environment" button in blueprint, new environment will be created.
 
-On the environment thus created, 'Design' tab in Environment menu can be used to Edit and Save the Design. 
+On the environment thus created, 'Design' tab in Environment menu can be used to Edit, Save and Deploy the blueprint design.
+
+Blueprints can also be created from an existing Environment, by clicking on 'Save Environment As Blueprint' button on the 'Design' tab.
 
 Once done, environment deployment can be triggered by clicking on 'Deploy' button.
 
