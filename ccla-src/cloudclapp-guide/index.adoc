@@ -209,6 +209,8 @@ image:screen_blueprint_menu.png[alt=Blueprints Menu, width=500px]
 - Edit Environment Designer.
 - Click Deploy.
 
+image:screen_environment_menu.png[alt=Environment Menu, width=500px]
+
 == Tutorials
 
 TBD
