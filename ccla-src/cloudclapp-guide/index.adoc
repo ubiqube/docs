@@ -52,6 +52,12 @@ The options are "Hourly", "Monthly" and Annual
 
 
 ==== Environment List
+==== Blueprints
+
+image:screen_blueprint_menu.png[alt=Blueprints Menu, width=500px]
+
+On this screen, all available Blueprints can be seen listed. You can create a new environment by clicking on any Blueprint.
+
 === Applications
 === Environments
 ==== Dashboard
@@ -188,6 +194,7 @@ image:screen_edit_permission.png[alt=Edit Permission, width=500px]
 image:usermanual_permission_1.png[alt=User Permission, width=500px]
 
 
+
 === Monitoring
 ==== Monitor Environments
 - When you link:#create_environment[Create Environment], some services let you choose and pre-deploy a third party monitoring tool along with Environment itself.
@@ -205,6 +212,16 @@ NOTE: To use https on AWS, make sure your user has a permit to use ACM service.
 
 NOTE: If the ssl is self signed, you need to open it in the other tab once and comeback to Cloudclapp to see them.
 
+==== Deploy Environment with Blueprint
+
+image:screen_blueprint_menu.png[alt=Blueprints Menu, width=500px]
+
+- Select Blueprints.
+- Click and "Use as New Environment".
+- Edit Environment Designer.
+- Click Deploy.
+
+image:screen_environment_menu.png[alt=Environment Menu, width=500px]
 
 == Tutorials
 
