@@ -65,6 +65,8 @@ include::{includedir}/microservice_editor.adoc[]
 
 include::{includedir}/microservice_xml_editor.adoc[]
 
+include::{includedir}/microservice_json_editor.adoc[]
+
 include::{includedir}/microservice_cli_editor.adoc[]
 
 include::{includedir}/microservice_variables.adoc[]

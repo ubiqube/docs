@@ -5,7 +5,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 The focus of the 2.8.0 release of {product_name} is mainly about improving the performances and reliability. 
 
-The Microservice console has also been improved to provide a better user experience by allowing bulk changes of the microservice instances as well as additional design features. Advanced parameters have also been improved for a better support of the variables.
+The microservice console has also been improved to provide a better user experience by allowing bulk changes of the microservice instances as well as additional design features. Advanced parameters have also been improved for a better support of the variables.
 
 == Assurance
 
@@ -19,7 +19,6 @@ image:2.8_dashboard_pdf.png[width=700px]
 
 KPI monitoring with SNMPv3 is now supported with  {product_name} version 2.8.3. More detail are available in the manager guide, assurance section.
 
-
 == Repository
 
 The {product_name} repository contains the definition files for the workflows, microservices, BPM and various datafiles.
@@ -31,10 +30,6 @@ With version 2.8.3, you can use the UI to upload, delete, unzip and edit files i
 image:2.8_repository.png[width=700px]
 
 == Microservices
-
-=== Support for JSON
-
-The introduction of the direct support of JSON when designing and executing the microservice synchronization is a major feature as it will ease the development of new microservice without having to rely on XPath to write the parsers for the JSON response coming from the vendor management REST API.
 
 === Duplicate an instance
 
@@ -102,7 +97,7 @@ In the local settings, choose the dark or the new light theme.
 
 image:2.8_ui_theme.png[width=700px]
 
-== CoreEngine
+=== CoreEngine
 
 No changes have been made to the core engine from previous versions of the product. This allows consistency from branches of {openmsa_name} (community version), found on GitHub: https://github.com/openmsa
 
@@ -166,7 +161,7 @@ In order to upgrade to the latest version, you need to follow these steps:
 * MSA-11818 - [Managed entities] make external reference editable
 * MSA-11894 - [Managed entities] Maintenance mode for managed entities
 * MSA-11990 - [Managed entities] create a VNOC notification when Maintenance mode is turned on/off
-* MSA-12005 - [UI/MS] - Option to not change object_id value in Update Method
+* MSA-12005 - [UI/MS - Option to not change object_id value in Update Method
 * MSA-11886 - [Repository] Upload files based on passed path
 * MSA-11884 - [UI] Create a button to open microservice console on workflow console
 * MSA-11814 - [UI] Multiple dashboard on manager board
@@ -218,7 +213,7 @@ In order to upgrade to the latest version, you need to follow these steps:
 * MSA-11821 - [Microservice]Incorrect bulk registration of tables with IP addresses
 * MSA-11949 - [Microservice] NPE thrown on Microservicesref API when Microservicesinstance display variable empty or null
 * MSA-12006 - [Microservice] Vanishing data about values displayed via Composite
-* MSA-12010 - [Microservice] - Microservices instance edit - multiple selection - variable marked as non visible still shown with blank values
+* MSA-12010 - [Microservice - Microservices instance edit - multiple selection - variable marked as non visible still shown with blank values
 * MSA-12081 - [Logs] view broken because of malformed date format in Elasticsearch - Cisco ASA IOS
 * MSA-12087 - [Logs] Empty line in load batch, cause many file rejection.
 * MSA-12090 - [Repository] file are not uploaded in the correct destination folder

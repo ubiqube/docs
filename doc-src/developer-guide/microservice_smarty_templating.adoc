@@ -145,7 +145,6 @@ The syntax for {foreach} is much easier than {section}, but as a trade off it ca
 telephony-service
 {foreach from=$params.tftp_load item=tftp}
  load {$tftp.phone_type} {$tftp.firmware_file_name}
-
 {/foreach}
 ----
 
