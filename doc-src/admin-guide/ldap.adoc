@@ -200,3 +200,21 @@ POST https://localhost/ubi-api-rest/system-admin/v1/msa_vars
   }
 ]
 ----
+
+=== LDAP Custom Attributes Checking on Authentication
+
+List of custom LDAP user Attributes can be checked while authenticating the user, based on the user attributes and its values, LDAP authentication will decided
+ 
+you can set the custom attributes in the below MSA Var, example attributes and values format should be like below
+
+----
+POST https://localhost/ubi-api-rest/system-admin/v1/msa_vars
+ [
+    {
+        "name": "UBI_LDAP_AUTHENTICATION_CUSTOM_ATTRIBUTES",
+        "value": "loginDisable:FALSE;memberOf:cn=developers,ou=group,o=data;ppIsSuspended:FALSE",
+        "comment": ""
+    }
+]
+----
+In the above example LDAP authentication for the user will be successful only if the above attributes and values are matched.
