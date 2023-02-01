@@ -3,9 +3,20 @@ ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 
-The focus of the 2.8.0 release of {product_name} is mainly about improving the performances and reliability. 
+{product_name} 2.8.5 includes several new features and a couple of bugs fixes.
 
-The microservice console has also been improved to provide a better user experience by allowing bulk changes of the microservice instances as well as additional design features. Advanced parameters have also been improved for a better support of the variables.
+With this release, users can create alarms with multiple subtenants and Managed Entities attached. 
+Also, {product_name} can refresh logs automatically at custom defined frequency. In addition, users can search logs with advanced query syntax. 
+
+Kibana has been upgraded to 7.14.2. 
+
+{product_name} can be integrated with LDAP with more custom defined user's LDAP authentication. 
+
+With this release, users can experience better file/repository management e.g., upload a file in any folder anywhere, folder names are displayed as subtenant names for better navigation. 
+
+Users can enable or disable maintenance mode on managed entities. 
+
+Several bugs are fixed which collectively improve workflows and microservices management and performance e.g., only edited microservices will be synchronized, workflow editor shows warning of unsaved changes, workflows visibility control based on users role, etc.
 
 == Microservices
 
@@ -16,6 +27,18 @@ The introduction of full support of JSON when designing and executing the REST A
 JSON microservices rely on JSONPath on the CoreEngine for executing the IMPORT parser to pull the data from the REST API response. 
 
 image:2.8_microservice_jsonpath.png[width=700px]
+
+== Managed Entities
+
+=== Maintenance mode
+
+Users can enable or disable maintenance mode on managed entities.
+
+During the maintenance mode, monitoring and alarm are paused and will resume when maintenance mode is turn off.
+
+Events are generated when maintenance mode is turn on and off, allowing the managers to be notified by alarms.
+
+image:2.8_maintenance_mode.png[width=700px]
 
 == Framework
 
@@ -34,7 +57,7 @@ No changes have been made to the core engine from previous versions of the produ
 
 == Upgrading
 
-Instructions to upgrade available in the quickstart UIde.
+Instructions to upgrade available in the https://ubiqube.com/wp-content/docs/latest/user-guide/quickstart.html[quickstart].
 
 === Specific instructions for upgrading from {revnumber-prev} to {revnumber}
 
