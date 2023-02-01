@@ -1,1 +1,50 @@
 = Key Concepts
+
+== Blueprints
+
+Blueprints enable users to design infrastructure, platforms, and application services by composing and connecting cloud resources. It can be seen as a package or a  template permitting to deploy quickly an environment with predefined applications. It permits also to replicate any infrastructure to multiple platforms.
+
+=== Catalog View ===
+
+One of the ways to start quickly on CloudClapp is to chose from the templates'catalog the blueprint you want. When you access the blueprints view, each tile represents one blueprint. There is 2 types of blueprints :
+
+* Blueprints from the OpenMSA library : https://github.com/openmsa/Blueprints, visible in all organizations
+* Blueprints created by users of the platform, visible only in the organization where they have been created
+
+Example of blueprints :
+
+* Wordpress on Azure
+* Load balancer on AWS
+* MSActivator on any providers
+
+=== Content ===
+
+A Blueprint is a combinaison of two main files 
+
+* A meta data containing basic information like name, description, owner, compliance standards, etc...
+* A design file to define ressources used for the deployment and place components on the environement builder. The design file, by the nature of the component (Provider, Region, Cluster), include MSA workflows reference permit the environement creation and the deployment of applications
+
+== Environment Builder ==
+
+Using from a blueprint or from scratch, the environment builder permits to design your cloud architectures
+In the environment home page, you can access the environment builder by clicking on Design tab
+This area is composed of the following components :
+
+* The top bar : permit to save the design as a new blueprint
+* The components library
+* The options bar : all graphical options to select components nodes, space tool and the connectors
+* The component setting panel : after selecting any component (infrastrcture, resources or application) the panel permit to configure it
+
+=== Component Library ===
+==== Infrastructure ====
+* Provider : select on which cloud provider the design will be applied (AWS,AZURE and GOOGLE)
+* Region : select on which region resources will be created. Per providers, the list is fetched
+* App deployment : select 1 or multiple application to be deployed on this design (See Application Deployer)
+
+==== Resources ====
+* K8 Cluster : represents a Kubernetes cluster.
+** If associated to AWS provider, this cluster represents EKS service
+** If associated to AZURE provider, this cluster represents AKS service
+** If associated to GOOGLE provider, this cluster represent GKE service
+
+== Application Deployer ==

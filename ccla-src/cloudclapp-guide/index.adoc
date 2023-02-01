@@ -31,7 +31,7 @@ When you click on a cloud vendor, it opens another dialog box where you can see 
 
 image:screen_dashboard_manage_cloud_vendor.png[alt=Dashboard Menu, width=500px]
 
-The top right corner of the dialog will have a helper button which will take you to a seperate window; where you can retrieve cloud credentials.
+The top right corner of the dialog will have a helper button which will take you to a separate window; where you can retrieve cloud credentials.
 
 ==== Organisation Summary
 ==== Quick Deployment
@@ -52,8 +52,44 @@ The options are "Hourly", "Monthly" and Annual
 
 
 ==== Environment List
+==== Blueprints
+
+image:screen_blueprint_menu.png[alt=Blueprints Menu, width=500px]
+
+On this screen, all available Blueprints can be seen listed. You can create a new environment by clicking on any Blueprint.
+
 === Applications
 === Environments
+==== Dashboard
+==== Design
+image:screen_design.png[alt=App Access, width=500px]
+
+You will see a designer tool on this tab to create deployment. You can create a blueprint of design also. You will see that created blueprint on blueprints sections once you create that successfully.
+
+===== Designer Tool
+This is playground where you can design your environment/deployment using services/options from link:#palette[Palette]. Once you select any of infra or resource you will see modal on right side to provide configuration/parameters values. Once you done with design then you can save as a blueprint and then you can deploy that design.
+
+[#palette]
+===== Palette
+On left side you have palette where you can select Provider, Region, App deployment and K8 cluster. You can drag and drop that selection on designer. More on App deployment option where you can select public/private Docker Image such as Nginx, Wordpress, Mysql then you can attach those apps to K8 cluster.
+
+[#create_environment]
+===== Create New Environment
+==== Deployments
+[#monitoring]
+==== Monitoring
+image:screen_monitoring.png[alt=App Access, width=500px]
+
+You can see a third party monitoring tool on this tab.
+For example, for Kubernetes based environments like EKS, AKS or GKE, you can see Grafana on the screen.
+You can choose if you want to deploy the tool along with Environment creation.
+
+===== Open Monitoring Tool
+You can open third party monitoring tools on the other tab.
+For example, for Kubernetes based environments you can select Prometheus, Grafana and Alertmanager.
+
+==== Environment Config
+==== Logs
 === Deployments
 ==== Dashboard
 ===== Applications
@@ -158,6 +194,34 @@ image:screen_edit_permission.png[alt=Edit Permission, width=500px]
 image:usermanual_permission_1.png[alt=User Permission, width=500px]
 
 
+
+=== Monitoring
+==== Monitor Environments
+- When you link:#create_environment[Create Environment], some services let you choose and pre-deploy a third party monitoring tool along with Environment itself.
+
+.Screen to create an Environment
+image:screen_environment_deploy_grafana.png[]
+
+If you want to see the screen on Monitoring tab directly, you need to deploy it under https.
+
+NOTE: For now, https deployment is enabled only for EKS service.
+
+NOTE: To use https on AWS, make sure your user has a permit to use ACM service.
+
+- Once it is deployed, you can see the tool on  link:#monitoring[Monitoring] tab.
+
+NOTE: If the ssl is self signed, you need to open it in the other tab once and comeback to Cloudclapp to see them.
+
+==== Deploy Environment with Blueprint
+
+image:screen_blueprint_menu.png[alt=Blueprints Menu, width=500px]
+
+- Select Blueprints.
+- Click and "Use as New Environment".
+- Edit Environment Designer.
+- Click Deploy.
+
+image:screen_environment_menu.png[alt=Environment Menu, width=500px]
 
 == Tutorials
 
