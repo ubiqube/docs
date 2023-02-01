@@ -54,8 +54,20 @@ No changes have been made to the core engine from previous versions of the produ
 
 == New Libraries Available
 
+=== Microservices:
 
-== Upgrading
+- link:https://github.com/openmsa/Microservices/blob/master/VNFM/Generic/[VNFM Generic]
+- link:https://github.com/openmsa/Microservices/tree/master/NFVO/Generic/[NFVO Generic]
+	
+=== Workflows:
+
+- link:https://github.com/openmsa/etsi-mano-workflows/tree/master/NFVI_Resources_Management[NFVI Resources Management]
+- link:https://github.com/openmsa/etsi-mano-workflows/tree/master/VNF_NS_Packages_Management[VNF NS Packages Management]
+- link:https://github.com/openmsa/etsi-mano-workflows/tree/master/VNF_LCM[VNF LCM]
+- link:https://github.com/openmsa/etsi-mano-workflows/tree/master/NS_LCM[NS LCM]
+- link:https://github.com/openmsa/etsi-mano-workflows/tree/master/Descriptor_Graph_Generator[Descriptor Graph Generator]
+
+== Upgrade
 
 Instructions to upgrade available in the https://ubiqube.com/wp-content/docs/latest/user-guide/quickstart.html[quickstart].
 

@@ -26,7 +26,7 @@ Runs NGINX and act as the front end to route the requests to the internal contai
 The NGINX server is configured with a self-signed SSL certificate to allow HTTPS connection. 
 When you access the UI for the first time after the installation of the product, your browser will problably show a warning message and you will have to accept this certificate to access the web UI.
 
-==== msa-ui 
+==== msa-ui
 
 Runs the {product_name} web based interface. On a local setup you can connect to the UI with https://localhost. 
 
@@ -60,6 +60,10 @@ Takes care of event detection to create alarm and execute workflow or send email
 
 Takes care of cross table data synchronization and consistency in the database
 
+==== msa-rsyslog
+
+In charge of collecting syslogs and SNMP traps and forward them to the msa-sms for parsing
+
 ==== msa-dev
 
 A linux based container used for storing the assets shared across containers such as microservices, workflows, adapters code,...
@@ -72,15 +76,19 @@ Runs the  BPM engine
 
 ==== msa-ai-ml
 
-Run the AI engine
+Runs the AI engine (prototype - not supported in current version)
 
-==== msa-es and msa-cerebro
+==== msa-es, msa-cerebro and msa-kibana
 
-Run the Elasticsearh container and Cerebro which is a web based management tool for Elasticsearch.
+Run the Elasticsearch container, Cerebro and Kibana.
 
 ==== db
 
 Runs the PostgreSQL database when the {product_name} administrative data and configuration data is stored.
+
+==== alpine-other, linux-me
+
+Additional containers for testing, prototyping and training
 
 === Networking and connectivity
 
