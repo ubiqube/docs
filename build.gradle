@@ -18,8 +18,8 @@ asciidoctorj {
 }
 
 dependencies {
-  asciidoctorGems 'rubygems:rouge:3.26.0'
-  asciidoctorGems 'rubygems:asciidoctor-diagram:2.2.1'
+  asciidoctorGems 'rubygems:rouge:4.0.1'
+  asciidoctorGems 'rubygems:asciidoctor-diagram:2.2.3'
 }
 
 asciidoctor.doFirst {
@@ -29,7 +29,7 @@ asciidoctor.doFirst {
 
 asciidoctor {    
 
-  version = '2.0.17'
+  version = '2.0.18'
 
   options doctype: 'book'
 
@@ -39,11 +39,11 @@ asciidoctor {
     'ubiqube': 'UBiqube',
     'company_name': 'UBiqube',
     'product_name': 'MSActivator(TM)',
-    'product_name-version': 'MSActivator-2.8.3',
+    'product_name-version': 'MSActivator-2.8.4',
     'openmsa_name': 'OpenMSA(TM)',
-    'revnumber': 'MSA-2.8.3',
-    'versionnumber': '2.8.3',
-    'revnumber-prev': 'MSA-2.8.2',
+    'revnumber': 'MSA-2.8.4',
+    'versionnumber': '2.8.4',
+    'revnumber-prev': 'MSA-2.8.3',
     'allow-uri-read': '',
     'sectlinks': true,
     'html': 'true',
@@ -77,7 +77,7 @@ asciidoctorPdf {
   asciidoctorj {
 
     modules {
-        pdf.version '1.6.2'
+        pdf.version '2.3.4'
     }
     requires 'rouge'
 
@@ -91,11 +91,11 @@ asciidoctorPdf {
       'ubiqube': 'UBiqube',
       'company_name': 'UBiqube',
       'product_name' : 'MSActivator(TM)',
-      'product_name-version' : 'MSActivator-2.8.3',
+      'product_name-version' : 'MSActivator-2.8.4',
       'openmsa_name' : 'OpenMSA(TM)',
-      'revnumber' : 'MSA-2.8.3',
-      'versionnumber': '2.8.3',
-      'revnumber-prev' : 'MSA-2.8.2',
+      'revnumber' : 'MSA-2.8.4',
+      'versionnumber': '2.8.4',
+      'revnumber-prev' : 'MSA-2.8.3',
       'allow-uri-read' : '',
       'sectlinks' : true,
       'pdf' : 'true',
