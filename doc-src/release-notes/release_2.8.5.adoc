@@ -72,9 +72,7 @@ In order to upgrade to the latest version, you need to follow these steps:
 
 == Specific technical fixes and feature details
 
-=== 2.8.5
-
-==== Features
+=== Features
 
 * MSA-12227 - [Alarm] user should be able to select multiple subtenants and managed entity
 * MSA-12092 - [Alarm] alarm management: add "Select All" Button
@@ -105,7 +103,7 @@ In order to upgrade to the latest version, you need to follow these steps:
 * MSA-10709 - [Workflow/Microservice] Add a validation for Variable name
 * MSA-11589 - [Workflows] Arista EOS support of firmware download/install & device reload
 
-==== Bug fixes
+=== Bug fixes
 
 * MSA-12210 - [Alarms] alarm/log screens not auto-refreshed although UI is calling alarm API every 12sec
 * MSA-10499 - [CoreEngine] /var/lock/subsys/ubi-sms error in logs of msa-sms, msa-alarm, msa-monitoring, msa-bud
