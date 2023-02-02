@@ -60,7 +60,7 @@ image:typical_production_architecture.png[width=700px]
 
 {product_name} High Availability is based on Docker Engine Swarm mode, and requires:
 
-=== Swarm Nodes
+=== Swarm nodes
 
 To provide proper availability the swarm nodes (VM) should be distributed over 3 physical server
 
@@ -154,6 +154,14 @@ NOTE: If you plan on creating an overlay network with encryption (--opt encrypte
 
 More information about Docker Engine Swarm available here: link:https://docs.docker.com/engine/swarm/swarm-tutorial/[swarm tutorial].
 
+=== Elasticsearch nodes
+
+To provide proper availability the elasticsearch nodes (VM) should be distributed over 3 physical server
+
+A minimum of 6 VMs deployed and distributed over the physical servers.
+
+* 3 Elasticsearch master nodes 
+* 3 Elasticsearch data nodes 
 
 == Installing the application in HA mode
 
