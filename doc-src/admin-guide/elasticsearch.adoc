@@ -23,5 +23,32 @@ You can learn how to configure the retention policies by reading the link:https:
 
 The ILM configuration is done with the Kibana UI (http://localhost/kibana), in the Stack Management section, under Index Lifecycle Policies
 
-image:elasticsearch_ilm_1.png[]
+image:elasticsearch_ilm_1.png[width=800px]
 
+== Online and offline storage
+
+Offline storage is for historical logs.
+For example, with a 1 year retention period, the storage is split between 1 month online and 11 months offline.
+
+Online storage will be available for the logs that are less than 1 months old. The online storage is leveraging Elasticsearch data nodes to allow searching, alarm and dashboard.
+
+Offline storage will be available for the logs that are within the time range between 1 months and 1 year. 
+
+image:elasticsearch_storage_policy.png[width=800px]
+
+Snapshot policies require a link:https://www.elastic.co/guide/en/elasticsearch/reference/7.14/snapshots-register-repository.html#snapshots-register-repository[snapshot repository].
+
+A shared file system repository can be used to store snapshots on a shared file system using NFS.
+
+The NFS mount should be shared between the snapshot storage and all the Elasticsearch master and data nodes. It is not required for the client nodes.
+
+image:elasticsearch_snapshot_setup.png[width=800px]
+
+Snapshot and ILM policies can work together to manage online, offline and deletion of the data.
+
+.ILM with a snapshot policy: online 7 days
+image:elasticsearch_ilm_snapshot_policy_1.png[width=800px]
+
+
+.ILM with a snapshot policy: offline 5 days
+image:elasticsearch_ilm_snapshot_policy_2.png[width=800px]
