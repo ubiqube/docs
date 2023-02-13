@@ -1,4 +1,4 @@
 = Open source technologies used in {product_name}
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-You can download the Open Source Technologies report link:images/OST-Report-latest.pdf[here].
+You can download the Open Source Technologies report link:images/OST-Report-MSA-latest.pdf[here].
