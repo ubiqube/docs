@@ -1,12 +1,14 @@
-= XML Microservice Editor
+= JSON Microservice Editor
 ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == Overview
 
-XML microservice are used to manage entities that expose a REST API that return a response formatted in XML or for Adapter that are not supporting JSON microservice and JsonPath.
+JSON microservice are used to manage entities that expose a REST API that returns a response formatted in JSON.
 
-To create a XML microservice, you need to check XML for the configuration type when creating a new microservice
+To create a JSON microservice, you need to check JSON for the configuration type when creating a new microservice.
+
+image:microservice_create_json_ms.png[width=800px]
 
 NOTE: do not try to change the configuration type of an existing microservice as this is not supported.
 
@@ -47,7 +49,7 @@ image:microservice_console_xml_delete.png[width=800px]
 
 ==== Import
 
-image:microservice_console_xml_import.png[width=800px]
+image:microservice_console_json_import.png[width=800px]
 
 
 The main difference between the CLI and REST (Json/XML) Microservice definition is the implementation of the functions Create/Update/...

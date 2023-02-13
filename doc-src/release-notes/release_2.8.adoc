@@ -5,7 +5,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 The focus of the 2.8.0 release of {product_name} is mainly about improving the performances and reliability. 
 
-The Microservice console has also been improved to provide a better user experience by allowing bulk changes of the microservice instances as well as additional design features. Advanced parameters have also been improved for a better support of the variables.
+The microservice console has also been improved to provide a better user experience by allowing bulk changes of the microservice instances as well as additional design features. Advanced parameters have also been improved for a better support of the variables.
 
 == Assurance
 
@@ -31,10 +31,6 @@ With version 2.8.3, you can use the UI to upload, delete, unzip and edit files i
 image:2.8_repository.png[width=700px]
 
 == Microservices
-
-=== Support for JSON
-
-The introduction of the direct support of JSON when designing and executing the microservice synchronization is a major feature as it will ease the development of new microservice without having to rely on XPath to write the parsers for the JSON response coming from the vendor management REST API.
 
 === Duplicate an instance
 
@@ -102,7 +98,7 @@ In the local settings, choose the dark or the new light theme.
 
 image:2.8_ui_theme.png[width=700px]
 
-== CoreEngine
+=== CoreEngine
 
 No changes have been made to the core engine from previous versions of the product. This allows consistency from branches of {openmsa_name} (community version), found on GitHub: https://github.com/openmsa
 

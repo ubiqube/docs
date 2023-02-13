@@ -139,21 +139,31 @@ image:assurance_traps_search.png[width=800px]
 
 By default the {product_name} will be using SNMP v2.
 
-With {product_name} v2.8.3 SNMP v3 is also supported. In order to use SNMP v3 to monitor a managed entity you need to configure SNMP v3 parameters with a microservice named "snmpv3".
+Starting with {product_name} v2.8.3 SNMPv3 is also supported. 
 
-This microservice is available on link:https://github.com/openmsa/Microservices/tree/master/ASSURANCE[github/openmsa] for a few vendor but as a developer you can easily add your own microservice if your target vendor is not available.
+In order to use SNMPv3 to monitor a managed entity you need to configure its variables with the SNMPv3 parameters.
 
-Because not every vendor is supported (yet), the easiest way to monitor with SNMP v3 is to create a managed entity with the vendor "Monitoring / Monitoring / Generic" when creating the managed entity.
+- snmpv3_securityName
+- snmpv3_securityLevel: possible values are noAuthNoPriv, authNoPriv, and authPriv
+- snmpv3_authKey
+- snmpv3_authProtocol: possible values are MD5 or SHA
+- snmpv3_privKey
+- snmpv3_privProtocol: possible values are DES or AES
+- snmpv3_securityEngineID
 
-image:assurance_mon_generic_me.png[width=800px]
 
-You also need to enable "SNMP Monitoring", use the SNMP v3 user for the community field.
+.Notes
+For the polling, the mandatory variables are snmpv3_securityName, snmpv3_securityLevel, the others depends of snmpv3_securityLevel value, see below.
 
-Once created and activated, you can create a deployment setting and use is to associate the managed entity and the microservice "snmpv3".
+For receiving snmp traps, the mandatory variables are snmpv3_securityName, snmpv3_securityLevel, snmpv3_securityEngineID, the others depends of snmpv3_securityLevel value, see below.
 
-The next step is to edit the microservice in the tab "Configure" of the managed entity and add a row by clicking on "+ Add Row".
+- if snmpv3_securityLevel is set to authPriv, the additional mandatory variables are snmpv3_authKey, snmpv3_authProtocol, snmpv3_privKey, snmpv3_privProtocol
+- if snmpv3_securityLevel is set to authNoPriv, the additional mandatory variables are snmpv3_authKey, snmpv3_authProtocol
+- if snmpv3_securityLevel is set to noAuthNoPriv, no other additional variables are mandatory
 
-image:assurance_mon_generic_ms_create.png[width=800px]
+image:me_snmpv3_config.png[width=800px]
+
+You also need to enable "SNMP Monitoring", use the SNMPv3 user for the community field.
 
 The parameter values should match the SNMPv3 configuration that was set in your actual device.
 
@@ -174,15 +184,15 @@ SNMPv2-MIB::sysORID.3 = OID: SNMP-FRAMEWORK-MIB::snmpFrameworkMIBCompliance
 SNMPv2-MIB::sysORID.4 = OID: SNMPv2-MIB::snmpMIB
 ----
 
-The microservice instance should be similar to:
-
-image:assurance_mon_generic_ms_snmpv3_instance.png[width=800px]
-
-To verify that SNMP v3 monitoring is working properly you can check that the sysuptime graph is showing some graph. 
+To verify that SNMP v3 monitoring is working properly you can check that the sysuptime graph is plotting data. 
 
 You can also monitor specific KPI based on the OID of your vendor.
 
 image:assurance_mon_generic_ms_snmpv3_graph.png[width=800px]
+
+==== Collecting SNMPv3 traps
+
+For SNMPv3 traps, the managed entity should be configured as explained above and the variable snmpv3_securityEngineID is mandatory for decoding the SNMP traps.
 
 == Log analytics
 

@@ -31,6 +31,8 @@ Various fixes have been made to the product to ensure its continued ability to e
 
 === Releases
 
+include::{includedir}/release_2.8.5.adoc[version 2.8.5]
+
 include::{includedir}/release_2.8.adoc[version 2.8]
 
 include::{includedir}/release_2.7.adoc[version 2.7]
