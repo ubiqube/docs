@@ -1,0 +1,37 @@
+= Version 2.8.6
+ifndef::imagesdir[:imagesdir: images]
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+
+{product_name} 2.8.6 includes several new features and a couple of bugs fixes.
+
+
+== Microservices
+
+== Managed Entities
+
+== Framework
+
+=== CoreEngine
+
+No changes have been made to the core engine from previous versions of the product. This allows consistency from branches of {openmsa_name} (community version), found on GitHub: https://github.com/openmsa
+
+== Upgrade
+
+Instructions to upgrade available in the https://ubiqube.com/wp-content/docs/latest/user-guide/quickstart.html[quickstart].
+
+=== Specific instructions for upgrading from {revnumber-prev} to {revnumber}
+
+The quickstart provides an upgrade script `upgrade.sh` for taking care of possible actions such as recreating some volume, executing some database specific updates,...
+
+In order to upgrade to the latest version, you need to follow these steps:
+
+1. `cd quickstart`
+2. `git checkout master`
+3. `git pull`
+4. `./scripts/install.sh`
+
+== Specific technical fixes and feature details
+
+=== Features
+=== Bug fixes
