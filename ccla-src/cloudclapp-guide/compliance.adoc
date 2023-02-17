@@ -11,6 +11,7 @@ We assume, depending to the type of your environement, the level of compliance, 
 === Sensitivy / IG mapping
 
 Per environement, it's possible to select between 4 levels to apply the compliance. The sensivity will drive the number of tests
+
 * No data protection
 * Basic : Controls for small, commercial off-the-shelf or home office software environments where sensitivity of the data is low. Minimal standard of information security
 * Extended : Controls focused on helping security teams manage sensitive client
