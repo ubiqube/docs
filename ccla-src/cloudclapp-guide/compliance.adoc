@@ -22,7 +22,7 @@ Per environement, it's possible to select between 4 levels to apply the complian
 
 === Supported Standards
 
-[cols="1,1"]
+[cols="1,1,1,1,1"]
 |===
 |Standard |Meaning|Domains|Areas & Country |WebSite
 
@@ -32,11 +32,17 @@ Per environement, it's possible to select between 4 levels to apply the complian
 |Worldwide
 |https://www.cisecurity.org/
 
-|Cell in column 1, row 3
-|Cell in column 2, row 3
+|CSA
+|Cloud Security Alliance
+|Defense / Military
+|US
+|https://cloudsecurityalliance.org/
 
-|Cell in column 1, row 4
-|Cell in column 2, row 4
+|...
+|
+|
+|
+|
 |===
 
 === Dashboard
