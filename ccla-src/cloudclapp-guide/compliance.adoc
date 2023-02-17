@@ -1,3 +1,4 @@
+= Compliance
 == Overview
 
 Cloudclapp enables you to stay compliant with more than 10 regulations such as HIPAA, CIS, PCI-DSS or ISO.. Using our compliance module, you can identify any non-compliant resources in your environments.
