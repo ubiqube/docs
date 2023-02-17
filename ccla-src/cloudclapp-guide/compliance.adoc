@@ -3,7 +3,18 @@
 Cloudclapp enables you to stay compliant with more than 10 regulations such as HIPAA, CIS, PCI-DSS or ISO.. Using our compliance module, you can identify any non-compliant resources in your environments.
 
 == Compliance for Environement
+
+As the reference for our compliance module, the Center for Internet Security or CIS is the entry point for our compliance scan (https://www.cisecurity.org/)
+We have reuse the concept of Implementation Groups (IG) to drive how deep an environement is affected by the compliance needs.
+We assume, depending to the type of your environement, the level of compliance, so the associated security rules are not same if you deploy a local sandbox, a pre-production or a production platform.
+
 === Sensitivy / IG mapping
+
+Per environement, it's possible to select between 4 levels to apply the compliance. The sensivity will drive the number of tests
+* No data protection
+* Basic : Controls for small, commercial off-the-shelf or home office software environments where sensitivity of the data is low. Minimal standard of information security
+* Extended : Controls focused on helping security teams manage sensitive client
+* Expert : Controls that reduce the impact of zero-day attacks and targeted attacks from sophisticated adversaries.
 
 === Standards
 
