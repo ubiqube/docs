@@ -3,7 +3,8 @@
 
 Cloudclapp enables you to stay compliant with more than 10 regulations such as HIPAA, CIS, PCI-DSS or ISO.. Using our compliance module, you can identify any non-compliant resources in your environments.
 
-Note :
+Notes :
+
 * In Cloudclapp V2.X, compliance is applied only to Kubernetes environment
 * Public providers lock access to manager nodes. The compliance process will be applied only to workers nodes
 
