@@ -3,7 +3,9 @@
 
 Cloudclapp enables you to stay compliant with more than 10 regulations such as HIPAA, CIS, PCI-DSS or ISO.. Using our compliance module, you can identify any non-compliant resources in your environments.
 
-In the version 2 of Cloudclapp, compliance is applied only to Kubernetes environment
+Note :
+* In Cloudclapp V2.X, compliance is applied only to Kubernetes environment
+* Public providers lock access to manager nodes. The compliance process will be applied only to workers nodes
 
 == Compliance for Environement
 
@@ -57,7 +59,8 @@ This workflow is composed by 3 processes :
 
 ==== Kube Bench integration
 
-Definition of Kube-Bench
+kube-bench is a tool that checks whether Kubernetes is deployed securely by running the checks documented in the
 
-Limitation of K8 service : public providers lock access to manager nodes.
-The compliance process will be applied only to workers nodes
+
+
+Limitation of K8 service :
