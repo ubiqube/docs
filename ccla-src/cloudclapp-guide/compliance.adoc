@@ -2,6 +2,8 @@
 
 Cloudclapp enables you to stay compliant with more than 10 regulations such as HIPAA, CIS, PCI-DSS or ISO.. Using our compliance module, you can identify any non-compliant resources in your environments.
 
+In the version 2 of Cloudclapp, compliance is applied only to Kubernetes environment
+
 == Compliance for Environement
 
 As the reference for our compliance module, the Center for Internet Security or CIS is the entry point for our compliance scan (https://www.cisecurity.org/)
@@ -17,7 +19,7 @@ Per environement, it's possible to select between 4 levels to apply the complian
 * Extended : controls focused on helping security teams manage sensitive client
 * Expert : controls that reduce the impact of zero-day attacks and targeted attacks from sophisticated adversaries.
 
-=== Standards
+=== Supported Standards
 
 === Dashboard
 
@@ -30,3 +32,8 @@ This workflow is composed by 3 processes :
 * Delete scan
 
 ==== Kube Bench integration
+
+Definition of Kube-Bench
+
+Limitation of K8 service : public providers lock access to manager nodes.
+The compliance process will be applied only to workers nodes
