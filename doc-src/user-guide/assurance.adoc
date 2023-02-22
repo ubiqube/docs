@@ -209,6 +209,7 @@ The diagram below shows the syslog processing steps from the device to Elasticse
 
 .Syslog event flow
 image:assurance_log_analysis_event_flow.png[width=800px]
+// https://docs.google.com/drawings/d/1sp5FBAim2QWctIhINm3JxZ-gxwygK2WCT2soDWj0pDc/edit?usp=sharing
 
 [#log_anal]
 === Search logs
@@ -246,6 +247,9 @@ image:dashboard_kibana_deployed.png[width=800px]
 
 The alarm management module is based on the detection of events which internal (VNOC), SNMP thresholds, or sylogs sent by the managed devices and collected by the {product_name}. 
 Alarm management is designed to provide email notifications to customers or managers or administrator
+
+image:assurance_alarm_flow.png[width=800px]
+// https://docs.google.com/drawings/d/1uMWoLkRVjCKeSfs81bjVjolWD0CEFab50o544c1yhLk/edit?usp=sharing
 
 The detection of events relies on rules configured at the super administrator level. 
 
@@ -337,3 +341,6 @@ image:alarm_vnoc_workflow_instance.png[width=800px]
 === Email alerting: SMTP configuration
 
 For alarms to be notified as email, we need the Docker host to be properly configured as a SMTP server or relay.
+
+.Sample email
+image:alarm_email_example.png[width=800px]
