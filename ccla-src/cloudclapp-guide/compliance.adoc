@@ -43,10 +43,76 @@ Per environement, it's possible to select between 4 levels to apply the complian
 |US
 |https://cloudsecurityalliance.org/
 
-|...
+|CMMC Groups
+|Cybersecurity Maturity Model Certification
+|Defense / Military
+|US
+|https://cmmc-coe.org/
+
+|CJIS
+|Criminal Justice Information Services
+|Justice / National Security
+|US
 |
+
+|Cyber Essentials
 |
+|All
+|UK
 |
+
+|FFIEC-CAT
+|Federal Financial Institutions Examination Council
+|Financial, Bank, Assurance
+|US
+|
+
+|ISACA COBIT
+|
+|All
+|World
+|
+
+|MITRE Enterprise ATT&CK
+|Adversarial Tactics, Techniques & Common Knowledge
+|All
+|World
+|
+
+|NIST
+|
+|All
+|US
+|
+
+|PCI-DSS
+|
+|All
+|World
+|
+
+|SOC 2
+|
+|All
+|US
+|
+
+|HIPAA
+|
+|Health
+|US
+|
+
+|ISO-27001
+|
+|All, mainly IT
+|World
+|
+
+|HDS
+|
+|Health
+|France
 |
 |===
 
