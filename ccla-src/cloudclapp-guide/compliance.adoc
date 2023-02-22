@@ -27,6 +27,8 @@ Per environement, it's possible to select between 4 levels to apply the complian
 
 === Supported Standards
 
+https://www.cisecurity.org/cybersecurity-tools/mapping-compliance
+
 [cols="1,1,1,1,1"]
 |===
 |Standard |Meaning|Domains|Areas & Country |WebSite
