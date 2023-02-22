@@ -1,6 +1,8 @@
 = Compliance
 == Overview
 
+When managing infrastructures for production use cases, security and compliance are crucial factors to consider. The clusters need to be securely configured to minimize the attack surface. Additionally, every organization might have audit requirements for systems to be compliant with security standards.
+
 Cloudclapp enables you to stay compliant with more than 10 regulations such as HIPAA, CIS, PCI-DSS or ISO.. Using our compliance module, you can identify any non-compliant resources in your environments.
 
 Notes :
@@ -60,8 +62,12 @@ This workflow is composed by 3 processes :
 
 ==== Kube Bench integration
 
-kube-bench is a tool that checks whether Kubernetes is deployed securely by running the checks documented in the
+Kube-bench is an open-source tool to assess the security of Kubernetes clusters by running checks against the Center for Internet Security (CIS) Kubernetes benchmark. It was developed in GoLang by Aqua Security, a provider of cloud-native security solutions.
 
+Kube-bench can help with the following.
 
+* Cluster hardening: Kube-bench automates the process of checking the cluster configuration as per the security guidelines outlined in CIS benchmarks
+* Policy Enforcement: Kube-bech checks for RBAC configuration to ensure the necessary least privileges are applied to service accounts, users, etc. it also checks for pod security standards and secret management
+* Network segmentation: Kube-bench checks for CNI and its support for network policy to ensure that network policies are defined for all namespaces
 
 Limitation of K8 service :
