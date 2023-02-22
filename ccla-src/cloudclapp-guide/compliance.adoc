@@ -53,67 +53,67 @@ Per environement, it's possible to select between 4 levels to apply the complian
 |Criminal Justice Information Services
 |Justice / National Security
 |US
-|
+|https://www.fbi.gov/services/cjis
 
 |Cyber Essentials
-|
+|-
 |All
 |UK
-|
+|https://www.ncsc.gov.uk/cyberessentials/overview
 
 |FFIEC-CAT
 |Federal Financial Institutions Examination Council
 |Financial, Bank, Assurance
 |US
-|
+|https://www.ffiec.gov/cyberassessmenttool.htm
 
 |ISACA COBIT
-|
+|Control Objectives for Information Technologies
 |All
 |World
-|
+|https://www.isaca.org/resources/cobit
 
 |MITRE Enterprise ATT&CK
 |Adversarial Tactics, Techniques & Common Knowledge
 |All
 |World
-|
+|https://attack.mitre.org/
 
 |NIST
-|
+|National Institute of Standards and Technology
 |All
 |US
-|
+|https://www.nist.gov/
 
 |PCI-DSS
-|
+|Payment Card Industry Data Security Standard
 |All
 |World
-|
+|https://www.pcisecuritystandards.org/
 
 |SOC 2
-|
+|System and Organization Controls
 |All
 |US
-|
+|https://www.aicpa.org/topic/audit-assurance/audit-and-assurance-greater-than-soc-2
 
 |HIPAA
-|
+|Health Insurance Portability and Accountability Act
 |Health
 |US
-|
+|https://www.hhs.gov/hipaa/index.html
 
 |ISO-27001
-|
+|International Organization for Standardization
 |All, mainly IT
 |World
-|
+|https://www.iso.org/home.html
 
 |HDS
-|
+|Health Data Hosting
 |Health
 |France
-|
+|https://esante.gouv.fr/produits-services/hds
 |===
 
 === Dashboard
