@@ -194,6 +194,10 @@ image:assurance_mon_generic_ms_snmpv3_graph.png[width=800px]
 
 For SNMPv3 traps, the managed entity should be configured as explained above and the variable snmpv3_securityEngineID is mandatory for decoding the SNMP traps.
 
+=== SNMP traps translation
+
+// TODO
+
 == Log analytics
 
 === Overview
