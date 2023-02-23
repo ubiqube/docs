@@ -111,11 +111,6 @@ https://www.cisecurity.org/cybersecurity-tools/mapping-compliance
 |World
 |https://www.iso.org/home.html
 
-|HDS
-|Health Data Hosting
-|Health
-|France
-|https://esante.gouv.fr/produits-services/hds
 |===
 
 === Dashboard
