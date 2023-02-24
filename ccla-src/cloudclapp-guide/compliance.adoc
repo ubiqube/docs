@@ -1,0 +1,136 @@
+= Compliance
+== Overview
+
+When managing infrastructures for production use cases, security and compliance are crucial factors to consider. The clusters need to be securely configured to minimize the attack surface. Additionally, every organization might have audit requirements for systems to be compliant with security standards.
+
+Cloudclapp enables you to stay compliant with more than 10 regulations such as HIPAA, CIS, PCI-DSS or ISO.. Using our compliance module, you can identify any non-compliant resources in your environments.
+
+Notes :
+
+* In Cloudclapp V2.X, compliance is applied only to Kubernetes environment
+* Public providers lock access to manager nodes. The compliance process will be applied only to workers nodes
+
+== Compliance for Environement
+
+As the reference for our compliance module, the Center for Internet Security or CIS is the entry point for our compliance scan (https://www.cisecurity.org/)
+We have reuse the concept of Implementation Groups (IG) to drive how deep an environement is affected by the compliance needs.
+We assume, depending to the type of your environement, the level of compliance, so the associated security rules are not same if you deploy a local sandbox, a pre-production or a production platform.
+
+=== Sensitivy / IG mapping
+
+Per environement, it's possible to select between 4 levels to apply the compliance. The sensivity will drive the number of tests
+
+* No data protection : no compliance applied
+* Basic : controls for small, commercial off-the-shelf or home office software environments where sensitivity of the data is low. Minimal standard of information security
+* Extended : controls focused on helping security teams manage sensitive client
+* Expert : controls that reduce the impact of zero-day attacks and targeted attacks from sophisticated adversaries.
+
+=== Supported Standards
+
+https://www.cisecurity.org/cybersecurity-tools/mapping-compliance
+
+[cols="1,1,1,1,1"]
+|===
+|Standard |Meaning|Domains|Areas & Country |WebSite
+
+|CIS
+|Center for Internet Security
+|All
+|Worldwide
+|https://www.cisecurity.org/
+
+|CSA
+|Cloud Security Alliance
+|Defense / Military
+|US
+|https://cloudsecurityalliance.org/
+
+|CMMC Groups
+|Cybersecurity Maturity Model Certification
+|Defense / Military
+|US
+|https://cmmc-coe.org/
+
+|CJIS
+|Criminal Justice Information Services
+|Justice / National Security
+|US
+|https://www.fbi.gov/services/cjis
+
+|Cyber Essentials
+|-
+|All
+|UK
+|https://www.ncsc.gov.uk/cyberessentials/overview
+
+|FFIEC-CAT
+|Federal Financial Institutions Examination Council
+|Financial, Bank, Assurance
+|US
+|https://www.ffiec.gov/cyberassessmenttool.htm
+
+|ISACA COBIT
+|Control Objectives for Information Technologies
+|All
+|World
+|https://www.isaca.org/resources/cobit
+
+|MITRE Enterprise ATT&CK
+|Adversarial Tactics, Techniques & Common Knowledge
+|All
+|World
+|https://attack.mitre.org/
+
+|NIST
+|National Institute of Standards and Technology
+|All
+|US
+|https://www.nist.gov/
+
+|PCI-DSS
+|Payment Card Industry Data Security Standard
+|All
+|World
+|https://www.pcisecuritystandards.org/
+
+|SOC 2
+|System and Organization Controls
+|All
+|US
+|https://www.aicpa.org/topic/audit-assurance/audit-and-assurance-greater-than-soc-2
+
+|HIPAA
+|Health Insurance Portability and Accountability Act
+|Health
+|US
+|https://www.hhs.gov/hipaa/index.html
+
+|ISO-27001
+|International Organization for Standardization
+|All, mainly IT
+|World
+|https://www.iso.org/home.html
+
+|===
+
+=== Dashboard
+
+=== Backend
+
+As many of automation task in Cloudclapp, compliance scan is implemented via a worklow
+This workflow is composed by 3 processes :
+* Launch a scan
+* Re-scan
+* Delete scan
+
+==== Kube Bench integration
+
+Kube-bench is an open-source tool to assess the security of Kubernetes clusters by running checks against the Center for Internet Security (CIS) Kubernetes benchmark. It was developed in GoLang by Aqua Security, a provider of cloud-native security solutions.
+
+Kube-bench can help with the following.
+
+* Cluster hardening: Kube-bench automates the process of checking the cluster configuration as per the security guidelines outlined in CIS benchmarks
+* Policy Enforcement: Kube-bech checks for RBAC configuration to ensure the necessary least privileges are applied to service accounts, users, etc. it also checks for pod security standards and secret management
+* Network segmentation: Kube-bench checks for CNI and its support for network policy to ensure that network policies are defined for all namespaces
+
+Limitation of K8 service :

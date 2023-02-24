@@ -52,6 +52,14 @@ Events are generated when maintenance mode is turn on and off, allowing the mana
 
 image:2.8_maintenance_mode.png[width=700px]
 
+== Assurance
+
+=== Alarm event multi-selection
+
+In order to ease alarm management, users can now select multiple alarms and acknowledge them in a batch.
+
+image:2.8.5_alarm_multi_select.png[width=700px]
+
 == Framework
 
 === Elasticsearch/Kibana
@@ -63,7 +71,7 @@ image:2.8_ELK_upgrade.png[width=700px]
 === CoreEngine
 
 No changes have been made to the core engine from previous versions of the product. This allows consistency from branches of {openmsa_name} (community version), found on GitHub: https://github.com/openmsa
-
+ 
 == New Libraries Available
 
 === Microservices:
