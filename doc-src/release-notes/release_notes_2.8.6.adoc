@@ -21,11 +21,37 @@ Welcome to the 2.8.6 release of the {product_name}. There are many updates in th
 - Manager Dashboard: add a new alarm dashboard component to enhance you data visibility
 - Assurance: load vendor specific MIB in the repository and translate SNMP trap OID to clear messages
 
-== Microservices
+== UX and Navigation
 
-== Managed Entities
+=== Manager dashboard enhancements
 
-== Framework
+A new Alarms component can be inserted in the manager dashboard along with the rest of your most important data.
+
+Filtering and searching is available and clicking on the managed entity name in the alarms list will directly open the managed entity home page.
+
+image:2.8.6_new_alarm_dashboard_component.png[width=700px]
+
+The default infrastructure component now provides direct navigation from the list on managed entities filtered by the status selected for the navigation.
+
+An alarm bell icon has also been added to directly navigate to the main alarm screen.
+
+image:2.8.6_navigation_from_me_dashboard_comp.png[width=700px]
+
+=== Assurance navigation menu entry
+
+In order to ease and improve the User eXperience with the {product_name}, we have added a new "Assurance" entry in the navigation menu on the left.
+
+Available on both the Manager and the Developer portal, clicking on this entry will open the main assurance screen as clicking on the bell icon on the top right of the screen.
+
+image:2.8.6_new_assurance_navigation.png[width=700px]
+
+//== Microservices
+
+//== Managed Entities
+
+//== Assurance
+
+//== Framework
 
 === CoreEngine
 
