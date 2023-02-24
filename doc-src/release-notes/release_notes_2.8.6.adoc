@@ -20,6 +20,7 @@ Welcome to the 2.8.6 release of the {product_name}. There are many updates in th
 - Manager Dashboard: quickly navigate from the manager dashboard to the managed entities or the alarms.
 - Manager Dashboard: add a new alarm dashboard component to enhance you data visibility
 - Assurance: load vendor specific MIB in the repository and translate SNMP trap OID to clear messages
+- Assurance: export your KPI graphs in PDF format
 
 == UX and Navigation
 
@@ -51,11 +52,19 @@ image:2.8.6_new_assurance_navigation.png[width=700px]
 
 //== Assurance
 
-//== Framework
+== Framework
+
+Authentication token validity duration can now be controlled in the global settings of the {product_name}
+
+By default the token expiration control is enabled and expiration time is 1 hour.
+
+image:2.8.6_auth_token_control.png[width=700px]
 
 === CoreEngine
 
-No changes have been made to the core engine from previous versions of the product. This allows consistency from branches of {openmsa_name} (community version), found on GitHub: https://github.com/openmsa
+CoreEngine daemon (smsd, sms_polld,...) are now streaming their logs to stdout and make them available with docker logs CLI cmd.
+
+This will ease development and troubleshooting activities on the CoreEngine.
 
 == Upgrade
 
