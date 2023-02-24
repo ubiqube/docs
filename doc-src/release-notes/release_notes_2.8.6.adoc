@@ -1,7 +1,19 @@
 = Version 2.8.6
-ifndef::imagesdir[:imagesdir: images]
+:front-cover-image: image:release-notes-front-cover-2.8.6.pdf[]
+:toc: left
+:toclevels: 3
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+ifndef::imagesdir[:imagesdir: images]
 
+//OK HTML 
+ifdef::html[]
+:includedir: doc-src/release-notes
+endif::[]
+
+// OK PDF
+ifdef::pdf[]
+:includedir: .
+endif::[]
 
 Welcome to the 2.8.6 release of the {product_name}. There are many updates in this version that we hope you'll like, some of the key highlights include:
 
@@ -23,7 +35,7 @@ No changes have been made to the core engine from previous versions of the produ
 
 Instructions to upgrade available in the https://ubiqube.com/wp-content/docs/latest/user-guide/quickstart.html[quickstart].
 
-=== Specific instructions for upgrading from {revnumber-prev} to {revnumber}
+=== Specific instructions for upgrading to 2.8.6
 
 The quickstart provides an upgrade script `upgrade.sh` for taking care of possible actions such as recreating some volume, executing some database specific updates,...
 
