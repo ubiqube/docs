@@ -2,6 +2,12 @@
 
 == Marketplaces ==
 
+=== Public Docker Hub ===
+
+=== Private Docker Hub ===
+
+=== VM - AWS EC2 marketplace ===
+
 == Deploy application ==
 
 == Deployment dashboard ==
