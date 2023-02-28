@@ -10,7 +10,7 @@ Below the matrix of supported clouds :
 
 [cols="1,1,1,1"]
 |===
-|Provider/Service |Name|WebSite|Comment
+| |Name|WebSite|Comment
 
 |image:EKS.png[EKS,50]
 |Amazon Elastic Kubernetes Service
@@ -38,7 +38,7 @@ Below the matrix of supported clouds :
 
 [cols="1,1,1,1"]
 |===
-|Provider/Service |Name|WebSite|Comment
+| |Name|WebSite|Comment
 
 |image:EC2.png[EC2,50]
 |Amazon EC2
