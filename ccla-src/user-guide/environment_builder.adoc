@@ -49,6 +49,12 @@ Below the matrix of supported clouds :
 
 == Blueprints ==
 
+The catalog view
+
+== Quick Deployment ==
+
+The wizard
+
 == Designer ==
 
 == Environement dashboard ==
