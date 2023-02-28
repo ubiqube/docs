@@ -91,6 +91,7 @@ sudo mkdir -p /mnt/NASVolume/msa_bulkfiles  \
 /mnt/NASVolume/mano_nfvo  \
 /mnt/NASVolume/msa_dev  \
 /mnt/NASVolume/msa_repository  \
+/mnt/NASVolume/msa_monitbulkfiles  \
 /mnt/NASVolume/rrd_repository  \
 /mnt/NASVolume/msa_api_logs  \
 /mnt/NASVolume/msa_api_keystore \
@@ -121,6 +122,7 @@ sudo chown 1000.1000 /mnt/NASVolume/msa_bulkfiles \
 /mnt/NASVolume/mano_vnfm  \
 /mnt/NASVolume/mano_nfvo  \
 /mnt/NASVolume/rrd_repository \
+/mnt/NASVolume/msa_monitbulkfiles  \
 /mnt/NASVolume/msa_bulkfiles \
 /mnt/NASVolume/msa_api_logs \
 /mnt/NASVolume/msa_api_keystore \
