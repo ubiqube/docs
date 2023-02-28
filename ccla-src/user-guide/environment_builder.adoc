@@ -6,46 +6,46 @@ ifndef::imagesdir[:imagesdir: images/providers]
 
 Below the matrix of supported clouds :
 
+=== Kubernetes services ===
+
 [cols="1,1,1,1"]
 |===
 |Provider/Service |Name|WebSite|Comment
 
-|image:EKS.png[alt=width=50px]
+|image:EKS.png[EKS,50]
 |Amazon Elastic Kubernetes Service
 |https://aws.amazon.com/eks/
 |
 
-|image:AKS.png[alt=width=50px]
+|image:AKS.png[AKS,50]
 |Azure Kubernetes Service
 |https://azure.microsoft.com/en-us/products/kubernetes-service/
 |
 
-|image:GKE.png[alt=width=50px]
+|image:GKE.png[GKE,50p]
 |Google Kubernetes Engine
 |https://cloud.google.com/kubernetes-engine
 |
 
-|image:NK8.png[alt=width=50px]
+|image:NK8.png[NK8,50p]
 |Native Kubernetes
 |https://kubernetes.io
 |
 
 |===
 
-=== Kubernetes services ===
-
-==== AWS - EKS ====
-
-==== AZURE - AKS ====
-
-==== GOOGLE - GKE ====
-
-==== Native K8 ====
-
 === Virtual machines ===
 
-==== AWS - EC2 ====
+[cols="1,1,1,1"]
+|===
+|Provider/Service |Name|WebSite|Comment
 
+|image:EC2.png[EC2,50]
+|Amazon EC2
+|https://aws.amazon.com/ec2/
+|
+
+|===
 
 == Blueprints ==
 
