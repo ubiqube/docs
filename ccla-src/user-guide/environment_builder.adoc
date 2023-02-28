@@ -9,7 +9,7 @@ Below the matrix of supported clouds :
 |===
 |Provider/Service |Name|WebSite|Comment
 
-|
+|image:eks.png[alt=Dashboard Menu, width=50px]
 |Amazon Elastic Kubernetes Service
 |https://aws.amazon.com/eks/
 |
