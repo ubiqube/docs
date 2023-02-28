@@ -11,8 +11,8 @@ ifdef::html[]
 
 [.stripes-none,cols="1,10",frame=none,grid=none,options="noheader",width="50%"]
 |===
-| image:pdf_icon.png[width=32px] | link:../pdf/release-notes/release_notes_2.8.5.pdf[download PDF for 2.8.5,window=_blank]
 | image:pdf_icon.png[width=32px] | link:../pdf/release-notes/release_notes_2.8.6.pdf[download PDF for 2.8.6,window=_blank]
+| image:pdf_icon.png[width=32px] | link:../pdf/release-notes/release_notes_2.8.5.pdf[download PDF for 2.8.5,window=_blank]
 |===
 endif::[]
 
