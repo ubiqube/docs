@@ -1,1 +1,73 @@
 
+= Specific technical fixes and feature details =
+
+== Features ==
+* [MSA-11190] - [CCLA] Environment: Invite Users
+* [MSA-11509] - [CCLA] Allow deployment only on K8 Cluster which UP and Running
+* [MSA-11629] - [CCLA] K8 Import - UI - Include MS console
+* [MSA-11664] - [CCLA] Deploy Promethus/Grafana Stack as part of ENV WF(EKS,AKS,GKE)
+* [MSA-11665] - [CCLA] Show Grafana UI in enviroment level Monitoring tab as iframe
+* [MSA-11686] - [CCLA] VM APP WF to use credentials from VM ENV WF(AWS)
+* [MSA-11710] - [CCLA] Common library for Cloudclapp Workflows
+* [MSA-11729] - [CCLA] Have cloud providers regions in WF defintions file as list of possible values in regions field
+* [MSA-11796] - [CCLA] Permit to choose only one image for vm services
+* [MSA-11860] - [CCLA] Repository for Blueprints + file descriptor
+* [MSA-11861] - [CCLA] API for Blueprints to load / use as ENV
+* [MSA-11889] - [CCLA] add permissions for Tags/Users tab under Governance
+* [MSA-11895] - [CCLA] Research private repo authentication
+* [MSA-11899] - [CCLA] API to register private docker hub account and List Repository from that account
+* [MSA-11915] - [CCLA] API to list Azure Market Place for VM images and Docker images
+* [MSA-11926] - [CCLA-MPV1] List Blueprint
+* [MSA-11934] - [CCLA] Cost graph layout tweak
+* [MSA-11973] - [CCLA-MPV1] Search Private image on Dockerhub
+* [MSA-11977] - [CCLA] New design for 2.0
+* [MSA-12004] - [CCLA-MVP1] Save Blueprint
+* [MSA-12008] - [CCLA] save managers docker hub credential in key-valut and retrieve it from there
+* [MSA-12028] - [Internal] To add static Id for automation testing
+* [MSA-12034] - [CCLA-MVP1] List General items on Pallete
+* [MSA-12040] - [CCLA-MPV1] Deploy Private image as Pods
+* [MSA-12041] - [CCLA] API to create Blueprint from enviroment after edition
+* [MSA-12047] - [CCLA] API to Read one BluePrint
+* [MSA-12052] - [CCLA-MVP1] Show corresponding K8S Cluster service for selected Provider
+* [MSA-12062] - [CCLA-MVP1] Collect Providers and Applications when saving Blueprints
+* [MSA-12063] - [CCLA-MVP1] Make Start Event and End Event unselectable in designer
+* [MSA-12064] - [CCLA-MVP1] Set Start Event and End Event for all Subprocess and connect elements inside
+* [MSA-12074] - [CCLA] CRUD of Docker hub credentials that is saved in key vault
+* [MSA-12080] - [CCLA-MVP1] Set private docher hub credentials per user
+* [MSA-12114] - [CCLA] Create a new GET api for Docker hub credentials that is saved in key vault
+* [MSA-12118] - [CCLA-MVP1] Pass device_id from Cluster WF to App WF
+* [MSA-12127] - [CCLA] Documentation: Blueprint Menu
+* [MSA-12128] - [CCLA] Documentation: Environment - Design Tab
+* [MSA-12129] - [CCLA] Documentation: Use-case: Deploy Env with Blueprint
+* [MSA-12130] - [CCLA-MVP1] Set Private docker flag to App WF
+* [MSA-12145] - [CCLA] Last modified blueprint should be at the top
+* [MSA-12154] - [CCLA-MVP1] API to Update environment
+* [MSA-12155] - [CCLA-MVP1] UI to show the BPM progress
+* [MSA-12171] - [CCLA-MVP1] Update Environment before Deploy
+* [MSA-12175] - [CCLA-MVP1] Give more accuracy to the design
+* [MSA-12250] - CCLA - UI fixes
+* [MSA-12254] - [CCLA] Delete Blueprint API returns invalid Path
+* [MSA-11614] - [CCLA] API to return Cost per Tags
+* [MSA-11871] - [CCLA-MVP1] Show Environment Designer
+* [MSA-11873] - [CCLA-MPV1] Ability to update designer element's parameters
+* [MSA-11874] - [CCLA-MVP1] Save Blueprint
+* [MSA-11875] - [CCLA-MVP1] App Deployment button to show Application Images
+* [MSA-11876] - [CCLA-MVP1] Use app from marketplace and place in the designer
+* [MSA-11978] - [CCLA] Environment WF Logs
+* [MSA-12002] - [CCLA-MVP1] List Cloud Services on Palette
+* [MSA-12003] - [CCLA-MVP1] Place Cloud Services as Service Task
+* [MSA-12059] - [CCLA-MVP1] Use Blueprint as a New Environment
+
+== Bugs ==
+
+* [MSA-11271] - [CCLA] VPC not removed when AWS ENV is deleted
+* [MSA-11584] - [CCLA] Teardown of APP/ENV doesnt delete the workspace if Cluster is not active
+* [MSA-11708] - [API] [CCLA] delete directory when tear down environment
+* MSA-11764] - [CCLA] ENV WF and Scan WFs not attached in the backend
+* [MSA-11765] - [CCLA] AZURE ENV status icon stay grey after creation + Adapt polld & K8 DA
+* [MSA-11766] - [CCLA] If ressource do not exist anymore, the tear down must passed
+* [MSA-11767] - [CCLA] Deployment failed with images named containing - or _
+* [MSA-12142] - [CCLA] Clicking on any element shows blank screen
+* [MSA-12143] - [CCLA] When a new env created, status is not good.
+* [MSA-12144] - [CCLA] Avoid limitation of 5 ENV
+* [MSA-12160] - Deployment details not returned with Environment
