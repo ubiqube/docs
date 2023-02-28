@@ -15,9 +15,19 @@ Below the matrix of supported clouds :
 |https://aws.amazon.com/eks/
 |
 
+|image:AKS.png[alt=width=50px]
+|Azure Kubernetes Service
+|https://azure.microsoft.com/en-us/products/kubernetes-service/
 |
-|Amazon Elastic Kubernetes Service
-|https://aws.amazon.com/eks/
+
+|image:GKE.png[alt=width=50px]
+|Google Kubernetes Engine
+|https://cloud.google.com/kubernetes-engine
+|
+
+|image:NK8.png[alt=width=50px]
+|Native Kubernetes
+|https://kubernetes.io
 |
 
 |===
