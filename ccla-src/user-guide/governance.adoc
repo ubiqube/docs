@@ -2,7 +2,7 @@
 
 The {product_name} platform provides a multi-roles and multi-tenancy hierarchy that should accommodate all your specifics requirement.
 
-
+== Dashboard ==
 
 == Invit Users ==
 
