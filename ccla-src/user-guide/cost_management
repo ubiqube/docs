@@ -4,3 +4,9 @@
 Cost management focuses on providing visibility into how a business spends on cloud infrastructure
 To access the cost dashboard, go to Insigh tab and click Costs
 The system, based on cloud crendetials defined in the organization dashboard, will retrieve cost informations and compute all result in one unique dashboard
+
+=== Monthly view ===
+image:screen_insights_cost_data_tab.png[alt=Insights Menu, width=500px]
+
+=== Daily view ===
+image:screen_insights_cost_data_daily_tab.png[alt=Insights Menu, width=500px]
