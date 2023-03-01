@@ -1,5 +1,7 @@
 = Overview =
 
+Cloudclapp offer large possibility of applications deployment : container based or VM based
+
 == Marketplaces ==
 
 === Public Docker Hub ===
