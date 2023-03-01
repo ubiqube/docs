@@ -51,6 +51,16 @@ Below the matrix of supported clouds :
 
 The catalog view
 
+=== OpenMSA Library ===
+
+* Wordpress on Azure
+* Wordpress on Azure (Demo)
+* Multi clouds
+* Hybrid clouds
+* MsaActivator (To be confirmed)
+
+=== User Library ===
+
 == Quick Deployment ==
 
 The wizard
