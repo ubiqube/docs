@@ -13,13 +13,13 @@ repositories {
 asciidoctorj {
     modules {
        diagram.use() 
-       diagram.version '2.2.1' 
+       diagram.version '2.2.4' 
     }
 }
 
 dependencies {
-  asciidoctorGems 'rubygems:rouge:4.0.1'
-  asciidoctorGems 'rubygems:asciidoctor-diagram:2.2.3'
+  asciidoctorGems 'rubygems:rouge:4.1.0'
+  asciidoctorGems 'rubygems:asciidoctor-diagram:2.2.4'
 }
 
 asciidoctor.doFirst {
