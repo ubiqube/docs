@@ -125,9 +125,9 @@ image:assurance_mon_profile_overview_rendering.png[width=800px]
 
 == SNMP trap monitoring
 
-The {product_name} can collect and index SNMP traps out of the box.
+The {product_name} can collect and index SNMP trap out of the box.
 
-To monitor a managed entity with SNMP traps you need to configure the managed entity with *Collect Syslog* and *Analyze Syslog* enabled.
+To monitor a managed entity with SNMP trap you need to configure the managed entity with *Collect Syslog* and *Analyze Syslog* enabled.
 
 When the {product_name} collects a trap, it relies on the trap source IP address to identify the managed entity by it's management IP address. 
 
@@ -155,7 +155,7 @@ In order to use SNMPv3 to monitor a managed entity you need to configure its var
 .Notes
 For the polling, the mandatory variables are snmpv3_securityName, snmpv3_securityLevel, the others depends of snmpv3_securityLevel value, see below.
 
-For receiving snmp traps, the mandatory variables are snmpv3_securityName, snmpv3_securityLevel, snmpv3_securityEngineID, the others depends of snmpv3_securityLevel value, see below.
+For receiving SNMP trap, the mandatory variables are snmpv3_securityName, snmpv3_securityLevel, snmpv3_securityEngineID, the others depends of snmpv3_securityLevel value, see below.
 
 - if snmpv3_securityLevel is set to authPriv, the additional mandatory variables are snmpv3_authKey, snmpv3_authProtocol, snmpv3_privKey, snmpv3_privProtocol
 - if snmpv3_securityLevel is set to authNoPriv, the additional mandatory variables are snmpv3_authKey, snmpv3_authProtocol
@@ -190,11 +190,11 @@ You can also monitor specific KPI based on the OID of your vendor.
 
 image:assurance_mon_generic_ms_snmpv3_graph.png[width=800px]
 
-==== Collecting SNMPv3 traps
+==== Collecting SNMPv3 trap
 
 For SNMPv3 traps, the managed entity should be configured as explained above and the variable snmpv3_securityEngineID is mandatory for decoding the SNMP traps.
 
-=== SNMP traps translation
+=== SNMP trap translation
 
 ==== Architecture overview
 
