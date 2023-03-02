@@ -296,24 +296,23 @@ image:assurance_snmp_trap_translation_wf_translate_3.png[width=800px]
 
 ===== Testing 
 
-We can now launch a snmp trap command:
+We can now launch a snmp trap command with OID 1.3.6.1.2.1.1.6
 
 ----
-snmptrap -v 3 -m ALL  -e  AABCDEF123456789 -u  SECNAME -a  MD5 -A  AUTHPASSPHRASE2 -x  AES -X  PRIVPASSPHRASE2 -l  authPriv MSA_IP "" msaAlarmTrap  1.3.6.1.2.1.1.5 s SNMP-trap-test
+snmptrap  -v2c -c ubiqube 3.10.63.66 "" 1.3.6.1.2.1.1.6 1.3.6.1.2.1.1.6.0 s "Just here ABC"
 ----
 
-The managed entity here is configured to receive snmp-traps using SNMPv3 and authPriv security-level. The syntax is:
-----
-snmptrap -v <snmp_version> -e <engine_id> -u <security_username> -a <authentication_protocal> -A <authentication_protocal_pass_phrase> -x <privacy_protocol> -X <privacy_protocol_pass_phrase> -l authPriv <destination_host> <uptime> <OID_or_MIB> <object> <value_type> <value>
-----
+Without the translation, the UI shows
 
-Thus we provide the snmptrap options -e till -l. After the destination IP (MSA_IP) the command always requires the *uptime* value. This value (how long the system has been running since boot) is mandatory but if you provide an empty value by using two single quotes '' it will instruct the command to obtain the value from the operating system you are executing this on. 
-The OID can be any snmpTrapOID. We can use one of those from the files /usr/share/snmp/mibs/*-MIB.txt like msaAlarmTrap, risingAlarm or ipv6IfStateChange. The first one suits the best. Then comes the list <object> <value_type> <value> where <object> is the OID we have imported, <value_type> "s" for string (we can also have "i" for integer, "u" for unsigned, "c" for counter32...).
+image:assurance_snmp_trap_translation_test_no_translation.png[width=800px]
 
-And we can verify in the logs that we received the corresponding trap where the OID 1.3.6.1.2.1.1.5 has been recognized and replaced by its symbolic value sysName:
-----
-<4>%VNOC-4-TrapSnmp(10): V=3 sysUpTimeInstance=1463042188 snmpTrapOID=1.3.6.1.4.1.13567.3.4.1.2 sysName="SNMP-trap-test"
-----
+With the translation of 1.3.6.1.2.1.1.6 to sysLocation
+
+image:assurance_snmp_trap_translation_test_translation.png[width=800px]
+
+With a custom translation of 1.3.6.1.2.1.1.6 to MyCustomSysLocation
+
+image:assurance_snmp_trap_translation_test_custom_translation.png[width=800px]
 
 == Log analytics
 
