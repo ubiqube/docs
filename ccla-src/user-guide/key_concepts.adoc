@@ -1,5 +1,18 @@
 = Key Concepts
 
+== Application Deployer ==
+
+An application simply refers to any software application that will be deployed in a cloud environment.
+Supported format in the current version are :
+
+* Native container applications (from public or private dockerHub)
+* VM based application/system from AWS EC2 markeplace
+
+== Environment Builder ==
+
+Using from a blueprint or from scratch, the environment builder permits to design your cloud architectures
+In the environment home page, you can access the environment builder by clicking on Design tab
+
 == Blueprints
 
 Blueprints enable users to design infrastructure, platforms, and application services by composing and connecting cloud resources. It can be seen as a package or a  template permitting to deploy quickly an environment with predefined applications. It permits also to replicate any infrastructure to multiple platforms.
@@ -47,4 +60,4 @@ This area is composed of the following components :
 ** If associated to AZURE provider, this cluster represents AKS service
 ** If associated to GOOGLE provider, this cluster represent GKE service
 
-== Application Deployer ==
+
