@@ -17,7 +17,8 @@ Below the matrix of supported clouds :
 
 |image:EKS.png[EKS,40]
 |Amazon Elastic Kubernetes Service
-|
+|* LB : balaaa
+* Network : blab
 
 |image:AKS.png[AKS,40]
 |Azure Kubernetes Service
