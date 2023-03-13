@@ -9,12 +9,12 @@ Below the matrix of supported clouds :
 === Kubernetes services ===
 
 Two mode supported per providers
-* Greenfield :
-* Brownfield
+* Greenfield : create a fresh ressource
+* Brownfield : import / discover an existing ressource
 
 [cols="1,1,1,1,1"]
 |===
-| |Name|Supported Mode|WebSite|Comment
+| |Name|Mode|WebSite|Comment
 
 |image:EKS.png[EKS,40]
 |Amazon Elastic Kubernetes Service
