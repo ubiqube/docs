@@ -8,27 +8,35 @@ Below the matrix of supported clouds :
 
 === Kubernetes services ===
 
-[cols="1,1,1,1"]
+Two mode supported per providers
+* Greenfield :
+* Brownfield
+
+[cols="1,1,1,1,1"]
 |===
-| |Name|WebSite|Comment
+| |Name|Supported Mode|WebSite|Comment
 
 |image:EKS.png[EKS,40]
 |Amazon Elastic Kubernetes Service
+|Greenfield
 |https://aws.amazon.com/eks/
 |
 
 |image:AKS.png[AKS,40]
 |Azure Kubernetes Service
+|Greenfield
 |https://azure.microsoft.com/en-us/products/kubernetes-service/
 |
 
 |image:GKE.png[GKE,40]
 |Google Kubernetes Engine
+|Greenfield
 |https://cloud.google.com/kubernetes-engine
 |
 
 |image:NK8.png[NK8,40]
 |Native Kubernetes
+|Brownfield 
 |https://kubernetes.io
 |
 
