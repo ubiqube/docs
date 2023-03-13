@@ -5,11 +5,7 @@ ifndef::imagesdir[:imagesdir: images/providers]
 
 This page to describe how finally environement and application are created under each cloud providers
 
-== Integration ==
-
-Below the matrix of supported clouds :
-
-=== Environement details ===
+== Environement details ==
 
 [cols="1,1,1"]
 |===
@@ -34,9 +30,7 @@ Below the matrix of supported clouds :
 
 |===
 
-
-
-=== Application details ===
+== Application details ==
 
 [cols="1,1,1"]
 |===
