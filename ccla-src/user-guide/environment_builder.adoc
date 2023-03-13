@@ -77,6 +77,16 @@ The catalog view
 
 === Native K8 import ===
 
+4 fields are needed to import an existing K8 platform in Cloudclapp
+
+* API Server IP/Host :
+
+* API Server Port :
+
+* Certificate Authority Data :
+
+* Kubernetes Service Account Token :
+
 == Designer ==
 
 == Environement dashboard ==
