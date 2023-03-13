@@ -11,7 +11,7 @@ Below the matrix of supported clouds :
 
 === Environement details ===
 
-[cols="1,1,1,1"]
+[cols="1,1,1"]
 |===
 | |Name|Component/Ressources created
 
@@ -37,7 +37,7 @@ Below the matrix of supported clouds :
 
 === Application details ===
 
-[cols="1,1,1,1"]
+[cols="1,1,1"]
 |===
 | |Name|Component/Ressources created
 
