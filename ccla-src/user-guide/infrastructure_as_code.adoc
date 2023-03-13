@@ -19,7 +19,7 @@ This page to describe how finally environement and application are created under
 
 |image:AKS.png[AKS,40]
 |Azure Kubernetes Service
-|
+|* kube-system namespace (coredns, coredns-autoscaler, konnectivity-agent, metrics-server)
 
 |image:GKE.png[GKE,40]
 |Google Kubernetes Engine
@@ -31,7 +31,7 @@ This page to describe how finally environement and application are created under
 
 |===
 
-== Application details ==
+== Application/Deployment details ==
 
 [cols="1,1,1"]
 |===
@@ -43,7 +43,7 @@ This page to describe how finally environement and application are created under
 
 |image:AKS.png[AKS,40]
 |Azure Kubernetes Service
-|
+|Pod/container
 
 |image:GKE.png[GKE,40]
 |Google Kubernetes Engine
