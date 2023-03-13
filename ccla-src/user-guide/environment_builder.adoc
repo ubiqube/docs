@@ -63,7 +63,6 @@ The catalog view
 * Wordpress on Azure
 * Wordpress on Azure (Demo)
 * Multi clouds
-* Hybrid clouds
 * MsaActivator (To be confirmed)
 
 === User Library ===
