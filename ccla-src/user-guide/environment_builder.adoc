@@ -5,7 +5,9 @@ ifndef::imagesdir[:imagesdir: images/providers]
 == Integration ==
 
 Two mode supported per providers
+
 * Greenfield : create a fresh ressource
+
 * Brownfield : import / discover an existing ressource
 
 Below the matrix of supported clouds :
