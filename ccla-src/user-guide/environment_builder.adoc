@@ -45,7 +45,7 @@ Below the matrix of supported clouds :
 
 [cols="1,1,1,1"]
 |===
-| |Name|WebSite
+| |Name|Mode|WebSite
 
 |image:EC2.png[EC2,40]
 |Amazon EC2
