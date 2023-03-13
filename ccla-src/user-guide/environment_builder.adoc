@@ -69,7 +69,13 @@ The catalog view
 
 == Quick Deployment ==
 
-The wizard
+== The wizard ==
+
+=== Providers specificity ===
+
+=== GKE ===
+
+=== Native K8 import ===
 
 == Designer ==
 
