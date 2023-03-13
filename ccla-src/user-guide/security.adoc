@@ -6,3 +6,5 @@
 = Image Scan =
 
 = Web App Scan =
+
+= Compliance Scan =
