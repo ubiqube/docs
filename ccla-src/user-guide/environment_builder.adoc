@@ -14,33 +14,30 @@ Below the matrix of supported clouds :
 
 === Kubernetes services ===
 
-[cols="1,1,1,1,1"]
+[cols="1,1,1,1"]
 |===
-| |Name|Mode|WebSite|Comment
+| |Name|Mode|WebSite
 
 |image:EKS.png[EKS,40]
 |Amazon Elastic Kubernetes Service
 |Greenfield
 |https://aws.amazon.com/eks/
-|
+
 
 |image:AKS.png[AKS,40]
 |Azure Kubernetes Service
 |Greenfield
 |https://azure.microsoft.com/en-us/products/kubernetes-service/
-|
 
 |image:GKE.png[GKE,40]
 |Google Kubernetes Engine
 |Greenfield
 |https://cloud.google.com/kubernetes-engine
-|
 
 |image:NK8.png[NK8,40]
 |Native Kubernetes
 |Brownfield 
 |https://kubernetes.io
-|
 
 |===
 
@@ -48,13 +45,12 @@ Below the matrix of supported clouds :
 
 [cols="1,1,1,1"]
 |===
-| |Name|WebSite|Comment
+| |Name|WebSite
 
 |image:EC2.png[EC2,40]
 |Amazon EC2
 |Greenfield
 |https://aws.amazon.com/ec2/
-|
 
 |===
 
