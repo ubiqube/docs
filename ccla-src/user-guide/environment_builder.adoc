@@ -4,13 +4,13 @@ ifndef::imagesdir[:imagesdir: images/providers]
 
 == Integration ==
 
-Below the matrix of supported clouds :
-
-=== Kubernetes services ===
-
 Two mode supported per providers
 * Greenfield : create a fresh ressource
 * Brownfield : import / discover an existing ressource
+
+Below the matrix of supported clouds :
+
+=== Kubernetes services ===
 
 [cols="1,1,1,1,1"]
 |===
@@ -50,6 +50,7 @@ Two mode supported per providers
 
 |image:EC2.png[EC2,40]
 |Amazon EC2
+|Greenfield
 |https://aws.amazon.com/ec2/
 |
 
