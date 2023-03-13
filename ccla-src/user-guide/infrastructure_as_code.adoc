@@ -54,3 +54,7 @@ This page to describe how finally environement and application are created under
 |
 
 |===
+
+== Terraform / Workspace orgaization in the backend ==
+
+Mention files created under Datafiles repo
