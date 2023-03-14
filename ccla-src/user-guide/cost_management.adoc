@@ -7,6 +7,8 @@ To access the cost dashboard, go to *Insigh -> Costs*
 
 The system, based on cloud crendetials defined in the organization dashboard, will retrieve cost informations and compute all result in one unique dashboard
 
+**Note : AWS have a specific pricing for cost explorer. Please refer to https://aws.amazon.com/aws-cost-management/aws-cost-explorer/pricing/**
+
 === Monthly view ===
 
 By default or by selecting Monthly  in the dropdown list, the cost screen is refreshed with monthly values
