@@ -11,13 +11,13 @@ _Note : AWS has a specific pricing for cost explorer. Please refer to https://aw
 
 === Monthly view ===
 
-By default or by selecting Monthly  in the dropdown list, the cost screen is refreshed with monthly values
+By default or by selecting *Monthly* in the dropdown list, the cost screen is refreshed with monthly values
 
 image:MonthlyCost.png[alt=Insights Menu, width=900px]
 
 === Daily view ===
 
-By selecting Daily in the dropdown list, the cost screen is refreshed with daily values
+By selecting *Daily* in the dropdown list, the cost screen is refreshed with daily values
 
 image:DailyCost.png[alt=Insights Menu, width=900px]
 
