@@ -99,7 +99,28 @@ The catalog view
 |===
 |Steps|Description|
 
+|Create TF Workspace
 |
+
+|Set TF variables values
+|
+
+|Initialize TF Workspace
+|
+
+|Provision AKS cluster
+|
+
+|Create AKS Cluster Managed Entity
+|
+
+|Get AKS Cluster Dashboard
+|
+
+|Deploy Prometheus and Grafana
+|
+
+|Trigger compliance scan
 |
 
 |===
