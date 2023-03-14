@@ -97,10 +97,10 @@ The catalog view
 
 [cols="1,1"]
 |===
-|Steps|Description|
+|Steps|Description
 
 |Create TF Workspace
-|
+|tt
 
 |Set TF variables values
 |
