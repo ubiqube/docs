@@ -27,6 +27,6 @@ _Note : the peak in the graph for AWS represents some taxes apply every 1rst of 
 
 In quick deployment, before to deploy, the user can see what is the estimate cost of this entire deployment.The price is based on the environement used.
 
-The estimate can be display hourly, monthly or yearly based
+The estimate can be display *Hourly, Monthly or Yearly* based
 
 image:QuickDeploymentCost.png[alt=Insights Menu, width=900px]
