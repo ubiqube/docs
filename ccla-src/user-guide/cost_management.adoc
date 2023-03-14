@@ -12,3 +12,7 @@ image:MonthlyCost.png[alt=Insights Menu, width=900px]
 
 === Daily view ===
 image:DailyCost.png[alt=Insights Menu, width=900px]
+
+
+=== Estimate in quick deployment ===
+image:QuickDeploymentCost.png[alt=Insights Menu, width=900px]
