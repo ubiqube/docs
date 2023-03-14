@@ -25,13 +25,14 @@ image:DailyCost.png[alt=Insights Menu, width=900px]
 
 _Note : the peak in the graph for AWS represents some taxes apply every 1rst of the month_
 
-== Per environment and tags ==
+== Per environment ==
 
 Switching to the second sub icons in Cost view, you can visualize cost per environment or by tags
 
 image:EnvCost.png[alt=Insights Menu, width=900px]
 
 _Note : this screen can generate lots of queries if multiple environements are selected at the same time
+_Note : the tag section will be implemented in future version
 
 == Estimate in quick deployment ==
 
