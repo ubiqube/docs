@@ -14,3 +14,25 @@ Cloudclapp offer large possibility of applications deployment : container based 
 
 == Deployment dashboard ==
 
+== Details of WF steps ==
+
+[cols="1,1"]
+|===
+|Steps|Description
+
+|Create TF Workspace
+|
+
+|Set variables values
+|
+
+|Initialize TF Workspace
+|
+
+|Provision Application
+|
+
+|Trigger Security Scans
+|
+
+|===
