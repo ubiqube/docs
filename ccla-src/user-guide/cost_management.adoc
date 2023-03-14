@@ -33,7 +33,7 @@ image:EnvCost.png[alt=Insights Menu, width=900px]
 
 _Note : this screen can generate lots of queries if multiple environements are selected at the same time
 
-=== Estimate in quick deployment ===
+== Estimate in quick deployment ==
 
 In quick deployment, before to deploy, the user can see what is the estimate cost of this entire deployment.The price is based on the environement used.
 
