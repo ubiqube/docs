@@ -31,8 +31,9 @@ Switching to the second sub icons in Cost view, you can visualize cost per envir
 
 image:EnvCost.png[alt=Insights Menu, width=900px]
 
-_Note : this screen can generate lots of queries if multiple environements are selected at the same time
-_Note : the tag section will be implemented in future version
+_Note : this screen can generate lots of queries if multiple environements are selected at the same time_
+
+_Note : the tag section will be implemented in future version_
 
 == Estimate in quick deployment ==
 
