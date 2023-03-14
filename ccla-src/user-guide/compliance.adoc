@@ -21,12 +21,12 @@ image:Compliance.png[alt=Insights Menu, width=900px]
 
 === Sensitivy / IG mapping
 
-Per environement, it's possible to select between 4 levels to apply the compliance. The sensivity will drive the number of tests
+Per environment, it's possible to select between 4 levels to apply the compliance. The sensivity will drive the number of tests
 
-* No data protection : no compliance applied
-* Basic : controls for small, commercial off-the-shelf or home office software environments where sensitivity of the data is low. Minimal standard of information security
-* Extended : controls focused on helping security teams manage sensitive client
-* Expert : controls that reduce the impact of zero-day attacks and targeted attacks from sophisticated adversaries.
+* *No data protection* : no compliance applied
+* *Basic* : controls for small, commercial off-the-shelf or home office software environments where sensitivity of the data is low. Minimal standard of information security
+* *Extended* : controls focused on helping security teams manage sensitive client
+* *Expert* : controls that reduce the impact of zero-day attacks and targeted attacks from sophisticated adversaries.
 
 === Supported Standards
 
