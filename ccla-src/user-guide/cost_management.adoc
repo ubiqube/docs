@@ -1,6 +1,6 @@
 
 == Overview ==
-ifndef::imagesdir[:imagesdir: images]
+ifndef::imagesdir[:imagesdir: images/cost]
 Cost management focuses on providing visibility into how a business spends on cloud infrastructure
 
 To access the cost dashboard, go to *Insigh -> Costs*
