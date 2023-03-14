@@ -92,3 +92,14 @@ The catalog view
 == Environement dashboard ==
 
 === Monitoring ===
+
+== Details of WF steps ==
+
+[cols="1,1"]
+|===
+|Steps|Description|
+
+|
+|
+
+|===
