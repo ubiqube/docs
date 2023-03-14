@@ -5,7 +5,7 @@ ifndef::imagesdir[:imagesdir: images/providers]
 
 This page to describe how finally environement and application are created under each cloud providers
 
-== Environement details ==
+== Environment details ==
 
 [cols="1,1,1"]
 |===
@@ -55,6 +55,6 @@ This page to describe how finally environement and application are created under
 
 |===
 
-== Terraform / Workspace orgaization in the backend ==
+== Terraform / Workspace in the backend ==
 
 Mention files created under Datafiles repo
