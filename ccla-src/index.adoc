@@ -1,0 +1,12 @@
+= Cloudclapp(TM) (CCLA) Documentation
+ifndef::imagesdir[:imagesdir: images]
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+[cols="3*"] 
+|===
+
+a| link:lab-guide/index{outfilesuffix}[Lab Guide,window=_blank]
+
+a| link:community-guide/index{outfilesuffix}[Community Guide,window=_blank]
+
+|===
