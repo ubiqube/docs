@@ -21,7 +21,7 @@ By selecting Daily in the dropdown list, the cost screen is refreshed with daily
 
 image:DailyCost.png[alt=Insights Menu, width=900px]
 
-Note : the peak in the graph for AWS represents some taxes apply every 1rst of the month
+_Note : the peak in the graph for AWS represents some taxes apply every 1rst of the month_
 
 === Estimate in quick deployment ===
 
