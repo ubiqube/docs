@@ -1,4 +1,5 @@
 = Compliance
+ifndef::imagesdir[:imagesdir: images/compliance]
 == Overview
 
 When managing infrastructures for production use cases, security and compliance are crucial factors to consider. The clusters need to be securely configured to minimize the attack surface. Additionally, every organization might have audit requirements for systems to be compliant with security standards.
@@ -10,11 +11,13 @@ Notes :
 * In Cloudclapp V2.X, compliance is applied only to Kubernetes environment
 * Public providers lock access to manager nodes. The compliance process will be applied only to workers nodes
 
-== Compliance for Environement
+== Compliance for Environment
 
 As the reference for our compliance module, the Center for Internet Security or CIS is the entry point for our compliance scan (https://www.cisecurity.org/)
 We have reuse the concept of Implementation Groups (IG) to drive how deep an environement is affected by the compliance needs.
 We assume, depending to the type of your environement, the level of compliance, so the associated security rules are not same if you deploy a local sandbox, a pre-production or a production platform.
+
+image:ComplianceSchema.png[alt=Insights Menu, width=900px]
 
 === Sensitivy / IG mapping
 
