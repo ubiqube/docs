@@ -8,11 +8,22 @@ To access the cost dashboard, go to *Insigh -> Costs*
 The system, based on cloud crendetials defined in the organization dashboard, will retrieve cost informations and compute all result in one unique dashboard
 
 === Monthly view ===
+
+By default or by selecting Monthly  in the dropdown list, the cost screen is refreshed with monthly values
+
 image:MonthlyCost.png[alt=Insights Menu, width=900px]
 
 === Daily view ===
+
+By selecting Daily in the dropdown list, the cost screen is refreshed with daily values
+
 image:DailyCost.png[alt=Insights Menu, width=900px]
 
 
 === Estimate in quick deployment ===
+
+In quick deployment, before to deploy, the user can see what is the estimate cost of this entire deployment.The price is based on the environement used.
+
+The estimate can be display hourly, monthly or yearly based
+
 image:QuickDeploymentCost.png[alt=Insights Menu, width=900px]
