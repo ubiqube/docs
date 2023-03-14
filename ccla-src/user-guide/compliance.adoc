@@ -17,7 +17,7 @@ As the reference for our compliance module, the Center for Internet Security or 
 We have reuse the concept of Implementation Groups (IG) to drive how deep an environement is affected by the compliance needs.
 We assume, depending to the type of your environement, the level of compliance, so the associated security rules are not same if you deploy a local sandbox, a pre-production or a production platform.
 
-image:ComplianceSchema.png[alt=Insights Menu, width=900px]
+image:Compliance.png[alt=Insights Menu, width=900px]
 
 === Sensitivy / IG mapping
 
