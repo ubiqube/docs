@@ -191,15 +191,15 @@ subjects:
 ----
 Use kubectl to apply these resources
 
----
+----
 kubectl apply -f serviceaccount.yaml
 kubectl apply -f clusterrole.yaml
 kubectl apply -f clusterrolebinding.yaml
----
+----
 
 Now create a secret that will hold the token for the service account
 
----
+----
 apiVersion: v1
 kind: Secret
 type: kubernetes.io/service-account-token
@@ -207,14 +207,14 @@ metadata:
   name: ccla-token
   annotations:
     kubernetes.io/service-account.name: ccla-service-account
----
----
+----
+----
 kubectl apply -f secret.yaml
 ---
 The above secret should contain the CA data and Token required as inputs for CCLA. To get the values from the secret, run kubectl get secret ccla-token -oyaml
 This command with display the data stored in YAML format.
 
----
+----
 apiVersion: v1
 data:
   ca.crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJkekNDQVIyZ0F3SUJBZ0lCQURBS0JnZ3Foa2pPUFFRREFqQWpNU2dZSUtvWkl6ajBFQXdJRFNBQXdSUUlnSzBRN3hHTm12T3p3MEZTUTNEUVpMNlJ0Nzc3ejZVRDUKbU8xT3RSZ2NhR2dDSVFDdU56OTVDdk9hWVZiQzFlT3BkQi96LzVSaXprV1lmbkNVYzc3Y1VBQzBzZz09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
@@ -225,5 +225,5 @@ metadata:
   name: api-token
   namespace: default
 type: kubernetes.io/service-account-token
----
+----
 NOTE: The above data is base64 encoded
