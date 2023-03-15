@@ -90,6 +90,8 @@ image:Wordpress on Azure.png[alt=Insights Menu, width=900px]
 
 * **Kubernetes Service Account Token** : Token associated with a service account. This service account can then be bound to a cluster role to provide granular access across the K8s cluster.
 
+Check the appendix below to have more details to how retrieve those informations
+
 == Designer ==
 
 == Environement dashboard ==
