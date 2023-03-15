@@ -127,3 +127,103 @@ image:Wordpress on Azure.png[alt=Insights Menu, width=900px]
 |
 
 |===
+
+== Appendix ==
+=== K8 service token and certificate ===
+
+In order to access the K8s APIs, CCLA requires a token associated with a service account. This service account can then be bound to a cluster role to provide granular access across the K8s cluster.
+
+Create YAML files for serviceaccount, clusterrole and clusterrolebinding
+---
+Service Account
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  creationTimestamp: "2023-02-23T10:54:04Z"
+  name: ccla-service-account
+  namespace: default
+ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: ccla-cluster-role
+rules:
+- apiGroups:
+  - ""
+  - apps
+  - extensions
+  resources:
+  - pods
+  - pods/log
+  - configmaps
+  - daemonsets
+  - deployments
+  - jobs
+  - namespaces
+  - nodes
+  - persistentvolumes
+  - persistentvolumeclaims
+  - replicasets
+  - replicationcontrollers
+  - serviceaccounts
+  - services
+  - secrets
+  verbs:
+  - get
+  - list
+  - create
+  - update
+  - patch
+  - delete
+clusterolebinding
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: ccla-cluster-role-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: ccla-cluster-role
+subjects:
+- kind: ServiceAccount
+  name: ccla-service-account
+  namespace: default
+---
+Use kubectl to apply these resources
+
+---
+kubectl apply -f serviceaccount.yaml
+kubectl apply -f clusterrole.yaml
+kubectl apply -f clusterrolebinding.yaml
+---
+
+Now create a secret that will hold the token for the service account
+
+---
+apiVersion: v1
+kind: Secret
+type: kubernetes.io/service-account-token
+metadata:
+  name: ccla-token
+  annotations:
+    kubernetes.io/service-account.name: ccla-service-account
+---
+---
+kubectl apply -f secret.yaml
+---
+The above secret should contain the CA data and Token required as inputs for CCLA. To get the values from the secret, run kubectl get secret ccla-token -oyaml
+This command with display the data stored in YAML format.
+
+---
+apiVersion: v1
+data:
+  ca.crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJkekNDQVIyZ0F3SUJBZ0lCQURBS0JnZ3Foa2pPUFFRREFqQWpNU2dZSUtvWkl6ajBFQXdJRFNBQXdSUUlnSzBRN3hHTm12T3p3MEZTUTNEUVpMNlJ0Nzc3ejZVRDUKbU8xT3RSZ2NhR2dDSVFDdU56OTVDdk9hWVZiQzFlT3BkQi96LzVSaXprV1lmbkNVYzc3Y1VBQzBzZz09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
+  namespace: ZGVmYXVsdA==
+  token: ZXlKaGJHY2lPaUpTVXpJMU5pSXNJbXRwWkNJNkluRjNNRWxrUmt4WWVYRkZNSFJ5ZGtzNE5EY3hPV3R2ZVhKNVMyUjRNSEZEYzNRMlNrcDZTblU1V2pnaWZRLmV5SnBjM01pT2lKcmRXSmxjbTVsZEdWekwzTmxjblpwWTJWaFkyTnZkVzUwSWl3aWEzVmlaWEp1WlhSbGN5NXBieTl6WlhKMmFXTmxZV05qYjNWdWRDOXVZVzFsYzNCaFkyVWlPaUprWldaaGRXeDBJaXdpYTNWaVpYSnVaWFJsY3k1cGJ5OXpaWEoyYVdObFlXTmpiM1Z1ZEM5cDNxZWhETWpGUk1DM0ZmWlJTZzV6MzVfTGltYTFKX3hXdHcwLWUzLTVlakJ6d0tWQ1NoOXlNQjY4TDZjY3duOUZ1R2dMWDBzV2JFMDJ6WnBhNFJicnVBcUJjTU5PbXpJaW9HRUJpeUdoZXRoZmx6eHpmZjZidXBnLXFUdktEYnVuWWlpajE2MkxrYnVJdmZNQTNJaktsbWpyNTRudWFPbngwUW14ODNOUXZITkZOb2hzMXM2cm5hcEV3VXhycC0yWkFjYVdn
+kind: Secret
+metadata:
+  name: api-token
+  namespace: default
+type: kubernetes.io/service-account-token
+---
+NOTE: The above data is base64 encoded
