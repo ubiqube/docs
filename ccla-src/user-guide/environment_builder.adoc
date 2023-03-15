@@ -210,7 +210,7 @@ metadata:
 ----
 ----
 kubectl apply -f secret.yaml
----
+----
 The above secret should contain the CA data and Token required as inputs for CCLA. To get the values from the secret, run kubectl get secret ccla-token -oyaml
 This command with display the data stored in YAML format.
 
