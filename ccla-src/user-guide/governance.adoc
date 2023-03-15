@@ -2,10 +2,7 @@
 ifndef::imagesdir[:imagesdir: images/]
 The {product_name} platform provides a multi-roles and multi-tenancy hierarchy that should accommodate all your specifics requirement.
 
-== Dashboard ==
-
 == Invit Users ==
-
 
 To invite users, go to *Governance* →*Users*
 
@@ -17,8 +14,10 @@ image:pop_invite_users.png[alt=Governance Menu, width=900px]
 
 image:invite_user_succeed.png[alt=Governance Menu, width=900px]
 
+== Tags ==
+
 = Permission proval =
 
 = Approval requests =
 
-= Tracking =
+= Audit Logs =
