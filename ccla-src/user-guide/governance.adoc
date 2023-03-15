@@ -6,6 +6,13 @@ The {product_name} platform provides a multi-roles and multi-tenancy hierarchy t
 
 == Invit Users ==
 
+
+To invite users, go to Governance → Users
+
+image:users_tab.png[alt=Governance Menu, width=900px]
+
+image:pop_invite_users.png[alt=Governance Menu, width=900px]
+
 = Permission proval =
 
 = Approval requests =
