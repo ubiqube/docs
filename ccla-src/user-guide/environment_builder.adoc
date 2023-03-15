@@ -61,7 +61,9 @@ The catalog view
 === OpenMSA Library ===
 
 * Wordpress on Azure
-image:Wordpress on Azure.png
+
+image:Wordpress on Azure.png[alt=Insights Menu, width=900px]
+
 * Wordpress on Azure (Demo)
 * Multi clouds
 * MsaActivator (To be confirmed)
