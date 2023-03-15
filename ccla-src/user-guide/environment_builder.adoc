@@ -82,9 +82,16 @@ image:Wordpress on Azure.png[alt=Insights Menu, width=900px]
 
 4 fields are needed to import an existing K8 platform in Cloudclapp
 
-* API Server IP/Host :
+* **API Server IP/Host** : This value is usually the IP address of the Master Node in the Kubernetes cluster
 
-* API Server Port :
+* API Server Port :The API server is generally exposed on the port 6443 by default. Cloudclapp will check if the specific port on the given IP is reachable before Import. In a kubeconfig file, both of the above values are in the server field for a cluster
+
+====
+[source,n1ql]
+----
+SELECT CONTAINS("N1QL is awesome", "N1QL") as n1ql,
+       CONTAINS("N1QL is awesome", "SQL") as no_sql;
+----
 
 * Certificate Authority Data :
 
