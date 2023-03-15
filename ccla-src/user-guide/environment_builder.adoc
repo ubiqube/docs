@@ -84,13 +84,13 @@ image:Wordpress on Azure.png[alt=Insights Menu, width=900px]
 
 * **API Server IP/Host** : This value is usually the IP address of the Master Node in the Kubernetes cluster
 
-* API Server Port :The API server is generally exposed on the port 6443 by default. Cloudclapp will check if the specific port on the given IP is reachable before Import. In a kubeconfig file, both of the above values are in the server field for a cluster
+* **API Server Port** :The API server is generally exposed on the port 6443 by default. Cloudclapp will check if the specific port on the given IP is reachable before Import. In a kubeconfig file, both of the above values are in the server field for a cluster
 
 * **Certificate Authority Data** : Certificat generated 
 
 * **Kubernetes Service Account Token** : Token associated with a service account. This service account can then be bound to a cluster role to provide granular access across the K8s cluster.
 
-Check the appendix below to have more details to how retrieve those informations
+NOTE: Check the appendix below to have more details to how retrieve those informations
 
 == Designer ==
 
