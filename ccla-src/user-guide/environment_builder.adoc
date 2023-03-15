@@ -134,7 +134,7 @@ image:Wordpress on Azure.png[alt=Insights Menu, width=900px]
 In order to access the K8s APIs, CCLA requires a token associated with a service account. This service account can then be bound to a cluster role to provide granular access across the K8s cluster.
 
 Create YAML files for serviceaccount, clusterrole and clusterrolebinding
----
+----
 Service Account
 apiVersion: v1
 kind: ServiceAccount
@@ -188,7 +188,7 @@ subjects:
 - kind: ServiceAccount
   name: ccla-service-account
   namespace: default
----
+----
 Use kubectl to apply these resources
 
 ---
