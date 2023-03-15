@@ -86,14 +86,9 @@ image:Wordpress on Azure.png[alt=Insights Menu, width=900px]
 
 * API Server Port :The API server is generally exposed on the port 6443 by default. Cloudclapp will check if the specific port on the given IP is reachable before Import. In a kubeconfig file, both of the above values are in the server field for a cluster
 
-----
-SELECT CONTAINS("N1QL is awesome", "N1QL") as n1ql,
-       CONTAINS("N1QL is awesome", "SQL") as no_sql;
-----
+* **Certificate Authority Data** : Certificat generated 
 
-* Certificate Authority Data :
-
-* Kubernetes Service Account Token :
+* **Kubernetes Service Account Token** : Token associated with a service account. This service account can then be bound to a cluster role to provide granular access across the K8s cluster.
 
 == Designer ==
 
