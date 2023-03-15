@@ -1,1 +1,11 @@
 
+On prem installation
+######
+
+Give path to quickstart
+
+#####
+Install Lib
+
+/usr/bin/install_libraries.sh ccla
+https://10.31.1.190/ubi-api-rest/ccla/libraries/install
