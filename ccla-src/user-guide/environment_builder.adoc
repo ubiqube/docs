@@ -86,8 +86,6 @@ image:Wordpress on Azure.png[alt=Insights Menu, width=900px]
 
 * API Server Port :The API server is generally exposed on the port 6443 by default. Cloudclapp will check if the specific port on the given IP is reachable before Import. In a kubeconfig file, both of the above values are in the server field for a cluster
 
-====
-[source,n1ql]
 ----
 SELECT CONTAINS("N1QL is awesome", "N1QL") as n1ql,
        CONTAINS("N1QL is awesome", "SQL") as no_sql;
