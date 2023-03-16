@@ -18,7 +18,7 @@ Below the matrix of supported clouds :
 |===
 | |Name|Mode|WebSite
 
-|image:EKS.png[EKS,40]
+|image:providers/EKS.png[EKS,40]
 |Amazon Elastic Kubernetes Service
 |Greenfield
 |https://aws.amazon.com/eks/
