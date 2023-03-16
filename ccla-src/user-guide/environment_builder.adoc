@@ -62,7 +62,7 @@ The catalog view
 
 * Wordpress on Azure
 
-image:Wordpress on Azure.png[alt=Insights Menu, width=900px]
+image:Wordpress on Azure.png[100]
 
 * Wordpress on Azure (Demo)
 * Multi clouds
