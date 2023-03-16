@@ -1,6 +1,5 @@
 
 = Overview =
-ifndef::imagesdir[:imagesdir: images/providers]
 ifndef::imagesdir[:imagesdir: images]
 
 == Integration ==
