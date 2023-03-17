@@ -1,7 +1,31 @@
 
 = Specific technical fixes and feature details =
 
-== Features ==
+== New features
+
+=== Blueprint catalog
+
+A view of templates or pre-packages infractructures
+=> link:../user-guide/key_concepts.adoc#blueprint[Link,window=_blank]
+
+=== Private Docker Hub
+
+Access private Docker Hub to retrieve container application
+=> link:../user-guide/application_deployer.adoc#private-docker-hub[Link,window=_blank]
+
+=== Environment Designer
+
+A drag and drop tool to build in easy way a cloud infrastructure
+=> link:../user-guide/environment_builder.adoc#designer[Link,window=_blank]
+
+=== Monitoring
+
+Deploy prometheus/grafane stack to monitoring environment
+=> link:../user-guide/environment_builder.adoc#monitoring
+
+= Specific technical fixes and feature details =
+
+== Enhancements ==
 * [MSA-11190] - [CCLA] Environment: Invite Users
 * [MSA-11509] - [CCLA] Allow deployment only on K8 Cluster which UP and Running
 * [MSA-11629] - [CCLA] K8 Import - UI - Include MS console
