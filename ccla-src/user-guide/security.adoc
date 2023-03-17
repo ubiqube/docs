@@ -18,6 +18,8 @@ Cloudclapp includes an optional feature that allows you to scan any docker image
 
 It is also possible to download the results as a JSON file for further analysis and remediation.
 
+image:Scan Home.png[200]
+
 image:Image Scan.png[200]
 
 = Web App Scan =
