@@ -110,7 +110,9 @@ NOTE: Check the appendix below to have more details to how retrieve those inform
 
 == Designer ==
 
-== Environement dashboard ==
+== Environment dashboard ==
+
+=== Application Diagram ===
 
 === Monitoring ===
 
