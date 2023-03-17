@@ -1,4 +1,5 @@
 = Key Concepts
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == An Application
 
@@ -25,6 +26,8 @@ Example of deployment :
 * Wordpress + Mysql as container images (deployed on K8 cluster)
 * A MongoDB as a container image (deployed on K8 cluster)
 * Windows server instance (deployed on AWS EC2)
+
+For more details refers to a| link:developer-guide/application_deployer{outfilesuffix}[Application Deployer,window=_blank]
 
 == An Environment
 
