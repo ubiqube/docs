@@ -5,7 +5,7 @@
 === Multi-cloud blueprint
 
 A new blueprint combining AWS and AZURE with a pre-configured Wordpress and Mysql application
-a| link:user-guide/environment_builder.adoc#blueprints[Link,window=_blank]
+=> link:../user-guide/environment_builder.adoc#blueprints[Link,window=_blank]
 
 === K8 application diagram
 
