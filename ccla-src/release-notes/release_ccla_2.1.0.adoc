@@ -3,11 +3,28 @@
 == New features ==
 
 === Multi-cloud blueprint
+
+A new blueprint combining AWS and AZURE with a pre-configured Wordpress and Mysql application : 
+
 === K8 application diagram
+
+A topology representation of applications deployed in a K8 cluster : 
+
 === Import a native K8
+
+Permit to discover a running K8 cluster running
+
 === Approval request
+
+Control cloud ressources creation by assigning permission to users to get approval before deploying
+
 === Compliance for environment
+
+Perform compliance scan on any environement with selection of standards and level of business sensitivity
+
 === Greener region
+
+Redirect to provider web site to choose the best region based on KPI like the lower carbon print, high percentage of energy renewal...
 
 = Specific technical fixes and feature details =
 
