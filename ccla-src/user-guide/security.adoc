@@ -17,8 +17,12 @@ Cloudclapp includes an optional feature that allows you to scan any docker image
 
 It is also possible to download the results as a JSON file for further analysis and remediation.
 
+image:Image Scan.png[200]
+
 = Web App Scan =
 
 Cloudclapp also allows a user to specify any web application via a URL and then runs common security checks against that URL to ensure that the Webapp is safe from any vulnerabilities
 
 It is also possible to download the results as a JSON file for further analysis and remediation.
+
+image:Web Scan.png[200]
