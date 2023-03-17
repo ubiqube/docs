@@ -1,6 +1,6 @@
 = Key Concepts
 
-== Application Deployer ==
+== An Application
 
 An application simply refers to any software application that will be deployed in a cloud environment.
 Supported format in the current version are :
@@ -8,10 +8,17 @@ Supported format in the current version are :
 * *Native container applications* (from public or private dockerHub)
 * *VM based application/system* from AWS EC2 markeplace
 
-== Environment Builder ==
+== An Environment
 
-Using from a blueprint or from scratch, the environment builder permits to design your cloud architectures
-In the environment home page, you can access the environment builder by clicking on Design tab
+An environment represents an infrastructure developed to provide applications. An environment is represented by a tile in organisation dashboard or environement view. It could be
+
+* A *K8 cluster* in Amazon (EKS), Azure (AKS), Google (GKE) or nativaley imported
+* A *virtual server* in Amazon (EC2)
+* A *combination of cloud services* (multi or hybrid cloud)
+
+== Environment Builder
+
+Using from a blueprint, the environment builder permits to design your cloud architectures. In the environment home page, you can access the environment builder by clicking on Design tab
 
 The generic library of component permit to address lots of use cases without having experties in each cloud technology
 
@@ -21,11 +28,11 @@ The generic library of component permit to address lots of use cases without hav
 * *K8 cluster* : abstract all Kubernetes services provided by public provider and private one
 * *Mesh* : permit to interconnect application between remote clouds
 
-== Blueprints
+== Blueprint
 
 Blueprints enable users to design infrastructure, platforms, and application services by composing and connecting cloud resources. It can be seen as a package or a  template permitting to deploy quickly an environment with predefined applications. It permits also to replicate any infrastructure to multiple platforms.
 
-=== Catalog View ===
+=== Catalog View
 
 One of the ways to start quickly on CloudClapp is to chose from the templates'catalog the blueprint you want. When you access the blueprints view, each tile represents one blueprint. There is 2 types of blueprints :
 
@@ -38,7 +45,7 @@ Example of blueprints :
 * *Wordpress on multicloud*
 * *MSActivator on any providers*
 
-=== Content ===
+=== Content
 
 A Blueprint is a combinaison of two main files 
 
