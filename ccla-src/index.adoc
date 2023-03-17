@@ -6,10 +6,8 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 [cols="1*"] 
 |===
 
-a| link:lab-guide/index{outfilesuffix}[Lab Guide,window=_blank]
+a| link:user-guide/index{outfilesuffix}[User Guide,window=_blank]
 
-a| link:lab-guide/index{outfilesuffix}[Lab Guide,window=_blank]
-
-a| link:community-guide/index{outfilesuffix}[Community Guide,window=_blank]
+a| link:release-notes/index{outfilesuffix}[Last release note,window=_blank]
 
 |===
