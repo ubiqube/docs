@@ -48,6 +48,8 @@ The generic library of component permit to address lots of use cases without hav
 * *K8 cluster* : abstract all Kubernetes services provided by public provider and private one
 * *Mesh* : permit to interconnect application between remote clouds
 
+For more details refers to link:environment_builder.adoc[Environment Builder,window=_blank]
+
 == Blueprint
 
 Blueprints enable users to design infrastructure, platforms, and application services by composing and connecting cloud resources. It can be seen as a package or a  template permitting to deploy quickly an environment with predefined applications. It permits also to replicate any infrastructure to multiple platforms.
