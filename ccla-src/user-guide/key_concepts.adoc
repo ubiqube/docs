@@ -8,6 +8,16 @@ Supported format in the current version are :
 * *Native container applications* (from public or private dockerHub)
 * *VM based application/system* from AWS EC2 markeplace
 
+== A deployment
+
+A deployment represents one or multiple applications deployed in an environment
+
+Example of deployment :
+
+* Wordpress + Mysql as container images (deployed on K8 cluster)
+* A MongoDB as a container image (deployed on K8 cluster)
+* Windows server instance (deployed on AWS EC2)
+
 == An Environment
 
 An environment represents an infrastructure developed to provide applications. An environment is represented by a tile in organisation dashboard or environement view. It could be
