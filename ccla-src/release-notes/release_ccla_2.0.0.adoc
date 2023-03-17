@@ -21,7 +21,7 @@ A drag and drop tool to build in easy way a cloud infrastructure
 === Monitoring
 
 Deploy prometheus/grafane stack to monitoring environment
-=> link:../user-guide/environment_builder.adoc#monitoring
+=> link:../user-guide/environment_builder.adoc#monitoring[Link,window=_blank]
 
 = Specific technical fixes and feature details =
 
