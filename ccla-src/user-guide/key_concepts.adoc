@@ -16,7 +16,7 @@ An environment represents an infrastructure developed to provide applications. A
 * A *virtual server* in Amazon (EC2)
 * A *combination of cloud services* (multi or hybrid cloud)
 
-== Environment Builder
+=== Environment Builder ===
 
 Using from a blueprint, the environment builder permits to design your cloud architectures. In the environment home page, you can access the environment builder by clicking on Design tab
 
