@@ -26,7 +26,7 @@ Example of deployment :
 * A MongoDB as a container image (deployed on K8 cluster)
 * Windows server instance (deployed on AWS EC2)
 
-For more details refers to link:developer-guide/application_deployer.adoc[Application Deployer,window=_blank]
+For more details refers to link:application_deployer.adoc[Application Deployer,window=_blank]
 
 == An Environment
 
