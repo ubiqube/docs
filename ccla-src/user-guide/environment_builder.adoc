@@ -62,9 +62,11 @@ The catalog view
 
 * Wordpress on Azure
 
-image:Wordpress on Azure.png[200]
+image:blueprints/Wordpress_on_Azure.png[200]
 
 * Wordpress on Azure (Demo)
+
+image:blueprints/Wordpress_on_Azure_Demo.png[200]
 * Multi clouds
 * MsaActivator (To be confirmed)
 
