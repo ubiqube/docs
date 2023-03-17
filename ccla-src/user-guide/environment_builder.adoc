@@ -78,6 +78,12 @@ image:blueprints/Multi_Clouds_DEMO.png[200]
 
 == Quick Deployment ==
 
+Quick Deployment allows user to choose the Application they want to deploy to recommended cloud providers
+
+image:blueprints/Quick_Deployment.png[100]
+
+User will see recommendation clouds and then pick an environment for deployment
+
 == The wizard ==
 
 === Providers specificity ===
