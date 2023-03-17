@@ -122,6 +122,7 @@ https://www.cisecurity.org/cybersecurity-tools/mapping-compliance
 
 As many of automation task in Cloudclapp, compliance scan is implemented via a worklow
 This workflow is composed by 3 processes :
+
 * Launch a scan
 * Re-scan
 * Delete scan
