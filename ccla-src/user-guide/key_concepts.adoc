@@ -5,8 +5,8 @@
 An application simply refers to any software application that will be deployed in a cloud environment.
 Supported format in the current version are :
 
-* Native container applications (from public or private dockerHub)
-* VM based application/system from AWS EC2 markeplace
+* *Native container applications* (from public or private dockerHub)
+* *VM based application/system* from AWS EC2 markeplace
 
 == Environment Builder ==
 
