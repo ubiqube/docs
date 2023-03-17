@@ -84,6 +84,8 @@ image:blueprints/Quick_Deployment.png[100]
 
 User will see recommendation clouds and then pick an environment for deployment
 
+image:blueprints/Choose_Cloud.png[200]  image:blueprints/Pick_an_Environment.png[200]
+
 == The wizard ==
 
 === Providers specificity ===
