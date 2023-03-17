@@ -8,7 +8,15 @@ Supported format in the current version are :
 * *Native container applications* (from public or private dockerHub)
 * *VM based application/system* from AWS EC2 markeplace
 
-== A deployment
+=== Marketplace
+
+Marketplace designed the place where applications are coming from. Currently, we support
+
+* *Public Docker Hub* : https://hub.docker.com/
+* *Private Docker Hub*
+* *EC2 AWS Martketplace* : https://aws.amazon.com/marketplace
+
+=== A deployment
 
 A deployment represents one or multiple applications deployed in an environment
 
