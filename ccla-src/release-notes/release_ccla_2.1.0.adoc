@@ -2,12 +2,12 @@
 
 == New features ==
 
-* Multi-cloud blueprint
-* K8 application diagram
-* Import a native K8
-* Approval request
-* Compliance for environment
-* Greener region
+=== Multi-cloud blueprint
+=== K8 application diagram
+=== Import a native K8
+=== Approval request
+=== Compliance for environment
+=== Greener region
 
 = Specific technical fixes and feature details =
 
