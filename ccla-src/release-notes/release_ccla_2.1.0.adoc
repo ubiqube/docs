@@ -9,23 +9,28 @@ A new blueprint combining AWS and AZURE with a pre-configured Wordpress and Mysq
 
 === K8 application diagram
 
-A topology representation of applications deployed in a K8 cluster : 
+A topology representation of applications deployed in a K8 cluster
+=> link:../user-guide/environment_builder.adoc#application-diagram[Link,window=_blank]
 
 === Import a native K8
 
 Permit to discover a running K8 cluster running
+=> link:../user-guide/environment_builder.adoc#native-k8-import[Link,window=_blank]
 
 === Approval request
 
 Control cloud ressources creation by assigning permission to users to get approval before deploying
+=> link:../user-guide/governance.adoc#approval-requests[Link,window=_blank]
 
 === Compliance for environment
 
 Perform compliance scan on any environement with selection of standards and level of business sensitivity
+=> link:../user-guide/compliance.adoc#compliance-for-environment[Link,window=_blank]
 
 === Greener region
 
-Redirect to provider web site to choose the best region based on KPI like the lower carbon print, high percentage of energy renewal...
+Redirect to provider web site to choose the best region based on KPI like the lower carbon print, high percentage of energy renewal
+=> link:../user-guide/green_it.adoc[Link,window=_blank]
 
 = Specific technical fixes and feature details =
 
