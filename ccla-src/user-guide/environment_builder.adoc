@@ -24,17 +24,17 @@ Below the matrix of supported clouds :
 |https://aws.amazon.com/eks/
 
 
-|image:AKS.png[AKS,40]
+|image:providers/AKS.png[AKS,40]
 |Azure Kubernetes Service
 |Greenfield
 |https://azure.microsoft.com/en-us/products/kubernetes-service/
 
-|image:GKE.png[GKE,40]
+|image:providers/GKE.png[GKE,40]
 |Google Kubernetes Engine
 |Greenfield
 |https://cloud.google.com/kubernetes-engine
 
-|image:NK8.png[NK8,40]
+|image:providers/NK8.png[NK8,40]
 |Native Kubernetes
 |Brownfield 
 |https://kubernetes.io
@@ -47,7 +47,7 @@ Below the matrix of supported clouds :
 |===
 | |Name|Mode|WebSite
 
-|image:EC2.png[EC2,40]
+|image:providers/EC2.png[EC2,40]
 |Amazon EC2
 |Greenfield
 |https://aws.amazon.com/ec2/
