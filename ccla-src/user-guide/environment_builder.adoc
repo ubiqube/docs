@@ -67,7 +67,11 @@ image:blueprints/Wordpress_on_Azure.png[200]
 * Wordpress on Azure (Demo)
 
 image:blueprints/Wordpress_on_Azure_Demo.png[200]
+
 * Multi clouds
+
+image:blueprints/Multi_Clouds_DEMO.png[200]
+
 * MsaActivator (To be confirmed)
 
 === User Library ===
