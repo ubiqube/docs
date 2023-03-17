@@ -8,6 +8,6 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 a| link:user-guide/index{outfilesuffix}[User Guide,window=_blank]
 
-a| link:release-notes/index{outfilesuffix}[Last release note,window=_blank]
+a| link:release-notes/release_ccla_2.1.0{outfilesuffix}[Last release note,window=_blank]
 
 |===
