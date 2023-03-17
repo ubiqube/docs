@@ -1,12 +1,17 @@
 = Version 2.1.0 (MVP2) =
 
+== New features ==
 
-
+* Multi-cloud blueprint
+* K8 application diagram
+* Import a native K8
+* Approval request
+* Compliance for environment
+* Greener region
 
 = Specific technical fixes and feature details =
 
-== Features ==
-
+== Enhancements ==
 
 * [MSA-11623] - [CCLA] K8 Import - ENV import with WF
 * [MSA-11628] - [CCLA] K8 Import - UI - Adapt ENV creation
