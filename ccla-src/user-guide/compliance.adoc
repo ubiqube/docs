@@ -120,6 +120,10 @@ https://www.cisecurity.org/cybersecurity-tools/mapping-compliance
 
 === Dashboard
 
+From environment home page, a user can access compliance dashboard by clicking on *Compliance*
+
+image:ComplianceEnvDashboard.png[width=900px]
+
 === Backend
 
 As many of automation task in Cloudclapp, compliance scan is implemented via a worklow
