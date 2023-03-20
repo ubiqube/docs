@@ -4,7 +4,11 @@ The {product_name} platform provides a multi-roles and multi-tenancy hierarchy t
 
 == Overview
 
+Explain relationshio between admin, manager, permissions
+
 == Get started
+
+Describe the account creation from the logging page
 
 == Invit Users ==
 
