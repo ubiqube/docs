@@ -6,9 +6,9 @@ When managing infrastructures for production use cases, security and compliance 
 
 Cloudclapp enables you to stay compliant with more than 10 regulations such as HIPAA, CIS, PCI-DSS or ISO.. Using our compliance module, you can identify any non-compliant resources in your environments.
 
-NOTE : In Cloudclapp V2.X, compliance is applied only to Kubernetes environment
+_Note : In Cloudclapp V2.X, compliance is applied only to Kubernetes environment
 
-NOTE : Public providers lock access to manager nodes. The compliance process will be applied only to workers nodes
+_Note : Public providers lock access to manager nodes. The compliance process will be applied only to workers nodes
 
 == Compliance for Environment
 
@@ -162,7 +162,7 @@ The first number in the JSON represents the CIS reference
     }
 ----
 
-NOTE : In the previous exract, 2 tests in failure are *3.10* and *6.2* for *CIS* standard matching CEK-03,HRS-06,IAM-01 for *CSA* standard
+_Note : In the previous exract, 2 tests in failure are *3.10* and *6.2* for *CIS* standard matching CEK-03,HRS-06,IAM-01 for *CSA* standard
 
 Depending to the type of K8 cluster, a CIS benchmarks report can be downloaded to find details of test and remediation mechanism
 
