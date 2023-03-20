@@ -17,7 +17,7 @@ As the reference for our compliance module, the Center for Internet Security or 
 We have reuse the concept of Implementation Groups (IG) to drive how deep an environement is affected by the compliance needs.
 We assume, depending to the type of your environement, the level of compliance, so the associated security rules are not same if you deploy a local sandbox, a pre-production or a production platform.
 
-image:Compliance.png[alt=Insights Menu, width=900px]
+image:Compliance.png[width=900px]
 
 === Sensitivy / IG mapping
 
@@ -27,6 +27,8 @@ Per environment, it's possible to select between 4 levels to apply the complianc
 * *Basic* : controls for small, commercial off-the-shelf or home office software environments where sensitivity of the data is low. Minimal standard of information security
 * *Extended* : controls focused on helping security teams manage sensitive client
 * *Expert* : controls that reduce the impact of zero-day attacks and targeted attacks from sophisticated adversaries.
+
+image:ComplianceEnvSettings.png[width=900px]
 
 === Supported Standards
 
