@@ -132,6 +132,50 @@ Depending to standards selcted in environment settings, each row represents perc
 
 image:ComplianceEnvDashboard.png[width=900px]
 
+=== Remediation
+
+After running a compliance scan, for each standards, a JSON report is available in the dashboard. Click in the arrow to download it
+
+Inside, results are presentes by status : pass, fail and warning.
+
+The first number in the JSON represents the CIS reference
+
+----
+    "CSA": {
+        "PASS": {
+            "3.3": {
+                "DSP-17": "Sensitive Data Protection - Define and implement, processes, procedures and technical measures to protect sensitive data throughout it's lifecycle.",
+                "IAM-05": "Least Privilege - Employ the least privilege principle when implementing information system access."
+            },
+            "total": 1
+        },
+        "FAIL": {
+            "3.10": {
+                "CEK-03": "Data Encryption - Provide cryptographic protection to data at-rest and in-transit, using cryptographic libraries certified to approved standards.",
+            },
+            "6.2": {
+                "HRS-06": "Employment Termination - Establish, document, and communicate to all personnel the procedures outlining the roles and responsibilities concerning changes in employment.",
+                "IAM-01": "Identity and Access Management Policy and Procedures - Establish, document, approve, communicate, implement, apply, evaluate and maintain policies and procedures for identity and access management. Review and update the policies and procedures at least annually."
+            }
+            "total": 2
+        }
+		...
+    }
+----
+
+NOTE : In the previous exract, 2 tests in failure are *3.10* and *6.2* for *CIS* standard matching CEK-03,HRS-06,IAM-01 for *CSA* standard
+
+Depending to the type of K8 cluster, a CIS benchmarks report can be downloaded to find details of test and remediation mechanism
+
+* EKS cluster : CIS_Amazon_Elastic_Kubernetes_Service_(EKS)_Benchmark_v1.2.0.pdf
+* AKS cluster : CIS_Azure_Kubernetes_Service_(AKS)_Benchmark_v1.2.0.pdf
+* GKE cluster : CIS_Google_Kubernetes_Engine_(GKE)_Benchmark_v1.2.0.pdf
+* Kubernetes cluster : CIS_Kubernetes_Benchmark_v1.6.0.pdf
+
+Use the PDF report in the dashboard to found this reference and the associated remediation process
+
+image:ComplianceBenchmarkReport.png[width=900px]
+
 === Backend
 
 As many of automation task in Cloudclapp, compliance scan is implemented via a worklow
