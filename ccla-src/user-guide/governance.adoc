@@ -4,7 +4,7 @@ The {product_name} platform provides a multi-roles and multi-tenancy hierarchy t
 
 == Overview
 
-Explain relationshio between admin, manager, permissions
+Explain relationship between admin, manager, permissions
 
 == Get started
 
