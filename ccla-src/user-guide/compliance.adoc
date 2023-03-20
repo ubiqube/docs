@@ -122,6 +122,14 @@ https://www.cisecurity.org/cybersecurity-tools/mapping-compliance
 
 From environment home page, a user can access compliance dashboard by clicking on *Compliance*
 
+Depending to standards selcted in environment settings, each row represents percentage of completion of standards with 3 colors 
+
+* PASS / Green : indicates that the test was run successfully, and passed
+
+* FAIL / Red : indicates that the test was run successfully, and failed
+
+* WARN / Amber : means this test needs further attention, for example it is a test that needs to be run manually
+
 image:ComplianceEnvDashboard.png[width=900px]
 
 === Backend
