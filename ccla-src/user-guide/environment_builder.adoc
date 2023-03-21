@@ -88,6 +88,9 @@ image:blueprints/Choose_Cloud.png[400, 400]
 
 image:blueprints/Pick_an_Environment.png[400, 400]
 
+User needs to add application images and define ports and node ports with proper deployment name
+
+image:blueprints/Add_Application.png[400, 400]
 
 User will see the estimation right before your deployment and can change Hourly, Monthly or Annual
 
