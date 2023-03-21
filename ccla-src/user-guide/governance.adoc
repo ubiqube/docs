@@ -22,7 +22,10 @@ image:pop_invite_users.png[alt=Governance Menu, width=900px]
 
 image:invite_user_succeed.png[alt=Governance Menu, width=900px]
 
+after inviting a user you can define permissions for this user by clicking on image:permission_icon.png[green,40]
+
 == Tags ==
+
 
 = Permission proval =
 
