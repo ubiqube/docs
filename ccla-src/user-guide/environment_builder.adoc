@@ -88,6 +88,8 @@ image:blueprints/Choose_Cloud.png[400, 400]
 
 image:blueprints/Pick_an_Environment.png[400, 400]
 
+User will see the estimation right before your deployment and can change Hourly, Monthly or Annual
+
 == The wizard ==
 
 === Providers specificity ===
