@@ -18,9 +18,13 @@ image:users_tab.png[alt=Governance Menu, width=900px]
 
 put the user you want to invite , an email will be sent to the invited user contains a link to activate his account.
 
-image:pop_invite_users.png[alt=Governance Menu, width=900px]
+image:pop_invite_users.png[alt=Governance Menu, width=700px]
 
-image:invite_user_succeed.png[alt=Governance Menu, width=900px]
+image:invite_user_succeed.png[alt=Governance Menu, width=700px]
+
+*Email*  content should be like
+
+image:email_content.png[alt=Governance Menu, width=450px]
 
 after inviting a user you can define permissions for this user by clicking on this button image:permission_icon.png[green,40] you should see all permission related to the user account in all tabs
 
