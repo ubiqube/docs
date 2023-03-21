@@ -31,10 +31,13 @@ image:email_content.png[alt=Governance Menu, width=1000px]
 
 image:permissions.png[alt=Governance Menu, width=900px]
 
-== Tags ==
+= Tags =
 
+CloudClapp give the possibility to tag resources through terraform in other way we can filter the cost by those tags
 
-= Permission proval =
+image:tags.png[alt=Governance Menu, width=900px]
+
+=Permission proval =
 
 = Approval requests =
 
