@@ -18,9 +18,9 @@ image:users_tab.png[alt=Governance Menu, width=900px]
 
 put the user you want to invite , an email will be sent to the invited user contains a link to activate his account.
 
-image:pop_invite_users.png[alt=Governance Menu, width=700px]
+image:pop_invite_users.png[alt=Governance Menu, width=900px]
 
-image:invite_user_succeed.png[alt=Governance Menu, width=700px]
+image:invite_user_succeed.png[alt=Governance Menu, width=900px]
 
 *Email*  content should be like :
 
