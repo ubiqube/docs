@@ -37,7 +37,12 @@ CloudClapp give the possibility to tag resources through terraform in other way 
 
 image:tags.png[alt=Governance Menu, width=900px]
 
-= Permission proval =
+= Permissions =
+
+*
+*
+*
+*
 
 = Approval requests =
 
