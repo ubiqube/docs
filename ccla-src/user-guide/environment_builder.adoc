@@ -116,6 +116,36 @@ NOTE: Check the appendix below to have more details to how retrieve those inform
 
 == Designer ==
 
+=== Library ===
+
+* Provider
+
+* Region
+
+* App deployment
+
+* K8 cluster
+
+* Mesh
+
+=== Graphical options ===
+
+* Hand tool
+
+* Lasso tool
+
+* Space tool
+
+* Connect tool
+
+=== Design operations ===
+
+* Save design
+
+* Save environment as blueprint
+
+* Deploy
+
 == Environment dashboard ==
 
 === Application Diagram ===
