@@ -70,8 +70,9 @@ Secret Resource for use with Private Dockerhub images
 |image:providers/NK8.png[NK8,40]
 |Native Kubernetes
 |
-* K8s Deployment for each app specified
-* Secret Resource for use with Private Dockerhub images
+K8s Deployment for each app specified
+
+Secret Resource for use with Private Dockerhub images
 
 |===
 
