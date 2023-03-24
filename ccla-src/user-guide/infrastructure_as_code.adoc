@@ -9,25 +9,25 @@ This page to describe how finally environement and application are created under
 
 [cols="1,1,1"]
 |===
-| |Name|Component/Ressources created
+| |Name|Component/Resources created
 
 |image:EKS.png[EKS,40]
 |Amazon Elastic Kubernetes Service
 |
-* LB : balaaa
-* Network : blab
+* VPC with public and private subnets along with a NAT Gateway
+* EKS cluster with a worker nodes - 1 t2.medium instances and 2 t2.small instances by default
 
 |image:AKS.png[AKS,40]
 |Azure Kubernetes Service
-|* kube-system namespace (coredns, coredns-autoscaler, konnectivity-agent, metrics-server)
+|
+* Resource Group
+* AKS cluster with 1 worker node - Standard_D1_v2
 
 |image:GKE.png[GKE,40]
 |Google Kubernetes Engine
 |
-
-|image:NK8.png[NK8,40]
-|Native Kubernetes
-|
+* GKE Cluster with one N1-standard-1 instance as worker
+* Optionally, New VPC and Subnet for the GKE cluster
 
 |===
 
@@ -40,21 +40,34 @@ This page to describe how finally environement and application are created under
 |image:EKS.png[EKS,40]
 |Amazon Elastic Kubernetes Service
 |
+* K8s Deployment for each app specified
+* AWS Application Load Balancer if an app has Nodeport specified
+* Secret Resource for use with Private Dockerhub images
 
 |image:AKS.png[AKS,40]
 |Azure Kubernetes Service
 |Pod/container
+* K8s Deployment for each app specified
+* Load Balancer if an app has Nodeport specified
+* Secret Resource for use with Private Dockerhub images
 
 |image:GKE.png[GKE,40]
 |Google Kubernetes Engine
 |
+* K8s Deployment for each app specified
+* Load Balancer if an app has Nodeport specified
+* Secret Resource for use with Private Dockerhub images
 
 |image:NK8.png[NK8,40]
 |Native Kubernetes
 |
+* K8s Deployment for each app specified
+* Secret Resource for use with Private Dockerhub images
 
 |===
 
 == Terraform / Workspace in the backend ==
 
-Mention files created under Datafiles repo
+=== Infrastructure
+
+=== Application
