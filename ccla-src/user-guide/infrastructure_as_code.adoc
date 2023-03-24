@@ -1,7 +1,7 @@
 
 
 = Overview =
-ifndef::imagesdir[:imagesdir: images/providers]
+ifndef::imagesdir[:imagesdir: images]
 
 This page to describe how finally environement and application are created under each cloud providers
 
@@ -11,21 +11,21 @@ This page to describe how finally environement and application are created under
 |===
 | |Name|Component/Resources created
 
-|image:EKS.png[EKS,40]
+|image:providers/EKS.png[EKS,40]
 |Amazon Elastic Kubernetes Service
 |
 VPC with public and private subnets along with a NAT Gateway
 
 EKS cluster with a worker nodes - 1 t2.medium instances and 2 t2.small instances by default
 
-|image:AKS.png[AKS,40]
+|image:providers/AKS.png[AKS,40]
 |Azure Kubernetes Service
 |
 Resource Group
 
 AKS cluster with 1 worker node - Standard_D1_v2
 
-|image:GKE.png[GKE,40]
+|image:providers/GKE.png[GKE,40]
 |Google Kubernetes Engine
 |
 GKE Cluster with one N1-standard-1 instance as worker
@@ -40,7 +40,7 @@ Optionally, New VPC and Subnet for the GKE cluster
 |===
 | |Name|Component/Ressources created
 
-|image:EKS.png[EKS,40]
+|image:providers/EKS.png[EKS,40]
 |Amazon Elastic Kubernetes Service
 |
 K8s Deployment for each app
@@ -49,7 +49,7 @@ AWS Application Load Balancer if an app has Nodeport specified
 
 Secret Resource for use with Private Dockerhub images
 
-|image:AKS.png[AKS,40]
+|image:providers/AKS.png[AKS,40]
 |Azure Kubernetes Service
 |Pod/container
 K8s Deployment for each app
@@ -58,7 +58,7 @@ Load Balancer if an app has Nodeport specified
 
 Secret Resource for use with Private Dockerhub images
 
-|image:GKE.png[GKE,40]
+|image:providers/GKE.png[GKE,40]
 |Google Kubernetes Engine
 |
 K8s Deployment for each app
@@ -67,7 +67,7 @@ Load Balancer if an app has Nodeport specified
 
 Secret Resource for use with Private Dockerhub images
 
-|image:NK8.png[NK8,40]
+|image:providers/NK8.png[NK8,40]
 |Native Kubernetes
 |
 * K8s Deployment for each app specified
