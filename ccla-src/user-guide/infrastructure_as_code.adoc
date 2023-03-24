@@ -14,20 +14,23 @@ This page to describe how finally environement and application are created under
 |image:EKS.png[EKS,40]
 |Amazon Elastic Kubernetes Service
 |
-* VPC with public and private subnets along with a NAT Gateway
-* EKS cluster with a worker nodes - 1 t2.medium instances and 2 t2.small instances by default
+VPC with public and private subnets along with a NAT Gateway
+
+EKS cluster with a worker nodes - 1 t2.medium instances and 2 t2.small instances by default
 
 |image:AKS.png[AKS,40]
 |Azure Kubernetes Service
 |
-* Resource Group
-* AKS cluster with 1 worker node - Standard_D1_v2
+Resource Group
+
+AKS cluster with 1 worker node - Standard_D1_v2
 
 |image:GKE.png[GKE,40]
 |Google Kubernetes Engine
 |
-* GKE Cluster with one N1-standard-1 instance as worker
-* Optionally, New VPC and Subnet for the GKE cluster
+GKE Cluster with one N1-standard-1 instance as worker
+
+Optionally, New VPC and Subnet for the GKE cluster
 
 |===
 
@@ -40,23 +43,29 @@ This page to describe how finally environement and application are created under
 |image:EKS.png[EKS,40]
 |Amazon Elastic Kubernetes Service
 |
-* K8s Deployment for each app specified
-* AWS Application Load Balancer if an app has Nodeport specified
-* Secret Resource for use with Private Dockerhub images
+K8s Deployment for each app
+
+AWS Application Load Balancer if an app has Nodeport specified
+
+Secret Resource for use with Private Dockerhub images
 
 |image:AKS.png[AKS,40]
 |Azure Kubernetes Service
 |Pod/container
-* K8s Deployment for each app specified
-* Load Balancer if an app has Nodeport specified
-* Secret Resource for use with Private Dockerhub images
+K8s Deployment for each app
+
+Load Balancer if an app has Nodeport specified
+
+Secret Resource for use with Private Dockerhub images
 
 |image:GKE.png[GKE,40]
 |Google Kubernetes Engine
 |
-* K8s Deployment for each app specified
-* Load Balancer if an app has Nodeport specified
-* Secret Resource for use with Private Dockerhub images
+K8s Deployment for each app
+
+Load Balancer if an app has Nodeport specified
+
+Secret Resource for use with Private Dockerhub images
 
 |image:NK8.png[NK8,40]
 |Native Kubernetes
@@ -69,5 +78,13 @@ This page to describe how finally environement and application are created under
 == Terraform / Workspace in the backend ==
 
 === Infrastructure
+- cluster.tf file for every provider that has resources for creating the K8s cluster
+- variables.tf file contains variable definitions
+
+image: InfraFiles.png[Infrastructure,100]
 
 === Application
+- A .tf file with the name of each app
+- secrets.tf file for creating docker secret
+
+image: AppFiles.png[Application,100]
