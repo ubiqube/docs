@@ -153,6 +153,10 @@ NOTE: Check the appendix below to have more details to how retrieve those inform
 
 === Monitoring ===
 
+Different open source monitoring systems are used to monitor cloud environment:
+
+image:monitoringTools.png[100]
+
 == Details of WF steps ==
 
 [cols="1,1"]
