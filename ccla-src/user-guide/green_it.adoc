@@ -7,4 +7,23 @@ green-it or Green Information Technologies is the concept of reducing the digita
 
 Cloudclapp offers the possibility to use the greener regions for each cloud provider, you need just to use this icon image:green-it.png[green,40] during environment creation to display the green regions list.
 
+[cols="1,1"]
+|===
+|cloud|Green Regions
+
+|AWS
+|https://sustainability.aboutamazon.com/environment/the-cloud?energyType=true#renewable-energy-map
+
+|AZURE
+|https://infrastructuremap.microsoft.com/powering-sustainable-transformation
+
+|Google Cloud Platform
+|https://cloud.withgoogle.com/region-picker/
+
+|===
+
+* *Greener Regions for Google Cloud Platform*
+
+image:gcpGreenRegion.png[800,800]
+
 
