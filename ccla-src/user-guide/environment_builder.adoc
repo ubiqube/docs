@@ -157,6 +157,20 @@ Different open source monitoring systems are used to monitor cloud environment:
 
 image:monitoringTools.png[100]
 
+[cols="1,1"]
+|===
+|Tool|URL
+
+|Grafana
+|http://20.69.64.212/login
+
+|Prometheus
+|http://20.69.65.18/graph?g0.expr=&g0.tab=1&g0.stacked=0&g0.show_exemplars=0&g0.range_input=1h
+
+|Alert Manager
+|http://20.69.64.200/#/alerts
+
+|===
 == Details of WF steps ==
 
 [cols="1,1"]
