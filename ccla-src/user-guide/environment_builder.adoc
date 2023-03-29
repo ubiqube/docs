@@ -95,6 +95,8 @@ image:blueprints/Add_Application.png[400, 400]
 
 See the estimation right before your deployment and can change Hourly, Monthly or Annual
 
+image:blueprints/Cost.png[400, 400]
+
 == The wizard ==
 
 === Providers specificity ===
