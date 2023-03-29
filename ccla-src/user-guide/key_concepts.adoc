@@ -3,8 +3,10 @@
 == An organization
 
 An organization represents a group of people (admin or users) sharing same environements.
+
 An organization is created through the *Get started* form in the cloudclapp login page.
-The same instance of CloudclappTM instance can host multiple organization
+
+The same instance of Cloudclapp can host multiple organizations
 
 _Note : An admin can belong to multiple organizations. This operation is done using MSactivator portal_
 
