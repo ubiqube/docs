@@ -139,7 +139,7 @@ image:providers/Region.png[400,400]
 
 image:providers/Add_Application_1.png[400,400]
 
-image:providers/Add_Application_2.png[400,400]
+image:providers/Add_Deployment_2.png[400,400]
 
 * K8 cluster
 
