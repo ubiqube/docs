@@ -105,6 +105,8 @@ image:blueprints/Cost.png[400, 400]
 
 === Native K8 import ===
 
+|image:providers/Kubernetes.png[400,400]
+
 4 fields are needed to import an existing K8 platform in Cloudclapp
 
 * **API Server IP/Host** : This value is usually the IP address of the Master Node in the Kubernetes cluster
@@ -115,6 +117,7 @@ image:blueprints/Cost.png[400, 400]
 
 * **Kubernetes Service Account Token** : Token associated with a service account. This service account can then be bound to a cluster role to provide granular access across the K8s cluster.
 
+|image:providers/Kubernetes_Connection.png[400,400]
 NOTE: Check the appendix below to have more details to how retrieve those informations
 
 == Designer ==
