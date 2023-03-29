@@ -125,11 +125,21 @@ NOTE: Check the appendix below to have more details to how retrieve those inform
 
 === Library ===
 
+Drag & Drop components from Library. Library are provided for per clould providers
+
 * Provider
+
+image:providers/Providers.png[400,400]
 
 * Region
 
+image:providers/Region.png[400,400]
+
 * App deployment
+
+image:providers/Add_Application_1.png[400,400]
+
+image:providers/Add_Application_2.png[400,400]
 
 * K8 cluster
 
