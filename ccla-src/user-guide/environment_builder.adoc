@@ -143,7 +143,7 @@ image:providers/App_Deployment_2.png[400,400]
 
 * K8 cluster
 
-image:providers/K8_cluster.png[400,400]
+image:providers/K8_Cluster.png[400,400]
 
 * Mesh
 
