@@ -28,6 +28,6 @@ A user can use this icon image:green-it.png[green,40] during environment creatio
 
 * *Greener Regions for Google Cloud Platform*
 
-image:gcpGreenRegion.png[800,800]
+image:gcpGreenRegion.png[900]
 
 
