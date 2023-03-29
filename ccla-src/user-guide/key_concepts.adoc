@@ -81,8 +81,14 @@ A Blueprint is a combinaison of two main files
 
 === An admin
 
-=== A manager
+An admin is the creator of one organization. He has full access to all features inside an organization. He has no restriction to deploy infrastructures on any cloud providers
 
+_Note : it's possible to add multiple admins in the same organization using MSactivator
+
+=== A user
+
+A user is simple person who can access the same admin's organization. By default, he is limited to read-only actions when he joins the first time the organization.
+Via permissions screen, an admin can assign some rights to extend actions like create environement, deploy application, access insight screen
 
 
 
