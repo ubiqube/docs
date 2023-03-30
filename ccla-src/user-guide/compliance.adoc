@@ -4,7 +4,7 @@ ifndef::imagesdir[:imagesdir: images/compliance]
 
 When managing infrastructures for production use cases, security and compliance are crucial factors to consider. The clusters need to be securely configured to minimize the attack surface. Additionally, every organization might have audit requirements for systems to be compliant with security standards.
 
-Cloudclapp enables you to stay compliant with more than 10 regulations such as HIPAA, CIS, PCI-DSS or ISO.. Using our compliance module, you can identify any non-compliant resources in your environments.
+Cloudclapp enables you to stay compliant with more than 10 regulations such as HIPAA, CIS, PCI-DSS or ISO. Using our compliance module, you can identify any non-compliant resources in your environments.
 
 _Note : In Cloudclapp V2.X, compliance is applied only to Kubernetes environment_
 
@@ -12,9 +12,9 @@ _Note : Public providers lock access to manager nodes. The compliance process wi
 
 == Compliance for Environment
 
-As the reference for our compliance module, the Center for Internet Security or CIS is the entry point for our compliance scan (https://www.cisecurity.org/)
+As the reference for our compliance module, the Center for Internet Security or CIS is the entry point for our compliance scan (https://www.cisecurity.org/).
 We have reuse the concept of Implementation Groups (IG) to drive how deep an environement is affected by the compliance needs.
-We assume, depending to the type of your environement, the level of compliance, so the associated security rules are not same if you deploy a local sandbox, a pre-production or a production platform.
+We assume, depending on the type of your environement, the level of compliance, so the associated security rules are not same if you deploy a local sandbox, a pre-production or a production platform.
 
 image:Compliance.png[width=900px]
 
@@ -121,7 +121,7 @@ https://www.cisecurity.org/cybersecurity-tools/mapping-compliance
 
 From environment home page, a user can access compliance dashboard by clicking on *Compliance*
 
-Depending to standards selcted in environment settings, each row represents percentage of completion of standards with 3 colors 
+Depending on standards selected in environment settings, each row represents percentage of completion of standards with 3 colors 
 
 * PASS / Green : indicates that the test was run successfully, and passed
 
@@ -171,16 +171,16 @@ Depending to the type of K8 cluster, a CIS benchmarks report can be downloaded t
 * GKE cluster : CIS_Google_Kubernetes_Engine_(GKE)_Benchmark_v1.2.0.pdf
 * Kubernetes cluster : CIS_Kubernetes_Benchmark_v1.6.0.pdf
 
-Use the PDF report in the dashboard to found this reference and the associated remediation process
+Use the PDF report in the dashboard to find this reference and the associated remediation process
 
 image:ComplianceBenchmarkReport.png[width=900px]
 
 === Backend
 
 As many of automation task in Cloudclapp, compliance scan is implemented via a worklow
-This workflow is composed by 3 processes :
+This workflow is composed of 3 processes :
 
-* Launch a scan
+* Launch scan
 * Re-scan
 * Delete scan
 
