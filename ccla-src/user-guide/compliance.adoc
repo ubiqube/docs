@@ -20,7 +20,7 @@ image:Compliance.png[width=900px]
 
 === Sensitivy / IG mapping
 
-Per environment, it's possible to select between 4 levels to apply the compliance. The sensivity will drive the number of tests
+Per environment, by clicking on the gear icon, it's possible to select between 4 levels to apply the compliance, and one or more standard. The sensivity will drive the number of tests
 
 * *No data protection* : no compliance applied
 * *Basic* : controls for small, commercial off-the-shelf or home office software environments where sensitivity of the data is low. Minimal standard of information security
