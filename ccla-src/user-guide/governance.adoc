@@ -10,6 +10,26 @@ Explain relationship between admin, manager, permissions
 
 Describe the account creation from the logging page
 
+== Organization dashboard
+
+* Screenshot of org dashboard
+Quick description of each tiles
+
+=== Cloud connections
+
+=== Organization settings
+* Screenshot of org settings
+
+* Edit Organisation Name
+* Accounts
+* Private Docker Hub Credentials
+* Delete organization
+
+=== Template selection (will be renamed)
+
+* Main view
+* Cost view
+
 == Invit Users ==
 
 To invite users, go to *Governance* →*Users*
