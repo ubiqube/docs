@@ -15,6 +15,8 @@ Describe the account creation from the logging page
 * Screenshot of org dashboard
 Quick description of each tiles
 
+* Quick deployment => redirect to env_builder
+
 === Cloud connections
 
 === Organization settings
