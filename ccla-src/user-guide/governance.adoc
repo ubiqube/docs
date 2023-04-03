@@ -1,4 +1,4 @@
-= Organization and Users
+= Organisation and Users
 ifndef::imagesdir[:imagesdir: images/]
 The {product_name} platform provides a multi-roles and multi-tenancy hierarchy that should accommodate all your specifics requirement.
 
@@ -10,7 +10,7 @@ Explain relationship between admin, manager, permissions
 
 Describe the account creation from the logging page
 
-== Organization dashboard
+== Organisation dashboard
 
 * Screenshot of org dashboard
 Quick description of each tiles
@@ -19,7 +19,7 @@ Quick description of each tiles
 
 === Cloud connections
 
-=== Organization settings
+=== Organisation settings
 * Screenshot of org settings
 
 * Edit Organisation Name
