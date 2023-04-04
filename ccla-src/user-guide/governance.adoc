@@ -21,7 +21,7 @@ image:activated_account.png[alt=Governance Menu, width=600px]
 
 => Congratulation your *Admin* account is ready to use !!
 
-Now to get a *Manager* account you have to *invite it*  , you can check the :ref:Invit Users https://github.com/ubiqube/docs/blob/master/ccla-src/user-guide/governance.adoc#invit-users for more details 
+Now to get a *Manager* account you have to *invite it*  , you can check the Invit Users section [here](https://github.com/ubiqube/docs/blob/master/ccla-src/user-guide/governance.adoc#invit-users/) for more details 
 == Get started
 
 Describe the account creation from the logging page
