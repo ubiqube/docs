@@ -14,11 +14,11 @@ image:register_page.png[alt=Governance Menu, width=600px]
   
 image:verify_email_popup.png[alt=Governance Menu, width=600px]
   
-You will recieve an email contains a link to activate your account
+You will recieve an email contains a link to activate your account , clik on it link and your acoount will be activated
   
 image:registration_email_content.png[alt=Governance Menu, width=600px]
-
-Once you activate it your *Admin* account is ready to use.
+image:activated_account.png[alt=Governance Menu, width=600px]
+==> Congratulation your *Admin* account is ready to use !!
 
 
 == Get started
