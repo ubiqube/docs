@@ -4,7 +4,10 @@ The {product_name} platform provides a multi-roles and multi-tenancy hierarchy t
 
 == Overview
 
-Explain relationship between admin, manager, permissions
+In Cloudclapp we have two main roles *Admin* and *Manager* , we will explain bellow how to get those roles and how to define permissions/rights for them:
+ - To get an Admin account you have to register in Cloudclapp by clinking on *Get Started* in login page then fill the fom  and click on *Continue*
+  image:login_page.png[alt=Governance Menu, width=900px]
+  image:register_page.png[alt=Governance Menu, width=900px]
 
 == Get started
 
