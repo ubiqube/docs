@@ -18,8 +18,7 @@ You will recieve an email contains a link to activate your account
   
 image:registration_email_content.png[alt=Governance Menu, width=600px]
 
-Once you activate it you can login to the portal with this account as an *Admin*
-
+Once you activate it your *Admin* account is ready to use.
 
 
 == Get started
