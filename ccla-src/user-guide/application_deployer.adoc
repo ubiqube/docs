@@ -23,16 +23,26 @@ Cloudclapp offer large possibility of applications deployment : container based 
 |Create TF Workspace
 |
 
+Create a workspace folder and copy the template terraform files to the newly created workspace. This workspace will be the working directory for Terraform
+
 |Set variables values
 |
+
+Read the input data given by the user and replace the appropriate values in the terraform files
 
 |Initialize TF Workspace
 |
 
+Runs `+terraform init+` command in the workspace
+
 |Provision Application
 |
 
+Runs `+terraform plan+` command followed by a `+terraform apply+` which will provision the resources
+
 |Trigger Security Scans
 |
+
+Triggers the Image Scan and Web Scan Workflows for the newly created deployment in CCLA
 
 |===
