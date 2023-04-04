@@ -4,7 +4,7 @@ The {product_name} platform provides a multi-roles and multi-tenancy hierarchy t
 
 == Overview
 
-In Cloudclapp we have two main roles *Admin* and *Manager* , we will explain bellow how to get those roles and how to define permissions/rights for them:
+In Cloudclapp we have two main roles *Admin* and *User (Manager)* , we will explain bellow how to get those roles and how to define permissions/rights for them:
 
 === Admin 
 To get an Admin account you have to register in Cloudclapp by clinking on *Get Started* in login page then fill the fom  and click on *Continue*
@@ -22,7 +22,7 @@ image:activated_account.png[alt=Governance Menu, width=600px]
 
 => Congratulation your *Admin* account is ready to use !!
 
-=== Manager
+=== User (Manager) 
 Now to get a *Manager* account you have to *invite it*  , you can check the https://github.com/ubiqube/docs/blob/master/ccla-src/user-guide/governance.adoc#invit-users[Invit Users] section for more details 
 
 === Permissions
