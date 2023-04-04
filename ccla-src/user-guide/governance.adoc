@@ -9,16 +9,16 @@ In Cloudclapp we have two main roles *Admin* and *User (Manager)* , we will expl
 === Admin 
 To get an Admin account you have to register in Cloudclapp by clinking on *Get Started* in login page then fill the fom  and click on *Continue*
 
-image:login_page.png[alt=Governance Menu, width=600px]
+image:login_page.png[alt=Governance Menu, width=600px,align="center"]
   
-image:register_page.png[alt=Governance Menu, width=600px]
+image:register_page.png[alt=Governance Menu, width=600px,align="center"]
   
-image:verify_email_popup.png[alt=Governance Menu, width=600px]
+image:verify_email_popup.png[alt=Governance Menu, width=600px,align="center"]
   
 You will recieve an email contains a link to activate your account , clik on it and your acoount will be activated
   
-image:registration_email_content.png[alt=Governance Menu, width=600px]
-image:activated_account.png[alt=Governance Menu, width=600px]
+image:registration_email_content.png[alt=Governance Menu, width=600px,align="center"]
+image:activated_account.png[alt=Governance Menu, width=600px,align="center"]
 
 => Congratulation your *Admin* account is ready to use !!
 
@@ -53,28 +53,28 @@ Quick description of each tiles
 
 To invite users, go to *Governance* →*Users*
 
-image:users_tab.png[alt=Governance Menu, width=900px]
+image:users_tab.png[alt=Governance Menu, width=900px,align="center"]
 
 put the user you want to invite , an email will be sent to the invited user contains a link to activate his account.
 
-image:pop_invite_users.png[alt=Governance Menu, width=900px]
+image:pop_invite_users.png[alt=Governance Menu, width=900px,align="center"]
 
-image:invite_user_succeed.png[alt=Governance Menu, width=900px]
+image:invite_user_succeed.png[alt=Governance Menu, width=900px,align="center"]
 
 *Email*  content should be like :
 
-image:email_content.png[alt=Governance Menu, width=1000px]
+image:email_content.png[alt=Governance Menu, width=1000px,align="center"]
 
 * After inviting a user you can define permissions for this user by clicking on this button image:permission_icon.png[green,40] you should see all permission related to the user account in all tabs
 
 
-image:permissions.png[alt=Governance Menu, width=900px]
+image:permissions.png[alt=Governance Menu, width=900px,align="center"]
 
 = Tags =
 
 CloudClapp give the possibility to tag resources through terraform in other way we can filter the cost by those tags
 
-image:tags.png[alt=Governance Menu, width=900px]
+image:tags.png[alt=Governance Menu, width=900px,align="center"]
 
 = Permissions =
 
