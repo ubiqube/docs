@@ -196,28 +196,39 @@ image:monitoringTools.png[100]
 |Steps|Description
 
 |Create TF Workspace
-|tt
+|
+
+Create a workspace folder and copy the template terraform files to the newly created workspace. This workspace will be the working directory for Terraform
 
 |Set TF variables values
 |
 
+Read the input data given by the user and replace the appropriate values in the terraform files
+
 |Initialize TF Workspace
 |
 
-|Provision AKS cluster
+Runs `+terraform init+` command in the workspace
+
+|Provision cluster
 |
 
-|Create AKS Cluster Managed Entity
+Runs `+terraform plan+` command followed by a `+terraform apply+` which will provision the resources
+
+|Create Cluster Managed Entity
 |
 
-|Get AKS Cluster Dashboard
-|
+Create a virtual Managed Entity for the newly created cluster in MSActivator that will be used to manage the cluster with the help of MicroServices
 
 |Deploy Prometheus and Grafana
 |
 
+Optional step to deploy the Prometheus and Grafana stack on the created cluster that will enable CCLA to show monitoring data
+
 |Trigger compliance scan
 |
+
+Runs the Compliance Scan Workflow which will deploy a Job to run kubebench on the cluster and fetch the scan results
 
 |===
 
