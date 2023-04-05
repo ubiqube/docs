@@ -17,6 +17,25 @@ endif::[]
 
 Welcome to the 2.8.7 release of the {product_name}. There are many updates in this version that we hope you'll like, some of the key highlights include:
 
+- alarm severity control
+- alarm SNMP trap control
+- cross cluster alarm acknowledgment
+- log type filtering for SNMP traps, syslogs and internal VNOC events
+- log search result highlight
+- monitoring graph zooming
+- audit logs details contains the API request body and response
+- workflow default delete action can be mapped to a selected delete process
+
+== Assurance
+
+=== Alarm severity control
+Alarm severity control allows you to select the severity of the alarm when the matching event is detected and have a better control over you SLA.
+
+image:2.8.7_alarm_severity_control_conf.png[width=700px]
+
+By tuning the severity you can see similar alarms but with various severity
+
+image:2.8.7_alarm_severity_control.png[width=700px]
 
 == UX and Navigation
 
@@ -48,8 +67,8 @@ In order to upgrade to the latest version, you need to follow these steps:
 * MSA-12538 - [AI/ML] Remove AI/ML container
 * MSA-12223 - [Alarms] user should be able to control/tune alarm severity
 * MSA-12242 - [Alarms/UI] alarm name should be editable
+* MSA-12266 - [Alarms/API] alarm name should be editable
 * MSA-12243 - [Alarms/UI] Threshold section should be inside Action tab
-* MSA-12266 - [Alarms] Alarm name should be editable
 * MSA-12269 - [Alarms/UI] user should be able to turn on/off the SNMP trap when an alarm occurs
 * MSA-12327 - [Alarms/API] user should be able to turn on/off the SNMP trap when an alarm occurs
 * MSA-12384 - [Alarms/CoreEngine] user should be able to turn on/off the SNMP trap when an alarm occurs
@@ -78,7 +97,7 @@ In order to upgrade to the latest version, you need to follow these steps:
 * MSA-12638 - [CoreEngine] enhance Fortinet syslog parser to support timezone field tz
 * MSA-12035 - [CoreEngine] split /opt/sms/spool/parser to separate logs to index and errors
 * MSA-12095 - [Microservices] UI - add variable configuration option to display a variable in either create or edit or both
-* MSA-12264 - [Logs] List ES fields as search suggestions
+//* MSA-12264 - [Logs] List ES fields as search suggestions
 * MSA-12394 - [Logs/Alarms] highlight search results in the rawlogs
 * MSA-12463 - [Logs/API] list Elasticsearch fields as search suggestions
 * MSA-12561 - [Repository] Show all directory of repository the GUI
@@ -92,6 +111,7 @@ In order to upgrade to the latest version, you need to follow these steps:
 * MSA-12534 - [Workflows/API] Associate the generic delete workflow instance Button (Trash Icon) with Delete process
 * MSA-12658 - [Workflows/API] REST API enhancement : workflow filtering match - OR condition
 * MSA-12694 - [Workflows/API] list archived instances
+
 === Bug fixes
 
 * MSA-12282 - [Adapters] Cisco ISR adapter isn't able to handle a device after connection banner if it contains a "#" character
