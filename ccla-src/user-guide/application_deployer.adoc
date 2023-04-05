@@ -4,15 +4,24 @@ Cloudclapp offer large possibility of applications deployment : container based 
 
 == Marketplaces ==
 
+Cloudclapp's marketplaces provide users to access large software applications and services that are built on, integrate with or complement the cloud provider's offerings.
+
 === Public Docker Hub ===
+
+Docker Hub is the world’s largest repository of container images with an array of content sources including container community developers, open source projects and independent software vendors (ISV) building and distributing their code in containers
 
 image:PublicDockerHub.png[width=900px]
 
 === Private Docker Hub ===
 
+Private Docker repositories provide restricted access to the images that they contain. Unlike public repositories, only authorized users can access the images. This way, it's possible to allow access only to a specific group of users, like organizations, teams, or even a single person.
+
 image:PrivateDockerHub.png[width=900px]
 
 === VM - AWS EC2 marketplace ===
+
+AWS Marketplace is a curated digital catalog that you can use to find, buy, deploy, and manage third-party software, data, and services that you need to build solutions and run your businesses.
+EC2 is the one dedicated for Virtual Machines
 
 image:VMMarketPlace.png[width=900px]
 
