@@ -5,11 +5,17 @@ Cloudclapp offer large possibility of applications deployment : container based 
 == Marketplaces ==
 
 === Public Docker Hub ===
+
 image:PublicDockerHub.png[width=900px]
+
 === Private Docker Hub ===
+
 image:PrivateDockerHub.png[width=900px]
+
 === VM - AWS EC2 marketplace ===
+
 image:VMMarketPlace.png[width=900px]
+
 == Deploy application ==
 
 == Deployment dashboard ==
