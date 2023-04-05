@@ -89,7 +89,6 @@ In order to upgrade to the latest version, you need to follow these steps:
 * MSA-12244 - [Alarms] create alarm based on search results
 * MSA-12267 - [Alarms] in alarm condition, improve managed entity/tenant/subtenant selection
 * MSA-12368 - [Alarms] add navigation link from alarm to managed entity
-* MSA-12410 - [Alarms] add navigation link from alarms to managed entity
 * MSA-12326 - [API] [Microservices] add variable configuration option to display a variable in either create or edit or both
 * MSA-10983 - [Assurance] export SNMP Reports to be downloaded as PDF files
 * MSA-12222 - [Assurance] in alarm page and log page: add column for ip address,managed entity name and tenant Id
