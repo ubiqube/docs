@@ -68,11 +68,9 @@ image:blueprints/Wordpress_on_Azure.png[200]
 
 image:blueprints/Wordpress_on_Azure_Demo.png[200]
 
-* Multi clouds
+* Multi regions
 
 image:blueprints/Multi_Clouds_DEMO.png[200]
-
-* MsaActivator (To be confirmed)
 
 === User Library ===
 
