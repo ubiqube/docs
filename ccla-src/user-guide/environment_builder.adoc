@@ -157,12 +157,11 @@ image:providers/K8_Cluster.png[900]
 
 === Design operations ===
 
-* Save design
-Edit the Blueprint design and save this desgin.
-* Save environment as blueprint
-Once the design is saved. Can be used as a Environment.
-* Deploy
-Click on Deploy to complete the deployment of the apps over K8 cluster that is selected
+* Save design : Edit the Blueprint design and save this design.
+
+* Save environment as blueprint : Once the design is saved. Can be used as a Environment.
+
+* Deploy : Click on Deploy to complete the deployment of the apps over K8 cluster that is selected
 == Environment dashboard ==
 
 === Application Diagram ===
