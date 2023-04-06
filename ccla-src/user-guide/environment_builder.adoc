@@ -83,19 +83,19 @@ image:blueprints/Quick_Deployment.png[100]
 
 Choose recommended cloud providers
 
-image:blueprints/Choose_Cloud.png[400, 400]     
+image:blueprints/Choose_Cloud.png[900]     
 
 Then pick an environment for deployment
 
-image:blueprints/Pick_an_Environment.png[400, 400]
+image:blueprints/Pick_an_Environment.png[900]
 
 Add application images and define ports and node ports with proper deployment name
 
-image:blueprints/Add_Application.png[400, 400]
+image:blueprints/Add_Application.png[900]
 
 See the estimation right before your deployment and can change Hourly, Monthly or Annual
 
-image:blueprints/Cost.png[400, 400]
+image:blueprints/Cost.png[900]
 
 == The wizard ==
 
@@ -117,7 +117,7 @@ image:providers/Kubernetes.png[800]
 
 * **Kubernetes Service Account Token** : Token associated with a service account. This service account can then be bound to a cluster role to provide granular access across the K8s cluster.
 
-image:providers/Kubernetes_Connection.png[400,400]
+image:providers/Kubernetes_Connection.png[900]
 
 NOTE: Check the appendix below to have more details to how retrieve those informations
 
@@ -129,21 +129,21 @@ Drag & Drop components from Library. Library are provided for per clould provide
 
 * Provider
 
-image:providers/Providers.png[400,400]
+image:providers/Providers.png[900]
 
 * Region
 
-image:providers/Region.png[400,400]
+image:providers/Region.png[900]
 
 * App deployment
 
-image:providers/Add_Application_1.png[400,400]
+image:providers/Add_Application_1.png[900]
 
-image:providers/App_Deployment_2.png[400,400]
+image:providers/App_Deployment_2.png[900]
 
 * K8 cluster
 
-image:providers/K8_Cluster.png[400,400]
+image:providers/K8_Cluster.png[900]
 
 * Mesh
 
