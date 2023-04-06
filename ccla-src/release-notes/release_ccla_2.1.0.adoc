@@ -36,48 +36,54 @@ Redirect to provider web site to choose the best region based on KPI like the lo
 
 == Enhancements ==
 
-* [MSA-11623] - [CCLA] K8 Import - ENV import with WF
-* [MSA-11628] - [CCLA] K8 Import - UI - Adapt ENV creation
-* [MSA-11691] - [CCLA] GCP Cost Implementation
-* [MSA-11717] - [CCLA] K8 Import - APP deployment - Create new WF
-* [MSA-11797] - [CCLA] Manage Tags
-* [MSA-11862] - [CCLA] Auto attach MS on K8 cluster import - private cloud
-* [MSA-11921] - [CCLA] Mapping file for compliance standards
-* [MSA-11922] - [CCLA] Design WF to trigger compliance scan
-* [MSA-11966] - [CCLA] Hide Add Deployment when there is no service_id in quick deployment section
-* [MSA-11970] - [CCLA] App doc before deployment + scan updates
-* [MSA-12024] - [CCLA] Environment settings - Move existing items in pop-up + compliance
-* [MSA-12045] - [CCLA] Filter Blueprints based on openmsa and organisation
-* [MSA-12149] - [CCLA] New Permission for approval
-* [MSA-12205] - [CCLA] Delete blueprint
-* [MSA-12228] - [CCLA] API to create / delete Approval request and send Email
-* [MSA-12229] - [CCLA] List all the approvals for an admin of an org
-* [MSA-12230] - [CCLA] Screen to show a list of all approvals for an org
-* [MSA-12275] - [CCLA] Cover edge cases on Environment Designer
-* [MSA-12292] - [CCLA] Include Organisation prefix in 'blueprintPath' param of addBlueprint API
-* [MSA-12303] - [CCLA] Environment Designer: Wider Variable space
-* [MSA-12304] - [CCLA] Environment' Page header CSS issue
-* [MSA-12305] - [CCLA] API to upload any given file in repository on given path
-* [MSA-12312] - [CCLA] Filter Blueprint
-* [MSA-12340] - [CCLA] Trigger compliance scan after ENV is created
-* [MSA-12344] - [CCLA] Adapt ENV creation with approval request
-* [MSA-12360] - [CCLA] Get Env Approval Status
-* [MSA-12361] - [CCLA] API to update the approval request status
-* [MSA-12369] - [CCLA] create blueprint - change parameter name from 'type' to 'cloudType'
-* [MSA-12427] - [CCLA] New API to build K8 topology / application mapping
-* [MSA-12434] - [CCLA] Compliance dashboard
-* [MSA-12444] - [CCLA] Generic list of WF to attach per cloud provider
-* [MSA-12445] - [CCLA] API to create and delete Customer config var using Id to store compliance parameter
-* [MSA-12456] - [CCLA] Build first hybrid multi cloud blueprint
-* [MSA-12458] - [CCLA] Redirect to region picker website per providers for greener selection
-* [MSA-12464] - [CCLA] DEMO FLAG to be on ENV only for all providers
-* [MSA-12472] - [CCLA] Tear down all deployments when you tear down the ENV
-* [MSA-12494] - [CCLA] Redirect to Approvals tab once you open from email
-* [MSA-12495] - [CCLA] Modify the Email Content of Approval request and request update
-* [MSA-12505] - [CCLA] Aligne ENV name in TF
-* [MSA-12522] - [CCLA] Don't show clear keys for cloud connections (vault)
-* [MSA-12526] - [CCLA] Permit easy placement of deployment on multiple region
-* [MSA-12527] - [CCLA] Hybrid icon for hybrid ENV dashboard + production icon on dashboard
+[MSA-11623] - [CCLA] K8 Import - ENV import with WF
+[MSA-11628] - [CCLA] K8 Import - UI - Adapt ENV creation
+[MSA-11717] - [CCLA] K8 Import - APP deployment - Create new WF
+[MSA-11797] - [CCLA] Manage Tags
+[MSA-11862] - [CCLA] Auto attach MS on K8 cluster import - private cloud
+[MSA-11921] - [CCLA] Mapping file for compliance standards
+[MSA-11922] - [CCLA] Design WF to trigger compliance scan
+[MSA-11966] - [CCLA] Hide Add Deployment when there is no service_id in quick deployment section
+[MSA-11970] - [CCLA] App doc before deployment + scan updates
+[MSA-12024] - [CCLA] Environment settings - Move existing items in pop-up + compliance
+[MSA-12045] - [CCLA] Filter Blueprints based on openmsa and organisation
+[MSA-12149] - [CCLA] New Permission for approval
+[MSA-12205] - [CCLA] Delete blueprint
+[MSA-12228] - [CCLA] API to create / delete Approval request and send Email
+[MSA-12229] - [CCLA] List all the approvals for an admin of an org
+[MSA-12230] - [CCLA] Screen to show a list of all approvals for an org
+[MSA-12275] - [CCLA] Cover edge cases on Environment Designer
+[MSA-12292] - [CCLA] Include Organisation prefix in 'blueprintPath' param of addBlueprint API
+[MSA-12303] - [CCLA] Environment Designer: Wider Variable space
+[MSA-12304] - [CCLA] Environment' Page header CSS issue
+[MSA-12305] - [CCLA] API to upload any given file in repository on given path
+[MSA-12312] - [CCLA] Filter Blueprint
+[MSA-12340] - [CCLA] Trigger compliance scan after ENV is created
+[MSA-12344] - [CCLA] Adapt ENV creation with approval request
+[MSA-12360] - [CCLA] Get Env Approval Status
+[MSA-12361] - [CCLA] API to update the approval request status
+[MSA-12369] - [CCLA] create blueprint - change parameter name from 'type' to 'cloudType'
+[MSA-12427] - [CCLA] New API to build K8 topology / application mapping
+[MSA-12434] - [CCLA] Compliance dashboard
+[MSA-12444] - [CCLA] Generic list of WF to attach per cloud provider
+[MSA-12445] - [CCLA] API to create and delete Customer config var using Id to store compliance parameter
+[MSA-12456] - [CCLA] Build first multi cloud blueprint
+[MSA-12458] - [CCLA] Redirect to region picker website per providers for greener selection
+[MSA-12464] - [CCLA] DEMO FLAG to be on ENV only for all providers
+[MSA-12494] - [CCLA] Redirect to Approvals tab once you open from email
+[MSA-12495] - [CCLA] Modify the Email Content of Approval request and request update
+[MSA-12505] - [CCLA] Aligne ENV name in TF
+[MSA-12526] - [CCLA] Permit easy placement of deployment on multiple region
+[MSA-12527] - [CCLA] Multi cloud icon + tear down adaptation
+[MSA-12558] - [CCLA] Blueprint based environment deployments must have correct owner name
+[MSA-12570] - [CCLA] UI to build K8 topology / application mapping
+[MSA-12573] - [CCLA] Create Meshed WF for hybrid/multi BP
+[MSA-12574] - [CCLA] New UI component for doing meshed
+[MSA-12601] - [CCLA] Set CloudType when ENV is created
+[MSA-12604] - [CCLA] AWS "Launch configuration" will be replace by "Launch template"
+[MSA-12643] - [CCLA] Update compliance scan to work with local k8
+[MSA-12649] - [BPM] fetch process executor when executing the WF through BPM
+[MSA-12683] - [CCLA] Set list of regions per provider up to date
 
 == Bug ==
 [MSA-11585] - [CCLA][Insights] adapt calendar proposed range to actual range
