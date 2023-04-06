@@ -105,7 +105,7 @@ image:blueprints/Cost.png[400, 400]
 
 === Native K8 import ===
 
-image:providers/Kubernetes.png[400,400]
+image:providers/Kubernetes.png[800]
 
 4 fields are needed to import an existing K8 platform in Cloudclapp
 
