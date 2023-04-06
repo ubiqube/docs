@@ -80,20 +80,26 @@ Redirect to provider web site to choose the best region based on KPI like the lo
 * [MSA-12527] - [CCLA] Hybrid icon for hybrid ENV dashboard + production icon on dashboard
 
 == Bug ==
-* [MSA-11585] - [CCLA][Insights] adapt calendar proposed range to actual range
-* [MSA-11967] - [CCLA] regression with pagination in CCLA
-* [MSA-12042] - [CCLA] serverRuntimeException when inviting users
-* [MSA-12143] - [CCLA] When a new env created, status is not good.
-* [MSA-12192] - [CCLA] deplyoment is failing on gcp env when using node port
-* [MSA-12328] - [CCLA] Infinite process for ENV creation / No Logs are available from a blueprint deployment
-* [MSA-12333] - [CCLA] Updating the region on the Blueprint through region tab is not possible
-* [MSA-12334] - [CCLA] Not possible to Update/Save/Delete Blueprint Design for an admin
-* [MSA-12362] - [CCLA] When node_port value is given and then erased, empty string is passed instead of null
-* [MSA-12379] - [CCLA] MS import is failing for K8 cluster
-* [MSA-12412] - [CCLA] monitoring is not working for gcp,azure and aws envs
-* [MSA-12425] - [CCLA] Missing params passed from blueprints
-* [MSA-12452] - [CCLA] When wrong credentiails are given while signin for Private Docker hub, the API should display 401
-* [MSA-12460] - [CCLA] We must have validation while updating the Env Description and Env Name
-* [MSA-12468] - [CCLA] Governance Tags tab gives an impression of infinite loading when there is no tag data to be shown
-* [MSA-12470] - [CCLA] Web app scan not working
-* [MSA-12542] - [CCLA] Need Approval API should not get call when we logged in with ncroot
+[MSA-11585] - [CCLA][Insights] adapt calendar proposed range to actual range
+[MSA-11967] - [CCLA] regression with pagination in CCLA
+[MSA-12042] - [CCLA] serverRuntimeException when inviting users
+[MSA-12143] - [CCLA] When a new env created, status is not good.
+[MSA-12192] - [CCLA] deplyoment is failing on gcp env when using node port
+[MSA-12328] - [CCLA] Infinite process for ENV creation / No Logs are available from a blueprint deployment
+[MSA-12329] - [CCLA] UI changes on CCLA
+[MSA-12333] - [CCLA] Updating the region on the Blueprint through region tab is not possible
+[MSA-12334] - [CCLA] Not possible to Update/Save/Delete Blueprint Design for an admin
+[MSA-12362] - [CCLA] When node_port value is given and then erased, empty string is passed instead of null
+[MSA-12379] - [CCLA] MS import is failing for K8 cluster
+[MSA-12412] - [CCLA] monitoring is not working for gcp,azure and aws envs
+[MSA-12425] - [CCLA] Missing params passed from blueprints
+[MSA-12452] - [CCLA] When wrong credentiails are given while signin for Private Docker hub, the API should display 401
+[MSA-12460] - [CCLA] We must have validation while updating the Env Description and Env Name
+[MSA-12468] - [CCLA] Governance Tags tab gives an impression of infinite loading when there is no tag data to be shown
+[MSA-12470] - [CCLA] Web app scan not working
+[MSA-12542] - [CCLA] Need Approval API should not get call when we logged in with ncroot
+[MSA-12553] - [CCLA] URL's in the Approval email must navigate to Goverance Tab
+[MSA-12572] - [CCLA] Fix CCLA install lib API
+[MSA-12575] - [CCLA] [UI] Launch button for monitoring is not working for gcp and azure envs
+[MSA-12583] - [CCLA] Retry on WF APP not apply new port
+[MSA-12585] - [CCLA] On Compliance Tab when select Data Sensitivity and Run Re-Scan still it showed as Extended
