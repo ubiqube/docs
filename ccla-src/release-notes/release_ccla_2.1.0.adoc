@@ -7,7 +7,7 @@
 A new multi regions blueprint on AZURE with a pre-configured Wordpress and Mysql application
 => link:../user-guide/environment_builder.adoc#blueprints[Link,window=_blank]
 
-=== K8 application diagram
+=== K8 topology / application diagram
 
 A topology representation of applications deployed in a K8 cluster
 => link:../user-guide/environment_builder.adoc#application-diagram[Link,window=_blank]
