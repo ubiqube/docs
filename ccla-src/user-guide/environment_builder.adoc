@@ -164,7 +164,7 @@ image:providers/K8_Cluster.png[900]
 * Deploy : Click on Deploy to complete the deployment of the apps over K8 cluster that is selected
 == Environment dashboard ==
 
-=== Application Diagram ===
+=== Topology / Application Diagram ===
 
 === Monitoring ===
 
