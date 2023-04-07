@@ -1,4 +1,4 @@
-= Organisation and Users
+= Organization and Users
 ifndef::imagesdir[:imagesdir: images/]
 The {product_name} platform provides a multi-roles and multi-tenancy hierarchy that should accommodate all your specifics requirement.
 
@@ -25,7 +25,7 @@ image:activated_account.png[alt=Governance Menu, width=600px,align="center"]
 === User (Manager) 
 Now to get a *Manager* account you have to *invite it*  , you can check the https://github.com/ubiqube/docs/blob/master/ccla-src/user-guide/governance.adoc#invit-users[Invit Users] section for more details 
 
-== Organisation dashboard
+== Organization dashboard
 
 CloudClapp offers two views of dashboard , one for developer and the other one is dedicated for Business executive .
 
@@ -47,7 +47,7 @@ which represent a general informations about the organisation and some quick act
 
 * manage Cloud Connections .
 
-image:governance/manage_connections.png[alt=Governance Menu, width=400px,align="center"]
+image:governance/manage_connections.png[alt=Governance Menu, width=900px,align="center"]
 
 * available environments .
 
@@ -66,27 +66,27 @@ to edit organization click on settings button
 
 image:governance/settings_button.png[alt=Governance Menu, width=900px,align="center"]
 
-image:governance/settings_view.png[alt=Governance Menu, width=900px,align="center"]
+image:governance/settings_view.png[alt=Governance Menu, width=400px,align="center"]
  
- actions performed:
- 
-* Edit Organisation Name
+actions performed :
 
-image:governance/edit_org_name.png[alt=Governance Menu, width=900px,align="center"]
+* Edit Organization Name
+
+image:governance/edit_org_name.png[alt=Governance Menu, width=600px,align="center"]
 
 * Accounts
 
-image:governance/org_users.png[alt=Governance Menu, width=900px,align="center"]
+image:governance/org_users.png[alt=Governance Menu, width=600px,align="center"]
 
 
 * Private Docker Hub Credentials
 
-image:governance/org_credentials.png[alt=Governance Menu, width=900px,align="center"]
+image:governance/org_credentials.png[alt=Governance Menu, width=600px,align="center"]
 
 
 * Delete organization
 
-image:governance/delete_org.png[alt=Governance Menu, width=900px,align="center"]
+image:governance/delete_org.png[alt=Governance Menu, width=600px,align="center"]
 
 
 
