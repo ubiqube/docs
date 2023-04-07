@@ -60,7 +60,7 @@ image:governance/manage_connections.png[alt=Governance Menu, width=900px,align="
 
 === Cloud connections
 
-=== Organization settings
+== Organization settings
 to edit organization click on settings button 
 
 
@@ -106,7 +106,7 @@ image:invite_user_succeed.png[alt=Governance Menu, width=900px,align="center"]
 
 image:email_content.png[alt=Governance Menu, width=1000px,align="center"]
 
-* After inviting a user you can define permissions for this user by clicking on this button image:permission_icon.png[green,40] you should see all permission related to the user account in all tabs
+* After inviting a user you can define permissions for this user by clicking on this button image:permission_icon.png[green,40] you should see all  https://github.com/ubiqube/docs/blob/master/ccla-src/user-guide/governance.adoc#permissions[permissions] related to the user account in all tabs
 
 
 image:permissions.png[alt=Governance Menu, width=900px,align="center"]
@@ -117,13 +117,62 @@ CloudClapp give the possibility to tag resources through terraform in other way 
 
 image:tags.png[alt=Governance Menu, width=900px,align="center"]
 
-= Permissions =
+== Permissions ==
+permissions defines the rights given to a user , we can see the in table the different permissions :
 
-*
-*
-*
-*
+[cols="1,1,1,1,1"]
+|===
+|Environment|Deployments|Applications|Insights|Governance
 
-= Approval requests =
+|
+General :
 
-= Audit Logs =
+Create
+
+Tear Down
+
+Delete
+
+Create With Approval
+
+Tear Down With Approval
+
+Monitoring:
+
+View
+| General:
+
+Create
+
+Action
+
+Create With Approval
+
+Tear Down with Approval
+| Docker hub:
+
+View
+
+Virtual Machine:
+
+View
+| Cost:
+
+View
+| Audit Logs:
+
+View
+
+User:
+View
+Invite
+Edit Permission
+
+Tags:
+View
+Create
+Update
+Delete
+== Approval requests ==
+
+== Audit Logs ==
