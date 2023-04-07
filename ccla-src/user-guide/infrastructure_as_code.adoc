@@ -1,6 +1,4 @@
-
-
-= Overview =
+= Infrastructure as the code =
 ifndef::imagesdir[:imagesdir: images]
 
 This page to describe how finally environement and application are created under each cloud providers
