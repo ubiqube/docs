@@ -19,7 +19,7 @@ Welcome to the 2.8.7 release of the {product_name}. There are many updates in th
 
 - alarm severity control
 - alarm SNMP trap control
-- cross cluster alarm acknowledgment
+- cross data center alarm acknowledgment
 - log type filtering for SNMP traps, syslogs and internal VNOC events
 - log search result highlight
 - monitoring graph zooming
@@ -27,6 +27,10 @@ Welcome to the 2.8.7 release of the {product_name}. There are many updates in th
 - workflow default delete action can be mapped to a selected delete process
 
 == Assurance
+
+=== Monitoring graph zooming
+
+image:2.8.7_monitoring_graph_zoom.png[width=700px]
 
 === Alarm severity control
 Alarm severity control allows you to select the severity of the alarm when the matching event is detected and have a better control over you SLA.
@@ -36,6 +40,20 @@ image:2.8.7_alarm_severity_control_conf.png[width=700px]
 By tuning the severity you can see similar alarms but with various severity
 
 image:2.8.7_alarm_severity_control.png[width=700px]
+
+=== Alarm SNMP trap control
+
+Sending an SNMP trap when an alarm is raised used to be the default behavior provided that you have configured the settings with the list of server IP addresses where SNMP traps will be sent.
+
+In the new version 2.8.7, SNMP traps will only be sent when enable in the alarm rule.
+
+image:2.8.7_alarm_snmptrap_control_conf.png[width=700px]
+
+
+
+=== Cross data center alarm acknowledgement
+
+In version 2.8.7, alarm acknowledgement is replicated with the alarms stored in the passive data center.
 
 == UX and Navigation
 
