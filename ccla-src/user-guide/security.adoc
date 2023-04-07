@@ -1,5 +1,4 @@
-
-= Overview =
+= Security =
 ifndef::imagesdir[:imagesdir: images]
 
 Cloudclapp has some built-in security mechanisms that enable secure and resilient deployments across all cloud providers
