@@ -25,11 +25,36 @@ image:activated_account.png[alt=Governance Menu, width=600px,align="center"]
 === User (Manager) 
 Now to get a *Manager* account you have to *invite it*  , you can check the https://github.com/ubiqube/docs/blob/master/ccla-src/user-guide/governance.adoc#invit-users[Invit Users] section for more details 
 
-=== Permissions
-
 == Organisation dashboard
 
-* Screenshot of org dashboard
+In CloudClapp we have two views of dashboard , one for developer and the other one is dedicated for Business executive
+
+to switch between those views you need to clik on edit button
+
+image/governance:edit_view.png[alt=Governance Menu, width=900px,align="center"]
+
+Business view which simplify the view by representing just environment costs
+
+image/governance:business_view.png[alt=Governance Menu, width=900px,align="center"]
+
+Default view (for developer) 
+
+image/governance:default_dash_view.png[alt=Governance Menu, width=900px,align="center"]
+
+which represent a general informations about the organisation and some quick actions:
+
+* manage Cloud Connections 
+
+image/governance:manage_connections.png[alt=Governance Menu, width=400px,align="center"]
+
+* available environments
+* List of users : shows available users with possibility to invite others same https://github.com/ubiqube/docs/blob/master/ccla-src/user-guide/governance.adoc#invit-users[here]
+
+* Curent Month Costs , when you click on "See Graphs" it will redirect you to https://github.com/ubiqube/docs/blob/master/ccla-src/user-guide/cost_management.adoc#overview[Insights] tab
+
+* https://github.com/ubiqube/docs/blob/master/ccla-src/user-guide/environment_builder.adoc#quick-deployment[Quick Deployment]
+* you can see all avalable Environment and create more by "Add New Environment" button 
+
 Quick description of each tiles
 
 * Quick deployment => redirect to env_builder
