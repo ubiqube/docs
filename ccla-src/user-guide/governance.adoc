@@ -126,41 +126,28 @@ permissions defines the rights given to a user , we can see the in table the dif
 
 |
 General :
-
 Create
-
 Tear Down
-
 Delete
-
 Create With Approval
-
 Tear Down With Approval
 
 Monitoring:
-
 View
 | General:
-
 Create
-
 Action
-
 Create With Approval
-
 Tear Down with Approval
 | Docker hub:
-
 View
 
 Virtual Machine:
-
 View
 | Cost:
 
 View
 | Audit Logs:
-
 View
 
 User:
