@@ -1,5 +1,5 @@
 
-= Overview =
+= Cost Management =
 ifndef::imagesdir[:imagesdir: images/cost]
 Cost management focuses on providing visibility into how a business spends on cloud infrastructure. Cloudclapp offers a dedicated section to understand and manage the costs and needs associated with its cloud technology
 
