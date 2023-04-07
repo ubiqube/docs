@@ -31,21 +31,21 @@ In CloudClapp we have two views of dashboard , one for developer and the other o
 
 to switch between those views you need to clik on edit button
 
-image/governance:edit_view.png[alt=Governance Menu, width=900px,align="center"]
+image:governance/edit_view.png[alt=Governance Menu, width=900px,align="center"]
 
 Business view which simplify the view by representing just environment costs
 
-image/governance:business_view.png[alt=Governance Menu, width=900px,align="center"]
+image:governance/business_view.png[alt=Governance Menu, width=900px,align="center"]
 
 Default view (for developer) 
 
-image/governance:default_dash_view.png[alt=Governance Menu, width=900px,align="center"]
+image:governance/default_dash_view.png[alt=Governance Menu, width=900px,align="center"]
 
 which represent a general informations about the organisation and some quick actions:
 
 * manage Cloud Connections 
 
-image/governance:manage_connections.png[alt=Governance Menu, width=400px,align="center"]
+image:governance/manage_connections.png[alt=Governance Menu, width=400px,align="center"]
 
 * available environments
 * List of users : shows available users with possibility to invite others same https://github.com/ubiqube/docs/blob/master/ccla-src/user-guide/governance.adoc#invit-users[here]
