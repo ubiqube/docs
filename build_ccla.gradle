@@ -36,7 +36,7 @@ asciidoctor {
     'linkcss': true,
     'ubiqube': 'UBiqube',
     'company_name': 'UBiqube',
-    'product_name': 'CloudClapp(TM)',
+    'product_name': 'Cloudclapp(TM)',
     'allow-uri-read': '',
     'sectlinks': true,
     'html': 'true',
