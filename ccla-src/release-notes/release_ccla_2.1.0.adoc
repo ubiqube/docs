@@ -1,11 +1,12 @@
 = Version 2.1.0 (MVP2) =
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == New features ==
 
 === Multi-region blueprint  (Prepare Multi cloud / Hybrid cloud)
 
 A new multi regions blueprint on AZURE with a pre-configured Wordpress and Mysql application
-=> link:../user-guide/environment_builder.adoc#blueprints[Link,window=_blank]
+=> link:../user-guide/environment_builder{outfilesuffix}#_blueprints[Link,window=_blank]
 
 === K8 topology / application diagram
 
