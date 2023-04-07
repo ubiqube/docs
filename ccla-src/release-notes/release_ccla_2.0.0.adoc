@@ -1,27 +1,27 @@
-
 = Specific technical fixes and feature details =
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == New features
 
 === Blueprint catalog
 
 A view of templates or pre-packages infractructures
-=> link:../user-guide/key_concepts.adoc#blueprint[Link,window=_blank]
+=> link:../user-guide/key_concepts{outfilesuffix}#_blueprint[Link,window=_blank]
 
 === Private Docker Hub
 
 Access private Docker Hub to retrieve container application
-=> link:../user-guide/application_deployer.adoc#private-docker-hub[Link,window=_blank]
+=> link:../user-guide/application_deployer{outfilesuffix}#_private-docker-hub[Link,window=_blank]
 
 === Environment Designer
 
 A drag and drop tool to build in easy way a cloud infrastructure
-=> link:../user-guide/environment_builder.adoc#designer[Link,window=_blank]
+=> link:../user-guide/environment_builder{outfilesuffix}#_designer[Link,window=_blank]
 
 === Monitoring
 
 Deploy prometheus/grafane stack to monitoring environment
-=> link:../user-guide/environment_builder.adoc#monitoring[Link,window=_blank]
+=> link:../user-guide/environment_builder{outfilesuffix}#_monitoring[Link,window=_blank]
 
 = Specific technical fixes and feature details =
 
