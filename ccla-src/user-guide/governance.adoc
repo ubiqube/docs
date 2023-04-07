@@ -186,3 +186,5 @@ Delete
 == Approval requests ==
 
 == Audit Logs ==
+
+image:governance/audit_logs.png[alt=Governance Menu, width=600px,align="center"]
