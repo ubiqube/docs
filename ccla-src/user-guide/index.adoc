@@ -25,12 +25,12 @@ The  user guide provides the documentation to help you understand the key concep
 == Environment builder
 
 - link:environment_builder{outfilesuffix}[Environment builder,window=_blank]
-- link:infrastructure_as_code{outfilesuffix}[IAC - Environment builder,window=_blank]
+- link:infrastructure_as_code{outfilesuffix}#environment-details[IAC - Environment builder,window=_blank]
 
 == Application deployer
 
 - link:application_deployer{outfilesuffix}[Application deployer,window=_blank]
-- link:infrastructure_as_code{outfilesuffix}[IAC - Application deployer,window=_blank]
+- link:infrastructure_as_code{outfilesuffix}#applicationdeployment-details[IAC - Application deployer,window=_blank]
 
 == Lifecycle operations
 
