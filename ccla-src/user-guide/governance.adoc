@@ -1,8 +1,8 @@
-= Organization and Users
+= Governance
 ifndef::imagesdir[:imagesdir: images/]
 The {product_name} platform provides a multi-roles and multi-tenancy hierarchy that should accommodate all your specifics requirement.
 
-== Overview
+== Organization and Users
 
 In Cloudclapp we have two main roles *Admin* and *User (Manager)* , we will explain bellow how to get those roles and how to define permissions/rights for them:
 
