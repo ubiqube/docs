@@ -33,6 +33,8 @@ to switch between those views you need to clik on edit button
 
 image:governance/edit_view.png[alt=Governance Menu, width=900px,align="center"]
 
+image:governance/dash_views.png[alt=Governance Menu, width=900px,align="center"]
+
 Business view which simplify the view by representing just environment costs
 
 image:governance/business_view.png[alt=Governance Menu, width=900px,align="center"]
@@ -54,10 +56,6 @@ image:governance/manage_connections.png[alt=Governance Menu, width=400px,align="
 
 * https://github.com/ubiqube/docs/blob/master/ccla-src/user-guide/environment_builder.adoc#quick-deployment[Quick Deployment]
 * you can see all avalable Environment and create more by "Add New Environment" button 
-
-Quick description of each tiles
-
-* Quick deployment => redirect to env_builder
 
 === Cloud connections
 
