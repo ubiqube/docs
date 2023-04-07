@@ -124,42 +124,63 @@ permissions defines the rights given to a user , we can see the in table the dif
 |===
 |Environment|Deployments|Applications|Insights|Governance
 
-|
-General :
+| *General* :
+
 Create
+
 Tear Down
+
 Delete
+
 Create With Approval
+
 Tear Down With Approval
 
-Monitoring:
+*Monitoring*:
+
 View
-| General:
+| *General*:
+
 Create
+
 Action
+
 Create With Approval
+
 Tear Down with Approval
-| Docker hub:
-View
-
-Virtual Machine:
-View
-| Cost:
+| *Docker hub*:
 
 View
-| Audit Logs:
+
+*Virtual Machine*:
+
+View
+| *Cost*:
+
+View
+| *Audit Logs*:
+
 View
 
-User:
+*User*:
+
 View
+
 Invite
+
 Edit Permission
 
-Tags:
+*Tags*:
+
 View
+
 Create
+
 Update
+
 Delete
+
+
 == Approval requests ==
 
 == Audit Logs ==
