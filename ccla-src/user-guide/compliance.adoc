@@ -1,4 +1,4 @@
-= Compliance =
+= Overview =
 ifndef::imagesdir[:imagesdir: images/compliance]
 
 When managing infrastructures for production use cases, security and compliance are crucial factors to consider. The clusters need to be securely configured to minimize the attack surface. Additionally, every organization might have audit requirements for systems to be compliant with security standards.
