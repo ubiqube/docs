@@ -165,6 +165,20 @@ image:providers/K8_Cluster.png[900]
 
 == Environment dashboard ==
 
+Enviornment dashboard show to the users multiple informations via tiles
+
+* Deployments : give the number of deployment associated to this environement + link for a redirection
+
+* Users : number of users associated to this environment
+
+* Image Scan : last image scan result over all deployments
+
+* Web App Scan : last web application scan result over all deployments
+
+* Topology : representation of application mapping
+
+* Monitoring : availability graph
+
 image:env_builder/ENV_dashboard.png[700]
 
 === Topology / Application Diagram ===
@@ -172,7 +186,9 @@ image:env_builder/ENV_dashboard.png[700]
 At the environement home page, a topology represents the mapping between applications
 This topology is based on workflow information, but a specific variable must be created to do the link
 
+----
 APP_PORT_MAPPING : <target_application_name>:<target_port>
+----
 
 === Monitoring ===
 
