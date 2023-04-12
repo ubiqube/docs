@@ -166,6 +166,11 @@ image:providers/K8_Cluster.png[900]
 
 === Topology / Application Diagram ===
 
+At the environement home page, a topology represents the mapping between applications
+This topology is based on workflow information, but a specific variable must be created to do the link
+
+APP_PORT_MAPPING : <target_application_name>:<target_port>
+
 === Monitoring ===
 
 Different open source monitoring systems are used to monitor cloud environment:
