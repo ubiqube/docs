@@ -164,6 +164,8 @@ image:providers/K8_Cluster.png[900]
 * Deploy : Click on Deploy to complete the deployment of the apps over K8 cluster that is selected
 == Environment dashboard ==
 
+|image:env_builder/ENV_dashboard.png[700]
+
 === Topology / Application Diagram ===
 
 At the environement home page, a topology represents the mapping between applications
