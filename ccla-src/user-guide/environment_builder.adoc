@@ -190,6 +190,8 @@ image:env_builder/ENV_dashboard.png[700]
 At the environement home page, a topology represents the mapping between applications
 This topology is based on workflow information, but a specific variable must be created to do the link
 
+image:blueprints/Topology_App.png[200]
+
 ----
 APP_PORT_MAPPING : <target_application_name>:<target_port>
 ----
