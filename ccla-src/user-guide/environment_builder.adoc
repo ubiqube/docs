@@ -74,7 +74,7 @@ image:blueprints/Multi_Clouds_DEMO.png[200]
 
 * Multi Regions
 
-image:blueprints/Multi_Clouds_DEMO.png[200]
+image:blueprints/Multi Region.png.png[200]
 
 === User Library ===
 
