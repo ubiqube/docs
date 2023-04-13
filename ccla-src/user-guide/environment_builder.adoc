@@ -68,7 +68,11 @@ image:blueprints/Wordpress_on_Azure.png[200]
 
 image:blueprints/Wordpress_on_Azure_Demo.png[200]
 
-* Multi regions
+* Multi Clouds
+
+image:blueprints/Multi_Clouds_DEMO.png[200]
+
+* Multi Regions
 
 image:blueprints/Multi_Clouds_DEMO.png[200]
 
