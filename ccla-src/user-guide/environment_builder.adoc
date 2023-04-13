@@ -74,7 +74,9 @@ image:blueprints/Multi_Clouds_DEMO.png[200]
 
 * Multi Regions
 
-image:blueprints/Multi_Region.png[200]
+image:blueprints/Multi_Region_NonDemo.png[200]  image:blueprints/Multi_Region_Azure.png[200] 
+
+Same exist environment with the demo flag
 
 === User Library ===
 
