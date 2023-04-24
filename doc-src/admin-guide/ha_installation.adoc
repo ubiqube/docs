@@ -103,6 +103,9 @@ sudo mkdir -p /mnt/NASVolume/msa_bulkfiles  \
 /mnt/NASVolume/msa_sms_logs  \
 /mnt/NASVolume/msa_sms_logs/ping  \
 /mnt/NASVolume/msa_sms_logs/monitor  \
+/mnt/NASVolume/msa_bulkfiles_err  \
+/mnt/NASVolume/msa_alarmbulkfiles  \
+/mnt/NASVolume/msa_alarmbulkfiles_err  \
 /mnt/NASVolume/msa_sms_logs/snmp \
 /mnt/NASVolume/msa_front_conf
 
