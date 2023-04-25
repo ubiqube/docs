@@ -24,6 +24,9 @@ A user can use this icon image:green-it.png[green,40] during environment creatio
 |Google Cloud Platform
 |https://cloud.withgoogle.com/region-picker/
 
+|Scaleway
+|https://www.scaleway.com/en/environmental-leadership/
+
 |===
 
 * *Greener Regions for Google Cloud Platform*
