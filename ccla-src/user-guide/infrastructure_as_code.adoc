@@ -30,6 +30,13 @@ GKE Cluster with one N1-standard-1 instance as worker
 
 Optionally, New VPC and Subnet for the GKE cluster
 
+|image:providers/Kapsule.png[Kapsule,40]
+|Scaleway Kubernetes cluster
+|
+Resource group
+
+Kapsule cluster with DEV1-L instance
+
 |===
 
 == Application/Deployment details ==
