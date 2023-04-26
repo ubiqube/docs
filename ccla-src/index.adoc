@@ -3,11 +3,26 @@
 ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
+== Quick access ==
+
 [cols="1*"] 
 |===
 
 a| link:user-guide/index{outfilesuffix}[User Guide,window=_blank]
 
 a| link:release-notes/release_ccla_2.1.0{outfilesuffix}[Last release note,window=_blank]
+
+|===
+
+== Release Notes ==
+
+[cols="1*"] 
+|===
+
+a| link:release-notes/release_ccla_2.2.0{outfilesuffix}[CCLA 2.2.0 - MVP3 (In progress),window=_blank]
+
+a| link:release-notes/release_ccla_2.1.0{outfilesuffix}[CCLA 2.1.0 - MVP2,window=_blank]
+
+a| link:release-notes/release_ccla_2.0.0{outfilesuffix}[CCLA 2.0.0 - MVP1,window=_blank]
 
 |===
