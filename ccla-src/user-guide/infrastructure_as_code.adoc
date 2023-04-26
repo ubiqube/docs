@@ -33,9 +33,9 @@ Optionally, New VPC and Subnet for the GKE cluster
 |image:providers/Kapsule.png[Kapsule,40]
 |Scaleway Kubernetes cluster
 |
-Resource group
+Kubenetes v1.27.0 cluster
 
-Kapsule cluster with DEV1-L instance
+Kapsule cluster with one DEV1-M node
 
 |===
 
