@@ -185,6 +185,15 @@ Delete
 
 == Approval requests ==
 
+In order to control ressources creation over cloud platforms, approval request force a user to do in 2 steps the infrastructure creation
+
+Using permission profile, an administrator of an organization can assign some "approval" rights to a user 
+
+If a user is restricted by "Create With Approval" right, environement creation will be conditionned to approval of the administrator of the organization
+
+
+
+
 == Audit Logs ==
 
 image:governance/audit_logs.png[alt=Governance Menu, width=600px,align="center"]
