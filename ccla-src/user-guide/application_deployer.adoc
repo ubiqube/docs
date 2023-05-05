@@ -18,6 +18,8 @@ Private Docker repositories provide restricted access to the images that they co
 
 image:PrivateDockerHub.png[width=900px]
 
+=== Manifest APP (On going) ===
+
 === VM - AWS EC2 marketplace ===
 
 AWS Marketplace is a curated digital catalog that you can use to find, buy, deploy, and manage third-party software, data, and services that you need to build solutions and run your businesses.
@@ -27,7 +29,15 @@ image:VMMarketPlace.png[width=900px]
 
 == Deploy application ==
 
+Deploying application could be done in differents ways :
+
+* Using quick deployment wizard : after selectiong an environement, use can choose an APP to deploy on it
+* Using marketplaces view : after selecting an application, a user can choose on which environement he want to deploy it
+* Using the designer : after loading a blueprint, using app deployment component, a user can drop an application on the diagram
+
 == Deployment dashboard ==
+
+image:DeploymentDashboard.png[width=900px]
 
 == Details of WF steps ==
 
