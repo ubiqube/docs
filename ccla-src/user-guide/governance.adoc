@@ -191,12 +191,19 @@ Using permission profile, an administrator of an organization can assign some "a
 
 If a user is restricted by "Create With Approval" right, environement creation will be conditionned to approval of the administrator of the organization
 
+In the environement dashboard, a user can see a "Waiting" status, meaning an approval is required to finalize the creation process
+
 image:governance/SendApproval.png[alt=Governance Menu, width=900px,align="center"]
+
+Once the request is send, administraor is notified by mail. He is invited to review this request inside Cloudclapp > Governance > Approvals
 
 image:governance/ApprovalMail.png[alt=Governance Menu, width=900px,align="center"]
 
+In the approval screen, an administraor can review requests, and decide to approve or decline a request using icons on the right
+
 image:governance/ApprovalsTab.png[alt=Governance Menu, width=900px,align="center"]
 
+If approved, a user can see "Approved" in environement screen and then clicking on "Deploy"
 
 == Audit Logs ==
 
