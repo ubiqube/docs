@@ -203,7 +203,7 @@ In the approval screen, an administraor can review requests, and decide to appro
 
 image:governance/ApprovalsTab.png[alt=Governance Menu, width=900px,align="center"]
 
-If approved, a user can see "Approved" in environement screen and then clicking on "Deploy"
+If approved, a user can see "Approved" in environement screen and then clicking on "Deploy". A notification is also send by mail to confirm the approval
 
 == Audit Logs ==
 
