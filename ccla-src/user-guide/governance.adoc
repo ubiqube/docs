@@ -191,11 +191,11 @@ Using permission profile, an administrator of an organization can assign some "a
 
 If a user is restricted by "Create With Approval" right, environement creation will be conditionned to approval of the administrator of the organization
 
-image:SendApproval.png[alt=Governance Menu, width=900px,align="center"]
+image:governance/SendApproval.png[alt=Governance Menu, width=900px,align="center"]
 
-image:ApprovalMail.png[alt=Governance Menu, width=900px,align="center"]
+image:governance/ApprovalMail.png[alt=Governance Menu, width=900px,align="center"]
 
-image:ApprovalsTab.png[alt=Governance Menu, width=900px,align="center"]
+image:governance/ApprovalsTab.png[alt=Governance Menu, width=900px,align="center"]
 
 
 == Audit Logs ==
