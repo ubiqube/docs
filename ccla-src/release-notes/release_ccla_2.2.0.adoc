@@ -8,6 +8,10 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 Dedicated blueprints to support multi and hybrid cloud scenarios + adapt environement dashboard to support multiple clusters
 
+=== Workflow component in the designer
+
+New component in the deisgner library to execute any MSA Workflows
+
 === Import and deploy APP with manifest file
 
 Permit to define github repository and import application build with manifest (K8 YML, TF, HelmCharts)
