@@ -19,3 +19,11 @@ For AWS and Azure, check capacity of a user to create ressources based on his pr
 === Scaleway - Kapsule
 
 Support Kubernetes service from Scaleway (Kapsule)
+
+=== Security Dashboard
+
+Revamp environement dashboard to show last scan results and enhance security tab to browse all vulnerabilities
+
+=== Hybrid/5G/SASE Blueprint
+
+Provide new blueprint in the catalog around hybrid infrastructure and 5G service deployed on edge
