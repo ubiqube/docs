@@ -1,4 +1,9 @@
 = Quickstart 
+:front-cover-image: image:quickstart-front-cover.pdf[]
+ifndef::imagesdir[:imagesdir: images]
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:toc: top
+:toclevels: 3
 
 ifdef::html,env-github,env-browser[]
 :includedir: ccla-src/user-guide
