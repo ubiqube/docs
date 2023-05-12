@@ -1,3 +1,7 @@
+= Quickstart 
+
+ifdef::html,env-github,env-browser[]
+:includedir: ccla-src/user-guide
 
 WIP - Q2 2023 / MVP3
 
