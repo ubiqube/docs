@@ -29,6 +29,6 @@ It is also possible to download the results as a JSON file for further analysis 
 
 image:Web Scan.png[200]
 
-= Security Dashboard (on going MPV3) =
+= Security Dashboard =
 
 When accessing security tab in application homepage, user can now see vulnerabilities raised by image and webapp scans
