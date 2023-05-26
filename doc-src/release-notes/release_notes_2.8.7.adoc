@@ -56,12 +56,6 @@ pre
 
 In version 2.8.7, alarm acknowledgement is replicated with the alarms stored in the passive data center.
 
-== UX and Navigation
-
-== Framework
-
-
-=== CoreEngine
 
 == Upgrade
 
