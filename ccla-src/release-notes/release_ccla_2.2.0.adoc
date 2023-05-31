@@ -16,19 +16,19 @@ New component in the deisgner library to execute any MSA Workflows
 
 Permit to define github repository and import application build with manifest (K8 YML, TF, HelmCharts)
 
-=== Quota check before deployment
+=== Quota check before deployment (Azure)
 
-For AWS and Azure, check capacity of a user to create ressources based on his provider account
+For Azure, check capacity of a user to create ressources based on his provider account
 
 === Scaleway - Kapsule
 
 Support Kubernetes service from Scaleway (Kapsule)
 
-=== Security Dashboard
+=== Environment dashboard revamping
 
-Revamp environement dashboard to show last scan results and enhance security tab to browse all vulnerabilities
+Revamp environement dashboard to show last scan results
 => link:../user-guide/security{outfilesuffix}#_security-dashboard[Link,window=_blank]
 
-=== Hybrid/5G/SASE Blueprint
+=== Hybrid/5G/SASE Blueprint (TBC)
 
 Provide new blueprint in the catalog around hybrid infrastructure and 5G service deployed on edge
