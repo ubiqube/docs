@@ -49,17 +49,6 @@ which represent a general informations about the organization and some quick act
 
 image:governance/manage_connections.png[alt=Governance Menu, width=900px,align="center"]
 
-* available environments .
-
-* List of users : shows available users with possibility to invite others same https://github.com/ubiqube/docs/blob/master/ccla-src/user-guide/governance.adoc#invit-users[here] .
-
-* Curent Month Costs , when you click on "See Graphs" it will redirect you to https://github.com/ubiqube/docs/blob/master/ccla-src/user-guide/cost_management.adoc#overview[Insights] tab .
-
-* https://github.com/ubiqube/docs/blob/master/ccla-src/user-guide/environment_builder.adoc#quick-deployment[Quick Deployment]
-* you can see all avalable Environment and create more by "Add New Environment" button .
-
-=== Cloud connections
-
 == Organization settings
 to edit organization click on settings button 
 
@@ -206,5 +195,7 @@ image:governance/ApprovalsTab.png[alt=Governance Menu, width=900px,align="center
 If approved, a user can see "Approved" in environement screen and then clicking on "Deploy". A notification is also send by mail to confirm the approval
 
 == Audit Logs ==
+
+To track user activity, use audit logs
 
 image:governance/audit_logs.png[alt=Governance Menu, width=600px,align="center"]
