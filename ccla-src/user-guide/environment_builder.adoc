@@ -216,7 +216,7 @@ image:monitoringTools.png[100]
 |Grafana
 |http://20.69.64.212/login
 
-|Prometheus
+|Prometheus - admin/admin credentials by default
 |http://20.69.65.18/graph?g0.expr=&g0.tab=1&g0.stacked=0&g0.show_exemplars=0&g0.range_input=1h
 
 |Alert Manager
