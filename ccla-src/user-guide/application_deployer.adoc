@@ -20,6 +20,25 @@ image:PrivateDockerHub.png[width=1000px]
 
 === Manifest APP (On going) ===
 
+To permit a large variety of applications to be deployed, Manfiest APP tab permit to import applications, from github repository. 3 types of applications are supported
+
+* Terraform application
+* K8/YML application
+* HelmChart application
+
+To be recognized by Cloudclapp, and permit parameters substitution, those applications must repect some conventions. The name of application is the name of the root folder under github repository
+Depending the type of the application, those files must be present to permit parameters substitution and adapt the deployment
+
+* terraform.tfvars for TF application
+* ConfigMap for K8/YML application
+* values.yaml for HelmChart application
+
+==== TF application - terraform.tfvars ====
+
+====  K8/YML application - ConfigMap ====
+
+==== HelmChart application - values.yaml ====
+
 === VM - AWS EC2 marketplace ===
 
 AWS Marketplace is a curated digital catalog that you can use to find, buy, deploy, and manage third-party software, data, and services that you need to build solutions and run your businesses.
