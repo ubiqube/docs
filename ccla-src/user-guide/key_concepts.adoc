@@ -2,7 +2,7 @@
 
 == An organization
 
-An organization represents a group of people (admin or users) sharing same environements.
+An organization represents a group of people (admin or users) sharing same environments.
 
 An organization is created through the *Get started* form in the cloudclapp login page.
 
@@ -40,7 +40,7 @@ For more details refers to link:application_deployer.adoc[Application Deployer,w
 
 == An Environment
 
-An environment represents an infrastructure developed to provide applications. An environment is represented by a tile in organisation dashboard or environement view. It could be
+An environment represents an infrastructure developed to provide applications. An environment is represented by a tile in organization dashboard or environement view. It could be
 
 * A *K8 cluster* in Amazon (EKS), Azure (AKS), Google (GKE) or nativaley imported
 * A *virtual server* in Amazon (EC2)
