@@ -100,19 +100,23 @@ traffic_in : 1.3.6.1.2.1.2.2.1.10.2 (Counter)
 traffic_out : 1.3.6.1.2.1.2.2.1.16.2 (Counter)
 ----
 
-====== Threshold based alarm
+====== Threshold based VNOC events
 
-Is is possible to configure alarm based on KPI threshold crossing. 
+Is is possible to configure VNOC events based on KPI threshold crossing. 
 
 This is useful to monitor resources such as CPU or memory consumption. 
-When a KPI crosses a threshold, and alarm will be raised visible in the logs in the "Alarm" section.
+When a KPI crosses a threshold and event is generated and visible in the assurance "Logs" section.
 
 .Alert log for threshold crossing
 image:assurance_mon_profile_alarm.png[width=800px]
 
-When a monitoring threshold is crossed the log message will be similar to "supervision - Site UBI1195 snmp threshold 262-cpu_load_1min raised value 69 (> 10)" where you can see that the threshold 10 has been crossed by a greater value 69.
+When a monitoring threshold is crossed the log message will be similar to "%VNOC-1-SNMPTHLD: supervision - Site BLR149 snmp threshold 29-percentages_of_system_CPU_time raised value 1 (< 20) " where you can see that the threshold 10 has been crossed by a greater value 69.
 
 This configuration is done at the SNMP polling rule in the monitoring profile by setting a comparator '>' or '<' and a threshold.
+
+VNOC threshold crossing events can be used to configure alarms in order to be notified by email or SNMP trap or simply by the alarm bell icon on the top right of the screen.
+
+image:assurance_mon_profile_alarm_2.png[width=800px]
 
 ==== Graphical rendering
 
@@ -388,12 +392,14 @@ image:assurance_manage_alarm.png[width=800px]
 
 Alarm creation contains Four sections below
 
-.Edit an alarm
+.Create or edit an alarm
 image:assurance_manage_alarm_edit.png[width=800px]
 
 ==== Detail
 
-Provide a name for the alarm
+Provide a name for the alarm and the alarm severity.
+
+Alarm severity selection will allow you to decide what will be the severity of the alarm. 
 
 ==== Conditions
 
@@ -411,7 +417,7 @@ If selected, the logs search for the alarm triggering will be considered only fo
 .Severity levels
 If selected,  alarm wil be triggered for the logs with only those Severities.
 
-==== Threshold 
+==== Threshold
 
 Define the number of events and the time period to consider for triggering one workflow. 
 
@@ -460,3 +466,19 @@ For alarms to be notified as email, we need the Docker host to be properly confi
 
 .Sample email
 image:alarm_email_example.png[width=800px]
+
+=== Alarm severity tuning
+
+An alarm severity can be tuned by choosing the severity of the alarm when editing the alarm rule.
+
+image:alarm_severity_tuning_conf.png[width=800px]
+
+By default the alarm severity is the same as the severity of the source event but by selecting the severity, you can decide that an event with a high severity level should raise an alarm with a low severity level (or the other way around).
+
+Example: it is possible to have an alarm rule to detect the VNOC event IPDOWN and configure the rule to have the highest level (Emergency) and an other alarm rule to detect the event IPUP with a lower severity (Informational)
+
+This is very useful if SNMP traps are configured to be sent as you may not want to have all the SNMP traps detected with the same severity level.
+
+image:alarm_severity_tuning.png[width=800px]
+
+
