@@ -43,7 +43,7 @@ Default view (for developer) :
 
 image:governance/default_dash_view.png[alt=Governance Menu, width=900px,align="center"]
 
-which represent a general informations about the organisation and some quick actions:
+which represent a general informations about the organization and some quick actions:
 
 * manage Cloud Connections .
 
