@@ -1,0 +1,97 @@
+= Version 2.8.8
+:front-cover-image: image:release-notes-front-cover-2.8.8.pdf[]
+:toc: left
+:toclevels: 3
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+ifndef::imagesdir[:imagesdir: images]
+
+//OK HTML 
+ifdef::html[]
+:includedir: doc-src/release-notes
+endif::[]
+
+// OK PDF
+ifdef::pdf[]
+:includedir: .
+endif::[]
+
+Welcome to the 2.8.8 release of the {product_name}. There are many updates in this version that we hope you'll like !
+
+== Assurance
+
+== Dashboard managed entities status
+
+The global status of the managed entities is now visible in the dashboard. 
+
+The status is expressed both as the number of managed entities and the percentage of the total. The values are calculated based on the tenant and subtenant selected.
+
+image:2.8.8_dashboard_me_status_summary.png[width=700px]
+
+=== Import/Export monitoring profile
+
+You can export a monitoring profile and download it as a JSON formatted file and import it to another subtenant in the same {product_name} or another one.
+
+This will help you reusing existing monitoring profile. As building a monitoring profile may requires a long process of identifying the SNMP OID, you can now rely on this feature to speed up your KPI monitoring coverage.
+
+image:2.8.8_import_export_mon_pfl.png[width=700px]
+
+== Security
+
+=== Hide managed entity password
+
+When executing the activation of a managed entity, the password is hidden and can be displayed by the user by clicking on the eye icon.
+
+image:2.8.8_hidden_activation_pwd.png[width=700px]
+
+== Specific technical fixes and feature details
+
+=== Features
+
+* MSA-12749 - [Admin] add an email for subtenant
+* MSA-12736 - [Admin] optionally delete deployment settings and monitoring profile during subtenant deletion
+* MSA-12791 - [Alarms/API] enhance alarm search API to have only subset of fields in the search result
+* MSA-12511 - [Alarms/Logs] improve column width distribution to optimize the data visibility
+* MSA-12516 - [Alarms/Logs] enhance event details
+* MSA-11816 - [Assurance] Import and export monitoring profiles
+* MSA-12475 - [Dashboard] show managed entities availability status in percentage and count in manager dashboard
+* MSA-12785 - [Deployment setting/Monitoring profile] do not delete when attached to other subtenant
+* MSA-12777 - [Microservices/UI] disable data sorting for microservices
+* MSA-11746 - [Repository] visibility control for repository API
+* MSA-12775 - [Repository] enable upload feature for all folders under the repository view
+* MSA-11615 - [Security] smsuser credential is hardcoded in msa-alarm project.
+* MSA-12616 - [Security] hide device password on managed entity activation screen
+* MSA-11726 - [Topology] review topology workflow to call CoreEngine API to send SNMP request to the managed entity
+* MSA-12285 - [Workflows/Microservices] runtime filtering of reference variable with value
+* MSA-12814 - [Workflows] unique value checking on any array dropdown list
+
+=== Bug fixes
+
+* MSA-9960 - [Alarms] display issue when associated customer removed
+* MSA-12400 - [Alarms] As ncroot, when trying to edit an alarm rule created by Manager, a new alarm is created
+* MSA-12448 - [Alarms] when logged in as ncroot, only alarms created by ncroot are counted
+* MSA-12424 - [Alarms] ncroot cannot delete an alarm that has been created by a manager
+* MSA-12449 - [Alarms] ncroot user cannot update an alarm that he did not create
+* MSA-12510 - [Alarms/Logs] event details is showing useless and/or confusing info
+* MSA-12826 - [Assurance] managed entities graphs are empty in 2.8.8
+* MSA-12076 - [Alarms/Logs] source IP field should be displayed for audit log only
+* MSA-12812 - [CoreEngine] ubilogs fails when 2 Elasticsearch clusters are configured
+* MSA-12119 - [Microservices/API] sort the microservice objects and return an array format
+* MSA-12224 - [Microservices] Regular expression of composite type variable is not saved
+* MSA-12640 - [Microservices] for a variable of type "Microservice Reference", setting the "Local Variable" and "Remote Variable" doesn't work.
+* MSA-12642 - [Microservices] array variables with type "Unique Value" should only show the values that have not been selected before
+* MSA-12644 - [Microservices] array variable of type "Auto Increment" is not incrementing the value
+
+== Upgrade
+
+Instructions to upgrade available in the https://ubiqube.com/wp-content/docs/latest/user-guide/quickstart.html[quickstart].
+
+=== Specific instructions for upgrading to 2.8.8
+
+The quickstart provides an upgrade script `upgrade.sh` for taking care of possible actions such as recreating some volume, executing some database specific updates,...
+
+In order to upgrade to the latest version, you need to follow these steps:
+
+1. `cd quickstart`
+2. `git checkout master`
+3. `git pull`
+4. `./scripts/install.sh`
