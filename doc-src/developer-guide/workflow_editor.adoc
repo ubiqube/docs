@@ -39,9 +39,20 @@ The tasks are scripts that can be implemented either in PHP or in Python.
 
 There are 3 main types of workflow processes: 
 
-- CREATE: to execute an automated process and create a new instance of the workflows
-- UPDATE: to execute an automated process that will (but it's not mandatory) update the state of the process
-- DELETE: to execute an automated process that will also remove the instance of the workflow
+==== CREATE
+execute an automated process and create a new instance of the workflows.
+
+==== UPDATE
+
+execute an automated process that will (but it's not mandatory) update the state of the process.
+
+==== DELETE
+
+execute an automated process that will also remove the instance of the workflow.
+
+NOTE: a delete process can be assigned to the trash icon of the workflow instances. By default, the thrash icon action will only delete the workflow instance without executing any specific process.
+
+==== Execution status
 
 The status a normal process execution is defined by the implementation of the tasks and it's the responsibility of the developer to handle the termination status. As a developer, you have 3 statuses, defined by constants in PHP or Python, that you can use in your task to define the condition for transiting from a task to the next one.
 
@@ -102,8 +113,9 @@ Provide the information related to the workflow:
 
 - Workflow Name: the name of the workflow
 - Description: a description of the workflow
-- Workflow Variable Name: default to service_id (see below for more detail about this field)
-- Workflow Language: PHP or PYTHON (this cannot be edited)
+- Delete process: the delete process to associate to the workflow instance trash icon.
+- Workflow variable name: default to service_id (see below for more detail about this field)
+- Workflow language: PHP or PYTHON (this cannot be edited)
 
 === Workflow variables
 
