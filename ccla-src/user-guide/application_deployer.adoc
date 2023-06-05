@@ -30,7 +30,7 @@ To be recognized by Cloudclapp, and permit parameters substitution, those applic
 Depending the type of the application, those files must be present to permit parameters substitution and adapt the deployment
 
 * terraform.tfvars for TF application
-* ConfigMap for K8/YML application
+* configmap.yaml for K8/YML application
 * values.yaml for HelmChart application
 
 ==== TF application - terraform.tfvars ====
