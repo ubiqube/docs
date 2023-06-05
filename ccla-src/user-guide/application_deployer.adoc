@@ -38,7 +38,7 @@ Depending the type of the application, those files must be present to permit par
  instance_type   =   "t2.micro"
  tag             =   "My application Instance for DEV"
 ----
-====  K8/YML application - ConfigMap ====
+====  K8/YML application - configmap.yaml ====
 ----
 kind: ConfigMap
  apiVersion: v1
