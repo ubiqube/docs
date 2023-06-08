@@ -296,6 +296,7 @@ rules:
   - ""
   - apps
   - extensions
+  - batch
   resources:
   - pods
   - pods/log
@@ -315,6 +316,7 @@ rules:
   verbs:
   - get
   - list
+  - watch
   - create
   - update
   - patch
