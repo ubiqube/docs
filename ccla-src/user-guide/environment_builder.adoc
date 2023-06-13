@@ -373,4 +373,4 @@ metadata:
   namespace: default
 type: kubernetes.io/service-account-token
 ----
-NOTE: The above data is base64 encoded
+NOTE: The above token is base64 encoded and it needs to be decoded before using it as an input in CCLA
