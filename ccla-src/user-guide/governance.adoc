@@ -47,7 +47,7 @@ which represent a general informations about the organization and some quick act
 
 * Manage Cloud Connections .
 
-image:governance/manage_connections_4.png[alt=Governance Menu, width=900px,align="center"]
+image:governance/manage_connections_4.png[alt=Governance Menu, width=500px,align="center"]
 
 Helpers for each clouds :
 
