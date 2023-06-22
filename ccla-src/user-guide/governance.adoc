@@ -45,9 +45,20 @@ image:governance/default_dash_view.png[alt=Governance Menu, width=900px,align="c
 
 which represent a general informations about the organization and some quick actions:
 
-* manage Cloud Connections .
+* Manage Cloud Connections .
 
-image:governance/manage_connections.png[alt=Governance Menu, width=900px,align="center"]
+image:governance/manage_connections_4.png[alt=Governance Menu, width=900px,align="center"]
+
+Helpers for each clouds :
+
+* Google cloud platform : https://cloud.google.com/docs/security/compromised-credentials
+
+* Azure : https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal
+
+* AWS : https://docs.aws.amazon.com/IAM/latest/UserGuide/security-creds.html
+
+* Scaleway : https://www.scaleway.com/en/docs/identity-and-access-management/iam/how-to/create-api-keys/
+
 
 == Organization settings
 to edit organization click on settings button 
