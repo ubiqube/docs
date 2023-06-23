@@ -1,1 +1,12 @@
+= Integration =
+ifndef::imagesdir[:imagesdir: images/]
+
+== Cloud Service Provider ==
+
+* AWS
+* Azure
+* Google Cloud
+* Scaleway
+
+== Add new CSP - SDK ==
 
