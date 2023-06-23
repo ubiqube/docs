@@ -10,3 +10,8 @@ ifndef::imagesdir[:imagesdir: images/]
 
 == Add new CSP - SDK ==
 
+=== Provider definition ===
+
+=== ENV Workflow ===
+
+=== APP Workflow ===
