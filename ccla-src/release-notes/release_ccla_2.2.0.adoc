@@ -19,6 +19,8 @@ Permit to define github repository and import application build with manifest (K
 === Quota check before deployment (Azure)
 
 For Azure, check capacity of a user to create ressources based on his provider account
+=> link:../user-guide/governance{outfilesuffix}#_quota-check-before-deployment-azure[Link,window=_blank]
+
 
 === Scaleway - Kapsule
 
