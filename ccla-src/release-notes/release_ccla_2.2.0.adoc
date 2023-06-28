@@ -6,7 +6,8 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 === Support of Multi cloud & Hybrid cloud
 
-Adapt the platform to support multiple clusters per environement
+Adapt the platform to support multiple clusters per environment
+=> link:../user-guide/environment_builder{outfilesuffix}#_environment-dashboard[Link,window=_blank]
 
 === Workflow component in the designer
 
