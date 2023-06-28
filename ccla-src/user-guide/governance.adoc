@@ -111,7 +111,7 @@ image:email_content.png[alt=Governance Menu, width=1000px,align="center"]
 
 image:permissions.png[alt=Governance Menu, width=900px,align="center"]
 
-= Tags =
+== Tags ==
 
 CloudClapp give the possibility to tag resources through terraform in other way we can filter the cost by those tags
 
@@ -210,3 +210,11 @@ If approved, a user can see "Approved" in environement screen and then clicking 
 To track user activity, use audit logs
 
 image:governance/audit_logs.png[alt=Governance Menu, width=600px,align="center"]
+
+== Quota check before deployment (Azure) ==
+
+To check quota before creating a new ressources, a new control has been added to avoid issues during deployment
+
+For any ressources plannd to be deployed in Azure, the platform, based on provider account will check capacity
+
+image:governance/quota_check_azure.png[alt=Governance Menu, width=600px,align="center"]
