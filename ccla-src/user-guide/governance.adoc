@@ -232,3 +232,4 @@ New regional limit required : 12
 Increase regional vCPU quotas or use a different region
 Please read more about quota limits at https://docs.microsoft.com/en-us/azure/azure-supportability/regional-quota-requests
 ----
+NOTE: The quota check per provider is controlled via the SDK and can be disabled. Only Azure is supported in MVP3. Plz see integration page
