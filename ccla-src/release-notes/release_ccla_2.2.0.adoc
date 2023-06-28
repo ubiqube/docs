@@ -21,10 +21,10 @@ Permit to define github repository and import application build with manifest (K
 For Azure, check capacity of a user to create ressources based on his provider account
 => link:../user-guide/governance{outfilesuffix}#quota-check-before-deployment-azure[Link,window=_blank]
 
-
 === Scaleway - Kapsule
 
 Support Kubernetes service from Scaleway (Kapsule)
+=> link:../user-guide/integration{outfilesuffix}[Link,window=_blank]
 
 === Hybrid, Multi-cloud and 5G on edge Blueprints
 
