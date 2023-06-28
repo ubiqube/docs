@@ -218,3 +218,17 @@ To check quota before creating a new ressources, a new control has been added to
 For any ressources plannd to be deployed in Azure, the platform, based on provider account will check capacity
 
 image:governance/quota_check_azure.png[alt=Governance Menu, width=600px,align="center"]
+
+If quota issue is detected, such message will be displayed
+
+----
+Quota limit exceeded for region (vCPU) : AZURE - Central India 
+
+Current regional limit : 10
+Current regional usage : 8
+New additional instances required : 4
+New regional limit required : 12
+
+Increase regional vCPU quotas or use a different region
+Please read more about quota limits at https://docs.microsoft.com/en-us/azure/azure-supportability/regional-quota-requests
+----
