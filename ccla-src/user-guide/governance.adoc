@@ -219,7 +219,7 @@ For any ressources plannd to be deployed in Azure, the platform, based on provid
 
 image:governance/quota_check_azure.png[alt=Governance Menu, width=600px,align="center"]
 
-If quota issue is detected, such message will be displayed
+If quota issue is detected, such message will be displayed. The user will be invited to increase quotas or choose a different region
 
 ----
 Quota limit exceeded for region (vCPU) : AZURE - Central India 
