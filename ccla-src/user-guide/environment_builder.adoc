@@ -123,7 +123,7 @@ image:env_builder/worfklow_designer.png[900]
 
 == Environment dashboard ==
 
-Enviornment dashboard show to the users multiple informations via tiles
+Environment dashboard show to the users multiple informations via tiles. From MVP3, if a multi cloud has been created, cluster selection list is available in the top right
 
 * Deployments : give the number of deployment associated to this environement + link for a redirection
 
