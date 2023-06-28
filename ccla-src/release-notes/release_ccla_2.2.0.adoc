@@ -32,6 +32,7 @@ Support Kubernetes service from Scaleway (Kapsule)
 === Hybrid, Multi-cloud and 5G on edge Blueprints
 
 Provide new blueprint in the catalog around hybrid infrastructure and 5G service deployed on edge
+=> link:../user-guide/environment_builder{outfilesuffix}#_blueprints[Link,window=_blank]
 
 = Specific technical fixes and feature details =
 
