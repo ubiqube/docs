@@ -18,28 +18,28 @@ Below the matrix of supported clouds :
 |image:providers/EKS.png[EKS,40]
 |https://aws.amazon.com/eks/[Amazon Elastic Kubernetes Service,window=_blank]
 |Greenfield
-|https://docs.aws.amazon.com/IAM/latest/UserGuide/security-creds.html
+|https://docs.aws.amazon.com/IAM/latest/UserGuide/security-creds.html[Helper,,window=_blank]
 
 
 |image:providers/AKS.png[AKS,40]
 |https://azure.microsoft.com/en-us/products/kubernetes-service/[Azure Kubernetes Service,window=_blank]
 |Greenfield
-|
+|https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal[Helper,,window=_blank]
 
 |image:providers/GKE.png[GKE,40]
-|Google Kubernetes Engine
+|https://cloud.google.com/kubernetes-engine[Google Kubernetes Engine,window=_blank]
 |Greenfield
-|https://cloud.google.com/kubernetes-engine
+|https://cloud.google.com/docs/security/compromised-credentials[Helper,,window=_blank]
 
 |image:providers/Kapsule.png[Kapsule,40]
-|Scaleway Kubernetes Kapsule
+|https://www.scaleway.com/en/kubernetes-kapsule/[Scaleway Kubernetes Kapsule,window=_blank]
 |Greenfield
-|https://www.scaleway.com/en/kubernetes-kapsule/
+|https://www.scaleway.com/en/docs/identity-and-access-management/iam/how-to/create-api-keys/[Helper,,window=_blank]
 
 |image:providers/NK8.png[NK8,40]
-|Native Kubernetes
+|https://kubernetes.io[Native Kubernetes,window=_blank]
 |Brownfield 
-|https://kubernetes.io
+|link:../user-guide/environment_builder{outfilesuffix}#_native-k8-import[Helper,window=_blank]
 
 |===
 
