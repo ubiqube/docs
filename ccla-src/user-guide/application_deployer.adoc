@@ -18,7 +18,7 @@ Private Docker repositories provide restricted access to the images that they co
 
 image:PrivateDockerHub.png[width=1000px]
 
-=== Manifest APP (On going) ===
+=== Manifest APP ===
 
 To permit a large variety of applications to be deployed, Manfiest APP tab permit to import applications, from github repository. 3 types of applications are supported
 
