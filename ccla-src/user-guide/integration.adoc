@@ -9,37 +9,90 @@ Two mode supported per providers
 
 Below the matrix of supported clouds :
 
+=== Cloud Service Provider - Cloud Connections
+
+[cols="1,1,1,1"]
+|===
+| |Name|Credentials|Helper for authentication
+
+|image:providers/AWS.png[EKS,40]
+|https://aws.amazon.com/eks/[Amazon Web Services,window=_blank]
+|
+- Access Key
+
+- Secret Key
+|https://docs.aws.amazon.com/IAM/latest/UserGuide/security-creds.html[Helper,,window=_blank]
+
+|image:providers/AZURE.png[EKS,40]
+|https://azure.microsoft.com/[Microsoft Azure,window=_blank]
+|
+- Principal Client Id
+
+- Principal Client Secret
+
+- Principal Subscription Id
+
+- Principal Tenant Id
+|https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal[Helper,,window=_blank]
+
+|image:providers/GCP.png[EKS,40]
+|https://cloud.google.com/[Google Cloud Platform,window=_blank]
+|
+- Service Account Email
+
+- Private Key Id
+
+- Private Key
+
+-  Client Id
+
+- Dataset Name
+
+|https://cloud.google.com/docs/security/compromised-credentials[Helper,,window=_blank]
+
+|image:providers/SCALEWAY.png[EKS,40]
+|https://www.scaleway.com/[Scaleway,window=_blank]
+|
+- Access Key
+
+- Secret Key
+
+-  Project Id
+
+|https://www.scaleway.com/en/docs/identity-and-access-management/iam/how-to/create-api-keys/[Helper,,window=_blank]
+
+|===
+
 === Kubernetes services ===
 
 [cols="1,1,1,1"]
 |===
-| |Name|Mode|Helper for authentication
+| |Name|Mode|Comment
 
 |image:providers/EKS.png[EKS,40]
 |https://aws.amazon.com/eks/[Amazon Elastic Kubernetes Service,window=_blank]
 |Greenfield
-|https://docs.aws.amazon.com/IAM/latest/UserGuide/security-creds.html[Helper,,window=_blank]
-
+|
 
 |image:providers/AKS.png[AKS,40]
 |https://azure.microsoft.com/en-us/products/kubernetes-service/[Azure Kubernetes Service,window=_blank]
 |Greenfield
-|https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal[Helper,,window=_blank]
+|
 
 |image:providers/GKE.png[GKE,40]
 |https://cloud.google.com/kubernetes-engine[Google Kubernetes Engine,window=_blank]
 |Greenfield
-|https://cloud.google.com/docs/security/compromised-credentials[Helper,,window=_blank]
+|
 
 |image:providers/Kapsule.png[Kapsule,40]
 |https://www.scaleway.com/en/kubernetes-kapsule/[Scaleway Kubernetes Kapsule,window=_blank]
 |Greenfield
-|https://www.scaleway.com/en/docs/identity-and-access-management/iam/how-to/create-api-keys/[Helper,,window=_blank]
+|
 
 |image:providers/NK8.png[NK8,40]
 |https://kubernetes.io[Native Kubernetes,window=_blank]
 |Brownfield 
-|link:../user-guide/environment_builder{outfilesuffix}#_native-k8-import[Helper,window=_blank]
+|
 
 |===
 
