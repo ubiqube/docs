@@ -15,6 +15,7 @@ New component in the deisgner library to execute any MSA Workflows
 === Import and deploy APP with manifest file
 
 Permit to define github repository and import application build with manifest (K8 YML, TF, HelmCharts)
+=> link: ../user-guide/user-guide/application_deployer{outfilesuffix}#manifest-app-on-going[Link,window=_blank]
 
 === Quota check before deployment (Azure)
 
