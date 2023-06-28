@@ -93,11 +93,15 @@ image:providers/Add_Application_1.png[900]
 
 image:providers/App_Deployment_2.png[900]
 
-* K8 cluster
+* K8 cluster : a element reprensenting one Kubernetes cluster
 
 image:providers/K8_Cluster.png[900]
 
-* Mesh
+* Mesh : an element permetting to interconnect 2 clouds. This element should be placed after the APP
+
+* Workflow : an element allowing to execute any MSA Workflow at any place in the designer
+
+image:env_builder/worfklow_designer.png[900]
 
 === Graphical options ===
 
