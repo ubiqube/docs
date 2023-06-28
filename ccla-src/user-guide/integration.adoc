@@ -1,12 +1,60 @@
 = Integration =
 ifndef::imagesdir[:imagesdir: images/]
 
-== Cloud Service Provider ==
+Two mode supported per providers
 
-* AWS
-* Azure
-* Google Cloud
-* Scaleway
+* Greenfield : create a fresh ressource
+
+* Brownfield : import / discover an existing ressource
+
+Below the matrix of supported clouds :
+
+=== Kubernetes services ===
+
+[cols="1,1,1,1"]
+|===
+| |Name|Mode|WebSite
+
+|image:providers/EKS.png[EKS,40]
+|Amazon Elastic Kubernetes Service
+|Greenfield
+|https://aws.amazon.com/eks/
+
+
+|image:providers/AKS.png[AKS,40]
+|Azure Kubernetes Service
+|Greenfield
+|https://azure.microsoft.com/en-us/products/kubernetes-service/
+
+|image:providers/GKE.png[GKE,40]
+|Google Kubernetes Engine
+|Greenfield
+|https://cloud.google.com/kubernetes-engine
+
+|image:providers/Kapsule.png[Kapsule,40]
+|Scaleway Kubernetes Kapsule
+|Greenfield
+|https://www.scaleway.com/en/kubernetes-kapsule/
+
+|image:providers/NK8.png[NK8,40]
+|Native Kubernetes
+|Brownfield 
+|https://kubernetes.io
+
+|===
+
+=== Virtual machines ===
+
+[cols="1,1,1,1"]
+|===
+| |Name|Mode|WebSite
+
+|image:providers/EC2.png[EC2,40]
+|Amazon EC2
+|Greenfield
+|https://aws.amazon.com/ec2/
+
+|===
 
 == Add new CSP - SDK ==
 
