@@ -11,6 +11,7 @@ Adapt the platform to support multiple clusters per environement
 === Workflow component in the designer
 
 New component in the deisgner library to execute any MSA Workflows
+=> link:../user-guide/environment_builder{outfilesuffix}#_designer[Link,window=_blank]
 
 === Import and deploy APP with manifest file
 
