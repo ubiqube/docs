@@ -83,6 +83,9 @@ image:governance/org_users.png[alt=Governance Menu, width=600px,align="center"]
 
 image:governance/org_credentials.png[alt=Governance Menu, width=600px,align="center"]
 
+* GitHub Credentials
+
+image:governance/github.png[alt=Governance Menu, width=600px,align="center"]
 
 * Delete organization
 
