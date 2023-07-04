@@ -8,23 +8,18 @@ The catalog view
 
 === OpenMSA Library ===
 
+Blueprint catalog offers a large possibility of deployments
+
+image:blueprints/catalog.png[600]
+
 * Wordpress on Azure
+* Multi Regions on Azure
+* Hybrid cloud mixing a local installation of MSActivator and an external monitoring system
+* Multi clloud with distributed Redis Databases for High availability and scalability
+* Private 5G with CNF deploy on the edge
 
-image:blueprints/Wordpress_on_Azure.png[200]
-
-* Wordpress on Azure (Demo)
-
-image:blueprints/Wordpress_on_Azure_Demo.png[200]
-
-* Multi Clouds
-
-image:blueprints/Multi_Clouds_DEMO.png[200]
-
-* Multi Regions
-
-image:blueprints/Multi_Region_NonDemo.png[200]  image:blueprints/Multi_Region_Azure.png[200] 
-
-Same exist for environment with the demo flag
+Blueprints exist with the demo flag, a green capsule inside the preview. Demo flag means no real ressources are consumed on CSPs. Those blueprints permit to demonstrate orchestration framework and associated features.
+Data are simulated in this mode for different features (configure, compliance, monitoring...)
 
 === User Library ===
 
