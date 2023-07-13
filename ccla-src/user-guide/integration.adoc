@@ -15,7 +15,7 @@ Below the matrix of supported clouds :
 |===
 | |Name|Credentials|Helper for authentication
 
-|image:providers/AWS.png[EKS,40]
+|image:providers/AWS.png[AWS,40]
 |https://aws.amazon.com/eks/[Amazon Web Services,window=_blank]
 |
 - Access Key
@@ -23,7 +23,7 @@ Below the matrix of supported clouds :
 - Secret Key
 |https://docs.aws.amazon.com/IAM/latest/UserGuide/security-creds.html[Helper,,window=_blank]
 
-|image:providers/AZURE.png[EKS,40]
+|image:providers/AZURE.png[AZURE,40]
 |https://azure.microsoft.com/[Microsoft Azure,window=_blank]
 |
 - Principal Client Id
@@ -35,7 +35,7 @@ Below the matrix of supported clouds :
 - Principal Tenant Id
 |https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal[Helper,,window=_blank]
 
-|image:providers/GCP.png[EKS,40]
+|image:providers/GCP.png[GCP,40]
 |https://cloud.google.com/[Google Cloud Platform,window=_blank]
 |
 - Service Account Email
@@ -50,7 +50,7 @@ Below the matrix of supported clouds :
 
 |https://cloud.google.com/docs/security/compromised-credentials[Helper,,window=_blank]
 
-|image:providers/SCALEWAY.png[EKS,40]
+|image:providers/SCALEWAY.png[SCALEWAY,40]
 |https://www.scaleway.com/[Scaleway,window=_blank]
 |
 - Access Key
@@ -91,7 +91,7 @@ Below the matrix of supported clouds :
 
 |image:providers/NK8.png[NK8,40]
 |https://kubernetes.io[Native Kubernetes,window=_blank]
-|Brownfield 
+|Brownfield
 |
 
 |===
@@ -113,6 +113,399 @@ Below the matrix of supported clouds :
 
 === Provider definition ===
 
+* In the folder https://github.com/ubiqube/cloudclapp-wf/tree/master/CCLA_Adapters/logos[CCLA_Adapters/logos],
+add the provider's logo (Azure, AWS, ...) and its service's logo (AKS, EC2, ...) in _.logo_ format.
+
+* Then, update the file https://github.com/ubiqube/cloudclapp-wf/tree/master/CCLA_Adapters/cloud_providers.yml[CCLA_Adapters/cloud_providers.yaml] by following this template :
+
+[source, yaml]
+----
+providers:  # Under the provider key
+  my-provider:  # Add a key with the provider name
+    displayName: My Provider  # The name that will be displayed
+    category: Public Cloud  # Public or Private cloud
+    logo: Process/cloudclapp-wf/CCLA_Adapters/logos/my-provider.logo  # The path to the provider's logo
+    credentials_required : ['access_key', 'secret_key']  # Required credentials to connect and create a cluster
+    helper: https://how-to/create-api-keys/  # The link where we can find help to get the required credentials
+    quota_check : false  # true if there is a limit of deployed clusters at the same time, false if not
+    greener_regions_url : https://environment/renewable-energy-map  # The link to the page where the provider displays its actions for the environment
+    services:  # Required key
+      kubernetes:  # Name of the service that will be run by the provider (aks, ec2, ...)
+        displayName: Container Service for Kubernetes  # Name of the service that will be displayed
+        imageType: docker  # Type of image that will run (docker, vm, ...)
+        logo: Process/cloudclapp-wf/CCLA_Adapters/logos/provider_service.logo  # The path to the service's logo
+        workflow:  # Required key
+          env: Process/cloudclapp-wf/Provision_an_EKS_Cluster__AWS_/Provision_an_EKS_Cluster__AWS_  # Path to the environment creation workflow (example here with EKS)
+          appsDeployment: Process/cloudclapp-wf/Provision_Apps_EKS_Cluster/Provision_Apps_EKS_Cluster  # Path to the application deployment workflow (example here with EKS)
+          << : *common  # Required, to get the others workflows that are the same for all the providers
+----
+
+* To finish, update the file https://github.com/ubiqube/cloudclapp-wf/blob/master/CCLA_Adapters/cloud_providers_cost.json[CCLA_Adapteurs/cloud_providers_cost.json]
+to add the cost of the provider.
+
 === ENV Workflow ===
 
+==== Terraform ====
+
+Create this directory (replace {service} by the name of the service) :
+
+----
+cloudclapp-wf/Terraform_Configuration_Templates/Infrastructures/Catalogs/{service}/terraform-provision-{service}-cluster/
+----
+
+And add these 5 files to this directory :
+
+. versions.tf
++
+This is an example with Scaleway provider, adapt it to your provider
++
+[source, hcl-terraform]
+----
+terraform {
+  required_providers {
+    scaleway = {
+      source  = "scaleway/scaleway"
+    }
+  }
+  required_version = ">= 0.13"
+}
+----
+
+. {service}-cluster.tf
++
+Example of name : _kapsule-cluster.tf_
++
+Fill this file as per the provider documentation to create a cluster
+
+. terraform.tfvars
++
+This file contains the variable labels needed to create a cluster
++
+e.g. :
++
+[source, hcl-terraform]
+----
+access_key = ""
+secret_key = ""
+----
+
+. variable.tf
++
+This file contains the variable description
++
+e.g. :
++
+[source, hcl-terraform]
+----
+variable "access_key" {
+  description = "Access Key"
+}
+variable "secret_key" {
+  description = "Secret Key"
+}
+----
+
+. output.tf
++
+This file contains the variable that you want to retrieve once the cluster is created
++
+e.g. (adapt it to the provider):
++
+[source, hcl-terraform]
+----
+output "kubernetes_cluster_name" {
+  value = scaleway_k8s_cluster.default.name
+}
+----
+
+==== Creation Workflow ====
+
+Create a workflow with at least these variables :
+
+|===
+|Name |Syntax |Details
+
+|Available regions
+|{provider}_region
+|List of available regions to deploy the cluster.
+
+|Access key, Secret key, ...
+|No specific syntax required
+|Any credential required to create the cluster (one variable per field)
+
+|Use organisation credentials
+|use_org_cloud_credentials
+|Checkbox (boolean) to use organisational credentials or specific ones
+
+|Deploy Prometheus and Grafana
+|No specific syntax required
+|Checkbox (boolean) to deploy Prometheus and Grafana with the cluster's creation
+
+|Demo Environment
+|is_demo_env
+|Specify if it's a real environment or not (a fake instance of the cluster is created).
+|===
+
+Add these processes :
+
+. New fresh ENV
+. Tear Down
+. Get Status
+. Deploy Prometheus and Grafana
+. Tear Down Prometheus and Grafana
+
+Tasks for each process :
+
+. New fresh ENV
+.. https://github.com/ubiqube/cloudclapp-wf/blob/master/Provision_an_Kapsule_Cluster__Scaleway_/Process_Provision_New_Fresh_ENV/Tasks/Task_Create_TF_Workspace.py[Create TF Workspace]
+* Call the __create_workspace()__ function from the SDK
+
+.. https://github.com/ubiqube/cloudclapp-wf/blob/master/Provision_an_Kapsule_Cluster__Scaleway_/Process_Provision_New_Fresh_ENV/Tasks/Task_Set_TF_Variables_values.py[Set TF Variables values]
+* Define variables to add to the context
+* Check for organisation credentials
+* Call __set_variables()__ and __set_tags()__ functions from the SDK
+
+.. https://github.com/ubiqube/cloudclapp-wf/blob/master/Provision_an_Kapsule_Cluster__Scaleway_/Process_Provision_New_Fresh_ENV/Tasks/Task_Initialize_TF_Workspace.py[Initialize TF Workspace]
+* Call __initialize_workspace()__ function from the SDK
+
+.. https://github.com/ubiqube/cloudclapp-wf/blob/master/Provision_an_Kapsule_Cluster__Scaleway_/Process_Provision_New_Fresh_ENV/Tasks/Task_Provision_Kapsule_cluster.py[Provision cluster]
+* Call __provision_cluster()__ function from the SDK
+
+.. https://github.com/ubiqube/cloudclapp-wf/blob/master/Provision_an_Kapsule_Cluster__Scaleway_/Process_Provision_New_Fresh_ENV/Tasks/Task_Create_Kapsule_cluster_Managed_Entity.py[Create Managed Entity]
+* Call __create_cluster_me()__ function from the SDK
+
+.. https://github.com/ubiqube/cloudclapp-wf/blob/master/Provision_an_Kapsule_Cluster__Scaleway_/Process_Provision_New_Fresh_ENV/Tasks/Task_Deploy_Prometheus_and_Grafana.py[Deploy Prometheus and Grafana]
+* Check if Prometheus and Grafana needs to be deployed
+* Deploy them if needed
+
+.. https://github.com/ubiqube/cloudclapp-wf/blob/master/Provision_an_Kapsule_Cluster__Scaleway_/Process_Provision_New_Fresh_ENV/Tasks/Task_Trigger_Compliance_Scan.py[Trigger Compliance Scan]
+* Run a compliance scan on the cluster
+
+. Tear down
+.. https://github.com/ubiqube/cloudclapp-wf/blob/master/Provision_an_Kapsule_Cluster__Scaleway_/Process_Tear_Down/Tasks/Task_Teardown_Prometheus_and_Grafana.py[Tear Down Prometheus and Grafana]
+* Check if Prometheus and Grafana are already deployed
+* Undeploy them if they are
+
+.. https://github.com/ubiqube/cloudclapp-wf/blob/master/Provision_an_Kapsule_Cluster__Scaleway_/Process_Tear_Down/Tasks/Task_Terminate_Kapsule_cluster.py[Terminate cluster]
+* Check if any application is running on the cluster
+* If there is none, call __terminate()__ function from the SDK
+
+.. https://github.com/ubiqube/cloudclapp-wf/blob/master/Provision_an_Kapsule_Cluster__Scaleway_/Process_Tear_Down/Tasks/Task_Delete_Kapsule_cluster_managed_entity.py[Delete Managed Entity]
+* Check if any ME is created
+* If there is one, call __delete_me()__ function from the SDK
+
+. Get Status
+.. https://github.com/ubiqube/cloudclapp-wf/blob/master/Provision_an_Kapsule_Cluster__Scaleway_/Process_Get_Status/Tasks/Task_Get_Cluster_Status.py[Get cluster status]
+* Call __get_status()__ function from the SDK
+
+. Deploy Prometheus and Grafana
+.. https://github.com/ubiqube/cloudclapp-wf/blob/master/Provision_an_Kapsule_Cluster__Scaleway_/Process_Deploy_Prometheus_and_Grafana/Tasks/Task_Deploy_Prometheus_and_Grafana.py[Deploy Prometheus and Grafana]
+* Check if Prometheus and Grafana are already deployed
+* If not, deploy them
+
+. Tear Down Prometheus and Grafana
+.. https://github.com/ubiqube/cloudclapp-wf/blob/master/Provision_an_Kapsule_Cluster__Scaleway_/Process_Teardown_Prometheus_and_Grafana/Tasks/Task_Teardown_Prometheus_and_Grafana.py[Tear Down Prometheus and Grafana]
+* Check if Prometheus and Grafana are already deployed
+* If yes, undeploy them
+
+==== SDK ====
+
+==== cloud_sdk ====
+In the file https://github.com/ubiqube/cloudclapp-wf/blob/master/cloud_sdk/cloud.py[cloud_sdk/cloud.py],
+create a new class for the provider. Add these methods :
+
+* https://github.com/ubiqube/cloudclapp-wf/blob/497ea7f27a5660ca4da12ac1266fc9ae6e412b17/cloud_sdk/cloud.py#L1640[\__init__]
+** Initialize the object and set some variables
+
+* https://github.com/ubiqube/cloudclapp-wf/blob/497ea7f27a5660ca4da12ac1266fc9ae6e412b17/cloud_sdk/cloud.py#L1657[load_context]
+** Load credentials into the context
+
+* https://github.com/ubiqube/cloudclapp-wf/blob/497ea7f27a5660ca4da12ac1266fc9ae6e412b17/cloud_sdk/cloud.py#L1664[set_variables]
+** Set the variables for terraform
+
+* https://github.com/ubiqube/cloudclapp-wf/blob/497ea7f27a5660ca4da12ac1266fc9ae6e412b17/cloud_sdk/cloud.py#L1724[create_cluster_me]
+** Create a new Managed Entity and set variables
+
+* https://github.com/ubiqube/cloudclapp-wf/blob/497ea7f27a5660ca4da12ac1266fc9ae6e412b17/cloud_sdk/cloud.py#L1837[get_status]
+** Ping or curl the cluster to know its state
+
+* https://github.com/ubiqube/cloudclapp-wf/blob/497ea7f27a5660ca4da12ac1266fc9ae6e412b17/cloud_sdk/cloud.py#L1856[setup_kubectl_env_variable]
+** Set environment variable
+
+==== Compliance scan ====
+
+In the file https://github.com/ubiqube/cloudclapp-wf/blob/master/Compliance_Scan/Process_Launch_Scan/Tasks/Task_Launch_Scan.py[Task_Launch_Scan.py],
+update the functions __set_benchmark_report()__ and __run_compliance_scan()__ to add the provider.
+
+If the provider has any mapping with CIS standard, complete these files :
+
+* https://github.com/ubiqube/cloudclapp-wf/blob/master/Compliance_Scan/Mapping_files/CIS_providers.yaml[CIS_providers.yaml]
+* https://github.com/ubiqube/cloudclapp-wf/blob/master/Compliance_Scan/Mapping_files/CIS_standards.yaml[CIS_standards.yaml]
+* Add the benchmark in this directory : https://github.com/ubiqube/cloudclapp-wf/tree/master/Compliance_Scan/CIS_Benchmarks_Reports[CIS_Benchmark_Reports]
+
+==== Status ====
+
+Complete the https://github.com/openmsa/Adapters/blob/master/adapters/kubernetes_generic/polld/kubernetes_generic_poll.php[kubernetes_generic_poll.php] file by adding the provider, to be able to see the cluster's status on cloudclapp.
+
 === APP Workflow ===
+
+==== Terraform ====
+
+Create this directory (replace {provider} and {service} by their respective name) :
+
+----
+https://github.com/ubiqube/cloudclapp-wf/tree/master/Terraform_Configuration_Templates/Applications/Catalogs/{provider}/terraform_provision_apps_{service}_cluster
+----
+
+And add these 5 files to this directory :
+
+. https://github.com/ubiqube/cloudclapp-wf/blob/master/Terraform_Configuration_Templates/Applications/Catalogs/scw/terraform_provision_apps_kapsule_cluster/app.tf[app.tf]
++
+Define the specifications of the application to deploy
+
+. https://github.com/ubiqube/cloudclapp-wf/blob/master/Terraform_Configuration_Templates/Applications/Catalogs/scw/terraform_provision_apps_kapsule_cluster/kubernetes.tf[kubernetes.tf]
++
+Define where the application will run
+
+. https://github.com/ubiqube/cloudclapp-wf/blob/master/Terraform_Configuration_Templates/Applications/Catalogs/scw/terraform_provision_apps_kapsule_cluster/secrets.tf[secrets.tf]
++
+Create a kubernetes secret
+
+. https://github.com/ubiqube/cloudclapp-wf/blob/master/Terraform_Configuration_Templates/Applications/Catalogs/scw/terraform_provision_apps_kapsule_cluster/terraform.tfvars[terraform.tfvars]
++
+Declare the variables
+
+. https://github.com/ubiqube/cloudclapp-wf/blob/master/Terraform_Configuration_Templates/Applications/Catalogs/scw/terraform_provision_apps_kapsule_cluster/variables.tf[variables.tf]
++
+Give a description to the variables
+
+==== Workflow Creation ====
+
+Create a workflow with at least these variables :
+
+|===
+|Name |Syntax |Details
+
+|Deployment name
+|No specific syntax required
+|Name of the deployment
+
+|Deployment description
+|No specific syntax required
+|Description of the deployment
+
+|Use private DockerHub
+|use_private_docker
+|True if private docker is used, False if not
+
+|Cluster ME
+|env_infrastructure_me
+|Managed Entity on which deploy the application
+
+|Application name
+|apps_to_deploy.0.app_name
+|Name of the application to deploy
+
+|Image name
+|apps_to_deploy.0.app_image
+|Name of the image that will be deployed
+
+|Image description
+|apps_to_deploy.0.short_description
+|Short description of the image
+
+|App version
+|apps_to_deploy.0.version
+|Version of the application
+
+|Replicas
+|apps_to_deploy.0.app_replicas
+|Number of replicas for the application
+
+|Application logo
+|apps_to_deploy.0.logo_url
+|Logo of the deployed application
+
+|Application port
+|apps_to_deploy.0.app_port
+|Port that the application is listening on
+
+|Node port
+|apps_to_deploy.0.app_node_port
+|Port that is open in the node
+
+|Application access
+|apps_to_deploy.0.app_access
+|Address to access to the application
+
+|Environment variable name
+|apps_to_deploy.0.vars.0.name
+|Name of an environment variable
+
+|Environment variable value
+|apps_to_deploy.0.vars.0.val
+|Value of an environment variable
+
+|Namespace name
+|app_namespace
+|Name of the namespace
+|===
+
+Add these processes :
+
+. New APP Deployment
+. Tear Down APP
+. Pause Deployment
+. Resume Deployment
+
+Tasks for each process :
+
+. New APP Deployment
+.. https://github.com/ubiqube/cloudclapp-wf/blob/master/Provision_Apps_Kapsule_Cluster/Process_New_APP_Deployment/Tasks/Task_Create_TF_Worksapce.py[Create TF Workspace]
+* Define variables to add to the context
+* Call the __create_workspace()__ function from the SDK
+
+.. https://github.com/ubiqube/cloudclapp-wf/blob/master/Provision_Apps_Kapsule_Cluster/Process_New_APP_Deployment/Tasks/Task_Set_variables_values.py[Set variables values]
+* Check docker credentials if it's used
+* Call __set_variables()__ function from the SDK
+
+.. https://github.com/ubiqube/cloudclapp-wf/blob/master/Provision_Apps_Kapsule_Cluster/Process_New_APP_Deployment/Tasks/Task_Initialize_TF_Workspace.py[Initialize TF Workspace]
+* Call __initialize_workspace()__ function from the SDK
+
+.. https://github.com/ubiqube/cloudclapp-wf/blob/master/Provision_Apps_Kapsule_Cluster/Process_New_APP_Deployment/Tasks/Task_Provision_application.py[Provision Application]
+* Check if the cluster is running
+* If it is, call __provision_app()__ function from the SDK
+
+. Tear Down APP
+.. https://github.com/ubiqube/cloudclapp-wf/blob/master/Provision_Apps_Kapsule_Cluster/Process_Tear_Down_APP/Tasks/Task_Terminate_Application_instance.py[Terminate Application instance]
+* Call __terminate()__ function from the SDK
+
+. Pause Deployment
+.. https://github.com/ubiqube/cloudclapp-wf/blob/master/Provision_Apps_Kapsule_Cluster/Process_Pause_Deployment/Tasks/Task_Pause_Deployment.py[Pause Deployment]
+* Call __pause_main()__ function from the SDK
+
+. Resume Deployment
+.. https://github.com/ubiqube/cloudclapp-wf/blob/master/Provision_Apps_Kapsule_Cluster/Process_Resume_Deployment/Tasks/Task_Resume_Deployment.py[Resume Deployment]
+* Call __provision_app()__ function from the SDK
+
+==== SDK ====
+
+==== cloud_sdk ====
+
+In the file https://github.com/ubiqube/cloudclapp-wf/blob/master/cloud_sdk/app.py[cloud_sdk/app.py],
+create a new class for the provider. Add these methods :
+
+* https://github.com/ubiqube/cloudclapp-wf/blob/master/cloud_sdk/app.py#L775[\__init__]
+** Initialize the object and set some variables
+
+* https://github.com/ubiqube/cloudclapp-wf/blob/master/cloud_sdk/app.py#L782[set_variables]
+** Retrieve variables from context
+
+* https://github.com/ubiqube/cloudclapp-wf/blob/master/cloud_sdk/app.py#L785[set_env_context]
+** Add the cluster ip to the context
+
+* https://github.com/ubiqube/cloudclapp-wf/blob/master/cloud_sdk/app.py#L790[provision_app]
+** Set the variables for terraform
+** Deploy the application
+
+To use the node port, update the function https://github.com/ubiqube/cloudclapp-wf/blob/master/cloud_sdk/app.py#L102[set_variables_main] by adding the provider
