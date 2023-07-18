@@ -29,7 +29,7 @@ asciidoctor.doFirst {
 
 asciidoctor {    
 
-  version = '2.0.20'
+  version = '2.0.18'
 
   options doctype: 'book'
 
