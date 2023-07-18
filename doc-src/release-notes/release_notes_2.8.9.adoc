@@ -1,0 +1,87 @@
+= Version 2.8.9
+:front-cover-image: image:release-notes-front-cover-2.8.9.pdf[]
+:toc: left
+:toclevels: 3
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+ifndef::imagesdir[:imagesdir: images]
+
+//OK HTML 
+ifdef::html[]
+:includedir: doc-src/release-notes
+endif::[]
+
+// OK PDF
+ifdef::pdf[]
+:includedir: .
+endif::[]
+
+Welcome to the 2.8.9 release of the {product_name}. There are many updates in this version that we hope you'll like !
+
+== Alarms and severity percentage status summary
+
+From the alarm screen, you can view the summary of the alarm status:
+* the distribution of the alarm acknowledged and not acknowledged
+* clicking on the pie chart icon on the top right will display 2 pie charts with the distribution of both the alarm by acknowledgement status and severity 
+
+image:2.8.9_alarm_status_summary.png[width=700px]
+
+== Specific technical fixes and feature details
+
+=== Features
+
+* MSA-12476 - [Alarms] show alarms and severity percentage status summary in alarms tab
+* MSA-12772 - [API] password Type for Extended variable
+* MSA-12508 - [API] remove AutoProvisioning API from API container
+* MSA-12708 - [API] remove useless bitronix in msa-api
+* MSA-12743 - [API] remove API /elastic-search/v1/aggregation-query
+* MSA-12744 - [API] remove API /sms/v1/generate-tech-report
+* MSA-12836 - [API] API to copy directory inside repository
+* MSA-12656 - [Python SDK] workflow filtering match
+* MSA-12796 - [HA] Monitoring system for DB sync across data centers
+* MSA-12803 - [Repository] API missing to read information from meta files
+* MSA-12578 - [Security] RBAC permission for log tab under workflow
+* MSA-12617 - [Security] RBAC for API: device / permission
+* MSA-12961 - [Security] RBAC for API: orchestration
+* MSA-12964 - [Security] Create an OAuth2 compatible  endpoint for API
+* MSA-12997 - [Security] Use device credentials in encrypted format returned device read API
+* MSA-12618 - [Setting] add password type for extended variable
+* MSA-12825 - [Workflows] MicroserviceReference: get Local Variable/Remote (similar as Microservices)
+
+=== Bug fixes
+
+* MSA-12857 - [Alarms] wrong Managed Entity reference in details of alarms
+* MSA-12981 - [Alarms] bulk acknowledge all alarm action not working with large number of alarms
+* MSA-13003 - [Alarms] avoid resetting the workflows when subtenants are changed
+* MSA-12912 - [Alarms] sometimes the workflow automatically triggered from an alarm is executed twice
+* MSA-12967 - [Alarms] searchLog API error when acknowledge alarm in MSA
+* MSA-12896 - [Alarm] ack/not-ack summary status numbers should be rounded
+* MSA-12686 - [API] ubi-api-rest/configuration-objects/v2/ref-data should be case sensitive
+* MSA-12975 - [API] connection leak on /device/v2/list-labels
+* MSA-12897 - [Dashboard] overlaps in manage entity summary
+* MSA-12428 - [Managed Entity] management interface name not displayed in dashboard
+* MSA-12840 - [Managed Entity] overview tab: the time range clear and edits buttons are too close
+* MSA-12904 - [Managed Entity] overview tab: time range not persisted
+* MSA-12641 - [Microservices] variables of type "Composite" cannot be made visible in the microservice main view, without compromising the edit view.
+* MSA-12645 - [Microservices] import issue: elements of an array variable are imported line after line rather than in the same line
+* MSA-12963 - [Microservice] unable to display the imported array values.
+* MSA-12914 - [Microservice] object_id with Autoincrement is not saved for the first instance
+* MSA-12948 - [Security] command injection: parameter of activation API are not verified
+* MSA-12833 - [Security] RBAC: managed entities not filtered if a manager has more than one subtenant attached.
+* MSA-12887 - [Topology] saved location is vanished
+* MSA-12893 - [Topology] AutoRefresh frequency not working
+* MSA-12654 - [Workflows] in history tab, just 10 instances per page can be displayed
+
+== Upgrade
+
+Instructions to upgrade available in the https://ubiqube.com/wp-content/docs/latest/user-guide/quickstart.html[quickstart].
+
+=== Specific instructions for upgrading to 2.8.9
+
+The quickstart provides an upgrade script `upgrade.sh` for taking care of possible actions such as recreating some volume, executing some database specific updates,...
+
+In order to upgrade to the latest version, you need to follow these steps:
+
+1. `cd quickstart`
+2. `git checkout master`
+3. `git pull`
+4. `./scripts/install.sh`
