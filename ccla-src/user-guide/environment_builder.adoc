@@ -132,6 +132,12 @@ Environment dashboard show to the users multiple informations via tiles. From MV
 
 * Monitoring : availability graph
 
+Monitoring is done with the help of Prometheus and Grafana. It is deployed as individual deployments and services in the K8s cluster using YAML manifests available here https://github.com/prometheus-operator/kube-prometheus. These manifests create the necessary deployments, service accounts and roles required for deploying Prometheus, Grafana and Alert Manager. 
+
+To display the dashboards of these services, we create a service of type load balancer and use the native Load Balancers provided by the cloud providers.
+
+Note: Enabling monitoring will deploy additional pods and services along with load balancers for Prometheus and Grafana. Hence this will affect the cost incurred when creating the cluster
+
 image:env_builder/ENV_dashboard.png[700]
 
 === Topology / Application Diagram ===
