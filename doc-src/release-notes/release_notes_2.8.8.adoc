@@ -19,7 +19,7 @@ Welcome to the 2.8.8 release of the {product_name}. There are many updates in th
 
 == Assurance
 
-== Dashboard managed entities status
+=== Dashboard managed entities status
 
 The global status of the managed entities is now visible in the dashboard. 
 
