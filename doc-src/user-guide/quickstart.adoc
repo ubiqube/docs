@@ -197,7 +197,7 @@ To create the mini lab environment, run the CLI command from where you have clon
 
 Browse: link:https://localhost/[window=_blank] and connect with username `ncroot` and password `ubiqube`. 
 
-After Login, Go to Proile tab and Edit Profile. Update new password for `ncroot` and do Logout.
+After Login, Go to Profile tab and Edit Profile. Update new password for `ncroot` and do Logout.
 
 
 [#step{counter:step}]
