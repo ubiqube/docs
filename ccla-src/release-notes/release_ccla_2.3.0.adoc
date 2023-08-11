@@ -1,19 +1,26 @@
 
-= Version 2.2.0 (MVP3)
+= Version 2.3.0 (MVP4)
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == New features
 
 === OpenStack - Private Cloud
+Integration of OpenStack as private cloud to import and deploy new compute instances
 
-=== VMWare - Private Cloud
+=== VMWare vShpere - Private Cloud
+Integration of VMWare vShpere as private cloud to import and deploy new compute instances
 
 === Application migration
+Permit to move container application to a remote kubernetes cluster
 
 === Blueprint editor
+Allows users to edit blueprint and use them for deploying new environment
 
-=== Cloud discovery
+=== Cloud discovery of private clouds
+For private cloud, permit environments import and the availability to group them as new Cloudclapp environment
 
 === Security Dashboard
+Advanced security dashboard to deep dive on each vulnerability
 
 === On-premise installation
+Permit cloudclapp installation on premises
