@@ -8,7 +8,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 [cols="1*"] 
 |===
 
-a| link:user-guide/index{outfilesuffix}[User Guide,window=_blank]
+a| link:user-guide/user-guide-single{outfilesuffix}[User Guide,window=_blank]
 
 |===
 
