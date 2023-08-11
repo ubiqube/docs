@@ -7,7 +7,7 @@ ifndef::imagesdir[:imagesdir: images]
 
 //OK HTML 
 ifdef::html[]
-:includedir: doc-src/release-notes
+:includedir: ccla-src/release-notes
 
 [.stripes-none,cols="1,10",frame=none,grid=none,options="noheader",width="50%"]
 |===
