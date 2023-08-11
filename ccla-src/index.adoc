@@ -10,6 +10,8 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 a| link:user-guide/user-guide-single{outfilesuffix}[User Guide,window=_blank]
 
+a| link:user-guide/quickstart{outfilesuffix}[Quickstart,window=_blank]
+
 |===
 
 == Release Notes ==
