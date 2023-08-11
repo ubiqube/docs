@@ -10,14 +10,14 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 a| link:user-guide/index{outfilesuffix}[User Guide,window=_blank]
 
-a| link:release-notes/release_ccla_2.1.0{outfilesuffix}[Last release note,window=_blank]
-
 |===
 
 == Release Notes ==
 
 [cols="1*"] 
 |===
+
+a| link:release-notes/release_notes{outfilesuffix}[Release Notes,window=_blank]
 
 a| link:release-notes/release_ccla_2.3.0{outfilesuffix}[CCLA 2.3.0 - MVP4 (In progress),window=_blank]
 
