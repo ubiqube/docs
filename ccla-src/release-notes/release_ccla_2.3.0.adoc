@@ -4,9 +4,9 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == New features
 
-=== OpenStack (Private Cloud)
+=== OpenStack - Private Cloud
 
-=== VMWare (Private Cloud)
+=== VMWare - Private Cloud
 
 === Application migration
 
