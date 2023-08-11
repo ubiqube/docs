@@ -19,7 +19,9 @@ a| link:release-notes/release_ccla_2.1.0{outfilesuffix}[Last release note,window
 [cols="1*"] 
 |===
 
-a| link:release-notes/release_ccla_2.2.0{outfilesuffix}[CCLA 2.2.0 - MVP3 (In progress),window=_blank]
+a| link:release-notes/release_ccla_2.2.0{outfilesuffix}[CCLA 2.3.0 - MVP4 (In progress),window=_blank]
+
+a| link:release-notes/release_ccla_2.2.0{outfilesuffix}[CCLA 2.2.0 - MVP3,window=_blank]
 
 a| link:release-notes/release_ccla_2.1.0{outfilesuffix}[CCLA 2.1.0 - MVP2,window=_blank]
 
