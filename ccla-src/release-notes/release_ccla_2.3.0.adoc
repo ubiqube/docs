@@ -1,1 +1,19 @@
 
+= Version 2.2.0 (MVP3)
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+== New features
+
+=== OpenStack (Private Cloud)
+
+=== VMWare (Private Cloud)
+
+=== Application migration
+
+=== Blueprint editor
+
+=== Cloud discovery
+
+=== Security Dashboard
+
+=== On-premise installation
