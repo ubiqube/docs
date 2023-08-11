@@ -26,21 +26,19 @@ include::{includedir}/key_concepts.adoc[]
 
 include::{includedir}/msa_mapping.adoc[]
 
-:leveloffset: +1
+include::{includedir}/governance.adoc[]
 
 include::{includedir}/environment_builder.adoc[]
 
-include::{includedir}/infrastructure_as_code.adoc[]
+include::{includedir}/application_deployer.adoc[]
 
-:leveloffset: -1
+include::{includedir}/infrastructure_as_code.adoc[]
 
 include::{includedir}/security.adoc[]
 
 include::{includedir}/compliance.adoc[]
 
 include::{includedir}/cost_management.adoc[]
-
-include::{includedir}/governance.adoc[]
 
 include::{includedir}/green_it.adoc[]
 
