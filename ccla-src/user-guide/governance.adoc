@@ -9,16 +9,16 @@ In Cloudclapp we have two main roles *Admin* and *User (Manager)* , we will expl
 === Admin 
 To get an Admin account you have to register in Cloudclapp by clinking on *Get Started* in login page then fill the fom  and click on *Continue* :
 
-image:login_page.png[alt=Governance Menu, width=600px,align="center"]
+image:governance/login_page.png[alt=Governance Menu, width=600px,align="center"]
   
-image:register_page.png[alt=Governance Menu, width=600px,align="center"]
+image:governance/register_page.png[alt=Governance Menu, width=600px,align="center"]
   
-image:verify_email_popup.png[alt=Governance Menu, width=600px,align="center"]
+image:governance/verify_email_popup.png[alt=Governance Menu, width=600px,align="center"]
   
 You will recieve an email contains a link to activate your account , clik on it and your acoount will be activated .
   
-image:registration_email_content.png[alt=Governance Menu, width=600px,align="center"]
-image:activated_account.png[alt=Governance Menu, width=600px,align="center"]
+image:governance/registration_email_content.png[alt=Governance Menu, width=600px,align="center"]
+image:governance/activated_account.png[alt=Governance Menu, width=600px,align="center"]
 
 => Congratulation your *Admin* account is ready to use !!
 
@@ -97,17 +97,17 @@ image:governance/delete_org.png[alt=Governance Menu, width=600px,align="center"]
 
 To invite users, go to *Governance* →*Users*
 
-image:users_tab.png[alt=Governance Menu, width=900px,align="center"]
+image:governance/users_tab.png[alt=Governance Menu, width=900px,align="center"]
 
 put the user you want to invite , an email will be sent to the invited user contains a link to activate his account.
 
-image:pop_invite_users.png[alt=Governance Menu, width=900px,align="center"]
+image:governance/pop_invite_users.png[alt=Governance Menu, width=900px,align="center"]
 
-image:invite_user_succeed.png[alt=Governance Menu, width=900px,align="center"]
+image:governance/invite_user_succeed.png[alt=Governance Menu, width=900px,align="center"]
 
 *Email*  content should be like :
 
-image:email_content.png[alt=Governance Menu, width=1000px,align="center"]
+image:governance/email_content.png[alt=Governance Menu, width=1000px,align="center"]
 
 * After inviting a user you can define permissions for this user by clicking on this button image:governance/permission_icon.png[green,40] you should see all  https://github.com/ubiqube/docs/blob/master/ccla-src/user-guide/governance.adoc#permissions[permissions] related to the user account in all tabs
 
@@ -118,7 +118,7 @@ image:governance/permissions.png[alt=Governance Menu, width=900px,align="center"
 
 CloudClapp give the possibility to tag resources through terraform in other way we can filter the cost by those tags
 
-image:tags.png[alt=Governance Menu, width=900px,align="center"]
+image:governance/tags.png[alt=Governance Menu, width=900px,align="center"]
 
 == Permissions ==
 permissions defines the rights given to a user , we can see the in table the different permissions :
