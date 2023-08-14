@@ -109,10 +109,10 @@ image:invite_user_succeed.png[alt=Governance Menu, width=900px,align="center"]
 
 image:email_content.png[alt=Governance Menu, width=1000px,align="center"]
 
-* After inviting a user you can define permissions for this user by clicking on this button image:permission_icon.png[green,40] you should see all  https://github.com/ubiqube/docs/blob/master/ccla-src/user-guide/governance.adoc#permissions[permissions] related to the user account in all tabs
+* After inviting a user you can define permissions for this user by clicking on this button image:governance/permission_icon.png[green,40] you should see all  https://github.com/ubiqube/docs/blob/master/ccla-src/user-guide/governance.adoc#permissions[permissions] related to the user account in all tabs
 
 
-image:permissions.png[alt=Governance Menu, width=900px,align="center"]
+image:governance/permissions.png[alt=Governance Menu, width=900px,align="center"]
 
 == Tags ==
 
