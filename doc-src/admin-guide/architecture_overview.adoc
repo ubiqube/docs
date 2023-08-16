@@ -91,18 +91,14 @@ Runs the PostgreSQL database when the {product_name} administrative data and con
 Additional containers for testing, prototyping and training
 
 === Networking and connectivity
-
 ==== Incoming traffic
 
 By default the whole network traffic coming from external systems goes through the `msa_front` container, this includes proxying the TCP/443 and TCP/80 traffic access to:
 
 - `/`: Manager and Developer portal running on container `msa_ui`
 - `/ubi-api-rest`: REST API running in container `msa_api`
-- `/ubi-ai-ml-rest`: AI/ML REST API running in container `msa_ai_ml`
 - `/kibana`:  Kibana running in container `msa_kibana`
-
-
-`/swagger` REST API Swagger documentation and `/msa_sdk` Workflow Python SDK documentation are both in `msa_front` container 
+- `/swagger` REST API Swagger documentation and `/msa_sdk` Workflow Python SDK documentation are both in `msa_front` container 
 
 It also includes the network traffic coming from the managed entities:
 
@@ -123,16 +119,19 @@ When an user browser accesses the web UI, all requests coming from the browser w
 - Log and alarm search queries are proxied by the container msa_api to the `msa_es` container.
 - Actions related to the managed entities are proxied by the container msa_api to the `msa_sms` or `msa_monitoring` containers.
 
-image:web_portal_use.png[]
+image:web_portal_use.png[width=800px]
 
+===== Managed entities
 
-===== Entity management
+Network packet incoming flow
+
+image:network_packet_flow.png[width=600px]
 
 Entity management includes the activation, microservice configuration and import, monitoring syslog collection and alarm triggering.
 
-image:managed_entity_conn.png[]
+image:managed_entity_conn.png[width=800px]
 
-====== Activation and configuration 
+====== Activation and configuration
 
 Activation (aka initial provisioning) usually includes a verification of the connectivity between the `msa_sms` container and the managed entity. 
 Depending on the vendor and model, the protocol used for the connection usually varies between SSH, Telnet or HTTP/HTTPS (this distinction is done at the adapter layer). 
@@ -149,8 +148,8 @@ The monitoring process is `sms_polld`, running in `msa_monitoring` container.
 
 ====== Events
 
-Syslog are collected on the port 514 exposed by `msa_front` container and forwarded to the container `msa_sms`. 
-In `msa_sms`, the syslogs are processed by 2 processes: `msa_syslogd` and `msa_parserd`.
+Syslog are collected on the port 514 exposed by `msa-rsyslog` container and forwarded to the container `msa_event`. 
+In `msa_event`, the syslogs are processed by 2 processes: `msa_syslogd` and `msa_parserd`.
 
 ====== Alarms
 
