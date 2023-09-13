@@ -84,7 +84,7 @@ image:2.8.9_alarm_status_summary.png[width=700px]
 
 Instructions to upgrade available in the https://ubiqube.com/wp-content/docs/latest/user-guide/quickstart.html[quickstart].
 
-=== Specific instructions for upgrading to 2.8.9
+=== Specific instructions for upgrading to 2.8.9.1
 
 The quickstart provides an upgrade script `upgrade.sh` for taking care of possible actions such as recreating some volume, executing some database specific updates,...
 
