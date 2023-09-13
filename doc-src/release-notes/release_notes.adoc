@@ -11,6 +11,7 @@ ifdef::html[]
 
 [.stripes-none,cols="1,10",frame=none,grid=none,options="noheader",width="50%"]
 |===
+| image:pdf_icon.png[width=32px] | link:../pdf/release-notes/release_notes_2.8.10.pdf[download PDF for 2.8.10,window=_blank]
 | image:pdf_icon.png[width=32px] | link:../pdf/release-notes/release_notes_2.8.9.pdf[download PDF for 2.8.9,window=_blank]
 | image:pdf_icon.png[width=32px] | link:../pdf/release-notes/release_notes_2.8.8.pdf[download PDF for 2.8.8,window=_blank]
 | image:pdf_icon.png[width=32px] | link:../pdf/release-notes/release_notes_2.8.7.pdf[download PDF for 2.8.7,window=_blank]
@@ -39,6 +40,9 @@ The convention works as follows: x.y.z (all representing numbers) and
 Various fixes have been made to the product to ensure its continued ability to empower users, ensure a smoother user experience and deliver the value that businesses need in today's environment while being ahead in terms of features, being evergreen and the agility of the {product_name} to grow.
 
 == Releases
+
+include::{includedir}/release_notes_2.8.10.adoc[version 2.8.10]
+
 include::{includedir}/release_notes_2.8.9.adoc[version 2.8.9]
 
 include::{includedir}/release_notes_2.8.8.adoc[version 2.8.8]
