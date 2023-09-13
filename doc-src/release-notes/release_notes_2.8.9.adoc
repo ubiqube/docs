@@ -71,6 +71,15 @@ image:2.8.9_alarm_status_summary.png[width=700px]
 * MSA-12893 - [Topology] AutoRefresh frequency not working
 * MSA-12654 - [Workflows] in history tab, just 10 instances per page can be displayed
 
+== Patch 2.8.9.1
+
+* MSA-13077 - [Microservices] delete only the microservice instances that are empty from smsd based on the flag "retainIfImportIsEmpty"
+* MSA-13092 - [Microservices] inconsistency regarding boolean type variable representation
+* MSA-13118 - [Microservice] API returns empty data
+* MSA-13149 - [CoreEngine] microservices import keeps values from the DB if nothing is present from device
+* MSA-13192 - [Adapter] XPath error when the JSON to transform contained spaces in the keys
+* MSA-13015 - [Microservice] synchronize microservice with same rank during an update
+
 == Upgrade
 
 Instructions to upgrade available in the https://ubiqube.com/wp-content/docs/latest/user-guide/quickstart.html[quickstart].
