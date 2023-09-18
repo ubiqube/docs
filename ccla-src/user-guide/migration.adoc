@@ -1,7 +1,9 @@
 = Application migration
 ifndef::imagesdir[:imagesdir: images/app_deployer]
 
-
-
+Quick Overview / Tool used
+Supported use cases
+UI extract
+Limitation
 
 = Environment migration (Next release)
