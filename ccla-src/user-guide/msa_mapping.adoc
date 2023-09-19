@@ -1,4 +1,4 @@
-= MSactivator mapping
+= MSActivator mapping
 
 Cloudclapp entities have a direct mapping to MSActivator
 The tab here gives you this mapping
