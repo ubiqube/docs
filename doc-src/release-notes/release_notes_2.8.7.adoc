@@ -142,3 +142,7 @@ In order to upgrade to the latest version, you need to follow these steps:
 * MSA-12499 - [Workflows] not possible to edit a workflow when the FEATURE_WORKFLOW_OWNER flag is enabled
 * MSA-12338 - [Workflows] workflow instances have not to be displayed
 * MSA-12716 - [Workflows] import result of microservice: the value "true" appears as "1" and the value "false" appears as "'" (an empty string enclosed in single quotes)
+
+=== Patch 2.8.7.1
+
+* MSA-13256 - [Elasticsearch] API isn't able to handle an Elasticsearch search result hitcount greater than 2147483647 documents
