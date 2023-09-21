@@ -1,0 +1,103 @@
+= Version 2.8.10
+:front-cover-image: image:release-notes-front-cover-2.8.10.pdf[]
+:toc: left
+:toclevels: 3
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+ifndef::imagesdir[:imagesdir: images]
+
+//OK HTML 
+ifdef::html[]
+:includedir: doc-src/release-notes
+endif::[]
+
+// OK PDF
+ifdef::pdf[]
+:includedir: .
+endif::[]
+
+Welcome to the 2.8.10 release of the {product_name}. There are many updates in this version that we hope you'll like !
+
+== XXX
+
+From the alarm screen, you can view the summary of the alarm status:
+* the distribution of the alarm acknowledged and not acknowledged
+* clicking on the pie chart icon on the top right will display 2 pie charts with the distribution of both the alarm by acknowledgement status and severity 
+
+image:2.8.9_alarm_status_summary.png[width=700px]
+
+== Specific technical fixes and feature details
+
+=== Features
+
+* MSA-12965 - [Admin/Auth] Changing UBI_PASSWORD_VALID_DAYS will denied all login.
+* MSA-12477 - [Alarms] export alarm data in CSV format
+* MSA-12482 - [Alarms][API] export alarm data in CSV format
+* MSA-12953 - [Alarms][UI] auto acknowledgment rules in alarm definition
+* MSA-13154 - [Architecture] TFTP in HA mode
+* MSA-12653 - [Assurance] workflow for onboarding a managed entity in the telemetry index pattern
+* MSA-12699 - [CoreEngine] microservice and workflow Array variables mandatory option
+* MSA-12910 - [CoreEngine] synchronize the microservice with the same rank during an update
+* MSA-12401 - [Managed Entities] show maintenance icon in list of managed entities
+* MSA-13129 - [Managed Entities] high availability status
+* MSA-13176 - [Microservices] synchronize the microservices with the same rank during an update
+* MSA-12742 - [Microservices][API] Flexibility on array vars mandatory option
+* MSA-12955 - [Microservices] new field in microservice definition information section to store folder hierarchy
+* MSA-12844 - [HA][Monitoring] workflow for creating the report for DB synchronization across data centers
+* MSA-12846 - [HA][Monitoring] workflow for generating report DB synchronisation within a data center
+* MSA-13162 - [Repository] shows license usage
+* MSA-13000 - [Security][API] use managed entity credentials in encrypted format for the update API
+* MSA-13002 - [Security] RBAC for repository API
+* MSA-12288 - [Topology] label display between link
+* MSA-13091 - [Workflows] hide the trash icon button if no DELETE process has been associated
+* MSA-12966 - [Workflows] unique value checking on any array dropdown list for MS/WF reference, ME
+* MSA-12809 - [Workflows] MicroserviceReference type: get Local Variable/Remote (similar as Microservices)
+
+=== Bug fixes
+
+* MSA-13192 - [Adapter] XPath error when the JSON to transform contained spaces in the keys
+* MSA-12911 - [Alarms] changing the condition of one alarm deletes the actions of ALL the alarms
+* MSA-13078 - [Alarms] when different rules are created with the same triggering conditions, only one alarm is generated
+* MSA-12980 - [Alarms] all alarm severity changed to "emergency" post-version upgrade to 2.8.7
+* MSA-13106 - [Alarms] during alarm migration the number of alarm migrated is limited to 10
+* MSA-12996 - [Alarms] auto-attach workflow selected in 'Actions' to list of subtenants selected in alarm conditions, when an alarm is saved
+* MSA-13105 - [Assurance] when exporting a monitoring profile, the JSON file should have a proper name
+* MSA-12908 - [Assurance] KPI graphs are not displaying the RRD data received from API
+* MSA-12241 - [BPM] error when getting the setting file list of the file name with Japanese characters
+* MSA-13013 - [BPM] Continue button on BPM is not working when user breakpoint message box appears
+* MSA-13149 - [CoreEngine] Microservices Import still keeping values from the DB if nothing is present from Device
+* MSA-13073 - [CoreEngine] SMS container not started properly due to DB connectivity issue
+* MSA-13256 - [Elasticsearch] API isn't able to handle an Elasticsearch search result hitcount greater than 2147483647 documents
+* MSA-13077 - [Microservices/API] Delete only microservice instance that are empty from smsd based on flag retainIfImportIsEmpty
+* MSA-12978 - [Microservices] unnecessary Address Object and Address Group are displayed.
+* MSA-12000 - [Microservices] Already imported microservice instance are no more removed from database if next import is empty
+* MSA-13092 - [Microservices] inconsistency regarding boolean type variable representation
+* MSA-13156 - [Microservices] API - Unable to display multi-level arrays
+* MSA-13158 - [Microservices] CoreEngine - Unable to push config to any device through MS
+* MSA-13161 - [Microservices] UI - Nested array variable of type "Composite" is not displayed on the Create/Edit view.
+* MSA-13111 - [Managed Entities] as admin, when editing a Managed Entity, the page is blank
+* MSA-13112 - [Microservices][UI] Composite Array variable is not allowing to add values (free/preconfigured)
+* MSA-13113 - [Microservices] JSCALLCOMMAND IMPORT is not refreshing values on UI when row(s) of MS data is deleted
+* MSA-13118 - [Microservices] API returns empty data
+* MSA-13150 - [Microservices] Only 10 rows of an array variable are shown on the UI even though array has more than 10 values
+* MSA-11301 - [Security] Remove json-lib due EOS since 2010
+* MSA-12769 - [Workflows/BPM] Python error in reading report
+* MSA-13234 - [Workflows] Saving task never create defined variables to UI
+* MSA-12994 - [Workflows] Composite variable with level 2 array marked as mandatory is shown as required even after entering value
+* MSA-12885 - [Workflows] In the workflow detail screen the UI alignment of certain Array Variables is broken
+* MSA-12886 - [Workflows][UI] in the workflow details, extending the details screen to the left is not fully working on the bottom
+* MSA-13108 - [Workflows] "Not Selected" label of managed entity selector is confusing
+
+== Upgrade
+
+Instructions to upgrade available in the https://ubiqube.com/wp-content/docs/latest/user-guide/quickstart.html[quickstart].
+
+=== Specific instructions for upgrading to 2.8.10
+
+The quickstart provides an upgrade script `upgrade.sh` for taking care of possible actions such as recreating some volume, executing some database specific updates,...
+
+In order to upgrade to the latest version, you need to follow these steps:
+
+1. `cd quickstart`
+2. `git checkout master`
+3. `git pull`
+4. `./scripts/install.sh`
