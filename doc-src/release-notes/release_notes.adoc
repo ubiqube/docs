@@ -12,7 +12,10 @@ ifdef::html[]
 [.stripes-none,cols="1,10",frame=none,grid=none,options="noheader",width="50%"]
 |===
 <<<<<<< HEAD
+<<<<<<< HEAD
 | image:pdf_icon.png[width=32px] | link:../pdf/release-notes/release_notes_2.8.10.pdf[download PDF for 2.8.10,window=_blank]
+=======
+>>>>>>> 46ab647 (update RN)
 =======
 >>>>>>> 46ab647 (update RN)
 | image:pdf_icon.png[width=32px] | link:../pdf/release-notes/release_notes_2.8.9.pdf[download PDF for 2.8.9,window=_blank]
