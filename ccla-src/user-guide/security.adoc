@@ -33,4 +33,4 @@ image:security/Web Scan.png[200]
 
 When accessing security tab in application homepage, user can now see vulnerabilities raised by image and webapp scans
 
-image:security/SecurityDashboard.png[200]
+image:security/Security Dashboard.png[200]
