@@ -21,56 +21,9 @@ image:blueprints/catalog.png[600]
 Blueprints exist with the demo flag, a green capsule inside the preview. Demo flag means no real ressources are consumed on CSPs. Those blueprints permit to demonstrate orchestration framework and associated features.
 Data are simulated in this mode for different features (configure, compliance, monitoring...)
 
-=== User Library ===
+=== Editor ===
 
-== Quick Deployment ==
-Click on Create A Quick Deployment
-
-image:blueprints/Quick_Deployment.png[100]
-
-Choose recommended cloud providers
-
-image:blueprints/Choose_Cloud.png[900]     
-
-Then pick an environment for deployment
-
-image:blueprints/Pick_an_Environment.png[900]
-
-Add application images and define ports and node ports with proper deployment name
-
-image:blueprints/Add_Application.png[900]
-
-See the estimation right before your deployment and can change Hourly, Monthly or Annual
-
-image:blueprints/Cost.png[900]
-
-== The wizard ==
-
-=== Providers specificity ===
-
-=== GKE ===
-
-=== Native K8 import ===
-
-image:providers/Kubernetes.png[800]
-
-4 fields are needed to import an existing K8 platform in Cloudclapp
-
-* **API Server IP/Host** : This value is usually the IP address of the Master Node in the Kubernetes cluster
-
-* **API Server Port** :The API server is generally exposed on the port 6443 by default. Cloudclapp will check if the specific port on the given IP is reachable before Import. In a kubeconfig file, both of the above values are in the server field for a cluster
-
-* **Certificate Authority Data** : Certificat generated 
-
-* **Kubernetes Service Account Token** : Token associated with a service account. This service account can then be bound to a cluster role to provide granular access across the K8s cluster.
-
-image:providers/Kubernetes_Connection.png[900]
-
-NOTE: Check the appendix below to have more details to how retrieve those informations
-
-== Designer ==
-
-=== Library ===
+==== Library ====
 
 Drag & Drop components from Library. Library are provided for per clould providers
 
@@ -98,7 +51,7 @@ image:providers/K8_Cluster.png[900]
 
 image:env_builder/worfklow_designer.png[900]
 
-=== Graphical options ===
+==== Graphical options ====
 
 * Hand tool
 
@@ -108,9 +61,54 @@ image:env_builder/worfklow_designer.png[900]
 
 * Connect tool
 
-=== Design operations ===
+==== Design operations ====
 
-* Save design : Edit the Blueprint design and save this design.
+* Save design : Edit the Blueprint design and save this design
+
+== Quick Deployment ==
+Click on Create A Quick Deployment
+
+image:blueprints/Quick_Deployment.png[100]
+
+Choose recommended cloud providers
+
+image:blueprints/Choose_Cloud.png[900]     
+
+Then pick an environment for deployment
+
+image:blueprints/Pick_an_Environment.png[900]
+
+Add application images and define ports and node ports with proper deployment name
+
+image:blueprints/Add_Application.png[900]
+
+See the estimation right before your deployment and can change Hourly, Monthly or Annual
+
+image:blueprints/Cost.png[900]
+
+== The wizard ==
+
+=== Native K8 import ===
+
+image:providers/Kubernetes.png[800]
+
+4 fields are needed to import an existing K8 platform in Cloudclapp
+
+* **API Server IP/Host** : This value is usually the IP address of the Master Node in the Kubernetes cluster
+
+* **API Server Port** :The API server is generally exposed on the port 6443 by default. Cloudclapp will check if the specific port on the given IP is reachable before Import. In a kubeconfig file, both of the above values are in the server field for a cluster
+
+* **Certificate Authority Data** : Certificat generated 
+
+* **Kubernetes Service Account Token** : Token associated with a service account. This service account can then be bound to a cluster role to provide granular access across the K8s cluster.
+
+image:providers/Kubernetes_Connection.png[900]
+
+NOTE: Check the appendix below to have more details to how retrieve those informations
+
+== Designer ==
+
+Same as the blueprint editor, a user can modify a design before to deploy it. Two operations are possibles, additiotionaly to the save design
 
 * Save environment as blueprint : Once the design is saved. Can be used as a Environment.
 
