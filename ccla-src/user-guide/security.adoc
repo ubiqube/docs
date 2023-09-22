@@ -34,3 +34,7 @@ image:security/Web Scan.png[200]
 When accessing security tab in application homepage, user can now see vulnerabilities raised by image and webapp scans
 
 image:security/Security Dashboard.png[200]
+
+From this screen, you can visualize each vulnerabilities (description, solution, fixed in..)
+
+On the top of the vulnerability issue, user can be redirected to CWE, CVE, OWASP web pages to get more informations
