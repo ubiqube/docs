@@ -40,6 +40,8 @@ image:migrate.png[900]
 7. **Target Cluster Application Sanity Check:**
    - Once the restore is completed, perform a series of checks on the application in the target cluster to ensure its sanity and functionality.
 
+image:complete-mig.png[900]
+
 == Supported use cases
 
 When a Application running in AWS is to be migrated to a different cloud for the purpose of cost efficiency (The migration is currently supported between the major cloud providers AWS, Azure, GCP and Scaleway)
