@@ -6,4 +6,16 @@ Supported use cases
 UI extract
 Limitation
 
-= Environment migration (Next release)
+= Environment migration
+
+== Quick Overview
+
+This application migration involves moving our application from the source Kubernetes cluster to a target Kubernetes cluster using **Velero** for backup and restore. The migration process consists of the following key steps:
+
+1. **Access the Application on the Source Cluster:**
+   - Navigate to the application that you want to migrate on the source Kubernetes cluster.
+
+2. **Choose the Target Cluster:**
+   - From the drop-down menu, select the target Kubernetes cluster to which you want to migrate the application.
+
+image:migration/application_migration_menu.png
