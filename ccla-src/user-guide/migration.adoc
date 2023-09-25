@@ -18,7 +18,7 @@ This document provides a step-by-step guide for migrating our application from t
 2. **Check Target Cluster Reachability:**
    - Once the target cluster is selected, the migration workflow will check if the target cluster is reachable.
 
-image:migration/application_migration_menu.png
+image:migration/application_migration_menu.png[900]
 
 3. **Verify Velero Installation (Target Cluster):**
    - If the target cluster is reachable, the workflow checks if Velero is installed in the target cluster.
