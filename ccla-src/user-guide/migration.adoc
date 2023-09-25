@@ -20,6 +20,8 @@ This document provides a step-by-step guide for migrating our application from t
 
 image:menu.png[900]
 
+image:migrate.png[900]
+
 3. **Verify Velero Installation (Target Cluster):**
    - If the target cluster is reachable, the workflow checks if Velero is installed in the target cluster.
 
