@@ -18,4 +18,4 @@ This application migration involves moving our application from the source Kuber
 2. **Choose the Target Cluster:**
    - From the drop-down menu, select the target Kubernetes cluster to which you want to migrate the application.
 
-image:migration/application_migration_menu.png
+|image:migration/application_migration_menu.png
