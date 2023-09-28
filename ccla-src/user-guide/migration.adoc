@@ -6,8 +6,6 @@ Supported use cases
 UI extract
 Limitation
 
-= Environment migration
-
 == Application Migration Process Overview
 
 This document provides a step-by-step guide for migrating our application from the source cluster to the target cluster using Velero for backup and restore. The process involves the following key steps:
