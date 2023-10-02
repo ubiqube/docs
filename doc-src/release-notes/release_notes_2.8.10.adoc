@@ -17,13 +17,24 @@ endif::[]
 
 Welcome to the 2.8.10 release of the {product_name}. There are many updates in this version that we hope you'll like !
 
-== XXX
+Some of the key highlights include:
 
-From the alarm screen, you can view the summary of the alarm status:
-* the distribution of the alarm acknowledged and not acknowledged
-* clicking on the pie chart icon on the top right will display 2 pie charts with the distribution of both the alarm by acknowledgement status and severity 
+- alarm auto-acknowledgement
+- export alarm data in CSV format
+- hide the trash icon button if no DELETE process has been associated
 
-image:2.8.9_alarm_status_summary.png[width=700px]
+
+== Alarm auto-acknowledgement
+
+Alarm can be automatically acknowledged when the alarm condition clears.
+
+The alarm clearing conditions  can be configured in the alarm rules by adding the auto-acknowledgement parameters.
+
+image:2.8.10_alarm_auto_ack_rules.png[width=700px]
+
+== Export alarm data in CSV format
+
+image:2.8.10_alarm_download_report.png[width=700px]
 
 == Specific technical fixes and feature details
 
@@ -31,10 +42,8 @@ image:2.8.9_alarm_status_summary.png[width=700px]
 
 * MSA-12965 - [Admin/Auth] Changing UBI_PASSWORD_VALID_DAYS will denied all login.
 * MSA-12477 - [Alarms] export alarm data in CSV format
-* MSA-12482 - [Alarms][API] export alarm data in CSV format
-* MSA-12953 - [Alarms][UI] auto acknowledgment rules in alarm definition
+* MSA-12953 - [Alarms] alarm auto acknowledgment
 * MSA-13154 - [Architecture] TFTP in HA mode
-* MSA-12653 - [Assurance] workflow for onboarding a managed entity in the telemetry index pattern
 * MSA-12699 - [CoreEngine] microservice and workflow Array variables mandatory option
 * MSA-12910 - [CoreEngine] synchronize the microservice with the same rank during an update
 * MSA-12401 - [Managed Entities] show maintenance icon in list of managed entities
@@ -43,8 +52,7 @@ image:2.8.9_alarm_status_summary.png[width=700px]
 * MSA-12742 - [Microservices][API] Flexibility on array vars mandatory option
 * MSA-12955 - [Microservices] new field in microservice definition information section to store folder hierarchy
 * MSA-12844 - [HA][Monitoring] workflow for creating the report for DB synchronization across data centers
-* MSA-12846 - [HA][Monitoring] workflow for generating report DB synchronisation within a data center
-* MSA-13162 - [Repository] shows license usage
+* MSA-12846 - [HA][Monitoring] workflow for generating report DB synchronization within a data center
 * MSA-13000 - [Security][API] use managed entity credentials in encrypted format for the update API
 * MSA-13002 - [Security] RBAC for repository API
 * MSA-12288 - [Topology] label display between link
@@ -71,12 +79,10 @@ image:2.8.9_alarm_status_summary.png[width=700px]
 * MSA-12978 - [Microservices] unnecessary Address Object and Address Group are displayed.
 * MSA-12000 - [Microservices] Already imported microservice instance are no more removed from database if next import is empty
 * MSA-13092 - [Microservices] inconsistency regarding boolean type variable representation
-* MSA-13156 - [Microservices] API - Unable to display multi-level arrays
-* MSA-13158 - [Microservices] CoreEngine - Unable to push config to any device through MS
-* MSA-13161 - [Microservices] UI - Nested array variable of type "Composite" is not displayed on the Create/Edit view.
+* MSA-13156 - [Microservices] Unable to display multi-level arrays
+* MSA-13158 - [Microservices] Unable to push config to any device through MS
+* MSA-13161 - [Microservices] Nested array variable of type "Composite" is not displayed on the Create/Edit view.
 * MSA-13111 - [Managed Entities] as admin, when editing a Managed Entity, the page is blank
-* MSA-13112 - [Microservices][UI] Composite Array variable is not allowing to add values (free/preconfigured)
-* MSA-13113 - [Microservices] JSCALLCOMMAND IMPORT is not refreshing values on UI when row(s) of MS data is deleted
 * MSA-13118 - [Microservices] API returns empty data
 * MSA-13150 - [Microservices] Only 10 rows of an array variable are shown on the UI even though array has more than 10 values
 * MSA-11301 - [Security] Remove json-lib due EOS since 2010
