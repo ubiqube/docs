@@ -171,11 +171,11 @@ image:monitoringTools.png[100]
 
 Some Grafana dashboards can be imported directly to monitor environments. Use import function in grafana to upload a new dashboard
 
-* AKS Environement : https://grafana.com/grafana/dashboards/12180-aks-container-insights/
+* AKS Environment : https://grafana.com/grafana/dashboards/12180-aks-container-insights/
 
-* EKS Environement : https://grafana.com/grafana/dashboards/17119-kubernetes-eks-cluster-prometheus/
+* EKS Environment : https://grafana.com/grafana/dashboards/17119-kubernetes-eks-cluster-prometheus/
 
-* GKE Environement : https://grafana.com/grafana/dashboards/14869-iris/
+* GKE Environment : https://grafana.com/grafana/dashboards/14869-iris/
 
 
 == Details of WF steps ==
