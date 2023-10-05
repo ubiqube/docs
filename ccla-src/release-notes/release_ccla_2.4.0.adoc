@@ -1,1 +1,20 @@
-release_ccla_2.3.0.adoc
+
+= Version 2.4.0 (MVP4)
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+== New features
+
+=== Service Mesh & Observability - Istio Integration (K8s)
+Integration of Istio to permit service mesh and observability tp provide graph and charts to monitor clusters
+
+=== 3DS Outscale - Public Cloud - VM support
+Integration of 3DS Outscale as public cloud to permit deployment of new compute instances
+
+=== Cloud discovery of private clouds
+For private cloud, permit environments import and the availability to group them as new Cloudclapp environment
+
+=== Microsoft Azure - Support of VM
+Support VM creation on Azure
+
+=== Google Cloud - Support of VM
+Support VM creation on GCP
