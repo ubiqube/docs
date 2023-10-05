@@ -10,7 +10,7 @@ Integration of OpenStack as private cloud to import and deploy new compute insta
 === VMWare vShpere - Private Cloud - VM support
 Integration of VMWare vShpere as private cloud to import and deploy new compute instances
 
-=== Application migration
+=== Application migration - Velero Integration
 Permit to move container application to a remote kubernetes cluster
 
 === Blueprint editor
