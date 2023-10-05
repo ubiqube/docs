@@ -17,7 +17,7 @@ Permit to move container application to a remote kubernetes cluster
 Allows users to edit blueprint and use them for deploying new environment
 
 === Cloud discovery of private clouds (Preview, completed in CCLA 2.4)
-For private cloud, permit environments import and the availability to group them as new Cloudclapp environment
+For private cloud, permit environment import
 
 === Security Dashboard
 Advanced security dashboard to deep dive on each vulnerability
