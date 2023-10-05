@@ -16,11 +16,13 @@ Permit to move container application to a remote kubernetes cluster
 === Blueprint editor
 Allows users to edit blueprint and use them for deploying new environment
 
-=== Cloud discovery of private clouds (Preview, completed in CCLA 2.4)
-For private cloud, permit environment import
-
 === Security Dashboard
 Advanced security dashboard to deep dive on each vulnerability
 
 === On-premise installation
 Permit cloudclapp installation on premises
+
+== Preview feature
+
+=== Cloud discovery of private clouds (completed in CCLA 2.4)
+For private cloud, permit environment import and manage them in Cloudclapp
