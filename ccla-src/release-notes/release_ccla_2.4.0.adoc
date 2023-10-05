@@ -4,6 +4,9 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == New features
 
+=== UX Revamping - Organization dashboard / Taxonomy & Lifecyle
+Guide user to manage in easy way the cloud journey, from day-0 to day-2
+
 === Service Mesh & Observability - Istio Integration (K8s)
 Integration of Istio to permit service mesh and observability tp provide graph and charts to monitor clusters
 
