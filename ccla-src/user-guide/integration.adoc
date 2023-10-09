@@ -57,10 +57,33 @@ Below the matrix of supported clouds :
 
 - Secret Key
 
--  Project Id
+- Project Id
 
 |https://www.scaleway.com/en/docs/identity-and-access-management/iam/how-to/create-api-keys/[Helper,,window=_blank]
 
+|image:providers/VMWARE.png[VMware,40]
+|https://www.vmware.com/[VMWare,window=_blank]
+|
+- IP
+
+- Username
+
+- Password
+
+|
+
+|image:providers/OPENSTACK.png[OpenStack,40]
+|https://www.openstack.org/[OpenStack,window=_blank]
+|
+- IP
+
+- Username
+
+- Password
+
+- Project Id
+
+|
 |===
 
 === Kubernetes services ===
@@ -106,6 +129,16 @@ Below the matrix of supported clouds :
 |Amazon EC2
 |Greenfield
 |https://aws.amazon.com/ec2/
+
+|image:providers/vm.png[EC2,40]
+|OpenStack compute
+|Greenfield
+|
+
+|image:providers/vm.png[EC2,40]
+|VMware Virtual Machine
+|Greenfield
+|
 
 |===
 
