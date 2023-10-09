@@ -27,29 +27,19 @@ Data are simulated in this mode for different features (configure, compliance, m
 
 Drag & Drop components from Library. Library are provided for per clould providers
 
-* Provider
+* Provider : an element representing a public or private cloud platform
 
-image:providers/Providers.png[900]
+* Region / Zone : supported regions inside a provider. Not supported for VMware or Kubernetes
 
-* Region
-
-image:providers/Region.png[900]
-
-* App deployment
-
-image:providers/Add_Application_1.png[900]
-
-image:providers/App_Deployment_2.png[900]
+* App deployment : deploy an application from any marketplace or repository
 
 * K8 cluster : a element reprensenting one Kubernetes cluster
-
-image:providers/K8_Cluster.png[900]
 
 * Mesh : an element permetting to interconnect 2 clouds. This element should be placed after the APP
 
 * Workflow : an element allowing to execute any MSA Workflow at any place in the designer
 
-image:env_builder/worfklow_designer.png[900]
+image:providers/BPEditor.png[900]
 
 ==== Graphical options ====
 
