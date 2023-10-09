@@ -130,12 +130,12 @@ Below the matrix of supported clouds :
 |Greenfield
 |https://aws.amazon.com/ec2/
 
-|image:providers/vm.png[EC2,40]
+|image:providers/VM_3D.png[EC2,40]
 |OpenStack compute
 |Greenfield
 |
 
-|image:providers/vm.png[EC2,40]
+|image:providers/VM_3D.png[EC2,40]
 |VMware Virtual Machine
 |Greenfield
 |
