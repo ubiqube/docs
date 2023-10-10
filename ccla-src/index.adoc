@@ -21,7 +21,7 @@ a| link:user-guide/quickstart{outfilesuffix}[Quickstart,window=_blank]
 
 a| link:release-notes/release_notes{outfilesuffix}[Release Notes,window=_blank]
 
-a| link:release-notes/release_ccla_2.3.0{outfilesuffix}[CCLA 2.3.0 - MVP4 (In progress),window=_blank]
+a| link:release-notes/release_ccla_2.3.0{outfilesuffix}[CCLA 2.3.0 - MVP4,window=_blank]
 
 a| link:release-notes/release_ccla_2.2.0{outfilesuffix}[CCLA 2.2.0 - MVP3,window=_blank]
 
