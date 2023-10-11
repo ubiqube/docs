@@ -73,7 +73,7 @@ include::{includedir}/release_notes_2.0.adoc[version 2.0]
 
 == MANO releases
 
-include::{includedir}/mano_release_notes_3.1.0.adoc[version 3.1.0]
+include::{includedir}/mano_release_notes.adoc[version 3.x]
 
 
 == User experience (UX)
