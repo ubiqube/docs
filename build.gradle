@@ -91,19 +91,11 @@ asciidoctorPdf {
       'ubiqube': 'UBiqube',
       'company_name': 'UBiqube',
       'product_name' : 'MSActivator(TM)',
-<<<<<<< HEAD
-      'product_name-version' : 'MSActivator-2.8.9.1',
-      'openmsa_name' : 'OpenMSA(TM)',
-      'revnumber' : 'MSA-2.8.9.1',
-      'versionnumber': '2.8.9.1',
-      'revnumber-prev' : 'MSA-2.8.8',
-=======
       'product_name-version' : 'MSActivator-2.8.10',
       'openmsa_name' : 'OpenMSA(TM)',
       'revnumber' : 'MSA-2.8.10',
       'versionnumber': '2.8.10',
       'revnumber-prev' : 'MSA-2.8.9',
->>>>>>> master
       'allow-uri-read' : '',
       'sectlinks' : true,
       'pdf' : 'true',
