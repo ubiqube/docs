@@ -29,7 +29,7 @@ asciidoctor.doFirst {
 
 asciidoctor {    
 
-  version = '2.0.18'
+  version = '2.0.20'
 
   options doctype: 'book'
 
@@ -91,11 +91,19 @@ asciidoctorPdf {
       'ubiqube': 'UBiqube',
       'company_name': 'UBiqube',
       'product_name' : 'MSActivator(TM)',
+<<<<<<< HEAD
+      'product_name-version' : 'MSActivator-2.8.9.1',
+      'openmsa_name' : 'OpenMSA(TM)',
+      'revnumber' : 'MSA-2.8.9.1',
+      'versionnumber': '2.8.9.1',
+      'revnumber-prev' : 'MSA-2.8.8',
+=======
       'product_name-version' : 'MSActivator-2.8.10',
       'openmsa_name' : 'OpenMSA(TM)',
       'revnumber' : 'MSA-2.8.10',
       'versionnumber': '2.8.10',
       'revnumber-prev' : 'MSA-2.8.9',
+>>>>>>> master
       'allow-uri-read' : '',
       'sectlinks' : true,
       'pdf' : 'true',
@@ -111,7 +119,7 @@ asciidoctorPdf {
   sourceDir file('doc-src')
   sources {
     include 'user-guide/manager-guide-single.adoc', 'admin-guide/admin-guide-single.adoc', 'developer-guide/developer-guide-single.adoc', 
-      'release-notes/release_notes.adoc', 'release-notes/release_notes_2.8.5.adoc', 'release-notes/release_notes_2.8.6.adoc', 'release-notes/release_notes_2.8.7.adoc', 'release-notes/release_notes_2.8.9.adoc', 'release-notes/release_notes_2.8.10.adoc','user-guide/quickstart.adoc', 'user-guide/quickstart_jp.adoc'      
+      'release-notes/release_notes.adoc', 'release-notes/release_notes_2.8.5.adoc', 'release-notes/release_notes_2.8.6.adoc', 'release-notes/release_notes_2.8.7.adoc', 'release-notes/release_notes_2.8.8.adoc', 'release-notes/release_notes_2.8.9.adoc', 'release-notes/release_notes_2.8.10.adoc','user-guide/quickstart.adoc', 'user-guide/quickstart_jp.adoc'      
  }
   outputDir file('build/pdf')
 
