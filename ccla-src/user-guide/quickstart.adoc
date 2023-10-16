@@ -8,15 +8,25 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 ifdef::html,env-github,env-browser[]
 :includedir: ccla-src/user-guide
 
-WIP - Q2 2023 / MVP3
+This documentation covers how you can quickly get started using Cloudclapp™ by installing a Docker based mini lab and start testing the product.
 
-On prem installation
-######
+Cloudclapp(TM) needs MSActivator(TM) to be fully functionnal.
 
-Give path to quickstart
+=== Installation
 
-#####
-Install Lib
+Follow the same installation guide as per this documentation : https://ubiqube.com/wp-content/docs/latest/user-guide/quickstart.html
 
-/usr/bin/install_libraries.sh ccla
-https://10.31.1.190/ubi-api-rest/ccla/libraries/install
+The same installation script has been updated to support Cloudclapp. Execute it with the ccla flag to have Cloudclapp installed :
+
+----
+./scripts/install.sh --ccla
+----
+
+=== Portal access
+
+After installation, browse https://localhost/ and connect with username ncroot and password ubiqube to access the MSActivator(TM) portal.
+
+For Cloudclapp(TM), browse https://localhost/cloudclapp/sign-up, define your first organization and connect with credentials received by mail
+
+NOTE: SMTP server must be configured to received the registration email
+

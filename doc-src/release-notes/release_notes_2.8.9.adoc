@@ -13,7 +13,7 @@ endif::[]
 // OK PDF
 ifdef::pdf[]
 :includedir: .
-endif::[]
+endif::[] 
 
 Welcome to the 2.8.9 release of the {product_name}. There are many updates in this version that we hope you'll like !
 
@@ -25,12 +25,16 @@ From the alarm screen, you can view the summary of the alarm status:
 
 image:2.8.9_alarm_status_summary.png[width=700px]
 
+== Password type for {product_name} variable
+
+image:2.8.9_password_type_msa_param.png[width=700px]
+
 == Specific technical fixes and feature details
 
 === Features
 
 * MSA-12476 - [Alarms] show alarms and severity percentage status summary in alarms tab
-* MSA-12772 - [API] password Type for Extended variable
+* MSA-12772 - [API] password type for extended variable
 * MSA-12508 - [API] remove AutoProvisioning API from API container
 * MSA-12708 - [API] remove useless bitronix in msa-api
 * MSA-12743 - [API] remove API /elastic-search/v1/aggregation-query

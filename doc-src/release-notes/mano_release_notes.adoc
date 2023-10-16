@@ -1,0 +1,109 @@
+= ETSI MANO Releases
+//:front-cover-image: image:mano-release-notes-front-cover-3.1.0.pdf[]
+:toc: left
+:toclevels: 3
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+ifndef::imagesdir[:imagesdir: images]
+
+//OK HTML 
+ifdef::html[]
+:includedir: doc-src/release-notes
+endif::[]
+
+// OK PDF
+ifdef::pdf[]
+:includedir: .
+endif::[]
+
+== MANO Workflows
+
+* MSA-13055 - [MANO] the managed entity name doesn't give any insight or meaningful description or proper name except it Openstack instance ID
+* MSA-13056 - [MANO] deleting VNF instance in workflow doesn't automatically delete these managed entities
+* MSA-13057 - [MANO] extract VNF and /or NS descriptor_id from the VNF/NS package and insert in the dedicated WF variable to be displayed.
+* MSA-13058 - [MANO] Missing Onboarded VNF package in the VNF Catalog
+* MSA-13059 - [MANO] duplicate VNF package ID
+* MSA-13062 - [MANO] error during VNF instantiation / no instance spawn in the Openstack
+* MSA-13069 - [MANO] VNF Package Onboarding - Add async operation checking WF process task
+
+== MANO Core 3.2.0
+
+* MSA-10972 - [MANO] support multiple NFVI resource instances (VIMs) under one NFVO (MANO)
+
+== MANO Core 3.1.0
+
+*  Add VNF port informations, and Save task after each steps
+*  core: Add Wait for VnfLcmOpOcc method in mano client
+*  VNFM Juju Controller
+*  core: Change flavor name to avoid collision
+*  Fix grant and extCp networks
+*  vnfm/nfvo-webapp: Add ES url for micrometer
+*  core: properly handle VL when extCp point on it
+*  mano-core: Add better error message in plan service, when VnfExCp not found
+*  nfvo: Add x-descriptor-id header to overwrite NSD package descriptor id
+*  nfvo: Add x-descriptor-id header to overwrite VNF package descriptor id
+*  2.7.1: Fiw vnf lcm urls
+*  vnfm-core: Update helm3-api version
+*  auth-cert: Switch to sslBundle
+*  etsi-models: Remove all swagger v2 jars
+*  Swagger 3 migration of NFVO controllers: 3.3.1 / 3.5.1 / 3.6.1 / 4.3.1
+*  Swagger 3 migration of SOL009 controllers: 3.3.1
+*  Swagger 3 migration of SOL009 model: 3.3.1
+*  Remove version of springdoc: 2.8.1
+*  Swagger 3 migration of EM: 2.8.1
+*  Swagger 3 migration of NFVO controllers: 2.8.1
+*  Swagger 3 migration of VNFM: 2.8.1
+*  Swagger 3 migration of model: 2.8.1
+*  Swagger 3 migration of EM
+*  Swagger 3 migration of NFVO controllers: 2.7.1
+*  Swagger 3 migration of VNFM controllers: 2.7.1
+*  Swagger 3 migration of model: 2.7.1
+*  tosca-api: Better error message on missing tosca files
+*  package-parser: Add exception when creating an URL in sol004 onboarding
+*  vim-k8s: Force base64 encoding due to a bug in very old microhelm library
+*  Add traceId in alarm and monitoring webapps
+*  nfvo-core: Fix for spring boot 3.1.0
+*  vnfm-core: Fix for spring boot 3.1.0
+*  mano-alarm: Add new webapp
+*  Fix alarm APIs: 2.6.1 / 4.3.1
+*  Fix alarm APIs
+*  mano-mon: Add remote search service
+*  mano-mon: Add metric search service
+*  mano-mon: Add zipkin configuration
+*  nfvo-core: Add missing alarm front controller implementation
+*  webapps: Change mano-auth url
+*  add alarm frontController: 2.6.1 / 4.3.1
+*  add FN Subscription controller: 2.6.1
+*  mano-core: Chnage self check to actuator health check
+*  vim-openstack: Add SFC tests
+*  vim-openstack: Remove duplicate auth for sfc
+*  monitoring: Make monitoring API url configurable
+*  vim-openstack: Remove duplicated authentication code
+*  mano-core: Crash when no Servers is found
+*  vnfm-core: Split scale stratrgy
+*  package-yang: Remove ODL yang parser
+*  vnfm-core: Add more coverage on existing TU
+*  monitoring: Add better mesage when no metric is found
+*  vnfm-webapp: Fix k8s parser dependency version
+*  yang: More works on pre parsing
+*  yang: Adding SOL006 4.3.1 version
+*  package-yang: Move default yang files to 3.3.1 version folder
+*  monitoring: Add data change package in webapp
+*  mano-mon: Add search API
+*  mano-core: Factorize vnf package subscribe
+*  add annotation in lcmcoord interface: 4.3.1
+*  vnfm-core: Better error reporting for container contributor
+*  vnfm-core: Better error reporting for compute contributor
+*  Pm job fix NPE issues: 4.3.1
+*  add 2 package-info for testing: 4.3.1
+*  add EM test unit dependencies: 2.6.1
+*  fix Arch test unit in EM: 4.3.1
+*  clear jenkins test unit problems: 4.3.1 / 3.6.1 / 3.5.1 / 3.3.1 / 2.8.1 / 2.7.1
+*  test, adding a single test unit in em project: 2.7.1 / 2.6.1 / 3.4.1 / 4.3.1 / 2.8.1 / 2.7.1
+*  monitoring: Rename Subscription table
+*  mano-model: Fix add task in nsd blueprint
+*  fix pm job URL: 4.3.1 / 3.6.1
+*  mano-model: Fix extra id in Servers entity
+*  mano-core: Fix Vim capacity extraction for vxlan & vlan transparent
+*  mano-core: Fix Image visitor when there is no scheme
+*  mano-fluxrest: Fix bypass ssl
+*  mano-em: Add Version on connection property

@@ -1,4 +1,4 @@
-= MSactivator mapping
+= MSActivator mapping
 
 Cloudclapp entities have a direct mapping to MSActivator
 The tab here gives you this mapping
@@ -15,6 +15,9 @@ The tab here gives you this mapping
 
 |User
 |Manager
+
+|Cloud connection (private clouds)
+|A protected subtenant + Managed entities (OpenStack/VMWare) + MS attached + Discovery WF
 
 |Blueprint
 |A BPM

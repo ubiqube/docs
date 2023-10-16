@@ -193,9 +193,17 @@ To create the mini lab environment, run the CLI command from where you have clon
 `docker-compose exec msa-dev /usr/bin/create_mini_lab.sh`
 
 [#step{counter:step}]
-=== Step {step}: start using the {product_name}
+=== Step {step}: change default password of super admin(ncroot)
 
 Browse: link:https://localhost/[window=_blank] and connect with username `ncroot` and password `ubiqube`. 
+
+After Login, Go to Profile tab and Edit Profile. Update new password for `ncroot` and do Logout.
+
+
+[#step{counter:step}]
+=== Step {step}: start using the {product_name}
+
+Browse: link:https://localhost/[window=_blank] and connect with username `ncroot` and updated password in previous step.
 
 == Mini lab detailed description
 === Use case 1: firewall orchestration on Linux

@@ -87,7 +87,7 @@ Secret Resource for use with Private Dockerhub images
 - cluster.tf file for every provider that has resources for creating the K8s cluster
 - variables.tf file contains variable definitions
 
-image:InfraFiles.png[Infrastructure,150]
+image:iac/InfraFiles.png[Infrastructure,150]
 
 === Application
 - A .tf file with the name of each app

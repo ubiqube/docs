@@ -1,0 +1,41 @@
+= Cloudclapp(TM) Release Notes
+:front-cover-image: image:release-notes-front-cover.pdf[]
+:toc: left
+:toclevels: 3
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+ifndef::imagesdir[:imagesdir: images]
+
+//OK HTML 
+ifdef::html[]
+:includedir: ccla-src/release-notes
+
+[.stripes-none,cols="1,10",frame=none,grid=none,options="noheader",width="50%"]
+endif::[]
+== Latest release 
+
+The latest {product_name} release is {revnumber}. 
+
+The convention works as follows: x.y.z (all representing numbers) and
+
+- x = major release (major upgrade of product)
+- y = minor release (features, changes)
+- z = bug or security fixes
+
+== Fixes
+
+Various fixes have been made to the product to ensure its continued ability to empower users, ensure a smoother user experience and deliver the value that businesses need in today's environment while being ahead in terms of features, being evergreen and the agility of the {product_name} to grow.
+
+== Releases
+
+include::{includedir}/release_ccla_2.3.0.adoc[version MVP4]
+
+include::{includedir}/release_ccla_2.2.0.adoc[version MVP3]
+
+include::{includedir}/release_ccla_2.1.0.adoc[version MVP2]
+
+include::{includedir}/release_ccla_2.0.0.adoc[version MVP1]
+
+:leveloffset: +1
+
+include::{includedir}/versions.adoc[]
+
