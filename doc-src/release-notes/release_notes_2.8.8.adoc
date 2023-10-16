@@ -49,13 +49,13 @@ image:2.8.8_hidden_activation_pwd.png[width=700px]
 
 * MSA-12749 - [Admin] add an email for subtenant
 * MSA-12736 - [Admin] optionally delete deployment settings and monitoring profile during subtenant deletion
-* MSA-12791 - [Alarms/API] enhance alarm search API to have only subset of fields in the search result
+* MSA-12791 - [Alarms] enhance alarm search API to have only subset of fields in the search result
 * MSA-12511 - [Alarms/Logs] improve column width distribution to optimize the data visibility
 * MSA-12516 - [Alarms/Logs] enhance event details
-* MSA-11816 - [Assurance] Import and export monitoring profiles
+* MSA-11816 - [Assurance] import and export monitoring profiles
 * MSA-12475 - [Dashboard] show managed entities availability status in percentage and count in manager dashboard
 * MSA-12785 - [Deployment setting/Monitoring profile] do not delete when attached to other subtenant
-* MSA-12777 - [Microservices/UI] disable data sorting for microservices
+* MSA-12777 - [Microservices] disable data sorting for microservices
 * MSA-11746 - [Repository] visibility control for repository API
 * MSA-12775 - [Repository] enable upload feature for all folders under the repository view
 * MSA-11615 - [Security] smsuser credential is hardcoded in msa-alarm project.
@@ -80,6 +80,10 @@ image:2.8.8_hidden_activation_pwd.png[width=700px]
 * MSA-12640 - [Microservices] for a variable of type "Microservice Reference", setting the "Local Variable" and "Remote Variable" doesn't work.
 * MSA-12642 - [Microservices] array variables with type "Unique Value" should only show the values that have not been selected before
 * MSA-12644 - [Microservices] array variable of type "Auto Increment" is not incrementing the value
+
+== Patch 2.8.8.1
+
+* MSA-13246 - [Microservices] "No enum constant" exception while executing a microservice CREATE from a workflow
 
 == Upgrade
 
