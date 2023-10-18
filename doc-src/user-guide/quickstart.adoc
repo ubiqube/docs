@@ -38,7 +38,7 @@ endif::[]
 The following prerequisites are required for a successful use of {product_name}:
 
 . A recent version of Git. 
-. A working docker and docker-compose setup
+. A working docker and docker compose setup
 * link:https://docs.docker.com/install/[Docker,window=_blank]
 * link:https://docs.docker.com/compose/install/[Docker Compose,window=_blank]
 
@@ -56,7 +56,7 @@ Ensure you have access from HOST machine(s) to:
 Often the {product_name} has to be installed on a host that sits behind a proxy. 
 This requires some specific configuration on the host, on docker and also on the {product_name} containers themselves:
 
-Proxy setting on the host OS where the proxy needs to be specified and used. This is needed to download all the necessary docker packages as well as docker-compose on the machine. 
+Proxy setting on the host OS where the proxy needs to be specified and used. This is needed to download all the necessary docker packages as well as docker compose on the machine. 
 Those settings are different depending on the OS that might be used. 
 
 Once installed, docker does not inherit the proxy settings from the host machine. 
@@ -190,7 +190,7 @@ In order to ease your discovery of {product_name}, we are providing a script tha
 
 To create the mini lab environment, run the CLI command from where you have cloned the quickstart Github project:
 
-`docker-compose exec msa-dev /usr/bin/create_mini_lab.sh`
+`docker compose exec msa-dev /usr/bin/create_mini_lab.sh`
 
 [#step{counter:step}]
 === Step {step}: change default password of super admin(ncroot)
@@ -231,7 +231,7 @@ The quickstart repository is maintained on https://github.com/ubiqube/quickstart
 
 If you are upgrading your {product_name}, the best and easiest option is to remove your Quickstart git repository and use `git clone` to get the new version.
 
-NOTE: In case you have updated the {product_name} with `docker-compose up -d` or `docker-compose pull`, you might experience cache issues (for instance, your changes may not be reflected on the UI). To solve that, you can clean your browser cache, or use a browser private session.
+NOTE: In case you have updated the {product_name} with `docker compose up -d` or `docker compose pull`, you might experience cache issues (for instance, your changes may not be reflected on the UI). To solve that, you can clean your browser cache, or use a browser private session.
 
 === Upgrade version N to N+1
 
@@ -268,7 +268,7 @@ If your original version is 2.1, plz refer to upgrade script first provided with
 . `git pull`
 . `./scripts/install_win.sh`
 
-NOTE : you may face an issue at the end of the script with a message "Wait Kibana to be ready". This is a known issue, the workaround is to execute `docker-compose up -d` from another CLI.
+NOTE : you may face an issue at the end of the script with a message "Wait Kibana to be ready". This is a known issue, the workaround is to execute `docker compose up -d` from another CLI.
 
 === Install a specific version
 
@@ -291,7 +291,7 @@ This script is designed to populate the libraries for a fresh install or to upda
 
 [source, shell]
 ----
-$ docker-compose exec msa-dev /usr/bin/install_libraries.sh --help
+$ docker compose exec msa-dev /usr/bin/install_libraries.sh --help
 usage: install_libraries.sh all|ms|wf|da|py|mano|quickstart [--lic] [-y]
 
 this script installs some libraries available @github.com/openmsa
