@@ -1,5 +1,5 @@
 
-= Version 2.3.0 (MVP4)
+= Version 2.3.0
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == New features
