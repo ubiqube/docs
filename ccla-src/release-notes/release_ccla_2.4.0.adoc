@@ -1,5 +1,5 @@
 
-= Version 2.4.0 (MVP5 - Q4 2023, on going)
+= Version 2.4.0 (Q4 2023, on going)
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == New features
