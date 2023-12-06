@@ -84,11 +84,27 @@ image:2.8.9_password_type_msa_param.png[width=700px]
 * MSA-13192 - [Adapter] XPath error when the JSON to transform contained spaces in the keys
 * MSA-13015 - [Microservice] synchronize microservice with same rank during an update
 
+== Patch 2.8.9.2
+
+* MSA-13352	 - [Assurance] custom SNMP KPI are not shown in the managed entity monitoring graph
+
+== Patch 2.8.9.3
+
+* MSA-13103 - [Dashboard] blank page when reset global settings/reset on customize dashboard page
+* MSA-13210 - [Dashboard][API/UI] blank window during dashboard reset
+* MSA-13266 - [Monitoring] the msg "no data available" is missing when the monitoring profil attached to device has no data
+* MSA-13275 - [MANO] csar package validation tab/ drop down list not visible with users other than ncroot
+* MSA-13305 - [Settings - UI/API] UI keeps resetting to dark theme after changing the value
+* MSA-13341 - [UI/MANO] csar package validation tab/ drop down list not visible with users other than ncroot user
+* MSA-13353 - [Assurance] Not able to see the graph of last one day for both default and Monitoring profile graphs
+* MSA-13443 - [Repository] Can not display anything in repository when i click on repository tab
+* MSA-13474 - [UI] Can not edit a subtenant
+
 == Upgrade
 
 Instructions to upgrade available in the https://ubiqube.com/wp-content/docs/latest/user-guide/quickstart.html[quickstart].
 
-=== Specific instructions for upgrading to 2.8.9.1
+=== Specific instructions for upgrading to 2.8.9.3
 
 The quickstart provides an upgrade script `upgrade.sh` for taking care of possible actions such as recreating some volume, executing some database specific updates,...
 
