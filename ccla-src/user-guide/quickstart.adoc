@@ -10,7 +10,7 @@ ifdef::html,env-github,env-browser[]
 
 This documentation covers how you can quickly get started using Cloudclapp™ by installing a Docker based mini lab and start testing the product.
 
-Cloudclapp(TM) needs MSActivator(TM) to be fully functionnal.
+Cloudclapp(TM) needs MSactivator(TM) to be fully functionnal.
 
 === Installation
 
