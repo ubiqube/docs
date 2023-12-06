@@ -27,11 +27,11 @@ a| link:community-guide/index{outfilesuffix}[Community Guide,window=_blank]
 
 |2.8.11
 |18/Dec/23
-|https://github.com/ubiqube/quickstart/releases/tag/MSA-2.8.11
+|
 
 |2.8.9.3
 |7/Dec/23
-|https://github.com/ubiqube/quickstart/releases/tag/MSA-2.8.9.3
+|
 
 |2.8.9.2
 |3/Nov/23
