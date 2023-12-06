@@ -1,0 +1,156 @@
+
+
+= Version 2.8.11
+:front-cover-image: image:release-notes-front-cover-2.8.11.pdf[]
+:toc: left
+:toclevels: 3
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+ifndef::imagesdir[:imagesdir: images]
+
+//OK HTML 
+ifdef::html[]
+:includedir: doc-src/release-notes
+endif::[]
+
+// OK PDF
+ifdef::pdf[]
+:includedir: .
+endif::[]
+
+Welcome to the 2.8.11 release of the {product_name}. There are many updates in this version that we hope you'll like !
+
+Some of the key highlights include:
+
+- new KPIs in the manager dashboard
+- support of Japanese language
+- updates in alarms & logs view
+- new rights in permission profile
+- edit Microservices stack multiple times & categories for Microservices
+
+== User Experience
+
+=== New KPIs in the manager dashboard ===
+Introducing new alarm count for managed entities in a manager dashboard.
+Once logged, a manager, in the infrastructure panel, can now see number of alarms received associated to managed entities.
+Also, clicking on this alarm notification permit to be redirected to alarms view.
+
+=== Japanese language ===
+We're thrilled to announce that our product now fully supports the Japanese language.
+ With this update, we aim to enhance the user experience for our Japanese-speaking customers, providing a more inclusive and accessible platform. 
+
+== Specific technical fixes and feature details
+
+=== Features
+
+* MSA-12620 - [Microservice] [UI] categories should be displayable and configurable
+* MSA-12709 - [API] upgrade spring version in msa-api
+* MSA-12719 - [Alarms/Logs] add search field for list of Managed Entities in the filter
+* MSA-12819 - [API - ECL API Delivery - Implementation & Testing
+* MSA-12863 - [Logs][UI] add attack section in log details
+* MSA-12864 - [Logs][SMS/API] return attack logs details
+* MSA-12865 - [Permission Profile] workflow console logs should be controlled by permission profile
+* MSA-12954 - [Managed Entities] show tool tips for status icons in list of managed entities
+* MSA-12955 - [API] new field in microservice definition information section to store folder hierarchy
+* MSA-13044 - [CoreEngine] Move snmp trap management in a dedicated container
+* MSA-13045 - [CoreEngine] Remove snmp traps management in sms_parserd
+* MSA-13046 - [CoreEngine] sms_snmptrapd should write directly to ES
+* MSA-13047 - [CoreEngine] Merge sms_syslogd and sms_parserd into one daemon
+* MSA-13048 - [CoreEngine] Chose the best message bus for syslogs
+* MSA-13049 - [CoreEngine] Implement the consumer part of kafka in parserd
+* MSA-13050 - [CoreEngine] Make the ouput module of rsyslog comptible with kafka broker
+* MSA-13071 - [Backend] Add "less" command on sms & api container
+* MSA-13072 - [UI] Display entire subtenant name in Dropdown list section - add tooltip
+* MSA-13080 - [Permission Profile] Manager profile
+* MSA-13104 - [Alarms][API] In manager dashboard / infrastructure: add managed entity count for alarm
+* MSA-13119 - [Repository][UI] ability to add/update tags in metafiles in repository and delete files
+* MSA-13129 - [Managed Entities] high availability status
+* MSA-13130 - [Microservice] Permit user to re edit after saving (before Apply changes) same as MSAv17
+* MSA-13155 - [Governance - Add permissions for repository management
+* MSA-13164 - [Assurance][UI] incident ticket management: list tickets screen
+* MSA-13167 - [UI/Translation] UI support for japanese language
+* MSA-13171 - [Packaging] Replace deprecated docker-compose by docker compose
+* MSA-13172 - [Repository - Shows license (for others repository files) usage from UI repository
+* MSA-13173 - [Assurance][PHP] incident ticket management - backend development
+* MSA-13223 - [Microservice][UI] add full synchronize option
+* MSA-13254 - [Microservice] if the variable of type "Microservice reference" isn't mandatory, we should be able to "unselect" any microservice instance
+* MSA-13257 - [Managed Entities] high availability status - Information section
+* MSA-13258 - [Alarms][UI] In manager dashboard / infrastructure: add managed entity count for alarm
+* MSA-13259 - [Repository][API] ability to add/update tags in metafiles in repository and delete files
+* MSA-13261 - [Alarms][API] user should be able to manually clear an alarm
+* MSA-13274 - [Assurance][UI] incident ticket management: view ticket screen
+* MSA-13276 - [Managed Entity] HA status - display region and zone-group "lab4ec_zone1-groupa"
+* MSA-13292 - [Packaging] Adapt install library to work with python-sdk
+* MSA-13294 - [Repository] Default .meta_* files are not copied/initialized
+* MSA-13297 - [Assurance] update fields in the ubimon-* index in elasticsearch
+* MSA-13369 - [Governance] Remove customer email in Subtenant level
+* MSA-13398 - [Governance - New permissions for infrastructure, automation and user profile
+* MSA-13425 - [Alarms/Logs - display timezone offest
+
+=== Bug fixes
+
+* MSA-6888 - [Managed Entity] the tooltips that show the managed entity ID don't have the tenant ID appended
+* MSA-12116 - [Managed Entity] Not able to modify/delete a configuration variable if the name contains a white space at the end when creating it
+* MSA-12533 - [License] UI notification not working / user loses the license info
+* MSA-12627 - [Audit Log] Don't save read requests in audit logs
+* MSA-12920 - [CoreEngine][UI] alarms/logs: details showing 3 timestamps is confusing
+* MSA-13042 - [UI] Not able to attach more than 50 MEs to a deployment settings
+* MSA-13112 - [Microservices][UI] Composite Array variable is not allowing to add values (free/preconfigured)
+* MSA-13113 - [Microservices] JSCALLCOMMAND IMPORT is not refreshing values on UI when row(s) of MS data is deleted
+* MSA-13177 - [Assurance] Different time-zone between display & inserted time when filtering alarms/logs
+* MSA-13184 - [UI] manager is able to delete a WF instance whereas he shouldn't according to the permission profile
+* MSA-13210 - [Dashboard][API/UI] blank window during dashboard reset
+* MSA-13228 - [Workflow][UI] json malformation in context
+* MSA-13237 - [Repository] remove create date and modification date from disk
+* MSA-13238 - [Microservices][UI] nested composite variable doesn't support regex in selector value setting
+* MSA-13241 - [CoreEngine] load_one_es_log.sh does not manage correctly errors
+* MSA-13246 - [Microservice] "No enum constant" exception while executing a microservice CREATE from a workflow
+* MSA-13251 - [CoreEngine] IPUP sent by sms_syslogd to smsd are lost due to bad ip
+* MSA-13256 - [Elasticsearch] API isn't able to handle an Elasticsearch search result hitcount greater than 2147483647 documents
+* MSA-13260 - [Workflow] process is not displayed correctly after a save or a change
+* MSA-13262 - [Microservices] none on the microservices are loading data in the configure tab on latest MSA 2.8.11 b51
+* MSA-13264 - [Microservices] auto increment variable doesn't work for "Duplicate" method of a microservice.
+* MSA-13267 - [Assurance] multiple entries in drop-down for a single monitoring profile attached to a managed entity
+* MSA-13271 - [CoreEngine] snmp traps no more managed by MSA
+* MSA-13272 - [Microservices][UI] nested composite variables are displayed even when they are configured not to be displayed.
+* MSA-13275 - [MANO] csar package validation tab/ drop down list not visible with users other than ncroot
+* MSA-13281 - [Microservices][UI] a level 2 array variable of type Auto Increment does not work as it should
+* MSA-13282 - Attach license api is attaching already used license
+* MSA-13283 - DB Upgrade not passing - STEP 107
+* MSA-13287 - Typo Error for [Managed Entity]
+* MSA-13288 - [Logs] Pagination issue at managed entity level: selection of number of rows in 'Logs' tab is not working.
+* MSA-13295 - [Repository] license file contents are lost when uploaded using the upload button in repository UI
+* MSA-13303 - [CoreEngine] Use separate bulkfile volume for core engine containers
+* MSA-13305 - [Settings - UI/API] UI keeps resetting to dark theme after changing the value
+* MSA-13309 - [CoreEngine] VNOC events generated by msa-sms container are no more indexed in ES since MSA 2.8.11 build 118
+* MSA-13316 - [Offline] Unable to set elasticsearch default password
+* MSA-13318 - [Microservice] "_order" variable is not added by default, but requires it to be mentioned in the POST IMPORT section in MSAv2
+* MSA-13321 - [Offline] Call update-ca-trust on container that need outside services.
+* MSA-13327 - [API] Repository/Entities files cache (hmap) is not working properly with 2 msa-api container instances
+* MSA-13330 - [Microservices] [UI - Order of the MS Instances changes after edit and save any one MS instance. (eg :Firewall Policy MS)
+* MSA-13341 - [UI/MANO] csar package validation tab/ drop down list not visible with users other than ncroot user
+* MSA-13343 - [Workflow] workflow should not crash due to Elasticsearch issues After the 2.8.10 update.
+* MSA-13344 - [Managed Entities] microservice configure screen blinks when logged in as a manager
+* MSA-13345 - [API] Authentication Token generated with longer expiry date than configured one.
+* MSA-13352 - [Assurance] custom SNMP KPI are not shown in the managed entity monitoring graph
+* MSA-13353 - [Assurance] Not able to see the graph of last one day for both default and Monitoring profile graphs [TM Production]
+* MSA-13382 - [Workflows][UI] Delete button not associated to any delete process is not working
+* MSA-13387 - [Microservice] [UI] there is no option to input in a variable with too many options in the drop down list.
+* MSA-13414 - [Microservice] [UI] Difference in XML files between 17.x and MSA2.0 creating display issues while creating new MS instance in Signature Profile MS
+* MSA-13423 - NTT-ECL Port management API error
+* MSA-13443 - Repository broken, no repos are displayed
+* MSA-13449 - [Assurance] JsonParseException: Unexpected character 'E' (code 69) in prolog; expected '<'
+
+== Upgrade
+
+Instructions to upgrade available in the https://ubiqube.com/wp-content/docs/latest/user-guide/quickstart.html[quickstart].
+
+=== Specific instructions for upgrading to 2.8.11
+
+The quickstart provides an upgrade script `upgrade.sh` for taking care of possible actions such as recreating some volume, executing some database specific updates,...
+
+In order to upgrade to the latest version, you need to follow these steps:
+
+1. `cd quickstart`
+2. `git checkout master`
+3. `git pull`
+4. `./scripts/install.sh`
