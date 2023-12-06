@@ -29,14 +29,27 @@ Some of the key highlights include:
 
 == User Experience
 
-=== New KPIs in the manager dashboard ===
+=== New KPIs in the manager dashboard
 Introducing new alarm count for managed entities in a manager dashboard.
 Once logged, a manager, in the infrastructure panel, can now see number of alarms received associated to managed entities.
 Also, clicking on this alarm notification permit to be redirected to alarms view.
 
-=== Japanese language ===
+=== Japanese language
 We're thrilled to announce that our product now fully supports the Japanese language.
- With this update, we aim to enhance the user experience for our Japanese-speaking customers, providing a more inclusive and accessible platform. 
+With this update, we aim to enhance the user experience for our Japanese-speaking customers, providing a more inclusive and accessible platform. 
+
+== Assurance
+
+=== Updates in alarms & logs view
+It’s now even easier to use our alarms & logs. A new filter per managed entities permit to filter alarms and logs. Additionally to the timestamp, the timezone offset is displayed.	
+
+== Governance
+=== New permissions
+Inside a permission profile, there is new capabilities to control the display of workflow console as well as the repository, infrastructure, automation and user profile. A simple manager can be restricted with such new rights to control features access.
+
+== Automation
+=== Edit Microservices stack multiple times & categories for Microservices
+A user can now edit any instance of microservices multiple times in the stack before applying those changes to the managed entity. This way overcomes the need to cancel the stack and recreate it. Every time we want to make a change to an existing stack. Additionally, categories can be defined in each Microservice to group and establish a hierarchy in the tree.
 
 == Specific technical fixes and feature details
 
