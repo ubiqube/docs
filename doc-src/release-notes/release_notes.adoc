@@ -1,4 +1,4 @@
-= MSActivator(TM) Release Notes
+= MSactivator(TM) Release Notes
 :front-cover-image: image:release-notes-front-cover.pdf[]
 :toc: left
 :toclevels: 3
