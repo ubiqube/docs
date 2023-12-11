@@ -141,11 +141,16 @@ Below the matrix of supported clouds :
 
 |image:providers/VM_3D.png[EC2,40]
 |OpenStack compute
-|Greenfield
+|Greenfield/Brownfield
 |
 
 |image:providers/VM_3D.png[EC2,40]
 |VMware Virtual Machine
+|Greenfield/Brownfield
+|
+
+|image:providers/VM_3D.png[EC2,40]
+|Outscale Virtual Machine
 |Greenfield
 |
 
