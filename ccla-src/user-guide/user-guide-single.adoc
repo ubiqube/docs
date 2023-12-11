@@ -24,6 +24,8 @@ endif::[]
 
 include::{includedir}/key_concepts.adoc[]
 
+include::{includedir}/integration.adoc[]
+
 include::{includedir}/msa_mapping.adoc[]
 
 include::{includedir}/governance.adoc[]
