@@ -61,6 +61,15 @@ Below the matrix of supported clouds :
 
 |https://www.scaleway.com/en/docs/identity-and-access-management/iam/how-to/create-api-keys/[Helper,,window=_blank]
 
+|image:providers/OUTSCALE.png[OUTSCALE,40]
+|https://en.outscale.com/[3DS Outscale,window=_blank]
+|
+- Access Key
+
+- Secret Key
+
+|https://docs.outscale.com/en/userguide/Managing-Your-Access-Keys.html[Helper,,window=_blank]
+
 |image:providers/VMWARE.png[VMware,40]
 |https://www.vmware.com/[VMWare,window=_blank]
 |
