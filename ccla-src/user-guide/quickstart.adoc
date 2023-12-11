@@ -1,4 +1,4 @@
-= Quickstart 
+= Cloudclapp 
 :front-cover-image: image:quickstart-front-cover.pdf[]
 ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
@@ -19,7 +19,7 @@ Follow the same installation guide as per this documentation : https://ubiqube.c
 The same installation script has been updated to support Cloudclapp. Execute it with the ccla flag to have Cloudclapp installed :
 
 ----
-./scripts/install.sh --ccla
+./scripts/install.sh --ccla -f
 ----
 
 === Portal access
