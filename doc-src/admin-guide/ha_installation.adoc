@@ -92,26 +92,12 @@ sudo mkdir -p /mnt/NASVolume/msa_bulkfiles  \
 /mnt/NASVolume/mano_nfvo  \
 /mnt/NASVolume/msa_dev  \
 /mnt/NASVolume/msa_repository  \
-/mnt/NASVolume/msa_monitbulkfiles  \
-/mnt/NASVolume/msa_monitbulkfiles_err  \
-/mnt/NASVolume/msa_alarmbulkfiles  \
-/mnt/NASVolume/msa_alarmbulkfiles_err  \
 /mnt/NASVolume/rrd_repository  \
-/mnt/NASVolume/msa_api_logs  \
 /mnt/NASVolume/msa_api_keystore \
 /mnt/NASVolume/msa_svn  \
-/mnt/NASVolume/msa_sms_logs  \
-/mnt/NASVolume/msa_sms_logs/ping  \
-/mnt/NASVolume/msa_sms_logs/monitor  \
-/mnt/NASVolume/msa_bulkfiles_err  \
 /mnt/NASVolume/msa_api  \
 /mnt/NASVolume/msa_svn_ws  \
-/mnt/NASVolume/msa_alarmbulkfiles  \
-/mnt/NASVolume/msa_alarmbulkfiles_err  \
 /mnt/NASVolume/msa_sms_logs/snmp \
-/mnt/NASVolume/msa_bulkfiles_err \
-/mnt/NASVolume/msa_alarmbulkfiles \
-/mnt/NASVolume/msa_alarmbulkfiles_err \
 /mnt/NASVolume/msa_front_conf
 
 ----
@@ -140,7 +126,6 @@ sudo chown 1000.1000 /mnt/NASVolume/msa_bulkfiles \
 /mnt/NASVolume/msa_monitbulkfiles  \
 /mnt/NASVolume/msa_monitbulkfiles_err \
 /mnt/NASVolume/msa_alarmbulkfiles \
-/mnt/NASVolume/msa_alarmbulkfiles_err \
 /mnt/NASVolume/msa_api_logs \
 /mnt/NASVolume/msa_api_keystore \
 /mnt/NASVolume/msa_svn \
