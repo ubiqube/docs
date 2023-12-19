@@ -1,9 +1,9 @@
-= Security =
+= Security
 ifndef::imagesdir[:imagesdir: images]
 
 Cloudclapp has some built-in security mechanisms that enable secure and resilient deployments across all cloud providers
 
-= Cloud Credentials in Vault =
+== Cloud Credentials in Vault
 
 Access Keys are one of the most important things to safeguard in order to prevent access to your cloud accounts. Cloudclapp requires these credentials in order to create your cloud infrastructure on your behalf and manage the created resources
 
@@ -11,24 +11,30 @@ In cloudclapp all of the access keys and credentials are encrypted by default an
 
 HashiCorp Vault is an identity-based secrets and encryption management system. Vault provides encryption services that are gated by authentication and authorization methods.
 
-= Image Scan =
+== Image Scan
 
 Cloudclapp includes an optional feature that allows you to scan any docker image that is deployed using CCLA for vulnerabilities and also gives you a quick overview of the results across four severities - CRITICAL, HIGH, MEDIUM and LOW
 
 It is also possible to download the results as a JSON file for further analysis and remediation.
 
-image:Scan Home.png[200]
+image:security/Scan Home.png[200]
 
-image:Image Scan.png[200]
+image:security/Image Scan.png[200]
 
-= Web App Scan =
+== Web App Scan
 
 Cloudclapp also allows a user to specify any web application via a URL and then runs common security checks against that URL to ensure that the Webapp is safe from any vulnerabilities
 
 It is also possible to download the results as a JSON file for further analysis and remediation.
 
-image:Web Scan.png[200]
+image:security/Web Scan.png[200]
 
-= Security Dashboard =
+== Security Dashboard
 
 When accessing security tab in application homepage, user can now see vulnerabilities raised by image and webapp scans
+
+image:security/Security Dashboard.png[200]
+
+From this screen, you can visualize each vulnerabilities (description, solution, fixed in..)
+
+On the top of the vulnerability issue, user can be redirected to CWE, CVE, OWASP web pages to get more informations

@@ -2,88 +2,58 @@
 = Environment Builder =
 ifndef::imagesdir[:imagesdir: images]
 
-== Integration ==
-
-Two mode supported per providers
-
-* Greenfield : create a fresh ressource
-
-* Brownfield : import / discover an existing ressource
-
-Below the matrix of supported clouds :
-
-=== Kubernetes services ===
-
-[cols="1,1,1,1"]
-|===
-| |Name|Mode|WebSite
-
-|image:providers/EKS.png[EKS,40]
-|Amazon Elastic Kubernetes Service
-|Greenfield
-|https://aws.amazon.com/eks/
-
-
-|image:providers/AKS.png[AKS,40]
-|Azure Kubernetes Service
-|Greenfield
-|https://azure.microsoft.com/en-us/products/kubernetes-service/
-
-|image:providers/GKE.png[GKE,40]
-|Google Kubernetes Engine
-|Greenfield
-|https://cloud.google.com/kubernetes-engine
-
-|image:providers/Kapsule.png[Kapsule,40]
-|Scaleway Kubernetes Kapsule
-|Greenfield
-|https://www.scaleway.com/en/kubernetes-kapsule/
-
-|image:providers/NK8.png[NK8,40]
-|Native Kubernetes
-|Brownfield 
-|https://kubernetes.io
-
-|===
-
-=== Virtual machines ===
-
-[cols="1,1,1,1"]
-|===
-| |Name|Mode|WebSite
-
-|image:providers/EC2.png[EC2,40]
-|Amazon EC2
-|Greenfield
-|https://aws.amazon.com/ec2/
-
-|===
-
 == Blueprints ==
 
 The catalog view
 
 === OpenMSA Library ===
 
+Blueprint catalog offers a large possibility of deployments
+
+image:blueprints/catalog.png[600]
+
 * Wordpress on Azure
+* Multi Regions on Azure
+* Hybrid cloud mixing a local installation of MSActivator and an external monitoring system
+* Multi clloud with distributed Redis Databases for High availability and scalability
+* Private 5G with CNF deploy on the edge
 
-image:blueprints/Wordpress_on_Azure.png[200]
+Blueprints exist with the demo flag, a green capsule inside the preview. Demo flag means no real ressources are consumed on CSPs. Those blueprints permit to demonstrate orchestration framework and associated features.
+Data are simulated in this mode for different features (configure, compliance, monitoring...)
 
-* Wordpress on Azure (Demo)
+=== Editor ===
 
-image:blueprints/Wordpress_on_Azure_Demo.png[200]
+==== Library ====
 
-* Multi Clouds
+Drag & Drop components from Library. Library are provided for per clould providers
 
-image:blueprints/Multi_Clouds_DEMO.png[200]
+* Provider : an element representing a public or private cloud platform
 
-* Multi Regions
+* Region / Zone : supported regions inside a provider. Not supported for VMware or Kubernetes
 
-image:blueprints/Multi_Region_NonDemo.png[200]  image:blueprints/Multi_Region_Azure.png[200] 
+* App deployment : deploy an application from any marketplace or repository
 
-Same exist for environment with the demo flag
+* K8 cluster : a element reprensenting one Kubernetes cluster
 
-=== User Library ===
+* Mesh : an element permetting to interconnect 2 clouds. This element should be placed after the APP
+
+* Workflow : an element allowing to execute any MSA Workflow at any place in the designer
+
+image:providers/BPEditor.png[900]
+
+==== Graphical options ====
+
+* Hand tool
+
+* Lasso tool
+
+* Space tool
+
+* Connect tool
+
+==== Design operations ====
+
+* Save design : Edit the Blueprint design and save this design
 
 == Quick Deployment ==
 Click on Create A Quick Deployment
@@ -108,10 +78,6 @@ image:blueprints/Cost.png[900]
 
 == The wizard ==
 
-=== Providers specificity ===
-
-=== GKE ===
-
 === Native K8 import ===
 
 image:providers/Kubernetes.png[800]
@@ -132,43 +98,7 @@ NOTE: Check the appendix below to have more details to how retrieve those inform
 
 == Designer ==
 
-=== Library ===
-
-Drag & Drop components from Library. Library are provided for per clould providers
-
-* Provider
-
-image:providers/Providers.png[900]
-
-* Region
-
-image:providers/Region.png[900]
-
-* App deployment
-
-image:providers/Add_Application_1.png[900]
-
-image:providers/App_Deployment_2.png[900]
-
-* K8 cluster
-
-image:providers/K8_Cluster.png[900]
-
-* Mesh
-
-=== Graphical options ===
-
-* Hand tool
-
-* Lasso tool
-
-* Space tool
-
-* Connect tool
-
-=== Design operations ===
-
-* Save design : Edit the Blueprint design and save this design.
+Same as the blueprint editor, a user can modify a design before to deploy it. Two operations are possibles, additiotionaly to the save design
 
 * Save environment as blueprint : Once the design is saved. Can be used as a Environment.
 
@@ -176,7 +106,7 @@ image:providers/K8_Cluster.png[900]
 
 == Environment dashboard ==
 
-Enviornment dashboard show to the users multiple informations via tiles
+Environment dashboard show to the users multiple informations via tiles. From MVP3, if a multi cloud has been created, cluster selection list is available in the top right
 
 * Deployments : give the number of deployment associated to this environement + link for a redirection
 
@@ -205,7 +135,12 @@ APP_PORT_MAPPING : <target_application_name>:<target_port>
 
 === Monitoring ===
 
-Different open source monitoring systems are used to monitor cloud environment:
+Monitoring is done with the help of Prometheus and Grafana. It is deployed as individual deployments and services in the K8s cluster using YAML manifests available here https://github.com/prometheus-operator/kube-prometheus. These manifests create the necessary deployments, service accounts and roles required for deploying Prometheus, Grafana and Alert Manager. 
+
+To display the dashboards of these services, we create a service of type load balancer and use the native Load Balancers provided by the cloud providers.
+
+Note: Enabling monitoring will deploy additional pods and services along with load balancers for Prometheus and Grafana. Hence this will affect the cost incurred when creating the cluster
+
 
 image:monitoringTools.png[100]
 
@@ -222,13 +157,17 @@ image:monitoringTools.png[100]
 |Alert Manager
 |http://20.69.64.200/#/alerts
 
+|===
+
 Some Grafana dashboards can be imported directly to monitor environments. Use import function in grafana to upload a new dashboard
 
-* AKS Environement : https://grafana.com/grafana/dashboards/12180-aks-container-insights/
-* EKS Environement : https://grafana.com/grafana/dashboards/17119-kubernetes-eks-cluster-prometheus/
-* GKE Environement : https://grafana.com/grafana/dashboards/14869-iris/
+* AKS Environment : https://grafana.com/grafana/dashboards/12180-aks-container-insights/
 
-|===
+* EKS Environment : https://grafana.com/grafana/dashboards/17119-kubernetes-eks-cluster-prometheus/
+
+* GKE Environment : https://grafana.com/grafana/dashboards/14869-iris/
+
+
 == Details of WF steps ==
 
 [cols="1,1"]

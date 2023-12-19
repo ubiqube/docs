@@ -1,0 +1,89 @@
+
+= Version 2.3.0
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+== New features
+
+=== OpenStack - Private Cloud - VM support
+Integration of OpenStack as private cloud to import and deploy new compute instances
+
+=== VMWare vShpere - Private Cloud - VM support
+Integration of VMWare vShpere as private cloud to import and deploy new compute instances
+
+=== Application migration - Velero Integration
+Permit to move container application to a remote kubernetes cluster
+
+=== Blueprint editor
+Allows users to edit blueprint and use them for deploying new environment
+
+=== Security Dashboard
+Advanced security dashboard to deep dive on each vulnerability
+
+=== On-premise installation
+Permit cloudclapp installation on premises
+
+== Preview feature
+
+=== Cloud discovery of private clouds (completed in CCLA 2.4)
+For private cloud, permit environment import and manage them in Cloudclapp
+
+= Specific technical fixes and feature details =
+
+== Enhancements ==
+
+* [CCLA-58] - Default values for most used APPs - Part 1 => file creation for storage
+* [CCLA-94] - Don't show clear keys for cloud connections (vault)
+* [CCLA-102] - Remove private clouds for Insight cost screen + marketplace
+* [CCLA-106] - Revamp ENV dashboard : create compliance card + move items
+* [CCLA-111] - Adapt quickstart to support CCLA installation
+* [CCLA-113] - Install script to be fixed + retry vault
+* [CCLA-114] - Build new security dashboard to review CVE/CWE
+* [CCLA-115] - Refactor environment tile : Production / Demo flags in dashboard + icons
+* [CCLA-220] - Enhancements: Env Dashboard
+* [CCLA-223] - Define OpenStack as new entry in cloud connections
+* [CCLA-228] - Blueprint editor
+* [CCLA-230] - New icons for cloud environments
+* [CCLA-243] - DELETE / UPDATE API -UI needs to adapt deleting GIT cred as per Org level
+* [CCLA-247] - Adapt the designer to permit VM deployment in OpenStack
+* [CCLA-253] - Migration of container application - Implementation
+* [CCLA-256] - Add support for Persistent Storage for APP WFs
+* [CCLA-257] - Create process structure and demo for APP WF Migration
+* [CCLA-260] - Define VMWare as new entry in cloud connections
+* [CCLA-265] - Adapt K8s quickstart to support CCLA installation
+* [CCLA-268] - Add new cloud connection menu
+* [CCLA-269] - Add cockpit tab in cloud connections menu
+* [CCLA-270] - Add configure tab in cloud connections menu
+* [CCLA-272] - Create protected subtenant + ME for each private cloud connections
+* [CCLA-274] - Design new env WF for OpenStack to create VM
+* [CCLA-275] - Design new env WF for VMWare to create VM
+* [CCLA-278] - Create Discovery WF structure
+* [CCLA-280] - Create Delegation Permission Mgr API which will have type=ccla as a param
+* [CCLA-282] - Enable MS for VMWare VSphere
+* [CCLA-284] - [CCLA] UI needs to adapt Delete API which will delete GIT repo when Admin adds the Repo
+* [CCLA-287] - Create protected subtenant + ME for each private cloud connections(PUT and DELETE)
+* [CCLA-289] - Update status for Openstack env
+* [CCLA-292] - Create new permission v2 API using Manager ID instead on Actor ID
+* [CCLA-309] - Do not display Kubernetes provider when cred are empty or null
+
+== Bugs ==
+
+* [CCLA-117] - [Security] Missing CVE / CWE informations in SNYK scan - Update SNYK version
+* [CCLA-222] - [UX] P2 UI changes on CCLA
+* [CCLA-226] - Adapt topology to support manifest APP logo
+* [CCLA-231] - A cost in failure for one provider shouldn't avoid to display global cost
+* [CCLA-233] - Kubernetes IP not retrieved
+* [CCLA-234] - Fix padding for deployment icon
+* [CCLA-238] - POST API - Add GIT Credentials for perticular org is not working
+* [CCLA-242] - Unable To load live console when Image Scan is triggered
+* [CCLA-244] - Try to edit permissions of a user on CCLA navigates to a blank page
+* [CCLA-251] - Remove Duplicate vulnerabilities based on ID
+* [CCLA-254] - Security Scan showing a blank screen.Response seams to be in text format
+* [CCLA-262] - CCLA Manager with All Permission Set gives Access Denied error msg for permission API
+* [CCLA-266] - Adapt topology API to show manifest APP logo
+* [CCLA-283] - Kubectl and terraform commands failure
+* [CCLA-290] - For Hybrid Envi when we Delete the apps we don't get No such file or directory:
+* [CCLA-293] - Remove urllib3 lib from OMSA Python-SDK (Web App Scan not functioning)
+* [CCLA-294] - Workflow not loaded in Blueprint editor
+* [CCLA-295] - AWS CLI Tool gets deleted from apiContainer
+* [CCLA-297] - Ec2 Deployment failing
+* [CCLA-302] - Device var in WF consider deviceId as 4 digits..device not found

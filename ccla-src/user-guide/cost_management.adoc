@@ -1,6 +1,6 @@
 
 = Cost Management =
-ifndef::imagesdir[:imagesdir: images/cost]
+ifndef::imagesdir[:imagesdir: images]
 Cost management focuses on providing visibility into how a business spends on cloud infrastructure. Cloudclapp offers a dedicated section to understand and manage the costs and needs associated with its cloud technology
 
 To access the cost dashboard, go to *Insights -> Costs*
@@ -15,13 +15,13 @@ _Note : AWS has a specific pricing for cost explorer. Please refer to https://aw
 
 By default or by selecting *Monthly* in the dropdown list, the cost screen is refreshed with monthly values
 
-image:MonthlyCost.png[alt=Insights Menu, width=900px]
+image:cost/MonthlyCost.png[alt=Insights Menu, width=900px]
 
 === Daily view ===
 
 By selecting *Daily* in the dropdown list, the cost screen is refreshed with daily values
 
-image:DailyCost.png[alt=Insights Menu, width=900px]
+image:cost/DailyCost.png[alt=Insights Menu, width=900px]
 
 _Note : the peak in the graph for AWS represents some taxes apply every 1rst of the month_
 
@@ -29,7 +29,7 @@ _Note : the peak in the graph for AWS represents some taxes apply every 1rst of 
 
 Switching to the second sub icons in Cost view, you can visualize cost per environment or by tags
 
-image:EnvCost.png[alt=Insights Menu, width=900px]
+image:cost/EnvCost.png[alt=Insights Menu, width=900px]
 
 _Note : this screen can generate lots of queries if multiple environements are selected at the same time_
 
@@ -41,4 +41,4 @@ In quick deployment, before to deploy, the user can see what is the estimate cos
 
 The estimate can be display *Hourly, Monthly or Yearly* based
 
-image:QuickDeploymentCost.png[alt=Insights Menu, width=900px]
+image:cost/QuickDeploymentCost.png[alt=Insights Menu, width=900px]

@@ -1,5 +1,5 @@
 = Compliance =
-ifndef::imagesdir[:imagesdir: images/compliance]
+ifndef::imagesdir[:imagesdir: images]
 
 When managing infrastructures for production use cases, security and compliance are crucial factors to consider. The clusters need to be securely configured to minimize the attack surface. Additionally, every organization might have audit requirements for systems to be compliant with security standards.
 
@@ -15,7 +15,7 @@ As the reference for our compliance module, the Center for Internet Security or 
 We have reuse the concept of Implementation Groups (IG) to drive how deep an environement is affected by the compliance needs.
 We assume, depending on the type of your environement, the level of compliance, so the associated security rules are not same if you deploy a local sandbox, a pre-production or a production platform.
 
-image:Compliance.png[width=900px]
+image:compliance/Compliance.png[width=900px]
 
 === Sensitivy / IG mapping
 
@@ -26,7 +26,7 @@ Per environment, by clicking on the gear icon, it's possible to select between 4
 * *Extended* : controls focused on helping security teams manage sensitive client
 * *Expert* : controls that reduce the impact of zero-day attacks and targeted attacks from sophisticated adversaries.
 
-image:ComplianceEnvSettings.png[width=900px]
+image:compliance/ComplianceEnvSettings.png[width=900px]
 
 === Supported Standards
 
@@ -128,7 +128,7 @@ Depending on standards selected in environment settings, each row represents per
 
 * WARN / Amber : means this test needs further attention, for example it is a test that needs to be run manually
 
-image:ComplianceEnvDashboard.png[width=900px]
+image:compliance/ComplianceEnvDashboard.png[width=900px]
 
 === Remediation
 
@@ -172,7 +172,7 @@ Depending to the type of K8 cluster, a CIS benchmarks report can be downloaded t
 
 Use the PDF report in the dashboard to find this reference and the associated remediation process
 
-image:ComplianceBenchmarkReport.png[width=900px]
+image:compliance/ComplianceBenchmarkReport.png[width=900px]
 
 === Backend
 

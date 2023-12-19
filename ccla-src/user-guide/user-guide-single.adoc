@@ -1,0 +1,47 @@
+= Cloudclapp(TM) User Guide
+:front-cover-image: image:developer-front-cover.pdf[]
+:toc: left
+:toclevels: 3
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+ifndef::imagesdir[:imagesdir: images]
+
+//OK HTML 
+ifdef::html[]
+:includedir: ccla-src/user-guide
+endif::[]
+
+ifdef::html[]
+
+[.stripes-none,cols="1,10",frame=none,grid=none,options="noheader",width="50%"]
+|===
+| image:html_icon.png[width=32px]
+| link:index{outfilesuffix}[view as separated html page,window=_blank]
+|===
+
+endif::[]
+
+:leveloffset: +1
+
+include::{includedir}/key_concepts.adoc[]
+
+include::{includedir}/integration.adoc[]
+
+include::{includedir}/msa_mapping.adoc[]
+
+include::{includedir}/governance.adoc[]
+
+include::{includedir}/environment_builder.adoc[]
+
+include::{includedir}/application_deployer.adoc[]
+
+include::{includedir}/infrastructure_as_code.adoc[]
+
+include::{includedir}/security.adoc[]
+
+include::{includedir}/compliance.adoc[]
+
+include::{includedir}/cost_management.adoc[]
+
+include::{includedir}/green_it.adoc[]
+
+

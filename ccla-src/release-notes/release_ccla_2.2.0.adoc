@@ -1,32 +1,38 @@
 
-= Version 2.2.0 (MVP3 - In progress) =
+= Version 2.2.0 =
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == New features ==
 
 === Support of Multi cloud & Hybrid cloud
 
-Adapt the platform to support multiple clusters per environement
+Adapt the platform to support multiple clusters per environment
+=> link:../user-guide/environment_builder{outfilesuffix}#_environment-dashboard[Link,window=_blank]
 
 === Workflow component in the designer
 
 New component in the deisgner library to execute any MSA Workflows
+=> link:../user-guide/environment_builder{outfilesuffix}#_designer[Link,window=_blank]
 
 === Import and deploy APP with manifest file
 
 Permit to define github repository and import application build with manifest (K8 YML, TF, HelmCharts)
+=> link:../user-guide/application_deployer{outfilesuffix}#_manifest-app-on-going[Link,window=_blank]
 
 === Quota check before deployment (Azure)
 
 For Azure, check capacity of a user to create ressources based on his provider account
+=> link:../user-guide/governance{outfilesuffix}#quota-check-before-deployment-azure[Link,window=_blank]
 
 === Scaleway - Kapsule
 
 Support Kubernetes service from Scaleway (Kapsule)
+=> link:../user-guide/integration{outfilesuffix}[Link,window=_blank]
 
 === Hybrid, Multi-cloud and 5G on edge Blueprints
 
 Provide new blueprint in the catalog around hybrid infrastructure and 5G service deployed on edge
+=> link:../user-guide/environment_builder{outfilesuffix}#_blueprints[Link,window=_blank]
 
 = Specific technical fixes and feature details =
 

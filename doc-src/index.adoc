@@ -1,4 +1,4 @@
-= MSActivator(TM) (MSA) Documentation
+= MSactivator(TM) (MSA) Documentation
 ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
@@ -17,4 +17,25 @@ a| link:lab-guide/index{outfilesuffix}[Lab Guide,window=_blank]
 
 a| link:community-guide/index{outfilesuffix}[Community Guide,window=_blank]
 
+|===
+
+=== Last releases
+
+[cols="1,1,1"]
+|===
+|Version|Date|Quickstart reference
+
+|2.8.11
+|18/Dec/23
+|
+
+|2.8.9.3
+|7/Dec/23
+|
+
+|2.8.9.2
+|3/Nov/23
+|https://github.com/ubiqube/quickstart/releases/tag/MSA-2.8.9.2
+
+|
 |===
