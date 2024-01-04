@@ -22,7 +22,6 @@ Welcome to the 2.8.11 release of the {product_name}. There are many updates in t
 Some of the key highlights include:
 
 - new KPIs in the manager dashboard
-- support of Japanese language
 - updates in alarms & logs view
 - new rights in permission profile
 - edit Microservices stack multiple times & categories for Microservices
@@ -33,10 +32,6 @@ Some of the key highlights include:
 Introducing new alarm count for managed entities in a manager dashboard.
 Once logged, a manager, in the infrastructure panel, can now see number of alarms received associated to managed entities.
 Also, clicking on this alarm notification permit to be redirected to alarms view.
-
-=== Japanese language
-We're thrilled to announce that our product now fully supports the Japanese language.
-With this update, we aim to enhance the user experience for our Japanese-speaking customers, providing a more inclusive and accessible platform. 
 
 == Assurance
 
@@ -97,7 +92,10 @@ A user can now edit any instance of microservices multiple times in the stack be
 * MSA-13297 - [Assurance] update fields in the ubimon-* index in elasticsearch
 * MSA-13369 - [Governance] Remove customer email in Subtenant level
 * MSA-13398 - [Governance - New permissions for infrastructure, automation and user profile
+* MSA-13421 - [Microservices] msDirectoryNames should be in nested format
 * MSA-13425 - [Alarms/Logs - display timezone offest
+* MSA-13479 - [Alarms][CoreEngine] check_alert request a Bearer Token every script execution even if there is no need to call API
+
 
 === Bug fixes
 
@@ -152,6 +150,12 @@ A user can now edit any instance of microservices multiple times in the stack be
 * MSA-13423 - NTT-ECL Port management API error
 * MSA-13443 - Repository broken, no repos are displayed
 * MSA-13449 - [Assurance] JsonParseException: Unexpected character 'E' (code 69) in prolog; expected '<'
+* MSA-13474 - [UI] Can not edit a subtenant
+* MSA-13482 - [Workflows] not possible to create new instance
+* MSA-13484 - Libraries are not getting deployed on fresh installation on 2.8.11
+* MSA-13495 - [UI] rename "Save as Global Settings" to "Set as Global Settings"
+* MSA-13521 - [UI] Can not see ME Name on Logs , still empty after logs created
+* MSA-13523 - [API] Polluted and unreadable apis logs to debug
 
 == Upgrade
 
