@@ -26,16 +26,12 @@ a| link:community-guide/index{outfilesuffix}[Community Guide,window=_blank]
 |Version|Date|Quickstart reference
 
 |2.8.11
-|18/Dec/23
-|
+|Jan 2024
+|https://github.com/ubiqube/quickstart/releases/tag/MSA-2.8.11
 
 |2.8.9.3
-|7/Dec/23
-|
-
-|2.8.9.2
-|3/Nov/23
-|https://github.com/ubiqube/quickstart/releases/tag/MSA-2.8.9.2
+|Dec 2023
+|https://github.com/ubiqube/quickstart/releases/tag/MSA-2.8.9.3
 
 |
 |===
