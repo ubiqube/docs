@@ -1,4 +1,4 @@
-= Specific technical fixes and feature details =
+= Version BETA 2.0.0 =
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == New features
