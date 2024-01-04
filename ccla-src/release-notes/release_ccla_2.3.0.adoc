@@ -22,8 +22,6 @@ Advanced security dashboard to deep dive on each vulnerability
 === On-premise installation
 Permit cloudclapp installation on premises
 
-== Preview feature
-
 === Cloud discovery of private clouds (completed in CCLA 2.4)
 For private cloud, permit environment import and manage them in Cloudclapp
 
@@ -67,6 +65,9 @@ For private cloud, permit environment import and manage them in Cloudclapp
 
 == Bugs ==
 
+* [CCLA-87] - Deploying Apps goes into Infinite Running stage when we change provider & region from Azure to Aws
+* [CCLA-91] - [UX] Putting bad cloud credentials make the UI slow, dashboard empty (mainly Azure)
+* [CCLA-98] - Improve cost load, inc first dashboard loading is long + fix azure looping
 * [CCLA-117] - [Security] Missing CVE / CWE informations in SNYK scan - Update SNYK version
 * [CCLA-222] - [UX] P2 UI changes on CCLA
 * [CCLA-226] - Adapt topology to support manifest APP logo
@@ -85,5 +86,9 @@ For private cloud, permit environment import and manage them in Cloudclapp
 * [CCLA-293] - Remove urllib3 lib from OMSA Python-SDK (Web App Scan not functioning)
 * [CCLA-294] - Workflow not loaded in Blueprint editor
 * [CCLA-295] - AWS CLI Tool gets deleted from apiContainer
+* [CCLA-296] - Draging Provider on to Designer Panel is not working
 * [CCLA-297] - Ec2 Deployment failing
 * [CCLA-302] - Device var in WF consider deviceId as 4 digits..device not found
+* [CCLA-322] - Table on ME's on Configure Tab under Clouds need to handle scrolling problem
+* [CCLA-332] - Region are not proposed for Outscale in the designer
+* [CCLA-339] - Wordpress Deployment Fail on Real GCP Envi
