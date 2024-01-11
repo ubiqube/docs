@@ -1,5 +1,5 @@
 = Application migration
-ifndef::imagesdir[:imagesdir: images/migration]
+ifndef::imagesdir[:imagesdir: images]
 
 Quick Overview / Tool used
 Supported use cases
@@ -16,9 +16,9 @@ This document provides a step-by-step guide for migrating our application from t
 2. **Check Target Cluster Reachability:**
    - Once the target cluster is selected, the migration workflow will check if the target cluster is reachable.
 
-image:menu.png[900]
+image:migration/menu.png[900]
 
-image:migrate.png[900]
+image:migration/migrate.png[900]
 
 3. **Verify Velero Installation (Target Cluster):**
    - If the target cluster is reachable, the workflow checks if Velero is installed in the target cluster.
@@ -38,7 +38,7 @@ image:migrate.png[900]
 7. **Target Cluster Application Sanity Check:**
    - Once the restore is completed, perform a series of checks on the application in the target cluster to ensure its sanity and functionality.
 
-image:complete-mig.png[900]
+image:migration/complete-mig.png[900]
 
 == Supported use cases
 
