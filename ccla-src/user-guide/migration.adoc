@@ -1,10 +1,15 @@
 = Application migration
 ifndef::imagesdir[:imagesdir: images]
 
-Quick Overview / Tool used
-Supported use cases
-UI extract
-Limitation
+== Supported use cases
+
+Application migration feature permits to address the move to cloud use cases. A deployment, so a group of applications, running in any Kubernetes services can be migrated to a different cloud for the purpose of cost efficiency. The migration is currently supported between the major cloud providers AWS, Azure, GCP and Scaleway. Example, migrating applications between AKS and GKE, or between EKS and Kapsule.
+
+== Velero, to move ressources between clusters
+
+Velero is an open source tool to safely backup and restore, perform disaster recovery, and migrate Kubernetes cluster resources and persistent volumes.
+https://velero.io/
+Velero is directly integrated in our workflow to permit backup and restore of application data. Bucket used is Amazon S3
 
 == Application Migration Process Overview
 
@@ -40,9 +45,7 @@ image:migration/migrate.png[width=900px]
 
 image:migration/complete-mig.png[width=900px]
 
-== Supported use cases
 
-When a Application running in AWS is to be migrated to a different cloud for the purpose of cost efficiency (The migration is currently supported between the major cloud providers AWS, Azure, GCP and Scaleway)
 
 == Limitation
 
