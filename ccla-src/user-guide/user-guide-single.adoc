@@ -34,6 +34,8 @@ include::{includedir}/environment_builder.adoc[]
 
 include::{includedir}/application_deployer.adoc[]
 
+include::{includedir}/migration.adoc[]
+
 include::{includedir}/infrastructure_as_code.adoc[]
 
 include::{includedir}/security.adoc[]
