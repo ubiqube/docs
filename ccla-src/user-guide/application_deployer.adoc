@@ -1,5 +1,6 @@
 = Application Deployer =
 ifndef::imagesdir[:imagesdir: images]
+
 Cloudclapp offer large possibility of applications deployment : container based or VM based
 
 == Marketplaces ==
