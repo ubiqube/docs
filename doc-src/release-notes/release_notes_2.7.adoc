@@ -94,8 +94,7 @@ Let's say that you are running {product_name} version {revnumber-prev}, to upgra
 
 ==== Features
 
-* MSA-10615 - [Release] automate tag update in quickstart YML when we release
-* MSA-10663 - [Security] Node JS upgrade
+`* MSA-10663 - [Security] Node JS upgrade
 
 ==== Bug fixes
 
