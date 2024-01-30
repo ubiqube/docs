@@ -29,9 +29,9 @@ a| link:community-guide/index{outfilesuffix}[Community Guide,window=_blank]
 |Jan 2024
 |https://github.com/ubiqube/quickstart/releases/tag/MSA-2.8.11
 
-|2.8.9.3
-|Dec 2023
-|https://github.com/ubiqube/quickstart/releases/tag/MSA-2.8.9.3
+|2.8.9.4
+|Jan 2024
+|https://github.com/ubiqube/quickstart/releases/tag/MSA-2.8.9.4
 
 |
 |===
