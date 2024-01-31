@@ -75,14 +75,14 @@ Example of blueprints :
 
 * *Wordpress on Azure*
 * *Wordpress on multicloud*
-* *MSActivator on any providers*
+* *MSactivator on any providers*
 
 === Content
 
 A Blueprint is a combinaison of two main files 
 
 * *A meta data* containing basic information like name, description, owner, compliance standards, etc...
-* *A design file* to define ressources used for the deployment and place components on the environement builder. The design file, by the nature of the component (Provider, Region, Cluster), include MSA workflows reference permit the environement creation and the deployment of applications
+* *A design file* to define ressources used for the deployment and place components on the environement builder. The design file, by the nature of the component (Provider, Region, Cluster), include MSactivator workflows reference permit the environement creation and the deployment of applications
 
 == Users
 
