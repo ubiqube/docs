@@ -1,4 +1,4 @@
-= MSActivator(TM) Administration Guide
+= MSactivator(TM) Administration Guide
 :front-cover-image: image:admin-guide-cloudiamo-cover.pdf[]
 :toc: left
 :toclevels: 3
