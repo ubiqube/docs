@@ -1,5 +1,5 @@
 = MSActivator(TM) Administration Guide
-:front-cover-image: image:admin-front-cover.pdf[]
+:front-cover-image: image:admin-guide-cloudiamo-cover.pdf[]
 :toc: left
 :toclevels: 3
 ifndef::imagesdir[:imagesdir: images]
