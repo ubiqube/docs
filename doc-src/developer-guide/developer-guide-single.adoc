@@ -1,5 +1,5 @@
-= MSActivator(TM) Developer Guide
-:front-cover-image: image:developer-front-cover.pdf[]
+= MSactivator(TM) Developer Guide
+:front-cover-image: image:developer-guide-cloudiamo-cover.pdf[]
 :toc: left
 :toclevels: 3
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
