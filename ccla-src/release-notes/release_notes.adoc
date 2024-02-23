@@ -41,7 +41,3 @@ include::{includedir}/release_ccla_2.1.0.adoc[version MVP2]
 
 include::{includedir}/release_ccla_2.0.0.adoc[version MVP1]
 
-:leveloffset: +1
-
-include::{includedir}/versions.adoc[]
-
