@@ -8,7 +8,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 [cols="1*"] 
 |===
 
-a| link:user-guide/user-guide-single{outfilesuffix}[User Guide,window=_blank]
+a| link:user-guide/user-guide-single{outfilesuffix}[User Guide,window=_blank]link:ccla/pdf/user-guide/user-guide-single.pdf[(pdf),window=_blank] 
 
 a| link:user-guide/quickstart{outfilesuffix}[Quickstart,window=_blank]
 
@@ -19,7 +19,7 @@ a| link:user-guide/quickstart{outfilesuffix}[Quickstart,window=_blank]
 [cols="1*"] 
 |===
 
-a| link:release-notes/release_notes{outfilesuffix}[Release Notes,window=_blank]
+a| link:release-notes/release_notes{outfilesuffix}[Release Notes,window=_blank]link:ccla/pdf/release-notes/release_notes.pdf[(pdf),window=_blank]
 
 a| link:release-notes/release_ccla_2.3.0{outfilesuffix}[CCLA BETA 2.3.0,window=_blank]
 
