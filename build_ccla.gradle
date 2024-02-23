@@ -23,8 +23,8 @@ dependencies {
 }
 
 asciidoctor.doFirst {
-    delete file('build/html')
-    delete file('build/pdf')
+    delete file('build/ccla/html')
+    delete file('build/ccla/pdf')
 }
 
 asciidoctor {    
@@ -49,7 +49,7 @@ asciidoctor {
     'icons' : 'font'
 
   sourceDir = file('ccla-src')
-  outputDir  file('build/html')
+  outputDir  file('build/ccla/html')
 
   resources {
     from('ccla-src') {
@@ -66,3 +66,62 @@ asciidoctor {
   }
 }
 task asciidoc_ccla_html(dependsOn: asciidoctor)
+
+asciidoctorPdf {
+
+  baseDirFollowsSourceFile()
+  outputs.upToDateWhen { false }
+  
+  asciidoctorj {
+
+    modules {
+        pdf.version '2.3.6'
+    }
+    requires 'rouge'
+
+    options doctype: 'book'
+
+    attributes \
+      'sourcedir': project.sourceSets.main.java.srcDirs[0],
+      'organization' : 'UBiqube',
+ 	  'source-highlighter' : 'rouge',
+      'linkcss' : true,
+      'ubiqube': 'UBiqube',
+      'company_name': 'UBiqube',
+      'product_name' : 'Cloudclapp(TM)',
+      'product_name-version' : 'Cloudclapp-1.0.0',
+      'openmsa_name' : 'OpenMSA(TM)',
+      'revnumber' : 'CCLA-1.0.0',
+      'versionnumber': '1.0.0',
+      'revnumber-prev' : 'CCLA-1.0.0',
+      'allow-uri-read' : '',
+      'sectlinks' : true,
+      'pdf' : 'true',
+      'format': 'pdf',
+      'icons' : 'font',
+      'pdf-fontsdir' : "$rootDir/resources/fonts",
+      'pdf-stylesdir' : "$rootDir/resources/themes",
+      'pdf-style' : 'ubiqube-theme.yml',
+      'page-background-image' : 'image:bg.jpg[fit=cover,pdfwidth=100%,position=top]',
+      'notitle' : ''
+  }
+
+  sourceDir file('doc-src')
+  sources {
+       include 'user-guide/user-guide-single.adoc',
+               'release-notes/release_notes.adoc',
+ }
+  outputDir file('build/ccla/pdf')
+
+  resources {
+    from('doc-src') {
+      include '**/*.png'
+      include '**/*.jpg'
+      include '**/*.mp4'
+      include '**/*.html'
+      include '**/*.pdf'
+  }
+    into '.'
+  }
+}
+task asciidoc_ccla_pdf(dependsOn: asciidoctorPdf)
