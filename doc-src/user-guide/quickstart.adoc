@@ -1,5 +1,5 @@
 = Quickstart 
-:front-cover-image: image:quickstart-front-cover.pdf[]
+:front-cover-image: image:quickstart-guide-cloudiamo-cover.png[]
 ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :toc: top
