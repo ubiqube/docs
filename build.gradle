@@ -127,4 +127,4 @@ asciidoctorPdf {
     into '.'
   }
 }
-task asciidoc_msa_pdf(dependsOn: asciidoctorPdf
+task asciidoc_msa_pdf(dependsOn: asciidoctorPdf)
