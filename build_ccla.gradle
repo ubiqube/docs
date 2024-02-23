@@ -109,7 +109,7 @@ asciidoctorPdf {
   sourceDir file('doc-src')
   sources {
        include 'user-guide/user-guide-single.adoc',
-               'release-notes/release_notes.adoc',
+               'release-notes/release_notes.adoc'
  }
   outputDir file('build/ccla/pdf')
 
