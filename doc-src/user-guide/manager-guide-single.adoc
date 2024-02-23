@@ -1,5 +1,5 @@
 = MSactivator(TM) Manager Guide
-//:front-cover-image: image:manager-guide-cloudiamo-cover.pdf[]
+:front-cover-image: image:manager-guide-cloudiamo-cover.pdf[page=1]
 :front-cover-image: image:manager-front-cover.pdf[]
 :toc: left
 :toclevels: 3
