@@ -110,7 +110,7 @@ asciidoctorPdf {
 
   sourceDir file('doc-src')
   sources {
-       include 'user-guide/manager-guide-single.adoc', 'admin-guide/admin-guide-single.adoc','developer-guide/developer-guide-single.adoc', 
+       include 'user-guide/manager-guide-single.adoc', 'admin-guide/admin-guide-single.adoc','developer-guide/developer-guide-single.adoc'
         //'release-notes/release_notes.adoc', 'release-notes/release_notes_2.8.5.adoc', 'release-notes/release_notes_2.8.6.adoc', 'release-notes/release_notes_2.8.7.adoc', 'release-notes/release_notes_2.8.8.adoc', 'release-notes/release_notes_2.8.9.adoc', 'release-notes/release_notes_2.8.10.adoc','user-guide/quickstart.adoc', 'user-guide/quickstart_jp.adoc'      
  }
   outputDir file('build/pdf')
