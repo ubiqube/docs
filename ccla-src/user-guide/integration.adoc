@@ -9,7 +9,7 @@ Two mode supported per providers
 
 Below the matrix of supported clouds :
 
-=== Cloud Service Provider & Cloud Connections
+== Cloud Service Provider & Cloud Connections
 
 [cols="1,1,1,1"]
 |===
