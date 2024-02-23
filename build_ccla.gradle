@@ -106,7 +106,7 @@ asciidoctorPdf {
       'notitle' : ''
   }
 
-  sourceDir file('doc-src')
+  sourceDir file('ccla-src')
   sources {
        include 'user-guide/user-guide-single.adoc',
                'release-notes/release_notes.adoc'
