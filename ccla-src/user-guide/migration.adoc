@@ -15,32 +15,32 @@ Velero is directly integrated in our workflow to permit backup and restore of ap
 
 This document provides a step-by-step guide for migrating our application from the source cluster to the target cluster using Velero for backup and restore. The process involves the following key steps:
 
-1. **Select the Target Cluster:**
+**Select the Target Cluster:**
    - Go to the application that you want to migrate and choose the target cluster from the drop-down menu.
 
-2. **Check Target Cluster Reachability:**
+**Check Target Cluster Reachability:**
    - Once the target cluster is selected, the migration workflow will check if the target cluster is reachable.
 
 image:migration/menu.png[width=900px]
 
 image:migration/migrate.png[width=900px]
 
-3. **Verify Velero Installation (Target Cluster):**
+**Verify Velero Installation (Target Cluster):**
    - If the target cluster is reachable, the workflow checks if Velero is installed in the target cluster.
 
-4. **Source Application Sanity Check:**
+**Source Application Sanity Check:**
    - Before proceeding further, the workflow validates the source application's sanity by performing the following checks:
      - Verify if the source application is reachable and accessible.
      - Check if a Persistent Volume (PV) and Persistent Volume Claim (PVC) are attached to the source application.
      - Confirm that Velero is installed in the source cluster.
 
-5. **Initiate Backup (Source Cluster):**
+**Initiate Backup (Source Cluster):**
    - A backup is initiated at the source cluster using Velero. The backup data will be automatically stored in an S3 bucket, which should have been defined at the time of Velero installation.
 
-6. **Initiate Restore (Target Cluster):**
+**Initiate Restore (Target Cluster):**
    - After the backup is complete, initiate a restore operation at the target cluster using Velero to bring the application and its resources to the target environment.
 
-7. **Target Cluster Application Sanity Check:**
+**Target Cluster Application Sanity Check:**
    - Once the restore is completed, perform a series of checks on the application in the target cluster to ensure its sanity and functionality.
 
 image:migration/complete-mig.png[width=900px]
