@@ -10,6 +10,11 @@ ifdef::html[]
 :includedir: ccla-src/user-guide
 endif::[]
 
+// OK PDF
+ifdef::pdf[]
+:includedir: .
+endif::[]
+
 ifdef::html[]
 
 [.stripes-none,cols="1,10",frame=none,grid=none,options="noheader",width="50%"]
