@@ -114,7 +114,7 @@ asciidoctorPdf {
   outputDir file('build/ccla/pdf')
 
   resources {
-    from('doc-src') {
+    from('ccla-src') {
       include '**/*.png'
       include '**/*.jpg'
       include '**/*.mp4'
