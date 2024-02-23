@@ -9,7 +9,7 @@ Two mode supported per providers
 
 Below the matrix of supported clouds :
 
-=== Cloud Service Provider - Cloud Connections
+=== Cloud Service Provider & Cloud Connections
 
 [cols="1,1,1,1"]
 |===
@@ -95,7 +95,7 @@ Below the matrix of supported clouds :
 |
 |===
 
-=== Kubernetes services ===
+=== Kubernetes services
 
 [cols="1,1,1,1"]
 |===
@@ -128,7 +128,7 @@ Below the matrix of supported clouds :
 
 |===
 
-=== Virtual machines ===
+=== Virtual machines
 
 [cols="1,1,1,1"]
 |===
