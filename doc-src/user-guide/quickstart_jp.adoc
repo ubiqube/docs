@@ -1,5 +1,5 @@
 = クイックスタートガイド 
-:front-cover-image: image:quickstart-front-cover-jp.pdf[]
+:front-cover-image: image:quickstart-guide-cloudiamo-cover-jp.png[]
 ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :toc: top
