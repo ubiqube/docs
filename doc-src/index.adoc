@@ -19,7 +19,7 @@ a| link:community-guide/index{outfilesuffix}[Community Guide,window=_blank]
 
 |===
 
-=== Last releases
+== Last releases
 
 [cols="1,1,1"]
 |===
