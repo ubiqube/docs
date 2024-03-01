@@ -63,7 +63,7 @@ image:topology_example.png[width=800px]
 ==== Prerequisites
 
 SNMP must be enabled on the managed entities with a read-only community. 
-The community must also be set on the managed entity on the {$product_name} link:managed_entities{outfilesuffix}#me_form_fields[managed entity form].
+The community must also be set on the managed entity on the {product_name} link:managed_entities{outfilesuffix}#me_form_fields[managed entity form].
 
 ==== How it works
 
@@ -89,7 +89,7 @@ ipAdEntNetMask OBJECT-TYPE
     ::= { ipAddrEntry 3 }
 ----
 
-For each managed entity, the topology workflow will get the list of IPv4 addresses of this MIB entry and it will build a data structure, stored in the {$product_name} workflow database, to represent the topology as a graph with links and nodes.
+For each managed entity, the topology workflow will get the list of IPv4 addresses of this MIB entry and it will build a data structure, stored in the {product_name} workflow database, to represent the topology as a graph with links and nodes.
 
 
 [source, php]
@@ -186,7 +186,7 @@ foreach ($vlans as $vlan) {
 
 You can create your own topology view, either based on an existing one or you can create a completely new one based on the specifics of your infrastructure.
 
-Here are the steps to add a new topology `my_topology` to your {$product_name}
+Here are the steps to add a new topology `my_topology` to your {product_name}
 
 === Step 1: prepare your development environment
 
@@ -214,7 +214,7 @@ Switched to a new branch 'my_topology'
 
 === Step 2: add a new topology type to the workflow
 
-With the {$product_name}, edit the topology workflow, edit the variable view_type and, in the "Advanced" section add `my_topology` to the values for the drop-down list. 
+With the {product_name}, edit the topology workflow, edit the variable view_type and, in the "Advanced" section add `my_topology` to the values for the drop-down list. 
 
 image:topology_custom_update_wf.png[width=800px]
 
