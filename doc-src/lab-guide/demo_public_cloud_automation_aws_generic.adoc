@@ -78,7 +78,7 @@ Create a user and attach the policy to this user
 
 image:aws_iam_user.png[width=800px]
 
-You will also need an access key for this user in order to make secure REST API call from the {$product_name}
+You will also need an access key for this user in order to make secure REST API call from the {product_name}
 
 image:aws_iam_user_key.png[width=800px]
 
