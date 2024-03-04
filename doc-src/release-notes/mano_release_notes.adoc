@@ -15,16 +15,6 @@ ifdef::pdf[]
 :includedir: .
 endif::[]
 
-== MANO Workflows
-
-* MSA-13055 - [MANO] the managed entity name doesn't give any insight or meaningful description or proper name except it Openstack instance ID
-* MSA-13056 - [MANO] deleting VNF instance in workflow doesn't automatically delete these managed entities
-* MSA-13057 - [MANO] extract VNF and /or NS descriptor_id from the VNF/NS package and insert in the dedicated WF variable to be displayed.
-* MSA-13058 - [MANO] Missing Onboarded VNF package in the VNF Catalog
-* MSA-13059 - [MANO] duplicate VNF package ID
-* MSA-13062 - [MANO] error during VNF instantiation / no instance spawn in the Openstack
-* MSA-13069 - [MANO] VNF Package Onboarding - Add async operation checking WF process task
-
 == MANO Core 3.2.2
 * MSA-13494 - [MANO] Keycloak issue during upgrade from 16.1.1 to 2.3.0
 * MSA-13413 - [MANO][Backend] Topology of VNF instance
@@ -115,3 +105,13 @@ endif::[]
 *  mano-core: Fix Image visitor when there is no scheme
 *  mano-fluxrest: Fix bypass ssl
 *  mano-em: Add Version on connection property
+
+== MANO Workflows
+
+* MSA-13055 - [MANO] the managed entity name doesn't give any insight or meaningful description or proper name except it Openstack instance ID
+* MSA-13056 - [MANO] deleting VNF instance in workflow doesn't automatically delete these managed entities
+* MSA-13057 - [MANO] extract VNF and /or NS descriptor_id from the VNF/NS package and insert in the dedicated WF variable to be displayed.
+* MSA-13058 - [MANO] Missing Onboarded VNF package in the VNF Catalog
+* MSA-13059 - [MANO] duplicate VNF package ID
+* MSA-13062 - [MANO] error during VNF instantiation / no instance spawn in the Openstack
+* MSA-13069 - [MANO] VNF Package Onboarding - Add async operation checking WF process task
