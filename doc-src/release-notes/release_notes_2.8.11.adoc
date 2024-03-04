@@ -38,7 +38,7 @@ image:2.8.11_alarms_count.png[width=700px]
 == Assurance
 
 === Updates in alarms & logs view
-It’s now even easier to use our alarms & logs. A new filter per managed entities permit to filter alarms and logs. Additionally to the timestamp, the timezone offset is displayed.	
+It's now even easier to use our alarms & logs. A new filter per managed entities permit to filter alarms and logs. Additionally to the timestamp, the timezone offset is displayed.	
 
 image:2.8.11_assurance_filter.png[width=700px]
 
@@ -58,14 +58,9 @@ image:2.8.11_ms_multiple_edits.png[width=700px]
 
 === Features
 
-* MSA-12620 - [Microservice] [UI] categories should be displayable and configurable
-* MSA-12709 - [API] upgrade spring version in msa-api
+* MSA-13104 - [Alarms][API] In manager dashboard / infrastructure: add managed entity count for alarm
 * MSA-12719 - [Alarms/Logs] add search field for list of Managed Entities in the filter
-* MSA-12819 - [API - ECL API Delivery - Implementation & Testing
-* MSA-12863 - [Logs][UI] add attack section in log details
-* MSA-12864 - [Logs][SMS/API] return attack logs details
-* MSA-12865 - [Permission Profile] workflow console logs should be controlled by permission profile
-* MSA-12954 - [Managed Entities] show tool tips for status icons in list of managed entities
+* MSA-12709 - [API] upgrade spring version in msa-api
 * MSA-12955 - [API] new field in microservice definition information section to store folder hierarchy
 * MSA-13044 - [CoreEngine] Move snmp trap management in a dedicated container
 * MSA-13045 - [CoreEngine] Remove snmp traps management in sms_parserd
@@ -74,10 +69,14 @@ image:2.8.11_ms_multiple_edits.png[width=700px]
 * MSA-13048 - [CoreEngine] Chose the best message bus for syslogs
 * MSA-13049 - [CoreEngine] Implement the consumer part of kafka in parserd
 * MSA-13050 - [CoreEngine] Make the ouput module of rsyslog comptible with kafka broker
+* MSA-12863 - [Logs][UI] add attack section in log details
+* MSA-12864 - [Logs][SMS/API] return attack logs details
+* MSA-12954 - [Managed Entities] show tool tips for status icons in list of managed entities
+* MSA-12620 - [Microservice][UI] categories should be displayable and configurable
+* MSA-12865 - [Permission Profile] workflow console logs should be controlled by permission profile
 * MSA-13071 - [Backend] Add "less" command on sms & api container
 * MSA-13072 - [UI] Display entire subtenant name in Dropdown list section - add tooltip
 * MSA-13080 - [Permission Profile] Manager profile
-* MSA-13104 - [Alarms][API] In manager dashboard / infrastructure: add managed entity count for alarm
 * MSA-13119 - [Repository][UI] ability to add/update tags in metafiles in repository and delete files
 * MSA-13129 - [Managed Entities] high availability status
 * MSA-13130 - [Microservice] Permit user to re edit after saving (before Apply changes) same as MSAv17
