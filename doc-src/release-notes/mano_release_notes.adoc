@@ -25,6 +25,14 @@ endif::[]
 * MSA-13062 - [MANO] error during VNF instantiation / no instance spawn in the Openstack
 * MSA-13069 - [MANO] VNF Package Onboarding - Add async operation checking WF process task
 
+== MANO Core 3.2.2
+* MSA-13494 - [MANO] Keycloak issue during upgrade from 16.1.1 to 2.3.0
+* MSA-13413 - [MANO][Backend] Topology of VNF instance
+
+== MANO Core 3.2.1
+
+* MSA-13493 - [MANO] align msa-docker and quickstart
+
 == MANO Core 3.2.0
 
 * MSA-10972 - [MANO] support multiple NFVI resource instances (VIMs) under one NFVO (MANO)
@@ -32,7 +40,7 @@ endif::[]
 == MANO Core 3.1.0
 
 *  Add VNF port informations, and Save task after each steps
-*  core: Add Wait for VnfLcmOpOcc method in mano client
+*  core: Add Wait for VnfLcmOpOcc method in MANO client
 *  VNFM Juju Controller
 *  core: Change flavor name to avoid collision
 *  Fix grant and extCp networks
