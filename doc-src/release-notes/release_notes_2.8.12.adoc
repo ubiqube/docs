@@ -1,7 +1,7 @@
 
 
 = Version 2.8.12
-:front-cover-image: image:release-notes-front-cover-2.8.12.pdf[]
+:front-cover-image: image:release-note-cloudiamo-2X.png[]
 :toc: left
 :toclevels: 3
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
