@@ -1,1 +1,130 @@
 
+
+= Version 2.8.11
+:front-cover-image: image:release-notes-front-cover-2.8.11.pdf[]
+:toc: left
+:toclevels: 3
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+ifndef::imagesdir[:imagesdir: images]
+
+//OK HTML 
+ifdef::html[]
+:includedir: doc-src/release-notes
+endif::[]
+
+// OK PDF
+ifdef::pdf[]
+:includedir: .
+endif::[]
+
+Welcome to the 2.8.12 release of the {product_name}. There are many updates in this version that we hope you'll like !
+
+== Repository
+=== Manage tags & comments
+Inside the repository, for managing files more precisely, a user can now set a tag and a comment. After uploading a file, new field permit to set those values.
+
+image:2.8.12_repo_tags.png[width=700px]
+
+== Assurance
+===	Download alarms & logs in CSV
+A new feature has been introduced to export alarm logs and logs in CSV format. Users can now 	conveniently download these records for further analysis or reporting.  This enhancement streamlines data management and facilitates seamless integration with other tools or systems.	
+
+image:2.8.12_logs_csv.png[width=700px]
+
+== Governance
+=== New permissions
+Inside a permission profile, there is new capabilities to control the display. A new “Hide” right has been introduced, to keep elements visible by default, in some sections : repository, assurance, integration, profile and automation. Additionally, new categories have been created :
+- Global search, to control the search button on the right corner
+- Menu items, to choose to display main left menus
+- Logout, to hide or show the logout button, useful in some Single Sign-On use-case
+
+image:2.8.12_new_perms.png[width=700px]
+
+== Automation
+=== Import only once
+For large configuration, like thousand entries, a new option has been introduced in the micro services. To avoid a long synchronization, the import operation can be triggered only the first time. A checkbox is available in the Information tab of each micro services to activate this feature.
+
+image:2.8.12_import_only_once.png[width=700px]
+
+== Specific technical fixes and feature details
+
+=== Features
+
+* [MSA-12543] - [UI/Customization] Default logo & footer customization for MSAv2
+* [MSA-13098] - [Security][UI] Use device credentials in encrypted format device Update API
+* [MSA-13119] - [Repository][UI] ability to add/update tags/filename/comment in metafiles in repository
+* [MSA-13120] - [Repository][API] show all directory of repository based on authenticated user
+* [MSA-13172] - [Repository] - Shows license (for others repository files) usage from UI repository
+* [MSA-13274] - [Assurance][UI] incident ticket management: view ticket screen
+* [MSA-13326] - [UI/API]Log Analysis - Download feature (same as in Alarms)
+* [MSA-13432] - [Microservice] Restrict allowed characters for all the microservice "name" field
+* [MSA-13435] - [Governance] - New permissions for logs filtering display , default monitoring profile
+* [MSA-13442] - [Microservice][UI/API] add option - Import Microservices only once - for Microservices
+* [MSA-13467] - [UI][Topology] Label font size & movement
+* [MSA-13512] - [Governance] - New feature to configure landing menu and list of menus for manager
+* [MSA-13535] - [Governance] - Workflow Processes user access control
+* [MSA-13549] - [Assurance][UI][API] incident ticket management: Display uploaded files on View screen
+* [MSA-13552] - [SOAP API] Incident Ticket Management
+* [MSA-13569] - [Microservice][API/UI] user access control
+* [MSA-13595] - [UI/WF] "Console button" in Workflows need to be hideable
+* [MSA-13623] - [API] Authentication using encrypted String in Auth API
+* [MSA-13624] - [UI] MSA Auto Login using encrypted string sent in the uri
+* [MSA-13664] - In MSA vars SMTP server IP cannot be empty
+* [MSA-13684] - [CoreEngine] Set message.max.bytes in kafka
+* [MSA-13686] - [Repository][UI][API] password for PKI while uploading
+* [MSA-13699] - [UI][Repository] Separate Permissions required for Create and Upload
+* [MSA-13702] - [Microservice][UI] include setting visibility while creating Microservice and not consider MS Reference
+* [MSA-13711] - [UI] Timestamp should be in 12th/24th format or a least with AM/PM indication
+* [MSA-13716] - [Permission Profile/Repository] hide completely creation button
+
+=== Bug fixes
+
+* [MSA-12987] - [Microservice] when API error occurs after saving "false" is displayed instead of colon ":"
+* [MSA-13338] - [API] Sometimes Subtenant is detached from Manager and user cannot re attach
+* [MSA-13381] - [API]GET/ordercommand/objects/{deviceId}/{objectName}/details, is returning just one instance instead of all
+* [MSA-13396] - [API] Frequent false positive exception error in MSa-API logs
+* [MSA-13414] - [Microservice] [UI] Difference in XML files between 17.x and MSA2.0 creating display issues while creating new MS instance in Signature Profile MS
+* [MSA-13445] - [Microservice] [UI] An MS instance shows deleted on the UI, when the config is still present on the device.
+* [MSA-13447] - 【Firewallpolicy & IPsec policy】 "Unable to load Microservice Object" occurs when there are many policies
+* [MSA-13448] - 【Any microservice】 auto increment is wrong when the number of objects is large.
+* [MSA-13463] - [UI] non alphanumeric characters in alarm name are replaced by underscore
+* [MSA-13480] - [UI/API] Unzip feature is not working properly
+* [MSA-13513] - [Microservice] [UI] drop down list is not displayed properly
+* [MSA-13518] - [Microservice][UI] A variable of type "Link" is not visible in EDIT/UPDATE view, when the "Read Only" Option is selected in variable advance setting.
+* [MSA-13530] - [Microservice][UI][API] When you create an new MS instance and delete an existing instance, the newly created one disappears from the screen
+* [MSA-13533] - [Microservices] [UI] [MS] - In the drop down list of a variable, the "value" & "Display value" behavior is interchanged.
+* [MSA-13537] - [API] Remove checked exception
+* [MSA-13550] - [API] WF list variable doesn't support space
+* [MSA-13555] - [UI] large alarm name prevent to edit alarms
+* [MSA-13556] - [CoreEngine] large alarm name prevent to receive alarms
+* [MSA-13578] - [Microservice][UI][Regression] In a Array Variable of type "Unique Value", you cannot select values that have been previously selected in a different microservice instance.
+* [MSA-13588] - [Workflows] [API] Visibility by default not display if visiblity in XML is empty
+* [MSA-13589] - [Workflows] [UI] - In the drop down list of a variable, the "value" & "Display value" behaviour is interchanged
+* [MSA-13648] - [Workflow] Arrays with multiple elements show only one element in the UI
+* [MSA-13650] - [Monitoring] error when trying to attach a device created with specific external ref to a monitoring profile
+* [MSA-13654] - Workflow instances screen displays differently on different browsers
+* [MSA-13659] - [Microservice][UI/API]An object instance created, but not applied to the device, cannot be selected in another MS Instance.
+* [MSA-13662] - Workflow issue in creating new Processes while creating Add Task to process on new WF
+* [MSA-13669] - [Deployment Settings] Microservice tab can not view DS attached
+* [MSA-13672] - [Microservice][UI]User unable to edit SpamFilter MS Instance BEFORE apply changes
+* [MSA-13673] - [Admin] API logs error seen while connecting as Manager
+* [MSA-13683] - [Log analysis] Manager can bypass and display non authorized logs
+* [MSA-13691] - [CoreEngine] Email from alarm received multiple times
+* [MSA-13703] - API for reading repository meta_value returns 500 error code instead of empty list
+* [MSA-13735] - [Regression][API] Subtenant is detached while when Manager update the profile (eg : email update)
+
+== Upgrade
+
+Instructions to upgrade available in the https://ubiqube.com/wp-content/docs/latest/user-guide/quickstart.html[quickstart].
+
+=== Specific instructions for upgrading to 2.8.12
+
+The quickstart provides an upgrade script `upgrade.sh` for taking care of possible actions such as recreating some volume, executing some database specific updates,...
+
+In order to upgrade to the latest version, you need to follow these steps:
+
+1. `cd quickstart`
+2. `git checkout master`
+3. `git pull`
+4. `./scripts/install.sh`
+
