@@ -1,0 +1,131 @@
+plugins {
+    id 'org.asciidoctor.jvm.convert' version '3.3.2'
+    id 'org.asciidoctor.jvm.gems' version '3.3.2'
+    id 'org.asciidoctor.jvm.pdf' version '3.3.2'	
+}
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+    ruby.gems()
+}
+
+asciidoctorj {
+    modules {
+       diagram.use() 
+       diagram.version '2.2.9' 
+    }
+}
+
+dependencies {
+  asciidoctorGems 'rubygems:rouge:4.1.2'
+  asciidoctorGems 'rubygems:asciidoctor-diagram:2.2.9'
+}
+
+asciidoctor.doFirst {
+    delete file('build/html')
+    delete file('build/pdf')
+}
+
+asciidoctor {    
+
+  version = '2.0.20'
+
+  options doctype: 'book'
+
+  attributes \
+  	'source-highlighter' : 'rouge',
+    'linkcss': true,
+    'ubiqube': 'UBiqube',
+    'company_name': 'UBiqube',
+    'product_name': 'MSactivator(TM)',
+    'product_name-version': 'MSactivator-2.8.11',
+    'openmsa_name': 'OpenMSA(TM)',
+    'revnumber': 'MSA-2.8.11',
+    'versionnumber': '2.8.11',
+    'revnumber-prev': 'MSA-2.8.10',
+    'allow-uri-read': '',
+    'sectlinks': true,
+    'html': 'true',
+    'format': 'html',
+    'icons' : 'font'
+
+  sourceDir = file('doc-src')
+  outputDir  file('build/html')
+
+  resources {
+    from('doc-src') {
+      include '**/*.png'
+      include '**/*.jpg'
+      include '**/*.mp4'
+      include '**/*.css'
+      include '**/*.html'
+      include '**/*.pdf'
+      include '**/*.gif'
+    }
+
+    into '.'
+  }
+}
+task asciidoc_msa_html(dependsOn: asciidoctor)
+
+asciidoctorPdf {
+
+  baseDirFollowsSourceFile()
+  outputs.upToDateWhen { false }
+  
+  asciidoctorj {
+
+    modules {
+        pdf.version '2.3.6'
+    }
+    requires 'rouge'
+
+    options doctype: 'book'
+
+    attributes \
+      'sourcedir': project.sourceSets.main.java.srcDirs[0],
+      'organization' : 'UBiqube',
+ 	    'source-highlighter' : 'rouge',
+      'linkcss' : true,
+      'ubiqube': 'UBiqube',
+      'company_name': 'UBiqube',
+      'product_name' : 'MSactivator(TM)',
+      'product_name-version' : 'MSactivator-2.8.11',
+      'openmsa_name' : 'OpenMSA(TM)',
+      'revnumber' : 'MSA-2.8.11',
+      'versionnumber': '2.8.11',
+      'revnumber-prev' : 'MSA-2.8.10',
+      'allow-uri-read' : '',
+      'sectlinks' : true,
+      'pdf' : 'true',
+      'format': 'pdf',
+      'icons' : 'font',
+      'pdf-fontsdir' : "$rootDir/resources/fonts",
+      'pdf-stylesdir' : "$rootDir/resources/themes",
+      'pdf-style' : 'ubiqube-theme.yml',
+      'page-background-image' : 'image:bg.jpg[fit=cover,pdfwidth=100%,position=top]',
+      'notitle' : ''
+  }
+
+  sourceDir file('doc-src')
+  sources {
+       include 'user-guide/manager-guide-single.adoc', 'admin-guide/admin-guide-single.adoc','developer-guide/developer-guide-single.adoc', 'user-guide/quickstart.adoc', 'user-guide/quickstart_jp.adoc',
+               'release-notes/release_notes.adoc', 'release-notes/release_notes_2.8.11.adoc'
+      //'release-notes/release_notes_2.8.5.adoc', 'release-notes/release_notes_2.8.6.adoc', 'release-notes/release_notes_2.8.7.adoc', 'release-notes/release_notes_2.8.8.adoc', 'release-notes/release_notes_2.8.9.adoc', 
+ }
+  outputDir file('build/pdf')
+
+  resources {
+    from('doc-src') {
+      include '**/*.png'
+      include '**/*.jpg'
+      include '**/*.mp4'
+      include '**/*.html'
+      include '**/*.pdf'
+  }
+
+    into '.'
+  }
+}
+task asciidoc_msa_pdf(dependsOn: asciidoctorPdf)
