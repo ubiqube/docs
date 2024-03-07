@@ -131,6 +131,7 @@ asciidoctorPdf {
 task asciidoc_msa_pdf(dependsOn: asciidoctorPdf)
 
 // DEDICATED BUILD FOR JAP PDF REPORT TO AVOID ENCODING ISSUE
+
 asciidoctorPdfJapaneese {
 
   baseDirFollowsSourceFile()
