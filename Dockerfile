@@ -9,7 +9,7 @@ RUN	gradle asciidoc_msa_html
 #RUN gradle asciidoc_msa_pdf
 #RUN gradle -b build_ccla.gradle asciidoc_ccla_html
 #RUN gradle -b build_ccla.gradle asciidoc_ccla_pdf
-#RUN gradle -b build_ccla_pdf_jp.gradle	asciidoc_msa_pdf
+#RUN gradle -b build_pdf_jp.gradle asciidoc_msa_pdf
 
 USER root
 RUN apk add bash
