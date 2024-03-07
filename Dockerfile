@@ -7,6 +7,7 @@ ADD build.gradle	.
 
 RUN	gradle asciidoc_msa_html
 #RUN	gradle asciidoc_msa_pdf
+#RUN	gradle asciidoc_msa_pdf_jp
 #RUN	gradle -b build_ccla.gradle asciidoc_ccla_html
 #RUN gradle -b build_ccla.gradle asciidoc_ccla_pdf
 
