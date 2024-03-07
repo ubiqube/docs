@@ -173,7 +173,7 @@ asciidoctorPdfJapaneese {
 
   sourceDir file('doc-src')
   sources {
-       include 'user-guide/quickstart_jp.adoc',
+       include 'user-guide/quickstart_jp.adoc'
  }
   outputDir file('build/pdf')
 
