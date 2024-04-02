@@ -26,7 +26,7 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
       run: |
-        git clone https://${GH_TOKEN}@github.com/ubiqube/ubiqube-website.git temp_repo
+        git clone https://$(urlencode ${GH_TOKEN})@github.com/ubiqube/ubiqube-website.git temp_repo
         cd temp_repo
         cp -r /workspace/html/* ubiqube-website/wp-content/
         git add .
