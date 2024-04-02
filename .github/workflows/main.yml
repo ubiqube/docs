@@ -13,7 +13,7 @@ jobs:
     - name: Run the Docker image
       run: |
         docker run --name temp_container ubi.docs
-        docker cp temp_container:/home/gradle/build/ /home
+        docker cp temp_container:/home/gradle/build/ /workspace
         docker rm temp_container
       
     - name: Configure Git
@@ -25,7 +25,7 @@ jobs:
       run: |
         git clone https://github.com/ubiqube/ubiqube-website.git temp_repo
         cd temp_repo
-        cp -r /home/gradle/build/html/* ubiqube-website/wp-content/
+        cp -r /workspace/html/* ubiqube-website/wp-content/
         git add .
         git commit -m "Update files from Docker image"
         git push
