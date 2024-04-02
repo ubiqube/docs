@@ -28,8 +28,11 @@ jobs:
       run: |
         git clone https://techman24:${GH_TOKEN}@github.com/ubiqube/ubiqube-website.git temp_repo
         cd temp_repo/ubiqube-website/
+        ls -lrt 
+        ls -ltr  /tmp/build/html
         mv /tmp/build/html /tmp/build/wp-content
-        cp -r /tmp/build/wp-content/* ubiqube-website/static-site/wp-content/
+        ls -lrt /tmp/build/wp-content/
+        cp -r /tmp/build/wp-content/* static-site/wp-content/
         git add .
         git commit -m "Update files from Docker image"
         git push
