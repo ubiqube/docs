@@ -13,7 +13,8 @@ jobs:
     - name: Run the Docker image
       run: |
         docker run --name temp_container ubi.docs
-        docker cp temp_container:/home/gradle/build/ /workspace
+        echo $pwd
+        docker cp temp_container:/home/gradle/build/ /tmp
         docker rm temp_container
       
     - name: Configure Git
