@@ -7,5 +7,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: build the doc
+    - name: Build the doc
       run: docker build -t ubi.docs .
+      
+    - name: Run the Docker image
+      run: |
+        docker run --name temp_container ubi.docs
+        docker cp temp_container:/home/gradle/build/ /home
+        docker rm temp_container
+      
+    - name: Configure Git
+      run: |
+        git config --global user.email "dmn@ubiqube"
+        git config --global user.name "dmn"
+
+    - name: Commit and push changes
+      run: |
+        git clone https://github.com/ubiqube/ubiqube-website.git temp_repo
+        cd temp_repo
+        cp -r /home/gradle/build/html/* ubiqube-website/wp-content/
+        git add .
+        git commit -m "Update files from Docker image"
+        git push
