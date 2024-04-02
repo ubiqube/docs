@@ -23,8 +23,10 @@ jobs:
         git config --global user.name "dmn"
 
     - name: Commit and push changes
+      env:
+        GH_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
       run: |
-        git clone https://github.com/ubiqube/ubiqube-website.git temp_repo
+        git clone https://${GH_TOKEN}@github.com/ubiqube/ubiqube-website.git temp_repo
         cd temp_repo
         cp -r /workspace/html/* ubiqube-website/wp-content/
         git add .
