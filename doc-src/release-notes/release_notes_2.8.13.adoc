@@ -18,62 +18,36 @@ endif::[]
 Welcome to the 2.8.13 release of the {product_name}. There are many updates in this version that we hope you'll like !
 
 == User experience
-=== New KPIs in the manager dashboard
-Introducing new alarm count for managed entities in a manager dashboard. Once logged, a manager, in the infrastructure panel, can now see number of alarms received associated to managed entities. Also, clicking on this alarm notification permit to be redirected to alarms view.
+=== Session expiration
+Introducing new pop up message which inform the user about the minutes left to be log off. For any users of the platform, after 5 minutes, a session expiration notification is displayed
 
-image:2.8.13_ux_newKpi.png[width=700px]
+image:2.8.13_expiration_session.png[width=700px]
 
 == Assurance
-===	Download alarms & logs in CSV
-A new feature has been introduced to export alarm logs and logs in CSV format. Users can now 	conveniently download these records for further analysis or reporting.  This enhancement streamlines data management and facilitates seamless integration with other tools or systems.	
+===	Flat vs Grouped mode
+LOREM	
 
-image:2.8.12_logs_csv.png[width=700px]
+image:2.8.13_logs_flat_gp.png[width=700px]
 
-== Governance
-=== New permissions
-Inside a permission profile, there is new capabilities to control the display. A new “Hide” right has been introduced, to keep elements visible by default, in some sections : repository, assurance, integration, profile and automation. Additionally, new categories have been created :
-- Global search, to control the search button on the right corner
-- Menu items, to choose to display main left menus
-- Logout, to hide or show the logout button, useful in some Single Sign-On use-case
+=== Logs search features
+Field suggestion in input search
+Time slot set as 24h as default
+Time range inclusion within/outside
 
-image:2.8.12_new_perms.png[width=700px]
+image:2.8.13_date_sort.png[width=700px]
 
-== Automation
-=== Import only once
-For large configuration, like thousand entries, a new option has been introduced in the micro services. To avoid a long synchronization, the import operation can be triggered only the first time. A checkbox is available in the Information tab of each micro services to activate this feature.
+Save query
 
-image:2.8.12_import_only_once.png[width=700px]
+image:2.8.13_save_query.png[width=700px]
 
-== Specific technical fixes and feature details
+=== Log rotation
+
+=== Download feature at infrastructure level
+
 
 === Features
 
-* [MSA-12543] - [UI/Customization] Default logo & footer customization for MSAv2
-* [MSA-13098] - [Security][UI] Use device credentials in encrypted format device Update API
-* [MSA-13119] - [Repository][UI] ability to add/update tags/filename/comment in metafiles in repository
-* [MSA-13120] - [Repository][API] show all directory of repository based on authenticated user
-* [MSA-13172] - [Repository] - Shows license (for others repository files) usage from UI repository
-* [MSA-13274] - [Assurance][UI] incident ticket management: view ticket screen
-* [MSA-13326] - [UI/API]Log Analysis - Download feature (same as in Alarms)
-* [MSA-13432] - [Microservice] Restrict allowed characters for all the microservice "name" field
-* [MSA-13435] - [Governance] - New permissions for logs filtering display , default monitoring profile
-* [MSA-13442] - [Microservice][UI/API] add option - Import Microservices only once - for Microservices
-* [MSA-13467] - [UI][Topology] Label font size & movement
-* [MSA-13512] - [Governance] - New feature to configure landing menu and list of menus for manager
-* [MSA-13535] - [Governance] - Workflow Processes user access control
-* [MSA-13549] - [Assurance][UI][API] incident ticket management: Display uploaded files on View screen
-* [MSA-13552] - [SOAP API] Incident Ticket Management
-* [MSA-13569] - [Microservice][API/UI] user access control
-* [MSA-13595] - [UI/WF] "Console button" in Workflows need to be hideable
-* [MSA-13623] - [API] Authentication using encrypted String in Auth API
-* [MSA-13624] - [UI] MSA Auto Login using encrypted string sent in the uri
-* [MSA-13664] - In MSA vars SMTP server IP cannot be empty
-* [MSA-13684] - [CoreEngine] Set message.max.bytes in kafka
-* [MSA-13686] - [Repository][UI][API] password for PKI while uploading
-* [MSA-13699] - [UI][Repository] Separate Permissions required for Create and Upload
-* [MSA-13702] - [Microservice][UI] include setting visibility while creating Microservice and not consider MS Reference
-* [MSA-13711] - [UI] Timestamp should be in 12th/24th format or a least with AM/PM indication
-* [MSA-13716] - [Permission Profile/Repository] hide completely creation button
+
 
 === Bug fixes
 
