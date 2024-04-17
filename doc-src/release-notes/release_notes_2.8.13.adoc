@@ -29,25 +29,24 @@ image:2.8.13_expiration_session.png[width=700px]
 
 == Assurance
 ===	Flat vs Grouped mode
-LOREM	
+A user of the platform, when consulting logs can choose between two modes : flat or grouped. Flat, the native mode, allows to display logs sort by date, ascending or descending. With Grouped, the result will be bundled by fields, with date as the initial field. The user can choose extra fields to complete the result or sort logs by others criterias to form pack of results.
 
 image:2.8.13_logs_flat_gp.png[width=700px]
 
 === Logs search features
-Field suggestion in input search
-Time slot set as 24h as default
-Time range inclusion within/outside
+New functions have been added around logs search. When clicking inside Search Logs field,  a list give all available fields as suggestion in input search. Additionally, logs are retrieved with a time range of 24h by default. Of course a user can still select a different start and end date using the filter by list. In the same area, the time range inclusion permits to include (within) or exclude (outside)  logs based and the chosen dates. Finally, on the right of the search bar, a new icon allows to save query to replay old queries without selecting again all parameters.
 
 image:2.8.13_date_sort.png[width=700px]
-
-Save query
 
 image:2.8.13_save_query.png[width=700px]
 
 === Log rotation
+In a multiple nodes architecture, old container logs are cleaned to save space on the host disk. New clean operations are scheduled automatically to optimize the platform.
 
 === Download feature at infrastructure level
+Same as the substenant level, logs can be downloaded using Download report button. A CSV file is generated containing same data as the screen is presenting.
 
+image:2.8.13_dl_logs_me.png[width=700px]
 
 === Features
 
