@@ -19,7 +19,11 @@ Welcome to the 2.8.13 release of the {product_name}. There are many updates in t
 
 == User experience
 === Session expiration
-Introducing new pop up message which inform the user about the minutes left to be log off. For any users of the platform, after 5 minutes, a session expiration notification is displayed
+Introducing new pop up message which inform the user about the minutes left to be log off. For any users of the platform, 5 minutes before session expiration, a notification is displayed.
+The session expiration time is fully configurable using our system variables. 
+
+Feature flag to control this beahvior : FEATURE_SESSION_EXPIRATION_WARNING (false by default)
+MSA variable to set expiration time : Authentication token expiration time
 
 image:2.8.13_expiration_session.png[width=700px]
 
