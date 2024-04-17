@@ -39,10 +39,10 @@ asciidoctor {
     'ubiqube': 'UBiqube',
     'company_name': 'UBiqube',
     'product_name': 'MSactivator(TM)',
-    'product_name-version': 'MSactivator-2.8.11',
+    'product_name-version': 'MSactivator-2.8.13',
     'openmsa_name': 'OpenMSA(TM)',
-    'revnumber': 'MSA-2.8.11',
-    'versionnumber': '2.8.11',
+    'revnumber': 'MSA-2.8.13',
+    'versionnumber': '2.8.13',
     'revnumber-prev': 'MSA-2.8.10',
     'allow-uri-read': '',
     'sectlinks': true,
@@ -91,11 +91,11 @@ asciidoctorPdf {
       'ubiqube': 'UBiqube',
       'company_name': 'UBiqube',
       'product_name' : 'MSactivator(TM)',
-      'product_name-version' : 'MSactivator-2.8.11',
+      'product_name-version' : 'MSactivator-2.8.13',
       'openmsa_name' : 'OpenMSA(TM)',
-      'revnumber' : 'MSA-2.8.11',
-      'versionnumber': '2.8.11',
-      'revnumber-prev' : 'MSA-2.8.10',
+      'revnumber' : 'MSA-2.8.13',
+      'versionnumber': '2.8.13',
+      'revnumber-prev' : 'MSA-2.8.12',
       'allow-uri-read' : '',
       'sectlinks' : true,
       'pdf' : 'true',
@@ -111,7 +111,7 @@ asciidoctorPdf {
   sourceDir file('doc-src')
   sources {
        include 'user-guide/manager-guide-single.adoc', 'admin-guide/admin-guide-single.adoc','developer-guide/developer-guide-single.adoc', 'user-guide/quickstart.adoc',
-               'release-notes/release_notes.adoc', 'release-notes/release_notes_2.8.11.adoc'
+               'release-notes/release_notes.adoc', 'release-notes/release_notes_2.8.13.adoc'
       //'release-notes/release_notes_2.8.5.adoc', 'release-notes/release_notes_2.8.6.adoc', 'release-notes/release_notes_2.8.7.adoc', 'release-notes/release_notes_2.8.8.adoc', 'release-notes/release_notes_2.8.9.adoc', 
  }
   outputDir file('build/pdf')
