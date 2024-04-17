@@ -47,49 +47,92 @@ image:2.8.13_save_query.png[width=700px]
 
 === Features
 
-
+* [MSA-10167] - [Monitoring] value used for the rule field "Max" is used "as is" for the KPI value
+* [MSA-12540] - [Workflows][API] add constraints for workflows
+* [MSA-13325] - [Logs] display mode feature (flat/grouped)
+* [MSA-13370] - 2.0 MSA 's log rotation
+* [MSA-13510] - [Assurance][UI][API] incident ticket management: search & sorting
+* [MSA-13553] - Log retention for advanced criteria combination
+* [MSA-13554] - Docker environment variable for ES shards and replicas
+* [MSA-13568] - [UI] Pop-Up message for session expiration information
+* [MSA-13595] - [UI/WF] "Console button" in Workflows need to be hideable
+* [MSA-13606] - [Logs][UI][API] download feature in infrastructure level
+* [MSA-13615] - [License] Permanent display of usage Information
+* [MSA-13622] - [Repository][API][UI] Unzip the license - extraction without folder creation
+* [MSA-13668] - [Repository][UI] special characters handling for tag and comment
+* [MSA-13670] - [UI]Hide Create Button in Repo View if user doesnt have permission.
+* [MSA-13718] - [UI] [Logs/Alarms] date time-slot to be set to last 24h as default
+* [MSA-13719] - [UI][Logs/Alarms] fields suggestions in input search
+* [MSA-13720] - [UI] [Logs/Alarms] Filter By enhancement
+* [MSA-13721] - [UI][Logs] sorting by date ascending/descending
+* [MSA-13722] - [UI][Logs] Time range inclusion within/outside
+* [MSA-13723] - [UI][Logs/Alarms] Save Query
+* [MSA-13724] - [UI][Logs/Alarms] Logs field/value auto add in search input
+* [MSA-13725] - [UI][Logs] Filter MUST & MUST_NOT
+* [MSA-13726] - [UI] [Logs/Alarms] Managed Entity IP should not be shown for all users
+* [MSA-13733] - [UI][Repository] Display update date for files
+* [MSA-13734] - [UI] [ME] Tooltip to display the device name + external reference when moving the cursor
+* [MSA-13748] - [Alarm] email notification formatting Change Request
+* [MSA-13778] - [CoreEngine] alarm timestamps not clean in DB
+* [MSA-13782] - [UI] [Repository] add "Shared" folder
+* [MSA-13790] - [Achitecture/Configuration] Performance degradation in HA mode
+* [MSA-13794] - [UI][ECL2v3 specific] Dedicated screen after Manager user logout
+* [MSA-13795] - [UI/AUTOLOGIN] Improve security on autologin user key by introducing a expiration mechanism
+* [MSA-13800] - [UI] createTemplate feature on Microservice has not been ported in MSA v2
+* [MSA-13804] - [UI][Alarm] sorting by date ascending/descending
+* [MSA-13806] - [SOAP API] Error handling - readCustomerByReference
+* [MSA-13808] - [UI/API] [Logs] When displaying Attack Details, the information should be translated
+* [MSA-13810] - [UI] finalize translation to JP for customer portal
+* [MSA-13813] - [Microservices][Design] - Enhance "is_in_network" function in "net_common.php" to support CIDR notation.
+* [MSA-13815] - [UI] remove thunder icon from Microservice console
+* [MSA-13820] - [Logs][UI] Logs in Infrastructure / hide "Log Type" and "Severity" in "Filter By"
+* [MSA-13837] - [Logs/Alarms] trigger search by hitting "Enter" or clicking out of the textbox
+* [MSA-13842] - [UI][Logs] Include Filter MUST & MUST_NOT in save query functionality
+* [MSA-13848] - [UI] [Logs/Alarms] Filter By enhancement / ME name / imported ME vs new ME
+* [MSA-13849] - [Logs] align "flat / grouped" radio button in managed entity level similar as global view
+* [MSA-13858] - [Logs] Enhancement : SortBy timestamp column / SortByDate chip remove / Timerange chip value WITHIN OUTSIDE rename / GroupBy default value Date / IP Filter color when filtered
+* [MSA-13868] - [UI] Hide Manager credentials readonly mode & logs columns fields selections
 
 === Bug fixes
 
-* [MSA-12987] - [Microservice] when API error occurs after saving "false" is displayed instead of colon ":"
-* [MSA-13338] - [API] Sometimes Subtenant is detached from Manager and user cannot re attach
-* [MSA-13381] - [API]GET/ordercommand/objects/{deviceId}/{objectName}/details, is returning just one instance instead of all
-* [MSA-13396] - [API] Frequent false positive exception error in MSa-API logs
-* [MSA-13414] - [Microservice] [UI] Difference in XML files between 17.x and MSA2.0 creating display issues while creating new MS instance in Signature Profile MS
-* [MSA-13445] - [Microservice] [UI] An MS instance shows deleted on the UI, when the config is still present on the device.
-* [MSA-13447] - 【Firewallpolicy & IPsec policy】 "Unable to load Microservice Object" occurs when there are many policies
-* [MSA-13448] - 【Any microservice】 auto increment is wrong when the number of objects is large.
-* [MSA-13463] - [UI] non alphanumeric characters in alarm name are replaced by underscore
-* [MSA-13480] - [UI/API] Unzip feature is not working properly
-* [MSA-13513] - [Microservice] [UI] drop down list is not displayed properly
-* [MSA-13518] - [Microservice][UI] A variable of type "Link" is not visible in EDIT/UPDATE view, when the "Read Only" Option is selected in variable advance setting.
-* [MSA-13530] - [Microservice][UI][API] When you create an new MS instance and delete an existing instance, the newly created one disappears from the screen
-* [MSA-13533] - [Microservices] [UI] [MS] - In the drop down list of a variable, the "value" & "Display value" behavior is interchanged.
-* [MSA-13537] - [API] Remove checked exception
-* [MSA-13550] - [API] WF list variable doesn't support space
-* [MSA-13555] - [UI] large alarm name prevent to edit alarms
-* [MSA-13556] - [CoreEngine] large alarm name prevent to receive alarms
-* [MSA-13578] - [Microservice][UI][Regression] In a Array Variable of type "Unique Value", you cannot select values that have been previously selected in a different microservice instance.
-* [MSA-13588] - [Workflows] [API] Visibility by default not display if visiblity in XML is empty
-* [MSA-13589] - [Workflows] [UI] - In the drop down list of a variable, the "value" & "Display value" behaviour is interchanged
-* [MSA-13648] - [Workflow] Arrays with multiple elements show only one element in the UI
-* [MSA-13650] - [Monitoring] error when trying to attach a device created with specific external ref to a monitoring profile
-* [MSA-13654] - Workflow instances screen displays differently on different browsers
-* [MSA-13659] - [Microservice][UI/API]An object instance created, but not applied to the device, cannot be selected in another MS Instance.
-* [MSA-13662] - Workflow issue in creating new Processes while creating Add Task to process on new WF
-* [MSA-13669] - [Deployment Settings] Microservice tab can not view DS attached
-* [MSA-13672] - [Microservice][UI]User unable to edit SpamFilter MS Instance BEFORE apply changes
-* [MSA-13673] - [Admin] API logs error seen while connecting as Manager
-* [MSA-13683] - [Log analysis] Manager can bypass and display non authorized logs
-* [MSA-13691] - [CoreEngine] Email from alarm received multiple times
-* [MSA-13703] - API for reading repository meta_value returns 500 error code instead of empty list
-* [MSA-13735] - [Regression][API] Subtenant is detached while when Manager update the profile (eg : email update)
+* [MSA-9161] - [BPM] on BPM execution, an empty process in workflow will cause issue in live console
+* [MSA-13093] - [BPM] In BPM execution, manually named BPM instance names are not searchable by the search operation
+* [MSA-13193] - Without obtaining the record list by the task in BPM, the task judgment is success, originally it should be Error.
+* [MSA-13399] - [Workflow][UI] nested array like tab=>subtab variable is visible only in Edit view
+* [MSA-13462] - [UI] within a selected tenant, the workflow search by name is not working across multiple pages
+* [MSA-13469] - [Microservice] [UI] When an Array variable is made of type "Auto Increment", it doesn't work in EDIT/UPDATE method of MS.
+* [MSA-13636] - Pop-up window for status not showing during the BPM workflow execution.
+* [MSA-13656] - There was a difference between the results displayed in MSA2 during execution and after pressing "show Tasks" to confirm.
+* [MSA-13685] - [Microservice][UI][Regression] ALL elemets of the array end up getting selected,if its left empty while creating an MS Instance
+* [MSA-13700] - [UI][SpamFilter][UTM Editing a setting also changes the value of another setting.
+* [MSA-13715] - [Microservice][API][Regression]Only one object is displayed in the drop down in a Variable of type "Microservice Reference"
+* [MSA-13727] - [Topology View] A random link label dots are appearing
+* [MSA-13741] - [Topology] - Saved position values are reset when refreshing the topology view
+* [MSA-13759] - [UI/API] [Logs] When displaying Attack Details, the information retrieved by the API is interrupted(broken).
+* [MSA-13770] - [Regression][UI][WF] ALL elements of the array end up getting selected,if its left empty while creating a workflow Instance
+* [MSA-13777] - [UI/Settings] Default language to Japanese does not allow proper login with other language
+* [MSA-13783] - [API] We are able to run the same process of a workflow simultaneous whereas we shouldn't
+* [MSA-13787] - [UI/WF] columns alignement on instance details
+* [MSA-13823] - [Logs] issues when using complex searches
+* [MSA-13829] - [UI/API] Autologin feature needs to regenerate a new token if request with a new key is performed
+* [MSA-13833] - [Logs] time range inclusion radio button are not initialised to "within"
+* [MSA-13836] - [UI/Settings] UI loads in japanese when english is selected from login dropdown
+* [MSA-13838] - [Logs/Alarms] search with range not working / UI infinite loop
+* [MSA-13843] - [UI] weird button partially visible on the UI when scrolling down
+* [MSA-13844] - [Logs/Alarms] highlighting search result is not relevant
+* [MSA-13845] - [Logs] fields listed in group by view should be lower case
+* [MSA-13846] - [UI/API] No more able to hide Miroservice on MSA UI according to "Minimum role to see the microservice field"
+* [MSA-13847] - [UI] Cliking on "OK" button of a session expiration warning windows should automatically renew the token
+* [MSA-13862] - [BPM] error in UI after execution of scheduled BPM
+* [MSA-13870] - [API] ES crendentials are hardcoded on the msa-api code whereas it should be taken from the environment variable set through the docker-compose file
+* [MSA-13873] - [SMS/BUD] DB inconsistency prevents batchupdate to do properly its job
+* [MSA-13890] - MS Configure screen refreshes on clicking Add Row for a microservice with MS reference type variable
 
 == Upgrade
 
 Instructions to upgrade available in the https://ubiqube.com/wp-content/docs/latest/user-guide/quickstart.html[quickstart].
 
-=== Specific instructions for upgrading to 2.8.12
+=== Specific instructions for upgrading to 2.8.13
 
 The quickstart provides an upgrade script `upgrade.sh` for taking care of possible actions such as recreating some volume, executing some database specific updates,...
 
