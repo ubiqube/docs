@@ -1,1 +1,27 @@
 
+= Version 1.0.0
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+== New features
+
+=== Product Unification - Hybrid login page / Black theme
+Fully rebrand portal to be aligned with MSactivator look & feel
+
+=== Operate & Build, to drive xOps journey
+Classify old Cloudclapp features into 2 mains menus
+
+=== Customized dashboard
+
+=== Service Mesh
+
+=== Observability
+
+= Specific technical fixes and feature details =
+
+== Enhancements ==
+
+
+
+== Bugs ==
+
+
