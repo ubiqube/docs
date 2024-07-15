@@ -8,7 +8,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 Fully rebrand portal to be aligned with MSactivator look & feel
 
 === Operate & Build, to drive xOps journey
-Classify old Cloudclapp features into 2 mains menus
+Embarking on an xOPS journey to ease building cloud environment and manage IT operations
 
 === Customized dashboard
 Define your own KPIs for all levels of managements : organization, environment and deployment
