@@ -1,3 +1,21 @@
+= Taxonomy to drive xOPS Journey
+
+Cloudclapp has been designed to manage lifecycle of environments and cloud platforms. 
+Any OPS personel can manage IT systems, be sure it remains efficient, safe and scale in continuous way. The solution allows to manage frequent changes as environments are not static, moving in the time.
+3 enablements domains have been created :
+
+== BUILD ==
+Mainly via the blueprint catalog, the journey start by designing new infrastructure with easy to use designer : drag & drop generic components to build your environment and deploy your applications.
+No code design, No need cloud expertise to deploy simple thing.  Combining  clouds technologies, connectivity options. Abstract concepts
+
+== OPERATE ==
+Manage lifecycle of your environments, including discovery. Trought operate, a user can do application deployment, cost management, trigger security scanners same as accessing config management of clusters.
+The solution allows also to access service mesh, observability, tracking, governance..
+
+== AUTOMATE ==
+Use or build specific processes to add extra values and manage frequent changes. It can be manual, schedule or event based. Automation block are sorted by categories.
+Continuously improve the degree of automation of environments. 
+
 = Key Concepts
 
 == An organization
