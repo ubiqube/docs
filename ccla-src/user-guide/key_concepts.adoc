@@ -1,4 +1,4 @@
-= Taxonomy to drive xOPS Journey
+= Taxonomy to drive xOPS journey
 
 Cloudclapp has been designed to manage lifecycle of environments and cloud platforms. 
 Any OPS personel can manage IT systems, be sure it remains efficient, safe and scale in continuous way. The solution allows to manage frequent changes as environments are not static, moving in the time.
