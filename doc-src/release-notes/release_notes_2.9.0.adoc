@@ -28,15 +28,13 @@ Based on the work done on Cloudclapp, apply new changes on MSA black theme. This
 * Move settings + profile + logout at the bottom of left menus
 
 
-image:2.9.0_UI_black_theme.png[width=700px]
+image:2.9.0_UI_black_theme.jpg[width=700px]
 
 == Assurance
 
 === Automatically raise alarm for SNMP traps
 
 An alarm is automatically raised upon reception of an SNMP traps. Whenever these is an SNMP trap collected, an alarm is raised. When the alarm is created, the MIB is used to extract the detail of the event based on SNMP walk and an alarm is created in ES/UI with the alarm name based on MIB/OID. The user is able to select an alarm and configure the target severity (promote/demote).
-
-image:2.9.0_SNMP_to_Alarm.png[width=700px]
 
 === Update alarms status flow: ack and clear status
 
@@ -46,7 +44,7 @@ With the addition of the alarm clearing action, alarm flow is now as following:
 •	clear=false, ack=true : someone is aware
 •	clear=true,  ack=false : people not aware BUT alarm automatically cleared
 
-image:2.9.0_alarm_clearing.png[width=700px]
+image:2.9.0_alarm_clearing.jpg[width=700px]
 
 === Features
 
