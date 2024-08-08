@@ -1,0 +1,178 @@
+= Version 2.9.0
+:front-cover-image: image:release-note-cloudiamo-2X.png[]
+:toc: left
+:toclevels: 3
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+ifndef::imagesdir[:imagesdir: images]
+
+//OK HTML 
+ifdef::html[]
+:includedir: doc-src/release-notes
+endif::[]
+
+// OK PDF
+ifdef::pdf[]
+:includedir: .
+endif::[]
+
+Welcome to the 2.9.0 release of the {product_name}. There are many updates in this version that we hope you'll like !
+
+== User experience
+=== Apply new MSA branding - Black theme - Left menus
+
+Based on the work done on Cloudclapp, apply new changes on MSA black theme. This includes the following changes:
+
+* Apply back color as background color (top + left) + Cloudiamo watermark
+* MSactivator logo top left (developer + manager)
+* New icons for left menus + paddings
+* Move settings + profile + logout at the bottom of left menus
+
+
+image:2.9.0_UI_black_theme.jpg[width=700px]
+
+== Assurance
+
+=== Automatically raise alarm for SNMP traps
+
+An alarm is automatically raised upon reception of an SNMP traps. Whenever these is an SNMP trap collected, an alarm is raised. When the alarm is created, the MIB is used to extract the detail of the event based on SNMP walk and an alarm is created in ES/UI with the alarm name based on MIB/OID. The user is able to select an alarm and configure the target severity (promote/demote).
+
+=== Update alarms status flow: ack and clear status
+
+With the addition of the alarm clearing action, alarm flow is now as following:
+
+•	clear=false, ack=false
+•	clear=false, ack=true : someone is aware
+•	clear=true,  ack=false : people not aware BUT alarm automatically cleared
+
+image:2.9.0_alarm_clearing.jpg[width=700px]
+
+=== Features
+
+
+
+== Enhancement
+
+* [MSA-12667] - msa-alarm use redone schema
+* [MSA-12919] - [CoreEngine] code optimization for OID translation during runtime
+* [MSA-12943] - [Alarms] automatically raise alarm for SNMP traps
+* [MSA-12944] - [Alarms][API/SMS] user can change dynamic SNMP trap alarm severity
+* [MSA-13037] - [Alarms][CoreEngine] add global config variable to turn on/off the dyn alarm feature (default off)
+* [MSA-13046] - [CoreEngine] sms_snmptrapd should write directly to ES
+* [MSA-13048] - [CoreEngine] Chose the best message bus for syslogs
+* [MSA-13174] - [Microservices] synchronization optimization based on XPATH Command regardless of the IMPORT rank
+* [MSA-13217] - [Alarms][UI] update alarms status flow: ack and clear status
+* [MSA-13350] - [Alarms][UI] add global config variable to turn on/off the dyn alarm feature (default off)
+* [MSA-13422] - Refactor API code to have only One Model for Orch Definition and MicroService Definition
+* [MSA-13429] - [Settings][UI] Add name and group columns for MSA variables
+* [MSA-13440] - [DB] Convert ILIKE to a more agnostic form
+* [MSA-13545] - [API] Make UserDao and Orchestration*Dao Dynamic
+* [MSA-13602] - [Alarm] Dynamic SNMP trap translation based on vendor MIB definition files
+* [MSA-13629] - [API] Enable micrometer traceId
+* [MSA-13634] - [CoreEngine] remove new GCC-alma9 compilation warnings
+* [MSA-13663] - [CoreEngine] remove postfix from core engine
+* [MSA-13754] - [MSA-API] Extend the PreAuth support for all MSA entities
+* [MSA-13792] - [API] Add traceId-spanId to WF logs
+* [MSA-13793] - [API] Remove RRD references, and refactoring
+* [MSA-13801] - [API] ⬆️ Upgrade to JDK21
+* [MSA-13805] - [Alarm] add a new field alarmFieldId in the MSA MIB
+* [MSA-13807] - [API] Warn user in msa-api logs when using a deprecated method.
+* [MSA-13851] - [UX] Rename Pass to Forward in BPM view
+* [MSA-13852] - [Alarms] SecEngine - using SMTP for alarm mails inadvertently removed logging mail action
+* [MSA-13855] - [CoreEngine] Use local SMTP relay container
+* [MSA-13864] - [ARCH] update Python Version for WF execution
+* [MSA-13866] - [UX] Apply new MSA branding - Black theme - Left menus
+* [MSA-13940] - [ES] index pattern / template / ILM alignment
+* [MSA-13990] - [Alarms] CoreEngine - Support Keycloak for check_alert
+* [MSA-14013] - [Workflow] No WF instance on MSA, even if the WF has been executed via a Blueprint(BPM) on Cloudclapp.
+* [MSA-14034] - [API] ⬆️ Bump spring boot 3.3.1
+
+== Bug fixes
+
+* [MSA-11363] - [HA] the application log directories are shared by many containers and the log files are overwritten - not SMS ones
+* [MSA-12469] - [Workflows] - Composite array variables display/hide not consistent when type is other than String
+* [MSA-13556] - [CoreEngine] large alarm name prevent to receive alarms
+* [MSA-13577] - [API] upgrade spring version in msa-api to 3.2.x
+* [MSA-13579] - [Alarms][API] Acknowledge Alarms Failing with ES 403 Forbidden
+* [MSA-13627] - [Alarms][UI] edition of alarm rule deletes string to search when containing log_type:
+* [MSA-13667] - [UI] unable to detach the microservice from deployment setting on the microservice tab using the "Add to" button
+* [MSA-13798] - [Alarm] SNMP trap sent by MSA for an alarm are missing the alarmFieldEventType field
+* [MSA-13799] - [Alarm] SNMP traps sent by MSA have a severity field that doesn't match the source alarm
+* [MSA-13854] - [API] ✨ Use local smtp relay container.
+* [MSA-13861] - [Core Engine] Parser Modify fields.php in parsed
+* [MSA-13867] - [ES] Restart of MSA stack on swarm cause "superuser" user of msa-es container to be lost
+* [MSA-13874] - [GUI] boolean field in alarm pane is not displayed
+* [MSA-13875] - [python-sdk][API] Remove hardcoded python3
+* [MSA-13876] - [python-sdk] Make msa-api server configurable
+* [MSA-13911] - [CoreEngine][SMS/BUD] DB inconsistency prevents batchupdate to do properly its job
+* [MSA-14005] - [BPM] BPM execution stuck, and no futher workflow can be executed
+* [MSA-14022] - [Security] MFA/OTP not working with MSA/CCLA portal
+* [MSA-14026] - [UI] can not connect on UI if login contains uppercase
+* [MSA-14041] - [Security] Fix case sensitive for username
+* [MSA-14042] - [Security] When staying on some pages, 401 will occur
+* [MSA-14052] - [Security] /opt/fmc_repository/Datafiles owned by root on a new MSA
+* [MSA-14062] - [PYTHON SDK] Need to remove process log injection into ES from Python SDK
+* [MSA-14079] - [UI] Can not play with 2.9.0 without using private window with a Browser
+* [MSA-14084] - [Security] Unexpected refresh happens on permission profile and repository page
+* [MSA-14089] - [Topology][API] Can not load the topology view
+* [MSA-14090] - [Topology] Label block should displayed on top of links/circle points and not in the background
+* [MSA-14096] - [Monitoring][API] can not display monitoring graphs custom profile
+* [MSA-14102] - [UI/API] Impossible to attach MEs to a monitoring profile when a subtenant has a large number of MEs
+* [MSA-14103] - [UI] Incident Tickets pane is blocked by looping on number of alarms when a subtenant is selected
+* [MSA-14107] - [Security] Keycloak issue when running MSA+MANO: both instances are trying to join a cluster
+* [MSA-14108] - [Quickstart] msa-dev /usr/bin/create_mini_lab.sh auth failure
+* [MSA-14112] - [Quickstart][API] Audit logs are not generated
+* [MSA-14126] - [MSA][API] Swagger not working
+* [MSA-14159] - [HA] the application log directories are shared by many containers and the log files are overwritten - API ones
+* [MSA-14169] - [UI][WORKFLOW] unable to load scheduled processes
+* [MSA-14171] - [CoreEngine] configuration backup problem
+* [MSA-14175] - [UI] Remove token on api-ping
+
+== Task
+
+* [MSA-11022] - [Security] Migrate from centos 7 to Alma or Rocky (sms containers)
+* [MSA-13201] - [DB] add MariaDB driver to API / CoreEngine
+* [MSA-13583] - [API] Upgrade swagger 2 to swagger 3
+* [MSA-13638] - [API] Upgrade to Almalinux 9
+* [MSA-13640] - Update github actions from node 16 to 20
+* [MSA-13649] - [CoreEngine] Remove useless code in *config.c
+* [MSA-13767] - next_release/2.8.13 conflict resolving
+* [MSA-13776] - [MANO] Upgrade tomcat to 10.1.19 (latest)
+* [MSA-14040] - [Security] Remove authentication related variable from MSA-VARS
+* [MSA-14091] - [UI] Too many API calls when the keycloak token expires
+
+== Port
+
+* [MSA-14130] - [PORTING 2.9.0] - [Topology] Label block should displayed on top of links/circle points and not in the background
+* [MSA-14131] - [PORTING 2.9.0] - [Workflow][UI] variable "Column size" attribute isn't taken into account
+* [MSA-14132] - [PORTING 2.9.0] - [Workflow][API] Possible cache issue on workflow definition causing discrepancy during execution
+* [MSA-14135] - [PORTING 2.9.0]- [REPOSITORY] The repository upload and unzip should created automatically the ".meta_" files if there are not included in the ZIP file
+* [MSA-14136] - [PORTING 2.9.0] - [Workflow][API] Add UBIQUBEID (subtenant id) into Workflow constraint feature
+* [MSA-14137] - [PORTING 2.9.0] - [API] Microservice instance data not imported
+* [MSA-14139] - [PORTING 2.9.0] - [UI][SpamFilter][UTM Editing a setting also changes the value of another setting.
+* [MSA-14140] - [PORTING 2.9.0] - [ES] "ubilogs*" template setting isn't apply properly
+* [MSA-14141] - [PORTING 2.9.0] - [Workflow][UI] add constraints for workflows
+* [MSA-14142] - [PORTING 2.9.0] - [UI][Translation] Modify Japanese notation for "Profile"
+* [MSA-14143] - [PORTING 2.9.0] - [BPM] BPM cannot be edited and saved
+* [MSA-14144] - [PORTING 2.9.0] - [Workflows][API] refresh issue during WF execution when not logued as ncroot
+* [MSA-14147] - [PORTING 2.9.0] - [WF] Need to reduce process execution logs and change logs display order
+* [MSA-14149] - [PORTING 2.9.0] - [UI/Logs] Attacks Details link view should be available only when type is attack
+* [MSA-14150] - [PROTING 2.9.0] - [UI/WF][Investigation] Need to be able to specify array height in order to adapt WF context display
+
+== Story
+
+* [MSA-13771] - [Alarm] update alarm in ES when the alarm has been forwarded as SNMP trap
+
+== Upgrade
+
+Instructions to upgrade available in the https://ubiqube.com/wp-content/docs/latest/user-guide/quickstart.html[quickstart].
+
+=== Specific instructions for upgrading to 2.9.0
+
+The quickstart provides an upgrade script `upgrade.sh` for taking care of possible actions such as recreating some volume, executing some database specific updates,...
+
+In order to upgrade to the latest version, you need to follow these steps:
+
+1. `cd quickstart`
+2. `git checkout master`
+3. `git pull`
+4. `./scripts/install.sh`
