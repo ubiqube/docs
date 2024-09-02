@@ -1,0 +1,115 @@
+
+= Version 1.0.0
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+== New features
+
+=== Product Unification - Hybrid login page / Black theme
+Fully rebrand portal to be aligned with MSactivator look & feel
+
+=== Operate & Build, to drive xOps journey
+Embarking on an xOPS journey to ease building cloud environment and manage IT operations
+
+=== Customized dashboard
+Define your own KPIs for all levels of managements : organization, environment and deployment
+
+=== Service Mesh
+Integration of Kiali/Istio to visualize your mesh
+
+=== Observability
+Measure and understand the internal state of your environments by proxifying Prometheus and Grafana
+
+= Specific technical fixes and feature details =
+
+== Enhancements ==
+* [CCLA-318] - Add observability flag during env creation
+* [CCLA-319] - Deploy Istio / Kiali when service mesh is checked
+* [CCLA-356] - Top Menu - port to new UI
+* [CCLA-358] - Left Menu - port to new UI
+* [CCLA-368] - build - port existing BPM based Blueprint designer to new UI
+* [CCLA-377] - [investigation] kiali integration with CCLA UI
+* [CCLA-378] - grafana integration with CCLA UI
+* [CCLA-381] - [Governence][API/UI] - Port to new UI
+* [CCLA-382] - Organisation dashboard - Customized Dashboard in new CCLA UI
+* [CCLA-383] - Organisation/Env dashboard - Display Resources Summary / Cockpit
+* [CCLA-389] - Investigate - Discovery WorkFlow for Public Cloud - AWS
+* [CCLA-390] - [UI] Operate Menu Resources Discovery UI
+* [CCLA-393] - integrated and move Github/DockerHub from org setting to new setting screen
+* [CCLA-394] - User Profile
+* [CCLA-396] - Graphana Default Dashboard / backend implementation
+* [CCLA-397] - Fix Grapha deployment in GCP
+* [CCLA-415] - [UI] Operate Menu - Cloud Section
+* [CCLA-417] - [UI] Operate Menu Finops component
+* [CCLA-418] - [UI] Operate Menu Security component on the Org level & Env level & Deployment level
+* [CCLA-419] - [UI] Operate Menu Compliance component - For Environment
+* [CCLA-420] - [UI] Operate Menu Monitor component
+* [CCLA-421] - [UI] Operate Menu Configure component
+* [CCLA-422] - [UI] Environment dashboard : Customizable Env Dashboard Setting
+* [CCLA-423] - [UI] Deployments List in Operate menu, Deployment Tab
+* [CCLA-427] - CCLA login page with new branding using keycloack (MSA tab disabled)
+* [CCLA-428] - MSA login page with new branding
+* [CCLA-431] - [UI] Operate Menu Design component
+* [CCLA-436] - [UI] Deployment dashboard : Customizable Deployment Dashboard Setting
+* [CCLA-439] - [UI] Operate Menu Design for Org, Env & Deployment
+* [CCLA-441] - Placing Kiali component into Operate Menu - Mesh Tab
+* [CCLA-442] - [UI] Create Blueprint Lib Menu UI
+* [CCLA-443] - [UI] View Market Place Dialog UI
+* [CCLA-444] - [UI] Environment List in Environment Tab in Operate Menu
+* [CCLA-445] - [UI] Operate menu, Application Tab
+* [CCLA-446] - [UI] Operate menu, Events Tab (old History Tab)
+* [CCLA-447] - [UI] Map Create Blueprint UI to Build menu
+* [CCLA-449] - [UI] CCLA - Designing How the Top Menu tabs behave & Check Color Accuracy
+* [CCLA-453] - [UI][CSS] Enhacement Operate Menu Configure component
+* [CCLA-455] - Default tags for environment creation to identify origin - Start with AWS
+* [CCLA-457] - [UI] CCLA - Routes for Dashboards and Hiding AppBar for full screen UIs
+* [CCLA-458] - Top Menu - Environment Tab - Display Live(Green)/Never Reached(Grey)/Failed(Red) icon for Environment Status
+* [CCLA-461] - [UI] Organisation/Env dashboard - Recent WorkFlow for CCLA Dashboard
+* [CCLA-462] - [UI] Organisation/Env dashboard - Recent BPM for CCLA Dashboard
+* [CCLA-463] - [UI] Organisation/Env dashboard - Kibana Dashboard for CCLA Dashboard
+* [CCLA-464] - [API/UI] - Profile UI to new CCLA UI (MSA Profile reff)
+* [CCLA-465] - [UI] CCLA - Dashboard component UI changes
+* [CCLA-466] - [UI] Environment UI - Delete Environment & Settings for Environments
+* [CCLA-467] - [API/UI] - Adding envBlueprintPath value to the List Environment API call
+* [CCLA-468] - [UI] Setting Primary, Secondary colors in new CCLA UI | Setting Btn Styles
+* [CCLA-471] - [UI] Minor UI fixes
+* [CCLA-474] - UX Adaptation - All screens
+* [CCLA-475] - [UI] New automation designer - Prepare implementation
+* [CCLA-476] - UX Adaptation - Blueprint UI
+* [CCLA-477] - UX Adaptation - Recent BPM and Recent WF Style Changes
+* [CCLA-478] - [API] - New automation designer - Prepare implementation
+* [CCLA-481] - [UI] Update context with Environment and Deploymnent are added & removed
+* [CCLA-482] - [UI] Global Tab to CCLA Settings Menu
+* [CCLA-494] - [UI] Fix the Deployment List View issue
+* [CCLA-498] - UX Adaptation
+* [CCLA-514] - [UI] - Check Permission Profile UI in new CCLA UI
+
+== Bugs ==
+
+* [CCLA-342] - Editing manifest apps on designer tab not working on SAAS and Pre-Prod
+* [CCLA-344] - Current Month Costs for Managed Connections displays wrong values
+* [CCLA-357] - [Goverance][API]-All the users assoicated to a Org must see Envi created by ncroot / Admin in the same Org
+* [CCLA-388] - If One Org has 2 users say 'A' and 'B' then B must not see A's created Envi and vice versa and Total count for Environments not reflected when logged as ncroot.
+* [CCLA-432] - ORG dashboard is found empty when user register himself through get started button
+* [CCLA-433] - An Admin which has 2 Org's, He is able to see all the Environments even if he selected 1 Org
+* [CCLA-459] - [Bug] - Deploying on CCLA Fails
+* [CCLA-469] - [Dashboard Setting] - When No any Component present and click on (Add More +)there is no any action
+* [CCLA-472] - After creating Envi, we need to manually refresh the operate/environments page to see newly created Envi
+* [CCLA-473] - Org Credentials are not getting retrieve when check 'Use Organisation Cloud Credentials : while creating envi'
+* [CCLA-483] - Events for Deployed Application is not seen
+* [CCLA-484] - When app is deployed it should display in Deployment Top Menu Dropdown
+* [CCLA-485] - All deployments should be displayed when we clear the selection from dropdown
+* [CCLA-486] - TearDown don't work when we directly select the Deployments from dropdown
+* [CCLA-487] - We see 2 environments in deployment tab when we have same deployment name under 2 diff environment
+* [CCLA-489] - Create Envi not working on .191 QA Platform
+* [CCLA-490] - Org Cred are not stored and retrive while creating Blueprint Environment
+* [CCLA-492] - [UI] Minor UI Issues
+* [CCLA-493] - When "serviceId": null, then we are not getting logs for failed environment under Events tab
+* [CCLA-495] - Not able to create Org from CCLA UI on .17 and .191
+* [CCLA-506] - When tearDown a App is done, deployment list still shows the application
+* [CCLA-509] - Discovery WF on VMware not working on https://10.255.1.121/
+* [CCLA-510] - Accessing deployed app directly from ORG, security scanner not available
+* [CCLA-512] - On clicking Synchronize of microservices we get error on .191 and on SaaS
+* [CCLA-513] - Compliance scan not working on .191
+* [CCLA-515] - Cloud Cost is not displayed when we select Environment
+* [CCLA-516] - "No Environment Found" when we click Application name from Deployment under Environment selected
+

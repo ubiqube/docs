@@ -21,6 +21,8 @@ a| link:user-guide/quickstart{outfilesuffix}[Quickstart,window=_blank]
 
 a| link:release-notes/release_notes{outfilesuffix}[Release Notes,window=_blank]link:ccla/pdf/release-notes/release_notes.pdf[(pdf),window=_blank]
 
+a| link:release-notes/release_ccla_1.0.0{outfilesuffix}[CCLA 1.0.0,window=_blank]
+
 a| link:release-notes/release_ccla_2.3.0{outfilesuffix}[CCLA BETA 2.3.0,window=_blank]
 
 a| link:release-notes/release_ccla_2.2.0{outfilesuffix}[CCLA BETA 2.2.0,window=_blank]
