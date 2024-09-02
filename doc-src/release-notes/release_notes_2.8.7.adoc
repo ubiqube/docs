@@ -1,0 +1,149 @@
+= Version 2.8.7
+:front-cover-image: image:release-notes-front-cover-2.8.7.pdf[]
+:toc: left
+:toclevels: 3
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+ifndef::imagesdir[:imagesdir: images]
+
+//OK HTML 
+ifdef::html[]
+:includedir: doc-src/release-notes
+endif::[]
+
+// OK PDF
+ifdef::pdf[]
+:includedir: .
+endif::[]
+
+Welcome to the 2.8.7 release of the {product_name}. There are many updates in this version that we hope you'll like, some of the key highlights include:
+
+- alarm severity control
+- alarm SNMP trap control
+- cross data center alarm acknowledgment
+- log type filtering for SNMP traps, syslogs and internal VNOC events
+- log search result highlight
+- monitoring graph zooming
+- audit logs details contains the API request body and response
+- workflow default delete action can be mapped to a selected delete process
+
+== Assurance
+
+=== Monitoring graph zooming
+
+Monitoring graph zooming is now available.
+
+image:2.8.7_monitoring_graph_zoom.png[width=700px]
+
+=== Alarm severity control
+
+Alarm severity control allows you to select the severity of the alarm when the matching event is detected and have a better control over you SLA.
+
+image:2.8.7_alarm_severity_control_conf.png[width=700px]
+
+By tuning the severity you can see similar alarms but with various severity
+
+image:2.8.7_alarm_severity_control.png[width=700px]
+
+=== Alarm SNMP trap control
+
+Sending an SNMP trap when an alarm is raised used to be the default behavior provided that you have configured the settings with the list of server IP addresses where SNMP traps will be sent.
+
+In the new version 2.8.7, SNMP traps will only be sent when enable in the alarm rule.
+
+image:2.8.7_alarm_snmptrap_control_conf.png[width=700px]
+pre
+=== Cross data center alarm acknowledgement
+
+In version 2.8.7, alarm acknowledgement is replicated with the alarms stored in the passive data center.
+
+
+== Upgrade
+
+Instructions to upgrade available in the https://ubiqube.com/wp-content/docs/latest/user-guide/quickstart.html[quickstart].
+
+=== Specific instructions for upgrading to 2.8.7
+
+The quickstart provides an upgrade script `upgrade.sh` for taking care of possible actions such as recreating some volume, executing some database specific updates,...
+
+In order to upgrade to the latest version, you need to follow these steps:
+
+1. `cd quickstart`
+2. `git checkout master`
+3. `git pull`
+4. `./scripts/install.sh`
+
+== Specific technical fixes and feature details
+
+=== Features
+
+* MSA-12554 - [Adapters] remove try/catch in eval_import function
+* MSA-12556 - [Adapters] Cisco apic does not close curl session
+* MSA-12538 - [AI/ML] Remove AI/ML container
+* MSA-12223 - [Alarms] user should be able to control/tune alarm severity
+* MSA-12242 - [Alarms/UI] alarm name should be editable
+* MSA-12266 - [Alarms/API] alarm name should be editable
+* MSA-12243 - [Alarms/UI] Threshold section should be inside Action tab
+* MSA-12269 - [Alarms/UI] user should be able to turn on/off the SNMP trap when an alarm occurs
+* MSA-12327 - [Alarms/API] user should be able to turn on/off the SNMP trap when an alarm occurs
+* MSA-12384 - [Alarms/CoreEngine] user should be able to turn on/off the SNMP trap when an alarm occurs
+* MSA-12315 - [Alarms/UI] Create Alarm button needs to be more visible in light mode
+* MSA-12341 - [Alarms][CoreEngine] user should be able to control alarm severity
+* MSA-12440 - [Alarms/Logs/UI] User should be able to specify a time range for searching alarms and logs
+* MSA-12480 - [Alarms/Logs/UI] add filter for event type (Syslogs, SNMP traps, Internal - VNOC)
+* MSA-12498 - [Alarms/Logs/API] add filter for event type (Syslogs, SNMP traps, Internal - VNOC)
+* MSA-12700 - [Alarms/UI] add filter for event type (Syslogs, SNMP traps, Internal - VNOC)
+* MSA-12701 - [Alarms/API] add filter for event type (Syslogs, SNMP traps, Internal - VNOC)
+* MSA-12459 - [Alarms/API] Acknowledge API to acknowledge the same ubialarm _id in the 2 ES Cluster
+* MSA-12697 - [Alarms/CoreEngine] add log_type field for alarms
+* MSA-12698 - [Alarms/API] add log_type field in the filter parameters in Alarms
+* MSA-12674 - [Alarms] user should be able to acknowledge all the alarms
+* MSA-12559 - [Alarms] migrate old alarm definition to new table in DB with new API
+* MSA-12560 - [Alarms] adapt CoreEngine to new alarms in the new table in the DB
+* MSA-11882 - [API] API for Upload and Download of monitoring profiles
+* MSA-12404 - [API] Include AutoProvisioning API into msa-api project
+* MSA-12466 - [API] workflow context: improve database queries UPDATE and INSERT
+* MSA-12493 - [API] include Device Group API ("device-group/v1/customer/") into msa-api project.
+* MSA-12506 - [API] ElasticSearch searchlogs API to take key:value pair as a search string
+* MSA-12513 - [API] Generic API to execute SDLIST command
+* MSA-12069 - [Assurance] snmp and syslog should be displayed differently in Logs section
+* MSA-12342 - [Assurance/UI] Zoom feature for monitoring graphs
+* MSA-12291 - [Audit/UI] Audit logs need more details like managed entity, profile,... ID
+* MSA-12638 - [CoreEngine] enhance Fortinet syslog parser to support timezone field tz
+* MSA-12035 - [CoreEngine] split /opt/sms/spool/parser to separate logs to index and errors
+* MSA-12095 - [Microservices] UI - add variable configuration option to display a variable in either create or edit or both
+//* MSA-12264 - [Logs] List ES fields as search suggestions
+* MSA-12394 - [Logs/Alarms] highlight search results in the rawlogs
+* MSA-12463 - [Logs/API] list Elasticsearch fields as search suggestions
+* MSA-12561 - [Repository] Show all directory of repository the GUI
+* MSA-11615 - [Security] smsuser credential is hardcoded in msa-alarm project.
+* MSA-12318 - [Topology] new API to return topology instance data based on serviceId
+* MSA-12399 - [Workflows] ability to add multiple device models in workflow variable type "Device"
+* MSA-12485 - [Workflows/API] Rest API enhancement : workflow filtering match
+* MSA-12486 - [Workflows/UI] associate the generic delete workflow instance button (Trash Icon) with a selected Delete process
+* MSA-12487 - [Workflows/UI] Read-Only Variable (editable only create view)
+* MSA-12496 - [Workflows/API] Read-Only variable (editable only create view)
+* MSA-12534 - [Workflows/API] Associate the generic delete workflow instance Button (Trash Icon) with Delete process
+* MSA-12658 - [Workflows/API] REST API enhancement : workflow filtering match - OR condition
+* MSA-12694 - [Workflows/API] list archived instances
+
+=== Bug fixes
+
+* MSA-12282 - [Adapters] Cisco ISR adapter isn't able to handle a device after connection banner if it contains a "#" character
+* MSA-12019 - [Admin] incomplete customer removal on tenant deletion
+* MSA-12586 - [API] Fix for IPAM, WF and HA Cluster
+* MSA-12625 - [API] auto_provisioning attach license file API failing with 500 NPE
+* MSA-12671 - [Alarms/Logs] Error fetching Logs when filter activated on both tab
+* MSA-12665 - [Assurance] unable to show the graphs of a monitoring profile
+* MSA-12119 - [Microservice] import _order is not working properly while sorting with more than 2 pages
+* MSA-12319 - [HA] alarm ack is not synced between active and passive DC
+* MSA-12374 - [HA] missing support for swarmpit in Docker stack when using cross-DC sync
+* MSA-12403 - [Microservices] sorting on MS column values is broken
+* MSA-12471 - [Microservices] Add query param to orderCommand API
+* MSA-12680 - [Microservices] Inventory Management: critical bug regarding boolean type variable processing of MS
+* MSA-12499 - [Workflows] not possible to edit a workflow when the FEATURE_WORKFLOW_OWNER flag is enabled
+* MSA-12338 - [Workflows] workflow instances have not to be displayed
+* MSA-12716 - [Workflows] import result of microservice: the value "true" appears as "1" and the value "false" appears as "'" (an empty string enclosed in single quotes)
+
+=== Patch 2.8.7.1
+
+* MSA-13256 - [Elasticsearch] API isn't able to handle an Elasticsearch search result hitcount greater than 2147483647 documents

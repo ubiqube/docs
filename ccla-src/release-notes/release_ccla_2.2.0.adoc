@@ -1,0 +1,82 @@
+
+= Version BETA 2.2.0 =
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+== New features ==
+
+=== Support of Multi cloud & Hybrid cloud
+
+Adapt the platform to support multiple clusters per environment
+=> link:../user-guide/environment_builder{outfilesuffix}#_environment-dashboard[Link,window=_blank]
+
+=== Workflow component in the designer
+
+New component in the deisgner library to execute any MSA Workflows
+=> link:../user-guide/environment_builder{outfilesuffix}#_designer[Link,window=_blank]
+
+=== Import and deploy APP with manifest file
+
+Permit to define github repository and import application build with manifest (K8 YML, TF, HelmCharts)
+=> link:../user-guide/application_deployer{outfilesuffix}#_manifest-app-on-going[Link,window=_blank]
+
+=== Quota check before deployment (Azure)
+
+For Azure, check capacity of a user to create ressources based on his provider account
+=> link:../user-guide/governance{outfilesuffix}#quota-check-before-deployment-azure[Link,window=_blank]
+
+=== Scaleway - Kapsule
+
+Support Kubernetes service from Scaleway (Kapsule)
+=> link:../user-guide/integration{outfilesuffix}[Link,window=_blank]
+
+=== Hybrid, Multi-cloud and 5G on edge Blueprints
+
+Provide new blueprint in the catalog around hybrid infrastructure and 5G service deployed on edge
+=> link:../user-guide/environment_builder{outfilesuffix}#_blueprints[Link,window=_blank]
+
+= Specific technical fixes and feature details =
+
+== Enhancements ==
+
+* [MSA-12584] - [CCLA] Show WF details in APP dashboard
+* [MSA-12602] - [CCLA] Build first hybrid cloud blueprint
+* [MSA-12603] - [CCLA] Adapt UI views for Hybrid/Multi-Cloud
+* [MSA-12619] - [CCLA] Revamp ENV dashboard : create compliance card + move items
+* [MSA-12631] - [CCLA] Scaleway as new provider - Backend - ENV creation
+* [MSA-12632] - [CCLA] Scaleway as new provider - Backend - APP deployment + cost
+* [MSA-12633] - [CCLA] Scaleway as new provider + extend usage of cloudproviders.yml
+* [MSA-12676] - [CCLA] Have RRD graph for K8 ENV - Manage TTL for ME with specific polling script
+* [MSA-12692] - [CCLA] Backend API for Quota - Azure - Invesigate and Implement
+* [MSA-12693] - [CCLA] UI for Quota
+* [MSA-12703] - [CCLA] Pass missing params in MESH component
+* [MSA-12715] - [CCLA] Complican Scan save vendor and tf workspace Teardown issue
+* [MSA-12739] - [CCLA] Adapt Designer to import K8
+* [MSA-12740] - [CCLA] Component in the designer to trigger any MSA WF
+* [MSA-12750] - [CCLA] Manifest application tab
+* [MSA-12751] - [CCLA] Define GitHub repository access for manifest APP
+* [MSA-12752] - [CCLA] Adapt backend to define GitHub repository access for manifest APP
+* [MSA-12753] - [CCLA] New API to list manifest applications
+* [MSA-12754] - [CCLA] New WF to deploy manifest APP with K8 YAML
+* [MSA-12755] - [CCLA] New WF to deploy manifest APP with TF
+* [MSA-12756] - [CCLA] New WF to deploy manifest APP with Helm Chart
+* [MSA-12793] - [CCLA] Adapt Create,Read, Update of Blueprint, Environment for Hybrid, MultiCloud
+* [MSA-12800] - [CCLA] Copy APP params file to environment folder when APP is dropped
+* [MSA-12801] - [CCLA] Permit edition of File directly from WF editor
+* [MSA-12831] - [CCLA] Adapt CCLA UI for new environment object
+* [MSA-12835] - [CCLA] Simplify cloudproviders.yml - API
+* [MSA-12861] - [CCLA] GitHub repository access for manifest APP per organization
+* [MSA-12884] - [CCLA] Refactor environment tile : resize + move icons + title
+* [MSA-12921] - [CCLA] Create New Variables for envEntityId and serviceId - WF
+* [MSA-12923] - [CCLA] Scaleway - Cost management
+* [MSA-12924] - [CCLA] API to return combine result for different scans for multi and mono cloud
+* [MSA-12926] - [CCLA] Adapt Mesh workflow and quota check values to be read from new vendors api response
+
+== Bugs ==
+
+* [MSA-12581] - [CCLA] Subtenant delete not removing the BPM deployment for that subtenant
+* [MSA-12675] - [CCLA] environment summary have 502 gateway timeout which make ccla login slow
+* [MSA-12759] - [CCLA] UI change
+* [MSA-12761] - [CCLA] Fix Mesh WF executing 12 times
+* [MSA-12889] - [CCLA] Only Partial Logs are displayed for WFs
+* [MSA-12890] - [CCLA] When Admin (not ncroot) add GIT Repo Credentials then these are not displayed in MSA
+* [MSA-12918] - [CCLA] Internal Server error while creating env from blueprint

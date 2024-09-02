@@ -1,0 +1,163 @@
+= Cross-Cluster Replication (CCR)
+ifndef::imagesdir[:imagesdir: images]
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+The {product_name} provides support for cross-cluster replication.
+
+Cross-Cluster replication can be used within a single site, typically on dedicated physical servers but the typical use case is about using CCR to replicate and secure the service continuity between 2 geographically separated site or datacenters.
+
+image:cross_cluster_replication_overview.png[width=800px]
+
+== Overview
+
+Organizations today face several challenges that threaten business continuity. One such challenge is downtime. While disasters are inevitable, unplanned downtime disrupts normal business processes, reducing employee productivity with risks of increasing client dissatisfaction and financial loss.
+
+To minimize downtime and sustain business operations, you must back up your organization's critical data and ensure redundant IT infrastructure is implemented. Geo-redundancy and backups are a crucial part of any business continuity and disaster recovery plan to help businesses bounce back quickly from unplanned disruptions such as natural disasters, technical glitches or power outages.
+
+=== What Is geo-redundancy?
+
+Geo-redundancy is the distribution of mission-critical components or infrastructures, such as servers, across multiple clusters that reside in different geographic locations. Geo-redundancy acts as a safety net in case your primary site fails or in the event of a disaster or an outage that impacts an entire region.
+
+Should a workload fail due to hardware, networking, power or some other issues, it can failover to one of the alternate locations with minimal impact to the service. That way, your business continues to function as normal (ultimately leading to improved end-user experience).
+
+==== What Does Failover Mean?
+Failover in computing is the ability to automatically switch over to a redundant or secondary site (a standby server, computer system) when the primary server, application, hardware component or network is unavailable. Failover helps eliminate the negative impact on end users that arises due to system failure.
+
+A failover process initiated by IT administrators for scheduled maintenance or system upgrades is known as planned failover. When failover is triggered due to a failure or when critical applications, server or hardware stops functioning abnormally, it is considered an unplanned failover.
+
+=== How does geo-redundancy work?
+
+Geo-redundancy works by duplicating IT infrastructure, such as servers and network resources, and storing them as a backup in two clusters located in different regions, thus making the components simultaneously available.
+
+By hosting IT infrastructure not only in a primary site but also in a secondary site, geo-redundant storage (GRS) helps improve your organization's resiliency and provides better protection. GRS enables you to restore applications and data quickly by initiating failover to the secondary cluster during unplanned disruptions or in case your primary site fails.
+
+image:cross_cluster_replication.png[width=800px]
+
+== Switching cluster roles: failover and revert
+
+Switching cluster roles is necessary for several reasons such as maintenance activity or technical issues on the primary cluster.
+
+image:cross_cluster_replication_switching_flow.png[width=800px]
+
+=== Cluster failover
+
+This section provides the generic steps to execute the cluster failover operation in order to change DC2, the secondary passive cluster, to be the primary active cluster.
+
+Steps for reverting to the initial state (DC1 primary active and DC2 secondary passive) are also documented.
+
+Failover to the secondary cluster DC2 should be executed by running a script from one of the Swarm manager nodes in DC2.
+
+The diagram below shows the steps and actions that are executed on both clusters during the failover activity.
+
+image:cross_cluster_replication_failover_flow.png[width=800px]
+
+==== Execute the maintenance script
+
+===== Assumptions
+
+The connectivity between KVDC and BRF is working.
+If these assumptions are not met, the failover can still be executed but manual interventions on KVDC will have to be executed (cf below for details).
+
+===== Connect to secondary passive DC2
+
+Connect as root user to Swarm manager node 1 (SM01).
+
+----
+$ssh root@SM01
+root@SSM01 ~ #
+root@SSM01 ~ # cd /root/sas-replication/
+root@SSM01 ~/sas-replication # ls -l
+total 60
+-rwxr-xr-x 1 root root  2354 Dec  3 06:38 backup_db.sh
+-rw-r--r-- 1 root root   171 Dec  8 23:35 common.inc
+-rw-r--r-- 1 root root  1612 Nov 29 22:41 common_lib.inc
+drwxr-xr-x 2 root root  4096 Dec  8 20:00 cron.d
+-rw-r--r-- 1 root root   164 Nov  3 16:46 dc_maintenance.inc
+-rwxr-xr-x 1 root root 11668 Dec  8 20:00 dc_maintenance.sh
+drwxr-xr-x 2 root root  4096 Dec  3 23:20 logs
+lrwxrwxrwx 1 root root    11 Dec  8 20:00 msa_sync_db.sh -> msa_sync.sh
+lrwxrwxrwx 1 root root    11 Dec  8 20:00 msa_sync_file.sh -> msa_sync.sh
+-rwxr-xr-x 1 root root  4211 Dec  8 02:18 msa_sync.sh
+-rwxr-xr-x 1 root root  2743 Nov 24 18:55 restore_db.sh
+-rw-r--r-- 1 root root  7536 Dec  8 22:30 sas-replication_MY_DC.tar.gz
+drwxr-xr-x 2 root root  4096 Dec  8 20:00 MY_DC
+----
+
+===== Execute the script dc_maintenance.sh
+
+----
+root@SM01:~/sas-replication# ./dc_maintenance.sh activate
+[dc2] Sanity check
+[dc2] Sanity check OK
+[dc2] Starting services on dc2
+Updating service msa_msa-cerebro (id: ra45zrqoff8g3d8p5i4f243yr)
+Updating service msa_msa-monitoring (id: zobnrq658gtasrs60qzwbwfv1)
+Updating service msa_msa-dev (id: ud3mz5a55x49sgp3kan8aj6ns)
+Updating service msa_msa-es (id: 9qm9cyanqn78osk7e8ekhxhmu)
+Updating service msa_msa-front (id: x4we14z18e6chr7k0ajg0pita)
+Updating service msa_msa-sms (id: e240k1kzc5s1hm980gf7hfg3q)
+Updating service msa_msa-alarm (id: psodwffmxl9nh2ltone1wlh95)
+Updating service msa_msa-kibana (id: ha4fh8fbnvpteubaurp4zbwno)
+Updating service msa_camunda (id: f1saqort094lj5eq9oy7i12kj)
+Updating service msa_db (id: qpc1aed4yeitvv6qfkw860oxy)
+Updating service msa_mano-nfvo-dc1 (id: qpnt6jsq5qko3x5lrwugagvmj)
+Updating service msa_msa-bud (id: ukyzgde3ehvmmc783bn2rugrz)
+Updating service msa_msa-api (id: tcyycu9g0axy5swwaq0jght8d)
+Updating service msa_msa-rsyslog (id: v1my7owis0zqpo0414fstj44l)
+Updating service msa_msa-ui (id: kd1mi01c2dn7kg6029h0c3uuv)
+Updating service msa_db-replica (id: 7fb38i1kzhadch509e454m14h)
+[dc2] Services on dc2 started
+[dc2] Stopping services on dc1
+[dc2] Stopping global VIP on dc1
+[dc2] Starting global VIP on dc2
+[dc2] Sanity check
+[dc2] Sanity check OK
+[dc2] Stopping services on dc1
+[dc2] Services on dc1 stopped
+[dc2] Get Data Center status
+[dc2] Get Data Center status OK
+[dc2] 
+{"dc2":"active","dc1":"passive"}
+[dc1] 
+[dc1] 
+dc2:active
+dc1:passive
+----
+
+Failover procedure is over, primary DC1 is passive and secondary DC2 is active
+
+=== Datacenter revert
+
+Datacenter revert allows the role of primary activate cluster to be reverted from DC2 to DC1.
+
+This is done the same way from the failover procedure: by running a script from one of the Swarm manager nodes in DC1.
+
+The diagram below shows the steps and actions that are executed on both clusters during the failover activity.
+
+image:cross_cluster_replication_revert_flow.png[width=800px]
+
+==== Execute the maintenance script
+
+===== Assumptions
+
+The connectivity between DC1 and DC2 is working.
+
+The data synchronization from BRF to KVDC is working.
+
+For that it is useful to check the log files in /var/log/sas-replication/*.log
+
+===== Connect to primary passive DC1
+
+Connect as root user to Swarm manager node 1 (SM01).
+
+Go to directory /root/sas-replication
+----
+cd /root/sas-replication/
+----
+
+Execute the maintenance script
+----
+ ./dc_maintenance.sh activate
+----
+
+Revert procedure is over, primary DC1 is active and secondary DC2 is passive

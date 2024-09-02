@@ -1,0 +1,8 @@
+= Alarm Auto Acknowledgement
+ifndef::imagesdir[:imagesdir: images]
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+
+== XXX
+
+=== YYYY

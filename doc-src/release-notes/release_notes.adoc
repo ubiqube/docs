@@ -1,5 +1,5 @@
-= MSActivator(TM) Release Notes
-:front-cover-image: image:release-notes-front-cover.pdf[]
+= MSactivator(TM) Release Notes
+:front-cover-image: image:release-note-cloudiamo-2X.png[]
 :toc: left
 :toclevels: 3
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
@@ -8,6 +8,11 @@ ifndef::imagesdir[:imagesdir: images]
 //OK HTML 
 ifdef::html[]
 :includedir: doc-src/release-notes
+
+[.stripes-none,cols="1,10",frame=none,grid=none,options="noheader",width="50%"]
+|===
+| image:pdf_icon.png[width=32px] | link:../pdf/release-notes/release_notes_2.8.13.pdf[download PDF for 2.8.13,window=_blank]
+|===
 endif::[]
 
 // OK PDF
@@ -29,27 +34,47 @@ The convention works as follows: x.y.z (all representing numbers) and
 
 Various fixes have been made to the product to ensure its continued ability to empower users, ensure a smoother user experience and deliver the value that businesses need in today's environment while being ahead in terms of features, being evergreen and the agility of the {product_name} to grow.
 
-=== Releases
+== {product_name} Releases
+include::{includedir}/release_notes_2.8.13.adoc[version 2.8.13]
 
-include::{includedir}/release_2.8.5.adoc[version 2.8.5]
+include::{includedir}/release_notes_2.8.12.adoc[version 2.8.12]
 
-include::{includedir}/release_2.8.adoc[version 2.8]
+include::{includedir}/release_notes_2.8.11.adoc[version 2.8.11]
 
-include::{includedir}/release_2.7.adoc[version 2.7]
+include::{includedir}/release_notes_2.8.10.adoc[version 2.8.10]
 
-include::{includedir}/release_2.6.adoc[version 2.6]
+include::{includedir}/release_notes_2.8.9.adoc[version 2.8.9]
 
-include::{includedir}/release_2.5.adoc[version 2.5]
+include::{includedir}/release_notes_2.8.8.adoc[version 2.8.8]
 
-include::{includedir}/release_2.4.adoc[version 2.4]
+include::{includedir}/release_notes_2.8.7.adoc[version 2.8.7]
 
-include::{includedir}/release_2.3.adoc[version 2.3]
+include::{includedir}/release_notes_2.8.6.adoc[version 2.8.6]
 
-include::{includedir}/release_2.2.adoc[version 2.2]
+include::{includedir}/release_notes_2.8.5.adoc[version 2.8.5]
 
-include::{includedir}/release_2.1.adoc[version 2.1]
+include::{includedir}/release_notes_2.8.adoc[version 2.8]
 
-include::{includedir}/release_2.0.adoc[version 2.0]
+include::{includedir}/release_notes_2.7.adoc[version 2.7]
+
+include::{includedir}/release_notes_2.6.adoc[version 2.6]
+
+include::{includedir}/release_notes_2.5.adoc[version 2.5]
+
+include::{includedir}/release_notes_2.4.adoc[version 2.4]
+
+include::{includedir}/release_notes_2.3.adoc[version 2.3]
+
+include::{includedir}/release_notes_2.2.adoc[version 2.2]
+
+include::{includedir}/release_notes_2.1.adoc[version 2.1]
+
+include::{includedir}/release_notes_2.0.adoc[version 2.0]
+
+== MANO releases
+
+include::{includedir}/mano_release_notes.adoc[version 3.x]
+
 
 == User experience (UX)
 
@@ -57,7 +82,7 @@ include::{includedir}/release_2.0.adoc[version 2.0]
 
 The look and feel of the login page was improved to be more intuitive with navigation and to showcase the capabilities of {product_name}.
 
-Logo designs have been smartly redesigned to have users know which product is being used, in addition to our company logo (Powered By UBiqube) being more prominent.  
+Logo designs have been smartly redesigned to have users know which product is being used, in addition to our company logo (Powered By UBiqube) being more prominent.
 
 Menu layouts reflect alignment to the product vision. Integration and Automation are now top levels of the tree selection on the left-hand side of the dashboard, making it more intuitive to developers of this product.
 

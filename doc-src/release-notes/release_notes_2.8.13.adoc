@@ -1,0 +1,162 @@
+= Version 2.8.13
+:front-cover-image: image:release-note-cloudiamo-2X.png[]
+:toc: left
+:toclevels: 3
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+ifndef::imagesdir[:imagesdir: images]
+
+//OK HTML 
+ifdef::html[]
+:includedir: doc-src/release-notes
+endif::[]
+
+// OK PDF
+ifdef::pdf[]
+:includedir: .
+endif::[]
+
+Welcome to the 2.8.13 release of the {product_name}. There are many updates in this version that we hope you'll like !
+
+== User experience
+=== Session expiration
+Introducing new pop up message which inform the user about the minutes left before being discunnected. 
+By default, for any users of the platform, 5 minutes before session expiration, a notification is displayed.
+The session expiration time is fully configurable using our system variables. 
+
+* Feature flag to control this beahvior : *FEATURE_SESSION_EXPIRATION_WARNING* (false by default)
+* MSA variable to set expiration time : *Authentication token expiration time*
+
+image:2.8.13_expiration_session.png[width=700px]
+
+== Assurance
+===	Flat vs Grouped mode
+A user of the platform, when consulting logs can choose between two modes : flat or grouped. Flat, the native mode, allows to display logs sort by date, ascending or descending. With Grouped, the result will be bundled by fields, with date as the initial field. The user can choose extra fields to complete the result or sort logs by others criterias to form pack of results.
+
+image:2.8.13_logs_flat_gp.png[width=700px]
+
+=== Logs search features
+
+New functions have been added around logs search. 
+
+==== Default time range
+
+When clicking inside Search Logs field,  a list give all available fields as suggestion in input search. Additionally, logs are retrieved with a time range of 24h before to 24h after the current time by default. A user can still select a different start and end date using the filter by list. In the same area, the time range inclusion permits to include (within) or exclude (outside)  logs based and the chosen dates. 
+
+image:2.8.13_date_sort.png[width=700px]
+
+==== Query builder
+
+Build and save your queries with the query builder feature. On the right of the search bar, a new icon allows to save and  replay saved queries without entering the parameters again.
+
+In the details view, use the plus icon to 
+
+image:2.8.13_save_query.png[width=700px]
+
+=== Application rotation
+
+In a multiple nodes architecture, old container logs are cleaned to save space on the host disk. New clean operations are scheduled automatically to optimize the platform.
+
+=== Download feature at infrastructure level
+Same as the subtenant level, logs can be downloaded using the download report button. 
+A CSV file is generated containing same data as the screen is presenting.
+
+image:2.8.13_dl_logs_me.png[width=700px]
+
+=== Features
+
+* [MSA-10167] - [Monitoring] value used for the rule field "Max" is used "as is" for the KPI value
+* [MSA-12540] - [Workflows][API] add constraints for workflows
+* [MSA-13325] - [Logs] display mode feature (flat/grouped)
+* [MSA-13370] - [CoreEngine] fix the log retention period of the CoreEngine
+* [MSA-13510] - [Assurance][UI][API] incident ticket management: search & sorting
+* [MSA-13553] - [Elasticsearch] Log retention for advanced criteria combination
+* [MSA-13554] - Docker environment variable for ES shards and replicas
+* [MSA-13568] - [UI] Pop-Up message for session expiration information
+* [MSA-13595] - [UI/WF] "Console button" in Workflows need to be hideable
+* [MSA-13606] - [Logs][UI][API] download feature in infrastructure level
+* [MSA-13615] - [License] Permanent display of usage Information
+* [MSA-13622] - [Repository][API][UI] Unzip the license - extraction without folder creation
+* [MSA-13668] - [Repository][UI] special characters handling for tag and comment
+* [MSA-13670] - [UI]Hide Create Button in Repo View if user doesnt have permission.
+* [MSA-13718] - [UI] [Logs/Alarms] date time-slot to be set to last 24h as default
+* [MSA-13719] - [UI][Logs/Alarms] fields suggestions in input search
+* [MSA-13720] - [UI] [Logs/Alarms] Filter By enhancement
+* [MSA-13721] - [UI][Logs] sorting by date ascending/descending
+* [MSA-13722] - [UI][Logs] Time range inclusion within/outside
+* [MSA-13723] - [UI][Logs/Alarms] Save Query
+* [MSA-13724] - [UI][Logs/Alarms] Logs field/value auto add in search input
+* [MSA-13725] - [UI][Logs] Filter MUST & MUST_NOT
+* [MSA-13726] - [UI] [Logs/Alarms] Managed Entity IP should not be shown for all users
+* [MSA-13733] - [UI][Repository] Display update date for files
+* [MSA-13734] - [UI] [ME] Tooltip to display the device name + external reference when moving the cursor
+* [MSA-13748] - [Alarm] email notification formatting Change Request
+* [MSA-13778] - [CoreEngine] alarm timestamps not clean in DB
+* [MSA-13782] - [UI] [Repository] add "Shared" folder
+* [MSA-13790] - [Achitecture/Configuration] Performance degradation in HA mode
+* [MSA-13794] - [UI][ECL2v3 specific] Dedicated screen after Manager user logout
+* [MSA-13795] - [UI/AUTOLOGIN] Improve security on autologin user key by introducing a expiration mechanism
+* [MSA-13800] - [UI] createTemplate feature on Microservice has not been ported in MSA v2
+* [MSA-13804] - [UI][Alarm] sorting by date ascending/descending
+* [MSA-13806] - [SOAP API] Error handling - readCustomerByReference
+* [MSA-13808] - [UI/API] [Logs] When displaying Attack Details, the information should be translated
+* [MSA-13810] - [UI] finalize translation to JP for customer portal
+* [MSA-13813] - [Microservices][Design] - Enhance "is_in_network" function in "net_common.php" to support CIDR notation.
+* [MSA-13815] - [UI] remove thunder icon from Microservice console
+* [MSA-13820] - [Logs][UI] Logs in Infrastructure / hide "Log Type" and "Severity" in "Filter By"
+* [MSA-13837] - [Logs/Alarms] trigger search by hitting "Enter" or clicking out of the textbox
+* [MSA-13842] - [UI][Logs] Include Filter MUST & MUST_NOT in save query functionality
+* [MSA-13848] - [UI] [Logs/Alarms] Filter By enhancement / ME name / imported ME vs new ME
+* [MSA-13849] - [Logs] align "flat / grouped" radio button in managed entity level similar as global view
+* [MSA-13858] - [Logs] Enhancement : SortBy timestamp column / SortByDate chip remove / Timerange chip value WITHIN OUTSIDE rename / GroupBy default value Date / IP Filter color when filtered
+* [MSA-13868] - [UI] Hide Manager credentials readonly mode & logs columns fields selections
+
+=== Bug fixes
+
+* [MSA-9161] - [BPM] on BPM execution, an empty process in workflow will cause issue in live console
+* [MSA-13093] - [BPM] In BPM execution, manually named BPM instance names are not searchable by the search operation
+* [MSA-13193] - Without obtaining the record list by the task in BPM, the task judgment is success, originally it should be Error.
+* [MSA-13399] - [Workflow][UI] nested array like tab=>subtab variable is visible only in Edit view
+* [MSA-13462] - [UI] within a selected tenant, the workflow search by name is not working across multiple pages
+* [MSA-13469] - [Microservice] [UI] When an Array variable is made of type "Auto Increment", it doesn't work in EDIT/UPDATE method of MS.
+* [MSA-13636] - Pop-up window for status not showing during the BPM workflow execution.
+* [MSA-13656] - There was a difference between the results displayed in MSA2 during execution and after pressing "show Tasks" to confirm.
+* [MSA-13685] - [Microservice][UI][Regression] ALL elemets of the array end up getting selected,if its left empty while creating an MS Instance
+* [MSA-13700] - [UI][SpamFilter][UTM Editing a setting also changes the value of another setting.
+* [MSA-13715] - [Microservice][API][Regression]Only one object is displayed in the drop down in a Variable of type "Microservice Reference"
+* [MSA-13727] - [Topology View] A random link label dots are appearing
+* [MSA-13741] - [Topology] - Saved position values are reset when refreshing the topology view
+* [MSA-13759] - [UI/API] [Logs] When displaying Attack Details, the information retrieved by the API is interrupted(broken).
+* [MSA-13770] - [Regression][UI][WF] ALL elements of the array end up getting selected,if its left empty while creating a workflow Instance
+* [MSA-13777] - [UI/Settings] Default language to Japanese does not allow proper login with other language
+* [MSA-13783] - [API] We are able to run the same process of a workflow simultaneous whereas we shouldn't
+* [MSA-13787] - [UI/WF] columns alignement on instance details
+* [MSA-13823] - [Logs] issues when using complex searches
+* [MSA-13829] - [UI/API] Autologin feature needs to regenerate a new token if request with a new key is performed
+* [MSA-13833] - [Logs] time range inclusion radio button are not initialised to "within"
+* [MSA-13836] - [UI/Settings] UI loads in japanese when english is selected from login dropdown
+* [MSA-13838] - [Logs/Alarms] search with range not working / UI infinite loop
+* [MSA-13843] - [UI] weird button partially visible on the UI when scrolling down
+* [MSA-13844] - [Logs/Alarms] highlighting search result is not relevant
+* [MSA-13845] - [Logs] fields listed in group by view should be lower case
+* [MSA-13846] - [UI/API] No more able to hide Miroservice on MSA UI according to "Minimum role to see the microservice field"
+* [MSA-13847] - [UI] Cliking on "OK" button of a session expiration warning windows should automatically renew the token
+* [MSA-13862] - [BPM] error in UI after execution of scheduled BPM
+* [MSA-13870] - [API] ES crendentials are hardcoded on the msa-api code whereas it should be taken from the environment variable set through the docker-compose file
+* [MSA-13873] - [SMS/BUD] DB inconsistency prevents batchupdate to do properly its job
+* [MSA-13890] - MS Configure screen refreshes on clicking Add Row for a microservice with MS reference type variable
+
+== Upgrade
+
+Instructions to upgrade available in the https://ubiqube.com/wp-content/docs/latest/user-guide/quickstart.html[quickstart].
+
+=== Specific instructions for upgrading to 2.8.13
+
+The quickstart provides an upgrade script `upgrade.sh` for taking care of possible actions such as recreating some volume, executing some database specific updates,...
+
+In order to upgrade to the latest version, you need to follow these steps:
+
+1. `cd quickstart`
+2. `git checkout master`
+3. `git pull`
+4. `./scripts/install.sh`
+

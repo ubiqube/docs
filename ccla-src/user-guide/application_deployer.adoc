@@ -1,16 +1,128 @@
-= Overview =
+= Application Deployer =
+ifndef::imagesdir[:imagesdir: images]
 
 Cloudclapp offer large possibility of applications deployment : container based or VM based
 
 == Marketplaces ==
 
+Cloudclapp's marketplaces provide users to access large software applications and services that are built on, integrate with or complement the cloud provider's offerings.
+
 === Public Docker Hub ===
+
+Docker Hub is the world’s largest repository of container images with an array of content sources including container community developers, open source projects and independent software vendors (ISV) building and distributing their code in containers
+
+image:app_deployer/PublicDockerHub.png[width=1000px]
 
 === Private Docker Hub ===
 
+Private Docker repositories provide restricted access to the images that they contain. Unlike public repositories, only authorized users can access the images. This way, it's possible to allow access only to a specific group of users, like organizations, teams, or even a single person.
+
+image:app_deployer/PrivateDockerHub.png[width=1000px]
+
+=== Manifest APP ===
+
+To permit a large variety of applications to be deployed, Manfiest APP tab permit to import applications, from github repository. 3 types of applications are supported
+
+* Terraform application
+* K8/YML application
+* HelmChart application
+
+To be recognized by Cloudclapp, and permit parameters substitution, those applications must repect some conventions. The name of application is the name of the root folder under github repository
+Depending the type of the application, those files must be present to permit parameters substitution and adapt the deployment
+
+* terraform.tfvars for TF application
+* configmap.yaml for K8/YML application
+* values.yaml for HelmChart application
+
+==== TF application - terraform.tfvars ====
+----
+ instance_type   =   "t2.micro"
+ tag             =   "My application Instance for DEV"
+----
+====  K8/YML application - configmap.yaml ====
+----
+kind: ConfigMap
+ apiVersion: v1
+ metadata:
+ name: example-configmap
+ namespace: default data: # Configuration Values are stored as key-value pairs
+ system.data.name: "app-name"
+ system.data.url: "https://app-name.com"
+ system.data.type_one: "app-type-xxx"
+ system.data.value: "3"
+ # File like Keys
+ system.interface.properties: |
+ ui.type=2
+ ui.color1=red
+ ui.color2=green
+----
+==== HelmChart application - values.yaml ====
+----
+  componentName: "jenkins-master"
+  image: "jenkins/jenkins"
+  tag: "lts"
+  imagePullPolicy: "Always"
+  imagePullSecretName:
+  # Optionally configure lifetime for master-container
+  lifecycle:
+  #  postStart:
+  #    exec:
+  #      command:
+  #      - "uname"
+  #      - "-a"
+  disableRememberMe: false
+----
+
+image:app_deployer/ManifestApp.png[width=1000px]
+
 === VM - AWS EC2 marketplace ===
+
+AWS Marketplace is a curated digital catalog that you can use to find, buy, deploy, and manage third-party software, data, and services that you need to build solutions and run your businesses.
+EC2 is the one dedicated for Virtual Machines
+
+image:app_deployer/VMMarketPlace.png[width=1000px]
 
 == Deploy application ==
 
+Deploying application could be done in differents ways :
+
+* Using quick deployment wizard : after selectiong an environement, use can choose an APP to deploy on it
+* Using marketplaces view : after selecting an application, a user can choose on which environement he want to deploy it
+* Using the designer : after loading a blueprint, using app deployment component, a user can drop an application on the diagram
+
 == Deployment dashboard ==
 
+image:app_deployer/DeploymentDashboard.png[width=1000px]
+
+== Details of WF steps ==
+
+[cols="1,1"]
+|===
+|Steps|Description
+
+|Create TF Workspace
+|
+
+Create a workspace folder and copy the template terraform files to the newly created workspace. This workspace will be the working directory for Terraform
+
+|Set variables values
+|
+
+Read the input data given by the user and replace the appropriate values in the terraform files
+
+|Initialize TF Workspace
+|
+
+Runs `+terraform init+` command in the workspace
+
+|Provision Application
+|
+
+Runs `+terraform plan+` command followed by a `+terraform apply+` which will provision the resources
+
+|Trigger Security Scans
+|
+
+Triggers the Image Scan and Web Scan Workflows for the newly created deployment in CCLA
+
+|===

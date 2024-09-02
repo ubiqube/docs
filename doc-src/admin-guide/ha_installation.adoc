@@ -80,8 +80,7 @@ Mount point on all VMs is `/mnt/NASVolume`. Those directories must be created ma
 On Linux, you can use this bash command to create the directories
 
 ----
-sudo mkdir -p /mnt/NASVolume/msa_bulkfiles  \
-/mnt/NASVolume/msa_db  \
+sudo mkdir -p /mnt/NASVolume/msa_db  \
 /mnt/NASVolume/msa_es  \
 /mnt/NASVolume/msa_entities  \
 /mnt/NASVolume/msa_ai_ml_db  \
@@ -91,16 +90,16 @@ sudo mkdir -p /mnt/NASVolume/msa_bulkfiles  \
 /mnt/NASVolume/mano_nfvo  \
 /mnt/NASVolume/msa_dev  \
 /mnt/NASVolume/msa_repository  \
-/mnt/NASVolume/msa_monitbulkfiles  \
 /mnt/NASVolume/rrd_repository  \
-/mnt/NASVolume/msa_api_logs  \
-/mnt/NASVolume/msa_api_keystore \
 /mnt/NASVolume/msa_svn  \
-/mnt/NASVolume/msa_sms_logs  \
-/mnt/NASVolume/msa_sms_logs/ping  \
-/mnt/NASVolume/msa_sms_logs/monitor  \
+/mnt/NASVolume/msa_svn_ws  \
+/mnt/NASVolume/msa_api_keystore \
+/mnt/NASVolume/msa_api  \
 /mnt/NASVolume/msa_sms_logs/snmp \
-/mnt/NASVolume/msa_front_conf
+/mnt/NASVolume/msa_front_conf \
+/mnt/NASVolume/kafka_data \
+/mnt/NASVolume/mano_artemis \
+/mnt/NASVolume/msa_api_logs
 
 ----
 
@@ -112,8 +111,7 @@ sudo chown 70 /mnt/NASVolume/mano_db
 
 Set owner the other services
 ----
-sudo chown 1000.1000 /mnt/NASVolume/msa_bulkfiles \
-/mnt/NASVolume/msa_dev \
+sudo chown 1000.1000 /mnt/NASVolume/msa_dev \
 /mnt/NASVolume/msa_es \
 /mnt/NASVolume/msa_entities \
 /mnt/NASVolume/msa_ai_ml_db \
@@ -121,15 +119,20 @@ sudo chown 1000.1000 /mnt/NASVolume/msa_bulkfiles \
 /mnt/NASVolume/mano_db  \
 /mnt/NASVolume/mano_vnfm  \
 /mnt/NASVolume/mano_nfvo  \
+/mnt/NASVolume/msa_api  \
+/mnt/NASVolume/msa_svn_ws  \
 /mnt/NASVolume/rrd_repository \
-/mnt/NASVolume/msa_monitbulkfiles  \
-/mnt/NASVolume/msa_bulkfiles \
-/mnt/NASVolume/msa_api_logs \
 /mnt/NASVolume/msa_api_keystore \
 /mnt/NASVolume/msa_svn \
-/mnt/NASVolume/msa_sms_logs \
-/mnt/NASVolume/msa_front_conf
+/mnt/NASVolume/msa_front_conf \
+/mnt/NASVolume/msa_api_logs
 ----
+
+----
+sudo chown -R 1001.0 /mnt/NASVolume/kafka_data
+sudo chown -R 1001.1001 /mnt/NASVolume/mano_artemis
+----
+
 
 ==== Docker
 

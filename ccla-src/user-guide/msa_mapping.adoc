@@ -1,11 +1,11 @@
-= MSA mapping
+= MSactivator mapping
 
-Cloudclapp entities have a direct mapping to MSActivator
+Cloudclapp entities have a direct mapping to MSactivator
 The tab here gives you this mapping
 
 [cols="1,1"]
 |===
-|Cloudclapp|MSActivator
+|Cloudclapp|MSactivator
 
 |Organization
 |Tenant
@@ -16,19 +16,31 @@ The tab here gives you this mapping
 |User
 |Manager
 
+|Cloud connection (private clouds)
+|A protected subtenant + Managed entities (OpenStack/VMWare) + MS attached + Discovery WF
+
+|Blueprint
+|A BPM
+
 |Environment
 |Subtenant + Managed Entities + Workflow instance per Cloud type
 
-|Hybrid Environment
+|Environment configuration
+|Micro services
+
+|Hybrid/Multi cloud Environment
 |Subtenant + Multiple Managed Entities + Multiple Workflow instances per Cloud type
 
 |Deployment / Application
 |Workflow instance per Cloud type
 
-|An Image Scan
+|Image Scan
 |Workflow instance of Process/cloudclapp-wf/Scan_a_App_Container_
 
-|An Web App Scan
+|Web App Scan
 |Workflow instance of Process/cloudclapp-wf/Scan_a_WebApp
+
+|Compliance  Scan
+|Workflow instance of Process/cloudclapp-wf/Compliance_Scan
 
 |===

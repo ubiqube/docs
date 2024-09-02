@@ -1,5 +1,6 @@
-= MSActivator(TM) Manager Guide
-:front-cover-image: image:manager-front-cover.pdf[]
+= MSactivator(TM) Manager Guide
+:front-cover-image: image:manager-guide-cloudiamo-cover.png[]
+//:front-cover-image: image:manager-front-cover.pdf[]
 :toc: left
 :toclevels: 3
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
@@ -32,7 +33,7 @@ endif::[]
 
 The Installation and Configuration Guide will show you how to install, configure and activate the {product_name}.
 
-If you want to get started quickly, you can check the link:https://ubiqube.com/wp-content/docs/{versionnumber}/user-guide/quickstart.html[quickstart,window=_blank] guide.
+If you want to get started quickly, you can check the link:https://ubiqube.com/wp-content/docs/latest/user-guide/quickstart.html[quickstart,window=_blank] guide.
 
 include::{includedir}/key_concepts.adoc[]
 

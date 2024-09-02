@@ -100,19 +100,23 @@ traffic_in : 1.3.6.1.2.1.2.2.1.10.2 (Counter)
 traffic_out : 1.3.6.1.2.1.2.2.1.16.2 (Counter)
 ----
 
-====== Threshold based alarm
+====== Threshold based VNOC events
 
-Is is possible to configure alarm based on KPI threshold crossing. 
+Is is possible to configure VNOC events based on KPI threshold crossing. 
 
 This is useful to monitor resources such as CPU or memory consumption. 
-When a KPI crosses a threshold, and alarm will be raised visible in the logs in the "Alarm" section.
+When a KPI crosses a threshold and event is generated and visible in the assurance "Logs" section.
 
 .Alert log for threshold crossing
 image:assurance_mon_profile_alarm.png[width=800px]
 
-When a monitoring threshold is crossed the log message will be similar to "supervision - Site UBI1195 snmp threshold 262-cpu_load_1min raised value 69 (> 10)" where you can see that the threshold 10 has been crossed by a greater value 69.
+When a monitoring threshold is crossed the log message will be similar to "%VNOC-1-SNMPTHLD: supervision - Site BLR149 snmp threshold 29-percentages_of_system_CPU_time raised value 1 (< 20) " where you can see that the threshold 10 has been crossed by a greater value 69.
 
 This configuration is done at the SNMP polling rule in the monitoring profile by setting a comparator '>' or '<' and a threshold.
+
+VNOC threshold crossing events can be used to configure alarms in order to be notified by email or SNMP trap or simply by the alarm bell icon on the top right of the screen.
+
+image:assurance_mon_profile_alarm_2.png[width=800px]
 
 ==== Graphical rendering
 
@@ -125,9 +129,9 @@ image:assurance_mon_profile_overview_rendering.png[width=800px]
 
 == SNMP trap monitoring
 
-The {product_name} can collect and index SNMP traps out of the box.
+The {product_name} can collect and index SNMP trap out of the box.
 
-To monitor a managed entity with SNMP traps you need to configure the managed entity with *Collect Syslog* and *Analyze Syslog* enabled.
+To monitor a managed entity with SNMP trap you need to configure the managed entity with *Collect Syslog* and *Analyze Syslog* enabled.
 
 When the {product_name} collects a trap, it relies on the trap source IP address to identify the managed entity by it's management IP address. 
 
@@ -155,7 +159,7 @@ In order to use SNMPv3 to monitor a managed entity you need to configure its var
 .Notes
 For the polling, the mandatory variables are snmpv3_securityName, snmpv3_securityLevel, the others depends of snmpv3_securityLevel value, see below.
 
-For receiving snmp traps, the mandatory variables are snmpv3_securityName, snmpv3_securityLevel, snmpv3_securityEngineID, the others depends of snmpv3_securityLevel value, see below.
+For receiving SNMP trap, the mandatory variables are snmpv3_securityName, snmpv3_securityLevel, snmpv3_securityEngineID, the others depends of snmpv3_securityLevel value, see below.
 
 - if snmpv3_securityLevel is set to authPriv, the additional mandatory variables are snmpv3_authKey, snmpv3_authProtocol, snmpv3_privKey, snmpv3_privProtocol
 - if snmpv3_securityLevel is set to authNoPriv, the additional mandatory variables are snmpv3_authKey, snmpv3_authProtocol
@@ -190,9 +194,129 @@ You can also monitor specific KPI based on the OID of your vendor.
 
 image:assurance_mon_generic_ms_snmpv3_graph.png[width=800px]
 
-==== Collecting SNMPv3 traps
+==== Collecting SNMPv3 trap
 
 For SNMPv3 traps, the managed entity should be configured as explained above and the variable snmpv3_securityEngineID is mandatory for decoding the SNMP traps.
+
+=== SNMP trap translation
+
+==== Architecture overview
+
+.Dynamic SNMP trap translation based on MIB definition files
+image:assurance_snmp_trap_translation_arch.png[width=800px]
+
+The /opt/sms/conf/sms_syslogd.conf contains the following configuration variables:
+
+. additional-conf-path  /opt/sms/conf.d
+. oid-translation-file  oid_translated.conf
+. mibs-translation-path /opt/fmc_repository/Datafiles/MIBs_translation
+
+The syslogd daemon gets the new MIB configuration files from mibs-translation-path (polling there) and then converts them to its own usable format and store them in additional-conf-path (updating oid-translation-file too).
+
+The MIB Translation WF will get the MIB definition files in /opt/fmc_repository/Datafiles/MIBs/ (default value for variable import_mibs_path in the WF).
+It is manually launched and will convert them into an intermediate format and store them in /opt/fmc_repository/Datafiles/MIBs_translation/.
+
+NOTE: NET-SNMP lib function read_objid is used to perform the snmp trap translation on the fly in sms_syslogd daemon side
+NOTE: in the container msa_sms location where syslogd gets the standard MIB configuration is /usr/share/snmp/mibs/.
+
+==== Install the MIB translation workflow
+The goal of this workflow is to implement translation rules of an OID into a string from Management Information Base (MIB).
+
+The workflow installation or update has to be done in the msa-dev container. For that the following command can help:
+
+----
+docker exec -it $(docker ps -q -f name=msa-dev) bash
+----
+
+The installation commands:
+
+----
+cd /opt/fmc_repository/
+git clone https://github.com/openmsa/workflow-mib-translation.git
+chown -R ncuser. workflow-mib-translation
+cd Process
+ln -s ../workflow-mib-translation/ .
+chown -R ncuser. workflow-mib-translation
+----
+
+The workflow-mib-translation can then be updated in an usual way like any git repository.
+
+Once done, MIB Translation is available in the list of workflows in the {product_name} UI it can be attached to a subtenant.
+
+NOTE: MIB translation workflow will configure the {product_name} for all the managed entities. Therefore it is recommended to use a dedicated "Admin" subtenant in order to ease the use.
+
+image:assurance_snmp_trap_translation_wf_installation.png[width=800px]
+
+==== Execute the MIB translation workflow
+
+First put the MIB definition files into the repository under a folder "MIBs".
+
+image:assurance_snmp_trap_translation_loaded_mibs.png[width=800px]
+
+The MIB Translation WF working in 3 steps/processes
+
+===== Workflow overview
+
+====== Initialize import
+
+This process is reading the text (*.txt) files in /opt/fmc_repository/Datafiles/MIBs/ in order to get the list of the available MIBs (recursive reading is supported)
+
+image:assurance_snmp_trap_translation_wf_init_import_1.png[width=800px]
+
+Result of the initialization
+
+image:assurance_snmp_trap_translation_wf_init_import_2.png[width=800px]
+
+====== (Re)import MIBs
+
+This process allows the user to select which MIB(s) he wants to import according to the MIB(s) list built on the first step.
+
+Execute the process "(Re)Import MIB" and select the MIBs to process.
+
+image:assurance_snmp_trap_translation_wf_re_import_1.png[width=800px]
+
+The result is the list of OIDs that are available for the translation.
+
+image:assurance_snmp_trap_translation_wf_re_import_2.png[width=800px]
+
+====== Translate OIDs
+
+This process allows the user to select which OIDs from the MIB(s) from step 2 he wants to push as translation rules. 
+User can not only select the tuple OIDs/Names coming from the MIB file(s), but he can overwrite the name or the OID  or/and add manual entry.
+
+Once the process runs, an export file will be created in /opt/fmc_repository/Datafiles/MIBs_translation/ folder, that will be used in a next step by the sms_syslogd daemon to implement the request 
+
+The 2 first steps will allow the end-user to manage separately a set of MIB(s) in different workflow instances. This avoids, in the case of a large set of MIBs, to manage a huge list of OIDs in the translation process by splitting  the OIDs/MIBs across separate Workflow and exported files.
+
+image:assurance_snmp_trap_translation_wf_translate_1.png[width=800px]
+
+The result is the list of OIDs that were selected for the translation.
+
+image:assurance_snmp_trap_translation_wf_translate_2.png[width=800px]
+
+The generated file is visible in the repository.
+
+image:assurance_snmp_trap_translation_wf_translate_3.png[width=800px]
+
+===== Testing 
+
+We can now launch a snmp trap command with OID 1.3.6.1.2.1.1.6
+
+----
+snmptrap  -v2c -c ubiqube 3.10.63.66 "" 1.3.6.1.2.1.1.6 1.3.6.1.2.1.1.6.0 s "Just here ABC"
+----
+
+Without the translation, the UI shows
+
+image:assurance_snmp_trap_translation_test_no_translation.png[width=800px]
+
+With the translation of 1.3.6.1.2.1.1.6 to sysLocation
+
+image:assurance_snmp_trap_translation_test_translation.png[width=800px]
+
+With a custom translation of 1.3.6.1.2.1.1.6 to MyCustomSysLocation
+
+image:assurance_snmp_trap_translation_test_custom_translation.png[width=800px]
 
 == Log analytics
 
@@ -205,6 +329,7 @@ The diagram below shows the syslog processing steps from the device to Elasticse
 
 .Syslog event flow
 image:assurance_log_analysis_event_flow.png[width=800px]
+// https://docs.google.com/drawings/d/1sp5FBAim2QWctIhINm3JxZ-gxwygK2WCT2soDWj0pDc/edit?usp=sharing
 
 [#log_anal]
 === Search logs
@@ -243,6 +368,9 @@ image:dashboard_kibana_deployed.png[width=800px]
 The alarm management module is based on the detection of events which internal (VNOC), SNMP thresholds, or sylogs sent by the managed devices and collected by the {product_name}. 
 Alarm management is designed to provide email notifications to customers or managers or administrator
 
+image:assurance_alarm_flow.png[width=800px]
+// https://docs.google.com/drawings/d/1uMWoLkRVjCKeSfs81bjVjolWD0CEFab50o544c1yhLk/edit?usp=sharing
+
 The detection of events relies on rules configured at the super administrator level. 
 
 Rule management is available for the super administrator (ncroot). The rules are defined globally and can be modified by the operation team. 
@@ -264,12 +392,14 @@ image:assurance_manage_alarm.png[width=800px]
 
 Alarm creation contains Four sections below
 
-.Edit an alarm
+.Create or edit an alarm
 image:assurance_manage_alarm_edit.png[width=800px]
 
 ==== Detail
 
-Provide a name for the alarm
+Provide a name for the alarm and the alarm severity.
+
+Alarm severity selection will allow you to decide what will be the severity of the alarm. 
 
 ==== Conditions
 
@@ -287,7 +417,7 @@ If selected, the logs search for the alarm triggering will be considered only fo
 .Severity levels
 If selected,  alarm wil be triggered for the logs with only those Severities.
 
-==== Threshold 
+==== Threshold
 
 Define the number of events and the time period to consider for triggering one workflow. 
 
@@ -333,3 +463,22 @@ image:alarm_vnoc_workflow_instance.png[width=800px]
 === Email alerting: SMTP configuration
 
 For alarms to be notified as email, we need the Docker host to be properly configured as a SMTP server or relay.
+
+.Sample email
+image:alarm_email_example.png[width=800px]
+
+=== Alarm severity tuning
+
+An alarm severity can be tuned by choosing the severity of the alarm when editing the alarm rule.
+
+image:alarm_severity_tuning_conf.png[width=800px]
+
+By default the alarm severity is the same as the severity of the source event but by selecting the severity, you can decide that an event with a high severity level should raise an alarm with a low severity level (or the other way around).
+
+Example: it is possible to have an alarm rule to detect the VNOC event IPDOWN and configure the rule to have the highest level (Emergency) and an other alarm rule to detect the event IPUP with a lower severity (Informational)
+
+This is very useful if SNMP traps are configured to be sent as you may not want to have all the SNMP traps detected with the same severity level.
+
+image:alarm_severity_tuning.png[width=800px]
+
+

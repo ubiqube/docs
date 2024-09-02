@@ -6,7 +6,9 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 [cols=2*,options="header"]
 |===
 |Version | Link
-| 2.8.5     |  https://ubiqube.com/wp-content/docs/latest
+| 2.8.7     |  https://ubiqube.com/wp-content/docs/latest
+| 2.8.6     |  https://ubiqube.com/wp-content/docs/2.8.6
+| 2.8.5     |  https://ubiqube.com/wp-content/docs/2.8.5
 | 2.8.x     |  https://ubiqube.com/wp-content/docs/2.8.0
 | 2.7.0     |  https://ubiqube.com/wp-content/docs/2.7.0
 | 2.6.2     |  https://ubiqube.com/wp-content/docs/2.6.2
@@ -29,7 +31,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 ==== Architecture
 
-{product_name} link:https://ubiqube.com/wp-content/docs/latest/admin-guide/architecture_overview.html[architecture] has be deeply reviewed from being made out of componenets running directly on dedicated VM and using multiple VM to handle HA to be cloud native, Docker container based, using Docker Swarm to handle high availability. 
+{product_name} link:https://ubiqube.com/wp-content/docs/latest/admin-guide/architecture_overview.html[architecture] has be deeply reviewed from being made out of components running directly on dedicated VM and using multiple VM to handle HA to be cloud native, Docker container based, using Docker Swarm to handle high availability. 
 
 ==== Product delivery
 

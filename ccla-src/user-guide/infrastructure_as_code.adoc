@@ -1,33 +1,41 @@
-
-
-= Overview =
-ifndef::imagesdir[:imagesdir: images/providers]
+= Infrastructure as the code =
+ifndef::imagesdir[:imagesdir: images]
 
 This page to describe how finally environement and application are created under each cloud providers
 
-== Environement details ==
+== Environment details ==
 
 [cols="1,1,1"]
 |===
-| |Name|Component/Ressources created
+| |Name|Component/Resources created
 
-|image:EKS.png[EKS,40]
+|image:providers/EKS.png[EKS,40]
 |Amazon Elastic Kubernetes Service
 |
-* LB : balaaa
-* Network : blab
+VPC with public and private subnets along with a NAT Gateway
 
-|image:AKS.png[AKS,40]
+EKS cluster with a worker nodes - 1 t2.medium instances and 2 t2.small instances by default
+
+|image:providers/AKS.png[AKS,40]
 |Azure Kubernetes Service
-|* kube-system namespace (coredns, coredns-autoscaler, konnectivity-agent, metrics-server)
+|
+Resource Group
 
-|image:GKE.png[GKE,40]
+AKS cluster with 1 worker node - Standard_D1_v2
+
+|image:providers/GKE.png[GKE,40]
 |Google Kubernetes Engine
 |
+GKE Cluster with one N1-standard-1 instance as worker
 
-|image:NK8.png[NK8,40]
-|Native Kubernetes
+Optionally, New VPC and Subnet for the GKE cluster
+
+|image:providers/Kapsule.png[Kapsule,40]
+|Scaleway Kubernetes cluster
 |
+Kubenetes v1.27.0 cluster
+
+Kapsule cluster with one DEV1-M node
 
 |===
 
@@ -37,20 +45,52 @@ This page to describe how finally environement and application are created under
 |===
 | |Name|Component/Ressources created
 
-|image:EKS.png[EKS,40]
+|image:providers/EKS.png[EKS,40]
 |Amazon Elastic Kubernetes Service
 |
+K8s Deployment for each app
 
-|image:AKS.png[AKS,40]
+AWS Application Load Balancer if an app has Nodeport specified
+
+Secret Resource for use with Private Dockerhub images
+
+|image:providers/AKS.png[AKS,40]
 |Azure Kubernetes Service
 |Pod/container
+K8s Deployment for each app
 
-|image:GKE.png[GKE,40]
+Load Balancer if an app has Nodeport specified
+
+Secret Resource for use with Private Dockerhub images
+
+|image:providers/GKE.png[GKE,40]
 |Google Kubernetes Engine
 |
+K8s Deployment for each app
 
-|image:NK8.png[NK8,40]
+Load Balancer if an app has Nodeport specified
+
+Secret Resource for use with Private Dockerhub images
+
+|image:providers/NK8.png[NK8,40]
 |Native Kubernetes
 |
+K8s Deployment for each app specified
+
+Secret Resource for use with Private Dockerhub images
 
 |===
+
+== Terraform / Workspace in the backend ==
+
+=== Infrastructure
+- cluster.tf file for every provider that has resources for creating the K8s cluster
+- variables.tf file contains variable definitions
+
+image:iac/InfraFiles.png[Infrastructure,150]
+
+=== Application
+- A .tf file with the name of each app
+- secrets.tf file for creating docker secret
+
+image:AppFiles.png[Application,150]

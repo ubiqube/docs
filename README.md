@@ -27,6 +27,7 @@ if you have gradle you can also execute
 	gradle asciidoc_msa_html
 	gradle asciidoc_msa_pdf
 	gradle -b build_ccla.gradle asciidoc_ccla_html
+	gradle -b build_ccla.gradle asciidoc_ccla_pdf
 
 The doc is generated in build/docs/
 

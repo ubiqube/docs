@@ -1,58 +1,6 @@
 
-= Overview =
-ifndef::imagesdir[:imagesdir: images/providers]
-
-== Integration ==
-
-Two mode supported per providers
-
-* Greenfield : create a fresh ressource
-
-* Brownfield : import / discover an existing ressource
-
-Below the matrix of supported clouds :
-
-=== Kubernetes services ===
-
-[cols="1,1,1,1"]
-|===
-| |Name|Mode|WebSite
-
-|image:EKS.png[EKS,40]
-|Amazon Elastic Kubernetes Service
-|Greenfield
-|https://aws.amazon.com/eks/
-
-
-|image:AKS.png[AKS,40]
-|Azure Kubernetes Service
-|Greenfield
-|https://azure.microsoft.com/en-us/products/kubernetes-service/
-
-|image:GKE.png[GKE,40]
-|Google Kubernetes Engine
-|Greenfield
-|https://cloud.google.com/kubernetes-engine
-
-|image:NK8.png[NK8,40]
-|Native Kubernetes
-|Brownfield 
-|https://kubernetes.io
-
-|===
-
-=== Virtual machines ===
-
-[cols="1,1,1,1"]
-|===
-| |Name|Mode|WebSite
-
-|image:EC2.png[EC2,40]
-|Amazon EC2
-|Greenfield
-|https://aws.amazon.com/ec2/
-
-|===
+= Environment Builder =
+ifndef::imagesdir[:imagesdir: images]
 
 == Blueprints ==
 
@@ -60,35 +8,308 @@ The catalog view
 
 === OpenMSA Library ===
 
-* Wordpress on Azure
-* Wordpress on Azure (Demo)
-* Multi clouds
-* MsaActivator (To be confirmed)
+Blueprint catalog offers a large possibility of deployments
 
-=== User Library ===
+image:blueprints/catalog.png[600]
+
+* Wordpress on Azure
+* Multi Regions on Azure
+* Hybrid cloud mixing a local installation of MSActivator and an external monitoring system
+* Multi clloud with distributed Redis Databases for High availability and scalability
+* Private 5G with CNF deploy on the edge
+
+Blueprints exist with the demo flag, a green capsule inside the preview. Demo flag means no real ressources are consumed on CSPs. Those blueprints permit to demonstrate orchestration framework and associated features.
+Data are simulated in this mode for different features (configure, compliance, monitoring...)
+
+=== Editor ===
+
+==== Library ====
+
+Drag & Drop components from Library. Library are provided for per clould providers
+
+* Provider : an element representing a public or private cloud platform
+
+* Region / Zone : supported regions inside a provider. Not supported for VMware or Kubernetes
+
+* App deployment : deploy an application from any marketplace or repository
+
+* K8 cluster : a element reprensenting one Kubernetes cluster
+
+* Mesh : an element permetting to interconnect 2 clouds. This element should be placed after the APP
+
+* Workflow : an element allowing to execute any MSA Workflow at any place in the designer
+
+image:providers/BPEditor.png[900]
+
+==== Graphical options ====
+
+* Hand tool
+
+* Lasso tool
+
+* Space tool
+
+* Connect tool
+
+==== Design operations ====
+
+* Save design : Edit the Blueprint design and save this design
 
 == Quick Deployment ==
+Click on Create A Quick Deployment
+
+image:blueprints/Quick_Deployment.png[100]
+
+Choose recommended cloud providers
+
+image:blueprints/Choose_Cloud.png[900]     
+
+Then pick an environment for deployment
+
+image:blueprints/Pick_an_Environment.png[900]
+
+Add application images and define ports and node ports with proper deployment name
+
+image:blueprints/Add_Application.png[900]
+
+See the estimation right before your deployment and can change Hourly, Monthly or Annual
+
+image:blueprints/Cost.png[900]
 
 == The wizard ==
 
-=== Providers specificity ===
-
-=== GKE ===
-
 === Native K8 import ===
+
+image:providers/Kubernetes.png[800]
 
 4 fields are needed to import an existing K8 platform in Cloudclapp
 
-* API Server IP/Host :
+* **API Server IP/Host** : This value is usually the IP address of the Master Node in the Kubernetes cluster
 
-* API Server Port :
+* **API Server Port** :The API server is generally exposed on the port 6443 by default. Cloudclapp will check if the specific port on the given IP is reachable before Import. In a kubeconfig file, both of the above values are in the server field for a cluster
 
-* Certificate Authority Data :
+* **Certificate Authority Data** : Certificat generated 
 
-* Kubernetes Service Account Token :
+* **Kubernetes Service Account Token** : Token associated with a service account. This service account can then be bound to a cluster role to provide granular access across the K8s cluster.
+
+image:providers/Kubernetes_Connection.png[900]
+
+NOTE: Check the appendix below to have more details to how retrieve those informations
 
 == Designer ==
 
-== Environement dashboard ==
+Same as the blueprint editor, a user can modify a design before to deploy it. Two operations are possibles, additiotionaly to the save design
+
+* Save environment as blueprint : Once the design is saved. Can be used as a Environment.
+
+* Deploy : Click on Deploy to complete the deployment of the apps over K8 cluster that is selected
+
+== Environment dashboard ==
+
+Environment dashboard show to the users multiple informations via tiles. From MVP3, if a multi cloud has been created, cluster selection list is available in the top right
+
+* Deployments : give the number of deployment associated to this environement + link for a redirection
+
+* Users : number of users associated to this environment
+
+* Image Scan : last image scan result over all deployments
+
+* Web App Scan : last web application scan result over all deployments
+
+* Topology : representation of application mapping
+
+* Monitoring : availability graph
+
+image:env_builder/ENV_dashboard.png[700]
+
+=== Topology / Application Diagram ===
+
+At the environement home page, a topology represents the mapping between applications
+This topology is based on workflow information, but a specific variable must be created to do the link
+
+image:blueprints/Topology_App.png[200]
+
+----
+APP_PORT_MAPPING : <target_application_name>:<target_port>
+----
 
 === Monitoring ===
+
+Monitoring is done with the help of Prometheus and Grafana. It is deployed as individual deployments and services in the K8s cluster using YAML manifests available here https://github.com/prometheus-operator/kube-prometheus. These manifests create the necessary deployments, service accounts and roles required for deploying Prometheus, Grafana and Alert Manager. 
+
+To display the dashboards of these services, we create a service of type load balancer and use the native Load Balancers provided by the cloud providers.
+
+Note: Enabling monitoring will deploy additional pods and services along with load balancers for Prometheus and Grafana. Hence this will affect the cost incurred when creating the cluster
+
+
+image:monitoringTools.png[100]
+
+[cols="1,1"]
+|===
+|Tool|URL
+
+|Grafana
+|http://20.69.64.212/login
+
+|Prometheus - admin/admin credentials by default
+|http://20.69.65.18/graph?g0.expr=&g0.tab=1&g0.stacked=0&g0.show_exemplars=0&g0.range_input=1h
+
+|Alert Manager
+|http://20.69.64.200/#/alerts
+
+|===
+
+Some Grafana dashboards can be imported directly to monitor environments. Use import function in grafana to upload a new dashboard
+
+* AKS Environment : https://grafana.com/grafana/dashboards/12180-aks-container-insights/
+
+* EKS Environment : https://grafana.com/grafana/dashboards/17119-kubernetes-eks-cluster-prometheus/
+
+* GKE Environment : https://grafana.com/grafana/dashboards/14869-iris/
+
+
+== Details of WF steps ==
+
+[cols="1,1"]
+|===
+|Steps|Description
+
+|Create TF Workspace
+|
+
+Create a workspace folder and copy the template terraform files to the newly created workspace. This workspace will be the working directory for Terraform
+
+|Set TF variables values
+|
+
+Read the input data given by the user and replace the appropriate values in the terraform files
+
+|Initialize TF Workspace
+|
+
+Runs `+terraform init+` command in the workspace
+
+|Provision cluster
+|
+
+Runs `+terraform plan+` command followed by a `+terraform apply+` which will provision the resources
+
+|Create Cluster Managed Entity
+|
+
+Create a virtual Managed Entity for the newly created cluster in MSActivator that will be used to manage the cluster with the help of MicroServices
+
+|Deploy Prometheus and Grafana
+|
+
+Optional step to deploy the Prometheus and Grafana stack on the created cluster that will enable CCLA to show monitoring data
+
+|Trigger compliance scan
+|
+
+Runs the Compliance Scan Workflow which will deploy a Job to run kubebench on the cluster and fetch the scan results
+
+|===
+
+== Appendix ==
+=== K8 service token and certificate ===
+
+In order to access the K8s APIs, CCLA requires a token associated with a service account. This service account can then be bound to a cluster role to provide granular access across the K8s cluster.
+
+Create YAML files for serviceaccount, clusterrole and clusterrolebinding
+----
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  creationTimestamp: "2023-02-23T10:54:04Z"
+  name: ccla-service-account
+  namespace: default
+----
+----
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: ccla-cluster-role
+rules:
+- apiGroups:
+  - ""
+  - apps
+  - extensions
+  - batch
+  resources:
+  - pods
+  - pods/log
+  - configmaps
+  - daemonsets
+  - deployments
+  - jobs
+  - namespaces
+  - nodes
+  - persistentvolumes
+  - persistentvolumeclaims
+  - replicasets
+  - replicationcontrollers
+  - serviceaccounts
+  - services
+  - secrets
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+----
+----
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: ccla-cluster-role-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: ccla-cluster-role
+subjects:
+- kind: ServiceAccount
+  name: ccla-service-account
+  namespace: default
+----
+Use kubectl to apply these resources
+
+----
+kubectl apply -f serviceaccount.yaml
+kubectl apply -f clusterrole.yaml
+kubectl apply -f clusterrolebinding.yaml
+----
+
+Now create a secret that will hold the token for the service account
+
+----
+apiVersion: v1
+kind: Secret
+type: kubernetes.io/service-account-token
+metadata:
+  name: ccla-token
+  annotations:
+    kubernetes.io/service-account.name: ccla-service-account
+----
+----
+kubectl apply -f secret.yaml
+----
+The above secret should contain the CA data and Token required as inputs for CCLA. To get the values from the secret, run kubectl get secret ccla-token -oyaml
+This command with display the data stored in YAML format.
+
+----
+apiVersion: v1
+data:
+  ca.crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJkekNDQVIyZ0F3SUJBZ0lCQURBS0JnZ3Foa2pPUFFRREFqQWpNU2dZSUtvWkl6ajBFQXdJRFNBQXdSUUlnSzBRN3hHTm12T3p3MEZTUTNEUVpMNlJ0Nzc3ejZVRDUKbU8xT3RSZ2NhR2dDSVFDdU56OTVDdk9hWVZiQzFlT3BkQi96LzVSaXprV1lmbkNVYzc3Y1VBQzBzZz09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
+  namespace: ZGVmYXVsdA==
+  token: ZXlKaGJHY2lPaUpTVXpJMU5pSXNJbXRwWkNJNkluRjNNRWxrUmt4WWVYRkZNSFJ5ZGtzNE5EY3hPV3R2ZVhKNVMyUjRNSEZEYzNRMlNrcDZTblU1V2pnaWZRLmV5SnBjM01pT2lKcmRXSmxjbTVsZEdWekwzTmxjblpwWTJWaFkyTnZkVzUwSWl3aWEzVmlaWEp1WlhSbGN5NXBieTl6WlhKMmFXTmxZV05qYjNWdWRDOXVZVzFsYzNCaFkyVWlPaUprWldaaGRXeDBJaXdpYTNWaVpYSnVaWFJsY3k1cGJ5OXpaWEoyYVdObFlXTmpiM1Z1ZEM5cDNxZWhETWpGUk1DM0ZmWlJTZzV6MzVfTGltYTFKX3hXdHcwLWUzLTVlakJ6d0tWQ1NoOXlNQjY4TDZjY3duOUZ1R2dMWDBzV2JFMDJ6WnBhNFJicnVBcUJjTU5PbXpJaW9HRUJpeUdoZXRoZmx6eHpmZjZidXBnLXFUdktEYnVuWWlpajE2MkxrYnVJdmZNQTNJaktsbWpyNTRudWFPbngwUW14ODNOUXZITkZOb2hzMXM2cm5hcEV3VXhycC0yWkFjYVdn
+kind: Secret
+metadata:
+  name: api-token
+  namespace: default
+type: kubernetes.io/service-account-token
+----
+NOTE: The above token is base64 encoded and it needs to be decoded before using it as an input in CCLA

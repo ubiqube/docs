@@ -1,16 +1,44 @@
-= Version 2.1.0 (MVP2) =
+= Version BETA 2.1.0 =
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
+== New features ==
 
+=== Multi-region blueprint  (Prepare Multi cloud / Hybrid cloud)
 
+A new multi regions blueprint on AZURE with a pre-configured Wordpress and Mysql application
+=> link:../user-guide/environment_builder{outfilesuffix}#_blueprints[Link,window=_blank]
+
+=== K8 topology / application diagram
+
+A topology representation of applications deployed in a K8 cluster
+=> link:../user-guide/environment_builder{outfilesuffix}#_application-diagram[Link,window=_blank]
+
+=== Import a native K8
+
+Permit to discover a running K8 cluster running
+=> link:../user-guide/environment_builder{outfilesuffix}#_native-k8-import[Link,window=_blank]
+
+=== Approval request
+
+Control cloud ressources creation by assigning permission to users to get approval before deploying
+=> link:../user-guide/governance{outfilesuffix}#_approval-requests[Link,window=_blank]
+
+=== Compliance for environment
+
+Perform compliance scan on any environement with selection of standards and level of business sensitivity
+=> link:../user-guide/compliance{outfilesuffix}#_compliance-for-environment[Link,window=_blank]
+
+=== Greener region
+
+Redirect to provider web site to choose the best region based on KPI like the lower carbon print, high percentage of energy renewal
+=> link:../user-guide/green_it{outfilesuffix}[Link,window=_blank]
 
 = Specific technical fixes and feature details =
 
-== Features ==
-
+== Enhancements ==
 
 * [MSA-11623] - [CCLA] K8 Import - ENV import with WF
 * [MSA-11628] - [CCLA] K8 Import - UI - Adapt ENV creation
-* [MSA-11691] - [CCLA] GCP Cost Implementation
 * [MSA-11717] - [CCLA] K8 Import - APP deployment - Create new WF
 * [MSA-11797] - [CCLA] Manage Tags
 * [MSA-11862] - [CCLA] Auto attach MS on K8 cluster import - private cloud
@@ -40,16 +68,23 @@
 * [MSA-12434] - [CCLA] Compliance dashboard
 * [MSA-12444] - [CCLA] Generic list of WF to attach per cloud provider
 * [MSA-12445] - [CCLA] API to create and delete Customer config var using Id to store compliance parameter
-* [MSA-12456] - [CCLA] Build first hybrid multi cloud blueprint
+* [MSA-12456] - [CCLA] Build first multi cloud blueprint
 * [MSA-12458] - [CCLA] Redirect to region picker website per providers for greener selection
 * [MSA-12464] - [CCLA] DEMO FLAG to be on ENV only for all providers
-* [MSA-12472] - [CCLA] Tear down all deployments when you tear down the ENV
 * [MSA-12494] - [CCLA] Redirect to Approvals tab once you open from email
 * [MSA-12495] - [CCLA] Modify the Email Content of Approval request and request update
 * [MSA-12505] - [CCLA] Aligne ENV name in TF
-* [MSA-12522] - [CCLA] Don't show clear keys for cloud connections (vault)
 * [MSA-12526] - [CCLA] Permit easy placement of deployment on multiple region
-* [MSA-12527] - [CCLA] Hybrid icon for hybrid ENV dashboard + production icon on dashboard
+* [MSA-12527] - [CCLA] Multi cloud icon + tear down adaptation
+* [MSA-12558] - [CCLA] Blueprint based environment deployments must have correct owner name
+* [MSA-12570] - [CCLA] UI to build K8 topology / application mapping
+* [MSA-12573] - [CCLA] Create Meshed WF for hybrid/multi BP
+* [MSA-12574] - [CCLA] New UI component for doing meshed
+* [MSA-12601] - [CCLA] Set CloudType when ENV is created
+* [MSA-12604] - [CCLA] AWS "Launch configuration" will be replace by "Launch template"
+* [MSA-12643] - [CCLA] Update compliance scan to work with local k8
+* [MSA-12649] - [BPM] fetch process executor when executing the WF through BPM
+* [MSA-12683] - [CCLA] Set list of regions per provider up to date
 
 == Bug ==
 * [MSA-11585] - [CCLA][Insights] adapt calendar proposed range to actual range
@@ -58,6 +93,7 @@
 * [MSA-12143] - [CCLA] When a new env created, status is not good.
 * [MSA-12192] - [CCLA] deplyoment is failing on gcp env when using node port
 * [MSA-12328] - [CCLA] Infinite process for ENV creation / No Logs are available from a blueprint deployment
+* [MSA-12329] - [CCLA] UI changes on CCLA
 * [MSA-12333] - [CCLA] Updating the region on the Blueprint through region tab is not possible
 * [MSA-12334] - [CCLA] Not possible to Update/Save/Delete Blueprint Design for an admin
 * [MSA-12362] - [CCLA] When node_port value is given and then erased, empty string is passed instead of null
@@ -69,3 +105,8 @@
 * [MSA-12468] - [CCLA] Governance Tags tab gives an impression of infinite loading when there is no tag data to be shown
 * [MSA-12470] - [CCLA] Web app scan not working
 * [MSA-12542] - [CCLA] Need Approval API should not get call when we logged in with ncroot
+* [MSA-12553] - [CCLA] URL's in the Approval email must navigate to Goverance Tab
+* [MSA-12572] - [CCLA] Fix CCLA install lib API
+* [MSA-12575] - [CCLA] [UI] Launch button for monitoring is not working for gcp and azure envs
+* [MSA-12583] - [CCLA] Retry on WF APP not apply new port
+* [MSA-12585] - [CCLA] On Compliance Tab when select Data Sensitivity and Run Re-Scan still it showed as Extended

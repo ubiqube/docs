@@ -18,17 +18,6 @@ image:deployment_settings_search.png[Deployment Settings Search,width=700px]
 
 A Deployment setting acts as the intermediate layer between a set of managed entities and a set of microservices
 
-[ditaa]
-....
-    +---------------+n                                                                     
-    | Microservices |------\n                                                          
-    +---------------+       +----------------------+ 1      n +------------------+    
-                            | Deployment Settings  |----------| Managed Entities |    
-    +---------------+       +----------------------+          +------------------+    
-    |    Templates  |------/n                                                          
-    +---------------+n                                                                                                    
-.... 
-
 === Create, update, delete
 
 ==== Creation
@@ -60,7 +49,7 @@ When you save a new deployment setting, the information is stored in the databas
 As it's commonly done in most application, the database ID is immutable but there are cases where you need to be able to use you own unique identifier to identify a deployment setting (this also applied to managed entities for instance). 
 For instance when integrating with a third party system with API it's convenient to decide on a common unique value to identify an object.
 
-This is what external reference is made for. You can set it to your own value as long as it's unique in the {$product_name} database.
+This is what external reference is made for. You can set it to your own value as long as it's unique in the {product_name} database.
 
 == Access Control
 

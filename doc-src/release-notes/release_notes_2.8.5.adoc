@@ -1,0 +1,156 @@
+= Version 2.8.5
+:front-cover-image: image:release-notes-front-cover-2.8.5.pdf[]
+:toc: left
+:toclevels: 3
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+ifndef::imagesdir[:imagesdir: images]
+
+//OK HTML 
+ifdef::html[]
+:includedir: doc-src/release-notes
+endif::[]
+
+// OK PDF
+ifdef::pdf[]
+:includedir: .
+endif::[]
+
+{product_name} 2.8.5 includes several new features and a couple of bugs fixes.
+
+With this release, users can create alarms with multiple subtenants and Managed Entities attached. 
+Also, {product_name} can refresh logs automatically at custom defined frequency. In addition, users can search logs with advanced query syntax. 
+
+Kibana has been upgraded to 7.14.2. 
+
+{product_name} can be integrated with LDAP with more custom defined user's LDAP authentication. 
+
+With this release, users can experience better file/repository management e.g., upload a file in any folder anywhere, folder names are displayed as subtenant names for better navigation. 
+
+Users can enable or disable maintenance mode on managed entities. 
+
+Several bugs are fixed which collectively improve workflows and microservices management and performance e.g., only edited microservices will be synchronized, workflow editor shows warning of unsaved changes, workflows visibility control based on users role, etc.
+
+== Microservices
+
+=== Support for JSON
+
+The introduction of full support of JSON when designing and executing the REST API microservice synchronization is a major feature as it will ease the development of new microservices without having to rely on XML XPath to write the parsers for the JSON response coming from the vendor management REST API.
+
+JSON microservices rely on JSONPath on the CoreEngine for executing the IMPORT parser to pull the data from the REST API response. 
+
+image:2.8_microservice_jsonpath.png[width=700px]
+
+== Managed Entities
+
+=== Maintenance mode
+
+Users can enable or disable maintenance mode on managed entities.
+
+During the maintenance mode, monitoring and alarm are paused and will resume when maintenance mode is turn off.
+
+Events are generated when maintenance mode is turn on and off, allowing the managers to be notified by alarms.
+
+image:2.8_maintenance_mode.png[width=700px]
+
+== Assurance
+
+=== Alarm event multi-selection
+
+In order to ease alarm management, users can now select multiple alarms and acknowledge them in a batch.
+
+image:2.8.5_alarm_multi_select.png[width=700px]
+
+== Framework
+
+=== Elasticsearch/Kibana
+
+Elasticsearch and Kibana have been upgraded to 7.14.2
+
+image:2.8_ELK_upgrade.png[width=700px]
+
+=== CoreEngine
+
+No changes have been made to the core engine from previous versions of the product. This allows consistency from branches of {openmsa_name} (community version), found on GitHub: https://github.com/openmsa
+ 
+== New Libraries Available
+
+=== Microservices:
+
+- link:https://github.com/openmsa/Microservices/blob/master/VNFM/Generic/[VNFM Generic]
+- link:https://github.com/openmsa/Microservices/tree/master/NFVO/Generic/[NFVO Generic]
+	
+=== Workflows:
+
+- link:https://github.com/openmsa/etsi-mano-workflows/tree/master/NFVI_Resources_Management[NFVI Resources Management]
+- link:https://github.com/openmsa/etsi-mano-workflows/tree/master/VNF_NS_Packages_Management[VNF NS Packages Management]
+- link:https://github.com/openmsa/etsi-mano-workflows/tree/master/VNF_LCM[VNF LCM]
+- link:https://github.com/openmsa/etsi-mano-workflows/tree/master/NS_LCM[NS LCM]
+- link:https://github.com/openmsa/etsi-mano-workflows/tree/master/Descriptor_Graph_Generator[Descriptor Graph Generator]
+
+== Upgrade
+
+Instructions to upgrade available in the https://ubiqube.com/wp-content/docs/latest/user-guide/quickstart.html[quickstart].
+
+=== Specific instructions for upgrading to 2.8.5
+
+The quickstart provides an upgrade script `upgrade.sh` for taking care of possible actions such as recreating some volume, executing some database specific updates,...
+
+In order to upgrade to the latest version, you need to follow these steps:
+
+1. `cd quickstart`
+2. `git checkout master`
+3. `git pull`
+4. `./scripts/install.sh`
+
+== Specific technical fixes and feature details
+
+=== Features
+
+* MSA-12227 - [Alarm] user should be able to select multiple subtenants and managed entity
+* MSA-12092 - [Alarm] alarm management: add "Select All" Button
+* MSA-12263 - [Alarm] add managed entity name and IP in rawlog when creating the alarm in check_alert.php
+* MSA-12029 - [API/Microservices] performance: Synchronization Time
+* MSA-11224 - [CoreEngine] remove SD_CRUD_OBJECT_list from php db data file
+* MSA-11916 - [CoreEngine] stream daemon logs (smsd, polld,...) to stdout and make them available with docker logs
+* MSA-12187 - [CoreEngine] change SMS CLI tools to use php odbc instead of isql command
+* MSA-12188 - [CoreEngine] sms_syslogd collects syslogs even if the feature is not enabled
+* MSA-12287 - [CoreEngine] upgrade libraries in SMS
+* MSA-12265 - [CoreEngine] improve database queries UPDATE and INSERT
+* MSA-12103 - [CoreEngine/Microservices] performance: Synchronization Time
+* MSA-12290 - [ELK] update Kibana to 7.14.2 to be aligned with Elasticsearch
+* MSA-11991 - [HA] Rsync data sync for cross-DC
+* MSA-12085 - [Infra] Restart automatically msa-rsyslog when msa-sms is restarted
+* MSA-12200 - [LDAP] support custom attributes checking on authentication
+* MSA-11897 - [Managed Entity] move "create variable" menu action to variables tab
+* MSA-11413 - [Microservice] configuration field difficult to edit with one long line
+* MSA-11439 - [Microservice] align the UI with JSON parsing in microservice console
+* MSA-12213 - [Microservice] API to get Microservice instances data by Microservice name
+* MSA-12271 - [Microservices] improve database writing of microservice instances
+* MSA-10605 - [OpenMSA/Workflow] Cisco firmware management
+* MSA-11699 - [OpenMSA/Adapter] Cisco IOS - Endpoint initial provisioning process - Secure Certificate Installation
+* MSA-12141 - [Python SDK] add function to detach a deployment setting from a device
+* MSA-11975 - [Topology] topology workflow is not supporting SNMPv3
+* MSA-12195 - [Topology UI] ability to change node/network entity color
+* MSA-10372 - [Workflow] Set visibility by Workflow/Process
+* MSA-10709 - [Workflow/Microservice] Add a validation for Variable name
+* MSA-11589 - [Workflows] Arista EOS support of firmware download/install & device reload
+
+=== Bug fixes
+
+* MSA-12210 - [Alarms] alarm/log screens not auto-refreshed although UI is calling alarm API every 12sec
+* MSA-10499 - [CoreEngine] /var/lock/subsys/ubi-sms error in logs of msa-sms, msa-alarm, msa-monitoring, msa-bud
+* MSA-12110 - [CoreEngine] syslogd generates an empty rawlog if decodeSNMP: snmp_parse FAILED
+* MSA-12049 - [Logs] search log textbox is modifying searched data
+* MSA-10030 - [Managed Entity] issue on sorting, in list view
+* MSA-12016 - [Managed Entity] enable/disable maintenance mode is allowed for all user roles
+* MSA-11414 - [Microservice] right pane of editing a variable is truncated with a small window
+* MSA-11445 - [Microservice] Attached Deployment Settings are not shown in Light mode
+* MSA-12101 - [Microservice] Unable to load Microservice object: NPE in API console
+* MSA-12117 - [Microservice] Import editor screen shows "XPATH Command" when the Microservice type is JSON
+* MSA-12147 - [Microservice] import ranks are not correctly ordered
+* MSA-12121 - [UI/Microservice] disable Multiple MS instance selection if the bulk flag is set to false
+* MSA-12090 - [Repository] file are not uploaded in the correct destination folder
+* MSA-12218 - [Repository] subtenant folders are listed with their ID which is unknown by a user
+* MSA-12293 - [Repository] screen of MANO validation result is not large enough
+* MSA-10775 - [Workflows] scheduling : summary of scheduled WF : details is the same for every line
+* MSA-10869 - [Workflow] editor should print out a warning if a task code has been modified and not saved when we try to exit
