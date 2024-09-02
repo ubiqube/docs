@@ -7,9 +7,9 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 The {product_name} uses Elasticsearch and Kibana to provide data indexing and searching as well as the dashboards that can be customized and exposed with a custom manager dashboard.
 
-== Log Retention Policy
+== Data Retention Policy
 
-Log retention policy allows to configure and manage the lifecycle of the indexes in Elasticsearch.
+Data retention policy allows to configure and manage the lifecycle of the indexes in Elasticsearch.
 
 There are 3 main types of indexes such as the ones used for the syslogs (`ubilogs-\*`), the alarms (`ubialarms-*`) or the audit logs (`ubiaudit-*`). 
 For each type, the data is stored in a daily index.
@@ -26,6 +26,8 @@ The ILM configuration is done with the Kibana UI (http://localhost/kibana), in t
 image:elasticsearch_ilm_1.png[width=800px]
 
 == Online and offline storage
+
+=== Elasticsearch ILM
 
 Offline storage is for historical logs.
 For example, with a 1 year retention period, the storage is split between 1 month online and 11 months offline.
@@ -52,3 +54,41 @@ image:elasticsearch_ilm_snapshot_policy_1.png[width=800px]
 
 .ILM with a snapshot policy: offline 5 days
 image:elasticsearch_ilm_snapshot_policy_2.png[width=800px]
+
+=== Advanced log retention control
+
+With Elasticsearch built-in ILM, you can provide a high level control over the data retention period and manage but sometime log retention policy require a more advanced policy based on criteria such as the type of log.
+
+As simple use case we can consider the collection of firewall logs. Firewalls are very "chatty" when it comes to sending data. Logs such as system, traffic, security or SNMP traps can be collected by the {product_name}. In order to reduce the storage size, keeping system and traffic data for a short period of time can be acceptable will keeping the security event for a longer period of time may be required for legal reason.
+
+The {product_name} advanced data retention feature allows the configuration of multiple rules to control the criteria for deleting data.  
+
+This feature is maintained by the `msa2-es-ilm` container included in the Quickstart
+
+The retention policy is controlled by the environment variables below
+
+    UBI_ES_INDEX_MULTIPLE_TTL:         "*|90d"
+    UBI_ES_AUDIT_INDEX_MULTIPLE_TTL:   "*|90d"
+    UBI_ES_ALARM_INDEX_MULTIPLE_TTL:   "*|90d"
+
+Variable value is a comma separated list of key|value. The key is an Elasticsearch query for filtering the data to delete, the value represent the retention period. 
+By default logs, alarms and audit logs are deleted after 90d stored online in Elasticsearch cluster.
+
+The configuration below will:
+
+* keep the traffic logs for 7 days
+* the event logs for 30d 
+* delete everything older that 90 days
+
+    UBI_ES_INDEX_MULTIPLE_TTL:          "type:traffic|7d,type:event|30d,*|90d
+
+the name of the field (ex `traffic`) can be adjusted based on the data structure as stored in Elasticsearch    
+
+Below is another configuration that will:
+
+* delete the alarm with a low severity (debug, informational, notice, warning) after 7 days
+* delete the alarm with medium severity (error) after 30 days
+* delete everything older that 90 days
+
+      UBI_ES_ALARM_INDEX_MULTIPLE_TTL:   "severity:[4 TO 7]|7d,severity:3|30d,*|90d"
+

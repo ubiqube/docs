@@ -19,7 +19,8 @@ Welcome to the 2.8.13 release of the {product_name}. There are many updates in t
 
 == User experience
 === Session expiration
-Introducing new pop up message which inform the user about the minutes left to be log off. For any users of the platform, 5 minutes before session expiration, a notification is displayed.
+Introducing new pop up message which inform the user about the minutes left before being discunnected. 
+By default, for any users of the platform, 5 minutes before session expiration, a notification is displayed.
 The session expiration time is fully configurable using our system variables. 
 
 * Feature flag to control this beahvior : *FEATURE_SESSION_EXPIRATION_WARNING* (false by default)
@@ -34,17 +35,30 @@ A user of the platform, when consulting logs can choose between two modes : flat
 image:2.8.13_logs_flat_gp.png[width=700px]
 
 === Logs search features
-New functions have been added around logs search. When clicking inside Search Logs field,  a list give all available fields as suggestion in input search. Additionally, logs are retrieved with a time range of 24h by default. Of course a user can still select a different start and end date using the filter by list. In the same area, the time range inclusion permits to include (within) or exclude (outside)  logs based and the chosen dates. Finally, on the right of the search bar, a new icon allows to save query to replay old queries without selecting again all parameters.
+
+New functions have been added around logs search. 
+
+==== Default time range
+
+When clicking inside Search Logs field,  a list give all available fields as suggestion in input search. Additionally, logs are retrieved with a time range of 24h before to 24h after the current time by default. A user can still select a different start and end date using the filter by list. In the same area, the time range inclusion permits to include (within) or exclude (outside)  logs based and the chosen dates. 
 
 image:2.8.13_date_sort.png[width=700px]
 
+==== Query builder
+
+Build and save your queries with the query builder feature. On the right of the search bar, a new icon allows to save and  replay saved queries without entering the parameters again.
+
+In the details view, use the plus icon to 
+
 image:2.8.13_save_query.png[width=700px]
 
-=== Log rotation
+=== Application rotation
+
 In a multiple nodes architecture, old container logs are cleaned to save space on the host disk. New clean operations are scheduled automatically to optimize the platform.
 
 === Download feature at infrastructure level
-Same as the substenant level, logs can be downloaded using Download report button. A CSV file is generated containing same data as the screen is presenting.
+Same as the subtenant level, logs can be downloaded using the download report button. 
+A CSV file is generated containing same data as the screen is presenting.
 
 image:2.8.13_dl_logs_me.png[width=700px]
 
@@ -53,9 +67,9 @@ image:2.8.13_dl_logs_me.png[width=700px]
 * [MSA-10167] - [Monitoring] value used for the rule field "Max" is used "as is" for the KPI value
 * [MSA-12540] - [Workflows][API] add constraints for workflows
 * [MSA-13325] - [Logs] display mode feature (flat/grouped)
-* [MSA-13370] - 2.0 MSA 's log rotation
+* [MSA-13370] - [CoreEngine] fix the log retention period of the CoreEngine
 * [MSA-13510] - [Assurance][UI][API] incident ticket management: search & sorting
-* [MSA-13553] - Log retention for advanced criteria combination
+* [MSA-13553] - [Elasticsearch] Log retention for advanced criteria combination
 * [MSA-13554] - Docker environment variable for ES shards and replicas
 * [MSA-13568] - [UI] Pop-Up message for session expiration information
 * [MSA-13595] - [UI/WF] "Console button" in Workflows need to be hideable
