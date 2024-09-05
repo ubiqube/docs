@@ -9,6 +9,10 @@ The API is enabled by default. No additional configuration is required.
 
 [#authentication]
 == Authentication
+=== With version 2.9.x
+
+Starting with {product_name} version 2.9.1, the authentication is managed by Keycloak which is included in the product.
+
 When making requests to {product_name} using the REST API, you will need:
 
 * A valid admin username and password (so that a token can be generated and an authenticated session can be established).
@@ -17,8 +21,43 @@ When making requests to {product_name} using the REST API, you will need:
 Using curl, you may save the authentication information as a HTTP header to allow subsequent requests to be accepted automatically.
 
 .authentication request
+
 ----
-curl -H 'Content-Type: application/json' -XPOST -k https://<MSA IP or FQDN>/ubi-api-rest/auth/token -d '{"username":"username", "password":"user password"}'
+curl -k -H 'Content-Type: application/x-www-form-urlencoded' \
+  -XPOST https://<MSA IP or FQDN>/auth/realms/main/protocol/openid-connect/token \
+  -d 'username=<USERNAME>&password=<PASSWORD>&grant_type=password&client_id=utilisateurs'
+----
+
+.authentication response
+[source,json]
+----
+{
+    "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJ2LW5uQnJkY3NOY1dmVUxDZ2RzUVhQcnptMkFhQzRDbjJPaEhHaFR5VlowIn0.eyJleHAiOjE3MjU1MjA4NjEsImlhdCI6MTcyNTUyMDU2MSwianRpIjoiYTY1Mjk2YjAtYTc0MC00ZjgwLWFlYzItM2Q3YWYzZjU4YTZjIiwiaXNzIjoiaHR0cHM6Ly8xMC4zMS4xLjIyOS9hdXRoL3JlYWxtcy9tYWluIiwiYXVkIjoiYWNjb3VudCIsInN1YiI6ImY6MDY5MjMwYjctY2ZkZi00OGQ5LWFhMTQtZDMyNmRlMjAwNDRiOjEiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ1dGlsaXNhdGV1cnMiLCJzZXNzaW9uX3N0YXRlIjoiYmI4NjMyMGYtM2FiNC00ZWYwLTgwNTktYWM2ZWU1ZWZjNTBhIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIke2F1dGhCYXNlVXJsfSJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSB1YmlSb2xlIGVtYWlsIiwic2lkIjoiYmI4NjMyMGYtM2FiNC00ZWYwLTgwNTktYWM2ZWU1ZWZjNTBhIiwicm9sZSI6IlN1cGVyIEFkbWluaXN0cmF0ZXVyIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJyb2xlX2lkIjoiMSIsIm5hbWUiOiJuY3Jvb3QiLCJhY3Rvcl9pZCI6IjEiLCJ1c2VybmFtZSI6Im5jcm9vdCJ9.Weu9xq82rjA5r-3GQtBU0liNpoyUuj4tDvHlvlWG8gC1iHQo9aV5exfBm3fRlsFyNwR_XBUnOIcg4U8rwF35D58fF3bvC5D3meM1X9WaXx6RYH0qDgoVNfIyqmR0xmj4SWn_gr4C4N3RE8JVUYbnWGwcbbLCI9gP8O9q6POtGPaCT51gSE6bmpYFHU1hpVoPnw99GBFutWi5iNUl4kkKbcBXDwZzbQPN5DE44a_YupGxqsCH7t38duUwilx0gOuVjPRD9itbdNI_wZxyIHB_couxg3RZuSIIJrH100GIcK4Nc6CO8IsZRSZBdsBnuNutuVJAhAzsFahRkvRhFt7LUw",
+    "expires_in": 300,
+    "refresh_expires_in": 1800,
+    "refresh_token": "eyJhbGciOiJIUzUxMiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJiYTMwNGY4MS1jMDFkLTRiZDEtYjM2Mi0wOTM0MTExNjhkMTMifQ.eyJleHAiOjE3MjU1MjIzNjEsImlhdCI6MTcyNTUyMDU2MSwianRpIjoiMmQyZjE3YjMtNGRjZi00M2M4LWE3N2ItMTQzYzYzY2U3N2E4IiwiaXNzIjoiaHR0cHM6Ly8xMC4zMS4xLjIyOS9hdXRoL3JlYWxtcy9tYWluIiwiYXVkIjoiaHR0cHM6Ly8xMC4zMS4xLjIyOS9hdXRoL3JlYWxtcy9tYWluIiwic3ViIjoiZjowNjkyMzBiNy1jZmRmLTQ4ZDktYWExNC1kMzI2ZGUyMDA0NGI6MSIsInR5cCI6IlJlZnJlc2giLCJhenAiOiJ1dGlsaXNhdGV1cnMiLCJzZXNzaW9uX3N0YXRlIjoiYmI4NjMyMGYtM2FiNC00ZWYwLTgwNTktYWM2ZWU1ZWZjNTBhIiwic2NvcGUiOiJwcm9maWxlIHViaVJvbGUgZW1haWwiLCJzaWQiOiJiYjg2MzIwZi0zYWI0LTRlZjAtODA1OS1hYzZlZTVlZmM1MGEifQ.dHxEnX8Y4mLTASwVuhSbfg1oyr2lzeaVMNiRo0-IYPXq8JAYxzl5V0S5qk9UgEsh6VzksONjjXSgGAEn_pBlmQ",
+    "token_type": "Bearer",
+    "not-before-policy": 0,
+    "session_state": "bb86320f-3ab4-4ef0-8059-ac6ee5efc50a",
+    "scope": "profile ubiRole email"
+}
+----
+
+=== With version 2.8.13 and previous
+
+When making requests to {product_name} using the REST API, you will need:
+
+* A valid admin username and password (so that a token can be generated and an authenticated session can be established).
+* Appropriate access permissions for the requested resource (controlled by admin profile)
+
+Using curl, you may save the authentication information as a HTTP header to allow subsequent requests to be accepted automatically.
+
+.authentication request
+
+----
+curl  -k -H 'Content-Type: application/json' \
+  -XPOST https://<MSA IP or FQDN>/ubi-api-rest/auth/token \
+  -d '{"username":"username", "password":"user password"}'
 ----
 
 .authentication response
