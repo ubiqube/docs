@@ -40,6 +40,8 @@ asciidoctor {
     'company_name': 'UBiqube',
     'product_name': 'MSactivator(TM)',
     'product_name-version': 'MSactivator-2.9.1',
+    'ccla_product_name': 'Cloudclapp(TM)',
+    'cloudiamo_product_name': 'Cloudiamo(TM)',
     'openmsa_name': 'OpenMSA(TM)',
     'revnumber': 'MSA-2.9.1',
     'versionnumber': '2.9.1',
@@ -92,6 +94,8 @@ asciidoctorPdf {
       'company_name': 'UBiqube',
       'product_name' : 'MSactivator(TM)',
       'product_name-version' : 'MSactivator-2.9.1',
+      'ccla_product_name': 'Cloudclapp(TM)',
+      'cloudiamo_product_name': 'Cloudiamo(TM)',
       'openmsa_name' : 'OpenMSA(TM)',
       'revnumber' : 'MSA-2.9.1',
       'versionnumber': '2.9.1',
@@ -111,7 +115,7 @@ asciidoctorPdf {
   sourceDir file('doc-src')
   sources {
        include 'user-guide/manager-guide-single.adoc', 'admin-guide/admin-guide-single.adoc','developer-guide/developer-guide-single.adoc', 'user-guide/quickstart.adoc',
-               'release-notes/release_notes.adoc', 'release-notes/release_notes_2.8.13.adoc', 'release-notes/release_notes_2.9.1.adoc'
+               'release-notes/release_notes.adoc', 'release-notes/release_notes_2.8.13.adoc', 'release-notes/release_notes_2.9.0.adoc', 'release-notes/release_notes_2.9.1.adoc'
  }
   outputDir file('build/pdf')
 

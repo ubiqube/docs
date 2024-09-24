@@ -46,11 +46,9 @@ With the addition of the alarm clearing action, alarm flow is now as following:
 
 image:2.9.0_alarm_clearing.jpg[width=700px]
 
-=== Features
+== Specific technical fixes and feature details
 
-
-
-== Enhancement
+=== Enhancement
 
 * [MSA-12667] - [Alarms] msa-alarm use redone schema
 * [MSA-12919] - [CoreEngine] code optimization for OID translation during runtime
@@ -86,7 +84,7 @@ image:2.9.0_alarm_clearing.jpg[width=700px]
 * [MSA-14013] - [Workflow] No WF instance on MSA, even if the WF has been executed via a Blueprint(BPM) on Cloudclapp.
 * [MSA-14034] - [API] ⬆️ Bump spring boot 3.3.1
 
-== Bug fixes
+=== Bug fixes
 
 * [MSA-11363] - [HA] the application log directories are shared by many containers and the log files are overwritten - not SMS ones
 * [MSA-12469] - [Workflows] - Composite array variables display/hide not consistent when type is other than String
