@@ -13,25 +13,23 @@ HashiCorp Vault is an identity-based secrets and encryption management system. V
 
 == Image Scan
 
-Cloudclapp includes an optional feature that allows you to scan any docker image that is deployed using CCLA for vulnerabilities and also gives you a quick overview of the results across four severities - CRITICAL, HIGH, MEDIUM and LOW
+Cloudclapp includes an optional feature that allows you to scan any docker image that is deployed using CCLA for vulnerabilities and also gives you a quick overview of the results across four severities - CRITICAL, HIGH, MEDIUM and LOW. You can access this results in the security dashboard under *Image Scan Summary*.
 
-It is also possible to download the results as a JSON file for further analysis and remediation.
-
-image:security/Scan Home.png[200]
+It is also possible to download in the summary the results as a JSON file for further analysis and remediation.
 
 image:security/Image Scan.png[200]
 
 == Web App Scan
 
-Cloudclapp also allows a user to specify any web application via a URL and then runs common security checks against that URL to ensure that the Webapp is safe from any vulnerabilities
+Cloudclapp also allows a user to specify any web application via a URL and then runs common security checks against that URL to ensure that the Webapp is safe from any vulnerabilities. The results are displayed in the security dashboard under *Web App Scan Summary*.
 
-It is also possible to download the results as a JSON file for further analysis and remediation.
+It is also possible to download in the summary the results as a JSON file for further analysis and remediation.
 
 image:security/Web Scan.png[200]
 
 == Security Dashboard
 
-When accessing security tab in application homepage, user can now see vulnerabilities raised by image and webapp scans
+When accessing security tab in application homepage, user can now see vulnerabilities raised by image and webapp scans.
 
 image:security/Security Dashboard.png[200]
 
