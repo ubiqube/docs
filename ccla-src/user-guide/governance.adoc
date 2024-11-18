@@ -15,7 +15,7 @@ image:governance/register_page.png[alt=Governance Menu, width=600px,align="cente
   
 image:governance/verify_email_popup.png[alt=Governance Menu, width=600px,align="center"]
   
-You will recieve an email contains a link to activate your account , clik on it and your acoount will be activated .
+You will receive an email contains a link to activate your account , click on it and your acoount will be activated .
   
 image:governance/registration_email_content.png[alt=Governance Menu, width=600px,align="center"]
 image:governance/activated_account.png[alt=Governance Menu, width=600px,align="center"]
@@ -60,36 +60,24 @@ Helpers for each clouds :
 * Scaleway : https://www.scaleway.com/en/docs/identity-and-access-management/iam/how-to/create-api-keys/
 
 
-== Organization settings
-to edit organization click on settings button 
+== Settings
+
+This section is divided in two tabs :
+
+*  System Tab provide product information such as Version.
+
+image:governance/ProductInformation.png[alt=Governance Menu, width=900px,align="center"]
+
+* Integrations tab let the user enter credentials of different services (Marketplaces, Cloud Security, Observability ...)
+
+image:governance/IntegrationsTab.png[alt=Governance Menu, width=900px,align="center"]
 
 
-image:governance/settings_button.png[alt=Governance Menu, width=900px,align="center"]
+== Delete and Rename ==
 
-image:governance/settings_view.png[alt=Governance Menu, width=400px,align="center"]
- 
-actions performed :
+To delete an Organization or to edit its name, the user need to go on MSActivator.
 
-* Edit Organization Name
-
-image:governance/edit_org_name.png[alt=Governance Menu, width=600px,align="center"]
-
-* Accounts
-
-image:governance/org_users.png[alt=Governance Menu, width=600px,align="center"]
-
-
-* Private Docker Hub Credentials
-
-image:governance/org_credentials.png[alt=Governance Menu, width=600px,align="center"]
-
-* GitHub Credentials
-
-image:governance/github.png[alt=Governance Menu, width=600px,align="center"]
-
-* Delete organization
-
-image:governance/delete_org.png[alt=Governance Menu, width=600px,align="center"]
+This actions can be performed on MSActivator as every Organizations are Tenants.  
 
 
 
@@ -99,11 +87,11 @@ To invite users, go to *Governance* →*Users*
 
 image:governance/users_tab.png[alt=Governance Menu, width=900px,align="center"]
 
-put the user you want to invite , an email will be sent to the invited user contains a link to activate his account.
+Put the user you want to invite , an email will be sent to the invited user contains a link to activate his account.
 
-image:governance/pop_invite_users.png[alt=Governance Menu, width=900px,align="center"]
+image:governance/pop_invite_users.png[alt=Governance Menu, width=600px, align="center"]
 
-image:governance/invite_user_succeed.png[alt=Governance Menu, width=900px,align="center"]
+image:governance/invite_user_succeed.png[alt=Governance Menu, width=600px,align="center"]
 
 *Email*  content should be like :
 
@@ -118,10 +106,12 @@ image:governance/permissions.png[alt=Governance Menu, width=900px,align="center"
 
 CloudClapp give the possibility to tag resources through terraform in other way we can filter the cost by those tags
 
+Tags can be created, updated and deleted in governance tab.
+
 image:governance/tags.png[alt=Governance Menu, width=900px,align="center"]
 
 == Permissions ==
-permissions defines the rights given to a user , we can see the in table the different permissions :
+Permissions defines the rights given to a user, we can see in table the different permissions :
 
 [cols="1,1,1,1,1"]
 |===
@@ -218,7 +208,7 @@ image:governance/audit_logs.png[alt=Governance Menu, width=600px,align="center"]
 
 To check quota before creating a new ressources, a new control has been added to avoid issues during deployment
 
-For any ressources plannd to be deployed in Azure, the platform, based on provider account will check capacity
+For any ressources planned to be deployed in Azure, the platform, based on provider account will check capacity
 
 image:governance/quota_check_azure.png[alt=Governance Menu, width=600px,align="center"]
 

@@ -10,7 +10,7 @@ No code design, No need cloud expertise to deploy simple thing.  Combining  clou
 
 == OPERATE ==
 Manage lifecycle of your environments, including discovery. Trought operate, a user can do application deployment, cost management, trigger security scanners same as accessing config management of clusters.
-The solution allows also to access service mesh, observability, tracking, governance..
+The solution allows also to access service mesh, observability, tracking, governance...
 
 == AUTOMATE ==
 Use or build specific processes to add extra values and manage frequent changes. It can be manual, schedule or event based. Automation block are sorted by categories.
@@ -58,7 +58,7 @@ For more details refers to link:application_deployer.adoc[Application Deployer,w
 
 == An Environment
 
-An environment represents an infrastructure developed to provide applications. An environment is represented by a tile in organization dashboard or environement view. It could be
+An environment represents an infrastructure developed to provide applications. An environment is represented by a tile in organization dashboard or environement view. It could be :
 
 * A *K8 cluster* in Amazon (EKS), Azure (AKS), Google (GKE) or nativaley imported
 * A *virtual server* in Amazon (EC2)
@@ -97,7 +97,7 @@ Example of blueprints :
 
 === Content
 
-A Blueprint is a combinaison of two main files 
+A Blueprint is a combinaison of two main files : 
 
 * *A meta data* containing basic information like name, description, owner, compliance standards, etc...
 * *A design file* to define ressources used for the deployment and place components on the environement builder. The design file, by the nature of the component (Provider, Region, Cluster), include MSactivator workflows reference permit the environement creation and the deployment of applications
@@ -105,7 +105,7 @@ A Blueprint is a combinaison of two main files
 == Users
 
 === A manager
-An admin is the creator of one organization. He has full access to all features inside an organization. He has no restriction to deploy infrastructures on any cloud providers
+An admin is the creator of one organization. He has full access to all features inside an organization. He has no restriction to deploy infrastructures on any cloud providers.
 
 _Note : it's possible to add multiple admins in the same organization using MSactivator_
 
@@ -113,5 +113,5 @@ _Note : it's possible to add multiple admins in the same organization using MSac
 
 A user is simple person who can access the same admin's organization. By default, he is limited to read-only actions when he joins the first time the organization
 
-Via permissions screen, an admin can assign some rights to extend actions like create environement, deploy application, access insight screen
+Via permissions screen, an admin can assign some rights to extend actions like create environement, deploy application, access insight screen.
 
