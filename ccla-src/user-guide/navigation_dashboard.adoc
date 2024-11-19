@@ -7,7 +7,7 @@ The {product_name} platform provides a multi-roles and multi-tenancy hierarchy t
 
 Cloudclapp is divided in different tabs such as Dashboard, Operate, Automate.
 
-On the top, user can also select his current organizations, environnements or deployments.
+On the top, the user can also select their current organization, environnement or deployment.
 
 image:navigation/default_dashboard2.png[alt=navigation Menu, width=900px,align="center"]
 
@@ -32,7 +32,7 @@ It can display more specific panels and data about an environnement or deploymen
 ** Deployment view
   image:navigation/deployment_selected.png[alt=navigation Menu, align="center"]
 
-== Dashboard Personalization
+== Dashboard Personalization ==
 
 The dashboard can easly be modified and personalized  with the two buttons on the top right corner 
 image:navigation/dashboard_personalization.png[alt=navigation Menu, align="center"]

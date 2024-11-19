@@ -3,7 +3,7 @@
 ifndef::imagesdir[:imagesdir: images]
 Cost management focuses on providing visibility into how a business spends on cloud infrastructure. Cloudclapp offers a dedicated section to understand and manage the costs and needs associated with its cloud technology
 
-To access the cost dashboard, go to *Insights -> Costs*
+To access the cost dashboard, go to *Operate* -> *FinOps* winthin Organization view.
 
 The system, based on cloud credentials defined in the organization dashboard, will retrieve cost informations and compute all result in one unique dashboard
 
