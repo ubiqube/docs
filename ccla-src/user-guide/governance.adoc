@@ -7,49 +7,49 @@ The {product_name} platform provides a multi-roles and multi-tenancy hierarchy t
 In Cloudclapp we have two main roles *Admin* and *User (Manager)* , we will explain bellow how to get those roles and how to define permissions/rights for them:
 
 === Admin 
-To get an Admin account you have to register in Cloudclapp by clinking on *Get Started* in login page then fill the fom  and click on *Continue* :
+To get an Admin account you have to register in Cloudclapp by clinking on *Get Started* in login page then fill the form and click on *Continue* :
 
 image:governance/login_page.png[alt=Governance Menu, width=600px,align="center"]
   
 image:governance/register_page.png[alt=Governance Menu, width=600px,align="center"]
   
-image:governance/verify_email_popup.png[alt=Governance Menu, width=600px,align="center"]
-  
-You will receive an email contains a link to activate your account , click on it and your acoount will be activated .
-  
-image:governance/registration_email_content.png[alt=Governance Menu, width=600px,align="center"]
-image:governance/activated_account.png[alt=Governance Menu, width=600px,align="center"]
 
 => Congratulation your *Admin* account is ready to use !!
 
 === User (Manager) 
 Now to get a *Manager* account you have to *invite it*  , you can check the https://github.com/ubiqube/docs/blob/master/ccla-src/user-guide/governance.adoc#invit-users[Invit Users] section for more details 
 
-== Organization dashboard
+== Organization view
 
-CloudClapp offers two views of dashboard , one for developer and the other one is dedicated for Business executive .
+The *Dashbord* display various informations about the entire organization. It can be personalized as explained in xref:navigation_dashboard.adoc[Navigation and Dashboard settings]
 
-to switch between those views you need to clik on edit button :
+The *Operate* section is divided in different tabs :
 
-image:governance/edit_view.png[alt=Governance Menu, width=900px,align="center"]
+* *Environments :* List every environments with a quick description, including the number of deployment and environment configuration.
+New Environment can also be added from xref:environment_builder.adoc#quick-deployment[_Add New Environment button_]
+image:governance/operate_environments.png[alt=Governance Menu, width=900px,align="center"]
 
-image:governance/dash_views.png[alt=Governance Menu, width=900px,align="center"]
 
-Business view which simplify the view by representing just environment costs :
+* *Deployments :* Display a list of organization's environments and its deployments with additional informations like its status and configuration.
+image:governance/operate_deployments.png[alt=Governance Menu, width=900px,align="center"]
 
-image:governance/business_view.png[alt=Governance Menu, width=900px,align="center"]
 
-Default view (for developer) :
+* *Clouds :* To manage Public and Private Cloud Connections
+    image:governance/manage_connections_4.png[alt=Governance Menu, width=500px,align="center"]
 
-image:governance/default_dash_view.png[alt=Governance Menu, width=900px,align="center"]
+* *Ressources :* Displays organization ressources. The _Discover_ button perform the scan of ressources. Migration and Cut Over can also be performed there.
 
-which represent a general informations about the organization and some quick actions:
+image:governance/operate_ressources.PNG[Ressources section]
 
-* Manage Cloud Connections .
+* *Configure :* Shows VM and clusters configurations.
 
-image:governance/manage_connections_4.png[alt=Governance Menu, width=500px,align="center"]
+* *FinOps :* Displays environment cost by providers. Check xref:cost_management.adoc[Cost Management page].
 
-Helpers for each clouds :
+* *Automations :* Lists all BPM scheduled on the left and every automation instances on the right, as an history.
+image:governance/operate_automations.png[alt=Governance Menu, width=900px,align="center"]
+
+
+=== Helpers for each clouds : ===
 
 * Google cloud platform : https://cloud.google.com/docs/security/compromised-credentials
 
@@ -83,11 +83,11 @@ This actions can be performed on MSActivator as every Organizations are Tenants.
 
 == Invit Users ==
 
-To invite users, go to *Governance* →*Users*
+To invite users, go to *Governance* → *Users*
 
 image:governance/users_tab.png[alt=Governance Menu, width=900px,align="center"]
 
-Put the user you want to invite , an email will be sent to the invited user contains a link to activate his account.
+Put the user you want to invite , an email will be sent to the invited user containing a link to activate his account.
 
 image:governance/pop_invite_users.png[alt=Governance Menu, width=600px, align="center"]
 
@@ -97,14 +97,14 @@ image:governance/invite_user_succeed.png[alt=Governance Menu, width=600px,align=
 
 image:governance/email_content.png[alt=Governance Menu, width=1000px,align="center"]
 
-* After inviting a user you can define permissions for this user by clicking on this button image:governance/permission_icon.png[green,40] you should see all  https://github.com/ubiqube/docs/blob/master/ccla-src/user-guide/governance.adoc#permissions[permissions] related to the user account in all tabs
+* After inviting a user you can define permissions for this user by clicking on this button image:governance/permission_icon.png[green,40] you should see all  https://github.com/ubiqube/docs/blob/master/ccla-src/user-guide/governance.adoc#permissions[permissions] related to the user account in all tabs.
 
 
 image:governance/permissions.png[alt=Governance Menu, width=900px,align="center"]
 
 == Tags ==
 
-CloudClapp give the possibility to tag resources through terraform in other way we can filter the cost by those tags
+CloudClapp give the possibility to tag resources through terraform in other way we can filter the cost by those tags.
 
 Tags can be created, updated and deleted in governance tab.
 
@@ -200,7 +200,7 @@ If approved, a user can see "Approved" in environement screen and then clicking 
 
 == Audit Logs ==
 
-To track user activity, use audit logs
+To track user activity, use audit logs.
 
 image:governance/audit_logs.png[alt=Governance Menu, width=600px,align="center"]
 
