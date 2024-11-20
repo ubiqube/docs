@@ -39,8 +39,8 @@ On the top of the vulnerability issue, user can be redirected to CWE, CVE, OWASP
 
 == Environment Compliance Overview
 
-A security overview is available per environment in *Operate* -> *Compliance*
-image:security/env_security.png[200]
+A compliance overview is available per environment in *Operate* -> *Compliance*.
+image:security/env_security.png[Environment compliance]
 
 The user can here download report for each Compliance standards selected and the CIS benchmarks report.
 
@@ -51,3 +51,5 @@ image:security/compliance_settings.png[width=500]
 
 
 A new scan has to be performed again with _Re-Scan_ button after every modification in compliance settings.
+
+xref:compliance.adoc[Compliance section] of the documentation provides more details about data sensitivity, standards and the compliance summary

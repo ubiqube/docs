@@ -70,7 +70,7 @@ Using from a blueprint, the environment builder permits to design your cloud arc
 
 The generic library of component permit to address lots of use cases without having experties in each cloud technology
 
-* *Provider*  : select on which cloud provider the design will be applied (AWS,AZURE and GOOGLE)
+* *Provider*  : select on which cloud provider the design will be applied (AWS, AZURE and GOOGLE)
 * *Region* : select on which region resources will be created. Per providers, the list is fetched
 * *App deployment* : select 1 or multiple application to be deployed on this design (See Application Deployer)
 * *K8 cluster* : abstract all Kubernetes services provided by public provider and private one

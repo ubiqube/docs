@@ -50,6 +50,6 @@ image:navigation/edit_cards.png[alt=navigation Menu, align="center"]
     ** Dashboard panel is the default one which appears on the dashboard
     ** Drawer Button create a button next to the edit cards button.
 
-Dashboard personalization are unique to every dashboard (Organization dashboard, environnement ...)
+Dashboard personalization are unique to every view (Organization, environnement or deployment)
 
 

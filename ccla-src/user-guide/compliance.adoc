@@ -190,5 +190,5 @@ Kube-bench is an open-source tool to assess the security of Kubernetes clusters 
 Kube-bench can help with the following.
 
 * Cluster hardening: Kube-bench automates the process of checking the cluster configuration as per the security guidelines outlined in CIS benchmarks
-* Policy Enforcement: Kube-bech checks for RBAC configuration to ensure the necessary least privileges are applied to service accounts, users, etc. it also checks for pod security standards and secret management
+* Policy Enforcement: Kube-bench checks for RBAC configuration to ensure the necessary least privileges are applied to service accounts, users, etc. it also checks for pod security standards and secret management
 * Network segmentation: Kube-bench checks for CNI and its support for network policy to ensure that network policies are defined for all namespaces
