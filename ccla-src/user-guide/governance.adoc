@@ -7,7 +7,7 @@ The {product_name} platform provides a multi-roles and multi-tenancy hierarchy t
 In Cloudclapp we have two main roles *Admin* and *User (Manager)* , we will explain bellow how to get those roles and how to define permissions/rights for them:
 
 === Admin 
-To get an Admin account you have to register in Cloudclapp by clinking on *Get Started* in login page then fill the form and click on *Continue* :
+To get an Admin account you have to register in Cloudclapp by clinking on *Get Started* in login page then fill the form and click on *Continue*:
 
 image:governance/login_page.png[alt=Governance Menu, width=600px,align="center"]
   
@@ -21,63 +21,63 @@ Now to get a *Manager* account you have to *invite it*  , you can check the http
 
 == Organization view
 
-The *Dashbord* display various informations about the entire organization. It can be personalized as explained in xref:navigation_dashboard.adoc[Navigation and Dashboard settings]
+The *Dashboard* display various informations about the entire organization. It can be personalized as explained in xref:navigation_dashboard.adoc[Navigation and Dashboard settings].
 
-The *Operate* section is divided in different tabs :
+The *Operate* section is divided in different tabs:
 
-* *Environments :* List every environments with a quick description, including the number of deployment and environment configuration.
+* *Environments:* List every environments with a quick description, including the number of deployment and environment configuration.
 New Environment can also be added from xref:environment_builder.adoc#quick-deployment[_Add New Environment button_]
 image:governance/operate_environments.png[alt=Governance Menu, width=900px,align="center"]
 
 
-* *Deployments :* Display a list of organization's environments and its deployments with additional informations like its status and configuration.
+* *Deployments:* Display a list of organization's environments and its deployments with additional informations like its status and configuration.
 image:governance/operate_deployments.png[alt=Governance Menu, width=900px,align="center"]
 
 
-* *Clouds :* To manage Public and Private Cloud Connections
+* *Clouds:* To manage Public and Private Cloud Connections
     image:governance/manage_connections_4.png[alt=Governance Menu, width=500px,align="center"]
 
-* *Ressources :* Displays organization ressources. The _Discover_ button perform the scan of ressources. Migration and Cut Over can also be performed there.
+* *Resources:* Displays organization resources. The _Discover_ button perform the scan of resources. Migration and Cut Over can also be performed there.
 
-image:governance/operate_ressources.PNG[Ressources section]
+image:governance/operate_ressources.PNG[Resources section]
 
-* *Configure :* Shows VM and clusters configurations.
+* *Configure:* Shows VM and clusters configurations.
 
-* *FinOps :* Displays environment cost by providers. Check xref:cost_management.adoc[Cost Management page].
+* *FinOps:* Displays environment cost by providers. Check xref:cost_management.adoc[Cost Management page].
 
-* *Automations :* Lists all BPM scheduled on the left and every automation instances on the right, as an history.
+* *Automations:* Lists all BPM on the left and every automation instances on the right, as an history.
 image:governance/operate_automations.png[alt=Governance Menu, width=900px,align="center"]
 
 
-=== Helpers for each clouds : ===
+=== Helpers for each clouds: ===
 
-* Google cloud platform : https://cloud.google.com/docs/security/compromised-credentials
+* Google cloud platform: https://cloud.google.com/docs/security/compromised-credentials
 
-* Azure : https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal
+* Azure: https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal
 
-* AWS : https://docs.aws.amazon.com/IAM/latest/UserGuide/security-creds.html
+* AWS: https://docs.aws.amazon.com/IAM/latest/UserGuide/security-creds.html
 
-* Scaleway : https://www.scaleway.com/en/docs/identity-and-access-management/iam/how-to/create-api-keys/
+* Scaleway: https://www.scaleway.com/en/docs/identity-and-access-management/iam/how-to/create-api-keys/
 
 
 == Settings
 
-This section is divided in two tabs :
+This section is divided in two tabs:
 
-*  System Tab provide product information such as Version.
+*  *System* tab provide product information such as Version.
 
 image:governance/ProductInformation.png[alt=Governance Menu, width=900px,align="center"]
 
-* Integrations tab let the user enter credentials of different services (Marketplaces, Cloud Security, Observability ...)
+* *Integrations* tab let the user enter credentials of different services (Marketplaces, Cloud Security, Observability ...)
 
 image:governance/IntegrationsTab.png[alt=Governance Menu, width=900px,align="center"]
 
 
 == Delete and Rename ==
 
-To delete an Organization or to edit its name, the user need to go on MSActivator.
+To delete an Organization or to edit its name, the user need to go on MSactivator.
 
-This actions can be performed on MSActivator as every Organizations are Tenants.  
+This actions can be performed on MSactivator as every Organizations are Tenants.  
 
 
 
@@ -93,11 +93,11 @@ image:governance/pop_invite_users.png[alt=Governance Menu, width=600px, align="c
 
 image:governance/invite_user_succeed.png[alt=Governance Menu, width=600px,align="center"]
 
-*Email*  content should be like :
+*Email*  content should be like:
 
 image:governance/email_content.png[alt=Governance Menu, width=1000px,align="center"]
 
-* After inviting a user you can define permissions for this user by clicking on this button image:governance/permission_icon.png[green,40] you should see all  https://github.com/ubiqube/docs/blob/master/ccla-src/user-guide/governance.adoc#permissions[permissions] related to the user account in all tabs.
+* After inviting a user you can define permissions for this user by clicking on this button image:governance/permission_icon.png[green,40], you should see all  https://github.com/ubiqube/docs/blob/master/ccla-src/user-guide/governance.adoc#permissions[permissions] related to the user account in all tabs.
 
 
 image:governance/permissions.png[alt=Governance Menu, width=900px,align="center"]
@@ -111,13 +111,13 @@ Tags can be created, updated and deleted in governance tab.
 image:governance/tags.png[alt=Governance Menu, width=900px,align="center"]
 
 == Permissions ==
-Permissions defines the rights given to a user, we can see in table the different permissions :
+Permissions define the rights given to a user, we can see in table the different permissions:
 
 [cols="1,1,1,1,1"]
 |===
 |Environment|Deployments|Applications|Insights|Governance
 
-| *General* :
+| *General*:
 
 Create
 
@@ -178,47 +178,47 @@ Delete
 
 == Approval requests ==
 
-In order to control ressources creation over cloud platforms, approval request force a user to do in 2 steps the infrastructure creation
+In order to control resources creation over cloud platforms, approval request force a user to do  the infrastructure creation in 2 steps.
 
-Using permission profile, an administrator of an organization can assign some "approval" rights to a user 
+Using permission profile, an administrator of an organization can assign some "approval" rights to a user.
 
-If a user is restricted by "Create With Approval" right, environement creation will be conditionned to approval of the administrator of the organization
+If a user is restricted by "Create With Approval" right, environement creation will be conditionned to approval of the administrator of the organization.
 
-In the environement dashboard, a user can see a "Waiting" status, meaning an approval is required to finalize the creation process
+In the environement dashboard, a user can see a "Waiting" status, meaning an approval is required to finalize the creation process.
 
 image:governance/SendApproval.png[alt=Governance Menu, width=900px,align="center"]
 
-Once the request is send, administraor is notified by mail. He is invited to review this request inside Cloudclapp > Governance > Approvals
+Once the request is send, administrator is notified by email. He is invited to review this request inside Cloudclapp > Governance > Approvals
 
 image:governance/ApprovalMail.png[alt=Governance Menu, width=900px,align="center"]
 
-In the approval screen, an administraor can review requests, and decide to approve or decline a request using icons on the right
+In the approval screen, an administrator can review requests and decide to approve or decline a request using the icons on the right.
 
 image:governance/ApprovalsTab.png[alt=Governance Menu, width=900px,align="center"]
 
-If approved, a user can see "Approved" in environement screen and then clicking on "Deploy". A notification is also send by mail to confirm the approval
+If approved, a user can see "Approved" in environment screen and then click on "Deploy". A notification is also send by email to confirm the approval.
 
 == Audit Logs ==
 
-To track user activity, use audit logs.
+To track user activity, authorized users can use audit logs.
 
 image:governance/audit_logs.png[alt=Governance Menu, width=600px,align="center"]
 
 == Quota check before deployment (Azure) ==
 
-To check quota before creating a new ressources, a new control has been added to avoid issues during deployment
+To check quota before creating a new resources, a new control has been added to avoid issues during deployment.
 
-For any ressources planned to be deployed in Azure, the platform, based on provider account will check capacity
+For any resources planned to be deployed in Azure, the platform based on provider account will check capacity.
 
 image:governance/quota_check_azure.png[alt=Governance Menu, width=600px,align="center"]
 
-If quota issue is detected, such message will be displayed. The user will be invited to increase quotas or choose a different region
+If quota issue is detected, such message will be displayed. The user will be invited to increase quotas or choose a different region.
 
 ----
-Quota limit exceeded for region (vCPU) : AZURE - Central India 
+Quota limit exceeded for region (vCPU): AZURE - Central India 
 
-Current regional limit : 10
-Current regional usage : 8
+Current regional limit: 10
+Current regional usage: 8
 New additional instances required : 4
 New regional limit required : 12
 

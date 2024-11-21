@@ -1,15 +1,25 @@
 = Security
 ifndef::imagesdir[:imagesdir: images]
 
-Cloudclapp has some built-in security mechanisms that enable secure and resilient deployments across all cloud providers
+Cloudclapp has some built-in security mechanisms that enable secure and resilient deployments across all cloud providers.
 
 == Cloud Credentials in Vault
 
-Access Keys are one of the most important things to safeguard in order to prevent access to your cloud accounts. Cloudclapp requires these credentials in order to create your cloud infrastructure on your behalf and manage the created resources
+Access Keys are one of the most important things to safeguard in order to prevent access to your cloud accounts. Cloudclapp requires these credentials in order to create your cloud infrastructure on your behalf and manage the created resources.
 
-In cloudclapp all of the access keys and credentials are encrypted by default and stored in secure manner using https://www.vaultproject.io/[Hashicorp Vault]
+In Cloudclapp all of the access keys and credentials are encrypted by default and stored in a secure manner using https://www.vaultproject.io/[Hashicorp Vault].
 
 HashiCorp Vault is an identity-based secrets and encryption management system. Vault provides encryption services that are gated by authentication and authorization methods.
+
+== Security Dashboard
+
+When accessing security tab in *Operate* -> *Security* within Deployment view, user can perform Image and Web App scans and see vulnerabilities raised by the scans.
+
+image:security/Security Dashboard.png[200]
+
+From this screen, you can visualize each vulnerabilities (description, solution, fixed in...)
+
+On the top of the vulnerability issue, user can be redirected to CWE, CVE, OWASP web pages to get more informations.
 
 == Image Scan
 
@@ -21,30 +31,20 @@ image:security/Image Scan.png[200]
 
 == Web App Scan
 
-Cloudclapp also allows a user to specify any web application via a URL and then runs common security checks against that URL to ensure that the Webapp is safe from any vulnerabilities. The results are displayed in the security dashboard under *Web App Scan Summary*.
+Cloudclapp also allows a user to specify any web application via a URL and then runs common security checks against that URL to ensure that the Web App is safe from any vulnerabilities. The results are displayed in the security dashboard under *Web App Scan Summary*.
 
 It is also possible to download in the summary the results as a JSON file for further analysis and remediation.
 
 image:security/Web Scan.png[200]
-
-== Security Dashboard
-
-When accessing security tab in application homepage, user can now see vulnerabilities raised by image and webapp scans.
-
-image:security/Security Dashboard.png[200]
-
-From this screen, you can visualize each vulnerabilities (description, solution, fixed in..)
-
-On the top of the vulnerability issue, user can be redirected to CWE, CVE, OWASP web pages to get more informations
 
 == Environment Compliance Overview
 
 A compliance overview is available per environment in *Operate* -> *Compliance*.
 image:security/env_security.png[Environment compliance]
 
-The user can here download report for each Compliance standards selected and the CIS benchmarks report.
+The user can here download report for each compliance standards selected and the CIS benchmarks report.
 
-Standards Preferences can be selected in environment *Settings* -> *Compliance*.
+Standards Preferences can be selected in environment *Compliance* -> *Settings*.
 Data sensitivy can also be reconsidered in this window.
 
 image:security/compliance_settings.png[width=500]
@@ -52,4 +52,4 @@ image:security/compliance_settings.png[width=500]
 
 A new scan has to be performed again with _Re-Scan_ button after every modification in compliance settings.
 
-xref:compliance.adoc[Compliance section] of the documentation provides more details about data sensitivity, standards and the compliance summary
+xref:compliance.adoc[Compliance section] of the documentation provides more details about data sensitivity, standards and about the compliance summary.
