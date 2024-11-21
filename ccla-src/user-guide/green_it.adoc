@@ -9,7 +9,7 @@ Cloudclapp integrates a graphical feature to help the user to choose the most ad
 
 Cloudclapp offers the possibility to use the greener regions for each cloud provider.
 
-A user can use this icon image:green/green-it.png[green,40]during environment creation, via the wizard or inside the designer, to display the green regions list.
+A user can use this icon image:green/green-it.png[green,30]during environment creation, via the wizard or inside the designer, to display the green regions list.
 
 [cols="1,1"]
 |===
