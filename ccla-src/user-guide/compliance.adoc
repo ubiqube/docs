@@ -12,8 +12,8 @@ _Note: Public providers lock access to manager nodes. The compliance process wil
 == Compliance for Environment
 
 As the reference for our compliance module, the Center for Internet Security or CIS is the entry point for our compliance scan (https://www.cisecurity.org/).
-We have reuse the concept of Implementation Groups (IG) to drive how deep an environement is affected by the compliance needs.
-We assume, depending on the type of your environement, the level of compliance, so the associated security rules are not same if you deploy a local sandbox, a pre-production or a production platform.
+We have reuse the concept of Implementation Groups (IG) to drive how deep an environment is affected by the compliance needs.
+We assume, depending on the type of your environment, the level of compliance, so the associated security rules are not same if you deploy a local sandbox, a pre-production or a production platform.
 
 image:compliance/Compliance.png[width=900px]
 

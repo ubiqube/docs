@@ -182,9 +182,9 @@ In order to control resources creation over cloud platforms, approval request fo
 
 Using permission profile, an administrator of an organization can assign some "approval" rights to a user.
 
-If a user is restricted by "Create With Approval" right, environement creation will be conditionned to approval of the administrator of the organization.
+If a user is restricted by "Create With Approval" right, environment creation will be conditionned to approval of the administrator of the organization.
 
-In the environement dashboard, a user can see a "Waiting" status, meaning an approval is required to finalize the creation process.
+In the environment dashboard, a user can see a "Waiting" status, meaning an approval is required to finalize the creation process.
 
 image:governance/SendApproval.png[alt=Governance Menu, width=900px,align="center"]
 

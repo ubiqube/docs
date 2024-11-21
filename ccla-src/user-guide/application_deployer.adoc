@@ -9,7 +9,7 @@ Cloudclapp's marketplaces provide users to access large software applications an
 
 === Public Docker Hub ===
 
-Docker Hub is the world’s largest repository of container images with an array of content sources including container community developers, open source projects and independent software vendors (ISV) building and distributing their code in containers.
+Docker Hub is the world's largest repository of container images with an array of content sources including container community developers, open source projects and independent software vendors (ISV) building and distributing their code in containers.
 
 image:app_deployer/PublicDockerHub.png[width=1000px]
 
@@ -84,27 +84,27 @@ image:app_deployer/VMMarketPlace.png[width=1000px]
 
 Deploying application could be done in differents ways:
 
-* Using blueprints from marketplaces or created by users from the organization.
+* Using blueprints from marketplaces or created by users from the organization
 * Using a quick deployment
 
 == Quick Deployment
 
-To create a new deployment, select an environement and click on the plus button.
+To create a new deployment, select an environment and click on the plus button.
 
 image:env_builder/add_deployment.png[900]     
 
-Add application images and define ports and node ports with proper deployment name
+Add application images and define ports and node ports with proper deployment name.
 
 image:blueprints/Add_Application.png[900]
 
-See the estimation right before your deployment that you can change Hourly, Monthly or Annual
+See the estimation right before your deployment that you can change Hourly, Monthly or Annual.
 
 image:blueprints/Cost.png[900]
 
 == Deployment view ==
 
 
-The *Dashboard* displays various informations about the deployment. It can be personalized as explained in xref:navigation_dashboard.adoc[Navigation and Dashboard settings]
+The *Dashboard* displays various informations about the deployment. It can be personalized as explained in xref:navigation_dashboard.adoc[Navigation and Dashboard settings].
 
 The *Operate* section is divided in different tabs:
 
