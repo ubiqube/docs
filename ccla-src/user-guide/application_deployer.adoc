@@ -9,7 +9,7 @@ Cloudclapp's marketplaces provide users to access large software applications an
 
 === Public Docker Hub ===
 
-Docker Hub is the world’s largest repository of container images with an array of content sources including container community developers, open source projects and independent software vendors (ISV) building and distributing their code in containers
+Docker Hub is the world’s largest repository of container images with an array of content sources including container community developers, open source projects and independent software vendors (ISV) building and distributing their code in containers.
 
 image:app_deployer/PublicDockerHub.png[width=1000px]
 
@@ -17,18 +17,16 @@ image:app_deployer/PublicDockerHub.png[width=1000px]
 
 Private Docker repositories provide restricted access to the images that they contain. Unlike public repositories, only authorized users can access the images. This way, it's possible to allow access only to a specific group of users, like organizations, teams, or even a single person.
 
-image:app_deployer/PrivateDockerHub.png[width=1000px]
-
 === Manifest APP ===
 
-To permit a large variety of applications to be deployed, Manfiest APP tab permit to import applications, from github repository. 3 types of applications are supported
+To permit a large variety of applications to be deployed, Manifest APP tab permit to import applications, from github repository. 3 types of applications are supported
 
 * Terraform application
 * K8/YML application
 * HelmChart application
 
-To be recognized by Cloudclapp, and permit parameters substitution, those applications must repect some conventions. The name of application is the name of the root folder under github repository
-Depending the type of the application, those files must be present to permit parameters substitution and adapt the deployment
+To be recognized by Cloudclapp, and permit parameters substitution, those applications must respect some conventions. The name of application is the name of the root folder under github repository.
+Depending the type of the application, those files must be present to permit parameters substitution and adapt the deployment.
 
 * terraform.tfvars for TF application
 * configmap.yaml for K8/YML application
@@ -86,13 +84,39 @@ image:app_deployer/VMMarketPlace.png[width=1000px]
 
 Deploying application could be done in differents ways :
 
-* Using quick deployment wizard : after selectiong an environement, use can choose an APP to deploy on it
-* Using marketplaces view : after selecting an application, a user can choose on which environement he want to deploy it
-* Using the designer : after loading a blueprint, using app deployment component, a user can drop an application on the diagram
+* *Using blueprints :* From marketplaces or created by users from the organization.
+* *Using a quick deployment*
 
-== Deployment dashboard ==
+== Quick Deployment
 
-image:app_deployer/DeploymentDashboard.png[width=1000px]
+To create a new deployment, select an environement and click on the plus button.
+
+image:env_builder/add_deployment.png[900]     
+
+Add application images and define ports and node ports with proper deployment name
+
+image:blueprints/Add_Application.png[900]
+
+See the estimation right before your deployment that you can change Hourly, Monthly or Annual
+
+image:blueprints/Cost.png[900]
+
+== Deployment view ==
+
+
+The *Dashbord* display various informations about the deployment. It can be personalized as explained in xref:navigation_dashboard.adoc[Navigation and Dashboard settings]
+
+The *Operate* section is divided in different tabs :
+
+* *Application :* Displays deployment informations. Provide buttons to Migrate, Tear Down or pause and resume the deployment. 
+
+image:app_deployer/operate_deployments_app.PNG[Applicaton section]
+
+* *Security :* Provide a security dashboard about this deployment, with Web App Scan and Image Scan functions. You can refer you to the xref:security.adoc[Security section] of the documentation.
+
+* *Automations :* Displays a history of every automations that has been performed on the deployment.
+
+image:app_deployer/operate_deployments_automations.png[Automations section]
 
 == Details of WF steps ==
 

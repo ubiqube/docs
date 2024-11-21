@@ -55,26 +55,10 @@ image:providers/BPEditor.png[900]
 
 * Save design : Edit the Blueprint design and save this design
 
-== Quick Deployment ==
-Click on Create A Quick Deployment
+== New Environment
+An environment can also be created without blueprint, using _Add New Environment_ button on the Operate tab within organization view.
 
-image:blueprints/Quick_Deployment.png[100]
-
-Choose recommended cloud providers
-
-image:blueprints/Choose_Cloud.png[900]     
-
-Then pick an environment for deployment
-
-image:blueprints/Pick_an_Environment.png[900]
-
-Add application images and define ports and node ports with proper deployment name
-
-image:blueprints/Add_Application.png[900]
-
-See the estimation right before your deployment and can change Hourly, Monthly or Annual
-
-image:blueprints/Cost.png[900]
+image:env_builder/add_env.PNG[Add new environment button]
 
 == The wizard ==
 
@@ -98,40 +82,35 @@ NOTE: Check the appendix below to have more details to how retrieve those inform
 
 == Designer ==
 
-Same as the blueprint editor, a user can modify a design before to deploy it. Two operations are possibles, additiotionaly to the save design
+Same as the blueprint editor, a user can modify a design before to deploy it. Two operations are possible, additionally to the save design :
 
-* Save environment as blueprint : Once the design is saved. Can be used as a Environment.
+* *Save environment as blueprint :* Once the design is saved, it can be used as a Environment.
 
-* Deploy : Click on Deploy to complete the deployment of the apps over K8 cluster that is selected
+* *Deploy :* Click on Deploy to complete the deployment of the apps over K8 cluster that is selected
 
-== Environment dashboard ==
+== Environment view ==
 
-Environment dashboard show to the users multiple informations via tiles. From MVP3, if a multi cloud has been created, cluster selection list is available in the top right
+The *Dashbord* display various informations about the entire environment. It can be personalized as explained in xref:navigation_dashboard.adoc[Navigation and Dashboard settings]
 
-* Deployments : give the number of deployment associated to this environement + link for a redirection
+The *Operate* section is divided in different tabs :
 
-* Users : number of users associated to this environment
+* *Design (optional) :* This tab only appears when the environment has been created from a blueprint. It shows design and history of deployment status and every workflow executions.
 
-* Image Scan : last image scan result over all deployments
+* *Deployments :* Displays a list of the environments and its deployments with additional informations like status and configurations.
 
-* Web App Scan : last web application scan result over all deployments
+* *Compliance :* Gives an overview of environment security, refers to xref:security.adoc[Environment Compliance Overview] for more details.
 
-* Topology : representation of application mapping
+* *FinOps :* Displays environment cost by providers. _Refers to_ xref:cost_management.adoc[_Cost management page_]
 
-* Monitoring : availability graph
+* *Monitor :* Provide environment monitoring using Prometheus and Grafana (details below in Monitoring section).
 
-image:env_builder/ENV_dashboard.png[700]
+* *Mesh :* Using Istio, monitors metrics about interconnections of clouds and applications.
 
-=== Topology / Application Diagram ===
+* *Configure :* Shows VM configurations.
 
-At the environement home page, a topology represents the mapping between applications
-This topology is based on workflow information, but a specific variable must be created to do the link
+* *Automations :* Lists all BPM on the left and every automation instances on the right, as an history.
+image:governance/operate_automations.png[alt=Governance Menu, width=900px,align="center"]
 
-image:blueprints/Topology_App.png[200]
-
-----
-APP_PORT_MAPPING : <target_application_name>:<target_port>
-----
 
 === Monitoring ===
 
@@ -159,7 +138,7 @@ image:monitoringTools.png[100]
 
 |===
 
-Some Grafana dashboards can be imported directly to monitor environments. Use import function in grafana to upload a new dashboard
+Some Grafana dashboards can be imported directly to monitor environments. Use import function in grafana to upload a new dashboard :
 
 * AKS Environment : https://grafana.com/grafana/dashboards/12180-aks-container-insights/
 
