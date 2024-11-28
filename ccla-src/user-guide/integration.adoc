@@ -3,11 +3,11 @@ ifndef::imagesdir[:imagesdir: images/]
 
 Two mode supported per providers
 
-* Greenfield : create a fresh ressource
+* Greenfield: create a fresh resource
 
-* Brownfield : import / discover an existing ressource
+* Brownfield: import / discover an existing resource
 
-Below the matrix of supported clouds :
+Below the matrix of supported clouds:
 
 == Cloud Service Provider & Cloud Connections
 
@@ -163,7 +163,7 @@ Below the matrix of supported clouds :
 * In the folder https://github.com/ubiqube/cloudclapp-wf/tree/master/CCLA_Adapters/logos[CCLA_Adapters/logos],
 add the provider's logo (Azure, AWS, ...) and its service's logo (AKS, EC2, ...) in _.logo_ format.
 
-* Then, update the file https://github.com/ubiqube/cloudclapp-wf/tree/master/CCLA_Adapters/cloud_providers.yml[CCLA_Adapters/cloud_providers.yaml] by following this template :
+* Then, update the file https://github.com/ubiqube/cloudclapp-wf/tree/master/CCLA_Adapters/cloud_providers.yml[CCLA_Adapters/cloud_providers.yaml] by following this template:
 
 [source, yaml]
 ----
@@ -172,10 +172,10 @@ providers:  # Under the provider key
     displayName: My Provider  # The name that will be displayed
     category: Public Cloud  # Public or Private cloud
     logo: Process/cloudclapp-wf/CCLA_Adapters/logos/my-provider.logo  # The path to the provider's logo
-    credentials_required : ['access_key', 'secret_key']  # Required credentials to connect and create a cluster
+    credentials_required: ['access_key', 'secret_key']  # Required credentials to connect and create a cluster
     helper: https://how-to/create-api-keys/  # The link where we can find help to get the required credentials
-    quota_check : false  # true if there is a limit of deployed clusters at the same time, false if not
-    greener_regions_url : https://environment/renewable-energy-map  # The link to the page where the provider displays its actions for the environment
+    quota_check: false  # true if there is a limit of deployed clusters at the same time, false if not
+    greener_regions_url: https://environment/renewable-energy-map  # The link to the page where the provider displays its actions for the environment
     services:  # Required key
       kubernetes:  # Name of the service that will be run by the provider (aks, ec2, ...)
         displayName: Container Service for Kubernetes  # Name of the service that will be displayed
@@ -184,7 +184,7 @@ providers:  # Under the provider key
         workflow:  # Required key
           env: Process/cloudclapp-wf/Provision_an_EKS_Cluster__AWS_/Provision_an_EKS_Cluster__AWS_  # Path to the environment creation workflow (example here with EKS)
           appsDeployment: Process/cloudclapp-wf/Provision_Apps_EKS_Cluster/Provision_Apps_EKS_Cluster  # Path to the application deployment workflow (example here with EKS)
-          << : *common  # Required, to get the others workflows that are the same for all the providers
+          <<: *common  # Required, to get the others workflows that are the same for all the providers
 ----
 
 * To finish, update the file https://github.com/ubiqube/cloudclapp-wf/blob/master/CCLA_Adapters/cloud_providers_cost.json[CCLA_Adapteurs/cloud_providers_cost.json]
@@ -194,13 +194,13 @@ to add the cost of the provider.
 
 ==== Terraform ====
 
-Create this directory (replace {service} by the name of the service) :
+Create this directory (replace {service} by the name of the service):
 
 ----
 cloudclapp-wf/Terraform_Configuration_Templates/Infrastructures/Catalogs/{service}/terraform-provision-{service}-cluster/
 ----
 
-And add these 5 files to this directory :
+And add these 5 files to this directory:
 
 . versions.tf
 +
@@ -220,7 +220,7 @@ terraform {
 
 . {service}-cluster.tf
 +
-Example of name : _kapsule-cluster.tf_
+Example of name: _kapsule-cluster.tf_
 +
 Fill this file as per the provider documentation to create a cluster
 
@@ -228,7 +228,7 @@ Fill this file as per the provider documentation to create a cluster
 +
 This file contains the variable labels needed to create a cluster
 +
-e.g. :
+e.g.:
 +
 [source, hcl-terraform]
 ----
@@ -240,7 +240,7 @@ secret_key = ""
 +
 This file contains the variable description
 +
-e.g. :
+e.g.:
 +
 [source, hcl-terraform]
 ----
@@ -267,7 +267,7 @@ output "kubernetes_cluster_name" {
 
 ==== Creation Workflow ====
 
-Create a workflow with at least these variables :
+Create a workflow with at least these variables:
 
 |===
 |Name |Syntax |Details
@@ -293,7 +293,7 @@ Create a workflow with at least these variables :
 |Specify if it's a real environment or not (a fake instance of the cluster is created).
 |===
 
-Add these processes :
+Add these processes:
 
 . New fresh ENV
 . Tear Down
@@ -301,7 +301,7 @@ Add these processes :
 . Deploy Prometheus and Grafana
 . Tear Down Prometheus and Grafana
 
-Tasks for each process :
+Tasks for each process:
 
 . New fresh ENV
 .. https://github.com/ubiqube/cloudclapp-wf/blob/master/Provision_an_Kapsule_Cluster__Scaleway_/Process_Provision_New_Fresh_ENV/Tasks/Task_Create_TF_Workspace.py[Create TF Workspace]
@@ -359,7 +359,7 @@ Tasks for each process :
 
 ==== cloud_sdk ====
 In the file https://github.com/ubiqube/cloudclapp-wf/blob/master/cloud_sdk/cloud.py[cloud_sdk/cloud.py],
-create a new class for the provider. Add these methods :
+create a new class for the provider. Add these methods:
 
 * https://github.com/ubiqube/cloudclapp-wf/blob/497ea7f27a5660ca4da12ac1266fc9ae6e412b17/cloud_sdk/cloud.py#L1640[\__init__]
 ** Initialize the object and set some variables
@@ -384,11 +384,11 @@ create a new class for the provider. Add these methods :
 In the file https://github.com/ubiqube/cloudclapp-wf/blob/master/Compliance_Scan/Process_Launch_Scan/Tasks/Task_Launch_Scan.py[Task_Launch_Scan.py],
 update the functions __set_benchmark_report()__ and __run_compliance_scan()__ to add the provider.
 
-If the provider has any mapping with CIS standard, complete these files :
+If the provider has any mapping with CIS standard, complete these files:
 
 * https://github.com/ubiqube/cloudclapp-wf/blob/master/Compliance_Scan/Mapping_files/CIS_providers.yaml[CIS_providers.yaml]
 * https://github.com/ubiqube/cloudclapp-wf/blob/master/Compliance_Scan/Mapping_files/CIS_standards.yaml[CIS_standards.yaml]
-* Add the benchmark in this directory : https://github.com/ubiqube/cloudclapp-wf/tree/master/Compliance_Scan/CIS_Benchmarks_Reports[CIS_Benchmark_Reports]
+* Add the benchmark in this directory: https://github.com/ubiqube/cloudclapp-wf/tree/master/Compliance_Scan/CIS_Benchmarks_Reports[CIS_Benchmark_Reports]
 
 ==== Status ====
 
@@ -398,13 +398,13 @@ Complete the https://github.com/openmsa/Adapters/blob/master/adapters/kubernetes
 
 ==== Terraform ====
 
-Create this directory (replace {provider} and {service} by their respective name) :
+Create this directory (replace {provider} and {service} by their respective name):
 
 ----
 https://github.com/ubiqube/cloudclapp-wf/tree/master/Terraform_Configuration_Templates/Applications/Catalogs/{provider}/terraform_provision_apps_{service}_cluster
 ----
 
-And add these 5 files to this directory :
+And add these 5 files to this directory:
 
 . https://github.com/ubiqube/cloudclapp-wf/blob/master/Terraform_Configuration_Templates/Applications/Catalogs/scw/terraform_provision_apps_kapsule_cluster/app.tf[app.tf]
 +
@@ -428,7 +428,7 @@ Give a description to the variables
 
 ==== Workflow Creation ====
 
-Create a workflow with at least these variables :
+Create a workflow with at least these variables:
 
 |===
 |Name |Syntax |Details
@@ -498,14 +498,14 @@ Create a workflow with at least these variables :
 |Name of the namespace
 |===
 
-Add these processes :
+Add these processes:
 
 . New APP Deployment
 . Tear Down APP
 . Pause Deployment
 . Resume Deployment
 
-Tasks for each process :
+Tasks for each process:
 
 . New APP Deployment
 .. https://github.com/ubiqube/cloudclapp-wf/blob/master/Provision_Apps_Kapsule_Cluster/Process_New_APP_Deployment/Tasks/Task_Create_TF_Worksapce.py[Create TF Workspace]
@@ -540,7 +540,7 @@ Tasks for each process :
 ==== cloud_sdk ====
 
 In the file https://github.com/ubiqube/cloudclapp-wf/blob/master/cloud_sdk/app.py[cloud_sdk/app.py],
-create a new class for the provider. Add these methods :
+create a new class for the provider. Add these methods:
 
 * https://github.com/ubiqube/cloudclapp-wf/blob/master/cloud_sdk/app.py#L775[\__init__]
 ** Initialize the object and set some variables

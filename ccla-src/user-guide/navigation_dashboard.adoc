@@ -1,0 +1,55 @@
+
+= Navigation and Dashboard settings
+ifndef::imagesdir[:imagesdir: images/]
+The {product_name} platform provides a multi-roles and multi-tenancy hierarchy that should accommodate all your specifics requirement.
+
+== Navigation
+
+Cloudclapp is divided in different tabs such as Dashboard, Operate or Automate.
+
+On the top, user can also select their current organization, environnement or deployment.
+
+image:navigation/default_dashboard2.png[alt=navigation Menu, width=900px,align="center"]
+
+Current deployment or environnent can be unselected using the cross next to its name.
+
+image:navigation/unselection.png[alt=navigation Menu, width=500px,align="center"]
+
+
+The Dashboard and the Operate tab have different views depending on which level in your organisation user is.
+
+*  *Dashboard section* displays informations, by default it is about the selected organization.
+It can display more specific panels and data about an environnement or deployment if selected.
+
+*  *Operate section* works the same way. Different options and features are available for specific selection.
+
+**  Organization view ( default )
+  image:navigation/org_selected.png[alt=navigation Menu, align="center"]
+
+** Environment view
+  image:navigation/env_selected.png[alt=navigation Menu, align="center"]
+
+** Deployment view
+  image:navigation/deployment_selected.png[alt=navigation Menu, align="center"]
+
+== Dashboard Personalization ==
+
+The dashboard can easly be modified and personalized  with the two buttons on the top right corner.
+image:navigation/dashboard_personalization.png[alt=navigation Menu, align="center"]
+
+* *Edit cards:*
+  The edit cards mode allows the user to delete, rename or change content of the panel.
+  The dashboard can be reorganized with the drag and drop option for the panels.
+  Panels can also be resized thanks to arrows in the corners.
+image:navigation/edit_cards.png[alt=navigation Menu, align="center"]
+
+*  *Dashboard:* 
+    In this window, user can add new panels or resize, rename and change component of existing one.
+    image:navigation/dashboard_settings.png[alt=navigation Menu, align="center"]
+    Two style options are available:
+    ** *Dashboard panel* is the default one which appears on the dashboard
+    ** *Drawer Button* create a button next to the edit cards button. When clicked, displays the panel in fullscreen mode.
+    
+Dashboard personalization are unique to every view (Organization, environnement or deployment)
+
+

@@ -1,7 +1,7 @@
 = Infrastructure as the code =
 ifndef::imagesdir[:imagesdir: images]
 
-This page to describe how finally environement and application are created under each cloud providers
+This page describes how finally environment and application are created under each cloud providers.
 
 == Environment details ==
 
@@ -43,7 +43,7 @@ Kapsule cluster with one DEV1-M node
 
 [cols="1,1,1"]
 |===
-| |Name|Component/Ressources created
+| |Name|Component/Resources created
 
 |image:providers/EKS.png[EKS,40]
 |Amazon Elastic Kubernetes Service

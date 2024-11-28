@@ -8,6 +8,7 @@ The  user guide provides the documentation to help you understand the key concep
 
 - link:key_concepts{outfilesuffix}[Key concepts,window=_blank]
 - link:msa_mapping{outfilesuffix}[MSactivator mapping,window=_blank]
+- link:navigation_dashboard{outfilesuffix}[Navigation - Dashboard settings,window=_blank]
 
 == Environment builder
 
