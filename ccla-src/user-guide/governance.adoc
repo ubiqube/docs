@@ -81,7 +81,7 @@ This actions can be performed on MSactivator as every Organizations are Tenants.
 
 
 
-== Invit Users ==
+== Invite Users ==
 
 To invite users, go to *Governance* → *Users*
 
