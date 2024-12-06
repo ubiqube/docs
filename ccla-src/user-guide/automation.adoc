@@ -1,0 +1,44 @@
+= Automation =
+ifndef::imagesdir[:imagesdir: images]
+
+
+== Automation management ==
+
+Many actions can be performed on an automation to manage it.
+
+
+image:automation/automation_exemple.png[alt=Exemple of an automation, align="center"]
+    
+=== Settings === 
+
+
+=== Edit and delete ===
+
+=== Apply ===
+
+image:automation/apply_automation.png[alt=Exemple of an automation, align="center"]
+
+* Applied Automation: Name of the automation instance.
+* Trigger Type: The automation can be triggered manualy of can be scheduled.
+* Workflows: Here are the list of every workflow executed by the automation. Develop the window to configure workflow variables
+
+image:automation/workflow_configuration.png[alt=Workflow configurations during automation application]
+
+== Catalog ==
+
+An automation catalog page is available . The catalog allow user to find every automations created in this organization, including preconfigured automations. 
+
+=== Preconfigured Automations ===
+
+=== Catalog view ===
+    * Filtering:
+    * Sorting: 
+
+
+== Applied Automations ==
+
+
+== Automation builder ==
+
+
+
