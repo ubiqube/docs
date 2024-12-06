@@ -29,6 +29,13 @@ image:automation/workflow_configuration.png[alt=Workflow configurations during a
 An automation catalog page is available . The catalog allow user to find every automations created in this organization, including preconfigured automations. 
 
 === Preconfigured Automations ===
+The Catalog if compsed of smart Automation by default to be applied to environment in Cloudclapp.
+
+* *Container image scan with Snyk:* Provides curated container images with near zero CVEs, to helps you find and fix vulnerabilities in container images, based on container registry scans.
+* *Web application penetration tests:* Passive scans check HTTP requests and application responses for known indicators of security vulnerabilities and cannot make changes to requests. OWASP ZAP is a penetration testing tool that helps developers and security professionals detect and find vulnerabilities in web applications. OWASP ZAP performs multiple security functions.
+* *Cold migration:* A migration of powered off or suspended virtual machines between hosts across clusters, data centers, and vCenter Server instances. By using cold migration, you can also move associated disks from one datastore to another.
+
+Even more automations are provided by default, please refer to this xref:https://github.com/openmsa/Automation/blob/master/README.md[readme file] to get more details.
 
 === Catalog view ===
     * Filtering:
@@ -36,6 +43,7 @@ An automation catalog page is available . The catalog allow user to find every a
 
 
 == Applied Automations ==
+
 
 
 == Automation builder ==
