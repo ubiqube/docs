@@ -5,15 +5,15 @@ When managing infrastructures for production use cases, security and compliance 
 
 Cloudclapp enables you to stay compliant with more than 10 regulations such as HIPAA, CIS, PCI-DSS or ISO. Using our compliance module, you can identify any non-compliant resources in your environments.
 
-_Note : In Cloudclapp V2.X, compliance is applied only to Kubernetes environment_
+_Note: In Cloudclapp V2.X, compliance is applied only to Kubernetes environment_
 
-_Note : Public providers lock access to manager nodes. The compliance process will be applied only to workers nodes_
+_Note: Public providers lock access to manager nodes. The compliance process will be applied only to workers nodes_
 
 == Compliance for Environment
 
 As the reference for our compliance module, the Center for Internet Security or CIS is the entry point for our compliance scan (https://www.cisecurity.org/).
-We have reuse the concept of Implementation Groups (IG) to drive how deep an environement is affected by the compliance needs.
-We assume, depending on the type of your environement, the level of compliance, so the associated security rules are not same if you deploy a local sandbox, a pre-production or a production platform.
+We have reuse the concept of Implementation Groups (IG) to drive how deep an environment is affected by the compliance needs.
+We assume, depending on the type of your environment, the level of compliance, so the associated security rules are not same if you deploy a local sandbox, a pre-production or a production platform.
 
 image:compliance/Compliance.png[width=900px]
 
@@ -21,10 +21,10 @@ image:compliance/Compliance.png[width=900px]
 
 Per environment, by clicking on the gear icon, it's possible to select between 4 levels to apply the compliance, and one or more standard. The sensivity will drive the number of tests
 
-* *No data protection* : no compliance applied
-* *Basic* : controls for small, commercial off-the-shelf or home office software environments where sensitivity of the data is low. Minimal standard of information security
-* *Extended* : controls focused on helping security teams manage sensitive client
-* *Expert* : controls that reduce the impact of zero-day attacks and targeted attacks from sophisticated adversaries.
+* *No data protection*: no compliance applied
+* *Basic*: controls for small, commercial off-the-shelf or home office software environments where sensitivity of the data is low. Minimal standard of information security
+* *Extended*: controls focused on helping security teams manage sensitive client
+* *Expert*: controls that reduce the impact of zero-day attacks and targeted attacks from sophisticated adversaries.
 
 image:compliance/ComplianceEnvSettings.png[width=900px]
 
@@ -122,21 +122,21 @@ From environment home page, a user can access compliance dashboard by clicking o
 
 Depending on standards selected in environment settings, each row represents percentage of completion of standards with 3 colors 
 
-* PASS / Green : indicates that the test was run successfully, and passed
+* PASS / Green: indicates that the test was run successfully, and passed
 
-* FAIL / Red : indicates that the test was run successfully, and failed
+* FAIL / Red: indicates that the test was run successfully, and failed
 
-* WARN / Amber : means this test needs further attention, for example it is a test that needs to be run manually
+* WARN / Amber: means this test needs further attention, for example it is a test that needs to be run manually
 
 image:compliance/ComplianceEnvDashboard.png[width=900px]
 
 === Remediation
 
-After running a compliance scan, for each standards, a JSON report is available in the dashboard. Click in the arrow to download it
+After running a compliance scan, for each standards, a JSON report is available in the dashboard. Click in the arrow to download it.
 
-Inside, results are presentes by status : pass, fail and warning.
+Inside, results are presented by status: pass, fail and warning.
 
-The first number in the JSON represents the CIS reference
+The first number in the JSON represents the CIS reference.
 
 ----
     "CSA": {
@@ -161,14 +161,14 @@ The first number in the JSON represents the CIS reference
     }
 ----
 
-_Note : In the previous exract, 2 tests in failure are *3.10* and *6.2* for *CIS* standard matching CEK-03,HRS-06,IAM-01 for *CSA* standard_
+_Note: In the previous extract, 2 tests in failure are *3.10* and *6.2* for *CIS* standard matching CEK-03,HRS-06,IAM-01 for *CSA* standard._
 
 Depending to the type of K8 cluster, a CIS benchmarks report can be downloaded to find details of test and remediation mechanism
 
-* EKS cluster : CIS_Amazon_Elastic_Kubernetes_Service_(EKS)_Benchmark_v1.2.0.pdf
-* AKS cluster : CIS_Azure_Kubernetes_Service_(AKS)_Benchmark_v1.2.0.pdf
-* GKE cluster : CIS_Google_Kubernetes_Engine_(GKE)_Benchmark_v1.2.0.pdf
-* Kubernetes cluster : CIS_Kubernetes_Benchmark_v1.6.0.pdf
+* EKS cluster: CIS_Amazon_Elastic_Kubernetes_Service_(EKS)_Benchmark_v1.2.0.pdf
+* AKS cluster: CIS_Azure_Kubernetes_Service_(AKS)_Benchmark_v1.2.0.pdf
+* GKE cluster: CIS_Google_Kubernetes_Engine_(GKE)_Benchmark_v1.2.0.pdf
+* Kubernetes cluster: CIS_Kubernetes_Benchmark_v1.6.0.pdf
 
 Use the PDF report in the dashboard to find this reference and the associated remediation process
 
@@ -176,8 +176,8 @@ image:compliance/ComplianceBenchmarkReport.png[width=900px]
 
 === Backend
 
-As many of automation task in Cloudclapp, compliance scan is implemented via a worklow
-This workflow is composed of 3 processes :
+As many of automation task in Cloudclapp, compliance scan is implemented via a worklow.
+This workflow is composed of 3 processes:
 
 * Launch scan
 * Re-scan
@@ -187,8 +187,8 @@ This workflow is composed of 3 processes :
 
 Kube-bench is an open-source tool to assess the security of Kubernetes clusters by running checks against the Center for Internet Security (CIS) Kubernetes benchmark. It was developed in GoLang by Aqua Security, a provider of cloud-native security solutions.
 
-Kube-bench can help with the following.
+Kube-bench can help with the following:
 
-* Cluster hardening: Kube-bench automates the process of checking the cluster configuration as per the security guidelines outlined in CIS benchmarks
-* Policy Enforcement: Kube-bech checks for RBAC configuration to ensure the necessary least privileges are applied to service accounts, users, etc. it also checks for pod security standards and secret management
-* Network segmentation: Kube-bench checks for CNI and its support for network policy to ensure that network policies are defined for all namespaces
+* *Cluster hardening:* Kube-bench automates the process of checking the cluster configuration as per the security guidelines outlined in CIS benchmarks.
+* *Policy Enforcement:* Kube-bench checks for RBAC configuration to ensure the necessary least privileges are applied to service accounts, users, etc. It also checks for pod security standards and secret management.
+* *Network segmentation:* Kube-bench checks for CNI and its support for network policy to ensure that network policies are defined for all namespaces.

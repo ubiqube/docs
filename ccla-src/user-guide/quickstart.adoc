@@ -14,14 +14,14 @@ Cloudclapp(TM) needs MSactivator(TM) to be fully functionnal.
 
 === Installation
 
-Follow the same installation guide as per this documentation : https://ubiqube.com/wp-content/docs/latest/user-guide/quickstart.html
-The same installation script has been updated to support Cloudclapp. Execute it with the ccla flag to have Cloudclapp installed :
+Follow the same installation guide as per this documentation: https://ubiqube.com/wp-content/docs/latest/user-guide/quickstart.html
+The same installation script has been updated to support Cloudclapp. Execute it with the ccla flag to have Cloudclapp installed:
 
 ----
 ./scripts/install.sh --ccla -f
 ----
 
-You can access our tutorial video here to perform installation : https://www.youtube.com/watch?v=UHl30dN5S5s&t=2s
+You can access our tutorial video here to perform installation: https://www.youtube.com/watch?v=UHl30dN5S5s&t=2s
 
 === Portal access
 

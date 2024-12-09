@@ -1,7 +1,7 @@
 = MSactivator mapping
 
-Cloudclapp entities have a direct mapping to MSactivator
-The tab here gives you this mapping
+Cloudclapp entities have a direct mapping to MSactivator.
+The tab here gives you this mapping :
 
 [cols="1,1"]
 |===
