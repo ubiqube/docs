@@ -40,19 +40,17 @@ An alarm is automatically raised upon reception of an SNMP traps. Whenever these
 
 With the addition of the alarm clearing action, alarm flow is now as following:
 
-•	clear=false, ack=false
-•	clear=false, ack=true : someone is aware
-•	clear=true,  ack=false : people not aware BUT alarm automatically cleared
+*	clear=false, ack=false
+*	clear=false, ack=true : someone is aware
+*	clear=true,  ack=false : people not aware BUT alarm automatically cleared
 
 image:2.9.0_alarm_clearing.jpg[width=700px]
 
-=== Features
+== Specific technical fixes and feature details
 
+=== Enhancement
 
-
-== Enhancement
-
-* [MSA-12667] - msa-alarm use redone schema
+* [MSA-12667] - [Alarms] msa-alarm use redone schema
 * [MSA-12919] - [CoreEngine] code optimization for OID translation during runtime
 * [MSA-12943] - [Alarms] automatically raise alarm for SNMP traps
 * [MSA-12944] - [Alarms][API/SMS] user can change dynamic SNMP trap alarm severity
@@ -74,7 +72,7 @@ image:2.9.0_alarm_clearing.jpg[width=700px]
 * [MSA-13792] - [API] Add traceId-spanId to WF logs
 * [MSA-13793] - [API] Remove RRD references, and refactoring
 * [MSA-13801] - [API] ⬆️ Upgrade to JDK21
-* [MSA-13805] - [Alarm] add a new field alarmFieldId in the MSA MIB
+* [MSA-13805] - [Alarms] add a new field alarmFieldId in the MSA MIB
 * [MSA-13807] - [API] Warn user in msa-api logs when using a deprecated method.
 * [MSA-13851] - [UX] Rename Pass to Forward in BPM view
 * [MSA-13852] - [Alarms] SecEngine - using SMTP for alarm mails inadvertently removed logging mail action
@@ -86,7 +84,7 @@ image:2.9.0_alarm_clearing.jpg[width=700px]
 * [MSA-14013] - [Workflow] No WF instance on MSA, even if the WF has been executed via a Blueprint(BPM) on Cloudclapp.
 * [MSA-14034] - [API] ⬆️ Bump spring boot 3.3.1
 
-== Bug fixes
+=== Bug fixes
 
 * [MSA-11363] - [HA] the application log directories are shared by many containers and the log files are overwritten - not SMS ones
 * [MSA-12469] - [Workflows] - Composite array variables display/hide not consistent when type is other than String
