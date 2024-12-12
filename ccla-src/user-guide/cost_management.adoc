@@ -1,7 +1,7 @@
-
 = Cost Management =
 ifndef::imagesdir[:imagesdir: images]
-Cost management focuses on providing visibility into how a business spends on cloud infrastructure. Cloudclapp offers a dedicated section to understand and manage the costs and needs associated with its cloud technology
+
+Cost management focuses on providing visibility into how a business spends on cloud infrastructure. {ccla_product_name} offers a dedicated section to understand and manage the costs and needs associated with its cloud technology
 
 To access the cost dashboard, go to *Insights -> Costs*
 
@@ -23,7 +23,7 @@ By selecting *Daily* in the dropdown list, the cost screen is refreshed with dai
 
 image:cost/DailyCost.png[alt=Insights Menu, width=900px]
 
-_Note : the peak in the graph for AWS represents some taxes apply every 1rst of the month_
+_Note : the peak in the graph for AWS represents some taxes apply every 1st of the month_
 
 == Per environment ==
 
@@ -31,13 +31,13 @@ Switching to the second sub icons in Cost view, you can visualize cost per envir
 
 image:cost/EnvCost.png[alt=Insights Menu, width=900px]
 
-_Note : this screen can generate lots of queries if multiple environements are selected at the same time_
+_Note : this screen can generate lots of queries if multiple environments are selected at the same time_
 
 _Note : the tag section will be implemented in future version_
 
 == Estimate in quick deployment ==
 
-In quick deployment, before to deploy, the user can see what is the estimate cost of this entire deployment.The price is based on the environement used.
+In quick deployment, before to deploy, the user can see what is the estimate cost of this entire deployment.The price is based on the environment used.
 
 The estimate can be display *Hourly, Monthly or Yearly* based
 

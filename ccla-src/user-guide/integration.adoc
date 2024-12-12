@@ -3,9 +3,9 @@ ifndef::imagesdir[:imagesdir: images/]
 
 Two mode supported per providers
 
-* Greenfield : create a fresh ressource
+* Greenfield : create a fresh resource
 
-* Brownfield : import / discover an existing ressource
+* Brownfield : import / discover an existing resource
 
 Below the matrix of supported clouds :
 
@@ -280,9 +280,9 @@ Create a workflow with at least these variables :
 |No specific syntax required
 |Any credential required to create the cluster (one variable per field)
 
-|Use organisation credentials
+|Use organization credentials
 |use_org_cloud_credentials
-|Checkbox (boolean) to use organisational credentials or specific ones
+|Checkbox (boolean) to use organizational credentials or specific ones
 
 |Deploy Prometheus and Grafana
 |No specific syntax required

@@ -1,42 +1,47 @@
 = Taxonomy to drive xOPS journey
+ifndef::imagesdir[:imagesdir: images]
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-Cloudclapp has been designed to manage lifecycle of environments and cloud platforms. 
-Any OPS personel can manage IT systems, be sure it remains efficient, safe and scale in continuous way. The solution allows to manage frequent changes as environments are not static, moving in the time.
+{ccla_product_name} has been designed to manage lifecycle of environments and cloud platforms. 
+Any OPS personnel can manage IT systems and be assured it remains efficient, safe and scale in continuous way. The solution allows to manage frequent changes as environments are not static, moving in the time.
 3 enablements domains have been created :
 
 == BUILD ==
+
 Mainly via the blueprint catalog, the journey start by designing new infrastructure with easy to use designer : drag & drop generic components to build your environment and deploy your applications.
 No code design, No need cloud expertise to deploy simple thing.  Combining  clouds technologies, connectivity options. Abstract concepts
 
 == OPERATE ==
-Manage lifecycle of your environments, including discovery. Trought operate, a user can do application deployment, cost management, trigger security scanners same as accessing config management of clusters.
+
+Manage lifecycle of your environments, including discovery. Through operate, a user can do application deployment, cost management, trigger security scanners same as accessing config management of clusters.
 The solution allows also to access service mesh, observability, tracking, governance..
 
 == AUTOMATE ==
+
 Use or build specific processes to add extra values and manage frequent changes. It can be manual, schedule or event based. Automation block are sorted by categories.
 Continuously improve the degree of automation of environments. 
 
-= Key Concepts
+== Key Concepts
 
-== An organization
+=== Organization
 
 An organization represents a group of people (admin or users) sharing same environments.
 
-An organization is created through the *Get started* form in the cloudclapp login page.
+An organization is created through the *Get started* form in the {ccla_product_name} login page.
 
-The same instance of Cloudclapp can host multiple organizations
+The same instance of {ccla_product_name} can host multiple organizations
 
 _Note : An admin can belong to multiple organizations. This operation is done using MSactivator portal_
 
-== An Application
+=== Application
 
 An application simply refers to any software application that will be deployed in a cloud environment.
 Supported format in the current version are :
 
 * *Native container applications* (from public or private dockerHub)
-* *VM based application/system* from AWS EC2 markeplace
+* *VM based application/system* from AWS EC2 marketplace
 
-=== Marketplace
+==== Marketplace
 
 Marketplace designed the place where applications are coming from. Currently, we support
 
@@ -44,7 +49,7 @@ Marketplace designed the place where applications are coming from. Currently, we
 * *Private Docker Hub*
 * *EC2 AWS Martketplace* : https://aws.amazon.com/marketplace
 
-=== A deployment
+==== Deployment
 
 A deployment represents one or multiple applications deployed in an environment
 
@@ -56,7 +61,7 @@ Example of deployment :
 
 For more details refers to link:application_deployer.adoc[Application Deployer,window=_blank]
 
-== An Environment
+=== Environment
 
 An environment represents an infrastructure developed to provide applications. An environment is represented by a tile in organization dashboard or environement view. It could be
 
@@ -64,7 +69,7 @@ An environment represents an infrastructure developed to provide applications. A
 * A *virtual server* in Amazon (EC2)
 * A *combination of cloud services* (multi or hybrid cloud)
 
-=== Environment Builder ===
+==== Environment Builder
 
 Using from a blueprint, the environment builder permits to design your cloud architectures. In the environment home page, you can access the environment builder by clicking on Design tab
 
@@ -78,13 +83,13 @@ The generic library of component permit to address lots of use cases without hav
 
 For more details refers to link:environment_builder.adoc[Environment Builder,window=_blank]
 
-== Blueprint
+=== Blueprint
 
 Blueprints enable users to design infrastructure, platforms, and application services by composing and connecting cloud resources. It can be seen as a package or a  template permitting to deploy quickly an environment with predefined applications. It permits also to replicate any infrastructure to multiple platforms.
 
-=== Catalog View
+==== Catalog View
 
-One of the ways to start quickly on CloudClapp is to chose from the templates'catalog the blueprint you want. When you access the blueprints view, each tile represents one blueprint. There is 2 types of blueprints :
+One of the ways to start quickly on {ccla_product_name} is to chose from the templates'catalog the blueprint you want. When you access the blueprints view, each tile represents one blueprint. There is 2 types of blueprints :
 
 * Blueprints from the OpenMSA library : https://github.com/openmsa/Blueprints, visible in all organizations
 * Blueprints created by users of the platform, visible only in the organization where they have been created
@@ -95,23 +100,23 @@ Example of blueprints :
 * *Wordpress on multicloud*
 * *MSactivator on any providers*
 
-=== Content
+==== Content
 
 A Blueprint is a combinaison of two main files 
 
 * *A meta data* containing basic information like name, description, owner, compliance standards, etc...
-* *A design file* to define ressources used for the deployment and place components on the environement builder. The design file, by the nature of the component (Provider, Region, Cluster), include MSactivator workflows reference permit the environement creation and the deployment of applications
+* *A design file* to define resources used for the deployment and place components on the environment builder. The design file, by the nature of the component (Provider, Region, Cluster), include {product_name} workflows reference permit the environment creation and the deployment of applications
 
-== Users
+=== Users
 
-=== A manager
+==== Manager
 An admin is the creator of one organization. He has full access to all features inside an organization. He has no restriction to deploy infrastructures on any cloud providers
 
-_Note : it's possible to add multiple admins in the same organization using MSactivator_
+_Note : it's possible to add multiple admins in the same organization using {product_name}
 
-=== A user
+==== User
 
 A user is simple person who can access the same admin's organization. By default, he is limited to read-only actions when he joins the first time the organization
 
-Via permissions screen, an admin can assign some rights to extend actions like create environement, deploy application, access insight screen
+Via permissions screen, an admin can assign some rights to extend actions like create environment, deploy application, access insight screen
 

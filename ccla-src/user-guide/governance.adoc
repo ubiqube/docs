@@ -4,10 +4,10 @@ The {product_name} platform provides a multi-roles and multi-tenancy hierarchy t
 
 == Organization and Users
 
-In Cloudclapp we have two main roles *Admin* and *User (Manager)* , we will explain bellow how to get those roles and how to define permissions/rights for them:
+In {ccla_product_name} we have two main roles *Admin* and *User (Manager)* , we will explain bellow how to get those roles and how to define permissions/rights for them:
 
 === Admin 
-To get an Admin account you have to register in Cloudclapp by clinking on *Get Started* in login page then fill the fom  and click on *Continue* :
+To get an Admin account you have to register in {ccla_product_name} by clinking on *Get Started* in login page then fill the fom  and click on *Continue* :
 
 image:governance/login_page.png[alt=Governance Menu, width=600px,align="center"]
   
@@ -23,13 +23,13 @@ image:governance/activated_account.png[alt=Governance Menu, width=600px,align="c
 => Congratulation your *Admin* account is ready to use !!
 
 === User (Manager) 
-Now to get a *Manager* account you have to *invite it*  , you can check the https://github.com/ubiqube/docs/blob/master/ccla-src/user-guide/governance.adoc#invit-users[Invit Users] section for more details 
+Now to get a *Manager* account you have to *invite it*  , you can check the https://github.com/ubiqube/docs/blob/master/ccla-src/user-guide/governance.adoc#invit-users[Invite Users] section for more details 
 
 == Organization dashboard
 
-CloudClapp offers two views of dashboard , one for developer and the other one is dedicated for Business executive .
+{ccla_product_name} offers two views of dashboard , one for developer and the other one is dedicated for Business executive .
 
-to switch between those views you need to clik on edit button :
+to switch between those views you need to click on edit button :
 
 image:governance/edit_view.png[alt=Governance Menu, width=900px,align="center"]
 
@@ -93,7 +93,7 @@ image:governance/delete_org.png[alt=Governance Menu, width=600px,align="center"]
 
 
 
-== Invit Users ==
+== Invite Users ==
 
 To invite users, go to *Governance* →*Users*
 
@@ -116,7 +116,7 @@ image:governance/permissions.png[alt=Governance Menu, width=900px,align="center"
 
 == Tags ==
 
-CloudClapp give the possibility to tag resources through terraform in other way we can filter the cost by those tags
+{ccla_product_name} give the possibility to tag resources through terraform in other way we can filter the cost by those tags
 
 image:governance/tags.png[alt=Governance Menu, width=900px,align="center"]
 
@@ -188,25 +188,25 @@ Delete
 
 == Approval requests ==
 
-In order to control ressources creation over cloud platforms, approval request force a user to do in 2 steps the infrastructure creation
+In order to control resources creation over cloud platforms, approval request force a user to do in 2 steps the infrastructure creation
 
 Using permission profile, an administrator of an organization can assign some "approval" rights to a user 
 
-If a user is restricted by "Create With Approval" right, environement creation will be conditionned to approval of the administrator of the organization
+If a user is restricted by "Create With Approval" right, environment creation will be conditionned to approval of the administrator of the organization
 
-In the environement dashboard, a user can see a "Waiting" status, meaning an approval is required to finalize the creation process
+In the environment dashboard, a user can see a "Waiting" status, meaning an approval is required to finalize the creation process
 
 image:governance/SendApproval.png[alt=Governance Menu, width=900px,align="center"]
 
-Once the request is send, administraor is notified by mail. He is invited to review this request inside Cloudclapp > Governance > Approvals
+Once the request is send, administrator is notified by mail. He is invited to review this request inside {ccla_product_name} > Governance > Approvals
 
 image:governance/ApprovalMail.png[alt=Governance Menu, width=900px,align="center"]
 
-In the approval screen, an administraor can review requests, and decide to approve or decline a request using icons on the right
+In the approval screen, an administrator can review requests, and decide to approve or decline a request using icons on the right
 
 image:governance/ApprovalsTab.png[alt=Governance Menu, width=900px,align="center"]
 
-If approved, a user can see "Approved" in environement screen and then clicking on "Deploy". A notification is also send by mail to confirm the approval
+If approved, a user can see "Approved" in environment screen and then clicking on "Deploy". A notification is also send by mail to confirm the approval
 
 == Audit Logs ==
 
@@ -216,9 +216,9 @@ image:governance/audit_logs.png[alt=Governance Menu, width=600px,align="center"]
 
 == Quota check before deployment (Azure) ==
 
-To check quota before creating a new ressources, a new control has been added to avoid issues during deployment
+To check quota before creating a new resources, a new control has been added to avoid issues during deployment
 
-For any ressources plannd to be deployed in Azure, the platform, based on provider account will check capacity
+For any resources planned to be deployed in Azure, the platform, based on provider account will check capacity
 
 image:governance/quota_check_azure.png[alt=Governance Menu, width=600px,align="center"]
 

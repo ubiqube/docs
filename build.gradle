@@ -23,8 +23,8 @@ dependencies {
 }
 
 asciidoctor.doFirst {
-    delete file('build/html')
-    delete file('build/pdf')
+    delete file('build/msa/html')
+    delete file('build/msa/pdf')
 }
 
 asciidoctor {    
@@ -51,7 +51,7 @@ asciidoctor {
     'icons' : 'font'
 
   sourceDir = file('doc-src')
-  outputDir  file('build/html')
+  outputDir  file('build/msa/html')
 
   resources {
     from('doc-src') {
@@ -114,7 +114,7 @@ asciidoctorPdf {
                'release-notes/release_notes.adoc', 'release-notes/release_notes_2.8.13.adoc'
       //'release-notes/release_notes_2.8.5.adoc', 'release-notes/release_notes_2.8.6.adoc', 'release-notes/release_notes_2.8.7.adoc', 'release-notes/release_notes_2.8.8.adoc', 'release-notes/release_notes_2.8.9.adoc', 
  }
-  outputDir file('build/pdf')
+  outputDir file('build/msa/pdf')
 
   resources {
     from('doc-src') {

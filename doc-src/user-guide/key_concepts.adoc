@@ -12,7 +12,7 @@ technologies (public/private, containers, etc.), networks systems (virtual and p
 
 The Automation Module provides the IT automation developer with a unified development environment for process design without concern for the underlying infrastructure technologies / vendors used, enabling an evergreen design.
 
-== Understanding the Different Personas
+== Understanding the Different Persona 
 
 On the {product_name} login screen, there are two different types of logins selectable via a toggle switch Manager/Developer
 
@@ -117,9 +117,9 @@ The workflow layer addresses domain-specific scenarios which can be highly techn
 === BPM
 The BPM layer offers a visual workflow editor to make {product_name} a strong SOAR contender for business process design which appeals to realities and is not enshrined in vendor-specific boundaries. Maximum security remediation policies can be applied as engineers creatively imagine a process applied to all domains involved (security, routing, switching, cloud hosting, etc.).
 
-== The UI
+== The UX
 
-*Vision*: {product_name} is to enable a ‘DevOps-ready’ Integrated Automation Platform to enable the design of multi-vendor, multi-cloud solutions across the entire tech ecosystem (data center to WAN, edge computing and IoT: all wrapped with security).
+*Vision*: {product_name} is to enable a `DevOps-ready` Integrated Automation Platform to enable the design of multi-vendor, multi-cloud solutions across the entire tech ecosystem (data center to WAN, edge computing and IoT: all wrapped with security).
 
 
 *Target users*:  SI engineers developing (DevOps) end-to-end solutions for their business customers, or end-users managing the lifecycle of their infrastructure or the services they are deploying (Telco, Cloud, MSSP, etc.).
@@ -135,7 +135,7 @@ A UX reflecting the above wide variety of technical scenarios and user experienc
 . A universal taxonomy (naming and tagging) that would appeal to the entire ecosystem no matter the domain or the use case (data center, services, security, networking, wireless, wireline, IoT, etc.).
 . A modern UX where navigation user experience matters more than feature list.
 . A UX that connects to our community for greater intel and information-sharing among all of the {product_name} users and developers.
-. A UX that becomes an evergreen platform, which we continue to improve over time, making our ‘agility by design’ claim a tangible reality for our customers and partners.
+. A UX that becomes an evergreen platform, which we continue to improve over time, making our `agility by design` claim a tangible reality for our customers and partners.
 . A UX that becomes a strategic module of the {product_name} strategy as we head towards 5G, edge computing and IoT. 
 
 === Terminology
@@ -163,11 +163,15 @@ a|
  
    b. Workflow
 
- 3. Alarms
+ 3. Assurance
 
   a. Logs
 
   b. Alarms 
+
+  4. Repository
+
+  a. Datafiles
 | 
  image:terminology.png[alt=Terminology, width=200]
 |===

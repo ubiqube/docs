@@ -204,101 +204,19 @@ For SNMPv3 traps, the managed entity should be configured as explained above and
 
 .Dynamic SNMP trap translation based on MIB definition files
 image:assurance_snmp_trap_translation_arch.png[width=800px]
+// https://docs.google.com/drawings/d/1QoVcDQgjNhLIz-SBUMC86LuJmeopDGLhnIDOF31CXDQ/edit?usp=sharing
 
-The /opt/sms/conf/sms_syslogd.conf contains the following configuration variables:
-
-. additional-conf-path  /opt/sms/conf.d
-. oid-translation-file  oid_translated.conf
-. mibs-translation-path /opt/fmc_repository/Datafiles/MIBs_translation
-
-The syslogd daemon gets the new MIB configuration files from mibs-translation-path (polling there) and then converts them to its own usable format and store them in additional-conf-path (updating oid-translation-file too).
-
-The MIB Translation WF will get the MIB definition files in /opt/fmc_repository/Datafiles/MIBs/ (default value for variable import_mibs_path in the WF).
-It is manually launched and will convert them into an intermediate format and store them in /opt/fmc_repository/Datafiles/MIBs_translation/.
-
-NOTE: NET-SNMP lib function read_objid is used to perform the snmp trap translation on the fly in sms_syslogd daemon side
-NOTE: in the container msa_sms location where syslogd gets the standard MIB configuration is /usr/share/snmp/mibs/.
-
-==== Install the MIB translation workflow
-The goal of this workflow is to implement translation rules of an OID into a string from Management Information Base (MIB).
-
-The workflow installation or update has to be done in the msa-dev container. For that the following command can help:
-
-----
-docker exec -it $(docker ps -q -f name=msa-dev) bash
-----
-
-The installation commands:
-
-----
-cd /opt/fmc_repository/
-git clone https://github.com/openmsa/workflow-mib-translation.git
-chown -R ncuser. workflow-mib-translation
-cd Process
-ln -s ../workflow-mib-translation/ .
-chown -R ncuser. workflow-mib-translation
-----
-
-The workflow-mib-translation can then be updated in an usual way like any git repository.
-
-Once done, MIB Translation is available in the list of workflows in the {product_name} UI it can be attached to a subtenant.
-
-NOTE: MIB translation workflow will configure the {product_name} for all the managed entities. Therefore it is recommended to use a dedicated "Admin" subtenant in order to ease the use.
-
-image:assurance_snmp_trap_translation_wf_installation.png[width=800px]
-
-==== Execute the MIB translation workflow
+The MIB translation is automatically done based on the MIB definition files loaded in the repository
 
 First put the MIB definition files into the repository under a folder "MIBs".
 
 image:assurance_snmp_trap_translation_loaded_mibs.png[width=800px]
 
-The MIB Translation WF working in 3 steps/processes
+The translation process is reading the text (*.txt) files in /opt/fmc_repository/Datafiles/MIBs/ in order to get the list of the available MIBs (recursive reading is supported)
 
-===== Workflow overview
+image:assurance_snmp_trap_translation_translated_mibs.png[width=800px]
 
-====== Initialize import
-
-This process is reading the text (*.txt) files in /opt/fmc_repository/Datafiles/MIBs/ in order to get the list of the available MIBs (recursive reading is supported)
-
-image:assurance_snmp_trap_translation_wf_init_import_1.png[width=800px]
-
-Result of the initialization
-
-image:assurance_snmp_trap_translation_wf_init_import_2.png[width=800px]
-
-====== (Re)import MIBs
-
-This process allows the user to select which MIB(s) he wants to import according to the MIB(s) list built on the first step.
-
-Execute the process "(Re)Import MIB" and select the MIBs to process.
-
-image:assurance_snmp_trap_translation_wf_re_import_1.png[width=800px]
-
-The result is the list of OIDs that are available for the translation.
-
-image:assurance_snmp_trap_translation_wf_re_import_2.png[width=800px]
-
-====== Translate OIDs
-
-This process allows the user to select which OIDs from the MIB(s) from step 2 he wants to push as translation rules. 
-User can not only select the tuple OIDs/Names coming from the MIB file(s), but he can overwrite the name or the OID  or/and add manual entry.
-
-Once the process runs, an export file will be created in /opt/fmc_repository/Datafiles/MIBs_translation/ folder, that will be used in a next step by the sms_syslogd daemon to implement the request 
-
-The 2 first steps will allow the end-user to manage separately a set of MIB(s) in different workflow instances. This avoids, in the case of a large set of MIBs, to manage a huge list of OIDs in the translation process by splitting  the OIDs/MIBs across separate Workflow and exported files.
-
-image:assurance_snmp_trap_translation_wf_translate_1.png[width=800px]
-
-The result is the list of OIDs that were selected for the translation.
-
-image:assurance_snmp_trap_translation_wf_translate_2.png[width=800px]
-
-The generated file is visible in the repository.
-
-image:assurance_snmp_trap_translation_wf_translate_3.png[width=800px]
-
-===== Testing 
+==== Testing 
 
 We can now launch a snmp trap command with OID 1.3.6.1.2.1.1.6
 
@@ -329,7 +247,7 @@ The diagram below shows the syslog processing steps from the device to Elasticse
 
 .Syslog event flow
 image:assurance_log_analysis_event_flow.png[width=800px]
-// https://docs.google.com/drawings/d/1sp5FBAim2QWctIhINm3JxZ-gxwygK2WCT2soDWj0pDc/edit?usp=sharing
+// https://docs.google.com/drawings/d/1sp5FBAim2QWctIhINm3JxZ-gxwygK2WCT2soDWj0pDc/edit?usp=sharing 
 
 [#log_anal]
 === Search logs

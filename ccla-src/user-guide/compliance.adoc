@@ -3,23 +3,23 @@ ifndef::imagesdir[:imagesdir: images]
 
 When managing infrastructures for production use cases, security and compliance are crucial factors to consider. The clusters need to be securely configured to minimize the attack surface. Additionally, every organization might have audit requirements for systems to be compliant with security standards.
 
-Cloudclapp enables you to stay compliant with more than 10 regulations such as HIPAA, CIS, PCI-DSS or ISO. Using our compliance module, you can identify any non-compliant resources in your environments.
+{ccla_product_name} enables you to stay compliant with more than 10 regulations such as HIPAA, CIS, PCI-DSS or ISO. Using our compliance module, you can identify any non-compliant resources in your environments.
 
-_Note : In Cloudclapp V2.X, compliance is applied only to Kubernetes environment_
+_Note : In {ccla_product_name} V2.X, compliance is applied only to Kubernetes environment_
 
 _Note : Public providers lock access to manager nodes. The compliance process will be applied only to workers nodes_
 
 == Compliance for Environment
 
 As the reference for our compliance module, the Center for Internet Security or CIS is the entry point for our compliance scan (https://www.cisecurity.org/).
-We have reuse the concept of Implementation Groups (IG) to drive how deep an environement is affected by the compliance needs.
-We assume, depending on the type of your environement, the level of compliance, so the associated security rules are not same if you deploy a local sandbox, a pre-production or a production platform.
+We have reuse the concept of Implementation Groups (IG) to drive how deep an environment is affected by the compliance needs.
+We assume, depending on the type of your environment, the level of compliance, so the associated security rules are not same if you deploy a local sandbox, a pre-production or a production platform.
 
 image:compliance/Compliance.png[width=900px]
 
-=== Sensitivy / IG mapping
+=== Sensitive / IG mapping
 
-Per environment, by clicking on the gear icon, it's possible to select between 4 levels to apply the compliance, and one or more standard. The sensivity will drive the number of tests
+Per environment, by clicking on the gear icon, it's possible to select between 4 levels to apply the compliance, and one or more standard. The sensitive will drive the number of tests
 
 * *No data protection* : no compliance applied
 * *Basic* : controls for small, commercial off-the-shelf or home office software environments where sensitivity of the data is low. Minimal standard of information security
@@ -134,7 +134,7 @@ image:compliance/ComplianceEnvDashboard.png[width=900px]
 
 After running a compliance scan, for each standards, a JSON report is available in the dashboard. Click in the arrow to download it
 
-Inside, results are presentes by status : pass, fail and warning.
+Inside, results are presented by status : pass, fail and warning.
 
 The first number in the JSON represents the CIS reference
 
@@ -161,7 +161,7 @@ The first number in the JSON represents the CIS reference
     }
 ----
 
-_Note : In the previous exract, 2 tests in failure are *3.10* and *6.2* for *CIS* standard matching CEK-03,HRS-06,IAM-01 for *CSA* standard_
+_Note : In the previous extract, 2 tests in failure are *3.10* and *6.2* for *CIS* standard matching CEK-03,HRS-06,IAM-01 for *CSA* standard_
 
 Depending to the type of K8 cluster, a CIS benchmarks report can be downloaded to find details of test and remediation mechanism
 
@@ -176,7 +176,7 @@ image:compliance/ComplianceBenchmarkReport.png[width=900px]
 
 === Backend
 
-As many of automation task in Cloudclapp, compliance scan is implemented via a worklow
+As many of automation task in {ccla_product_name}, compliance scan is implemented via a workflow
 This workflow is composed of 3 processes :
 
 * Launch scan

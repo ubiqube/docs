@@ -15,17 +15,17 @@ image:blueprints/catalog.png[600]
 * Wordpress on Azure
 * Multi Regions on Azure
 * Hybrid cloud mixing a local installation of MSActivator and an external monitoring system
-* Multi clloud with distributed Redis Databases for High availability and scalability
+* Multi cloud with distributed Redis Databases for High availability and scalability
 * Private 5G with CNF deploy on the edge
 
-Blueprints exist with the demo flag, a green capsule inside the preview. Demo flag means no real ressources are consumed on CSPs. Those blueprints permit to demonstrate orchestration framework and associated features.
+Blueprints exist with the demo flag, a green capsule inside the preview. Demo flag means no real resources are consumed on CSPs. Those blueprints permit to demonstrate orchestration framework and associated features.
 Data are simulated in this mode for different features (configure, compliance, monitoring...)
 
 === Editor ===
 
 ==== Library ====
 
-Drag & Drop components from Library. Library are provided for per clould providers
+Drag & Drop components from Library. Library are provided for per cloud providers
 
 * Provider : an element representing a public or private cloud platform
 
@@ -33,9 +33,9 @@ Drag & Drop components from Library. Library are provided for per clould provide
 
 * App deployment : deploy an application from any marketplace or repository
 
-* K8 cluster : a element reprensenting one Kubernetes cluster
+* K8 cluster : a element representing one Kubernetes cluster
 
-* Mesh : an element permetting to interconnect 2 clouds. This element should be placed after the APP
+* Mesh : an element allowing to interconnect 2 clouds. This element should be placed after the APP
 
 * Workflow : an element allowing to execute any MSA Workflow at any place in the designer
 
@@ -82,13 +82,13 @@ image:blueprints/Cost.png[900]
 
 image:providers/Kubernetes.png[800]
 
-4 fields are needed to import an existing K8 platform in Cloudclapp
+4 fields are needed to import an existing K8 platform in {ccla_product_name}
 
 * **API Server IP/Host** : This value is usually the IP address of the Master Node in the Kubernetes cluster
 
-* **API Server Port** :The API server is generally exposed on the port 6443 by default. Cloudclapp will check if the specific port on the given IP is reachable before Import. In a kubeconfig file, both of the above values are in the server field for a cluster
+* **API Server Port** :The API server is generally exposed on the port 6443 by default. {ccla_product_name} will check if the specific port on the given IP is reachable before Import. In a kubeconfig file, both of the above values are in the server field for a cluster
 
-* **Certificate Authority Data** : Certificat generated 
+* **Certificate Authority Data** : Certificate generated 
 
 * **Kubernetes Service Account Token** : Token associated with a service account. This service account can then be bound to a cluster role to provide granular access across the K8s cluster.
 
@@ -98,7 +98,7 @@ NOTE: Check the appendix below to have more details to how retrieve those inform
 
 == Designer ==
 
-Same as the blueprint editor, a user can modify a design before to deploy it. Two operations are possibles, additiotionaly to the save design
+Same as the blueprint editor, a user can modify a design before to deploy it. In addition, 2 operations are available for saving the design.
 
 * Save environment as blueprint : Once the design is saved. Can be used as a Environment.
 
@@ -108,23 +108,18 @@ Same as the blueprint editor, a user can modify a design before to deploy it. Tw
 
 Environment dashboard show to the users multiple informations via tiles. From MVP3, if a multi cloud has been created, cluster selection list is available in the top right
 
-* Deployments : give the number of deployment associated to this environement + link for a redirection
-
+* Deployments : give the number of deployment associated to this environment + link for a redirection
 * Users : number of users associated to this environment
-
 * Image Scan : last image scan result over all deployments
-
 * Web App Scan : last web application scan result over all deployments
-
 * Topology : representation of application mapping
-
 * Monitoring : availability graph
 
 image:env_builder/ENV_dashboard.png[700]
 
 === Topology / Application Diagram ===
 
-At the environement home page, a topology represents the mapping between applications
+At the environment home page, a topology represents the mapping between applications
 This topology is based on workflow information, but a specific variable must be created to do the link
 
 image:blueprints/Topology_App.png[200]

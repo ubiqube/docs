@@ -1,11 +1,11 @@
 = MSactivator mapping
 
-Cloudclapp entities have a direct mapping to MSactivator
+{ccla_product_name} entities have a direct mapping to {product_name}
 The tab here gives you this mapping
 
 [cols="1,1"]
 |===
-|Cloudclapp|MSactivator
+|{ccla_product_name}|{product_name}
 
 |Organization
 |Tenant
@@ -35,12 +35,12 @@ The tab here gives you this mapping
 |Workflow instance per Cloud type
 
 |Image Scan
-|Workflow instance of Process/cloudclapp-wf/Scan_a_App_Container_
+|Workflow instance of Process/{ccla_product_name}-wf/Scan_a_App_Container_
 
 |Web App Scan
-|Workflow instance of Process/cloudclapp-wf/Scan_a_WebApp
+|Workflow instance of Process/{ccla_product_name}-wf/Scan_a_WebApp
 
 |Compliance  Scan
-|Workflow instance of Process/cloudclapp-wf/Compliance_Scan
+|Workflow instance of Process/{ccla_product_name}-wf/Compliance_Scan
 
 |===
