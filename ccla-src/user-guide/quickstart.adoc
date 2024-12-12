@@ -1,4 +1,4 @@
-= Cloudclapp 
+= {ccla_product_name} 
 :front-cover-image: image:quickstart-front-cover.pdf[]
 ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
@@ -14,20 +14,20 @@ This documentation covers how you can quickly get started using {ccla_product_na
 
 === Installation
 
-Follow the same installation guide as per this documentation : https://ubiqube.com/wp-content/docs/latest/user-guide/quickstart.html
-The same installation script has been updated to support {ccla_product_name}. Execute it with the ccla flag to have {ccla_product_name} installed :
+Follow the same installation guide as per this documentation: https://ubiqube.com/wp-content/docs/latest/user-guide/quickstart.html
+The same installation script has been updated to support {ccla_product_name}. Execute it with the ccla flag to have {ccla_product_name} installed:
 
 ----
 ./scripts/install.sh --ccla -f
 ----
 
-You can access our tutorial video here to perform installation : https://www.youtube.com/watch?v=UHl30dN5S5s&t=2s
+You can access our tutorial video here to perform installation: https://www.youtube.com/watch?v=UHl30dN5S5s&t=2s
 
 === Portal access
 
-After installation, browse https://localhost/ and connect with username ncroot and password ubiqube to access the MSActivator(TM) portal.
+After installation, browse https://localhost/ and connect with username ncroot and password ubiqube to access the {product_name}(TM) portal.
 
-For {ccla_product_name}, browse https://localhost/cloudclapp/sign-up, define your first organization and connect with credentials received by mail
+For {ccla_product_name}, browse https://localhost/{ccla_product_name}/sign-up, define your first organization and connect with credentials received by mail
 
 NOTE: SMTP server must be configured to received the registration email
 

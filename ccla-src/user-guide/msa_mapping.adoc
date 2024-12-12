@@ -1,6 +1,7 @@
-= MSactivator mapping
+= {product_name} mapping
 
 {ccla_product_name} entities have a direct mapping to {product_name}
+
 The tab here gives you this mapping
 
 [cols="1,1"]

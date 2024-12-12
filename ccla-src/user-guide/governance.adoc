@@ -7,127 +7,117 @@ The {product_name} platform provides a multi-roles and multi-tenancy hierarchy t
 In {ccla_product_name} we have two main roles *Admin* and *User (Manager)* , we will explain bellow how to get those roles and how to define permissions/rights for them:
 
 === Admin 
-To get an Admin account you have to register in {ccla_product_name} by clinking on *Get Started* in login page then fill the fom  and click on *Continue* :
+To get an Admin account you have to register in {ccla_product_name} by clinking on *Get Started* in login page then fill the form and click on *Continue*:
 
 image:governance/login_page.png[alt=Governance Menu, width=600px,align="center"]
   
 image:governance/register_page.png[alt=Governance Menu, width=600px,align="center"]
   
-image:governance/verify_email_popup.png[alt=Governance Menu, width=600px,align="center"]
-  
-You will recieve an email contains a link to activate your account , clik on it and your acoount will be activated .
-  
-image:governance/registration_email_content.png[alt=Governance Menu, width=600px,align="center"]
-image:governance/activated_account.png[alt=Governance Menu, width=600px,align="center"]
 
 => Congratulation your *Admin* account is ready to use !!
 
 === User (Manager) 
 Now to get a *Manager* account you have to *invite it*  , you can check the https://github.com/ubiqube/docs/blob/master/ccla-src/user-guide/governance.adoc#invit-users[Invite Users] section for more details 
 
-== Organization dashboard
+== Organization view
 
-{ccla_product_name} offers two views of dashboard , one for developer and the other one is dedicated for Business executive .
+The *Dashboard* display various informations about the entire organization. It can be personalized as explained in xref:navigation_dashboard.adoc[Navigation and Dashboard settings].
 
-to switch between those views you need to click on edit button :
+The *Operate* section is divided in different tabs:
 
-image:governance/edit_view.png[alt=Governance Menu, width=900px,align="center"]
-
-image:governance/dash_views.png[alt=Governance Menu, width=900px,align="center"]
-
-Business view which simplify the view by representing just environment costs :
-
-image:governance/business_view.png[alt=Governance Menu, width=900px,align="center"]
-
-Default view (for developer) :
-
-image:governance/default_dash_view.png[alt=Governance Menu, width=900px,align="center"]
-
-which represent a general informations about the organization and some quick actions:
-
-* Manage Cloud Connections .
-
-image:governance/manage_connections_4.png[alt=Governance Menu, width=500px,align="center"]
-
-Helpers for each clouds :
-
-* Google cloud platform : https://cloud.google.com/docs/security/compromised-credentials
-
-* Azure : https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal
-
-* AWS : https://docs.aws.amazon.com/IAM/latest/UserGuide/security-creds.html
-
-* Scaleway : https://www.scaleway.com/en/docs/identity-and-access-management/iam/how-to/create-api-keys/
+* *Environments:* List every environments with a quick description, including the number of deployment and environment configuration.
+New Environment can also be added from xref:environment_builder.adoc#quick-deployment[_Add New Environment button_]
+image:governance/operate_environments.png[alt=Governance Menu, width=900px,align="center"]
 
 
-== Organization settings
-to edit organization click on settings button 
+* *Deployments:* Display a list of organization's environments and its deployments with additional informations like its status and configuration.
+image:governance/operate_deployments.png[alt=Governance Menu, width=900px,align="center"]
 
 
-image:governance/settings_button.png[alt=Governance Menu, width=900px,align="center"]
+* *Clouds:* To manage Public and Private Cloud Connections
+    image:governance/manage_connections_4.png[alt=Governance Menu, width=500px,align="center"]
 
-image:governance/settings_view.png[alt=Governance Menu, width=400px,align="center"]
- 
-actions performed :
+* *Resources:* Displays organization resources. The _Discover_ button perform the scan of resources. Migration and Cut Over can also be performed there.
 
-* Edit Organization Name
+image:governance/operate_ressources.PNG[Resources section]
 
-image:governance/edit_org_name.png[alt=Governance Menu, width=600px,align="center"]
+* *Configure:* Shows VM and clusters configurations.
 
-* Accounts
+* *FinOps:* Displays environment cost by providers. Check xref:cost_management.adoc[Cost Management page].
 
-image:governance/org_users.png[alt=Governance Menu, width=600px,align="center"]
+* *Automations:* Lists all BPM on the left and every automation instances on the right, as an history.
+image:governance/operate_automations.png[alt=Governance Menu, width=900px,align="center"]
 
 
-* Private Docker Hub Credentials
+=== Helpers for each clouds: ===
 
-image:governance/org_credentials.png[alt=Governance Menu, width=600px,align="center"]
+* Google cloud platform: https://cloud.google.com/docs/security/compromised-credentials
 
-* GitHub Credentials
+* Azure: https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal
 
-image:governance/github.png[alt=Governance Menu, width=600px,align="center"]
+* AWS: https://docs.aws.amazon.com/IAM/latest/UserGuide/security-creds.html
 
-* Delete organization
+* Scaleway: https://www.scaleway.com/en/docs/identity-and-access-management/iam/how-to/create-api-keys/
 
-image:governance/delete_org.png[alt=Governance Menu, width=600px,align="center"]
+
+== Settings
+
+This section is divided in two tabs:
+
+*  *System* tab provide product information such as Version.
+
+image:governance/ProductInformation.png[alt=Governance Menu, width=900px,align="center"]
+
+* *Integrations* tab let the user enter credentials of different services (Marketplaces, Cloud Security, Observability ...)
+
+image:governance/IntegrationsTab.png[alt=Governance Menu, width=900px,align="center"]
+
+
+== Delete and Rename ==
+
+To delete an Organization or to edit its name, the user need to go on MSactivator.
+
+This actions can be performed on MSactivator as every Organizations are Tenants.  
 
 
 
 == Invite Users ==
 
-To invite users, go to *Governance* →*Users*
+To invite users, go to *Governance* → *Users*
 
 image:governance/users_tab.png[alt=Governance Menu, width=900px,align="center"]
 
-put the user you want to invite , an email will be sent to the invited user contains a link to activate his account.
+Put the user you want to invite , an email will be sent to the invited user containing a link to activate his account.
 
-image:governance/pop_invite_users.png[alt=Governance Menu, width=900px,align="center"]
+image:governance/pop_invite_users.png[alt=Governance Menu, width=600px, align="center"]
 
-image:governance/invite_user_succeed.png[alt=Governance Menu, width=900px,align="center"]
+image:governance/invite_user_succeed.png[alt=Governance Menu, width=600px,align="center"]
 
-*Email*  content should be like :
+*Email*  content should be like:
 
 image:governance/email_content.png[alt=Governance Menu, width=1000px,align="center"]
 
-* After inviting a user you can define permissions for this user by clicking on this button image:governance/permission_icon.png[green,40] you should see all  https://github.com/ubiqube/docs/blob/master/ccla-src/user-guide/governance.adoc#permissions[permissions] related to the user account in all tabs
+* After inviting a user you can define permissions for this user by clicking on this button image:governance/permission_icon.png[green,40], you should see all  https://github.com/ubiqube/docs/blob/master/ccla-src/user-guide/governance.adoc#permissions[permissions] related to the user account in all tabs.
 
 
 image:governance/permissions.png[alt=Governance Menu, width=900px,align="center"]
 
 == Tags ==
 
-{ccla_product_name} give the possibility to tag resources through terraform in other way we can filter the cost by those tags
+{ccla_product_name} give the possibility to tag resources through terraform in other way we can filter the cost by those tags.
+
+Tags can be created, updated and deleted in governance tab.
 
 image:governance/tags.png[alt=Governance Menu, width=900px,align="center"]
 
 == Permissions ==
-permissions defines the rights given to a user , we can see the in table the different permissions :
+Permissions define the rights given to a user, we can see in table the different permissions:
 
 [cols="1,1,1,1,1"]
 |===
 |Environment|Deployments|Applications|Insights|Governance
 
-| *General* :
+| *General*:
 
 Create
 
@@ -190,45 +180,45 @@ Delete
 
 In order to control resources creation over cloud platforms, approval request force a user to do in 2 steps the infrastructure creation
 
-Using permission profile, an administrator of an organization can assign some "approval" rights to a user 
+Using permission profile, an administrator of an organization can assign some "approval" rights to a user.
 
-If a user is restricted by "Create With Approval" right, environment creation will be conditionned to approval of the administrator of the organization
+If a user is restricted by "Create With Approval" right, environment creation will be conditionned to approval of the administrator of the organization.
 
-In the environment dashboard, a user can see a "Waiting" status, meaning an approval is required to finalize the creation process
+In the environment dashboard, a user can see a "Waiting" status, meaning an approval is required to finalize the creation process.
 
 image:governance/SendApproval.png[alt=Governance Menu, width=900px,align="center"]
 
-Once the request is send, administrator is notified by mail. He is invited to review this request inside {ccla_product_name} > Governance > Approvals
+Once the request is send, administrator is notified by email and invited to review this request inside {ccla_product_name} > Governance > Approvals
 
 image:governance/ApprovalMail.png[alt=Governance Menu, width=900px,align="center"]
 
-In the approval screen, an administrator can review requests, and decide to approve or decline a request using icons on the right
+In the approval screen, an administrator can review requests and decide to approve or decline a request using the icons on the right.
 
 image:governance/ApprovalsTab.png[alt=Governance Menu, width=900px,align="center"]
 
-If approved, a user can see "Approved" in environment screen and then clicking on "Deploy". A notification is also send by mail to confirm the approval
+If approved, a user can see "Approved" in environment screen and then click on "Deploy". A notification is also send by email to confirm the approval.
 
 == Audit Logs ==
 
-To track user activity, use audit logs
+To track user activity, authorized users can use audit logs.
 
 image:governance/audit_logs.png[alt=Governance Menu, width=600px,align="center"]
 
 == Quota check before deployment (Azure) ==
 
-To check quota before creating a new resources, a new control has been added to avoid issues during deployment
+To check quota before creating a new resources, a new control has been added to avoid issues during deployment.
 
-For any resources planned to be deployed in Azure, the platform, based on provider account will check capacity
+For any resources planned to be deployed in Azure, the platform based on provider account will check capacity.
 
 image:governance/quota_check_azure.png[alt=Governance Menu, width=600px,align="center"]
 
-If quota issue is detected, such message will be displayed. The user will be invited to increase quotas or choose a different region
+If quota issue is detected, such message will be displayed. The user will be invited to increase quotas or choose a different region.
 
 ----
-Quota limit exceeded for region (vCPU) : AZURE - Central India 
+Quota limit exceeded for region (vCPU): AZURE - Central India 
 
-Current regional limit : 10
-Current regional usage : 8
+Current regional limit: 10
+Current regional usage: 8
 New additional instances required : 4
 New regional limit required : 12
 

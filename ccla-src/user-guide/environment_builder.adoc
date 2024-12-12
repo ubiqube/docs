@@ -27,17 +27,17 @@ Data are simulated in this mode for different features (configure, compliance, m
 
 Drag & Drop components from Library. Library are provided for per cloud providers
 
-* Provider : an element representing a public or private cloud platform
+* Provider: an element representing a public or private cloud platform
 
-* Region / Zone : supported regions inside a provider. Not supported for VMware or Kubernetes
+* Region / Zone: supported regions inside a provider. Not supported for VMware or Kubernetes
 
-* App deployment : deploy an application from any marketplace or repository
+* K8 cluster: a element representing one Kubernetes cluster
 
-* K8 cluster : a element representing one Kubernetes cluster
+* Mesh: an element allowing to interconnect 2 clouds. This element should be placed after the APP
 
-* Mesh : an element allowing to interconnect 2 clouds. This element should be placed after the APP
+* Workflow: an element allowing to execute any {product_name} Workflow at any place in the designer
 
-* Workflow : an element allowing to execute any MSA Workflow at any place in the designer
+* App deployment: deploy an application from any marketplace or repository
 
 image:providers/BPEditor.png[900]
 
@@ -53,28 +53,12 @@ image:providers/BPEditor.png[900]
 
 ==== Design operations ====
 
-* Save design : Edit the Blueprint design and save this design
+* Save design: Edit the Blueprint design and save this design
 
-== Quick Deployment ==
-Click on Create A Quick Deployment
+== New Environment
+An environment can also be created without Blueprint, using _Add New Environment_ button on the Operate tab within organization view.
 
-image:blueprints/Quick_Deployment.png[100]
-
-Choose recommended cloud providers
-
-image:blueprints/Choose_Cloud.png[900]     
-
-Then pick an environment for deployment
-
-image:blueprints/Pick_an_Environment.png[900]
-
-Add application images and define ports and node ports with proper deployment name
-
-image:blueprints/Add_Application.png[900]
-
-See the estimation right before your deployment and can change Hourly, Monthly or Annual
-
-image:blueprints/Cost.png[900]
+image:env_builder/add_env.PNG[Add new environment button]
 
 == The wizard ==
 
@@ -84,13 +68,13 @@ image:providers/Kubernetes.png[800]
 
 4 fields are needed to import an existing K8 platform in {ccla_product_name}
 
-* **API Server IP/Host** : This value is usually the IP address of the Master Node in the Kubernetes cluster
+* **API Server IP/Host**: This value is usually the IP address of the Master Node in the Kubernetes cluster
 
 * **API Server Port** :The API server is generally exposed on the port 6443 by default. {ccla_product_name} will check if the specific port on the given IP is reachable before Import. In a kubeconfig file, both of the above values are in the server field for a cluster
 
 * **Certificate Authority Data** : Certificate generated 
 
-* **Kubernetes Service Account Token** : Token associated with a service account. This service account can then be bound to a cluster role to provide granular access across the K8s cluster.
+* **Kubernetes Service Account Token**: Token associated with a service account. This service account can then be bound to a cluster role to provide granular access across the K8s cluster.
 
 image:providers/Kubernetes_Connection.png[900]
 
@@ -100,33 +84,33 @@ NOTE: Check the appendix below to have more details to how retrieve those inform
 
 Same as the blueprint editor, a user can modify a design before to deploy it. In addition, 2 operations are available for saving the design.
 
-* Save environment as blueprint : Once the design is saved. Can be used as a Environment.
+* *Save environment as Blueprint:* Once the design is saved, it can be used as a Environment.
 
-* Deploy : Click on Deploy to complete the deployment of the apps over K8 cluster that is selected
+* *Deploy:* Click on Deploy to complete the deployment of the apps over K8 cluster that is selected
 
-== Environment dashboard ==
+== Environment view ==
 
-Environment dashboard show to the users multiple informations via tiles. From MVP3, if a multi cloud has been created, cluster selection list is available in the top right
+The *Dashboard* displays various informations about the entire environment. It can be personalized as explained in xref:navigation_dashboard.adoc[Navigation and Dashboard settings].
 
-* Deployments : give the number of deployment associated to this environment + link for a redirection
-* Users : number of users associated to this environment
-* Image Scan : last image scan result over all deployments
-* Web App Scan : last web application scan result over all deployments
-* Topology : representation of application mapping
-* Monitoring : availability graph
+The *Operate* section is divided in different tabs:
 
-image:env_builder/ENV_dashboard.png[700]
+* *Design (optional):* This tab only appears when the environment has been created from a Blueprint. It shows design and history of deployment status and every workflow executions.
 
-=== Topology / Application Diagram ===
+* *Deployments:* Displays a list of the environments and its deployments with additional informations like status and configurations.
 
-At the environment home page, a topology represents the mapping between applications
-This topology is based on workflow information, but a specific variable must be created to do the link
+* *Compliance:* Gives an overview of environment security, refers to xref:security.adoc[Environment Compliance Overview] for more details.
 
-image:blueprints/Topology_App.png[200]
+* *FinOps:* Displays environment cost by providers. _You can refer to_ xref:cost_management.adoc[_Cost management page._]
 
-----
-APP_PORT_MAPPING : <target_application_name>:<target_port>
-----
+* *Monitor:* Provides environment monitoring using Prometheus and Grafana (details, below in Monitoring section).
+
+* *Mesh:* Using Istio, monitors metrics about interconnections of clouds and applications.
+
+* *Configure:* Shows VM configurations.
+
+* *Automations:* Lists all BPM on the left and every automation instances on the right, as an history.
+image:governance/operate_automations.png[alt=Governance Menu, width=900px,align="center"]
+
 
 === Monitoring ===
 
@@ -134,8 +118,7 @@ Monitoring is done with the help of Prometheus and Grafana. It is deployed as in
 
 To display the dashboards of these services, we create a service of type load balancer and use the native Load Balancers provided by the cloud providers.
 
-Note: Enabling monitoring will deploy additional pods and services along with load balancers for Prometheus and Grafana. Hence this will affect the cost incurred when creating the cluster
-
+_Note: Enabling monitoring will deploy additional pods and services along with load balancers for Prometheus and Grafana. Hence this will affect the cost incurred when creating the cluster._
 
 image:monitoringTools.png[100]
 
@@ -154,13 +137,13 @@ image:monitoringTools.png[100]
 
 |===
 
-Some Grafana dashboards can be imported directly to monitor environments. Use import function in grafana to upload a new dashboard
+Some Grafana dashboards can be imported directly to monitor environments. Use import function in grafana to upload a new dashboard:
 
-* AKS Environment : https://grafana.com/grafana/dashboards/12180-aks-container-insights/
+* AKS Environment: https://grafana.com/grafana/dashboards/12180-aks-container-insights/
 
-* EKS Environment : https://grafana.com/grafana/dashboards/17119-kubernetes-eks-cluster-prometheus/
+* EKS Environment: https://grafana.com/grafana/dashboards/17119-kubernetes-eks-cluster-prometheus/
 
-* GKE Environment : https://grafana.com/grafana/dashboards/14869-iris/
+* GKE Environment: https://grafana.com/grafana/dashboards/14869-iris/
 
 
 == Details of WF steps ==
@@ -209,7 +192,8 @@ Runs the Compliance Scan Workflow which will deploy a Job to run kubebench on th
 == Appendix ==
 === K8 service token and certificate ===
 
-In order to access the K8s APIs, CCLA requires a token associated with a service account. This service account can then be bound to a cluster role to provide granular access across the K8s cluster.
+In order to access the K8s APIs, CCLA requires a token associated with a service account. 
+This service account can then be bound to a cluster role to provide granular access across the K8s cluster.
 
 Create YAML files for serviceaccount, clusterrole and clusterrolebinding
 ----
@@ -293,7 +277,7 @@ metadata:
 kubectl apply -f secret.yaml
 ----
 The above secret should contain the CA data and Token required as inputs for CCLA. To get the values from the secret, run kubectl get secret ccla-token -oyaml
-This command with display the data stored in YAML format.
+This command will display the data stored in YAML format.
 
 ----
 apiVersion: v1

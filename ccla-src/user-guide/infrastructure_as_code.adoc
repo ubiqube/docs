@@ -1,7 +1,7 @@
 = Infrastructure as the code =
 ifndef::imagesdir[:imagesdir: images]
 
-This page to describe how finally environment and application are created under each cloud providers
+This page describes how finally environment and application are created under each cloud providers.
 
 == Environment details ==
 
