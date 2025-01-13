@@ -1,0 +1,113 @@
+= Version 3.1.0
+:front-cover-image: image:release-note-cloudiamo-2X.png[]
+:toc: left
+:toclevels: 3
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+ifndef::imagesdir[:imagesdir: images]
+
+//OK HTML 
+ifdef::html[]
+:includedir: doc-src/release-notes
+endif::[]
+
+// OK PDF
+ifdef::pdf[]
+:includedir: .
+endif::[]
+
+Welcome to release 3.1.0 of the {product_name}. There are many updates in this version that we hope you'll like !
+
+== Architecture
+
+=== K8 Optimized Architecture
+
+A new github.com/ubiqube/msa-kubernetes repository is created to store the {product_name} Kubernetes helm chart which can be used to deploy {product_name} on any Kubernetes cluster.  
+
+Kubernetes is an open-source platform designed to automate the deployment, scaling, and management of containerized applications. It enables teams to build resilient, scalable systems by abstracting infrastructure complexities and providing features like service discovery, self-healing, load balancing, and automated rollouts. 
+
+With Kubernetes, organizations can achieve efficient resource utilization and seamless application orchestration across diverse environments, from on-premises data centers to cloud-based platforms.
+
+image:3.1.0_k8s_architecture.png[width=900px]
+
+=== Message broker / ActiveMQ Artemis
+
+ActiveMQ Artemis is a message broker that supports the JMS 2.0 API. It is a high-performance, non-blocking, reactive messaging system that enables real-time communication between applications. 
+
+ActiveMQ Artemis is designed to be lightweight and scalable, making it an ideal choice for microservices architectures.
+
+ActiveMQ Artemis is now integrated in the {product_name} architecture to provide a reliable and efficient messaging system for communication between the various components of the platform.
+
+image:3.1.0_message_broker.png[width=900px]
+
+=== Enhancement
+
+* [MSA-10544] - [Alarms] Improve alarm performance on HA
+* [MSA-14432] - [Alarms][check_alert] Need to optimize DB queries of check_alert
+* [MSA-12707] - [API] remove RESTEasy and use native spring feature instead in msa-api
+* [MSA-13755] - [API] Apply the PreAuth Annotation with relevant parameters for All APIs
+* [MSA-14297] - [API] Remove basic JDBC to more efficient one (JDBCTemplate/JPA)
+* [MSA-14415] - [API] Add endpoints to sync metadata to and from database to file system
+* [MSA-14493] - [Assurance] Read monitoring data (RRD replacement) from MongoDB for Profile KPIs
+* [MSA-14412] - [Assurance][API] Read monitoring data (RRD replacement) from MongoDB for Default KPIs
+* [MSA-13888] - [CoreEngine] optimize DB keep alive query
+* [MSA-14448] - [License] License about to Expire warning Pop up
+* [MSA-14048] - [Topology] replace flag FEATURE_TOPOLOGY_FILTER_LOGIC by a UI filter logic selection
+* [MSA-14125] - [Topology] Add a panel to choose operator between "OR" and "AND"
+* [MSA-14521] - [Topology] Multiple link representation of topology
+* [MSA-14215] - [UX] Inconsistent action icons display between Admin, Infra and Automation
+* [MSA-14286] - [UX] [investigation] flag to hide the CCLA login form
+* [MSA-13765] - [UX] Feature flags cleanup
+* [MSA-14397] - [Workflows] workflow instances need some history retention management
+* [MSA-14235] - [Workflows] Context as JSON in DB, make it compatible with Maria DB as well
+* [MSA-14506] - [Workflows] Filter WF by categories/Tags
+* [MSA-14513] - [Workflows] API request: get instance list of specific WF
+* [MSA-14505] - [Workflows][API] Integrate Workflow Tags with MSA UI
+* [MSA-14514] - [Workflows] Add new function for workflow details API in msa_sdk
+
+=== Bug fixes
+
+* [MSA-10610] - [Permissions][API] not possible to detach the last manager of a permission
+* [MSA-11122] - [Backend] Logrotate logs to avoid disk space issue
+* [MSA-11363] - [HA] the application log directories are shared by many containers and the log files are overwritten - not SMS ones
+* [MSA-13319] - [Admin] Not able to clear subtenant selection when the manager is associated with only one subtenant
+* [MSA-13444] - [UI] UI send twice the same API on ME configuration variable page
+* [MSA-13628] - [BPM] RBAC: still able to delete BPM as Manager if permission is not set.
+* [MSA-14018] - [CoreEngine] Logrotate sms logs at the start of sms container can result on the impossibility to start in case of large logs files
+* [MSA-14068] - [Alarms] "Clean up process instance after execution" option on tab "Actions" of alarm definition seems not to be implemented in check_alert
+* [MSA-14159] - [HA] the application log directories are shared by many containers and the log files are overwritten - API ones
+* [MSA-14446] - [K8S][CCLA/FRONT] CCLA UI isn't accessible on K8S due to wrong Front/Nginx configuration
+* [MSA-14464] - [BPMN][API] Schedule BPM API not taking input parameters into account
+* [MSA-14476] - [Monitoring] time to time msa-monitoring couldn't send message to broker, data missing in mongo db
+* [MSA-14483] - [MANO] installation of MANO SDK failing
+* [MSA-14492] - [Alarms][API] the last created alarm rule is not displayed
+* [MSA-14498] - mandatory field issue
+* [MSA-14528] - [Dashboard] Alignment issues on {product_name} manager dashboard
+* [MSA-14499] - [Permission] Process completely disappear in Edit view when set to never visible
+* [MSA-14500] - [UX] Name field should be adjusted according the screen size
+* [MSA-13153] - [Microservices] Parse example does not work and disconnect end-user
+* [MSA-13781] - [Microservices] import method for the XML and JSON microservices does show tables correctly
+* [MSA-14304] - [Microservices] Automatically generate XML tags causing additional useless entries in MS import design page
+* [MSA-14526] - [Microservices] UI allow multi MS instances selection for edition but only displays one
+* [MSA-14527] - [Microservices] Scrolling issue on MS console
+* [MSA-14529] - [Microservices][UI] Incomplete LINUX/NETWORK/route.xml MS definition cause infinite loop MSA UI
+* [MSA-14022] - [Security] MFA/OTP not working with MSA/CCLA portal
+* [MSA-8589] - [Security] Directory traversal in /repository/v1/search
+* [MSA-14406] - [Topology][API] PUT /ubi-api-rest/orchestration/topology/activate/{customerId} not working
+* [MSA-14501] - [Topology] tag filtering
+* [MSA-11487] - [Workflows] process log file process-XX.log is not deleted when a workflow instance is deleted
+* [MSA-14343] - [Workflows] variable format validation issues
+
+== Upgrade
+
+Instructions to upgrade available in the https://ubiqube.com/wp-content/docs/latest/user-guide/quickstart.html[quickstart].
+
+=== Specific instructions for upgrading to 3.0.0
+
+The quickstart provides an upgrade script `upgrade.sh` for taking care of possible actions such as recreating some volume, executing some database specific updates,...
+
+In order to upgrade to the latest version, you need to follow these steps:
+
+1. `cd quickstart`
+2. `git checkout master`
+3. `git pull`
+4. `./scripts/install.sh`

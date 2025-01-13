@@ -1,0 +1,64 @@
+= Version 3.0.0
+:front-cover-image: image:release-note-cloudiamo-2X.png[]
+:toc: left
+:toclevels: 3
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+ifndef::imagesdir[:imagesdir: images]
+
+//OK HTML 
+ifdef::html[]
+:includedir: doc-src/release-notes
+endif::[]
+
+// OK PDF
+ifdef::pdf[]
+:includedir: .
+endif::[]
+
+Welcome to release 3.0.0 of the {product_name}. There are many updates in this version that we hope you'll like !
+
+== User experience
+== Specific technical fixes and feature details
+
+=== Enhancement
+
+* [MSA-13252] - [CoreEngine] Remove the old logging library
+* [MSA-13682] - [CoreEngine] Activate or deactivate debug without restarting the service
+* [MSA-13913] - [SMS] clean polluting debug message on smsd.log file (load_logs)
+* [MSA-14243] - [Alarms] Manual Refresh
+* [MSA-14351] - [Managed Entity] reorganize the create/update ME form / advance info part
+* [MSA-14373] - [API] Integrate tag functionality with new Automation ends points
+* [MSA-14414] - [UI / Github config] version merging - ccla_version.html and msa_version.html
+* [MSA-14424] - Replace property to AlarmSummaryResult
+
+=== Bug fixes
+
+* [MSA-12621] - [API] Remove sysout in msa-api project
+* [MSA-14365] - [API] customer creation API fails
+* [MSA-14433] - [API] msa-api unusable after attachment of a lot of subtenants to managers
+* [MSA-12983] - [Alarm] Bad text in Threshold tab
+* [MSA-14398] - [Alarm] Some of alarm data is showing undefined in alarm graphs
+* [MSA-11105] - [CoreEngine] sms restart doesn't unlock the locked devices
+* [MSA-14353] - [CoreEngine] memory leak in msa-monitoring
+* [MSA-12858] - [Dashboard] Kibana dashboard Configuration to hide warnings
+* [MSA-12422] - [DB] when a container like API,MANO,.. looses the conn do DB it doesn't restart and stay in a "healthy" state
+* [MSA-13205] - [UI/PDF export] Monitoring graphs PDF report export may show incomplete graph at the end of the page
+* [MSA-14305] - [Microservice] Need to remove confusing and useless double slash "//" label on every xpath of XML import MS section
+* [MSA-14358] - [Permission] the permission for clearing and acknowledging alarms is missing
+* [MSA-14388] - [UI] UI Alignment: top right search and alarm icon
+* [MSA-14434] - [Topology] java.lang.RuntimeException when initializing (creating) a Topology
+
+== Upgrade
+
+Instructions to upgrade available in the https://ubiqube.com/wp-content/docs/latest/user-guide/quickstart.html[quickstart].
+
+=== Specific instructions for upgrading to 3.0.0
+
+The quickstart provides an upgrade script `upgrade.sh` for taking care of possible actions such as recreating some volume, executing some database specific updates,...
+
+In order to upgrade to the latest version, you need to follow these steps:
+
+1. `cd quickstart`
+2. `git checkout master`
+3. `git pull`
+4. `./scripts/install.sh`
