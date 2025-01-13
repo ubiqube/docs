@@ -56,89 +56,89 @@ image:2.9.1_zipkin.png[width=900px]
 
 === Enhancement
 
-[MSA-12758] - [UI] [ME] pagination configuration variables list
-[MSA-12919] - [CoreEngine] code optimization for OID translation during runtime
-[MSA-12943] - [Alarms] automatically raise alarm for SNMP traps
-[MSA-13037] - [Alarms][CoreEngine] add global config variable to turn on/off the dyn alarm feature (default off)
-[MSA-13046] - [CoreEngine] sms_snmptrapd should write directly to ES
-[MSA-13323] - [Alarms][UI] user can change dynamic SNMP trap alarm severity
-[MSA-13362] - [Managed Entities] at creation show 3 empty dropdown lists in basic information for category/vendor/model
-[MSA-13451] - [UI/API][Alarm/Log] - Filtering - multi MEs selection
-[MSA-13452] - [UI][Alarms/Logs] Refresh & Auto-Refresh
-[MSA-13453] - [Kibana] [Alarms] Customizable Alarm template monitoring pane
-[MSA-13454] - [UI/API] [Alarms] Sorting
-[MSA-13602] - [Alarm] Dynamic SNMP trap translation based on vendor MIB definition files
-[MSA-13680] - [Workflow] Performance improvement on saving context as JSON in DB
-[MSA-13754] - [MSA-API] Extend the PreAuth support for all MSA entities
-[MSA-13805] - [Alarm] add a new field alarmFieldId in the MSA MIB
-[MSA-13851] - [UX] Rename Pass to Forward in BPM view
-[MSA-13852] - [Alarms] SecEngine - using SMTP for alarm mails inadvertently removed logging mail action
-[MSA-13937] - [UI/API] [Alarms] Comment & Trouble Ticket
-[MSA-13938] - [UI] [Alarms] Action on specific line of alarm
-[MSA-13990] - [Alarms] CoreEngine - Support Keycloak for check_alert
-[MSA-14020] - [CoreEngine] Update common libraries
-[MSA-14024] - [Obs] integrate zipkin in Camunda
-[MSA-14155] - [API] remove extra space in HTTP basic authorization header
-[MSA-14179] - Clean ProcessId, ServiceId and alike
-[MSA-14207] - [API] API to export one or more selected alarm
-[MSA-14210] - Upgrade camunda to 7.21.0
-[MSA-14216] - [CoreEngine] log information of alarm clearing should be explicit and understandable
-[MSA-14236] - [Alarm] UX alignment for clear/ack/details/...
-[MSA-14254] - [Workflows] include the context migration process in the API backend
-[MSA-14257] - [UI] [Improvement] enlarge zone to click for sorting in the alarm page
-[MSA-14259] - [PORTING 2.9.1] - [SMS/MS] Performances improvement : Evaluate the possibility to not do useless resolve smarty template
-[MSA-14262] - [API] [Automation] endpoint GET all automations for catalog
-[MSA-14266] - [BPM][API] Separate API for deployment create and Start
-[MSA-14270] - [UI/API] [Logs] Sorting
-[MSA-14273] - [JDK21] Honor /etc/pki/cacerets
-[MSA-14282] - [PORTING 2.9.1] - [UI] Create routes for landing page
-[MSA-14283] - [Kibana] update the index patterns: add ubialarms and remove ubiflows
-[MSA-14284] - [CoreEngine] remove kafka
-[MSA-14285] - [API & camunda] Enhance tracing in containers
-[MSA-14289] - [Alarm][UI] Disable Manager Alarm Section for Users other than ncroot
-[MSA-14295] - [API] Deprecated java layer tool
-[MSA-14321] - [UI][Search Inputs] Search input function should consider also the press on RETURN keyboard (additionally to the search icon click action)
-[MSA-14327] - [Monitoring] Integrate CoreEngine monitoring with the broker
-[MSA-14330] - [UI] [Alarm & Log Panel] enlarge the clickable area to open the alarm in details
-[MSA-14360] - [CoreEngine] Update common libraries of core engine
+* [MSA-12758] - [UI] [ME] pagination configuration variables list
+* [MSA-12919] - [CoreEngine] code optimization for OID translation during runtime
+* [MSA-12943] - [Alarms] automatically raise alarm for SNMP traps
+* [MSA-13037] - [Alarms][CoreEngine] add global config variable to turn on/off the dynanic alarm feature (default off)
+* [MSA-13046] - [CoreEngine] sms_snmptrapd should write directly to ES
+* [MSA-13323] - [Alarms][UI] user can change dynamic SNMP trap alarm severity
+* [MSA-13362] - [Managed Entities] at creation show 3 empty dropdown lists in basic information for category/vendor/model
+* [MSA-13451] - [UI/API][Alarm/Log] - Filtering - multi MEs selection
+* [MSA-13452] - [UI][Alarms/Logs] Refresh & Auto-Refresh
+* [MSA-13453] - [Kibana] [Alarms] Customizable Alarm template monitoring pane
+* [MSA-13454] - [UI/API] [Alarms] Sorting
+* [MSA-13602] - [Alarm] Dynamic SNMP trap translation based on vendor MIB definition files
+* [MSA-13680] - [Workflow] Performance improvement on saving context as JSON in DB
+* [MSA-13754] - [API] Extend the PreAuth support for all database entities
+* [MSA-13805] - [Alarm] add a new field alarmFieldId in the MSA MIB
+* [MSA-13851] - [UX] Rename Pass to Forward in BPM view
+* [MSA-13852] - [Alarms] SecEngine - using SMTP for alarm mails inadvertently removed logging mail action
+* [MSA-13937] - [UI/API] [Alarms] Comment & Trouble Ticket
+* [MSA-13938] - [UI] [Alarms] Action on specific line of alarm
+* [MSA-13990] - [Alarms] CoreEngine - Support Keycloak for check_alert
+* [MSA-14020] - [CoreEngine] Update common libraries
+* [MSA-14024] - [Obs] integrate zipkin in Camunda
+* [MSA-14155] - [API] remove extra space in HTTP basic authorization header
+* [MSA-14179] - Clean ProcessId, ServiceId and alike
+* [MSA-14207] - [API] API to export one or more selected alarm
+* [MSA-14210] - Upgrade camunda to 7.21.0
+* [MSA-14216] - [CoreEngine] log information of alarm clearing should be explicit and understandable
+* [MSA-14236] - [Alarm] UX alignment for clear/ack/details/...
+* [MSA-14254] - [Workflows] include the context migration process in the API backend
+* [MSA-14257] - [UI] [Improvement] enlarge zone to click for sorting in the alarm page
+* [MSA-14259] - [PORTING 2.9.1] - [SMS/MS] Performances improvement : Evaluate the possibility to not do useless resolve smarty template
+* [MSA-14262] - [API] [Automation] endpoint GET all automations for catalog
+* [MSA-14266] - [BPM][API] Separate API for deployment create and Start
+* [MSA-14270] - [UI/API] [Logs] Sorting
+* [MSA-14273] - [JDK21] Honor /etc/pki/cacerets
+* [MSA-14282] - [PORTING 2.9.1] - [UI] Create routes for landing page
+* [MSA-14283] - [Kibana] update the index patterns: add ubialarms and remove ubiflows
+* [MSA-14284] - [CoreEngine] remove kafka
+* [MSA-14285] - [API & camunda] Enhance tracing in containers
+* [MSA-14289] - [Alarm][UI] Disable Manager Alarm Section for Users other than ncroot
+* [MSA-14295] - [API] Deprecated java layer tool
+* [MSA-14321] - [UI][Search Inputs] Search input function should consider also the press on RETURN keyboard (additionally to the search icon click action)
+* [MSA-14327] - [Monitoring] Integrate CoreEngine monitoring with the broker
+* [MSA-14330] - [UI] [Alarm & Log Panel] enlarge the clickable area to open the alarm in details
+* [MSA-14360] - [CoreEngine] Update common libraries of core engine
 
 === Bug fixes
 
-[MSA-12365] - [Security] Invalidate/Revoke Tokens generated for deleted user
-[MSA-13014] - [Alarms] list managed entities based on subtenants selected in conditions
-[MSA-13116] - [UI] missing Columns filtering in Logs page when the window is too small
-[MSA-13471] - [Assurance][API] alarm graph to reflect clear/ack status alignment
-[MSA-13798] - [Alarm] SNMP trap sent by MSA for an alarm are missing the alarmFieldEventType field
-[MSA-13799] - [Alarm] SNMP traps sent by MSA have a severity field that doesn't match the source alarm
-[MSA-14042] - [Security] When staying on some pages, 401 will occur
-[MSA-14061] - [ES] indexes templates are no more update nor pushed after initial deployemnt
-[MSA-14102] - [UI/API] Impossible to attach MEs to a monitoring profile when a subtenant has a large number of MEs
-[MSA-14116] - [Quickstart] create custom dashboard and MON pfl not working
-[MSA-14117] - [Setting] variable discrepancy between 2.8.13 and 2.9.0
-[MSA-14118] - [UX] MSA2.9.1 theme not fully aligned with figma
-[MSA-14119] - [Topology] topology WF not working in a fresh install
-[MSA-14134] - [PORTING 2.9.1] - [WF/UI] WF Process history should be filter according to user role
-[MSA-14137] - [PORTING 2.9.0] - [API] Microservice instance data not imported
-[MSA-14169] - [UI][WORKFLOW] unable to load scheduled processes
-[MSA-14208] - Alarm Filtering Menu: display issue when selecting a value in most of the fields
-[MSA-14211] - [UI] the details of an alarm contains 2 times the ack field
-[MSA-14213] - Clicking Automation, then "Intend-Based" enters in an infinite loop
-[MSA-14214] - [UX] Inconsistent sorting icons between "Admin" and "Assurance"
-[MSA-14222] - [WF/API] Not able to resume a failed WF task
-[MSA-14226] - [REPO/UI] Not able to access MSA repository due to continuously web browser request to API with high frequency
-[MSA-14230] - [UX] user is logged out immediately after entering his correct login/password
-[MSA-14244] - [CoreEngine] Microservice call commands fails for all adapters / (ERR_SD_FAILED) Operation Failed
-[MSA-14245] - [Alarms] dynamic alarm creation should use the alarm name as the default alarm rule name
-[MSA-14247] - [PORTING 2.9.1] - [Workflow/UI/API] search operation is working pages wise only. Global search operation is not working.
-[MSA-14258] - [PORTING 2.9.1] - [Workflow/UI] search operation is working pages wise only. Global search operation is not working.
-[MSA-14272] - [Alarms] Clear All and Ack All are failing with org.apache.http.client.ClientProtocolException
-[MSA-14276] - [Assurance][UI] alarm graph to reflect clear/ack status alignment
-[MSA-14303] - [UI] [Alarms/Logs] - Filter By has some display issues
-[MSA-14306] - [UI] Proper message handling while trying to edit an alarm entry where the alarm rule has been already removed
-[MSA-14317] - [Alarms] the "Filter by" / "Log Type" makes no sense in the Alarm tab
-[MSA-14319] - Edit Alarms and Edit Comments Icons is displayed on top of Logout Menu
-[MSA-14338] - [BPM][Permission Profile]Delete button is visible for manager even if he doesn't have the delete right
-[MSA-14380] - [API] we can delete a tenant using a manager token
+* [MSA-12365] - [Security] Invalidate/Revoke Tokens generated for deleted user
+* [MSA-13014] - [Alarms] list managed entities based on subtenants selected in conditions
+* [MSA-13116] - [UI] missing Columns filtering in Logs page when the window is too small
+* [MSA-13471] - [Assurance][API] alarm graph to reflect clear/ack status alignment
+* [MSA-13798] - [Alarm] SNMP trap sent by MSA for an alarm are missing the alarmFieldEventType field
+* [MSA-13799] - [Alarm] SNMP traps sent by MSA have a severity field that doesn't match the source alarm
+* [MSA-14042] - [Security] When staying on some pages, 401 will occur
+* [MSA-14061] - [ES] indexes templates are no more update nor pushed after initial deployemnt
+* [MSA-14102] - [UI/API] Impossible to attach MEs to a monitoring profile when a subtenant has a large number of MEs
+* [MSA-14116] - [Quickstart] create custom dashboard and MON pfl not working
+* [MSA-14117] - [Setting] variable discrepancy between 2.8.13 and 2.9.0
+* [MSA-14118] - [UX] MSA2.9.1 theme not fully aligned with figma
+* [MSA-14119] - [Topology] topology WF not working in a fresh install
+* [MSA-14134] - [PORTING 2.9.1] - [WF/UI] WF Process history should be filter according to user role
+* [MSA-14137] - [PORTING 2.9.0] - [API] Microservice instance data not imported
+* [MSA-14169] - [UI][WORKFLOW] unable to load scheduled processes
+* [MSA-14208] - Alarm Filtering Menu: display issue when selecting a value in most of the fields
+* [MSA-14211] - [UI] the details of an alarm contains 2 times the ack field
+* [MSA-14213] - Clicking Automation, then "Intend-Based" enters in an infinite loop
+* [MSA-14214] - [UX] Inconsistent sorting icons between "Admin" and "Assurance"
+* [MSA-14222] - [WF/API] Not able to resume a failed WF task
+* [MSA-14226] - [REPO/UI] Not able to access MSA repository due to continuously web browser request to API with high frequency
+* [MSA-14230] - [UX] user is logged out immediately after entering his correct login/password
+* [MSA-14244] - [CoreEngine] Microservice call commands fails for all adapters / (ERR_SD_FAILED) Operation Failed
+* [MSA-14245] - [Alarms] dynamic alarm creation should use the alarm name as the default alarm rule name
+* [MSA-14247] - [PORTING 2.9.1] - [Workflow/UI/API] search operation is working pages wise only. Global search operation is not working.
+* [MSA-14258] - [PORTING 2.9.1] - [Workflow/UI] search operation is working pages wise only. Global search operation is not working.
+* [MSA-14272] - [Alarms] Clear All and Ack All are failing with org.apache.http.client.ClientProtocolException
+* [MSA-14276] - [Assurance][UI] alarm graph to reflect clear/ack status alignment
+* [MSA-14303] - [UI] [Alarms/Logs] - Filter By has some display issues
+* [MSA-14306] - [UI] Proper message handling while trying to edit an alarm entry where the alarm rule has been already removed
+* [MSA-14317] - [Alarms] the "Filter by" / "Log Type" makes no sense in the Alarm tab
+* [MSA-14319] - Edit Alarms and Edit Comments Icons is displayed on top of Logout Menu
+* [MSA-14338] - [BPM][Permission Profile]Delete button is visible for manager even if he doesn't have the delete right
+* [MSA-14380] - [API] we can delete a tenant using a manager token
 
 == Upgrade
 

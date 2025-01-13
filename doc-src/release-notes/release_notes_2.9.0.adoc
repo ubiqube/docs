@@ -20,10 +20,10 @@ Welcome to the 2.9.0 release of the {product_name}. There are many updates in th
 == User experience
 === Apply new MSA branding - Black theme - Left menus
 
-Based on the work done on Cloudclapp, apply new changes on MSA black theme. This includes the following changes:
+Based on the work done on {ccla_product_name}, apply new changes on MSA black theme. This includes the following changes:
 
-* Apply back color as background color (top + left) + Cloudiamo watermark
-* MSactivator logo top left (developer + manager)
+* Apply back color as background color (top + left) and {cloudiamo_product_name} watermark
+* {product_name} logo top left (developer + manager)
 * New icons for left menus + paddings
 * Move settings + profile + logout at the bottom of left menus
 
@@ -59,7 +59,7 @@ image:2.9.0_alarm_clearing.jpg[width=700px]
 * [MSA-13048] - [CoreEngine] Chose the best message bus for syslogs
 * [MSA-13174] - [Microservices] synchronization optimization based on XPATH Command regardless of the IMPORT rank
 * [MSA-13217] - [Alarms][UI] update alarms status flow: ack and clear status
-* [MSA-13350] - [Alarms][UI] add global config variable to turn on/off the dyn alarm feature (default off)
+* [MSA-13350] - [Alarms][UI] add global config variable to turn on/off the dynamic alarm feature (default off)
 * [MSA-13422] - Refactor API code to have only One Model for Orch Definition and MicroService Definition
 * [MSA-13429] - [Settings][UI] Add name and group columns for MSA variables
 * [MSA-13440] - [DB] Convert ILIKE to a more agnostic form
@@ -71,7 +71,7 @@ image:2.9.0_alarm_clearing.jpg[width=700px]
 * [MSA-13754] - [MSA-API] Extend the PreAuth support for all MSA entities
 * [MSA-13792] - [API] Add traceId-spanId to WF logs
 * [MSA-13793] - [API] Remove RRD references, and refactoring
-* [MSA-13801] - [API] ⬆️ Upgrade to JDK21
+* [MSA-13801] - [API] Upgrade to JDK21
 * [MSA-13805] - [Alarms] add a new field alarmFieldId in the MSA MIB
 * [MSA-13807] - [API] Warn user in msa-api logs when using a deprecated method.
 * [MSA-13851] - [UX] Rename Pass to Forward in BPM view
