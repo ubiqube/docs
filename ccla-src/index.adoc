@@ -21,14 +21,16 @@ a| link:user-guide/quickstart{outfilesuffix}[Quickstart,window=_blank]
 
 a| link:release-notes/release_notes{outfilesuffix}[Release Notes,window=_blank]link:ccla/pdf/release-notes/release_notes.pdf[(pdf),window=_blank]
 
+a| link:release-notes/release_ccla_1.1.0{outfilesuffix}[CCLA 1.1.0,window=_blank]
+
 a| link:release-notes/release_ccla_1.0.0{outfilesuffix}[CCLA 1.0.0,window=_blank]
 
-a| link:release-notes/release_ccla_2.3.0{outfilesuffix}[CCLA BETA 2.3.0,window=_blank]
+a| link:release-notes/release_ccla_mvp4{outfilesuffix}[CCLA MVP4,window=_blank]
 
-a| link:release-notes/release_ccla_2.2.0{outfilesuffix}[CCLA BETA 2.2.0,window=_blank]
+a| link:release-notes/release_ccla_mvp3{outfilesuffix}[CCLA MVP3,window=_blank]
 
-a| link:release-notes/release_ccla_2.1.0{outfilesuffix}[CCLA BETA 2.1.0,window=_blank]
+a| link:release-notes/release_ccla_mvp2{outfilesuffix}[CCLA MVP2,window=_blank]
 
-a| link:release-notes/release_ccla_2.0.0{outfilesuffix}[CCLA BETA 2.0.0,window=_blank]
+a| link:release-notes/release_ccla_mvp1{outfilesuffix}[CCLA MVP1,window=_blank]
 
 |===

@@ -25,7 +25,7 @@ You can access our tutorial video here to perform installation: https://www.yout
 
 === Portal access
 
-After installation, browse https://localhost/ and connect with username ncroot and password ubiqube to access the {product_name}(TM) portal.
+After installation, browse https://localhost/ and connect with username ncroot and password ubiqube to access the {product_name} portal.
 
 For {ccla_product_name}, browse https://localhost/{ccla_product_name}/sign-up, define your first organization and connect with credentials received by mail
 

@@ -22,7 +22,7 @@ image:custom_manager_dashboard.png[width=700px]
 
 The styling of the BPM interface has been completely revamped. This new styling reflects the rest of the MSActivator interface, to give a consistent user experience. 
 
-The editing of BPM parameters is now consistent with the editing of Workflow parameters. New background faded colouring, “electric” gradient borders, and icons have been added to the BPM execution console to improve the user experience. 
+The editing of BPM parameters is now consistent with the editing of Workflow parameters. New background faded coloring, “electric” gradient borders, and icons have been added to the BPM execution console to improve the user experience. 
 
 In addition, it is easy for the user to navigate between “Show Tasks” on previous tasks, or “Continue” on paused ones. A clipboard icon has been added to enable the user to copy task output to their clipboard, which is especially useful when you need to copy large blocks of task output.
 

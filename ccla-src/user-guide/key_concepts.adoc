@@ -56,13 +56,13 @@ Example of deployment:
 * A MongoDB as a container image (deployed on K8 cluster)
 * Windows server instance (deployed on AWS EC2)
 
-Refers to link:application_deployer.adoc[Application Deployer,window=_blank] for more details.
+Refers to link:application_deployer.html[Application Deployer,window=_blank] for more details.
 
 === Environment
 
 An environment represents an infrastructure developed to provide applications. An environment is represented by a tile in organization dashboard or environment view. It could be:
 
-* A *K8 cluster* in Amazon (EKS), Azure (AKS), Google (GKE) or nativaley imported
+* A *K8 cluster* in Amazon (EKS), Azure (AKS), Google (GKE) or natively imported
 * A *virtual server* in Amazon (EC2)
 * A *combination of cloud services* (multi or hybrid cloud)
 
@@ -99,7 +99,7 @@ Example of Blueprints:
 
 ==== Content
 
-A Blueprint is a combinaison of two main files: 
+A Blueprint is a combination of two main files: 
 
 * *A meta data* containing basic information like name, description, owner, compliance standards, etc...
 * *A design file* to define resources used for the deployment and place components on the environment builder. The design file, by the nature of the component (Provider, Region, Cluster), include {product_name} workflows reference permit the environment creation and the deployment of applications

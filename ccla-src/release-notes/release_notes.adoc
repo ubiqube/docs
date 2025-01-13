@@ -33,13 +33,15 @@ Various fixes have been made to the product to ensure its continued ability to e
 
 == {product_name} Releases
 
-include::{includedir}/release_ccla_1.0.0.adoc[version 1.0 GA]
+include::{includedir}/release_ccla_1.1.0.adoc[version 1.1.0]
 
-include::{includedir}/release_ccla_2.3.0.adoc[version MVP4]
+include::{includedir}/release_ccla_1.0.0.adoc[version 1.0.0]
 
-include::{includedir}/release_ccla_2.2.0.adoc[version MVP3]
+include::{includedir}/release_ccla_mvp4.adoc[version MVP4]
 
-include::{includedir}/release_ccla_2.1.0.adoc[version MVP2]
+include::{includedir}/release_ccla_mvp3.adoc[version MVP3]
 
-include::{includedir}/release_ccla_2.0.0.adoc[version MVP1]
+include::{includedir}/release_ccla_mvp2.adoc[version MVP2]
+
+include::{includedir}/release_ccla_mvp1.adoc[version MVP1]
 

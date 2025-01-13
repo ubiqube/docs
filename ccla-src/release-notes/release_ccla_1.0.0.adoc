@@ -1,27 +1,26 @@
 
 = Version 1.0.0
+ifndef::imagesdir[:imagesdir: images]
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == New features
 
 === Product Unification - Hybrid login page / Black theme
-Fully rebrand portal to be aligned with MSactivator look & feel
+Fully rebrand portal to be aligned with {product_name} look & feel
+
+image:1.0_hybrid_login_page.png[width=700px]
 
 === Operate & Build, to drive xOps journey
 Embarking on an xOPS journey to ease building cloud environment and manage IT operations
 
+image:1.0_operate_build_page.png[width=700px]
+
 === Customized dashboard
 Define your own KPIs for all levels of managements : organization, environment and deployment
 
-=== Service Mesh
-Integration of Kiali/Istio to visualize your mesh
+== Technical fixes and feature details
 
-=== Observability
-Measure and understand the internal state of your environments by proxifying Prometheus and Grafana
-
-= Specific technical fixes and feature details =
-
-== Enhancements ==
+=== Enhancements
 * [CCLA-318] - Add observability flag during env creation
 * [CCLA-319] - Deploy Istio / Kiali when service mesh is checked
 * [CCLA-356] - Top Menu - port to new UI
@@ -36,8 +35,8 @@ Measure and understand the internal state of your environments by proxifying Pro
 * [CCLA-390] - [UI] Operate Menu Resources Discovery UI
 * [CCLA-393] - integrated and move Github/DockerHub from org setting to new setting screen
 * [CCLA-394] - User Profile
-* [CCLA-396] - Graphana Default Dashboard / backend implementation
-* [CCLA-397] - Fix Grapha deployment in GCP
+* [CCLA-396] - grafana Default Dashboard / backend implementation
+* [CCLA-397] - Fix grafana deployment in GCP
 * [CCLA-415] - [UI] Operate Menu - Cloud Section
 * [CCLA-417] - [UI] Operate Menu Finops component
 * [CCLA-418] - [UI] Operate Menu Security component on the Org level & Env level & Deployment level
@@ -59,7 +58,7 @@ Measure and understand the internal state of your environments by proxifying Pro
 * [CCLA-446] - [UI] Operate menu, Events Tab (old History Tab)
 * [CCLA-447] - [UI] Map Create Blueprint UI to Build menu
 * [CCLA-449] - [UI] CCLA - Designing How the Top Menu tabs behave & Check Color Accuracy
-* [CCLA-453] - [UI][CSS] Enhacement Operate Menu Configure component
+* [CCLA-453] - [UI][CSS] Enhancement Operate Menu Configure component
 * [CCLA-455] - Default tags for environment creation to identify origin - Start with AWS
 * [CCLA-457] - [UI] CCLA - Routes for Dashboards and Hiding AppBar for full screen UIs
 * [CCLA-458] - Top Menu - Environment Tab - Display Live(Green)/Never Reached(Grey)/Failed(Red) icon for Environment Status
@@ -83,11 +82,11 @@ Measure and understand the internal state of your environments by proxifying Pro
 * [CCLA-498] - UX Adaptation
 * [CCLA-514] - [UI] - Check Permission Profile UI in new CCLA UI
 
-== Bugs ==
+=== Bugs
 
 * [CCLA-342] - Editing manifest apps on designer tab not working on SAAS and Pre-Prod
 * [CCLA-344] - Current Month Costs for Managed Connections displays wrong values
-* [CCLA-357] - [Goverance][API]-All the users assoicated to a Org must see Envi created by ncroot / Admin in the same Org
+* [CCLA-357] - [Goverance][API]-All the users associated to a Org must see Envi created by ncroot / Admin in the same Org
 * [CCLA-388] - If One Org has 2 users say 'A' and 'B' then B must not see A's created Envi and vice versa and Total count for Environments not reflected when logged as ncroot.
 * [CCLA-432] - ORG dashboard is found empty when user register himself through get started button
 * [CCLA-433] - An Admin which has 2 Org's, He is able to see all the Environments even if he selected 1 Org
@@ -101,7 +100,7 @@ Measure and understand the internal state of your environments by proxifying Pro
 * [CCLA-486] - TearDown don't work when we directly select the Deployments from dropdown
 * [CCLA-487] - We see 2 environments in deployment tab when we have same deployment name under 2 diff environment
 * [CCLA-489] - Create Envi not working on .191 QA Platform
-* [CCLA-490] - Org Cred are not stored and retrive while creating Blueprint Environment
+* [CCLA-490] - Org Cred are not stored and retrieve while creating Blueprint Environment
 * [CCLA-492] - [UI] Minor UI Issues
 * [CCLA-493] - When "serviceId": null, then we are not getting logs for failed environment under Events tab
 * [CCLA-495] - Not able to create Org from CCLA UI on .17 and .191

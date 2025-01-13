@@ -1,0 +1,63 @@
+
+= Version 1.1.0
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+ifndef::imagesdir[:imagesdir: images]
+
+== New features
+
+=== Automation
+
+In addition to the *Operate* and Build actions, the version 1.1.0 provide the Automate action.
+
+You can now design and execute complex automation processes. 
+
+Each *Automation* is available in the catalog.
+
+image:1.1_automation_catalog.png[width=700px]
+
+Each *Automation* can be organized with categories and tags.
+
+image:1.1_automation_categories_tags.png[width=700px]
+
+Based on the {product_name} BPM stack, the *Automation* designer provides all the toolkit for building complex business process flows (decision and parallel gateways, user breakpoint,...).
+
+image:1.1_automation_designer.png[width=700px]
+
+You can apply an execution by providing the relevant input parameters and the targeted environment(s).
+
+The execution of an *Automation* can be manual or scheduled and the status of execution is available in the *Operate* menu in the *Automation* tab. 
+
+image:1.1_automation_exec_status.png[width=700px]
+
+== Technical fixes and feature details
+
+=== Enhancements
+
+* CCLA-581 - Automation Executions
+* CCLA-590 - [API] Add or update endpoint for creating a new automation
+* CCLA-592 - [Automation] dialog popup for Automation parameter on create/update
+* CCLA-593 - [Automation][UX] update screen for editing the Meta Data categories and tags
+* CCLA-606 - [Automation] Filter automations by Source
+* CCLA-618 - [API] Add execution amount to BpmnInfo
+* CCLA-634 - [Automation] add the Workflow activity in the designer menu
+
+=== Bugs
+
+* CCLA-526 - Blueprint Configuration Pop up hides behind Library Panel + not possible to drag and drop without closing library
+* CCLA-534 - [API]AWS & GCP Demo Envi Never turn to GREEN were as AZURE Demo Envi turns GREEN
+* CCLA-539 - We can still running symbol even though workflow successfully completed
+* CCLA-545 - Data Sensitivity for compliance scan does not seems to be changing
+* CCLA-547 - [API]Synchronize of microservices not working for demo env
+* CCLA-557 - Display default monitoring tool on the UI
+* CCLA-566 - Privileged manager is not allowed to create/update Blueprint
+* CCLA-578 - Creating a Blueprint with existing Name (Duplicate Name) should not be allowed
+* CCLA-582 - With "Use Tags" Unchecked, user can still click on "+ Add"
+* CCLA-583 - Applying Automation Pop-up UI logics
+* CCLA-587 - Land on Login Page when we are disconnected from CCLA
+* CCLA-588 - [Deployment] Unable to locate credentials. You can configure credentials by running "aws configure".
+* CCLA-594 - Namespace "monitoring" already exists
+* CCLA-595 - [Blueprint] creation of new blueprint is not working
+* CCLA-607 - Cannot deploy apps on Real AWS and Azure cluster when namespace is provided
+* CCLA-608 - ccla-scan-env is no more able to start due to missing ZAP docker image
+* CCLA-615 - Blueprint / Automation editor issues
+* CCLA-635 - Jira workflow not working in automation
