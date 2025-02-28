@@ -15,9 +15,8 @@ ifdef::pdf[]
 :includedir: .
 endif::[]
 
-Welcome to release 3.0.0 of the {product_name}. There are many updates in this version that we hope you'll like !
+Welcome to release 3.0.0-alpha of the {product_name}. There are many updates in this version that we hope you'll like !
 
-== User experience
 == Specific technical fixes and feature details
 
 === Enhancement
