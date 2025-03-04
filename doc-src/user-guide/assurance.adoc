@@ -110,7 +110,7 @@ When a KPI crosses a threshold and event is generated and visible in the assuran
 .Alert log for threshold crossing
 image:assurance_mon_profile_alarm.png[width=800px]
 
-When a monitoring threshold is crossed the log message will be similar to "%VNOC-1-SNMPTHLD: supervision - Site BLR149 snmp threshold 29-percentages_of_system_CPU_time raised value 1 (< 20) " where you can see that the threshold 10 has been crossed by a greater value 69.
+When a monitoring threshold is crossed the log message will be similar to "%VNOC-1-SNMPTHLD: supervision - Site BLR126 snmp threshold 31-cpu_load_1min raised value 173 (> 10)" where you can see that the threshold 10 has been crossed by a greater value 69.
 
 This configuration is done at the SNMP polling rule in the monitoring profile by setting a comparator '>' or '<' and a threshold.
 
@@ -398,5 +398,4 @@ Example: it is possible to have an alarm rule to detect the VNOC event IPDOWN an
 This is very useful if SNMP traps are configured to be sent as you may not want to have all the SNMP traps detected with the same severity level.
 
 image:alarm_severity_tuning.png[width=800px]
-
 
