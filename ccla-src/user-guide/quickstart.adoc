@@ -12,7 +12,7 @@ This documentation covers how you can quickly get started using {ccla_product_na
 
 {ccla_product_name} needs {product_name} to be fully functional.
 
-=== Installation
+== Installation
 
 Follow the same installation guide as per this documentation: https://ubiqube.com/wp-content/docs/latest/user-guide/quickstart.html
 The same installation script has been updated to support {ccla_product_name}. Execute it with the ccla flag to have {ccla_product_name} installed:
@@ -23,7 +23,7 @@ The same installation script has been updated to support {ccla_product_name}. Ex
 
 You can access our tutorial video here to perform installation: https://www.youtube.com/watch?v=UHl30dN5S5s&t=2s
 
-=== Portal access
+== Portal access
 
 After installation, browse https://localhost/ and connect with username ncroot and password ubiqube to access the {product_name} portal.
 
