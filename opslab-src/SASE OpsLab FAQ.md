@@ -12,58 +12,58 @@
 - **Traffic Steering:** Mechanisms to direct user or branch traffic to a specific security platform (e.g., GRE/IPsec tunnels, PAC file, or client).  
 - **Fallback / Rollback Strategy:** A contingency plan to revert to a previous system in case of errors or unexpected behavior during migration.  
 
-### What is a POP?**  
+## What is a POP?**  
 A: A Point of Presence (POP) is a network location where users connect to SASE services.
 
 ---
 
-### What is a vPOP?**  
+## What is a vPOP?**  
 A: A virtual POP that emulates a physical POP using cloud infrastructure.
 
 ---
 
-### What is Transit?**  
+## What is Transit?**  
 A: Upstream ISP bandwidth used by SASE vendors for routing traffic to/from the internet.
 
 ---
 
-### What is Peering?**  
+## What is Peering?**  
 A: Exchange of internet traffic between ISPs or content networks; may be public/private or paid/free.
 
 ---
 
-### What is the Management Plane?**  
+## What is the Management Plane?**  
 A: Handles configuration, control, and monitoring of services.
 
 ---
 
-### What is the Data Plane?**  
+## What is the Data Plane?**  
 A: Handles real-time traffic forwarding and inspection.
 
 ---
 
-### What is SASE?**  
+## What is SASE?**  
 A: Secure Access Service Edge — converged cloud-based networking and security architecture.
 
 ---
 
-### What is SSE?**  
+## What is SSE?**  
 A: Security Service Edge — cloud security services including SWG, DLP, CASB, and threat protection.
 
 ---
 
-### What is ZTNA?**  
+## What is ZTNA?**  
 A: Zero Trust Network Access — identity-aware access to private applications without VPN.
 
 ---
 
-### What is OpsLab?
+## What is OpsLab?
 **OpsLab** is the automation and orchestration platform used to design, execute, and monitor network and security workflows.  
 It provides the foundation for building “OpsKits,” managing projects, and automating operational tasks at scale.
 
 ---
 
-### What is an OpsKit?
+## What is an OpsKit?
 An **OpsKit** is a reusable automation module or workflow template that performs a specific operational function — for example, creating CPE tunnels, importing inventory, or deploying configurations.  
 OpsKits can be:
 - Manual (step-by-step guided)
@@ -72,7 +72,7 @@ OpsKits can be:
 
 ---
 
-### What is a Project?
+## What is a Project?
 A **Project** is a structured deployment initiative that organizes related tasks into phases (such as Planning, Execution, and Validation).  
 It provides visibility into progress through a Kanban or Gantt-style interface, showing which tasks are To Do, In Progress, or Done.
 
@@ -84,7 +84,7 @@ It provides visibility into progress through a Kanban or Gantt-style interface, 
 
 ---
 
-### What is a Task?
+## What is a Task?
 A **Task** is an individual activity that contributes to the completion of a project.  
 It can represent either:
 - A **human action** (manual step)  
@@ -98,7 +98,7 @@ It can represent either:
 
 ---
 
-### What is the "Magic Button"?
+## What is the "Magic Button"?
 The **Magic Button** is a one-click action that allows users to quickly reopen archived projects or perform predefined recovery or modification operations — for example:
 - Restoring a CPE configuration  
 - Adding or removing tunnels in a deployed network  
@@ -108,7 +108,7 @@ It streamlines routine actions and simplifies post-deployment adjustments.
 
 ---
 
-### What is a Project Lifecycle?
+## What is a Project Lifecycle?
 The **Project Lifecycle** defines the sequence of states through which a project progresses, such as:
 > New → In Progress → Done → Archived → (Reopened)
 
@@ -116,7 +116,7 @@ It helps users understand where the project stands and supports governance, trac
 
 ---
 
-### What does “Audit Trail” mean in this context?
+## What does “Audit Trail” mean in this context?
 An **Audit Trail** records every significant activity or change within a project or task, including:
 - Who performed an action  
 - What was changed or executed  
