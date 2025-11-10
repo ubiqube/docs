@@ -25,7 +25,7 @@ The process of transferring users, devices, applications, and security policies 
 - **Operational Continuity & Validation:** Running in audit or parallel mode to ensure service continuity and validate behavior.  
 - **Compliance & Reporting:** Maintaining logging, reporting, and audit trails equivalent to the original platform.
 
-### Deploy (SASE Context)
+## Deploy (SASE Context)
 **Definition:**  
 The process of provisioning, configuring, and activating SASE (Secure Access Service Edge) services, policies, or components in a live environment to provide secure connectivity and enforce security controls for users, devices, and applications.
 
@@ -40,7 +40,7 @@ The process of provisioning, configuring, and activating SASE (Secure Access Ser
 **Example:**  
 - Deploying a new SWG policy set across all branch offices using the SASE platform’s cloud management console, ensuring all traffic is inspected and filtered according to corporate security rules.
 
-### Run (SASE Context)
+## Run (SASE Context)
 **Definition:**  
 The process of operating, monitoring, and maintaining SASE (Secure Access Service Edge) services and policies in a live production environment to ensure secure connectivity, policy enforcement, and continuous service availability.
 
