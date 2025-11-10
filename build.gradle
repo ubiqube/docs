@@ -4,6 +4,7 @@ plugins {
     id 'org.asciidoctor.jvm.pdf' version '4.0.5'	
 }
 apply plugin: 'java'
+apply plugin: 'ruby'
 
 repositories {
     mavenCentral()
@@ -11,8 +12,7 @@ repositories {
 }
 
 asciidoctorj {
-    modules {
-       diagram.use() 
+       diagram.use('2.2.9') 
        diagram.version '2.2.9' 
     }
 }
@@ -48,12 +48,12 @@ asciidoctor {
     'revnumber-prev': 'MSA-2.8.13',
     'allow-uri-read': '',
     'sectlinks': true,
-    'html': 'true',
+    'html': true,
     'format': 'html',
     'icons' : 'font'
 
   sourceDir = file('doc-src')
-  outputDir  file('build/msa/html')
+  outputDir = file('build/msa/html')
 
   resources {
     from('doc-src') {
@@ -86,7 +86,7 @@ asciidoctorPdf {
     options doctype: 'book'
 
     attributes \
-      'sourcedir': project.sourceSets.main.java.srcDirs[0],
+      'sourcedir': (project.sourceSets.main.java.srcDirs && !project.sourceSets.main.java.srcDirs.isEmpty()) ? project.sourceSets.main.java.srcDirs[0] : '',
       'organization' : 'UBiqube',
  	    'source-highlighter' : 'rouge',
       'linkcss' : true,
@@ -114,8 +114,14 @@ asciidoctorPdf {
 
   sourceDir file('doc-src')
   sources {
-       include 'user-guide/manager-guide-single.adoc', 'admin-guide/admin-guide-single.adoc','developer-guide/developer-guide-single.adoc', 'user-guide/quickstart.adoc',
-               'release-notes/release_notes.adoc', 'release-notes/release_notes_2.8.13.adoc', 'release-notes/release_notes_2.9.0.adoc', 'release-notes/release_notes_2.9.1.adoc'
+       include 'user-guide/manager-guide-single.adoc',
+              'admin-guide/admin-guide-single.adoc',
+              'developer-guide/developer-guide-single.adoc',
+              'user-guide/quickstart.adoc',
+              'release-notes/release_notes.adoc',
+              'release-notes/release_notes_2.8.13.adoc',
+              'release-notes/release_notes_2.9.0.adoc',
+              'release-notes/release_notes_2.9.1.adoc'
  }
   outputDir file('build/msa/pdf')
 
@@ -131,4 +137,4 @@ asciidoctorPdf {
     into '.'
   }
 }
-task asciidoc_msa_pdf(dependsOn: asciidoctorPdf)
+task asciidoctor_msa_pdf(dependsOn: asciidoctorPdf)
