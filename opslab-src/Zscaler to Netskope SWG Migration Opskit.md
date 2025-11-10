@@ -114,7 +114,7 @@ Migrating SWG policies from **Zscaler to Netskope** is non-trivial due to platfo
 - **Policy cleanup & consolidation:** Opportunity to remove stale rules and optimize SWG posture.  
 - **SSE/SASE alignment:** Realign SWG with broader cloud security architecture (CASB, DLP, cloud-app visibility).  
 - **Cost savings:** Potential licensing optimizations when moving to Netskope.  
-- **Operational efficiency:** Reduced errors, better auditability, and streamlined management.
+- **Operational efficiency:** Reduced errors, better audibility, and streamlined management.
 
 ---
 
