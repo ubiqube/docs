@@ -14,8 +14,8 @@ repositories {
 asciidoctorj {
        diagram.use('2.2.9') 
        diagram.version '2.2.9' 
-    }
 }
+
 
 dependencies {
   asciidoctorGems 'rubygems:rouge:4.6.1'
