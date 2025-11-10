@@ -12,7 +12,86 @@
 - **Traffic Steering:** Mechanisms to direct user or branch traffic to a specific security platform (e.g., GRE/IPsec tunnels, PAC file, or client).  
 - **Fallback / Rollback Strategy:** A contingency plan to revert to a previous system in case of errors or unexpected behavior during migration.  
 
-## Deploy (SASE Context)
+
+### What is OpsLab?
+**OpsLab** is the automation and orchestration platform used to design, execute, and monitor network and security workflows.  
+It provides the foundation for building “OpsKits,” managing projects, and automating operational tasks at scale.
+
+---
+
+### What is an OpsKit?
+An **OpsKit** is a reusable automation module or workflow template that performs a specific operational function — for example, creating CPE tunnels, importing inventory, or deploying configurations.  
+OpsKits can be:
+- Manual (step-by-step guided)
+- Automated (scheduled or triggered)
+- Integrated into larger projects or task chains
+
+---
+
+### What is a Project?
+A **Project** is a structured deployment initiative that organizes related tasks into phases (such as Planning, Execution, and Validation).  
+It provides visibility into progress through a Kanban or Gantt-style interface, showing which tasks are To Do, In Progress, or Done.
+
+**Typical project attributes include:**
+- Status (New, In Progress, Done, Archived)  
+- Tasks (the set of required activities)  
+- Owner (responsible person or team)  
+- Start/End Dates (timeline tracking)
+
+---
+
+### What is a Task?
+A **Task** is an individual activity that contributes to the completion of a project.  
+It can represent either:
+- A **human action** (manual step)  
+- An **OpsKit execution** (automated workflow)
+
+**Tasks include:**
+- Status (To Do, In Progress, Done, Failed, On Hold)  
+- Owner and approver  
+- Dependencies (parent/child relationships)  
+- Links to OpsKits or human activities
+
+---
+
+### What is the "Magic Button"?
+The **Magic Button** is a one-click action that allows users to quickly reopen archived projects or perform predefined recovery or modification operations — for example:
+- Restoring a CPE configuration  
+- Adding or removing tunnels in a deployed network  
+- Updating an existing branch with new infrastructure
+
+It streamlines routine actions and simplifies post-deployment adjustments.
+
+---
+
+### What is a Project Lifecycle?
+The **Project Lifecycle** defines the sequence of states through which a project progresses, such as:
+> New → In Progress → Done → Archived → (Reopened)
+
+It helps users understand where the project stands and supports governance, traceability, and auditing.
+
+---
+
+### What does “Audit Trail” mean in this context?
+An **Audit Trail** records every significant activity or change within a project or task, including:
+- Who performed an action  
+- What was changed or executed  
+- When it happened  
+
+This supports accountability, compliance, and post-incident analysis.
+
+---
+
+### Who are the main personas involved?
+- **Project Manager:** Plans, tracks, and coordinates activities within a project.  
+- **Ops Staff:** Executes assigned tasks, updates progress, and provides feedback or results.  
+
+Each persona interacts with the system differently — PMs manage from a top-down view, while Ops Staff focus on execution.
+
+---
+
+
+## What is Deploy (SASE Context)
 **Definition:**  
 The process of provisioning, configuring, and activating SASE (Secure Access Service Edge) services, policies, or components in a live environment to provide secure connectivity and enforce security controls for users, devices, and applications.
 
@@ -27,7 +106,9 @@ The process of provisioning, configuring, and activating SASE (Secure Access Ser
 **Example:**  
 - Deploying a new SWG policy set across all branch offices using the SASE platform’s cloud management console, ensuring all traffic is inspected and filtered according to corporate security rules.
 
-## Migrate (SASE Context)
+---
+
+## What is Migrate (SASE Context)
 **Definition:**  
 The process of transferring users, devices, applications, and security policies from one SASE (Secure Access Service Edge) platform to another while maintaining connectivity, security, and compliance.
 
@@ -39,8 +120,9 @@ The process of transferring users, devices, applications, and security policies 
 - **Operational Continuity & Validation:** Running in audit or parallel mode to ensure service continuity and validate behavior.  
 - **Compliance & Reporting:** Maintaining logging, reporting, and audit trails equivalent to the original platform.
 
+---
 
-## Run (SASE Context)
+## What is Run (SASE Context)
 **Definition:**  
 The process of operating, monitoring, and maintaining SASE (Secure Access Service Edge) services and policies in a live production environment to ensure secure connectivity, policy enforcement, and continuous service availability.
 
