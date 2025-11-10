@@ -12,19 +12,6 @@
 - **Traffic Steering:** Mechanisms to direct user or branch traffic to a specific security platform (e.g., GRE/IPsec tunnels, PAC file, or client).  
 - **Fallback / Rollback Strategy:** A contingency plan to revert to a previous system in case of errors or unexpected behavior during migration.  
 
-
-## Migration (SASE Context)
-**Definition:**  
-The process of transferring users, devices, applications, and security policies from one SASE (Secure Access Service Edge) platform to another while maintaining connectivity, security, and compliance.
-
-**Key Points:**  
-- **Policy Migration:** Moving firewall rules, SWG policies, ZTNA rules, DLP rules, and threat detection configurations.  
-- **Traffic & Network Migration:** Redirecting user or branch traffic (GRE/IPsec tunnels, PAC files, or agents) to the new SASE provider.  
-- **Identity & Access Migration:** Replicating user, group, and role definitions for seamless access.  
-- **Application & Resource Access Migration:** Recreating private/internal application access on the new platform.  
-- **Operational Continuity & Validation:** Running in audit or parallel mode to ensure service continuity and validate behavior.  
-- **Compliance & Reporting:** Maintaining logging, reporting, and audit trails equivalent to the original platform.
-
 ## Deploy (SASE Context)
 **Definition:**  
 The process of provisioning, configuring, and activating SASE (Secure Access Service Edge) services, policies, or components in a live environment to provide secure connectivity and enforce security controls for users, devices, and applications.
@@ -39,6 +26,19 @@ The process of provisioning, configuring, and activating SASE (Secure Access Ser
 
 **Example:**  
 - Deploying a new SWG policy set across all branch offices using the SASE platform’s cloud management console, ensuring all traffic is inspected and filtered according to corporate security rules.
+
+## Migrate (SASE Context)
+**Definition:**  
+The process of transferring users, devices, applications, and security policies from one SASE (Secure Access Service Edge) platform to another while maintaining connectivity, security, and compliance.
+
+**Key Points:**  
+- **Policy Migration:** Moving firewall rules, SWG policies, ZTNA rules, DLP rules, and threat detection configurations.  
+- **Traffic & Network Migration:** Redirecting user or branch traffic (GRE/IPsec tunnels, PAC files, or agents) to the new SASE provider.  
+- **Identity & Access Migration:** Replicating user, group, and role definitions for seamless access.  
+- **Application & Resource Access Migration:** Recreating private/internal application access on the new platform.  
+- **Operational Continuity & Validation:** Running in audit or parallel mode to ensure service continuity and validate behavior.  
+- **Compliance & Reporting:** Maintaining logging, reporting, and audit trails equivalent to the original platform.
+
 
 ## Run (SASE Context)
 **Definition:**  
