@@ -1,4 +1,4 @@
-FROM gradle:7.6.4-jdk17-alpine
+FROM gradle:9.2.0-jdk25-alpine
 
 ADD doc-src/		doc-src
 #ADD ccla-src/		ccla-src
