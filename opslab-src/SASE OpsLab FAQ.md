@@ -12,6 +12,50 @@
 - **Traffic Steering:** Mechanisms to direct user or branch traffic to a specific security platform (e.g., GRE/IPsec tunnels, PAC file, or client).  
 - **Fallback / Rollback Strategy:** A contingency plan to revert to a previous system in case of errors or unexpected behavior during migration.  
 
+### What is a POP?**  
+A: A Point of Presence (POP) is a network location where users connect to SASE services.
+
+---
+
+### What is a vPOP?**  
+A: A virtual POP that emulates a physical POP using cloud infrastructure.
+
+---
+
+### What is Transit?**  
+A: Upstream ISP bandwidth used by SASE vendors for routing traffic to/from the internet.
+
+---
+
+### What is Peering?**  
+A: Exchange of internet traffic between ISPs or content networks; may be public/private or paid/free.
+
+---
+
+### What is the Management Plane?**  
+A: Handles configuration, control, and monitoring of services.
+
+---
+
+### What is the Data Plane?**  
+A: Handles real-time traffic forwarding and inspection.
+
+---
+
+### What is SASE?**  
+A: Secure Access Service Edge — converged cloud-based networking and security architecture.
+
+---
+
+### What is SSE?**  
+A: Security Service Edge — cloud security services including SWG, DLP, CASB, and threat protection.
+
+---
+
+### What is ZTNA?**  
+A: Zero Trust Network Access — identity-aware access to private applications without VPN.
+
+---
 
 ### What is OpsLab?
 **OpsLab** is the automation and orchestration platform used to design, execute, and monitor network and security workflows.  
