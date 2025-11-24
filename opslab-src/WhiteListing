@@ -17,7 +17,7 @@ By integrating SASE OpsLab into the deployment process, enterprises can accelera
 
 #Detailed Use Cases (per personas)
 
-##Mary & Angela - Security Manager & Security Architect
+## Mary & Angela - Security Manager & Security Architect
 As members of the security leadership team we want to be sure that our firewall policy posture complies with the principle of least privilege. 
 Therefore we want to open only the traffic to the POPs of our SASE provider. For that we want a solution that automatically collects and maintains the list of POP IP addresses associated with our SASE tenant (organization), and dynamically update firewall whitelisting rules on all edge devices accordingly.
 So that the redirection of all outgoing traffic  from the edge/branch to the internet and DCs are all allowed to be sent to the right SASE POPs
