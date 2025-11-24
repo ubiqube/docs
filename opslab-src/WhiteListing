@@ -1,4 +1,4 @@
-#Problem Statement
+# Problem Statement
 
 As enterprises transition to SASE (Secure Access Service Edge), they are required to build secure tunnels from their locations to the SSE (Security Service Edge) PoPs (Points of Presence). However, for these tunnels to function correctly, legacy edge firewalls and CPE (routers) must also be configured to allow traffic to the SSE PoPs.
 SSE vendors typically provide large IP subnet ranges for these PoPs—often with far more addresses than are actually in use. Whitelisting such broad IP ranges introduces significant security risks, as it expands the attack surface and violates the principle of least privilege.
