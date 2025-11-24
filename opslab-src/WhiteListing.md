@@ -12,17 +12,17 @@ A solution that enables dynamic, fine-grained whitelisting—automated and align
 SASE OpsLab addresses this challenge by providing automated, dynamic whitelisting to:
 - Reduce operational complexity for network and security teams by centralizing and simplifying firewall rule management across heterogeneous and distributed firewalls at the edge
 - Improve the security posture by enforcing least-privilege access—ensuring that only the exact, actively-used PoP IPs are permitted, not entire vendor subnets
-- Allow for policy consistency and auditability across legacy and virtualized firewalls from different vendors.
+- Allow for policy consistency and the ability to audit across legacy and virtualized firewalls from different vendors.
 By integrating SASE OpsLab into the deployment process, enterprises can accelerate SASE rollouts, reduce misconfiguration risk, and maintain strict security standards without overwhelming their operational teams.
 
 #Detailed Use Cases (per personas)
 
-## Mary & Angela - Security Manager & Security Architect
-As members of the security leadership team we want to be sure that our firewall policy posture complies with the principle of least privilege. 
-Therefore we want to open only the traffic to the POPs of our SASE provider. For that we want a solution that automatically collects and maintains the list of POP IP addresses associated with our SASE tenant (organization), and dynamically update firewall whitelisting rules on all edge devices accordingly.
-So that the redirection of all outgoing traffic  from the edge/branch to the internet and DCs are allowed to be sent to the right SASE POPs
-## Sebastian - Managed SASE Provider Operator
-Sebastian receives repeated requests to configure access only to the specific IPs of the PoPs actually used by its customer’s users. He must manually configure numerous NGFW which is cumbersome and time consuming. He may have created scripts but those are not productized nor dynamic.
+## Mary & Angela: Security Manager & Security Architect
+As members of the security leadership team we want to be sure that our firewall policy posture complies with the principle of the least privilege. 
+Therefore, we want to open only the traffic to the POPs of our SASE provider. For that we want a solution that automatically collects and maintains the list of POP IP addresses associated with our SASE tenant (organization), and dynamically update firewall whitelisting rules on all edge devices accordingly.
+So that the redirection of all outgoing traffic from the edge/branch to the internet and DCs are allowed to be sent to the right SASE POPs
+## Sebastian: Managed SASE Provider Operator
+Sebastian receives repeated requests to configure access only to the specific IPs of the PoPs actually used by its customer’s users. He must manually configure numerous NGFW which is cumbersome and time-consuming. He may have created scripts but those are not productized nor dynamic.
 Sebastian uses SASE OpsLab as an automation and orchestration layer to simplify and secure this process. The SASE OpsLab queries the SSE vendor APIs to determine which PoPs are actively used by each customer/site. It then pushes the necessary firewall rules to the appropriate customer edge devices.
 
 #Product Behavior
