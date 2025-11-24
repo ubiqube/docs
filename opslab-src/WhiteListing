@@ -4,7 +4,7 @@ As enterprises transition to SASE (Secure Access Service Edge), they are require
 SSE vendors typically provide large IP subnet ranges for these PoPs—often with far more addresses than are actually in use. Whitelisting such broad IP ranges introduces significant security risks, as it expands the attack surface and violates the principle of least privilege.
 To reduce this risk, customers prefer to allow traffic only to the specific IP addresses of the PoPs actually in use. However, identifying and managing these specific IPs across hundreds or even thousands of firewalls is operationally burdensome and error-prone. This complexity creates a major obstacle to SASE adoption, particularly in large, distributed environments.
 
-#Motivation
+# Motivation
 Without a precise and scalable method for whitelisting only the necessary IP addresses, organizations are forced to choose between weakening their security posture or facing high operational overhead.
 A solution that enables dynamic, fine-grained whitelisting—automated and aligned with actual PoP usage—would drastically reduce risk, simplify operations, and accelerate SASE deployments at scale. It would also help network and security teams maintain consistent policy enforcement across all locations, ensuring that SASE does not become a new point of vulnerability.
 
