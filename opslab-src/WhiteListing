@@ -1,0 +1,32 @@
+#Problem Statement
+
+As enterprises transition to SASE (Secure Access Service Edge), they are required to build secure tunnels from their locations to the SSE (Security Service Edge) PoPs (Points of Presence). However, for these tunnels to function correctly, legacy edge firewalls and CPE (routers) must also be configured to allow traffic to the SSE PoPs.
+SSE vendors typically provide large IP subnet ranges for these PoPs—often with far more addresses than are actually in use. Whitelisting such broad IP ranges introduces significant security risks, as it expands the attack surface and violates the principle of least privilege.
+To reduce this risk, customers prefer to allow traffic only to the specific IP addresses of the PoPs actually in use. However, identifying and managing these specific IPs across hundreds or even thousands of firewalls is operationally burdensome and error-prone. This complexity creates a major obstacle to SASE adoption, particularly in large, distributed environments.
+
+#Motivation
+Without a precise and scalable method for whitelisting only the necessary IP addresses, organizations are forced to choose between weakening their security posture or facing high operational overhead.
+A solution that enables dynamic, fine-grained whitelisting—automated and aligned with actual PoP usage—would drastically reduce risk, simplify operations, and accelerate SASE deployments at scale. It would also help network and security teams maintain consistent policy enforcement across all locations, ensuring that SASE does not become a new point of vulnerability.
+
+# Business Opportunity
+SASE OpsLab addresses this challenge by providing automated, dynamic whitelisting to:
+- Reduce operational complexity for network and security teams by centralizing and simplifying firewall rule management across heterogeneous and distributed firewalls at the edge
+- Improve the security posture by enforcing least-privilege access—ensuring that only the exact, actively-used PoP IPs are permitted, not entire vendor subnets
+- Allow for policy consistency and auditability across legacy and virtualized firewalls from different vendors.
+By integrating SASE OpsLab into the deployment process, enterprises can accelerate SASE rollouts, reduce misconfiguration risk, and maintain strict security standards without overwhelming their operational teams.
+
+#Detailed Use Cases (per personas)
+
+##Mary & Angela - Security Manager & Security Architect
+As members of the security leadership team we want to be sure that our firewall policy posture complies with the principle of least privilege. 
+Therefore we want to open only the traffic to the POPs of our SASE provider. For that we want a solution that automatically collects and maintains the list of POP IP addresses associated with our SASE tenant (organization), and dynamically update firewall whitelisting rules on all edge devices accordingly.
+So that the redirection of all outgoing traffic  from the edge/branch to the internet and DCs are all allowed to be sent to the right SASE POPs
+##Sebastian Managed SASE provider operator
+Sebastian receives repeated requests to configure access only to the specific IPs of the PoPs actually used by its customer’s users. He must manually configure numerous NGFW which is cumbersome and time consuming. He may have created scripts but those are not productized nor dynamic.
+Sebastian uses SASE OpsLab as an automation and orchestration layer to simplify and secure this process. The SASE OpsLab queries the SSE vendor APIs to determine which PoPs are actively used by each customer/site. It then pushes the necessary firewall rules to the appropriate customer edge devices.
+
+#Product Behavior
+The OpsLab stores the complete list of IP addresses (IPv4 and/or IPv6) associated with the customer’s assigned POPs.
+##Rule Generation and Deployment:
+ Based on the maintained list, the OpsKit generates or updates firewall rules to whitelist only these IPs. These rules are pushed and enforced across all customer-associated edge devices (e.g., CPE, uCPE, vCPE).
+
