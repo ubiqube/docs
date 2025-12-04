@@ -65,6 +65,8 @@ class Device(MSA_API):
 ----
 from msa_sdk.device import Device
 from msa_sdk.variables import Variables
+from msa_sdk.msa_api import MSA_API
+
 import json
 
 dev_var = Variables()                           <1>
@@ -86,7 +88,7 @@ new_device.create()                             <2>
 
 context['device_id'] = new_device.device_id     <3>
 
-print(new_device.process_content('ENDED', 'Task OK', context, False))
+MSA_API.task_success('Task OK', context)
 ----
 <1> define the parameters to pass to the API
 <2> create the new managed entity
@@ -119,8 +121,7 @@ try:
   ms_order = Order(me_id)
   ms_order.command_execute('CREATE', route)                 <4>
 except Exception as e:
-  ret = MSA_API.process_content('FAILED', f'CREATE ERROR: {str(e)}', context, True)
-  print(ret)
+  MSA_API.task_error(f'CREATE ERROR: {str(e)}', context)
 ----
 <1> Read the ID of the managed entity from the context, assuming the variable 'me' type is Device
 <2> Build the Microservice JSON params for the CREATE operation of the microservice.
@@ -172,14 +173,9 @@ for firewall in firewalls:
     order = Order(devicelongid)
     order.command_execute('CREATE', simple_firewall)
   except Exception as e:
-    ret = MSA_API.process_content('FAILED', f'CREATE ERROR: {str(e)}', context, True)
-    print(ret)
+    MSA_API.task_error(f'CREATE ERROR: {str(e)}', context)
 
-ret = MSA_API.process_content('ENDED',
-                          	f'IPTABLES RULE INITIALIZED',
-                          	context, True)
-
-print(ret)
+MSA_API.task_success(f'IPTABLES RULE INITIALIZED', 	context)
 ----
 <1> use a variable array typed as a Managed Entity 
 
@@ -201,8 +197,7 @@ try:
   ms_instances = json.loads(order.content)                  <4>
 
 except Exception as e:
-  ret = MSA_API.process_content('FAILED', f'IMPORT ERROR: {str(e)}', context, True)
-  print(ret)
+  MSA_API.task_error(f'IMPORT ERROR: {str(e)}', context)
 ----
 <1> initialize an Order object
 <2> execute the IMPORT of a microservice defined in a file routing.xml
