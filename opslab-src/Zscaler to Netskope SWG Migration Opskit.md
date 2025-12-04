@@ -1,5 +1,7 @@
 # Zscaler to Netskope SWG Migration OpsKit
 
+---
+
 ## 1. Terminology
 - **SWG (Secure Web Gateway):** Cloud service controlling and monitoring web traffic for security and compliance.  
 - **Zscaler SWG:** Cloud SWG platform by Zscaler.  

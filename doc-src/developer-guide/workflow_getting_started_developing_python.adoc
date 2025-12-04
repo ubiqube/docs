@@ -72,8 +72,7 @@ dev_var.add('name', var_type='String')
 
 context = Variables.task_call(dev_var)
 
-ret = MSA_API.process_content('ENDED', 'workflow initialized', context, True)
-print(ret)
+MSA_API.task_success('workflow initialized', context)
 ----
 
 image:workflow_helloworld_add_task_python.png[]
@@ -92,7 +91,7 @@ For the print process, use the process type "UPDATE".
 It will take one parameter that will be used to print your message. 
 Use the code below to create a task that will read the name from the user form and print it in the live console.
 
-[source, php]
+[source, python]
 ----
 from msa_sdk.variables import Variables
 from msa_sdk.msa_api import MSA_API
@@ -100,8 +99,7 @@ from msa_sdk.msa_api import MSA_API
 context = Variables.task_call()
 my_name = context['name']
 
-ret = MSA_API.process_content('ENDED', f'Hello {my_name}', context, True)
-print(ret)
+MSA_API.task_success(f'Hello {my_name}', context)
 ----
 
 === Test the Workflow
