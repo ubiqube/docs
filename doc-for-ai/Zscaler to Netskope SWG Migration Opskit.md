@@ -216,17 +216,6 @@ Phase 7: Decommission
   - Notes: Update documentation
 -->
 
---Parent--
-| Phase                  | Action                                     | Owner   | Notes |
-|------------------------|-------------------------------------------|---------|-------|
-| Planning & Discovery   | Export Zscaler policies and exceptions    | SecOps | Include SSL, DLP, file-type controls |
-| Mapping & Transformation | Map Zscaler categories → Netskope categories/objects | SecOps | Document gaps and adjustments |
-| Implementation         | Create Netskope objects (URL lists, groups, file types) | SecOps | Start in audit/log-only mode |
-| Pilot & Dual-run       | Configure small user group in audit mode | SecOps | Compare logs/hits vs Zscaler |
-| Cut-over               | Redirect all traffic to Netskope          | SecOps/NetOps | Validate critical apps and SSL inspection |
-| Optimization           | Refine policies based on hits/logs        | SecOps | Reduce false positives/negatives |
-| Decommission           | Retire Zscaler policies, infrastructure, and licenses | SecOps | Update documentation |
-
 ---
 
 --Parent--

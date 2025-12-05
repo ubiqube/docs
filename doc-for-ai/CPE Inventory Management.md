@@ -50,16 +50,22 @@ The goal of the *CPE Inventory Management* feature is to enable users to **bulk 
 The **Import CPE Inventory** OpsKit should be extended to support importing the following additional fields from the CSV file:
 
 --Child--
-| Field               | Description                          | Required |
-|---------------------|--------------------------------------|-----------|
-| Address             | Street address of the CPE location   | No        |
-| City                | City where the CPE is located        | No        |
-| Country             | Country of installation              | No        |
-| Longitude           | Geographic longitude coordinate      | No        |
-| Latitude            | Geographic latitude coordinate       | No        |
-| Custom              | User-defined field for extra data    | No        |
-| **IP Address**      | Device IP address                    | **Yes**   |
-| **External Interface** | Network interface for connectivity | **Yes**   |
+Address: Street address of the CPE location. (Not required)
+--Child--
+City: City where the CPE is located. (Not required)
+--Child--
+Country: Country of installation. (Not required)
+--Child--
+Longitude: Geographic longitude coordinate. (Not required)
+--Child--
+Latitude: Geographic latitude coordinate. (Not required)
+--Child--
+Custom: User-defined field for extra data. (Not required)
+--Child--
+IP Address: Device IP address. (Required)
+--Child--
+External Interface: Network interface for connectivity. (Required)
+
 
 --Child--
 > **Note:** The IP address and external interface fields are mandatory and must be present in the CSV file.

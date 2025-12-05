@@ -118,23 +118,34 @@ Users can view tunnel deployment progress and results on a graphical topology in
 #### 4.3.1 User Input
 Users choose the following in the automation catalog:
 --Child--
-
-| Parameter                   | Description |
-|-------------------------------|------------|
-| SSE Vendor                    | Netskope, Prisma Access, or Cisco/Fortigate SDWAN |
-| Tunnel Type                   | IPSEC only |
-| Primary and Secondary POPs    | POP selection for tunnel endpoints |
-| Edge Devices                  | List of CPEs with external IP, external interface, failover flag |
+Parameters are:
+--Child--
+SSE Vendor: Netskope, Prisma Access, or Cisco/Fortigate SDWAN.
+--Child--
+Tunnel Type: IPSEC only.
+--Child--
+Primary and Secondary POPs: POP selection for tunnel endpoints.
+--Child--
+Edge Devices: List of CPEs with external IP, external interface, and failover flag.
 
 --Child--
 #### 4.3.2 Vendor Failover Comparison Table
 
 --Child--
-| Vendor          | Provision Order (Non-Failover) | Provision Order (Failover) | Failover Mechanism |
-|-----------------|-------------------------------|---------------------------|------------------|
-| **Cisco**       | Primary → Secondary           | Primary → Secondary       | IPSLA monitoring configured on both tunnels |
-| **Fortigate**   | Primary → Secondary           | Primary → Secondary       | Static routes with distance and priority configured |
-| **Prisma SDWAN**| Primary → Secondary           | Secondary → Primary       | Backup policy for primary tunnel to use secondary in case of failure |
+Vendor: Cisco
+- Provision Order (Non-Failover): Primary → Secondary
+- Provision Order (Failover): Primary → Secondary
+- Failover Mechanism: IPSLA monitoring configured on both tunnels
+--Child--
+Vendor: Fortigate
+- Provision Order (Non-Failover): Primary → Secondary
+- Provision Order (Failover): Primary → Secondary
+- Failover Mechanism: Static routes with distance and priority configured
+--Child--
+Vendor: Prisma SDWAN
+- Provision Order (Non-Failover): Primary → Secondary
+- Provision Order (Failover): Secondary → Primary
+- Failover Mechanism: Backup policy allowing the primary tunnel to use the secondary in case of failure
 
 --Child--
 #### 4.3.3 Execution Flow
